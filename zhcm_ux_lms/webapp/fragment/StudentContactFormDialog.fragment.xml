@@ -1,0 +1,60 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog title="Burslu Öğrenci İletişim Bilgileri" state="None" type="Standard" contentWidth="80%" contentHeight="80%">
+        <f:Form editable="false">
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="Web Adresi">
+                            <f:fields>
+                                <Input  />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+        <Table  width="auto" noDataText="NoData" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+            <columns>
+                <Column>
+                    <Text text="Adres Tipi"/>
+                </Column>
+                <Column >
+                    <Text text="Mernisten Getir"/>
+                </Column>
+                <Column >
+                    <Text text="Adres"/>
+                </Column>
+                <Column >
+                    <Text text="Posta Kodu"/>
+                </Column>
+                <Column >
+                    <Text text="Ülke"/>
+                </Column>
+                <Column>
+                    <Text text="İl"/>
+                </Column>
+                <Column >
+                    <Text text="İlçe"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Text text="{Adres Tipi}"/>
+                        <Text text="{Mernisten Getir}"/>
+                        <Text text="{Adres}"/>
+                        <Text text="{Posta Kodu}"/>
+                        <Text text="{Ülke}"/>
+                        <Text text="{İl}"/>
+                        <Text text="{İlçe}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Dialog>
+</c:FragmentDefinition>

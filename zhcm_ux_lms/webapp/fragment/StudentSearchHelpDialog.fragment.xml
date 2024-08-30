@@ -14,18 +14,48 @@
                                         <Input value="{requestListModel>/searchParameter/Pernr}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                
+
                                 <fb:FilterGroupItem name="Name" label="Adı" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <Input value="{requestListModel>/searchParameter/Vorna}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                
+
                                 <fb:FilterGroupItem name="Surname" label="Soyadı" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <Input value="{requestListModel>/searchParameter/Nachn}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
+
+                                <!-- <fb:FilterGroupItem name="EmploymentUnit" label="İstihdam Edileceği Birim" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <Input id="employmentUnitInput" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+
+                                <fb:FilterGroupItem name="Country" label="Ülke" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiComboBox name="Country" selectionChange=".onSelectionChange" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+
+                                <fb:FilterGroupItem name="MainSchool" label="Esas Okulu" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiComboBox name="MainSchool" selectionChange=".onSelectionChange" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+
+                                <fb:FilterGroupItem name="LanguageSchool" label="Dil Okulu" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiComboBox name="LanguageSchool" selectionChange=".onSelectionChange" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+
+                                <fb:FilterGroupItem name="Active" label="Durum" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <CheckBox id="activeCheckBox" text="Aktif"/>
+                                    </fb:control>
+                                </fb:FilterGroupItem> -->
 
                             </fb:filterGroupItems>
                         </fb:FilterBar>
@@ -34,7 +64,7 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-              
+
                 <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom" items="{/ScholarshipStudentSet}" >
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
@@ -46,6 +76,21 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="Soyadı"/>
                         </Column>
+                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Türü"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Birim Kodu"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Birimi"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Ülke"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Esas Okulu"/>
+                        </Column> -->
                     </columns>
                     <items>
                         <ColumnListItem>
@@ -53,6 +98,10 @@
                                 <Text text="{Pernr}"/>
                                 <Text text="{Vorna}"/>
                                 <Text text="{Nachn}"/>
+                                <!-- <Text text="{Birim Kodu}"/>
+                                <Text text="{Birimi}"/>
+                                <Text text="{Ülke}"/>
+                                <Text text="{Esas Okulu}"/> -->
                             </cells>
                         </ColumnListItem>
                     </items>

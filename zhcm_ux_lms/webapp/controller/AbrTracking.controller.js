@@ -73,6 +73,16 @@ sap.ui.define([
         
             this._oSearchHelpDialog.open();
         },
+        onShowContactForm: function(oEvent){
+            if (!this._oContactFormDialog) {
+                this._oContactFormDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.StudentContactFormDialog", this);
+                this.getView().addDependent(this._oContactFormDialog);
+            } else {
+                this._oContactFormDialog.close();
+            }
+        
+            this._oContactFormDialog.open();
+        }
         
 	});
 });
