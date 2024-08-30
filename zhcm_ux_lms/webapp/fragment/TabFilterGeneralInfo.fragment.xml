@@ -1,0 +1,340 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+
+    <f:Form editable="true" width="100%">
+        <f:title>
+            <core:Title text="Genel Bilgiler"/>
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="1" singleContainerFullSize="true" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="Maaş Para Birimi">
+                        <f:fields>
+                            <Input />
+                            <Input />
+                            <ComboBox />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Kırtasiye Ücreti">
+                        <f:fields>
+                            <Input />
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Yurtiçi Dil Öğrenimi Süresi">
+                        <f:fields>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Yıl"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Ay"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Gün"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Yurtdışı Dil Öğrenimi Süresi (Esas)">
+                        <f:fields>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Yıl"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Ay"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Gün"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Yurtdışı Dil Öğrenimi Süresi (Uzatma)">
+                        <f:fields>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Yıl"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Ay"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Gün"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Resmi Burslu Normal Süre">
+                        <f:fields>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Yıl"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Ay"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Gün"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Resmi Burslu Uzatma">
+                        <f:fields>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Yıl"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Ay"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Gün"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Resmi Burssuz (Uzatma)">
+                        <f:fields>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Yıl"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Ay"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Gün"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Mecburi Hizmet Süresi">
+                        <f:fields>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Yıl"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Ay"/>
+                            <Input>
+                                <layoutData>
+                                    <l:GridData span="XL1 L1 M1 S4" />
+                                </layoutData>
+                            </Input>
+                            <Text text="Gün"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Mevzuniyet Tarihi">
+                        <f:fields>
+                            <DatePicker/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Yurtdışı Çıkış/ Dönüş Tarihi">
+                        <f:fields>
+                            <DatePicker/>
+                            <DatePicker/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="İş Başı Tarihi">
+                        <f:fields>
+                            <DatePicker/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Dava Başlama Tarihi">
+                        <f:fields>
+                            <DatePicker/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Vergi Numarası">
+                        <f:fields>
+                            <DatePicker/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Vergi Dairesi">
+                        <f:fields>
+                            <DatePicker/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Vergi Dairesi İli">
+                        <f:fields>
+                            <DatePicker/>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="Maaş Ödenir">
+                        <f:fields>
+                            <CheckBox enabled="false"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Kırtasiye Ödenir">
+                        <f:fields>
+                            <CheckBox enabled="false"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement >
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement >
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement >
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement >
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement >
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Button text="Mecburi Hizmet Süresi Hesapla"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="">
+                        <f:fields>
+                            <CheckBox text="İcralı/Davalı"/>
+                            <Button type="Emphasized" text="Tazminat Bilgileri"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Sicil No">
+                        <f:fields>
+                            <Input showValueHelp="true"/>
+                        </f:fields>
+                    </f:FormElement>
+
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="Ödeme Yapılacak Hesap">
+                        <f:fields>
+                            <ComboBox />
+                            <Button text="Evraklar" type="Emphasized"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Eğitim Sonu Durumu">
+                        <f:fields>
+                            <ComboBox />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Açıklama">
+                        <f:fields>
+                            <TextArea rows="10"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Geri Ödeme Yapmış">
+                        <f:fields>
+                            <CheckBox enabled="false"/>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+</c:FragmentDefinition>

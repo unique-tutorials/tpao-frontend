@@ -1,0 +1,78 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="Öğrenci Bilgileri"/>
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="Öğrenci No">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Türü">
+                        <f:fields>
+                            <ComboBox />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Adı">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Soyadı">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="Cinsiyeti">
+                        <f:fields>
+                            <ComboBox />
+                            <Input enabled="false"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Birim Kodu">
+                        <f:fields>
+                            <Input showValueHelp="true" />
+                            <Input enabled="false"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Masraf Merkezi">
+                        <f:fields>
+                            <Input/>
+                            <Input enabled="false"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Bütçe Kodu">
+                        <f:fields>
+                            <Input showValueHelp="true"/>
+                            <Input enabled="false"/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Aktif">
+                        <f:fields>
+                            <CheckBox/>
+                            <ToolbarSpacer/>
+                            <Button text="İletişim Bilgileri" type="Emphasized" press="onShowContactForm" />
+                            <Button text="Kimlik Bilgileri" type="Emphasized" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+
+        </f:formContainers>
+
+    </f:Form>
+
+</c:FragmentDefinition>

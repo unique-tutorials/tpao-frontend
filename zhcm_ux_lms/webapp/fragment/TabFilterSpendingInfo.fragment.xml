@@ -1,0 +1,43 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+<Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <columns>
+        <Column>
+            <Text text="Harcama Kalemi"/>
+        </Column>
+        <Column >
+            <Text text="Fatura No"/>
+        </Column>
+        <Column >
+            <Text text="Fatura Tarihi"/>
+        </Column>
+        <Column >
+            <Text text="Fatura Tutarı"/>
+        </Column>
+        <Column >
+            <Text text="Gönderildi"/>
+        </Column>
+        <Column>
+            <Text text="Gönder"/>
+        </Column>
+        <Column minScreenWidth="Tablet" demandPopin="true">
+            <Text text="Açıklama "/>
+        </Column>
+    </columns>
+    <items>
+        <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+            <cells>
+                <Text text="{approvalRequestListModel>Reqno}"/>
+                <Text text="{approvalRequestListModel>Trnam}"/>
+                <Text text="{approvalRequestListModel>Trtyp}"/>
+                <Text text="{approvalRequestListModel>Trcnt}"/>
+                <Text text="{approvalRequestListModel>Trnqp}"/>
+                <Text text="{approvalRequestListModel>Trnqn}"/>
+                <Text text="{approvalRequestListModel>Reqno}"/>
+            </cells>
+        </ColumnListItem>
+    </items>
+</Table>
+</c:FragmentDefinition>
