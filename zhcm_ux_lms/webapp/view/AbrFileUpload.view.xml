@@ -1,0 +1,75 @@
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.AbrFileUpload"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core">
+
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Belgelerin Sisteme Yüklenmesi">
+        <VBox class="sapUiSmallMargin">
+            <f:Form editable="false">
+                <f:title>
+                    <core:Title text="Excelden Stajyer Bilgileri Yükle" />
+                </f:title>
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Dosya Seçiniz">
+                                <f:fields>
+                                    <u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
+                                    <Button text="Excelden Yükle" width="200px"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </VBox>
+        <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="Yüklenen Stajyer Bilgileri" height="400px">
+            <content>
+                <Table visible="false" mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                    <columns>
+                        <Column>
+                            <Text text="Belge Türü"/>
+                        </Column>
+                        <Column >
+                            <Text text="Belge Adı"/>
+                        </Column>
+                        <Column>
+                            <Text text="Yüklenme Tarihi"/>
+                        </Column>
+                        
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+                            <cells>
+                                <Text text="{approvalRequestListModel>Reqno}"/>
+                                <Text text="{approvalRequestListModel>Trnam}"/>
+                                <Text text="{approvalRequestListModel>Trtyp}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
+            <headerToolbar>
+            </headerToolbar>
+            <infoToolbar>
+            </infoToolbar>
+        </Panel>
+
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
+                <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/>
+                <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
+                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
+                <Button text="Yeni Talep Oluştur" icon="sap-icon://education" press="onNewTrainingRequest" type="Accept" visible="true"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

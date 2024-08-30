@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog title="{i18n>SEARCH_HELP}" state="None" type="Standard" contentWidth="50%" contentHeight="50%">
+		<content>
+			<Table noDataText="{i18n>NO_VALUEHELP_DATA}" busyIndicatorDelay="0" growing="true" growingScrollToLoad="true" alternateRowColors="true"
+				mode="SingleSelectLeft" contentWidth="35rem" title="Arama yardımı"
+				items="{path:'trainerPoolModel>/valueHelpSet'}">
+				<columns>
+					<Column>
+						<header>
+							<Text text="ID"/>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Text text="Tanımı"/>
+						</header>
+					</Column>
+				</columns>
+				<ColumnListItem>
+					<cells>
+						<Text text="{trainerPoolModel>Vhkey}"/>
+						<Text text="{trainerPoolModel>Vhval}"/>
+					</cells>
+				</ColumnListItem>
+			</Table>
+		</content>
+		<buttons>
+			<Button cd:PressType="cancelOrgeh" text="{i18n>CANCEL_ACTION}" press="onCancelGenericValueHelpDialog"/>
+			<Button cd:PressType="Orgeh" text="{i18n>ADD_SELECTION}" icon="sap-icon://add-filter" press="onGenericValueHelpSelection" type="Emphasized"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

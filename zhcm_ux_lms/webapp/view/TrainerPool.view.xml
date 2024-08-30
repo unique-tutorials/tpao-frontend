@@ -1,0 +1,23 @@
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.TrainerPool"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Page showHeader="false">
+        <IconTabBar select="onIconFilterSelect" selectedKey="{trainerPoolModel>/selectedKey}" stretchContentHeight="true" backgroundDesign="Transparent" applyContentPadding="false" class="sapUiResponsiveContentPadding">
+            <items>
+                <IconTabFilter icon="sap-icon://inbox" text="{i18n>INTERNAL_TRAINER}" key="INT">
+                    <content>
+                        <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternalTrainerList" type="XML"/>
+                    </content>
+                </IconTabFilter>
+                <IconTabFilter icon="sap-icon://outbox" text="{i18n>EXTERNAL_TRAINER}" key="EXT">
+                    <content>
+                        <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.ExternalTrainerList" type="XML"/>
+                    </content>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+    </Page>
+</mvc:View>

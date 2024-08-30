@@ -1,0 +1,6 @@
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.AppDispatcher" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout"
+	busy="{appDispatcherView>/busy}" busyIndicatorDelay="100">
+	<Page showFooter="false" showHeader="true" title="{i18n>LMS_APPLICATIONS}" class="lmsMainPage sapUiResponsiveContentPadding"
+		showNavButton="true" navButtonPress="onNavHome" id="idAppDispatcherPage">
+	</Page>
+</mvc:View>

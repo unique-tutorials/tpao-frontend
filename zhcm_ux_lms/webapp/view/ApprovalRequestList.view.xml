@@ -1,0 +1,70 @@
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.ApprovalRequestList"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic"
+    xmlns:footerbar="sap.ushell.ui.footerbar" busy="{approvalListView>/busy}" busyIndicatorDelay="100">
+   <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>APPROVE_TRAINING_REQUEST_FORM}">
+        <IconTabBar id="idIconTabBar" select="onIconFilterSelect" stretchContentHeight="true" selectedKey="{requestListModel>/selectedKey}">
+            <items>
+                <IconTabFilter icon="sap-icon://pending" iconColor="Neutral" count="{approvalRequestListModel>/searchResults/PND}" text="{i18n>PENDING_REQUEST}" key="DRF"/>
+                <IconTabFilter icon="sap-icon://approvals" iconColor="Critical" count="{approvalRequestListModel>/searchResults/APP}" text="{i18n>APPROVED_REQUEST}" key="PND"/>
+            </items>
+            <content>
+                <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                    <columns>
+                        <Column id="idRequestNumberColumn">
+                            <Text text="LİSANS MEZUNİYET ALANI / ALANLARI"/>
+                        </Column>
+                        <Column >
+                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS ALANI (TÜRKÇE)"/>
+                        </Column>
+                        <Column >
+                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS ALANI (İNGİLİZCE)"/>
+                        </Column>
+                        <Column >
+                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS KONUSU (TÜRKÇE)"/>
+                        </Column>
+                        <Column >
+                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS KONUSU (İNGİLİZCE)"/>
+                        </Column>
+                        <Column id="idRequestReasonColumn">
+                            <Text text="ÖĞRENİM GÖRÜLMESİ TERCİH EDİLEN ÜLKE / ÜLKELER VE ÖNCELİKLENDİRMELERİ"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="KONTENJAN SAYISI "/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="ÖĞRENCİNİN DÖNÜŞTE İSTİHDAM EDİLECEĞİ ÜNİTE VE MÜDÜRLÜK"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="BU ALANDA YURT DIŞINDA BURSLU ÖĞRENCİ OKUTMA GEREKÇESİ"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+                            <cells>
+                                <Text text="{approvalRequestListModel>Reqno}"/>
+                                <Text text="{approvalRequestListModel>Trnam}"/>
+                                <Text text="{approvalRequestListModel>Trtyp}"/>
+                                <Text text="{approvalRequestListModel>Trcnt}"/>
+                                <Text text="{approvalRequestListModel>Trnqp}"/>
+                                <Text text="{approvalRequestListModel>Trnqn}"/>
+                                <Text text="{approvalRequestListModel>Reqno}"/>
+                                <Text text="{approvalRequestListModel>Reqno}"/>
+                                <Text text="{approvalRequestListModel>Reqno}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
+        </IconTabBar>
+          <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                 <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onDisplayRequestDetail"/>
+                <Button text="{i18n>REJECT_ACTION}" type="Reject" icon="sap-icon://employee-rejections" press="onCancelCreatePage"/>
+                <Button text="{i18n>APPROVE_ACTION}" icon="sap-icon://approvals"  visible='{approvalRequestListModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Success"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

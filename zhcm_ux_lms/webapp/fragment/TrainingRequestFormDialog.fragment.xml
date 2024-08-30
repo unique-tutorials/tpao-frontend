@@ -1,0 +1,121 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <Dialog title="{i18n>TRAINING_REQUEST_OPERATION}" state="None" type="Standard" contentWidth="70%" contentHeight="100%">
+        <f:Form editable="true" id="idCreateOverTimeRequestForm" class="overTimeRequestCreateDisplayPage">
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="3" emptySpanL="3" emptySpanM="3" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"/>
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="{i18n>QNAME}">
+                            <f:fields>
+                                <Input cd:inputId="PERSA" textFormatMode="KeyValue" showSuggestion="true" value="{employmentRequestModel>/currentRequest/Pbtxt}" showValueHelp="true" valueHelpRequest="onValueHelpRequest" suggestionItems="{employmentRequestModel>/valueHelpSet}">
+                                    <suggestionItems>
+                                        <core:ListItem key="{Vhkey}" text="{Vhval}" additionalText="{Vhval}" />
+                                    </suggestionItems>
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>QPNAME}">
+                            <f:fields>
+                                <Input cd:inputId="BTRTL" textFormatMode="KeyValue" showSuggestion="true" value="{employmentRequestModel>/currentRequest/Btext}" showValueHelp="true" valueHelpRequest="onValueHelpRequest" suggestionItems="{employmentRequestModel>/valueHelpSet}">
+                                    <suggestionItems>
+                                        <core:ListItem key="{Vhkey}" text="{Vhval}" additionalText="{Vhval}" />
+                                    </suggestionItems>
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_NAME}">
+                            <f:fields>
+                                <Input cd:inputId="ORGEH" textFormatMode="KeyValue" showSuggestion="true" value="{employmentRequestModel>/currentRequest/Orgtx}" showValueHelp="true" valueHelpRequest="onValueHelpRequest" suggestionItems="{employmentRequestModel>/valueHelpSet}">
+                                    <suggestionItems>
+                                        <core:ListItem key="{Vhkey}" text="{Vhval}" additionalText="{Vhval}" />
+                                    </suggestionItems>
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_DATE}">
+                            <f:fields>
+                                <DatePicker value="{path:'employmentRequestModel>/currentRequest/Begda', type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_METHOD}">
+                            <f:fields>
+                                <RadioButtonGroup id="rbg1" columns="2" width="100%" class="justifyCont">
+                                    <RadioButton text="{i18n>OR_INTRA}"></RadioButton>
+                                    <RadioButton text="{i18n>OR_EXTRA}"></RadioButton>
+                                </RadioButtonGroup>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>PARTICIPANT_COUNT}">
+                            <Input type="Number" editable="true" value="{employmentRequestModel>/currentRequest/Abrst}"></Input>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_TYPE}">
+                            <f:fields>
+                                <RadioButtonGroup id="rbg2" columns="3" width="100%" class="justifyCont">
+                                    <RadioButton text="{i18n>OR_CLASS}"></RadioButton>
+                                    <RadioButton text="{i18n>OR_ONLINE}"></RadioButton>
+                                    <RadioButton text="{i18n>OR_OFFLINE}"></RadioButton>
+                                </RadioButtonGroup>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_DAY}">
+                            <Input type="Number" editable="true" value="{employmentRequestModel>/currentRequest/Abrst}"></Input>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>OR_OFFER_COMPANY}">
+                            <List >
+                                <InputListItem label="1.">
+                                    <Input/>
+                                </InputListItem>
+                                <InputListItem label="2.">
+                                    <Input />
+                                </InputListItem>
+                                <InputListItem label="3.">
+                                    <Input />
+                                </InputListItem>
+                            </List>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>REQUEST_CONTENT}">
+                            <TextArea/>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>SUGGESTED_CONTENT}">
+                            <TextArea/>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>SUGGESTED_TRAINER}">
+                            <f:fields>
+                                <Input cd:inputId="ORGEH" textFormatMode="KeyValue" showSuggestion="true" value="{employmentRequestModel>/currentRequest/Orgtx}" showValueHelp="true" valueHelpRequest="onValueHelpRequest" suggestionItems="{employmentRequestModel>/valueHelpSet}">
+                                    <suggestionItems>
+                                        <core:ListItem key="{Vhkey}" text="{Vhval}" additionalText="{Vhval}" />
+                                    </suggestionItems>
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="{i18n>TRAINING_PLACE}">
+                            <f:fields>
+                                <Input cd:inputId="ORGEH" textFormatMode="KeyValue" showSuggestion="true" value="{employmentRequestModel>/currentRequest/Orgtx}" showValueHelp="true" valueHelpRequest="onValueHelpRequest" suggestionItems="{employmentRequestModel>/valueHelpSet}">
+                                    <suggestionItems>
+                                        <core:ListItem key="{Vhkey}" text="{Vhval}" additionalText="{Vhval}" />
+                                    </suggestionItems>
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>CANCEL_ACTION}" type="Reject" icon="sap-icon://cancel" press="onCancelCreatePage"/>
+                <Button text="{i18n>SAVE_ACTION}"  type="Success" icon="sap-icon://save" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' cd:actionType="NEW" press="onSaveSendEmploymentRequest" />
+                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" cd:actionType="INA" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</c:FragmentDefinition>

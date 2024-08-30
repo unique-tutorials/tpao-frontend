@@ -1,0 +1,73 @@
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.AbrRequestList"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Yurt Dışı Burslu Öğrenci Talepleri">
+        <IconTabBar id="idIconTabBar" select="onIconFilterSelect" stretchContentHeight="true" selectedKey="{requestListModel>/selectedKey}">
+            <items>
+                <IconTabFilter icon="sap-icon://save" iconColor="Neutral" count="{requestListModel>/searchResults/DRF}" text="{i18n>DRAFT_REQUESTS}" key="DRF"/>
+                <IconTabFilter icon="sap-icon://pending" iconColor="Critical" count="{requestListModel>/searchResults/PND}" text="{i18n>PENDING_REQUESTS}" key="PND"/>
+                <IconTabFilter icon="sap-icon://accept" iconColor="Positive" count="{requestListModel>/searchResults/APP}" text="{i18n>APPROVED_REQUESTS}" key="APP"/>
+                <IconTabFilter icon="sap-icon://decline" iconColor="Negative" count="{requestListModel>/searchResults/REJ}" text="{i18n>REJECTED_REQUESTS}" key="REJ"/>
+                <IconTabSeparator/>
+                <IconTabFilter icon="sap-icon://checklist" count="{requestListModel>/searchResults/ALL}" text="{i18n>ALL_REQUESTS}" key="ALL"/>
+            </items>
+            <content>
+                <Table id="idTrainingRequestTable" busy="{requestListModel>/tableBusy}" width="auto" items="{requestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{requestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                    <columns>
+                        <Column id="idRequestNumberColumn">
+                            <Text text="LİSANS MEZUNİYET ALANI / ALANLARI"/>
+                        </Column>
+                        <Column >
+                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS ALANI (TÜRKÇE)"/>
+                        </Column>
+                        <Column >
+                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS ALANI (İNGİLİZCE)"/>
+                        </Column>
+                        <Column >
+                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS KONUSU (TÜRKÇE)"/>
+                        </Column>
+                        <Column >
+                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS KONUSU (İNGİLİZCE)"/>
+                        </Column>
+                        <Column id="idRequestReasonColumn">
+                            <Text text="ÖĞRENİM GÖRÜLMESİ TERCİH EDİLEN ÜLKE / ÜLKELER VE ÖNCELİKLENDİRMELERİ"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="KONTENJAN SAYISI "/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="ÖĞRENCİNİN DÖNÜŞTE İSTİHDAM EDİLECEĞİ ÜNİTE VE MÜDÜRLÜK"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="BU ALANDA YURT DIŞINDA BURSLU ÖĞRENCİ OKUTMA GEREKÇESİ"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+                            <cells>
+                                <Text text="{path:'requestListModel>Trfno' , formatter:'.formatter.formatTrfno'}"/>
+                                <Text text="{requestListModel>Trfrx}"/>
+                                <Text text="{requestListModel>Reqtx}\n {requestListModel>Leaen}"/>
+                                <Text text="{requestListModel>Trfpx}"/>
+                                <Text text="{path:'requestListModel>Rqdat' ,type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
+                                <Text text="{path:'requestListModel>Trfsx'}- {path:'requestListModel>Trfsy'}"/>
+                                <Button icon="sap-icon://menu" type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
+        </IconTabBar>
+          <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                 <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
+                 <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/>
+                 <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
+                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane"  visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
+                <Button text="Yeni Talep Oluştur" icon="sap-icon://education" press="onNewTrainingRequest" type="Accept" visible="true"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

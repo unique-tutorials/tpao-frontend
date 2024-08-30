@@ -1,0 +1,39 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <Page showHeader="false">
+        <Table width="auto" items="{ path:'trainerPoolModel>/internalTrainerSet'}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="0" growing="true" growingScrollToLoad="true" alternateRowColors="true">
+            <headerToolbar>
+                <Toolbar>
+                    <ToolbarSpacer/>
+                    <SearchField  width="300px"  placeholder="{i18n>SEARCH_INTERNAL_TRAINER}" search="onSearchInternalTrainer"></SearchField>
+                </Toolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="{i18n>TRAINER_ID}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>TRAINER_NAME}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>ACTION_LIST}"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem type="Inactive">
+                    <cells>
+                       	<Text text="{path: 'trainerPoolModel>Pernr', formatter: '._formatPernr'}"/>
+                        <Text text="{path:'trainerPoolModel>Ename'}"/>
+                        <Button icon="sap-icon://menu" type="Accept" press="onInternalTrainerActions" tooltip="{i18n>ACTION_LIST}"></Button>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>NEW_INTERNAL_TRAINER}" icon="sap-icon://add-employee" press="onNewInternalTrainer" type="Accept" />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</c:FragmentDefinition>

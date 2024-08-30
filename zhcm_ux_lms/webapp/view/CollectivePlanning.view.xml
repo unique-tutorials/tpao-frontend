@@ -1,0 +1,39 @@
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.TrainingCollectivePlanning"
+    xmlns="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core" displayBlock="true" height="100%" busyIndicatorDelay="0">
+    <m:Page showHeader="false" enableScrolling="true">
+        <m:content  >
+            <TreeTable visibleRowCount="50" id="TreeTableBasic" rows="{path:'collectivePlanningModel>/hierarchy', parameters: {arrayNames:['levels']}}" selectionMode="MultiToggle" enableSelectAll="false" ariaLabelledBy="title">
+                <columns>
+                    <Column width="17rem">
+                        <m:Label text="Nesne Adı"/>
+                        <template>
+                            <m:Text text="{collectivePlanningModel>Stext}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column width="9rem">
+                        <m:Label text="Nesne Tipi"/>
+                        <template>
+                           <m:Text text="{collectivePlanningModel>Otype}" wrapping="false" />
+                        </template>
+                    </Column>
+                     <Column width="9rem">
+                        <m:Label text="Nesne Tanıtıcısı"/>
+                        <template>
+                          <m:Text text="{collectivePlanningModel>Objid}" wrapping="false" />
+                        </template>
+                    </Column>
+                    <Column width="11rem">
+                        <m:Label text="İşlemler"/>
+                        <template>
+                            <Button icon="sap-icon://menu" type="Accept" press="onExternalTrainerActions" tooltip="{i18n>ACTION_LIST}"></Button>
+                        </template>
+                    </Column>
+                </columns>
+            </TreeTable>
+        </m:content>
+    </m:Page>
+</mvc:View>

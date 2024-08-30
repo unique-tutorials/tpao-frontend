@@ -1,0 +1,109 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <Dialog title="{i18n>TRAINING_REQUEST_OPERATION}" state="None" type="Standard" contentWidth="70%" contentHeight="100%">
+        <f:Form editable="true" id="idCreateOverTimeRequestForm" class="overTimeRequestCreateDisplayPage">
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="3" emptySpanL="3" emptySpanM="3" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1"/>
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="{i18n>QNAME}">
+                            <f:fields>
+                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trnqq}">
+
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>QPNAME}">
+                            <f:fields>
+                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trnqp}">
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_NAME}">
+                            <f:fields>
+                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trnam}">
+
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_DATE}">
+                            <f:fields>
+                                <DatePicker editable="true" value="{path:'approvalRequestListModel>/currentRequest/Trdat', type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_METHOD}">
+                            <f:fields>
+                                <RadioButtonGroup editable="true" id="rbg1" columns="2" width="100%" class="justifyCont">
+                                    <RadioButton text="{i18n>OR_INTRA}"></RadioButton>
+                                    <RadioButton text="{i18n>OR_EXTRA}"></RadioButton>
+                                </RadioButtonGroup>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>PARTICIPANT_COUNT}">
+                            <Input type="Number" editable="true" value="{approvalRequestListModel>/currentRequest/Trcnt}"></Input>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_TYPE}">
+                            <f:fields>
+                                <RadioButtonGroup editable="true" id="rbg2" columns="3" width="100%" class="justifyCont">
+                                    <RadioButton text="{i18n>OR_CLASS}"></RadioButton>
+                                    <RadioButton text="{i18n>OR_ONLINE}"></RadioButton>
+                                    <RadioButton text="{i18n>OR_OFFLINE}"></RadioButton>
+                                </RadioButtonGroup>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>TRAINING_DAY}">
+                            <Input type="Number" editable="true" value="{approvalRequestListModel>/currentRequest/Trday}"></Input>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>OR_OFFER_COMPANY}">
+                            <List >
+                                <InputListItem label="1.">
+                                    <Input editable="true" />
+                                </InputListItem>
+                                <InputListItem label="2.">
+                                    <Input editable="true" />
+                                </InputListItem>
+                                <InputListItem label="3.">
+                                    <Input editable="true" />
+                                </InputListItem>
+                            </List>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>REQUEST_CONTENT}">
+                            <TextArea editable="true" />
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>SUGGESTED_CONTENT}">
+                            <TextArea editable="true"/>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>SUGGESTED_TRAINER}">
+                            <f:fields>
+                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trtrn}">
+
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+
+                        <f:FormElement label="{i18n>TRAINING_PLACE}">
+                            <f:fields>
+                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trplc}">
+                                </Input>
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>CANCEL_ACTION}" type="Neutral" icon="sap-icon://cancel" press="onCancelCreatePage"/>
+                <Button text="{i18n>APPROVE_ACTION}" type="Success" icon="sap-icon://approvals" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' cd:actionType="NEW" press="onSaveSendEmploymentRequest" />
+                <Button text="{i18n>REJECT_ACTION}" type="Reject" icon="sap-icon://employee-rejections" press="onSaveSendEmploymentRequest" />
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</c:FragmentDefinition>

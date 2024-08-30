@@ -1,0 +1,278 @@
+{
+	"_version": "1.53.0",
+	"sap.app": {
+		"id": "zhcm_ux_lms_abr",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "0.0.1"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"sourceTemplate": {
+			"id": "@sap/generator-fiori:basic",
+			"version": "1.13.2",
+			"toolsId": "82e08e57-1293-4dc9-8ee6-33d79267bb3e"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/",
+				"type": "OData",
+				"settings": {
+					"annotations": [],
+					"localUri": "localService/metadata.xml",
+					"odataVersion": "2.0"
+				}
+			},
+			"ZHCM_GENERIC_SRV": {
+				"uri": "/sap/opu/odata/sap/ZHCM_GENERIC_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZHCM_GENERIC_SRV/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"dependencies": {
+			"minUI5Version": "1.114.0",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.f": {},
+				"sap.suite.ui.generic.template": {},
+				"sap.ui.comp": {},
+				"sap.ui.generic.app": {},
+				"sap.ui.table": {},
+				"sap.ushell": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "zhcm_ux_lms_abr.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {}
+			},
+			"GenericServices": {
+				"uri": "/sap/opu/odata/sap/ZHCM_GENERIC_SRV/",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "None"
+				},
+				"dataSource": "ZHCM_GENERIC_SRV",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"services": {
+			"ShellUIService": {
+				"factoryName": "sap.ushell.ui5service.ShellUIService",
+				"lazy": false,
+				"settings": {
+					"setTitle": "auto"
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"fullWidth": true,
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "zhcm_ux_lms_abr.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "appdispatcher",
+					"target": [
+						"appdispatcher"
+					]
+				},
+				{
+					"pattern": "trainerpool",
+					"name": "trainerpool",
+					"target": [
+						"trainerpool"
+					]
+				},
+				{
+					"pattern": "AbrRequestList",
+					"name": "AbrRequestList",
+					"target": [
+						"AbrRequestList"
+					]
+				},
+				{
+					"pattern": "AbrFileUpload",
+					"name": "AbrFileUpload",
+					"target": [
+						"AbrFileUpload"
+					]
+				},
+				{
+					"pattern": "AbrStajyerTracking",
+					"name": "AbrStajyerTracking",
+					"target": [
+						"AbrStajyerTracking"
+					]
+				},
+				{
+					"pattern": "AbrAccountTracking",
+					"name": "AbrAccountTracking",
+					"target": [
+						"AbrAccountTracking"
+					]
+				},
+				{
+					"pattern": "AbrTracking",
+					"name": "AbrTracking",
+					"target": [
+						"AbrTracking"
+					]
+				},
+				{
+					"pattern": "ApprovalRequestList",
+					"name": "ApprovalRequestList",
+					"target": [
+						"ApprovalRequestList"
+					]
+				},
+				{
+					"pattern": "collectivePlanning",
+					"name": "collectivePlanning",
+					"target": [
+						"collectivePlanning"
+					]
+				}
+			],
+			"targets": {
+				"appdispatcher": {
+					"viewName": "AppDispatcher",
+					"viewId": "appdispatcher",
+					"viewLevel": 1,
+					"title": "{i18n>LMS_APPLICATIONS}"
+				},
+				"trainerpool": {
+					"viewName": "TrainerPool",
+					"viewId": "trainerpool",
+					"viewLevel": 1,
+					"title": "{i18n>TRAINER_POOL}"
+				},
+				"AbrFileUpload": {
+					"viewName": "AbrFileUpload",
+					"viewId": "AbrFileUpload",
+					"viewLevel": 2,
+					"title": "Burslu Öğrenci Belgelerin Sisteme Yüklenmesi"
+				},
+				"AbrStajyerTracking": {
+					"viewName": "AbrStajyerTracking",
+					"viewId": "AbrStajyerTracking",
+					"viewLevel": 2,
+					"title": "Stajyer Takibi"
+				},
+				"AbrAccountTracking": {
+					"viewName": "AbrAccountTracking",
+					"viewId": "AbrAccountTracking",
+					"viewLevel": 2,
+					"title": "Burslu Öğrenci Takibi (Muhasebe)"
+				},
+				"AbrTracking": {
+					"viewName": "AbrTracking",
+					"viewId": "AbrTracking",
+					"viewLevel": 2,
+					"title": "Burslu Öğrenci Takibi"
+				},
+				"AbrRequestList": {
+					"viewName": "AbrRequestList",
+					"viewId": "AbrRequestList",
+					"viewLevel": 2,
+					"title": "Yurt Dışı Burslu Öğrenci Talepleri"
+				},
+				"ApprovalRequestList": {
+					"viewName": "ApprovalRequestList",
+					"viewId": "ApprovalRequestList",
+					"viewLevel": 2,
+					"title": "{i18n>APPROVE_TRAINING_REQUEST_FORM}"
+				},
+				"collectivePlanning": {
+					"viewName": "CollectivePlanning",
+					"viewId": "CollectivePlanning",
+					"viewLevel": 2,
+					"title": "{i18n>COLLECTIVE_TRAINING_PLANNING}"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/customLMS.css"
+				}
+			],
+			"js": [
+				{
+					"uri": "utils/lodash.js"
+				},
+				{
+					"uri": "utils/material.js"
+				},
+				{
+					"uri": "utils/FileDownloadJquery.js"
+				},
+				{
+					"uri": "utils/moment.js"
+				}
+			]
+		},
+		"rootView": {
+			"viewName": "zhcm_ux_lms_abr.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		}
+	}
+}
