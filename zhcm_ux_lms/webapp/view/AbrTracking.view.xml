@@ -1,6 +1,8 @@
 <mvc:View controllerName="zhcm_ux_lms_abr.controller.AbrTracking"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:l="sap.ui.layout"
+    xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:core="sap.ui.core">
 
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>SCHOLARSHIP_STUDENT_TRACKING}">
@@ -45,7 +47,7 @@
                             </IconTabBar>
                         </IconTabFilter>
                         <IconTabFilter text="{i18n>TAB_OTHER_INFORMATION}" key="people">
-                            <Text text="People content goes here ..." />
+                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabOtherInformation" type="XML" />
                         </IconTabFilter>
                         <IconTabFilter text="{i18n>CONTACT_INFORMATION}" key="people">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabContactInformation" type="XML" />

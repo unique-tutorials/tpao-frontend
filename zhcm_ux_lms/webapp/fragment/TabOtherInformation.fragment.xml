@@ -1,0 +1,66 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <Table busy="{otherRequestListModel>/tableBusy}" width="auto" items="{otherRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{otherRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <columns>
+            <Column>
+                <Text text="{i18n>SERIAL_NO}"/>
+            </Column>
+            <Column >
+                <Text text="{i18n>OR_VORNA}"/>
+            </Column>
+            <Column >
+                <Text text="{i18n>OR_NACHN}"/>
+            </Column>
+            <Column >
+                <Text text="{i18n>TAX_OFFICE}"/>
+            </Column>
+            <Column >
+                <Text text="{i18n>TAX_OFFICE_PROVINCE}"/>
+            </Column>
+            <Column>
+                <Text text="{i18n>TAX_NUMBER}"/>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+                <cells>
+                    <Text text="{otherRequestListModel>Serin}"/>
+                    <Text text="{otherRequestListModel>Vorna}"/>
+                    <Text text="{otherRequestListModel>Nachn}"/>
+                    <Text text="{otherRequestListModel>Taxof}"/>
+                    <Text text="{otherRequestListModel>Toprv}"/>
+                    <Text text="{otherRequestListModel>Txnum}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    <FlexBox alignItems="Start" justifyContent="SpaceBetween" class="sapUiSmallMarginTopBottom">
+        <Button text="Kefilin Evrakları" type="Emphasized" icon="sap-icon://document-text" />
+        <HBox>
+            <Button text="İletişim" type="Neutral" icon="sap-icon://contacts"/>
+            <Button text="Kimlik" type="Neutral" icon="sap-icon://biometric-thumb"/>
+        </HBox>
+    </FlexBox>
+    <Table busy="{discretionRequestListModel>/tableBusy}" width="auto" items="{discretionRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{discretionRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <columns>
+            <Column>
+                <Text text="{i18n>DOCUMENT_TYPE}"/>
+            </Column>
+            <Column >
+                <Text text="{i18n>DATE_OF_ISSUE}"/>
+            </Column>
+            <Column >
+                <Text text="{i18n>REASON_FOR_ISSUANCE}"/>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+                <cells>
+                    <Text text="{discretionRequestListModel>Dtype}"/>
+                    <Text text="{discretionRequestListModel>Issue}"/>
+                    <Text text="{discretionRequestListModel>Rissu}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</c:FragmentDefinition>
