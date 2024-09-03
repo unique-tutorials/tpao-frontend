@@ -2,43 +2,204 @@
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core">
 
-    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Burslu Öğrenci Takibi">
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>SCHOLARSHIP_STUDENT_TRACKING}">
         <VBox class="sapUiSmallMargin">
-            <f:Form editable="false">
-                <f:title>
-                    <core:Title text="Öğrenci Arama" />
-                </f:title>
-                <f:layout>
-                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-                </f:layout>
-                <f:formContainers>
-                    <f:FormContainer>
-                        <f:formElements>
-                            <f:FormElement label="Öğrenci No">
-                                <f:fields>
-                                    <Input showValueHelp="true" valueHelpRequest="onShowPersonSearchHelp"  type="Number"/>
-                                    <Button text="Sorgulaa" type="Emphasized" />
-                                </f:fields>
-                            </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                </f:formContainers>
-            </f:Form>
             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.StudentInformation" type="XML" />
         </VBox>
         <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="100%">
             <content>
                 <IconTabBar stretchContentHeight="true">
                     <items>
-                        <IconTabFilter text="Genel Bilgi" key="info">
+                        <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="info">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabFilterGeneralInfo" type="XML" />
                         </IconTabFilter>
-                        <IconTabFilter text="Okul Bilgisi" key="attachments">
-                            <Text text="Attachments go here ..." />
+                        <IconTabFilter text="{i18n>TAB_SCHOLL_INFORMATION}" key="attachments">
+                            <VBox class="sapUiSmallMargin">
+                                <f:Form editable="true">
+                                    <f:title>
+                                        <core:Title text="{i18n>TAB_SCHOLL_INFORMATION}" />
+                                    </f:title>
+                                    <f:layout>
+                                        <f:ResponsiveGridLayout   />
+                                    </f:layout>
+                                    <f:formContainers>
+                                        <f:FormContainer title="{i18n>TAB_SCHOLL_INFORMATION}">
+                                            <f:formElements>
+                                                <f:FormElement label="{i18n>STUDENT_COUNTRY}">
+                                                    <f:fields>
+                                                        <Select selectedKey="{Country5}">
+                                                            <items>
+
+                                                            </items>
+                                                        </Select>
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>FIELD_OF_STUDY}">
+                                                    <f:fields>
+                                                        <Select selectedKey="{Country7}">
+                                                            <items>
+
+                                                            </items>
+                                                        </Select>
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>PERIOD_OF_SCHOLARSHIP_AWARD}">
+                                                    <f:fields>
+                                                        <Select selectedKey="{Country3}">
+                                                            <items>
+
+                                                            </items>
+                                                        </Select>
+                                                    </f:fields>
+                                                </f:FormElement>
+                                            </f:formElements>
+                                        </f:FormContainer>
+                                        <f:FormContainer title="{i18n>LICENSE_INFORMATION}">
+                                            <f:formElements>
+                                                <f:FormElement label="{i18n>UNIVERSITY}">
+                                                    <f:fields>
+                                                        <Select selectedKey="{Country8}">
+                                                            <items>
+
+                                                            </items>
+                                                        </Select>
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>SCHOOL}">
+                                                    <f:fields>
+                                                        <Select selectedKey="{Country9}">
+                                                            <items>
+
+                                                            </items>
+                                                        </Select>
+                                                    </f:fields>
+                                                </f:FormElement>
+                                            </f:formElements>
+                                        </f:FormContainer>
+                                        <f:FormContainer title="{i18n>FOREIGN_LANGUAGE_LEARNING_INFORMATION}">
+                                            <f:formElements>
+                                                <f:FormElement label="{i18n>SCHOOL}">
+                                                    <f:fields>
+                                                        <Select selectedKey="{Country9}">
+                                                            <items>
+
+                                                            </items>
+                                                        </Select>
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>START_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker placeholder="{i18n>START_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>END_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker placeholder="{i18n>END_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                            </f:formElements>
+                                        </f:FormContainer>
+                                        <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_EXTENSION}">
+                                            <f:formElements>
+                                                <f:FormElement label="{i18n>START_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker placeholder="{i18n>START_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>END_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker placeholder="{i18n>END_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                            </f:formElements>
+                                        </f:FormContainer>
+                                        <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_LEARNING_INFORMATION}">
+                                            <f:formElements>
+                                                <f:FormElement label="{i18n>SCHOOL}">
+                                                    <f:fields>
+                                                        <Select selectedKey="{Country9}">
+                                                            <items>
+
+                                                            </items>
+                                                        </Select>
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>START_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker placeholder="{i18n>START_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>END_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker placeholder="{i18n>END_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                            </f:formElements>
+                                        </f:FormContainer>
+                                        <f:FormContainer title="{i18n>MAIN_EDUCATION_INFORMATION}" >
+                                            <f:formElements>
+                                                <f:FormElement label="{i18n>SCHOOL}">
+                                                    <f:fields>
+                                                        <Select selectedKey="{Country9}">
+                                                            <items>
+
+                                                            </items>
+                                                        </Select>
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>START_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker placeholder="{i18n>START_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>END_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker placeholder="{i18n>END_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>SUBJECT}">
+                                                    <f:fields>
+                                                        <TextArea rows="3" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                            </f:formElements>
+                                        </f:FormContainer>
+                                        <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_EXTENSION}">
+                                            <f:formElements>
+                                                <f:FormElement label="{i18n>START_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker  placeholder="{i18n>START_DATE}"  />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>END_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker placeholder="{i18n>END_DATE}"  />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                            </f:formElements>
+                                        </f:FormContainer>
+                                        <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_FREE_EXTENSION}">
+                                            <f:formElements>
+                                                <f:FormElement label="{i18n>START_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker  placeholder="{i18n>START_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="{i18n>END_DATE}">
+                                                    <f:fields>
+                                                        <DatePicker  placeholder="{i18n>END_DATE}" />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                            </f:formElements>
+                                        </f:FormContainer>
+                                    </f:formContainers>
+                                </f:Form>
+                            </VBox>
                         </IconTabFilter>
-                        <IconTabFilter text="Mali Bilgisi" key="notes">
+                        <IconTabFilter text="{i18n>TAB_FINANCIAL_INFORMATION}" key="notes">
                             <IconTabBar>
                                 <items>
                                     <IconTabFilter text="Dil Okulu Bilgileri"></IconTabFilter>
@@ -53,17 +214,210 @@
                                 </items>
                             </IconTabBar>
                         </IconTabFilter>
-                        <IconTabFilter text="Diğer Bilgiler" key="people">
+                        <IconTabFilter text="{i18n>TAB_OTHER_INFORMATION}" key="people">
                             <Text text="People content goes here ..." />
                         </IconTabFilter>
-                        <IconTabFilter text="İletişim Bilgileri" key="people">
-                            <Text text="People content goes here ..." />
+                        <IconTabFilter text="{i18n>CONTACT_INFORMATION}" key="people">
+                            <f:Form editable="false" class="sapUiSmallMarginBottom">
+                                <f:title>
+                                    <core:Title text="{i18n>CONTACT_INFORMATION}" />
+                                </f:title>
+                                <f:layout>
+                                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="{i18n>WEB_ADDRESS}">
+                                                <f:fields>
+                                                    <Input />
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                            <Table busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                                <headerToolbar>
+                                    <OverflowToolbar>
+                                        <content>
+                                            <Title text="{i18n>ADDRESS_INFORMATION}"/>
+                                        </content>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column>
+                                        <Text text="{i18n>ADDRESS_TYPE}"/>
+                                    </Column>
+                                    <Column >
+                                        <Text text="{i18n>FROM_MERNIS}"/>
+                                    </Column>
+                                    <Column >
+                                        <Text text="{i18n>ADDRESS}"/>
+                                    </Column>
+                                    <Column >
+                                        <Text text="{i18n>POSTAL_CODE}"/>
+                                    </Column>
+                                    <Column >
+                                        <Text text="{i18n>OR_LAND1}"/>
+                                    </Column>
+                                    <Column>
+                                        <Text text="{i18n>PROVINCE}"/>
+                                    </Column>
+                                    <Column >
+                                        <Text text="{i18n>DISTRICT}"/>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem >
+                                        <cells>
+                                            <Text text="{approvalRequestListModel>Reqno2}"/>
+                                            <Text text="{approvalRequestListModel>Trnam2}"/>
+                                            <Text text="{approvalRequestListModel>Trtyp2}"/>
+                                            <Text text="{approvalRequestListModel>Trcnt2}"/>
+                                            <Text text="{approvalRequestListModel>Trnqp2}"/>
+                                            <Text text="{approvalRequestListModel>Trnqn2}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            <l:VerticalLayout width="100%" class="gridWrapper">
+                                <l:Grid containerQuery="true" class="smod-background" defaultSpan="XL6 L6 M6 S12">
+                                    <Table busy="{approvalRequestListModelk>/tableBusy}" width="100%" items="{approvalRequestListModell>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                                        <headerToolbar>
+                                            <OverflowToolbar>
+                                                <content>
+                                                    <Title text="{i18n>PHONE_INFORMATION}"/>
+                                                </content>
+                                            </OverflowToolbar>
+                                        </headerToolbar>
+                                        <columns>
+                                            <Column>
+                                                <Text text="{i18n>PHONE_TYPE}"/>
+                                            </Column>
+                                            <Column >
+                                                <Text text="{i18n>PHONE_NUMBER}"/>
+                                            </Column>
+                                            <Column >
+                                                <Text text="{i18n>DEFAULT}"/>
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem >
+                                                <cells>
+                                                    <Text text="{approvalRequestListModell>Reqno2}"/>
+                                                    <Text text="{approvalRequestListModell>Trnam2}"/>
+                                                    <CheckBox selected="{approvalRequestListModell>Trtyp2}"/>
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                    <Table busy="{approvalRequestListModelh>/tableBusy}" width="100%" items="{approvalRequestListModelh>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                                        <headerToolbar>
+                                            <OverflowToolbar>
+                                                <content>
+                                                    <Title text="{i18n>E_MAIL_INFORMATION}"/>
+                                                </content>
+                                            </OverflowToolbar>
+                                        </headerToolbar>
+                                        <columns>
+                                            <Column>
+                                                <Text text="{i18n>EMAIL_ADDRESS}"/>
+                                            </Column>
+                                            <Column >
+                                                <Text text="{i18n>DEFAULT}"/>
+                                            </Column>
+
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem >
+                                                <cells>
+                                                    <Text text="{approvalRequestListModelh>Reqno}"/>
+                                                    <CheckBox selected="{approvalRequestListModelh>Trnam}"/>
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </l:Grid>
+                            </l:VerticalLayout>
                         </IconTabFilter>
-                        <IconTabFilter text="Kimlik Bilgileri" key="people">
-                            <Text text="People content goes here ..." />
+                        <IconTabFilter text="{i18n>IDENTITY_INFORMATION}" key="people">
+                            <f:Form editable="true">
+                                <f:title>
+                                    <core:Title text="{i18n>SCHOLARSHIP_STUDENT_IDENTITY_INFORMATION}" />
+                                </f:title>
+                                <f:layout>
+                                    <f:ResponsiveGridLayout labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer >
+                                        <f:formElements>
+                                            <f:FormElement label="{i18n>ID_NUMBER}">
+                                                <f:fields>
+                                                    <Input  />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>STUDENT_NAME}">
+                                                <f:fields>
+                                                    <Input />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>STUDENT_SURNAME}">
+                                                <f:fields>
+                                                    <Input />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>DATE_OF_BIRTH}">
+                                                <f:fields>
+                                                    <Input  />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>STUDENT_GENDER}">
+                                                <f:fields>
+                                                    <Input  />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>SERIAL_NUMBER}">
+                                                <f:fields>
+                                                    <Input  />
+                                                </f:fields>
+                                            </f:FormElement>
+
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                    <f:FormContainer >
+                                        <f:formElements>
+                                            <f:FormElement label="{i18n>NATIONALITY}">
+                                                <f:fields>
+                                                    <Input  />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>EXPIRY}">
+                                                <f:fields>
+                                                    <Input  />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>MOTHER_NAME}">
+                                                <f:fields>
+                                                    <Input  />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>FATHER_NAME}">
+                                                <f:fields>
+                                                    <Input  />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>ISSUING_AUTHORITY}">
+                                                <f:fields>
+                                                    <Input  />
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
                         </IconTabFilter>
                     </items>
-
                 </IconTabBar>
             </content>
             <headerToolbar>
