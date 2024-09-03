@@ -1,0 +1,154 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <VBox class="sapUiSmallMargin">
+        <f:Form editable="true">
+            <f:title>
+                <core:Title text="{i18n>TAB_SCHOOL_INFORMATION}" />
+            </f:title>
+            <f:layout>
+                <f:ResponsiveGridLayout />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer title="{i18n>TAB_SCHOOL_INFORMATION}">
+                    <f:formElements>
+                        <f:FormElement label="{i18n>STUDENT_COUNTRY}">
+                            <f:fields>
+                                <ComboBox />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>FIELD_OF_STUDY}">
+                            <f:fields>
+                                <ComboBox />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>PERIOD_OF_SCHOLARSHIP_AWARD}">
+                            <f:fields>
+                                <ComboBox />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer title="{i18n>LICENSE_INFORMATION}">
+                    <f:formElements>
+                        <f:FormElement label="{i18n>UNIVERSITY}">
+                            <f:fields>
+                                <ComboBox />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>SCHOOL}">
+                            <f:fields>
+                                <ComboBox />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer title="{i18n>FOREIGN_LANGUAGE_LEARNING_INFORMATION}">
+                    <f:formElements>
+                        <f:FormElement label="{i18n>SCHOOL}">
+                            <f:fields>
+                                <ComboBox />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>START_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>START_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>END_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>END_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_EXTENSION}">
+                    <f:formElements>
+                        <f:FormElement label="{i18n>START_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>START_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>END_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>END_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_LEARNING_INFORMATION}">
+                    <f:formElements>
+                        <f:FormElement label="{i18n>SCHOOL}">
+                            <f:fields>
+                                <ComboBox />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>START_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>START_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>END_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>END_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer title="{i18n>MAIN_EDUCATION_INFORMATION}">
+                    <f:formElements>
+                        <f:FormElement label="{i18n>SCHOOL}">
+                            <f:fields>
+                                <ComboBox />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>START_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>START_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>END_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>END_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>SUBJECT}">
+                            <f:fields>
+                                <TextArea rows="3" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_EXTENSION}">
+                    <f:formElements>
+                        <f:FormElement label="{i18n>START_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>START_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>END_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>END_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_FREE_EXTENSION}">
+                    <f:formElements>
+                        <f:FormElement label="{i18n>START_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>START_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>END_DATE}">
+                            <f:fields>
+                                <DatePicker placeholder="{i18n>END_DATE}" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+    </VBox>
+</c:FragmentDefinition>

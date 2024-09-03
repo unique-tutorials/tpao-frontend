@@ -59,13 +59,13 @@
 
                             </fb:filterGroupItems>
                         </fb:FilterBar>
-                        <Button text="Sorgula" press=".onSearchPress" class="sapUiSmallMarginTop"  icon="sap-icon://question-mark" type="Emphasized" />
+                        <Button text="Sorgula" press=".onSearchPress" class="sapUiSmallMarginTop" icon="sap-icon://question-mark" type="Emphasized" />
                     </f:content>
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
 
-                <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom" items="{/ScholarshipStudentSet}" >
+                <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom" items="{/ScholarshipStudentSet}">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>STUDENT_NUMBER}"/>
@@ -91,7 +91,7 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>PRINCIPAL_SCHOOL}"/>
                         </Column>
-                      
+
                     </columns>
                     <items>
                         <ColumnListItem>
