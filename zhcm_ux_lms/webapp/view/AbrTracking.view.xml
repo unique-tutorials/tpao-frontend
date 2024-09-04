@@ -1,69 +1,68 @@
 <mvc:View controllerName="zhcm_ux_lms_abr.controller.AbrTracking"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:l="sap.ui.layout"
-    xmlns:grid="sap.ui.layout.cssgrid"
     xmlns:core="sap.ui.core">
 
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>SCHOLARSHIP_STUDENT_TRACKING}">
         <VBox class="sapUiSmallMargin">
             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.StudentInformation" type="XML" />
         </VBox>
-        <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="100%">
-            <content>
-                <IconTabBar stretchContentHeight="true">
-                    <items>
-                        <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="info">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabFilterGeneralInfo" type="XML" />
-                        </IconTabFilter>
-                        <IconTabFilter text="{i18n>TAB_SCHOOL_INFORMATION}" key="attachments">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabSchoolInformation" type="XML" />
-                        </IconTabFilter>
-                        <IconTabFilter text="{i18n>TAB_FINANCIAL_INFORMATION}" key="notes">
-                            <IconTabBar>
-                                <items>
-                                    <IconTabFilter text="{i18n>LANGUAGE_SCHOOL_INFORMATION}">
-                                        <Text text="People content goes here ..." />
-                                    </IconTabFilter>
-                                    <IconTabFilter text="{i18n>MASTERS_SCHOOL}">
-                                        <Text text="People content goes here ..." />
-                                    </IconTabFilter>
-                                    <IconTabFilter text="{i18n>FOREIGN_CURRENCY_ACCOUNT}">
-                                        <Text text="People content goes here ..." />
-                                    </IconTabFilter>
-                                    <IconTabFilter text="{i18n>SCHOOL_FEE_INFORMATION}">
-                                        <Text text="People content goes here ..." />
-                                    </IconTabFilter>
-                                    <IconTabFilter text="{i18n>GENERAL_EXPENDITURE_INFORMATION}">
-                                        <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabFilterSpendingInfo" type="XML" />
-                                    </IconTabFilter>
-                                    <IconTabFilter text="{i18n>REGULAR_PAYMENT_INFORMATION}">
-                                        <Text text="People content goes here ..." />
-                                    </IconTabFilter>
-                                    <IconTabFilter text="{i18n>STUDENT_ACCOUNT_INFORMATION}">
-                                        <Text text="People content goes here ..." />
-                                    </IconTabFilter>
-                                </items>
-                            </IconTabBar>
-                        </IconTabFilter>
-                        <IconTabFilter text="{i18n>TAB_OTHER_INFORMATION}" key="people">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabOtherInformation" type="XML" />
-                        </IconTabFilter>
-                        <IconTabFilter text="{i18n>CONTACT_INFORMATION}" key="people">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabContactInformation" type="XML" />
-                        </IconTabFilter>
-                        <IconTabFilter text="{i18n>IDENTITY_INFORMATION}" key="people">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabIdentityInformation" type="XML" />
-                        </IconTabFilter>
-                    </items>
-                </IconTabBar>
-            </content>
-            <headerToolbar>
-            </headerToolbar>
-            <infoToolbar>
-            </infoToolbar>
-        </Panel>
-
+        <VBox class="sapUiSmallMargin">
+            <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="55rem">
+                <content>
+                    <IconTabBar stretchContentHeight="true">
+                        <items>
+                            <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="info">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabFilterGeneralInfo" type="XML" />
+                            </IconTabFilter>
+                            <IconTabFilter text="{i18n>TAB_SCHOOL_INFORMATION}" key="attachments">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabSchoolInformation" type="XML" />
+                            </IconTabFilter>
+                            <IconTabFilter text="{i18n>TAB_FINANCIAL_INFORMATION}" key="notes">
+                                <IconTabBar>
+                                    <items>
+                                        <IconTabFilter text="{i18n>LANGUAGE_SCHOOL_INFORMATION}">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabForeignCurreAccount" type="XML" />
+                                        </IconTabFilter>
+                                        <IconTabFilter text="{i18n>MASTERS_SCHOOL}">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabMasterSchool" type="XML" />
+                                        </IconTabFilter>
+                                        <IconTabFilter text="{i18n>FOREIGN_CURRENCY_ACCOUNT}">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabSchoolFeeInfo" type="XML" />
+                                        </IconTabFilter>
+                                        <IconTabFilter text="{i18n>SCHOOL_FEE_INFORMATION}">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabSchoolFeeInfo" type="XML" />
+                                        </IconTabFilter>
+                                        <IconTabFilter text="{i18n>GENERAL_EXPENDITURE_INFORMATION}">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabFilterSpendingInfo" type="XML" />
+                                        </IconTabFilter>
+                                        <IconTabFilter text="{i18n>REGULAR_PAYMENT_INFORMATION}">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabRegularPaymentInfo" type="XML" />
+                                        </IconTabFilter>
+                                        <IconTabFilter text="{i18n>STUDENT_ACCOUNT_INFORMATION}">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabStudentAccountInfo" type="XML" />
+                                        </IconTabFilter>
+                                    </items>
+                                </IconTabBar>
+                            </IconTabFilter>
+                            <IconTabFilter text="{i18n>TAB_OTHER_INFORMATION}" key="people">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabOtherInformation" type="XML" />
+                            </IconTabFilter>
+                            <IconTabFilter text="{i18n>CONTACT_INFORMATION}" key="people2">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabContactInformation" type="XML" />
+                            </IconTabFilter>
+                            <IconTabFilter text="{i18n>IDENTITY_INFORMATION}" key="people3">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.TabIdentityInformation" type="XML" />
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </content>
+                <headerToolbar>
+                </headerToolbar>
+                <infoToolbar>
+                </infoToolbar>
+            </Panel>
+        </VBox>
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>

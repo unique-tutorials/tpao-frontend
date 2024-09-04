@@ -1,0 +1,44 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+<Table busy="{feeRequestListModel>/tableBusy}" width="auto" items="{feeRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{feeRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <columns>
+        <Column>
+            <Text text="{i18n>FEE_PERIOD}"/>
+        </Column>
+        <Column >
+            <Text text="{i18n>DATE}"/>
+        </Column>
+        <Column >
+            <Text text="{i18n>SCHOOL_FEE}"/>
+        </Column>
+        <Column >
+            <Text text="{i18n>CURRENCY}"/>
+        </Column>
+        <Column >
+            <Text text="{i18n>EXCHANGE_DOCUMENT_NUMBER}"/>
+        </Column>
+        <Column >
+            <Text text="{i18n>TO_SENT}"/>
+        </Column>
+        <Column> 
+            <Text text="{i18n>SEND}"/>
+        </Column>
+     
+    </columns>
+    <items>
+        <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+            <cells>
+                <Text text="{feeRequestListModel>Feper}"/>
+                <Text text="{feeRequestListModel>Date}"/>
+                <Text text="{feeRequestListModel>Sclfe}"/>
+                <Text text="{feeRequestListModel>Curren}"/>
+                <Text text="{feeRequestListModel>Exchn}"/>
+                <Text text="{feeRequestListModel>Tosen}"/>
+                <Text text="{feeRequestListModel>Send}"/>
+            </cells>
+        </ColumnListItem>
+    </items>
+</Table>
+</c:FragmentDefinition>

@@ -181,7 +181,12 @@
                             <Text text="Gün"/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Mevzuniyet Tarihi">
+                    <f:FormElement label="Mezuniyet Tarihi">
+                        <f:fields>
+                            <DatePicker/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Muhtemel Dönüş Tarihi">
                         <f:fields>
                             <DatePicker/>
                         </f:fields>
@@ -337,4 +342,5 @@
             </f:FormContainer>
         </f:formContainers>
     </f:Form>
+
 </c:FragmentDefinition>
