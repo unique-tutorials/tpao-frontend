@@ -5,16 +5,16 @@
             <Column>
                 <Text text="Harcama Kalemi"/>
             </Column>
-            <Column >
+            <Column>
                 <Text text="Fatura No"/>
             </Column>
-            <Column >
+            <Column>
                 <Text text="Fatura Tarihi"/>
             </Column>
-            <Column >
+            <Column>
                 <Text text="Fatura Tutarı"/>
             </Column>
-            <Column >
+            <Column>
                 <Text text="Gönderildi"/>
             </Column>
             <Column>

@@ -1,0 +1,35 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+<Table mode="MultiSelect" busy="{regularRequestListModel>/tableBusy}" width="auto" items="{regularRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{regularRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <columns>
+        <Column>
+            <Text text="{i18n>YEAR}"/>
+        </Column>
+        <Column >
+            <Text text="{i18n>MONTH}"/>
+        </Column>
+        <Column >
+            <Text text="{i18n>PAYMENT_DATE}"/>
+        </Column>
+        <Column >
+            <Text text="{i18n>AMOUNT}"/>
+        </Column>
+        <Column >
+            <Text text="{i18n>CURRENCY}"/>
+        </Column>
+    </columns>
+    <items>
+        <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+            <cells>
+                <Text text="{regularRequestListModel>Year}"/>
+                <Text text="{regularRequestListModel>Month}"/>
+                <Text text="{regularRequestListModel>Paymd}"/>
+                <Text text="{regularRequestListModel>Amoun}"/>
+                <Text text="{regularRequestListModel>Curren}"/>
+            </cells>
+        </ColumnListItem>
+    </items>
+</Table>
+</c:FragmentDefinition>

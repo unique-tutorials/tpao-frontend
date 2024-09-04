@@ -67,9 +67,9 @@
             </ColumnListItem>
         </items>
     </Table>
-    <l:VerticalLayout width="100%" class="gridWrapper">
+    <l:VerticalLayout width="100%" class="gridWrapper" >
         <l:Grid containerQuery="true" class="smod-background" defaultSpan="XL6 L6 M6 S12">
-            <Table busy="{phoneRequestListModel>/tableBusy}" width="100%" items="{phoneRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+            <Table busy="{phoneRequestListModel>/tableBusy}" items="{phoneRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                 <headerToolbar>
                     <OverflowToolbar>
                         <content>
@@ -98,7 +98,7 @@
                     </ColumnListItem>
                 </items>
             </Table>
-            <Table busy="{mailRequestListModel>/tableBusy}" width="100%" items="{mailRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{mailRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+            <Table busy="{mailRequestListModel>/tableBusy}" items="{mailRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{mailRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                 <headerToolbar>
                     <OverflowToolbar>
                         <content>

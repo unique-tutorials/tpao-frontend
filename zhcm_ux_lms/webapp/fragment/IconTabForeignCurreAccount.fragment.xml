@@ -1,0 +1,110 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+    <f:Form 
+        editable="false">
+        <f:title>
+            <core:Title text="{i18n>FOREIGN_CURRENCY_ACCOUNT}" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout
+                labelSpanXL="4"
+                labelSpanL="4"
+                labelSpanM="12"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="0"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="2"
+                columnsM="2"
+                singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer title="{i18n>SDOMESTIC_FOREIGN_CURRENCY_ACCOUNT}">
+                <f:formElements>
+                  
+                    <f:FormElement label="{i18n>BANK_NAME}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>BANK_BRANCH}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>BANK_CITY}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>DOMESTIC_FOREIGN_CURRENCY_ACCOUNT}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>DOMESTIC_FOREIGN_EXCHANGE_IBAN}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>EXPLANATION}">
+                        <f:fields>
+                            <TextArea rows="3"  />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer title="{i18n>OTHER_ACCOUNT_INFORMATION}">
+                <f:formElements>
+                    <f:FormElement label="{i18n>RECIPIENT_NAME}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>OTHER_BANK_NAME}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>OTHER_BANK_BRANCH}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>OTHER_BANK_CITY}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>OTHER_ACCOUNT_NUMBER}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>SWIFT_CODE}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>OTHER_IBAN}">
+                        <f:fields>
+                            <Input />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>EXPLANATION}">
+                        <f:fields>
+                            <TextArea rows="3" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+</c:FragmentDefinition>
