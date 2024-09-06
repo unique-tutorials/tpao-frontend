@@ -39,7 +39,7 @@
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_TYPE}">
                             <f:fields>
-                                <ComboBox selectedKey="{requestListModel>/SelectedEmployee/Type}" />
+                                <Input value="{requestListModel>/SelectedEmployee/Type}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_NAME}">
