@@ -2,8 +2,8 @@
     xmlns="sap.m"
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar">
-    <Dialog title="{i18n>SCHOLARSHIP_STUDENT_INQUIRY}" state="None" type="Standard" contentWidth="80%" contentHeight="80%">
-        <f:DynamicPage headerExpanded="{}">
+    <Dialog title="{i18n>SCHOLARSHIP_STUDENT_INQUIRY}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
+        <f:DynamicPage headerExpanded="{requestListModel>/isHeaderExpanded}">
             <f:header>
                 <f:DynamicPageHeader>
                     <f:content>
@@ -14,73 +14,68 @@
                                         <Input value="{requestListModel>/searchParameter/Pernr}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-
+                                <fb:FilterGroupItem name="EmploymentUnit" label="{i18n>UNIT_OF_EMPLOYMENT}" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{requestListModel>/searchParameter/Orgeh}">
+                                            <core:ListItem key="{Key}" text="{Value}"/>
+                                        </ComboBox>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="Name" label="{i18n>STUDENT_NAME}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <Input value="{requestListModel>/searchParameter/Vorna}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-
                                 <fb:FilterGroupItem name="Surname" label="{i18n>STUDENT_SURNAME}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <Input value="{requestListModel>/searchParameter/Nachn}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-
-                                <fb:FilterGroupItem name="EmploymentUnit" label="{i18n>UNIT_OF_EMPLOYMENT}" groupName="Group1" visibleInFilterBar="true">
-                                    <fb:control>
-                                        <Input id="employmentUnitInput" />
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-
                                 <fb:FilterGroupItem name="Country" label="{i18n>STUDENT_COUNTRY}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="Country" selectionChange=".onSelectionChange" />
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/searchParameter/Conry}">
+                                            <core:ListItem key="{Key}" text="{Value}"/>
+                                        </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-
                                 <fb:FilterGroupItem name="MainSchool" label="{i18n>PRINCIPAL_SCHOOL}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="MainSchool" selectionChange=".onSelectionChange" />
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Unive' } ] }" selectedKey="{requestListModel>/searchParameter/Unive}">
+                                            <core:ListItem key="{Key}" text="{Value}"/>
+                                        </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-
                                 <fb:FilterGroupItem name="LanguageSchool" label="{i18n>LANGUAGE_SCHOOL}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="LanguageSchool" selectionChange=".onSelectionChange" />
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Lalsa' } ] }" selectedKey="{requestListModel>/searchParameter/Lalsa}">
+                                            <core:ListItem key="{Key}" text="{Value}"/>
+                                        </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-
                                 <fb:FilterGroupItem name="Active" label="{i18n>STUDENT_ACTIVE}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <CheckBox id="activeCheckBox" text="Aktif"/>
+                                        <CheckBox selected="{requestListModel>/searchParameter/Activ}" text="Aktif"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-
                             </fb:filterGroupItems>
                         </fb:FilterBar>
-                        <Button text="Sorgula" press=".onSearchPress" class="sapUiSmallMarginTop" icon="sap-icon://question-mark" type="Emphasized" />
                     </f:content>
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-
-                <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom" items="{/ScholarshipStudentSet}">
+                <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom"  items="{/ScholarshipStudentSet}" itemPress="onEmployeeSelect">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>STUDENT_NUMBER}"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>STUDENT_TYPE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>STUDENT_NAME}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>STUDENT_SURNAME}"/>
-                        </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>UNIT_CODE}"/>
-                        </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>STUDENT_TYPE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>UNIT}"/>
@@ -91,24 +86,29 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>PRINCIPAL_SCHOOL}"/>
                         </Column>
-
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Dil Okulu"/>
+                        </Column>
                     </columns>
                     <items>
-                        <ColumnListItem>
+                        <ColumnListItem type="Active" press=".onItemSelected">
                             <cells>
                                 <Text text="{Pernr}"/>
+                                <Text text="{Activ}"/>
                                 <Text text="{Vorna}"/>
                                 <Text text="{Nachn}"/>
-                                <Text text="{BirimKodu}"/>
-                                <Text text="{Türü}"/>
-                                <Text text="{Birimi}"/>
-                                <Text text="{Ülke}"/>
-                                <Text text="{EsasOkulu}"/>
+                                <ObjectIdentifier title="{Orgeh}" text="{Orgtx}"/>
+                                <Text text="{Landx}"/>
+                                <Text text="{Atext}"/>
+                                <Text text="{Lalsat}"/>
                             </cells>
                         </ColumnListItem>
                     </items>
                 </Table>
             </f:content>
         </f:DynamicPage>
+        <beginButton>
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelSearchStudentDialog" type="Reject" />
+        </beginButton>
     </Dialog>
 </core:FragmentDefinition>
