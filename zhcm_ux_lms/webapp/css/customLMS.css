@@ -24,7 +24,18 @@
     margin-left: auto!important;
     margin-right: auto!important
 }
-
+.textClass {
+    background-color: #eff1f2;
+    border-bottom: 1px solid #556b81;
+    border-radius: 4px 4px 0 0;
+    padding: 4px !important;
+    margin: 2px;
+    height: 26px !important;
+    min-height: 26px !important;
+    box-shadow: 15px;
+    text-align: justify;
+    transition: all 0.5s ease;
+}
 .lmsPageBackButton,
 .lmsPageBackButtonLight {
     display: flex;

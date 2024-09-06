@@ -27,10 +27,10 @@ sap.ui.define([], function () {
 			return parseFloat(sValue).toFixed(1);
 		},
 		convertZeroObjectNumber: function (sValue, sText) {
-			if (sValue === "00000000") {
+			if (sValue === "00000000" || !sValue) {
 				return "";
 			}
-			return sText;
+			return sValue +' - '+ sText;
 		},
 		getDateTime: function (sDate, sTime) {
 			return sDate.getTime() + sTime.ms;

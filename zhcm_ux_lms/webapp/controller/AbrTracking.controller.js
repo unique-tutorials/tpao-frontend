@@ -22,17 +22,73 @@ sap.ui.define([
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
+        onCancelSearchStudentDialog:function(){
+            if (this._oSearchHelpDialog) {
+                this._oSearchHelpDialog.close();
+            }
+        },
+        genderFormatter: function(sGesch) {
+            if (sGesch === "1") {
+                return "Erkek";
+            } else if (sGesch === "2") {
+                return "Kadın";
+            } else {
+                return "";
+            }
+        },
+        onSearchStudentPress: function (oEvent) {
+            debugger;
+            var that = this
+            var oModel = this.getModel();
+            // var oModel = this.getOwnerComponent().getModel();
+            var sPernr = this.getView().getModel("requestListModel").getProperty("/newNumberRequest/Pernr");
+            if (!sPernr) {
+                sap.m.MessageToast.show("Geçerli bir öğrenci numarası girin.");
+                return;
+            }
+            var sPath = oModel.createKey("/ScholarShipstudentAbroadSet", {
+                Pernr: sPernr
+            });
+            oModel.read(sPath, {
+                success: function (oData, oResponse) {
+                    console.log(oData);
+                    var oViewModel = that.getModel("requestListModel");
+                    oViewModel.setProperty("/SelectedEmployee", oData); 
+                    sap.m.MessageToast.show("success");
+                },
+                error: function (oError) {
+                    sap.m.MessageToast.show("error");
+                }
+            });
+        },
         _initiateModel: function () {
             var oViewModel = this.getModel("requestListModel");
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {},
-                searchParameter:{}
-             
+                searchParameter:{},
+                SelectedEmployee:{},
+                newNumberRequest:{
+                    Pernr:null,
+                    Ename:""                 
+                }
             });
         },
-        onSearchPress:function(oEvent){
+        onItemSelected: function(oEvent) {
+            debugger;
+            var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
+        
+            var oViewModel = this.getModel('requestListModel');
+            oViewModel.setProperty("/newNumberRequest/Pernr", oSelectedItem.Pernr); 
+            oViewModel.setProperty("/newNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
+        
+            if (this._oSearchHelpDialog) {
+                this._oSearchHelpDialog.close();
+            }
+        },
+          
+        onSearch:function(oEvent){
             debugger;
             var oViewModel = this.getModel('requestListModel');
             var oFilter = oViewModel.getProperty('/searchParameter');
@@ -73,16 +129,5 @@ sap.ui.define([
         
             this._oSearchHelpDialog.open();
         },
-        onShowContactForm: function(oEvent){
-            if (!this._oContactFormDialog) {
-                this._oContactFormDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.StudentContactFormDialog", this);
-                this.getView().addDependent(this._oContactFormDialog);
-            } else {
-                this._oContactFormDialog.close();
-            }
-        
-            this._oContactFormDialog.open();
-        }
-        
 	});
 });

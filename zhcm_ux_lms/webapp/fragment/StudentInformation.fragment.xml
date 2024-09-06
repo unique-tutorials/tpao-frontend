@@ -14,8 +14,8 @@
                     <f:formElements>
                         <f:FormElement label="{i18n>STUDENT_NUMBER}">
                             <f:fields>
-                                <Input value="{path: 'requestListModel>/newRotationRequest/Pernr', formatter: '.formatter.convertZeroObjectNumber'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onShowPersonSearchHelp"/>
-                                <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" />
+                                <Input id="idInput" value="{ parts: [{path: 'requestListModel>/newNumberRequest/Pernr'},{path: 'requestListModel>/newNumberRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onShowPersonSearchHelp"/>
+                                <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchStudentPress"/>
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -34,22 +34,22 @@
                     <f:formElements>
                         <f:FormElement label="{i18n>STUDENT_NUMBER}">
                             <f:fields>
-                                <Input class="textClass" value="{requestListModel>/selectedEmployee/Pernr}" />
+                                <Input value="{requestListModel>/SelectedEmployee/Pernr}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_TYPE}">
                             <f:fields>
-                                <ComboBox selectedKey="{requestListModel>/selectedEmployee/Type}" />
+                                <ComboBox selectedKey="{requestListModel>/SelectedEmployee/Type}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_NAME}">
                             <f:fields>
-                                <Input class="textClass" value="{requestListModel>/selectedEmployee/Vorna}" />
+                                <Input value="{requestListModel>/SelectedEmployee/Vorna}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_SURNAME}">
                             <f:fields>
-                                <Input class="textClass" value="{requestListModel>/selectedEmployee/Nachn}" />
+                                <Input value="{requestListModel>/SelectedEmployee/Nachn}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -58,25 +58,28 @@
                     <f:formElements>
                         <f:FormElement label="{i18n>STUDENT_GENDER}">
                             <f:fields>
-                                <ComboBox selectedKey="{requestListModel>/selectedEmployee/Gesch}" />
-                                <Input enabled="false"/>
+                                <Text class="textClass" text="{
+                                    path: 'requestListModel>/SelectedEmployee/Gesch',
+                                    formatter: '.genderFormatter'
+                                }" />
+                                <Input enabled="false" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>UNIT_CODE}">
                             <f:fields>
-                                <Input valueHelpOnly="true" value="{requestListModel>/selectedEmployee/Unicd}" showValueHelp="true" />
-                                <Input enabled="false"/>
+                                <Input valueHelpOnly="true" value="{requestListModel>/SelectedEmployee/Unicd}" />
+                                <Input  value="{requestListModel>/SelectedEmployee/Orgtx}"/>
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>COST_CENTER}">
                             <f:fields>
-                                <Input valueHelpOnly="true" value="{requestListModel>/selectedEmployee/Cstcn}" showValueHelp="true" />
+                                <Input valueHelpOnly="true" value="{requestListModel>/SelectedEmployee/Cstcn}" showValueHelp="true" />
                                 <Input enabled="false" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>BUDGET_CODE}">
                             <f:fields>
-                                <Input valueHelpOnly="true" value="{requestListModel>/selectedEmployee/Bdcde}" showValueHelp="true" />
+                                <Input valueHelpOnly="true" value="{requestListModel>/SelectedEmployee/Bdcde}" showValueHelp="true" />
                                 <Input enabled="false"/>
                             </f:fields>
                         </f:FormElement>
