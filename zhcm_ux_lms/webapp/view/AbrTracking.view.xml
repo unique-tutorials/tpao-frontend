@@ -22,13 +22,13 @@
                                 <IconTabBar>
                                     <items>
                                         <IconTabFilter text="{i18n>LANGUAGE_SCHOOL_INFORMATION}">
-                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabForeignCurreAccount" type="XML" />
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabLanguageSchoolInfo" type="XML" />
                                         </IconTabFilter>
                                         <IconTabFilter text="{i18n>MASTERS_SCHOOL}">
                                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabMasterSchool" type="XML" />
                                         </IconTabFilter>
                                         <IconTabFilter text="{i18n>FOREIGN_CURRENCY_ACCOUNT}">
-                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabSchoolFeeInfo" type="XML" />
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabForeignCurreAccount" type="XML" />
                                         </IconTabFilter>
                                         <IconTabFilter text="{i18n>SCHOOL_FEE_INFORMATION}">
                                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.IconTabSchoolFeeInfo" type="XML" />

@@ -35,7 +35,7 @@
         </items>
     </Table>
     <FlexBox alignItems="Start" justifyContent="SpaceBetween" class="sapUiSmallMarginTopBottom">
-        <Button text="{i18n>DOC_OF_THE_GUARANTOR}" type="Emphasized" icon="sap-icon://insurance-life" />
+        <Button text="{i18n>DOC_OF_THE_GUARANTOR}" type="Emphasized" icon="sap-icon://insurance-life" press=".onGuarantorButtonPressDialog" />
         <HBox>
             <Button text="{i18n>CONTACT}" type="Neutral" icon="sap-icon://call" class="sapUiSmallMarginEnd"/>
             <Button text="{i18n>IDENTITY}" type="Neutral" icon="sap-icon://biometric-thumb" />

@@ -1,0 +1,162 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:grid="sap.ui.layout.cssgrid">
+    <Dialog title="{i18n>GUARANTOR_DOC_TITLE}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
+
+        <content>
+            <IconTabBar stretchContentHeight="true">
+                <items>
+                    <IconTabFilter text="{i18n>ERP_DOCUMENT_ADD}" key="All">
+                        <Table items="{approvalRequestListModel>/requestList}" class="sapUiSmallMarginBottom">
+                            <columns>
+                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                    <Text text="{i18n>DOCUMENT}" />
+                                </Column>
+                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                    <Text text="{i18n>FORMAT}" />
+                                </Column>
+                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                    <Text text="{i18n>REGISTRATION_DATE}" />
+                                </Column>
+                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                    <Text text="{i18n>FILE_NAME}" />
+                                </Column>
+                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                    <Text text="{i18n>EXPLANATION}" />
+                                </Column>
+                                <Column minScreenWidth="Tablet" demandPopin="true">
+                                    <Text text="{i18n>VALIDITY_DATE}" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Inherit">
+                                    <cells>
+                                        <Text text="{approvalRequestListModel>Reqno}"/>
+                                        <Text text="{approvalRequestListModel>Trnam}"/>
+                                        <Text text="{approvalRequestListModel>Trtyp}"/>
+                                        <Text text="{approvalRequestListModel>Trcnt}"/>
+                                        <Text text="{approvalRequestListModel>Trnqp}"/>
+                                        <Text text="{approvalRequestListModel>Trnqn}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                        <grid:CSSGrid id="grid1" gridTemplateColumns="2fr 2fr" gridGap="1rem">
+                            <RadioButton text="Tek Doküman Ekle"/>
+                            <RadioButton text="Birden Çok Doküman Ekle"/>
+                        </grid:CSSGrid>
+                        <grid:CSSGrid id="grid2" gridTemplateColumns="2fr 2fr" gridTemplateRows="50px 200px 50px" gridGap="1rem">
+                            <f:Form editable="false">
+                                <f:layout>
+                                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer >
+                                        <f:formElements>
+                                            <f:FormElement label="Dosya Adı">
+                                                <f:fields>
+                                                    <Input />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Doküman Tipi">
+                                                <f:fields>
+                                                    <Input />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Doküman Adı">
+                                                <f:fields>
+                                                    <Input />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="İlk Kullanım Tarihi">
+                                                <f:fields>
+                                                    <Input />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Kayıt Notu">
+                                                <f:fields>
+                                                    <TextArea rows="3" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                            <VBox>
+                                <f:Form class="sapUiSmallMarginBottom">
+                                    <f:layout>
+                                        <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+                                    </f:layout>
+                                    <f:formContainers>
+                                        <f:FormContainer>
+                                            <f:formElements>
+                                                <f:FormElement label="Dosya Adı">
+                                                    <f:fields>
+                                                        <Input />
+                                                    </f:fields>
+                                                </f:FormElement>
+                                                <f:FormElement label="Doküman Adı">
+                                                    <f:fields>
+                                                        <Input>
+                                                            <layoutData>
+                                                                <l:GridData span="XL1 L1 M1 S8" />
+                                                            </layoutData>
+                                                        </Input>
+                                                        <Button icon="sap-icon://add" text="Ekle" type="Emphasized">
+                                                            <layoutData>
+                                                                <l:GridData span="XL1 L1 M1 S4" />
+                                                            </layoutData>
+                                                        </Button>
+                                                    </f:fields>
+                                                </f:FormElement>
+                                            </f:formElements>
+                                        </f:FormContainer>
+                                    </f:formContainers>
+                                </f:Form>
+                                <Table items="{approvalRequestListModel>/requestList}" class="sapUiSmallMarginBottom">
+                                    <columns>
+                                        <Column minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Dosya" />
+                                        </Column>
+                                        <Column minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Doküman Tipi" />
+                                        </Column>
+                                        <Column minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Doküman Adı" />
+                                        </Column>
+                                        <Column minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="İlk Kullanım Tarihi" />
+                                        </Column>
+                                        <Column minScreenWidth="Tablet" demandPopin="true">
+                                            <Text text="Kayıt Tarihi" />
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Inherit">
+                                            <cells>
+                                                <Text text="{approvalRequestListModel>Reqno}"/>
+                                                <Text text="{approvalRequestListModel>Trnam}"/>
+                                                <Text text="{approvalRequestListModel>Trtyp}"/>
+                                                <Text text="{approvalRequestListModel>Trcnt}"/>
+                                                <Text text="{approvalRequestListModel>Trnqp}"/>
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </VBox>
+                        </grid:CSSGrid>
+                    </IconTabFilter>
+                    <IconTabSeparator />
+                    <IconTabFilter text="{i18n>DOCUMENT_TRACKING}" key="Ok">
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+        <beginButton>
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorDialog" type="Reject" />
+        </beginButton>
+    </Dialog>
+</c:FragmentDefinition>

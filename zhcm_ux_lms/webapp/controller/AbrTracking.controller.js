@@ -27,6 +27,12 @@ sap.ui.define([
                 this._oSearchHelpDialog.close();
             }
         },
+        onCancelGuarantorDialog:function(){
+            if (this._oGuarantorDialog) {
+                this._oGuarantorDialog.close();
+            }
+        },
+
         genderFormatter: function(sGesch) {
             if (sGesch === "1") {
                 return "Erkek";
@@ -119,9 +125,19 @@ sap.ui.define([
 			}
 			this._oNewRequestDialog.open();
          },
+         onGuarantorButtonPressDialog:function(){
+            if (!this._oGuarantorDialog) {
+                this._oGuarantorDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.GuarantorDocumentDialog", this);
+                this.getView().addDependent(this._oGuarantorDialog);
+            } else {
+                this._oGuarantorDialog.close();
+            }
+        
+            this._oGuarantorDialog.open();
+         },
          onShowPersonSearchHelp: function(oEvent) {
             if (!this._oSearchHelpDialog) {
-                this._oSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.StudentSearchHelpDialog", this);
+                this._oSearchHelpDialog_oSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.StudentSearchHelpDialog", this);
                 this.getView().addDependent(this._oSearchHelpDialog);
             } else {
                 this._oSearchHelpDialog.close();
