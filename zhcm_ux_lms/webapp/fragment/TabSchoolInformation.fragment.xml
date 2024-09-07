@@ -1,7 +1,9 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:grid="sap.ui.layout.cssgrid">
         <f:Form editable="true">
             <f:title>
                 <core:Title text="{i18n>TAB_SCHOOL_INFORMATION}" />
@@ -76,6 +78,7 @@
                         </f:FormElement>
                     </f:formElements>
                 </f:FormContainer>
+            
                 <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_LEARNING_INFORMATION}">
                     <f:formElements>
                         <f:FormElement label="{i18n>SCHOOL}">
@@ -95,6 +98,7 @@
                         </f:FormElement>
                     </f:formElements>
                 </f:FormContainer>
+        
                 <f:FormContainer title="{i18n>MAIN_EDUCATION_INFORMATION}">
                     <f:formElements>
                         <f:FormElement label="{i18n>SCHOOL}">

@@ -1,0 +1,134 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
+    <Dialog title="{i18n>GUARANTOR_CONTACT_INFORMATION}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
+        <f:Form editable="false" class="sapUiSmallMarginBottom">
+            <f:title>
+                <core:Title text="{i18n>CONTACT_INFORMATION}" />
+            </f:title>
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement label="{i18n>WEB_ADDRESS}">
+                            <f:fields>
+                                <Input />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+        <Table busy="{contactRequestListModel>/tableBusy}" width="auto" items="{contactRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{contactRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar>
+                    <content>
+                        <Title text="{i18n>ADDRESS_INFORMATION}"/>
+                    </content>
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column>
+                    <Text text="{i18n>ADDRESS_TYPE}"/>
+                </Column>
+                <Column >
+                    <Text text="{i18n>FROM_MERNIS}"/>
+                </Column>
+                <Column >
+                    <Text text="{i18n>ADDRESS}"/>
+                </Column>
+                <Column >
+                    <Text text="{i18n>POSTAL_CODE}"/>
+                </Column>
+                <Column >
+                    <Text text="{i18n>OR_LAND1}"/>
+                </Column>
+                <Column>
+                    <Text text="{i18n>PROVINCE}"/>
+                </Column>
+                <Column >
+                    <Text text="{i18n>DISTRICT}"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Text text="{contactRequestListModel>Type}"/>
+                        <Text text="{contactRequestListModel>Merni}"/>
+                        <Text text="{contactRequestListModel>Addrs}"/>
+                        <Text text="{contactRequestListModel>Code}"/>
+                        <Text text="{contactRequestListModel>Land}"/>
+                        <Text text="{contactRequestListModel>Provc}"/>
+                        <Text text="{contactRequestListModel>Distr}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <l:VerticalLayout width="100%" class="gridWrapper">
+            <l:Grid containerQuery="true" class="smod-background" defaultSpan="XL6 L6 M6 S12">
+                <Table busy="{phoneRequestListModel>/tableBusy}" items="{phoneRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="{i18n>PHONE_INFORMATION}"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="{i18n>PHONE_TYPE}"/>
+                        </Column>
+                        <Column >
+                            <Text text="{i18n>PHONE_NUMBER}"/>
+                        </Column>
+                        <Column >
+                            <Text text="{i18n>DEFAULT}"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem >
+                            <cells>
+                                <Text text="{phoneRequestListModel>Ptype}"/>
+                                <Text text="{phoneRequestListModel>PNumb}"/>
+                                <CheckBox selected="{phoneRequestListModel>PDeft}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <Table busy="{mailRequestListModel>/tableBusy}" items="{mailRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{mailRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="{i18n>E_MAIL_INFORMATION}"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="{i18n>EMAIL_ADDRESS}"/>
+                        </Column>
+                        <Column >
+                            <Text text="{i18n>DEFAULT}"/>
+                        </Column>
+
+                    </columns>
+                    <items>
+                        <ColumnListItem >
+                            <cells>
+                                <Text text="{mailRequestListModel>Emads}"/>
+                                <CheckBox selected="{mailRequestListModel>EDeft}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </l:Grid>
+        </l:VerticalLayout>
+        <beginButton>
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorContact" type="Reject" />
+        </beginButton>
+    </Dialog>
+</c:FragmentDefinition>

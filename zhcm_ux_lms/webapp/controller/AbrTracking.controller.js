@@ -19,20 +19,36 @@ sap.ui.define([
             this._initiateModel();
             this.getRouter().getRoute("AbrTracking").attachPatternMatched(this._onRequestListMatched, this);
         },
-        _onRequestListMatched: function (oEvent) {
-            this._getRequestList();
+        
+        _initiateModel: function () {
+            var oViewModel = this.getModel("requestListModel");
+            oViewModel.setData({
+                requestList: [],
+                selectedRequest: {},
+                currentRequest: {},
+                searchParameter:{},
+                SelectedEmployee:{},
+                newNumberRequest:{
+                    Pernr:null,
+                    Ename:""                 
+                }
+            });
         },
-        onCancelSearchStudentDialog:function(){
+        onItemSelected: function(oEvent) {
+            debugger;
+            var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
+        
+            var oViewModel = this.getModel('requestListModel');
+            oViewModel.setProperty("/newNumberRequest/Pernr", oSelectedItem.Pernr); 
+            oViewModel.setProperty("/newNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
+        
             if (this._oSearchHelpDialog) {
                 this._oSearchHelpDialog.close();
             }
+        }, 
+        _onRequestListMatched: function (oEvent) {
+            this._getRequestList();
         },
-        onCancelGuarantorDialog:function(){
-            if (this._oGuarantorDialog) {
-                this._oGuarantorDialog.close();
-            }
-        },
-
         genderFormatter: function(sGesch) {
             if (sGesch === "1") {
                 return "Erkek";
@@ -67,33 +83,6 @@ sap.ui.define([
                 }
             });
         },
-        _initiateModel: function () {
-            var oViewModel = this.getModel("requestListModel");
-            oViewModel.setData({
-                requestList: [],
-                selectedRequest: {},
-                currentRequest: {},
-                searchParameter:{},
-                SelectedEmployee:{},
-                newNumberRequest:{
-                    Pernr:null,
-                    Ename:""                 
-                }
-            });
-        },
-        onItemSelected: function(oEvent) {
-            debugger;
-            var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
-        
-            var oViewModel = this.getModel('requestListModel');
-            oViewModel.setProperty("/newNumberRequest/Pernr", oSelectedItem.Pernr); 
-            oViewModel.setProperty("/newNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
-        
-            if (this._oSearchHelpDialog) {
-                this._oSearchHelpDialog.close();
-            }
-        },
-          
         onSearch:function(oEvent){
             debugger;
             var oViewModel = this.getModel('requestListModel');
@@ -125,25 +114,61 @@ sap.ui.define([
 			}
 			this._oNewRequestDialog.open();
          },
-         onGuarantorButtonPressDialog:function(){
+         openGuarantorDialog:function(oEvent){
             if (!this._oGuarantorDialog) {
                 this._oGuarantorDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.GuarantorDocumentDialog", this);
                 this.getView().addDependent(this._oGuarantorDialog);
             } else {
                 this._oGuarantorDialog.close();
             }
-        
             this._oGuarantorDialog.open();
+         },
+         openGuarantorContactDialog:function(oEvent){
+            if (!this._oGuarantorContactDialog) {
+                this._oGuarantorContactDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.GuarantorContactDialog", this);
+                this.getView().addDependent(this._oGuarantorContactDialog);
+            } else {
+                this._oGuarantorContactDialog.close();
+            }
+            this._oGuarantorContactDialog.open();
+         },
+         openGuarantorIdentityDialog:function(oEvent){
+            if (!this._oGuarantorIdentityDialog) {
+                this._oGuarantorIdentityDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.GuarantorIdentityDialog", this);
+                this.getView().addDependent(this._oGuarantorIdentityDialog);
+            } else {
+                this._oGuarantorIdentityDialog.close();
+            }
+            this._oGuarantorIdentityDialog.open();
          },
          onShowPersonSearchHelp: function(oEvent) {
             if (!this._oSearchHelpDialog) {
-                this._oSearchHelpDialog_oSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.StudentSearchHelpDialog", this);
+                this._oSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.StudentSearchHelpDialog", this);
                 this.getView().addDependent(this._oSearchHelpDialog);
             } else {
                 this._oSearchHelpDialog.close();
             }
-        
             this._oSearchHelpDialog.open();
         },
+        onCancelSearchStudentDialog:function(){
+            if (this._oSearchHelpDialog) {
+                this._oSearchHelpDialog.close();
+            }
+        },
+        onCancelGuarantorDialog:function(){
+            if (this._oGuarantorDialog) {
+                this._oGuarantorDialog.close();
+            }
+        },
+        onCancelGuarantorContact:function(){
+            if (this._oGuarantorContactDialog) {
+                this._oGuarantorContactDialog.close();
+            } 
+        },
+        onCancelGuarantorIdentity:function(){
+            if (this._oGuarantorIdentityDialog) {
+                this._oGuarantorIdentityDialog.close();
+            } 
+        }
 	});
 });
