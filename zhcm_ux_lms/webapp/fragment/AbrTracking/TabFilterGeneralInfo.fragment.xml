@@ -6,7 +6,7 @@
 
     <f:Form editable="true" width="100%">
         <f:title>
-            <core:Title text="Genel Bilgiler"/>
+            <core:Title text="{i18n>GENERAL_INFORMATION}"/>
         </f:title>
         <f:layout>
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="1" singleContainerFullSize="true" />
@@ -16,32 +16,37 @@
                 <f:formElements>
                     <f:FormElement label="Maaş Para Birimi">
                         <f:fields>
-                            <Input />
-                            <Input />
-                            <ComboBox />
+                            <!-- <Input /> -->
+                            <Input value="{requestListModel>/generalEmployee/Salry}" />
+                            <ComboBox items="{ path:'/ValueHelpSet', length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{path:'requestListModel>/generalEmployee/Waers'}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                            <!-- <ComboBox width="auto" selectionChange="getValueHelpList" items="{requestListModel>/benefitList}" selectedKey="{requestListModel>/generalEmployee/Waers}">
+                                    <core:Item key="{benefitsModel>Key}" text="{benefitsModel>Value}" />
+                                </ComboBox> -->
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Kırtasiye Ücreti">
                         <f:fields>
                             <Input />
-                            <Input />
+                            <Input value="{requestListModel>/generalEmployee/Stafe}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Yurtiçi Dil Öğrenimi Süresi">
                         <f:fields>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Dodly}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Yıl"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Dodlm}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Ay"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Dodld}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -51,19 +56,19 @@
                     </f:FormElement>
                     <f:FormElement label="Yurtdışı Dil Öğrenimi Süresi (Esas)">
                         <f:fields>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Dolsy}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Yıl"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Dolsm}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Ay"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Dolsd}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -73,19 +78,19 @@
                     </f:FormElement>
                     <f:FormElement label="Yurtdışı Dil Öğrenimi Süresi (Uzatma)">
                         <f:fields>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Dlsay}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Yıl"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Dlsam}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Ay"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Dlsad}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -95,19 +100,19 @@
                     </f:FormElement>
                     <f:FormElement label="Resmi Burslu Normal Süre">
                         <f:fields>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Oscny}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Yıl"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Oscnm}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Ay"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Oscnd}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -117,19 +122,19 @@
                     </f:FormElement>
                     <f:FormElement label="Resmi Burslu Uzatma">
                         <f:fields>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Ofscy}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Yıl"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Ofscm}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Ay"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Ofscd}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -139,19 +144,19 @@
                     </f:FormElement>
                     <f:FormElement label="Resmi Burssuz (Uzatma)">
                         <f:fields>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Ofnsy}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Yıl"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Ofnsm}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Ay"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Ofnsd}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -161,19 +166,19 @@
                     </f:FormElement>
                     <f:FormElement label="Mecburi Hizmet Süresi">
                         <f:fields>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Cosey}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Yıl"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Cosem}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="Ay"/>
-                            <Input>
+                            <Input value="{requestListModel>/generalEmployee/Cosed}">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -183,43 +188,63 @@
                     </f:FormElement>
                     <f:FormElement label="Mezuniyet Tarihi">
                         <f:fields>
-                            <DatePicker/>
+                            <DatePicker value="{path: 'requestListModel>/generalEmployee/Gradt', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                            </DatePicker>
+
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Muhtemel Dönüş Tarihi">
                         <f:fields>
-                            <DatePicker/>
+                            <DatePicker value="{path: 'requestListModel>/generalEmployee/Pored', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                            </DatePicker>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Yurtdışı Çıkış/ Dönüş Tarihi">
                         <f:fields>
-                            <DatePicker/>
-                            <DatePicker/>
+                            <DatePicker value="{path: 'requestListModel>/generalEmployee/Abrdt', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+
+                            </DatePicker>
+                            <DatePicker value="{path: 'requestListModel>/generalEmployee/Redte', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                            </DatePicker>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="İş Başı Tarihi">
                         <f:fields>
-                            <DatePicker/>
+                            <DatePicker value="{path: 'requestListModel>/generalEmployee/Sjbdt', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                            </DatePicker>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Dava Başlama Tarihi">
                         <f:fields>
-                            <DatePicker/>
+                            <DatePicker value="{path: 'requestListModel>/generalEmployee/Cacdt', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                            </DatePicker>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Vergi Numarası">
                         <f:fields>
-                            <Input/>
+                            <Input value="{requestListModel>/generalEmployee/Taxnm}"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Vergi Dairesi">
                         <f:fields>
-                            <Input/>
+                            <Input value="{requestListModel>/generalEmployee/Taxof}"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Vergi Dairesi İli">
                         <f:fields>
-                            <Input/>
+                            <Input value="{requestListModel>/generalEmployee/Taxop}"/>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -228,12 +253,12 @@
                 <f:formElements>
                     <f:FormElement label="Maaş Ödenir">
                         <f:fields>
-                            <CheckBox enabled="false"/>
+                            <CheckBox selected="{requestListModel>/generalEmployee/Salpa}"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Kırtasiye Ödenir">
                         <f:fields>
-                            <CheckBox enabled="false"/>
+                            <CheckBox selected="{requestListModel>/generalEmployee/Stapa}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement>
@@ -293,7 +318,7 @@
                     </f:FormElement>
                     <f:FormElement label="">
                         <f:fields>
-                            <CheckBox text="İcralı/Davalı"/>
+                            <CheckBox text="İcralı/Davalı" selected="{requestListModel>/generalEmployee/Exede}" />
                             <Button type="Emphasized" text="Tazminat Bilgileri"/>
                         </f:fields>
                     </f:FormElement>
@@ -309,7 +334,7 @@
                     </f:FormElement>
                     <f:FormElement label="Sicil No">
                         <f:fields>
-                            <Input showValueHelp="true"/>
+                            <Input showValueHelp="true" value="{requestListModel>/generalEmployee/Regno}"/>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -318,23 +343,27 @@
                 <f:formElements>
                     <f:FormElement label="Ödeme Yapılacak Hesap">
                         <f:fields>
-                            <ComboBox />
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Payac' } ] }" selectedKey="{requestListModel>/generalEmployee/Payac}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                             <Button text="Evraklar" type="Emphasized"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Eğitim Sonu Durumu">
                         <f:fields>
-                            <ComboBox />
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Etrst' } ] }" selectedKey="{requestListModel>/generalEmployee/Etrst}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Açıklama">
                         <f:fields>
-                            <TextArea rows="10"/>
+                            <TextArea rows="10" value="{requestListModel>/generalEmployee/Descp}"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Geri Ödeme Yapmış">
                         <f:fields>
-                            <CheckBox enabled="false"/>
+                            <CheckBox selected="{requestListModel>/generalEmployee/Repad}"/>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
