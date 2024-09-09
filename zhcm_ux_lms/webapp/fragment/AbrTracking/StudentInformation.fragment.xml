@@ -39,7 +39,9 @@
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_TYPE}">
                             <f:fields>
-                                <Input value="{requestListModel>/SelectedEmployee/Type}" />
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Type' } ] }" selectedKey="{requestListModel>/SelectedEmployee/Type}">
+                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                </ComboBox>
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_NAME}">
@@ -67,7 +69,7 @@
                         </f:FormElement>
                         <f:FormElement label="{i18n>UNIT_CODE}">
                             <f:fields>
-                                <Input valueHelpOnly="true" value="{requestListModel>/SelectedEmployee/Unicd}" />
+                                <Input  value="{requestListModel>/SelectedEmployee/Unicd}" showValueHelp="true"/>
                                 <Input  value="{requestListModel>/SelectedEmployee/Orgtx}"/>
                             </f:fields>
                         </f:FormElement>
@@ -85,7 +87,7 @@
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_ACTIVE}">
                             <f:fields>
-                                <CheckBox />
+                                <CheckBox selected="{requestListModel>/SelectedEmployee/Activ}" />
                                 <ToolbarSpacer/>
                             </f:fields>
                         </f:FormElement>

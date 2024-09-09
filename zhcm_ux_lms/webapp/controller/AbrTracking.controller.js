@@ -28,12 +28,29 @@ sap.ui.define([
                 currentRequest: {},
                 searchParameter:{},
                 SelectedEmployee:{},
+                generalEmployee:{},
+                identityEmployee:{},
+                benefitList:{},
                 newNumberRequest:{
                     Pernr:null,
                     Ename:""                 
                 }
             });
         },
+        // getValueHelpList: function () {
+        //     var that = this;
+        //     var oModel = this.getModel();
+        //     var aFilters = [new Filter("Id", FilterOperator.EQ, "Waers")];
+        //     oModel.read("/ValueHelpSet", {
+        //         filters: aFilters,
+        //         success: function (oData, oResponse) {
+        //             that.getModel("requestListModel").setProperty("/benefitList", oData.results);
+        //         },
+        //         error: function (oError) {
+        //             sap.m.MessageToast.show(oError.toString());
+        //         }
+        //     });
+        // },
         onItemSelected: function(oEvent) {
             debugger;
             var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
@@ -59,29 +76,37 @@ sap.ui.define([
             }
         },
         onSearchStudentPress: function (oEvent) {
-            debugger;
-            var that = this
+            var that = this;
             var oModel = this.getModel();
-            // var oModel = this.getOwnerComponent().getModel();
             var sPernr = this.getView().getModel("requestListModel").getProperty("/newNumberRequest/Pernr");
+        
             if (!sPernr) {
                 sap.m.MessageToast.show("Geçerli bir öğrenci numarası girin.");
                 return;
             }
-            var sPath = oModel.createKey("/ScholarShipstudentAbroadSet", {
-                Pernr: sPernr
-            });
-            oModel.read(sPath, {
-                success: function (oData, oResponse) {
-                    console.log(oData);
-                    var oViewModel = that.getModel("requestListModel");
-                    oViewModel.setProperty("/SelectedEmployee", oData); 
-                    sap.m.MessageToast.show("success");
-                },
-                error: function (oError) {
-                    sap.m.MessageToast.show("error");
-                }
-            });
+            function readData(sPath, sModelProperty, errorMessage) {
+                oModel.read(sPath, {
+                    success: function (oData) {
+                        var oViewModel = that.getModel("requestListModel");
+                        oViewModel.setProperty(sModelProperty, oData);
+                        console.log(oData);
+                    },
+                    error: function () {
+                        sap.m.MessageToast.show(errorMessage);
+                    }
+                });
+            }
+            // Öğrenci bilgileri al
+            var sScholarshipPath = oModel.createKey("/ScholarShipstudentAbroadSet", { Pernr: sPernr });
+            readData(sScholarshipPath, "/SelectedEmployee", "Öğrenci bilgisi alınamadı.");
+        
+            // Genel bilgileri al
+            var sGeneralInfoPath = oModel.createKey("/GeneralInformationSet", { Pernr: sPernr });
+            readData(sGeneralInfoPath, "/generalEmployee", "Genel bilgiler alınamadı.");
+        
+            // Kimlik bilgilerini al
+            var sIdentityInfoPath = oModel.createKey("/IdentityInformationSet", { Pernr: sPernr });
+            readData(sIdentityInfoPath, "/identityEmployee", "Kimlik bilgileri alınamadı.");
         },
         onSearch:function(oEvent){
             debugger;
