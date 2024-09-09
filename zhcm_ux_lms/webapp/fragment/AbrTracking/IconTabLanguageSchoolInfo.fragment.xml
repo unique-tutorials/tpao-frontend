@@ -10,20 +10,7 @@
             <core:Title text="{i18n>LANGUAGE_SCHOOL_INFORMATION}" />
         </f:title>
         <f:layout>
-            <f:ResponsiveGridLayout
-                labelSpanXL="4"
-                labelSpanL="4"
-                labelSpanM="12"
-                labelSpanS="12"
-                adjustLabelSpan="false"
-                emptySpanXL="0"
-                emptySpanL="0"
-                emptySpanM="0"
-                emptySpanS="0"
-                columnsXL="2"
-                columnsL="2"
-                columnsM="2"
-                singleContainerFullSize="false" />
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
         </f:layout>
         <f:formContainers>
             <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_SCHOOL}">

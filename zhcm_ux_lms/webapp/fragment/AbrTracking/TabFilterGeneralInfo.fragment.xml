@@ -209,17 +209,17 @@
                     </f:FormElement>
                     <f:FormElement label="Vergi Numarası">
                         <f:fields>
-                            <DatePicker/>
+                            <Input/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Vergi Dairesi">
                         <f:fields>
-                            <DatePicker/>
+                            <Input/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Vergi Dairesi İli">
                         <f:fields>
-                            <DatePicker/>
+                            <Input/>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -236,7 +236,7 @@
                             <CheckBox enabled="false"/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement >
+                    <f:FormElement>
                         <f:fields>
                             <Text/>
                         </f:fields>
@@ -246,22 +246,22 @@
                             <Text/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement >
+                    <f:FormElement>
                         <f:fields>
                             <Text/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement >
+                    <f:FormElement>
                         <f:fields>
                             <Text/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement >
+                    <f:FormElement>
                         <f:fields>
                             <Text/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement >
+                    <f:FormElement>
                         <f:fields>
                             <Text/>
                         </f:fields>
@@ -312,7 +312,6 @@
                             <Input showValueHelp="true"/>
                         </f:fields>
                     </f:FormElement>
-
                 </f:formElements>
             </f:FormContainer>
             <f:FormContainer>
@@ -342,5 +341,4 @@
             </f:FormContainer>
         </f:formContainers>
     </f:Form>
-
 </c:FragmentDefinition>

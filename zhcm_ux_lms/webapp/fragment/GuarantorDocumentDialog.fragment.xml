@@ -158,5 +158,8 @@
         <beginButton>
             <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorDialog" type="Reject" />
         </beginButton>
+        <endButton>
+            <Button text="{i18n>SAVE_BUTTON}" type="Emphasized" icon="sap-icon://save" />
+        </endButton>
     </Dialog>
 </c:FragmentDefinition>
