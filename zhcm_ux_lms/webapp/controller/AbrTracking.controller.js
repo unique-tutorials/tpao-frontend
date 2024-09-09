@@ -116,7 +116,7 @@ sap.ui.define([
          },
          openGuarantorDialog:function(oEvent){
             if (!this._oGuarantorDialog) {
-                this._oGuarantorDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.GuarantorDocumentDialog", this);
+                this._oGuarantorDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorDocumentDialog", this);
                 this.getView().addDependent(this._oGuarantorDialog);
             } else {
                 this._oGuarantorDialog.close();
@@ -125,7 +125,7 @@ sap.ui.define([
          },
          openGuarantorContactDialog:function(oEvent){
             if (!this._oGuarantorContactDialog) {
-                this._oGuarantorContactDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.GuarantorContactDialog", this);
+                this._oGuarantorContactDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorContactDialog", this);
                 this.getView().addDependent(this._oGuarantorContactDialog);
             } else {
                 this._oGuarantorContactDialog.close();
@@ -134,7 +134,7 @@ sap.ui.define([
          },
          openGuarantorIdentityDialog:function(oEvent){
             if (!this._oGuarantorIdentityDialog) {
-                this._oGuarantorIdentityDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.GuarantorIdentityDialog", this);
+                this._oGuarantorIdentityDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorIdentityDialog", this);
                 this.getView().addDependent(this._oGuarantorIdentityDialog);
             } else {
                 this._oGuarantorIdentityDialog.close();
@@ -143,7 +143,7 @@ sap.ui.define([
          },
          onShowPersonSearchHelp: function(oEvent) {
             if (!this._oSearchHelpDialog) {
-                this._oSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.StudentSearchHelpDialog", this);
+                this._oSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.StudentSearchHelpDialog", this);
                 this.getView().addDependent(this._oSearchHelpDialog);
             } else {
                 this._oSearchHelpDialog.close();
