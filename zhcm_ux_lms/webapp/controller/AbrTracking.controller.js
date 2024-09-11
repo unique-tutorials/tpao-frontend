@@ -31,6 +31,7 @@ sap.ui.define([
                 searchParameter:{},
                 SelectedEmployee:{},
                 generalEmployee:{},
+                schoolEmployee:{},
                 identityEmployee:{},
                 contactEmployee:{},
                 newNumberRequest:{
@@ -88,7 +89,11 @@ sap.ui.define([
             // Genel bilgileri al
             var sGeneralInfoPath = oModel.createKey("/GeneralInformationSet", { Pernr: sPernr });
             readData(sGeneralInfoPath, "/generalEmployee", "Genel bilgiler alınamadı.");
-        
+
+            // Okul bilgilerini al
+            var sSchoolInfoPath = oModel.createKey("/SchoolInformationSet", { Pernr: sPernr});
+            readData(sSchoolInfoPath, "/schoolEmployee", "Okul bilgileri alınamadı.");
+
             // Kimlik bilgilerini al
             var sIdentityInfoPath = oModel.createKey("/IdentityInformationSet", { Pernr: sPernr });
             readData(sIdentityInfoPath, "/identityEmployee", "Kimlik bilgileri alınamadı.");
@@ -102,9 +107,10 @@ sap.ui.define([
             var oViewModel = this.getModel("requestListModel");
             var oEntry = oViewModel.getProperty('/generalEmployee');
             var oIdEntry = oViewModel.getProperty('/identityEmployee');
+            var oShlEntry = oViewModel.getProperty('/schoolEmployee');
             var that = this;
             
-            // General sekmesi seçiliyse
+            // Genel bilgiler sekmesi seçiliyse
             if (this.byId("TabContainer").getSelectedKey() === "General") {
                 oModel.create("/GeneralInformationSet", oEntry, {
                     success: function(oData, oResponse) {
@@ -118,7 +124,21 @@ sap.ui.define([
                     }
                 });
             } 
-            // Identity sekmesi seçiliyse
+            // Okul bilgileri sekmesi seçildiyse
+            else if (this.byId("TabContainer").getSelectedKey() === "School") {
+                oModel.create("/SchoolInformationSet", oShlEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            MessageBox.success(that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"));
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
+            }
+            // Kimlik bilgileri sekmesi seçiliyse
             else if (this.byId("TabContainer").getSelectedKey() === "Identity") {
                 oModel.create("/IdentityInformationSet", oIdEntry, {
                     success: function(oData, oResponse) {
