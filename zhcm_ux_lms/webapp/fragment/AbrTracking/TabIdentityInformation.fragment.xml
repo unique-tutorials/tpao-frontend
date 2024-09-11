@@ -32,7 +32,7 @@
                             <Input value="{requestListModel>/identityEmployee/Fatnm}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Doğum Yeri">
+                    <f:FormElement label="{i18n>BIRTHPLACE}">
                         <f:fields>
                             <Input value="{requestListModel>/identityEmployee/Brtpl}" />
                         </f:fields>
@@ -49,40 +49,40 @@
             </f:FormContainer>
             <f:FormContainer >
                 <f:formElements>
-                    <f:FormElement label="Medeni Hali">
+                    <f:FormElement label="{i18n>MARITAL_STATUS}">
                         <f:fields>
                             <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Mrtst' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Mrtst'}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Dini">
+                    <f:FormElement label="{i18n>RELIGIOUS}">
                         <f:fields>
                             <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Rlign' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Rlign'}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Kan Grubu">
+                    <f:FormElement label="{i18n>BLOOD_GROUP}">
                         <f:fields>
                             <Input value="{requestListModel>/identityEmployee/Bldty}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="İl">
+                    <f:FormElement label="{i18n>PROVINCE}">
                         <f:fields>
                             <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/City'}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="İlçe">
+                    <f:FormElement label="{i18n>DISTRICT}">
                         <f:fields>
                             <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Distr'}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Veriliş Tarihi">
+                    <f:FormElement label="{i18n>DATE_OF_ISSUES}">
                         <f:fields>
                             <DatePicker value="{path: 'requestListModel>/identityEmployee/Issdt', 
                                 type: 'sap.ui.model.type.Date', 

@@ -7,16 +7,16 @@
         <Column>
             <Text text="{i18n>YEAR}"/>
         </Column>
-        <Column >
+        <Column>
             <Text text="{i18n>MONTH}"/>
         </Column>
         <Column >
             <Text text="{i18n>PAYMENT_DATE}"/>
         </Column>
-        <Column >
+        <Column>
             <Text text="{i18n>AMOUNT}"/>
         </Column>
-        <Column >
+        <Column>
             <Text text="{i18n>CURRENCY}"/>
         </Column>
     </columns>
