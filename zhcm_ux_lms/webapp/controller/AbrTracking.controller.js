@@ -124,7 +124,7 @@ sap.ui.define([
                     }
                 });
             } 
-            // Okul bilgileri sekmesi seçildiyse
+            // Okul bilgileri sekmesi seçiliyse
             else if (this.byId("TabContainer").getSelectedKey() === "School") {
                 oModel.create("/SchoolInformationSet", oShlEntry, {
                     success: function(oData, oResponse) {

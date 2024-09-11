@@ -4,7 +4,7 @@
         <headerToolbar>
 			<OverflowToolbar>
 				<content>
-					<Title text="Kefilleri" level="H2"/>
+					<Title text="{i18n>GUARANTORS}" level="H2"/>
 				</content>
 			</OverflowToolbar>
 		</headerToolbar>
@@ -52,7 +52,7 @@
         <headerToolbar>
 			<OverflowToolbar>
 				<content>
-					<Title text="Takdir Belgeleri" level="H2"/>
+					<Title text="{i18n>CERTIFICATE_OF_APPRECIATION}" level="H2"/>
 				</content>
 			</OverflowToolbar>
 		</headerToolbar>

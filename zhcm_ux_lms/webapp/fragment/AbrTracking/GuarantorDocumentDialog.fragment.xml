@@ -1,7 +1,6 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core"
     xmlns:l="sap.ui.layout"
     xmlns:grid="sap.ui.layout.cssgrid">
     <Dialog title="{i18n>GUARANTOR_DOC_TITLE}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
@@ -45,8 +44,8 @@
                             </items>
                         </Table>
                         <grid:CSSGrid id="grid1" gridTemplateColumns="2fr 2fr" gridGap="1rem">
-                            <RadioButton text="Tek Doküman Ekle"/>
-                            <RadioButton text="Birden Çok Doküman Ekle"/>
+                            <RadioButton text="{i18n>ADD_SINGLE_DOCUMENT}"/>
+                            <RadioButton text="{i18n>ADD_MULTIPLE_DOCUMENTS}"/>
                         </grid:CSSGrid>
                         <grid:CSSGrid id="grid2" gridTemplateColumns="2fr 2fr" gridTemplateRows="50px 200px 50px" gridGap="1rem">
                             <f:Form editable="false">
@@ -56,27 +55,27 @@
                                 <f:formContainers>
                                     <f:FormContainer >
                                         <f:formElements>
-                                            <f:FormElement label="Dosya Adı">
+                                            <f:FormElement label="{i18n>FILE_NAME}">
                                                 <f:fields>
                                                     <Input />
                                                 </f:fields>
                                             </f:FormElement>
-                                            <f:FormElement label="Doküman Tipi">
+                                            <f:FormElement label="{i18n>DOCUMENT_TYPE_DT}">
                                                 <f:fields>
                                                     <Input />
                                                 </f:fields>
                                             </f:FormElement>
-                                            <f:FormElement label="Doküman Adı">
+                                            <f:FormElement label="{i18n>DOCUMENT_NAME_DT}">
                                                 <f:fields>
                                                     <Input />
                                                 </f:fields>
                                             </f:FormElement>
-                                            <f:FormElement label="İlk Kullanım Tarihi">
+                                            <f:FormElement label="{i18n>FIRST_USE_DATE}">
                                                 <f:fields>
                                                     <Input />
                                                 </f:fields>
                                             </f:FormElement>
-                                            <f:FormElement label="Kayıt Notu">
+                                            <f:FormElement label="{i18n>REGISTRATION_NOTE}">
                                                 <f:fields>
                                                     <TextArea rows="3" />
                                                 </f:fields>
@@ -93,12 +92,12 @@
                                     <f:formContainers>
                                         <f:FormContainer>
                                             <f:formElements>
-                                                <f:FormElement label="Dosya Adı">
+                                                <f:FormElement label="{i18n>FILE_NAME}">
                                                     <f:fields>
                                                         <Input />
                                                     </f:fields>
                                                 </f:FormElement>
-                                                <f:FormElement label="Doküman Adı">
+                                                <f:FormElement label="{i18n>DOCUMENT_NAME_DT}">
                                                     <f:fields>
                                                         <Input>
                                                             <layoutData>
@@ -119,19 +118,19 @@
                                 <Table items="{approvalRequestListModel>/requestList}" class="sapUiSmallMarginBottom">
                                     <columns>
                                         <Column minScreenWidth="Tablet" demandPopin="true">
-                                            <Text text="Dosya" />
+                                            <Text text="{i18n>FILE}" />
                                         </Column>
                                         <Column minScreenWidth="Tablet" demandPopin="true">
-                                            <Text text="Doküman Tipi" />
+                                            <Text text="{i18n>DOCUMENT_TYPE_DT}" />
                                         </Column>
                                         <Column minScreenWidth="Tablet" demandPopin="true">
-                                            <Text text="Doküman Adı" />
+                                            <Text text="{i18n>DOCUMENT_NAME_DT}" />
                                         </Column>
                                         <Column minScreenWidth="Tablet" demandPopin="true">
-                                            <Text text="İlk Kullanım Tarihi" />
+                                            <Text text="{i18n>FIRST_USE_DATE}" />
                                         </Column>
                                         <Column minScreenWidth="Tablet" demandPopin="true">
-                                            <Text text="Kayıt Tarihi" />
+                                            <Text text="{i18n>REGISTRATION_DATE}" />
                                         </Column>
                                     </columns>
                                     <items>
