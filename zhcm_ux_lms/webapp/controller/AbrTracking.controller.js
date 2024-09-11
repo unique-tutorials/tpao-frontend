@@ -7,8 +7,10 @@ sap.ui.define([
     "zhcm_ux_lms_abr/model/formatter",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
+    "sap/m/MessageBox",
+	"sap/m/MessageToast",
     "zhcm_ux_lms_abr/controller/SharedData"
-], function (BaseController, JSONModel, History, formatter, Filter, FilterOperator, SharedData) {
+], function (BaseController, JSONModel, History, formatter, Filter, FilterOperator, MessageBox, MessageToast, SharedData) {
     "use strict";
 
 	return BaseController.extend("zhcm_ux_lms_abr.controller.AbrTracking", {
@@ -30,27 +32,13 @@ sap.ui.define([
                 SelectedEmployee:{},
                 generalEmployee:{},
                 identityEmployee:{},
-                benefitList:{},
+                contactEmployee:{},
                 newNumberRequest:{
                     Pernr:null,
                     Ename:""                 
-                }
+                },
             });
         },
-        // getValueHelpList: function () {
-        //     var that = this;
-        //     var oModel = this.getModel();
-        //     var aFilters = [new Filter("Id", FilterOperator.EQ, "Waers")];
-        //     oModel.read("/ValueHelpSet", {
-        //         filters: aFilters,
-        //         success: function (oData, oResponse) {
-        //             that.getModel("requestListModel").setProperty("/benefitList", oData.results);
-        //         },
-        //         error: function (oError) {
-        //             sap.m.MessageToast.show(oError.toString());
-        //         }
-        //     });
-        // },
         onItemSelected: function(oEvent) {
             debugger;
             var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
@@ -63,17 +51,14 @@ sap.ui.define([
                 this._oSearchHelpDialog.close();
             }
         }, 
-        _onRequestListMatched: function (oEvent) {
-            this._getRequestList();
-        },
-        genderFormatter: function(sGesch) {
-            if (sGesch === "1") {
-                return "Erkek";
-            } else if (sGesch === "2") {
-                return "Kadın";
-            } else {
-                return "";
-            }
+        onSearch:function(oEvent){
+            debugger;
+            var oViewModel = this.getModel('requestListModel');
+            var oFilter = oViewModel.getProperty('/searchParameter');
+            var aFilters = this._getFilters(oFilter);
+
+            var oTable = this.getView().byId('studentTable') || sap.ui.getCore().byId('studentTable');
+            oTable.getBinding('items').filter(aFilters,"Application");
         },
         onSearchStudentPress: function (oEvent) {
             var that = this;
@@ -81,7 +66,7 @@ sap.ui.define([
             var sPernr = this.getView().getModel("requestListModel").getProperty("/newNumberRequest/Pernr");
         
             if (!sPernr) {
-                sap.m.MessageToast.show("Geçerli bir öğrenci numarası girin.");
+                sap.m.MessageToast.show("Öğrenci numarası boş bırakılamaz.");
                 return;
             }
             function readData(sPath, sModelProperty, errorMessage) {
@@ -107,30 +92,55 @@ sap.ui.define([
             // Kimlik bilgilerini al
             var sIdentityInfoPath = oModel.createKey("/IdentityInformationSet", { Pernr: sPernr });
             readData(sIdentityInfoPath, "/identityEmployee", "Kimlik bilgileri alınamadı.");
-        },
-        onSearch:function(oEvent){
-            debugger;
-            var oViewModel = this.getModel('requestListModel');
-            var oFilter = oViewModel.getProperty('/searchParameter');
-            var aFilters = this._getFilters(oFilter);
 
-            var oTable = this.getView().byId('studentTable') || sap.ui.getCore().byId('studentTable');
-            oTable.getBinding('items').filter(aFilters,"Application");
+            // İletişim bilgilerini al
+            var sContactInfoPath = oModel.createKey("/ContactInformationSet", { Pernr: sPernr });
+            readData(sContactInfoPath, "/contactEmployee", "İletişim bilgileri alınamadı.");
         },
-        _getFilters: function (oFilter) {
-            var aFilters = [];
-            var aKeys = Object.keys(oFilter);
-            for (var i = 0; i < aKeys.length; i++) {
-                var sVal = oFilter[aKeys[i]].toString();
-                if(sVal){
-                    var oFilterElement = new Filter(aKeys[i],FilterOperator.EQ , sVal);
-                    aFilters.push(oFilterElement);
-                }
+        onSave: function(oEvent) {
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var oEntry = oViewModel.getProperty('/generalEmployee');
+            var oIdEntry = oViewModel.getProperty('/identityEmployee');
+            var that = this;
+            
+            // General sekmesi seçiliyse
+            if (this.byId("TabContainer").getSelectedKey() === "General") {
+                oModel.create("/GeneralInformationSet", oEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            MessageBox.success(that.getText("EDU_TASK_SAVED_SUCCESSFUL"));
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
+            } 
+            // Identity sekmesi seçiliyse
+            else if (this.byId("TabContainer").getSelectedKey() === "Identity") {
+                oModel.create("/IdentityInformationSet", oIdEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            MessageBox.success(that.getText("IDENTITY_INFORMATION_SAVED_SUCCESSFUL"));
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
             }
-            return aFilters;
-        },    
-        _getRequestList: function () { 
-
+        },
+        genderFormatter: function(sGesch) {
+            if (sGesch === "1") {
+                return "Erkek";
+            } else if (sGesch === "2") {
+                return "Kadın";
+            } else {
+                return "";
+            }
         },
         onNewTrainingRequest: function (oEvent) {
             if (!this._oNewRequestDialog) {
@@ -175,6 +185,24 @@ sap.ui.define([
             }
             this._oSearchHelpDialog.open();
         },
+        _onRequestListMatched: function (oEvent) {
+            this._getRequestList();
+        },
+        _getFilters: function (oFilter) {
+            var aFilters = [];
+            var aKeys = Object.keys(oFilter);
+            for (var i = 0; i < aKeys.length; i++) {
+                var sVal = oFilter[aKeys[i]].toString();
+                if(sVal){
+                    var oFilterElement = new Filter(aKeys[i],FilterOperator.EQ , sVal);
+                    aFilters.push(oFilterElement);
+                }
+            }
+            return aFilters;
+        },    
+        _getRequestList: function () { 
+
+        },
         onCancelSearchStudentDialog:function(){
             if (this._oSearchHelpDialog) {
                 this._oSearchHelpDialog.close();
@@ -195,5 +223,29 @@ sap.ui.define([
                 this._oGuarantorIdentityDialog.close();
             } 
         }
+        // _callErrorDialog: function (messageText) {
+		// 	var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
+		// 	messageText = (messageText) ? messageText : this.getText("operationFailed");
+		// 	MessageBox.error(
+		// 		messageText, {
+		// 			styleClass: bCompact ? "sapUiSizeCompact" : ""
+		// 		}
+		// 	);
+		// },
+
+        // getValueHelpList: function () {
+        //     var that = this;
+        //     var oModel = this.getModel();
+        //     var aFilters = [new Filter("Id", FilterOperator.EQ, "Waers")];
+        //     oModel.read("/ValueHelpSet", {
+        //         filters: aFilters,
+        //         success: function (oData, oResponse) {
+        //             that.getModel("requestListModel").setProperty("/benefitList", oData.results);
+        //         },
+        //         error: function (oError) {
+        //             sap.m.MessageToast.show(oError.toString());
+        //         }
+        //     });
+        // },
 	});
 });

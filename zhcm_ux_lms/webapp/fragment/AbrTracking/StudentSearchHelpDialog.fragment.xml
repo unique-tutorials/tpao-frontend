@@ -40,7 +40,7 @@
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="MainSchool" label="{i18n>PRINCIPAL_SCHOOL}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Unive' } ] }" selectedKey="{requestListModel>/searchParameter/Unive}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Muniv' } ] }" selectedKey="{requestListModel>/searchParameter/Unive}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>

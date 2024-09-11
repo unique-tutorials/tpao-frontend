@@ -15,14 +15,14 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>WEB_ADDRESS}">
                         <f:fields>
-                            <Input />
+                            <Input value="{requestListModel>/contactEmployee/Webad}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>
     </f:Form>
-    <Table busy="{contactRequestListModel>/tableBusy}" width="auto" items="{contactRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{contactRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+    <Table width="auto" noDataText="{i18n>NO_DATA}" growing="true" growingScrollToLoad="true"  class="sapUiSmallMarginBottom">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
@@ -54,22 +54,22 @@
             </Column>
         </columns>
         <items>
-            <ColumnListItem >
+            <ColumnListItem>
                 <cells>
-                    <Text text="{contactRequestListModel>Type}"/>
-                    <Text text="{contactRequestListModel>Merni}"/>
-                    <Text text="{contactRequestListModel>Addrs}"/>
-                    <Text text="{contactRequestListModel>Code}"/>
-                    <Text text="{contactRequestListModel>Land}"/>
-                    <Text text="{contactRequestListModel>Provc}"/>
-                    <Text text="{contactRequestListModel>Distr}"/>
+                    <Text text="{requestListModel>/contactEmployee/Adtyp}"/>
+                    <Text text="{requestListModel>/contactEmployee/Merni}"/>
+                    <Text text="{requestListModel>/contactEmployee/Adres}"/>
+                    <Text text="{requestListModel>/contactEmployee/Poscd}"/>
+                    <Text text="{requestListModel>/contactEmployee/Contr}"/>
+                    <Text text="{requestListModel>/contactEmployee/City}"/>
+                    <Text text="{requestListModel>/contactEmployee/Distr}"/>
                 </cells>
             </ColumnListItem>
         </items>
     </Table>
     <l:VerticalLayout width="100%" class="gridWrapper" >
         <l:Grid containerQuery="true" class="smod-background" defaultSpan="XL6 L6 M6 S12">
-            <Table busy="{phoneRequestListModel>/tableBusy}" items="{phoneRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+            <Table busy="{phoneRequestListModel>/tableBusy}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                 <headerToolbar>
                     <OverflowToolbar>
                         <content>
@@ -84,21 +84,21 @@
                     <Column >
                         <Text text="{i18n>PHONE_NUMBER}"/>
                     </Column>
-                    <Column >
+                    <Column>
                         <Text text="{i18n>DEFAULT}"/>
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem >
+                    <ColumnListItem>
                         <cells>
-                            <Text text="{phoneRequestListModel>Ptype}"/>
-                            <Text text="{phoneRequestListModel>PNumb}"/>
-                            <CheckBox selected="{phoneRequestListModel>PDeft}"/>
+                            <Text text="{requestListModel>/contactEmployee/Photy}"/>
+                            <Text text="{requestListModel>/contactEmployee/Phonm}"/>
+                            <CheckBox selected="{requestListModel>/contactEmployee/Pfult}"/>
                         </cells>
                     </ColumnListItem>
                 </items>
             </Table>
-            <Table busy="{mailRequestListModel>/tableBusy}" items="{mailRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{mailRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+            <Table busy="{mailRequestListModel>/tableBusy}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{mailRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                 <headerToolbar>
                     <OverflowToolbar>
                         <content>
@@ -118,8 +118,8 @@
                 <items>
                     <ColumnListItem >
                         <cells>
-                            <Text text="{mailRequestListModel>Emads}"/>
-                            <CheckBox selected="{mailRequestListModel>EDeft}"/>
+                            <Text text="{requestListModel>/contactEmployee/Email}"/>
+                            <CheckBox selected="{requestListModel>/contactEmployee/Mfult}"/>
                         </cells>
                     </ColumnListItem>
                 </items>
