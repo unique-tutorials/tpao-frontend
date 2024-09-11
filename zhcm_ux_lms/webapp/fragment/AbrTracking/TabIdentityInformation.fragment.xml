@@ -10,7 +10,7 @@
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
         </f:layout>
         <f:formContainers>
-            <f:FormContainer >
+            <f:FormContainer>
                 <f:formElements>
                     <f:FormElement label="{i18n>SERIAL_NUMBER}">
                         <f:fields>
@@ -39,7 +39,10 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>DATE_OF_BIRTH}">
                         <f:fields>
-                            <Input value="{requestListModel>/identityEmployee/Brtdt}" />
+                            <DatePicker value="{path: 'requestListModel>/identityEmployee/Brtdt', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                            </DatePicker>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -48,12 +51,16 @@
                 <f:formElements>
                     <f:FormElement label="Medeni Hali">
                         <f:fields>
-                            <Input value="{requestListModel>/identityEmployee/Mrtst}" />
+                            <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Mrtst' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Mrtst'}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Dini">
                         <f:fields>
-                            <Input value="{requestListModel>/identityEmployee/Rlign}" />
+                            <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Rlign' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Rlign'}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Kan Grubu">
@@ -63,17 +70,24 @@
                     </f:FormElement>
                     <f:FormElement label="İl">
                         <f:fields>
-                            <Input value="{requestListModel>/identityEmployee/City}" />
+                            <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/City'}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="İlçe">
                         <f:fields>
-                            <Input value="{requestListModel>/identityEmployee/Distr}" />
+                            <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Distr'}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Veriliş Tarihi">
                         <f:fields>
-                            <Input value="{requestListModel>/identityEmployee/Issdt}" />
+                            <DatePicker value="{path: 'requestListModel>/identityEmployee/Issdt', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                            </DatePicker>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

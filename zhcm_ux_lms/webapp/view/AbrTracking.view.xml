@@ -10,15 +10,15 @@
         <VBox class="sapUiSmallMargin">
             <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="55rem">
                 <content>
-                    <IconTabBar stretchContentHeight="true">
+                    <IconTabBar stretchContentHeight="true" id="TabContainer" >
                         <items>
-                            <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="info">
+                            <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="General">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.TabFilterGeneralInfo" type="XML" />
                             </IconTabFilter>
-                            <IconTabFilter text="{i18n>TAB_SCHOOL_INFORMATION}" key="attachments">
+                            <IconTabFilter text="{i18n>TAB_SCHOOL_INFORMATION}" key="School">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.TabSchoolInformation" type="XML" />
                             </IconTabFilter>
-                            <IconTabFilter text="{i18n>TAB_FINANCIAL_INFORMATION}" key="notes">
+                            <IconTabFilter text="{i18n>TAB_FINANCIAL_INFORMATION}" key="Financial">
                                 <IconTabBar>
                                     <items>
                                         <IconTabFilter text="{i18n>LANGUAGE_SCHOOL_INFORMATION}">
@@ -45,13 +45,13 @@
                                     </items>
                                 </IconTabBar>
                             </IconTabFilter>
-                            <IconTabFilter text="{i18n>TAB_OTHER_INFORMATION}" key="people">
+                            <IconTabFilter text="{i18n>TAB_OTHER_INFORMATION}" key="Other">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.TabOtherInformation" type="XML" />
                             </IconTabFilter>
-                            <IconTabFilter text="{i18n>CONTACT_INFORMATION}" key="people2">
+                            <IconTabFilter text="{i18n>CONTACT_INFORMATION}" key="Contact">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.TabContactInformation" type="XML" />
                             </IconTabFilter>
-                            <IconTabFilter text="{i18n>IDENTITY_INFORMATION}" key="people3">
+                            <IconTabFilter text="{i18n>IDENTITY_INFORMATION}" key="Identity">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.TabIdentityInformation" type="XML" />
                             </IconTabFilter>
                         </items>
@@ -66,11 +66,11 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
-                <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/>
                 <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
+                <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
+                <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
                 <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="Yeni Talep Oluştur" icon="sap-icon://education" press="onNewTrainingRequest" type="Accept" visible="true"/>
+                <Button text="Kaydet" icon="sap-icon://save" press=".onSave" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>
     </Page>
