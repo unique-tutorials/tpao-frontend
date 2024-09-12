@@ -162,13 +162,6 @@ sap.ui.define([
                 return "";
             }
         },
-        onNewTrainingRequest: function (oEvent) {
-            if (!this._oNewRequestDialog) {
-				this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.TrainingRequestFormDialog", this);
-				this.getView().addDependent(this._oNewRequestDialog);
-			}
-			this._oNewRequestDialog.open();
-         },
          openGuarantorDialog:function(oEvent){
             if (!this._oGuarantorDialog) {
                 this._oGuarantorDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorDocumentDialog", this);
@@ -267,5 +260,13 @@ sap.ui.define([
         //         }
         //     });
         // },
+        
+        // onNewTrainingRequest: function (oEvent) {
+        //     if (!this._oNewRequestDialog) {
+		// 		this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
+		// 		this.getView().addDependent(this._oNewRequestDialog);
+		// 	}
+		// 	this._oNewRequestDialog.open();
+        //  },
 	});
 });

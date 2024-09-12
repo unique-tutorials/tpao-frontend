@@ -36,7 +36,7 @@ sap.ui.define([
         },
         onNewTrainingRequest: function (oEvent) {
             if (!this._oNewRequestDialog) {
-				this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.TrainingRequestFormDialog", this);
+				this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
 				this.getView().addDependent(this._oNewRequestDialog);
 			}
 			this._oNewRequestDialog.open();
