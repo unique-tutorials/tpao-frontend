@@ -1,0 +1,78 @@
+<c:FragmentDefinition xmlns="sap.m"
+xmlns:c="sap.ui.core">
+    <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Geri Ödeme Planı" level="H2"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="Ödeme Tarihi" />
+            </Column>
+            <Column>
+                <Text text="Para Birimi" />
+            </Column>
+            <Column>
+                <Text text="Tutar" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{approvalRequestListModel>Trnam}"/>
+                    <Text text="{approvalRequestListModel>Trtyp}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    <VBox class="sapUiSmallMargin">
+        <ToolbarSpacer />
+        <Button type="Emphasized" text="Toplam Göster"/>
+    </VBox>
+    <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Mahsuplaşan Geri Ödemeler" level="H2"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="Ödeme Tarihi" />
+            </Column>
+            <Column>
+                <Text text="Para Birimi" />
+            </Column>
+            <Column>
+                <Text text="Tutar" />
+            </Column>
+            <Column>
+                <Text text="Mahsuplaşan Tutar" />
+            </Column>
+            <Column>
+                <Text text="Mahsup No" />
+            </Column>
+            <Column>
+                <Text text="Mahsup Tarihi" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{approvalRequestListModel>Trnam}"/>
+                    <Text text="{approvalRequestListModel>Trtyp}"/>
+                    <Text text="{approvalRequestListModel>Trcnt}"/>
+                    <Text text="{approvalRequestListModel>Trnqp}"/>
+                    <Text text="{approvalRequestListModel>Trnqn}"/>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</c:FragmentDefinition>

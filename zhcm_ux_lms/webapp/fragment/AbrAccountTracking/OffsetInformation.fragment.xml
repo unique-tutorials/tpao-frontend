@@ -1,0 +1,71 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Mahsup Bilgileri" level="H2"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="Yıl"/>
+            </Column>
+            <Column >
+                <Text text="Ay"/>
+            </Column>
+            <Column >
+                <Text text="Ödeme Türü"/>
+            </Column>
+            <Column >
+                <Text text="Ödeme Tarihi"/>
+            </Column>
+            <Column >
+                <Text text="Tutar"/>
+            </Column>
+            <Column>
+                <Text text="Para Birimi"/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Mahsup No "/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Ana Para Tutarı"/>
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+                <cells>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{approvalRequestListModel>Trnam}"/>
+                    <Text text="{approvalRequestListModel>Trtyp}"/>
+                    <Text text="{approvalRequestListModel>Trcnt}"/>
+                    <Text text="{approvalRequestListModel>Trnqp}"/>
+                    <Text text="{approvalRequestListModel>Trnqn}"/>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    <f:Form editable="false">
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="Ana Para Toplamı">
+                        <f:fields>
+                            <Input value="{requestListModel>/newNRequest/Pernr}" />
+                            <Button text="Toplamı Göster" type="Emphasized" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+</c:FragmentDefinition>

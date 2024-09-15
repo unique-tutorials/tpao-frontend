@@ -1,0 +1,134 @@
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.TrpolApp"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+    xmlns:u="sap.ui.unified"
+    xmlns:core="sap.ui.core">
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Personel Seyahat Rezervasyon Talebi Sorgu">
+        <VBox class="sapUiSmallMargin">
+            <f:Form editable="false">
+                <f:title>
+                    <core:Title text="Rezervasyon Arama" />
+                </f:title>
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Rezervasyon Talep No">
+                                <f:fields>
+                                    <Input id="idInput" value="{ parts: [{path: 'requestListModel>/reservationRequest/Pernr'},{path: 'requestListModel>/reservationRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}"   valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp"/>
+                                    <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchReservationPress"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </VBox>
+        <VBox class="sapUiSmallMargin">
+            <f:Form editable="false">
+                <f:title>
+                    <core:Title text="Talep Bilgileri" />
+                </f:title>
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Talep No">
+                                <f:fields>
+                                    <Input value="{SupplierName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Personel" >
+                                <f:fields>
+                                    <Input value="{Street} {HouseNumber}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Gidiş Tarihi">
+                                <f:fields>
+                                    <DatePicker value="{Country}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Dönüş Tarihi">
+                                <f:fields>
+                                    <DatePicker value="{Country}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Ülke">
+                                <f:fields>
+                                    <ComboBox value="{Country}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Ülke">
+                                <f:fields>
+                                    <ComboBox value="{Country}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Eyalet">
+                                <f:fields>
+                                    <ComboBox value="{Country}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Masraf Merkezi Kodu">
+                                <f:fields>
+                                    <Input value="{Country}" showValueHelp="true" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Bütçe Kodu">
+                                <f:fields>
+                                    <Input value="{Country}" showValueHelp="true" />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                    <f:FormContainer >
+                        <f:formElements>
+                            <f:FormElement label="Açıklama">
+                                <f:fields>
+                                    <TextArea rows="5" value="{Country}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Rezarvasyonu Yapacak Bölge">
+                                <f:fields>
+                                    <DatePicker value="{Country}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Olur Tarih / Sayı">
+                                <f:fields>
+                                    <DatePicker value="{Country}" />
+                                    <Input />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Bakanlık Oluru Tarih / Sayı">
+                                <f:fields>
+                                    <DatePicker value="{Country}" />
+                                    <Input />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Eğitim No">
+                                <f:fields>
+                                    <Input showValueHelp="true" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Talep Kayıt Tarihi">
+                                <f:fields>
+                                    <DatePicker value="{Country}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Rezervasyon Yapıldı">
+                                <f:fields>
+                                    <CheckBox selected="{Country}" />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </VBox>
+    </Page>
+</mvc:View>

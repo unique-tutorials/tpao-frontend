@@ -1,0 +1,161 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+
+    <f:Form editable="true">
+        <f:layout>
+            <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement>
+                        <f:fields>
+                            <DatePicker placeholder="Hesap Tarihi" value="{requestListModel>/interestEmployee/Serno}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <CheckBox text="Dövize Göre Hesapla" selected="{requestListModel>/interestEmployee/Serno}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement>
+                        <f:fields>
+                            <Button type="Ghost" text="Faiz Hesapla" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Button type="Ghost" text="Faiz Sil" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+    <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+        <columns>
+            <Column>
+                <Text text="Ödeme Tarihi" />
+            </Column>
+            <Column>
+                <Text text="Para Birimi" />
+            </Column>
+            <Column>
+                <Text text="Ödenen Tutar" />
+            </Column>
+            <Column>
+                <Text text="Hesap Tarihi" />
+            </Column>
+            <Column>
+                <Text text="Gün Sayısı" />
+            </Column>
+            <Column>
+                <Text text="Ortalama Faiz Oranı" />
+            </Column>
+            <Column>
+                <Text text="Faiz Tutarı" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{approvalRequestListModel>Trnam}"/>
+                    <Text text="{approvalRequestListModel>Trtyp}"/>
+                    <Text text="{approvalRequestListModel>Trcnt}"/>
+                    <Text text="{approvalRequestListModel>Trnqp}"/>
+                    <Text text="{approvalRequestListModel>Trnqn}"/>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    <f:Form editable="true">
+        <f:layout>
+            <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement>
+                       
+                        <f:fields>
+                            <Input placeholder="Dosya Adı" value="{requestListModel>/interestEmployee/Serno}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <CheckBox text="Mahsuplaştı" selected="{requestListModel>/interestEmployee/Serno}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement>
+                        <f:fields>
+                            <Button type="Ghost" text="Mahsuplaştır / Mahsup Göster" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Button type="Ghost" text="Faiz CSV Oluştur" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+    <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Ek Ödemeler" level="H2"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="Ödeme Tarihi" />
+            </Column>
+            <Column>
+                <Text text="Para Birimi" />
+            </Column>
+            <Column>
+                <Text text="Ödenen Tutar" />
+            </Column>
+            <Column>
+                <Text text="Hesap Tarihi" />
+            </Column>
+            <Column>
+                <Text text="Gün Sayısı" />
+            </Column>
+            <Column>
+                <Text text="Ortalama Faiz Oranı" />
+            </Column>
+            <Column>
+                <Text text="Faiz Tutarı" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{approvalRequestListModel>Trnam}"/>
+                    <Text text="{approvalRequestListModel>Trtyp}"/>
+                    <Text text="{approvalRequestListModel>Trcnt}"/>
+                    <Text text="{approvalRequestListModel>Trnqp}"/>
+                    <Text text="{approvalRequestListModel>Trnqn}"/>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{approvalRequestListModel>Reqno}"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</c:FragmentDefinition>

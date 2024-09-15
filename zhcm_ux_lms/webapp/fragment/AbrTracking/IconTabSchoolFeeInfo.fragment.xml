@@ -7,19 +7,19 @@
         <Column>
             <Text text="{i18n>FEE_PERIOD}"/>
         </Column>
-        <Column >
+        <Column>
             <Text text="{i18n>DATE}"/>
         </Column>
-        <Column >
+        <Column>
             <Text text="{i18n>SCHOOL_FEE}"/>
         </Column>
-        <Column >
+        <Column>
             <Text text="{i18n>CURRENCY}"/>
         </Column>
-        <Column >
+        <Column>
             <Text text="{i18n>EXCHANGE_DOCUMENT_NUMBER}"/>
         </Column>
-        <Column >
+        <Column>
             <Text text="{i18n>TO_SENT}"/>
         </Column>
         <Column> 

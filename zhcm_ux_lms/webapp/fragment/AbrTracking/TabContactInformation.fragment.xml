@@ -81,7 +81,7 @@
                     <Column>
                         <Text text="{i18n>PHONE_TYPE}"/>
                     </Column>
-                    <Column >
+                    <Column>
                         <Text text="{i18n>PHONE_NUMBER}"/>
                     </Column>
                     <Column>

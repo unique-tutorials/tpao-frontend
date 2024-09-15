@@ -188,6 +188,20 @@
 					"target": [
 						"collectivePlanning"
 					]
+				},
+				{
+					"pattern": "TrplsApp",
+					"name": "TrplsApp",
+					"target": [
+						"TrplsApp"
+					]
+				},
+				{
+					"pattern": "TrpolApp",
+					"name": "TrpolApp",
+					"target": [
+						"TrpolApp"
+					]
 				}
 			],
 			"targets": {
@@ -244,6 +258,18 @@
 					"viewId": "CollectivePlanning",
 					"viewLevel": 2,
 					"title": "{i18n>COLLECTIVE_TRAINING_PLANNING}"
+				},
+				"TrplsApp": {
+					"viewName": "TrplsApp",
+					"viewId": "TrplsApp",
+					"viewLevel": 2,
+					"title": "Burslu Öğrenci Seyahat Rezervasyon Takibi"
+				},
+				"TrpolApp": {
+					"viewName": "TrpolApp",
+					"viewId": "TrpolApp",
+					"viewLevel": 2,
+					"title": "Personel Seyahat Rezervasyon Talebi Sorgu"
 				}
 			}
 		},
