@@ -3,49 +3,53 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
     xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-    <Dialog title="{i18n>TRAINING_REQUEST_OPERATION}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" draggable="true">
-        <f:Form editable="true" id="idCreateOverTimeRequestForm" class="overTimeRequestCreateDisplayPage">
-            <f:layout>
-                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" />
-            </f:layout>
-            <f:formContainers>
-                <f:FormContainer>
-                    <f:formElements>
-                        <f:FormElement label="{i18n>UNDERGRADUATE_GRADUATION_AREA}">
-                            <f:fields>
-                                <MultiComboBox items="{
+    <Dialog title="{i18n>TRAINING_REQUEST_OPERATION}" state="None" type="Standard" contentWidth="70%" contentHeight="70%" draggable="true">
+        <VBox
+       >
+
+
+            <f:Form editable="true" id="idCreateOverTimeRequestForm" class="overTimeRequestCreateDisplayPage">
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="2" emptySpanL="2" emptySpanM="2" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>UNDERGRADUATE_GRADUATION_AREA}">
+                                <f:fields>
+                                    <MultiComboBox items="{
                                 path: '/ProductCollection',
                                 sorter: { path: 'Name' }
                             }" required="true">
-                                    <core:Item key="{ProductId}" text="{Name}"/>
-                                </MultiComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>MASTER_DEGREE_FIELD_TR}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Mastr' } ] }" selectedKey="{requestListModel>/TrainRequestList/Mastr}" required="true">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>MASTER_DEGREE_FIELD_EN}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Masen' } ] }" selectedKey="{requestListModel>/TrainRequestList/Masen}" required="true">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>MASTER_DEGREE_SUBJECT_TR}">
-                            <f:fields>
-                                <TextArea rows="4" value="{requestListModel>/TrainRequestList/Subtr}" required="true" />
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>MASTER_DEGREE_SUBJECT_EN}">
-                            <f:fields>
-                                <TextArea rows="4" value="{requestListModel>/TrainRequestList/Suben}" required="true" />
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY}">
+                                        <core:Item key="{ProductId}" text="{Name}"/>
+                                    </MultiComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>MASTER_DEGREE_FIELD_TR}">
+                                <f:fields>
+                                    <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Mastr' } ] }" selectedKey="{requestListModel>/TrainRequestList/Mastr}" required="true">
+                                        <core:ListItem key="{Key}" text="{Value}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>MASTER_DEGREE_FIELD_EN}">
+                                <f:fields>
+                                    <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Masen' } ] }" selectedKey="{requestListModel>/TrainRequestList/Masen}" required="true">
+                                        <core:ListItem key="{Key}" text="{Value}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>MASTER_DEGREE_SUBJECT_TR}">
+                                <f:fields>
+                                    <TextArea rows="4" value="{requestListModel>/TrainRequestList/Subtr}" required="true" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>MASTER_DEGREE_SUBJECT_EN}">
+                                <f:fields>
+                                    <TextArea rows="4" value="{requestListModel>/TrainRequestList/Suben}" required="true" />
+                                </f:fields>
+                            </f:FormElement>
+                            <!-- <f:FormElement label="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY}">
                             <f:fields>
                                 <MultiComboBox items="{
                                 path: '/ProductCollection',
@@ -59,32 +63,32 @@
                             <f:fields>
                                 <Input value="{requestListModel>/TrainRequestList/Prior}" required="true" />
                             </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>NUMBER_OF_QUOTAS}">
-                            <f:fields>
-                                <Input value="{requestListModel>/TrainRequestList/Quota}" required="true" />
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>UNIT_ON_RETURN}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Unit' } ] }" selectedKey="{requestListModel>/TrainRequestList/Unit}" required="true">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>DIRECTORATE_ON_RETURN}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Direc' } ] }" selectedKey="{requestListModel>/TrainRequestList/Direc}" required="true">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>REASON_FOR_SCHOLARSHIP}">
-                            <f:fields>
-                                <TextArea rows="4" value="{requestListModel>/TrainRequestList/Reaso}" required="true" />
-                            </f:fields>
-                        </f:FormElement>
-                        <!-- <f:FormElement label="{i18n>SUGGESTED_TRAINER}">
+                        </f:FormElement> -->
+                            <f:FormElement label="{i18n>NUMBER_OF_QUOTAS}">
+                                <f:fields>
+                                    <Input value="{requestListModel>/TrainRequestList/Quota}" required="true" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>UNIT_ON_RETURN}">
+                                <f:fields>
+                                    <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Unit' } ] }" selectedKey="{requestListModel>/TrainRequestList/Unit}" required="true">
+                                        <core:ListItem key="{Key}" text="{Value}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>DIRECTORATE_ON_RETURN}">
+                                <f:fields>
+                                    <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Direc' } ] }" selectedKey="{requestListModel>/TrainRequestList/Direc}" required="true">
+                                        <core:ListItem key="{Key}" text="{Value}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>REASON_FOR_SCHOLARSHIP}">
+                                <f:fields>
+                                    <TextArea rows="4" value="{requestListModel>/TrainRequestList/Reaso}" required="true" />
+                                </f:fields>
+                            </f:FormElement>
+                            <!-- <f:FormElement label="{i18n>SUGGESTED_TRAINER}">
                             <f:fields>
                                 <Input cd:inputId="ORGEH" textFormatMode="KeyValue" showSuggestion="true" value="{employmentRequestModel>/currentRequest/Orgtx}" showValueHelp="true" valueHelpRequest="onValueHelpRequest" suggestionItems="{employmentRequestModel>/valueHelpSet}">
                                     <suggestionItems>
@@ -93,10 +97,38 @@
                                 </Input>
                             </f:fields>
                         </f:FormElement> -->
-                    </f:formElements>
-                </f:FormContainer>
-            </f:formContainers>
-        </f:Form>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+
+            <Table items="{/ProductCollection}">
+                <headerToolbar>
+                    <Toolbar >
+                        <Label text="Seçilen Ülke Ve Önceliklendirme Listesi" />
+                        <ToolbarSpacer />
+                        <Button icon="sap-icon://add" text="Ekle" type="Emphasized" press=".onAddNewCountry" />
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY}" />
+                    </Column>
+                    <Column>
+                        <Text text="{i18n>PRIORITIZATIONS}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{SupplierName}" />
+                            <Text text="{Width}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+        </VBox>
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>

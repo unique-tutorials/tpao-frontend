@@ -33,137 +33,21 @@
                 <IconTabBar stretchContentHeight="true">
                     <items>
                         <IconTabFilter text="Genel Bilgi" key="info">
-                            <f:Form editable="true">
-                                <f:title>
-                                    <core:Title text="Öğrenci Bilgileri"/>
-                                </f:title>
-                                <f:layout>
-                                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="true" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="1" singleContainerFullSize="true" />
-                                </f:layout>
-                                <f:formContainers>
-                                    <f:FormContainer>
-                                        <f:formElements>
-                                            <f:FormElement label="Maaş Para Birimi">
-                                                <f:fields>
-                                                    <Input />
-                                                    <Input />
-                                                    <ComboBox />
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement label="Kırtasiye Ücreti">
-                                                <f:fields>
-                                                    <Input />
-                                                    <Input />
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement label="Yurtiçi Dil Öğrenimi Süresi">
-                                                <f:fields>
-                                                    <Input>
-                                                        <layoutData>
-                                                            <l:GridData span="XL1 L1 M1 S4" />
-                                                        </layoutData>
-                                                    </Input>
-                                                    <Text text="Yıl"/>
-                                                    <Input>
-                                                        <layoutData>
-                                                            <l:GridData span="XL1 L1 M1 S4" />
-                                                        </layoutData>
-                                                    </Input>
-                                                    <Text text="Ay"/>
-                                                    <Input>
-                                                        <layoutData>
-                                                            <l:GridData span="XL1 L1 M1 S4" />
-                                                        </layoutData>
-                                                    </Input>
-                                                    <Text text="Gün"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                        </f:formElements>
-                                    </f:FormContainer>
-                                    <f:FormContainer>
-                                        <f:formElements>
-                                            <f:FormElement label="Maaş Ödenir">
-                                                <f:fields>
-                                                    <CheckBox enabled="false"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                            <f:FormElement label="Kırtasiye Ödenir">
-                                                <f:fields>
-                                                    <CheckBox enabled="false"/>
-                                                </f:fields>
-                                            </f:FormElement>
-
-                                        </f:formElements>
-                                    </f:FormContainer>
-                                    <f:FormContainer>
-                                        <f:formElements>
-                                            <f:FormElement label="Ödeme Yapılacak Hesap">
-                                                <f:fields>
-                                                    <ComboBox />
-                                                    <Button text="Evraklar" type="Emphasized"/>
-                                                </f:fields>
-                                            </f:FormElement>
-                                        </f:formElements>
-                                    </f:FormContainer>
-
-                                </f:formContainers>
-                            </f:Form>
+                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.StudentInformation" type="XML" />
                         </IconTabFilter>
                         <IconTabFilter text="Kefil Bilgileri" key="attachments">
-                            <Text text="Attachments go here ..." />
+                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorInformation" type="XML" />
                         </IconTabFilter>
                         <IconTabFilter text="Mahsup Bilgileri" key="notes">
-                            <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
-                                <columns>
-                                    <Column id="idRequestNumberColumn">
-                                        <Text text="Yıl"/>
-                                    </Column>
-                                    <Column >
-                                        <Text text="Ay"/>
-                                    </Column>
-                                    <Column >
-                                        <Text text="Ödeme Türü"/>
-                                    </Column>
-                                    <Column >
-                                        <Text text="Ödeme Tarihi"/>
-                                    </Column>
-                                    <Column >
-                                        <Text text="Tutar"/>
-                                    </Column>
-                                    <Column>
-                                        <Text text="Para Birimi"/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="Mahsup No "/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="Ana Para Tutarı"/>
-                                    </Column>
-                                </columns>
-                                <items>
-                                    <ColumnListItem type="Navigation" press="onAvailableRequestActions">
-                                        <cells>
-                                            <Text text="{approvalRequestListModel>Reqno}"/>
-                                            <Text text="{approvalRequestListModel>Trnam}"/>
-                                            <Text text="{approvalRequestListModel>Trtyp}"/>
-                                            <Text text="{approvalRequestListModel>Trcnt}"/>
-                                            <Text text="{approvalRequestListModel>Trnqp}"/>
-                                            <Text text="{approvalRequestListModel>Trnqn}"/>
-                                            <Text text="{approvalRequestListModel>Reqno}"/>
-                                            <Text text="{approvalRequestListModel>Reqno}"/>
-                                        </cells>
-                                    </ColumnListItem>
-                                </items>
-                            </Table>
+                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.OffsetInformation" type="XML" />
                         </IconTabFilter>
                         <IconTabFilter text="Faiz Tablosu" key="people">
-                            <Text text="People content goes here ..." />
+                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.InterestTable" type="XML" />
                         </IconTabFilter>
                         <IconTabFilter text="Geri Ödeme Bilgileri" key="people">
-                            <Text text="People content goes here ..." />
+                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.RefundInformation" type="XML" />
                         </IconTabFilter>
                     </items>
-
                 </IconTabBar>
             </content>
             <headerToolbar>

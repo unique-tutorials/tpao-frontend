@@ -35,22 +35,22 @@
                 <Column>
                     <Text text="{i18n>ADDRESS_TYPE}"/>
                 </Column>
-                <Column >
+                <Column>
                     <Text text="{i18n>FROM_MERNIS}"/>
                 </Column>
-                <Column >
+                <Column>
                     <Text text="{i18n>ADDRESS}"/>
                 </Column>
-                <Column >
+                <Column>
                     <Text text="{i18n>POSTAL_CODE}"/>
                 </Column>
-                <Column >
+                <Column>
                     <Text text="{i18n>OR_LAND1}"/>
                 </Column>
                 <Column>
                     <Text text="{i18n>PROVINCE}"/>
                 </Column>
-                <Column >
+                <Column>
                     <Text text="{i18n>DISTRICT}"/>
                 </Column>
             </columns>

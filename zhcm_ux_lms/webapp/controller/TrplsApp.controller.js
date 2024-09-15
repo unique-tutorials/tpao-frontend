@@ -1,5 +1,3 @@
-/*global location history */
-/*global _*/
 sap.ui.define([
     "zhcm_ux_lms_abr/controller/BaseController",
     "sap/ui/model/json/JSONModel",
@@ -8,16 +6,18 @@ sap.ui.define([
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "zhcm_ux_lms_abr/controller/SharedData"
-], function (BaseController, JSONModel, History, formatter, Filter, FilterOperator, SharedData) {
-    "use strict";
+], function(
+	BaseController, JSONModel, History, formatter, Filter, FilterOperator, SharedData
+) {
+	"use strict";
 
-	return BaseController.extend("zhcm_ux_lms_abr.controller.AbrRequestList", {
+	return BaseController.extend("zhcm_ux_lms_abr.controller.TrplsApp", {
         formatter: formatter,
         onInit: function () {
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "requestListModel");
             this._initiateModel();
-            this.getRouter().getRoute("AbrRequestList").attachPatternMatched(this._onRequestListMatched, this);
+            this.getRouter().getRoute("AbrTracking").attachPatternMatched(this._onRequestListMatched, this);
         },
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
@@ -34,19 +34,21 @@ sap.ui.define([
         _getRequestList: function () { 
 
         },
+        onShowReservationSearchHelp: function(oEvent) {
+            if (!this._oReserSearchHelpDialog) {
+                this._oReserSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.TrplsApp.ReservationSearchHelpDialog", this);
+                this.getView().addDependent(this._oReserSearchHelpDialog);
+            } else {
+                this._oReserSearchHelpDialog.close();
+            }
+            this._oReserSearchHelpDialog.open();
+        },
         onNewTrainingRequest: function (oEvent) {
             if (!this._oNewRequestDialog) {
 				this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
 				this.getView().addDependent(this._oNewRequestDialog);
 			}
 			this._oNewRequestDialog.open();
-         },
-         onAddNewCountry: async function () {
-            if (!this._oNewCountryDialog) {
-				this._oNewCountryDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.CountryNewTable", this);
-				this.getView().addDependent(this._oNewCountryDialog);
-			}
-			this._oNewCountryDialog.open();
-          },
+         }
 	});
 });

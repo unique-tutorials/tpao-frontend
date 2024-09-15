@@ -100,7 +100,6 @@
                         </f:FormElement>
                     </f:formElements>
                 </f:FormContainer>
-            
                 <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_LEARNING_INFORMATION}">
                     <f:formElements>
                         <f:FormElement label="{i18n>SCHOOL}">
@@ -128,7 +127,6 @@
                         </f:FormElement>
                     </f:formElements>
                 </f:FormContainer>
-        
                 <f:FormContainer title="{i18n>MAIN_EDUCATION_INFORMATION}">
                     <f:formElements>
                         <f:FormElement label="{i18n>SCHOOL}">

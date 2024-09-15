@@ -1,0 +1,35 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog title="Seçim Ekranı" state="None" type="Standard" verticalScrolling="false" contentWidth="30%" contentHeight="30%" draggable="true">
+        <VBox class="sapUiSmallMargin">
+            <f:Form editable="true">
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Ülke">
+                                <f:fields>
+                                    <MultiComboBox value="{SupplierName}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Önceliklendirmesi">
+                                <f:fields>
+                                    <MultiComboBox value="{Street}" />
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </VBox>
+        <beginButton>
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelSearchStudentDialog" type="Reject" />
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>SAVE_BUTTON}" type="Emphasized" icon="sap-icon://save" />
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>

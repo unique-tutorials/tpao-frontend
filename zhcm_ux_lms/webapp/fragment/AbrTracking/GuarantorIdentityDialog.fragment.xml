@@ -6,7 +6,6 @@
 	<Dialog title="{i18n>GUARANTOR_IDENTITY_INFORMATION}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
 		<grid:CSSGrid id="grid5" gridTemplateColumns="2fr 2fr" gridTemplateRows="50px 200px 50px" gridGap="1rem">
 		<f:Form editable="false" class="sapUiSmallMarginBottom">
-		
 		<f:layout>
 			<f:ResponsiveGridLayout labelSpanXL="12" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false" />
 		</f:layout>
@@ -43,7 +42,6 @@
 								<Input />
 							</f:fields>
 						</f:FormElement>
-
 					</f:formElements>
 				</f:FormContainer>
 				<f:FormContainer >
