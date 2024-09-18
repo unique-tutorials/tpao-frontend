@@ -1,98 +1,96 @@
-<c:FragmentDefinition
-	xmlns="sap.m"
-	xmlns:c="sap.ui.core"
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core"
->
-<f:Form editable="false">
-    <f:title>
-        <core:Title text="Öğrenci Bilgileri" />
-    </f:title>
-    <f:layout>
-        <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-    </f:layout>
-    <f:formContainers>
-        <f:FormContainer>
-            <f:formElements>
-                <f:FormElement label="Adı">
-                    <f:fields>
-                        <Input value="{SupplierName}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Soyadı">
-                    <f:fields>
-                        <Input value="{Street} {HouseNumber}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Eğitim Süresi">
-                    <f:fields>
-                        <Input value="{ZIPCode} {City}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Mecburi Hizmet Süresi">
-                    <f:fields>
-                        <Input value="{Country}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Yurtdışına Çıkış Tarih">
-                    <f:fields>
-                        <DatePicker value="{Url}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="İşe Başlayacağı Tarih">
-                    <f:fields>
-                        <DatePicker value="{Url}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Dava Başlangıç Tarihi">
-                    <f:fields>
-                        <DatePicker value="{Twitter}" />
-                    </f:fields>
-                </f:FormElement>
-            </f:formElements>
-        </f:FormContainer>
-        <f:FormContainer>
-            <f:formElements>
-                <f:FormElement label="Gittiği Ülke">
-                    <f:fields>
-                        <ComboBox value="{Country}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Gittiği Okul">
-                    <f:fields>
-                        <ComboBox value="{Url}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Okul No">
-                    <f:fields>
-                        <Input value="{Twitter}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Vergi Numarası">
-                    <f:fields>
-                        <Input value="{Twitter}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Vergi Dairesi / İli">
-                    <f:fields>
-                        <Input value="{Twitter}" />
-                        <Input value="{Twitter}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Masraf Merkezi">
-                    <f:fields>
-                        <Input value="{Twitter}" showValueHelp="true" />
-                        <CheckBox text="Aktif" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="Bütçe Kodu">
-                    <f:fields>
-                        <Input value="{Twitter}" showValueHelp="true" />
-                        <CheckBox text="İcralı / Davalı" />
-                    </f:fields>
-                </f:FormElement>
-            </f:formElements>
-        </f:FormContainer>
-    </f:formContainers>
-</f:Form>
+    xmlns:core="sap.ui.core">
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="Öğrenci Bilgileri" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>STUDENT_NAME}">
+                        <f:fields>
+                            <Input value="{requestListModel>/StudentEmployee/Ename}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Soyadı">
+                        <f:fields>
+                            <Input value="{requestListModel>/StudentEmployee/Aname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Eğitim Süresi">
+                        <f:fields>
+                            <Input value="{requestListModel>/StudentEmployee/Bname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Mecburi Hizmet Süresi">
+                        <f:fields>
+                            <Input value="{requestListModel>/StudentEmployee/Cname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Yurtdışına Çıkış Tarih">
+                        <f:fields>
+                            <DatePicker value="{requestListModel>/StudentEmployee/Dname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="İşe Başlayacağı Tarih">
+                        <f:fields>
+                            <DatePicker value="{requestListModel>/StudentEmployee/Fname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Dava Başlangıç Tarihi">
+                        <f:fields>
+                            <DatePicker value="{requestListModel>/StudentEmployee/Gname}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="Gittiği Ülke">
+                        <f:fields>
+                            <ComboBox value="{requestListModel>/StudentEmployee/Hname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Gittiği Okul">
+                        <f:fields>
+                            <ComboBox value="{requestListModel>/StudentEmployee/Nname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Okul No">
+                        <f:fields>
+                            <Input value="{requestListModel>/StudentEmployee/Pname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Vergi Numarası">
+                        <f:fields>
+                            <Input value="{requestListModel>/StudentEmployee/Rname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Vergi Dairesi / İli">
+                        <f:fields>
+                            <Input value="{requestListModel>/StudentEmployee/Sname}" />
+                            <Input value="{requestListModel>/StudentEmployee/Oname}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Masraf Merkezi">
+                        <f:fields>
+                            <Input value="{requestListModel>/StudentEmployee/Lname}" showValueHelp="true" />
+                            <CheckBox text="Aktif" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="Bütçe Kodu">
+                        <f:fields>
+                            <Input value="{requestListModel>/StudentEmployee/Mname}" showValueHelp="true" />
+                            <CheckBox text="İcralı / Davalı" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
 </c:FragmentDefinition>

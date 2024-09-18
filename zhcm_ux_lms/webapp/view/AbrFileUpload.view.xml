@@ -8,7 +8,7 @@
 
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Belgelerin Sisteme Yüklenmesi">
         <VBox class="sapUiSmallMargin">
-            <f:Form editable="false">
+            <f:Form editable="true">
                 <f:title>
                     <core:Title text="Excelden Stajyer Bilgileri Yükle" />
                 </f:title>

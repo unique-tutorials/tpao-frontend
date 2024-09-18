@@ -2,7 +2,7 @@
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core">
-        <f:Form editable="false">
+        <f:Form editable="true">
             <f:title>
                 <core:Title text="{i18n>STUDENT_SEARCH}" />
             </f:title>
