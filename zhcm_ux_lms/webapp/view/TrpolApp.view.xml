@@ -29,7 +29,7 @@
             </f:Form>
         </VBox>
         <VBox class="sapUiSmallMargin">
-            <f:Form editable="false">
+            <f:Form editable="true">
                 <f:title>
                     <core:Title text="Talep Bilgileri" />
                 </f:title>
@@ -41,47 +41,47 @@
                         <f:formElements>
                             <f:FormElement label="Talep No">
                                 <f:fields>
-                                    <Input value="{SupplierName}"/>
+                                    <Input value="{requestListModel>/ReservationEmployee/Surnm}"/>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Personel" >
                                 <f:fields>
-                                    <Input value="{Street} {HouseNumber}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
+                                    <Input value="{requestListModel>/ReservationEmployee/Surnm}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Gidiş Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{Country}" />
+                                    <DatePicker value="{requestListModel>/ReservationEmployee/Surnm}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Dönüş Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{Country}" />
+                                    <DatePicker value="{requestListModel>/ReservationEmployee/Eurnm}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Ülke">
                                 <f:fields>
-                                    <ComboBox value="{Country}" />
+                                    <ComboBox value="{requestListModel>/ReservationEmployee/Aurnm}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Ülke">
                                 <f:fields>
-                                    <ComboBox value="{Country}" />
+                                    <ComboBox value="{requestListModel>/ReservationEmployee/Burnm}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Eyalet">
                                 <f:fields>
-                                    <ComboBox value="{Country}" />
+                                    <ComboBox value="{requestListModel>/ReservationEmployee/Curnm}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Masraf Merkezi Kodu">
                                 <f:fields>
-                                    <Input value="{Country}" showValueHelp="true" />
+                                    <Input value="{requestListModel>/ReservationEmployee/Qurnm}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Bütçe Kodu">
                                 <f:fields>
-                                    <Input value="{Country}" showValueHelp="true" />
+                                    <Input value="{requestListModel>/ReservationEmployee/Wurnm}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>
@@ -90,39 +90,39 @@
                         <f:formElements>
                             <f:FormElement label="Açıklama">
                                 <f:fields>
-                                    <TextArea rows="5" value="{Country}" />
+                                    <TextArea rows="5" value="{requestListModel>/ReservationEmployee/Surnm}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Rezarvasyonu Yapacak Bölge">
                                 <f:fields>
-                                    <DatePicker value="{Country}" />
+                                    <DatePicker value="{requestListModel>/ReservationEmployee/Turnm}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Olur Tarih / Sayı">
                                 <f:fields>
-                                    <DatePicker value="{Country}" />
+                                    <DatePicker value="{requestListModel>/ReservationEmployee/Yurnm}" />
                                     <Input />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Bakanlık Oluru Tarih / Sayı">
                                 <f:fields>
-                                    <DatePicker value="{Country}" />
+                                    <DatePicker value="{requestListModel>/ReservationEmployee/Uurnm}" />
                                     <Input />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Eğitim No">
                                 <f:fields>
-                                    <Input showValueHelp="true" />
+                                    <Input value="{requestListModel>/ReservationEmployee/Curnm}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Talep Kayıt Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{Country}" />
+                                    <DatePicker value="{requestListModel>/ReservationEmployee/Iurnm}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Rezervasyon Yapıldı">
                                 <f:fields>
-                                    <CheckBox selected="{Country}" />
+                                    <CheckBox selected="{requestListModel>/ReservationEmployee/Kurnm}" />
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>

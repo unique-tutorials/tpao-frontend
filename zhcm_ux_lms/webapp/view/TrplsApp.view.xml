@@ -8,7 +8,7 @@
 
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Burslu Öğrenci Seyahat Rezarvasyon Talebi">
         <VBox class="sapUiSmallMargin">
-            <f:Form editable="false">
+            <f:Form editable="true">
                 <f:title>
                     <core:Title text="Rezervasyon Arama" />
                 </f:title>
@@ -30,7 +30,7 @@
             </f:Form>
         </VBox>
         <VBox class="sapUiSmallMargin">
-            <f:Form id="FormDisplay354" editable="false">
+            <f:Form id="FormDisplay354" editable="true">
                 <f:title>
                     <core:Title text="Rezervasyon Bilgileri" />
                 </f:title>
@@ -42,37 +42,37 @@
                         <f:formElements>
                             <f:FormElement label="Talep No">
                                 <f:fields>
-                                    <Input value="{SupplierName}"/>
+                                    <Input value="{requestListModel>/TripRequest/Pernr}"/>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Burslu Öğrenci No" >
                                 <f:fields>
-                                    <Input value="{Street} {HouseNumber}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
+                                    <Input value="{requestListModel>/TripRequest/Pernt}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Burslu Öğrenci Adı Soyadı">
                                 <f:fields>
-                                    <Input value="{ZIPCode} {City}" />
+                                    <Input value="{requestListModel>/TripRequest/Ename}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Gidiş Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{Country}" />
+                                    <DatePicker value="{requestListModel>/TripRequest/Qname}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Dönüş Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{Country}" />
+                                    <DatePicker value="{requestListModel>/TripRequest/Wname}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Ülke">
                                 <f:fields>
-                                    <ComboBox value="{Country}" />
+                                    <ComboBox value="{requestListModel>/TripRequest/Rname}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Eyalet">
                                 <f:fields>
-                                    <ComboBox value="{Country}" />
+                                    <ComboBox value="{requestListModel>/TripRequest/Tname}" />
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>
@@ -81,32 +81,32 @@
                         <f:formElements>
                             <f:FormElement label="Şehir">
                                 <f:fields>
-                                    <ComboBox value="{Country}" />
+                                    <ComboBox value="{requestListModel>/TripRequest/Yname}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Açıklama">
                                 <f:fields>
-                                    <TextArea rows="5" value="{Country}" />
+                                    <TextArea rows="5" value="{requestListModel>/TripRequest/Uname}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Masraf Merkezi Kodu">
+                            <f:FormElement label="Masraf Merkez Kodu">
                                 <f:fields>
-                                    <Input value="{Country}" showValueHelp="true" />
+                                    <Input value="{requestListModel>/TripRequest/Iname}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Bütçe Kodu">
                                 <f:fields>
-                                    <Input value="{Country}" showValueHelp="true" />
+                                    <Input value="{requestListModel>/TripRequest/Oname}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Talep Kayıt Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{Country}" />
+                                    <DatePicker value="{requestListModel>/TripRequest/Aname}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Rezarvasyon Yapıldı">
                                 <f:fields>
-                                    <CheckBox selected="{Country}" />
+                                    <CheckBox selected="{requestListModel>/TripRequest/Sname}" />
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>

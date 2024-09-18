@@ -7,7 +7,7 @@
 
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Burslu Öğrenci Takibi (Muhasebe)">
         <VBox class="sapUiSmallMargin">
-            <f:Form editable="false">
+            <f:Form editable="true">
                 <f:title>
                     <core:Title text="Öğrenci Arama" />
                 </f:title>
