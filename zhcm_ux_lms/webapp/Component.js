@@ -5,9 +5,10 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/ui/Device",
-    "zhcm_ux_lms_abr/model/models"
+    "zhcm_ux_lms_abr/model/models",
+    "zhcm_ux_lms_abr/utils/sweetalert"
 ],
-    function (UIComponent, Device, models) {
+    function (UIComponent, Device, models, SwalJS) {
         "use strict";
 
         return UIComponent.extend("zhcm_ux_lms_abr.Component", {

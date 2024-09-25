@@ -77,10 +77,19 @@ sap.ui.define([
                     "visible": true,
                     "title": 'Beceri Eğitimi',
                     "icon": "sap-icon://group"
-                } 
-
-                	
-            
+                },
+                {
+                    "appName": "CareerInterns",
+                    "visible": true,
+                    "title": 'Biz Bize Kariyer Stajyerler',
+                    "icon": "sap-icon://group"
+                },
+                {
+                    "appName": "CareerInternContn",
+                    "visible": true,
+                    "title": 'Biz Bize Kariyer Stajyer Devamları',
+                    "icon": "sap-icon://group"
+                }
             ],
                 appAuthorization: {
                     ReqcrApp: false,

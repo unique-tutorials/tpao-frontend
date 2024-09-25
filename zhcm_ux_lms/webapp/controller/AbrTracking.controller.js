@@ -116,7 +116,14 @@ sap.ui.define([
                     success: function(oData, oResponse) {
                         debugger;
                         if (oData.Mesty === "S") {
-                            MessageBox.success(that.getText("EDU_TASK_SAVED_SUCCESSFUL"));
+                            // MessageBox.success(that.getText("EDU_TASK_SAVED_SUCCESSFUL"));
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                              });
                         }
                     },
                     error: function() {
@@ -130,7 +137,14 @@ sap.ui.define([
                     success: function(oData, oResponse) {
                         debugger;
                         if (oData.Mesty === "S") {
-                            MessageBox.success(that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"));
+                             // MessageBox.success(that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"));
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                              });
                         }
                     },
                     error: function() {
@@ -144,7 +158,14 @@ sap.ui.define([
                     success: function(oData, oResponse) {
                         debugger;
                         if (oData.Mesty === "S") {
-                            MessageBox.success(that.getText("IDENTITY_INFORMATION_SAVED_SUCCESSFUL"));
+                            // MessageBox.success(that.getText("IDENTITY_INFORMATION_SAVED_SUCCESSFUL"));
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("IDENTITY_INFORMATION_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                              });
                         }
                     },
                     error: function() {
