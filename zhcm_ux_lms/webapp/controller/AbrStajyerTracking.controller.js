@@ -126,12 +126,19 @@ sap.ui.define([
             var oViewModel = this.getModel("requestStajyerListModel");
             var oEntry = oViewModel.getProperty('/SelectedStajyer');
             var that = this;
-            if (this.byId("TabContainerStajyer").getSelectedKey() === "info") {
+            if (this.byId("TabContainerStajyer").getSelectedKey() === "stajyerInfo") {
                 oModel.create("/IntershipStudentSet", oEntry, {
                     success: function(oData, oResponse) {
                         debugger;
                         if (oData.Mesty === "S") {
-                            MessageBox.success(that.getText("EDU_TASK_SAVED_SUCCESSFUL"));
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                              });
+                            // MessageBox.success(that.getText("EDU_TASK_SAVED_SUCCESSFUL"));
                         }
                     },
                     error: function() {
