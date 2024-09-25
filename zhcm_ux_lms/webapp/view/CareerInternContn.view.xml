@@ -1,0 +1,21 @@
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.CareerInternContn"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form" displayBlock="true" height="100%" busyIndicatorDelay="0">
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Biz Bize Kariyer Stajyer Devamları">
+        <VBox class="sapUiSmallMargin">
+            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.CareerInternsContn.CareerContnInformation" type="XML" />
+        </VBox>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
+                <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
+                <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
+                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
+                <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveCtn" type="Accept" visible="true"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

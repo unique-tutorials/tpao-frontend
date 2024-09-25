@@ -1,0 +1,81 @@
+<c:FragmentDefinition xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:core="sap.ui.core"
+	xmlns:c="sap.ui.core">
+	<Dialog title="Sorgulama Kriterleri" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
+		<f:DynamicPage headerExpanded="{careerInternListModel>/isHeaderExpanded}">
+			<f:header>
+				<f:DynamicPageHeader>
+					<f:content>
+						<fb:FilterBar id="CareerFilter" persistencyKey="myPersKey" useToolbar="false" search=".onCareerSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+							<fb:filterGroupItems>
+								<fb:FilterGroupItem name="Name" label="{i18n>AREA}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Werks' } ] }" selectedKey="{careerInternListModel>/searchCareerParameter/Werks1}">
+											<core:ListItem key="{Key}" text="{Value}"/>
+										</ComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="Category" label="{i18n>UNIT}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Werks' } ] }" selectedKey="{careerInternListModel>/searchCareerParameter/Werks2}">
+											<core:ListItem key="{Key}" text="{Value}"/>
+										</ComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="SupplierName" label="{i18n>YEAR}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<DatePicker value="{path: 'careerInternListModel>/searchCareerParameter/Werks3', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}"></DatePicker>
+									</fb:control>
+								</fb:FilterGroupItem>
+							</fb:filterGroupItems>
+						</fb:FilterBar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<Table id="CareerTable" inset="false" items="{/IntershipCareerSet}">
+					<columns>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="{i18n>QUOTA_TYPE}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="{i18n>UNIT_CODE}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="{i18n>UNIT}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="{i18n>REGISTRATION_NUMBER}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="{i18n>OR_VORNA}"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="{i18n>OR_NACHN}"/>
+						</Column>
+					</columns>
+
+					<items>
+						<ColumnListItem type="Active" press=".onItemCareerSelected">
+							<cells>
+								<Text text="{Quoty}" />
+								<Text text="{Orgeh}" />
+								<Text text="{Orgtx}" />
+								<Text text="{Orgtxx}" />
+								<Text text="{Vorna}" />
+								<Text text="{Nachn}" />
+								<!-- <ObjectIdentifier title="{Orgeh}" text="{Orgtx}"/> -->
+								<!-- <Text text="{path: 'Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />					 -->
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</f:content>
+		</f:DynamicPage>
+		<beginButton>
+			<Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelSearchCareerDialog" type="Reject" />
+		</beginButton>
+	</Dialog>
+</c:FragmentDefinition>

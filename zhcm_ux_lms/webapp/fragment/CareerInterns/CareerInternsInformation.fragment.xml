@@ -1,0 +1,81 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="{i18n>INTERN_SEARCH}" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>INTERN_NUMBER}">
+                        <f:fields>
+                            <Input id="idCareerInput" value="{ parts: [{path: 'careerInternListModel>/newNumberCareerRequest/Pernr'},{path: 'careerInternListModel>/newNumberCareerRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onShowCareerSearchHelp"/>
+                            <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchStajyerPress"/>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+    <f:Form id="CareerForm" editable="true">
+        <f:title>
+            <core:Title text="{i18n>INTERN_INFORMATION}" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>OR_VORNA}">
+                        <f:fields>
+                            <Input value="{careerInternListModel>/selectedCareer/Vorna}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>OR_NACHN}">
+                        <f:fields>
+                            <Input value="{careerInternListModel>/selectedCareer/Nachn}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>UNIT}">
+                        <f:fields>
+                            <Input value="{careerInternListModel>/selectedCareer/Orgtx}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+        <f:FormContainer>
+            <f:formElements>
+                <f:FormElement label="{i18n>REGISTRATION_NUMBER}">
+                    <f:fields>
+                        <Input value="{careerInternListModel>/selectedCareer/Orgehx}" />
+                    </f:fields>
+                </f:FormElement>
+                <f:FormElement label="{i18n>UNIT_CODE}">
+                    <f:fields>
+                        <Input value="{careerInternListModel>/selectedCareer/Orgeh}" />
+                    </f:fields>
+                </f:FormElement>
+                <f:FormElement label="{i18n>QUOTA_TYPE}">
+                    <f:fields>
+                        <!-- <Input value="{careerInternListModel>/selectedCareer/Quoty}" /> -->
+                        <Select forceSelection="false" selectedKey="{careerInternListModel>/selectedCareer/Quoty}" width="100%" items="{  
+                            path:'/ValueHelpSet',
+                            filters : [
+                                { path : 'Id', operator : 'EQ', value1 : 'Quoty'}
+                            ]
+                        }">
+                            <core:Item key="{Key}" text="{Value}"/>
+                        </Select>
+                    </f:fields>
+                </f:FormElement>
+            </f:formElements>
+        </f:FormContainer>
+    </f:Form>
+</c:FragmentDefinition>

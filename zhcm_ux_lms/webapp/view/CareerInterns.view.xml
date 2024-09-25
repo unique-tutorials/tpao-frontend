@@ -1,0 +1,36 @@
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.CareerInterns"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core" displayBlock="true" height="100%" busyIndicatorDelay="0">
+
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Biz Bize Kariyer Stajyerler">
+        <VBox class="sapUiSmallMargin">
+            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.CareerInterns.CareerInternsInformation" type="XML" />
+        </VBox>
+        <VBox class="sapUiSmallMargin">
+            <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" height="400px" headerText="empty string">
+                <IconTabBar select="onIconFilterSelect" selectedKey="{trainerPoolModel>/selectedKey}" stretchContentHeight="true" backgroundDesign="Transparent" applyContentPadding="false">
+                    <items>
+                        <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="INT">
+                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.CareerInterns.TabFilterCareerGeneralInfo" type="XML" />
+                        </IconTabFilter>
+                        <IconTabFilter text="{i18n>INTERNSHIP_DOCUMENTS}" key="internshipDocCareer">
+                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.CareerInterns.CareerInternshipDoc" type="XML" />
+                        </IconTabFilter>
+                    </items>
+                </IconTabBar>
+            </Panel>
+        </VBox>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
+                <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
+                <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
+                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
+                <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveCareer" type="Accept" visible="true"/>
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

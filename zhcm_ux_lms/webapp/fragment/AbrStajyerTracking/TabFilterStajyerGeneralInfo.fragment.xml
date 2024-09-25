@@ -1,0 +1,92 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="{i18n>INTERN_INFORMATION}"/>
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>IBAN_NO}">
+                        <f:fields>
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Iban00}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>UNIVERSITY}">
+                        <f:fields>
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Atext}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>INTERNSHIP_BRANCH}">
+                        <f:fields>
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Ftext}" />
+                        </f:fields>
+                    </f:FormElement>
+
+                    <f:FormElement label="{i18n>INTERNSHIP_TYPE}">
+                        <f:fields>
+                            <!-- <Select selectedKey="{requestStajyerListModel>/SelectedStajyer/Intyp}" /> -->
+                            <Select forceSelection="false" selectedKey="{requestStajyerListModel>/SelectedStajyer/Intyp}" width="100%" items="{  
+                            path:'/ValueHelpSet',
+                            filters : [
+                                { path : 'Id', operator : 'EQ', value1 : 'Intyp'}
+                            ]
+                        }">
+                                <core:Item key="{Key}" text="{Value}"/>
+                            </Select>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>START_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestStajyerListModel>/SelectedStajyer/Begdt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>END_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestStajyerListModel>/SelectedStajyer/Findt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>NUMBER_OF_DAYS}">
+                        <f:fields>
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Nuoda}"/>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>NO_PAID}">
+                        <f:fields>
+                            <CheckBox selected="{requestStajyerListModel>/SelectedStajyer/Nowap}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>CALENDAR_DAY}">
+                        <f:fields>
+                            <CheckBox selected="{requestStajyerListModel>/SelectedStajyer/Calda}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>INTERNSHIP_NOTE}">
+                        <f:fields>
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Intgr}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>EXPLANATION}">
+                        <f:fields>
+                            <TextArea value="{requestStajyerListModel>/SelectedStajyer/Descp}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>DATE_OF_BIRTH}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestStajyerListModel>/SelectedStajyer/Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+</c:FragmentDefinition>
