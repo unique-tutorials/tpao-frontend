@@ -4,19 +4,19 @@
 >
 <Table mode="MultiSelect" busy="{regularRequestListModel>/tableBusy}" width="auto" items="{regularRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{regularRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
     <columns>
-        <Column>
+        <Column minScreenWidth="Tablet" demandPopin="true">
             <Text text="{i18n>YEAR}"/>
         </Column>
-        <Column>
+        <Column minScreenWidth="Tablet" demandPopin="true">
             <Text text="{i18n>MONTH}"/>
         </Column>
-        <Column >
+        <Column minScreenWidth="Tablet" demandPopin="true" >
             <Text text="{i18n>PAYMENT_DATE}"/>
         </Column>
-        <Column>
+        <Column minScreenWidth="Tablet" demandPopin="true">
             <Text text="{i18n>AMOUNT}"/>
         </Column>
-        <Column>
+        <Column minScreenWidth="Tablet" demandPopin="true">
             <Text text="{i18n>CURRENCY}"/>
         </Column>
     </columns>

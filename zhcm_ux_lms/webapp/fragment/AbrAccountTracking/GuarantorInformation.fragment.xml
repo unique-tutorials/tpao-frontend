@@ -13,19 +13,19 @@
                 <Text text="Sıra No" />
             </Column>
             <Column>
-                <Text text="Adı" />
+                <Text text="{i18n>OR_VORNA}" />
             </Column>
             <Column>
-                <Text text="Soyadı" />
+                <Text text="{i18n>OR_NACHN}" />
             </Column>
             <Column>
-                <Text text="Vergi Dairesi" />
+                <Text text="{i18n>TAX_OFFICE}" />
             </Column>
             <Column>
-                <Text text="Vergi Dairesi İli" />
+                <Text text="{i18n>TAX_OFFICE_PROVINCE}" />
             </Column>
             <Column>
-                <Text text="Vergi No" />
+                <Text text="{i18n>TAX_NUMBER}" />
             </Column>
         </columns>
         <items>

@@ -31,25 +31,25 @@
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-            <Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>ADDRESS_TYPE}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>FROM_MERNIS}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>ADDRESS}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>POSTAL_CODE}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>OR_LAND1}"/>
             </Column>
-            <Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>PROVINCE}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>DISTRICT}"/>
             </Column>
         </columns>

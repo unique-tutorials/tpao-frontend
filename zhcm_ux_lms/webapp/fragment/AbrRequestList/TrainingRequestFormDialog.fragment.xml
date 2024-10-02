@@ -111,10 +111,10 @@
                     </Toolbar>
                 </headerToolbar>
                 <columns>
-                    <Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
                         <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY}" />
                     </Column>
-                    <Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
                         <Text text="{i18n>PRIORITIZATIONS}" />
                     </Column>
                 </columns>

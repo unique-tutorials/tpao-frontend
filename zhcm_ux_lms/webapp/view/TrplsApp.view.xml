@@ -45,7 +45,7 @@
                                     <Input value="{requestListModel>/TripRequest/Pernr}"/>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Burslu Öğrenci No" >
+                            <f:FormElement label="Burslu Öğrenci No">
                                 <f:fields>
                                     <Input value="{requestListModel>/TripRequest/Pernt}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
                                 </f:fields>
@@ -84,7 +84,7 @@
                                     <ComboBox value="{requestListModel>/TripRequest/Yname}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Açıklama">
+                            <f:FormElement label="{i18n>EXPLANATION}">
                                 <f:fields>
                                     <TextArea rows="5" value="{requestListModel>/TripRequest/Uname}" />
                                 </f:fields>
@@ -94,7 +94,7 @@
                                     <Input value="{requestListModel>/TripRequest/Iname}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Bütçe Kodu">
+                            <f:FormElement label="{i18n>BUDGET_CODE}">
                                 <f:fields>
                                     <Input value="{requestListModel>/TripRequest/Oname}" showValueHelp="true" />
                                 </f:fields>

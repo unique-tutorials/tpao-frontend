@@ -10,13 +10,13 @@ xmlns:c="sap.ui.core">
         </headerToolbar>
         <columns>
             <Column>
-                <Text text="Ödeme Tarihi" />
+                <Text text="{i18n>PAYMENT_DATE}" />
             </Column>
             <Column>
-                <Text text="Para Birimi" />
+                <Text text="{i18n>CURRENCY}" />
             </Column>
             <Column>
-                <Text text="Tutar" />
+                <Text text="{i18n>AMOUNT}" />
             </Column>
         </columns>
         <items>
@@ -43,13 +43,13 @@ xmlns:c="sap.ui.core">
         </headerToolbar>
         <columns>
             <Column>
-                <Text text="Ödeme Tarihi" />
+                <Text text="{i18n>PAYMENT_DATE}" />
             </Column>
             <Column>
-                <Text text="Para Birimi" />
+                <Text text="{i18n>CURRENCY }" />
             </Column>
             <Column>
-                <Text text="Tutar" />
+                <Text text="{i18n>AMOUNT}" />
             </Column>
             <Column>
                 <Text text="Mahsuplaşan Tutar" />

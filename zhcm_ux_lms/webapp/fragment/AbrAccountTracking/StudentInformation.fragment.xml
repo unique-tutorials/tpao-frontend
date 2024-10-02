@@ -4,7 +4,7 @@
     xmlns:core="sap.ui.core">
     <f:Form editable="true">
         <f:title>
-            <core:Title text="Öğrenci Bilgileri" />
+            <core:Title text="{i18n>STUDENT_INFORMATION }" />
         </f:title>
         <f:layout>
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
@@ -17,7 +17,7 @@
                             <Input value="{requestListModel>/StudentEmployee/Ename}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Soyadı">
+                    <f:FormElement label="{i18n>STUDENT_SURNAME}">
                         <f:fields>
                             <Input value="{requestListModel>/StudentEmployee/Aname}" />
                         </f:fields>
@@ -66,7 +66,7 @@
                             <Input value="{requestListModel>/StudentEmployee/Pname}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Vergi Numarası">
+                    <f:FormElement label="{i18n>TAX_NUMBER_NUB}">
                         <f:fields>
                             <Input value="{requestListModel>/StudentEmployee/Rname}" />
                         </f:fields>
@@ -77,13 +77,13 @@
                             <Input value="{requestListModel>/StudentEmployee/Oname}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Masraf Merkezi">
+                    <f:FormElement label="{i18n>COST_CENTER}">
                         <f:fields>
                             <Input value="{requestListModel>/StudentEmployee/Lname}" showValueHelp="true" />
-                            <CheckBox text="Aktif" />
+                            <CheckBox text="{i18n>STUDENT_ACTIVE}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Bütçe Kodu">
+                    <f:FormElement label="{i18n>BUDGET_CODE}">
                         <f:fields>
                             <Input value="{requestListModel>/StudentEmployee/Mname}" showValueHelp="true" />
                             <CheckBox text="İcralı / Davalı" />

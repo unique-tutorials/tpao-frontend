@@ -44,7 +44,7 @@
                                     <Input value="{requestListModel>/ReservationEmployee/Surnm}"/>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Personel" >
+                            <f:FormElement label="Personel">
                                 <f:fields>
                                     <Input value="{requestListModel>/ReservationEmployee/Surnm}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
                                 </f:fields>
@@ -79,7 +79,7 @@
                                     <Input value="{requestListModel>/ReservationEmployee/Qurnm}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Bütçe Kodu">
+                            <f:FormElement label="{i18n>BUDGET_CODE}">
                                 <f:fields>
                                     <Input value="{requestListModel>/ReservationEmployee/Wurnm}" showValueHelp="true" />
                                 </f:fields>
@@ -88,7 +88,7 @@
                     </f:FormContainer>
                     <f:FormContainer >
                         <f:formElements>
-                            <f:FormElement label="Açıklama">
+                            <f:FormElement label="{i18n>EXPLANATION}">
                                 <f:fields>
                                     <TextArea rows="5" value="{requestListModel>/ReservationEmployee/Surnm}" />
                                 </f:fields>

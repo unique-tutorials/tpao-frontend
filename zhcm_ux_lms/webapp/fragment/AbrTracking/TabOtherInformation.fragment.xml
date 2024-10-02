@@ -9,22 +9,22 @@
 			</OverflowToolbar>
 		</headerToolbar>
         <columns>
-            <Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>SERIAL_NO}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>OR_VORNA}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>OR_NACHN}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>TAX_OFFICE}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>TAX_OFFICE_PROVINCE}"/>
             </Column>
-            <Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>TAX_NUMBER}"/>
             </Column>
         </columns>
@@ -57,13 +57,13 @@
 			</OverflowToolbar>
 		</headerToolbar>
         <columns>
-            <Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>DOCUMENT_TYPE}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>DATE_OF_ISSUE}"/>
             </Column>
-            <Column >
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>REASON_FOR_ISSUANCE}"/>
             </Column>
         </columns>

@@ -12,25 +12,25 @@
         </headerToolbar>
         <columns>
             <Column>
-                <Text text="Yıl"/>
+                <Text text="{i18n>YEAR}"/>
             </Column>
             <Column >
-                <Text text="Ay"/>
+                <Text text="{i18n>MONTH}"/>
             </Column>
             <Column >
                 <Text text="Ödeme Türü"/>
             </Column>
             <Column >
-                <Text text="Ödeme Tarihi"/>
+                <Text text="{i18n>PAYMENT_DATE}"/>
             </Column>
             <Column >
-                <Text text="Tutar"/>
+                <Text text="{i18n>AMOUNT}"/>
             </Column>
             <Column>
-                <Text text="Para Birimi"/>
+                <Text text="{i18n>CURRENCY}"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Mahsup No "/>
+                <Text text="Mahsup No"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="Ana Para Tutarı"/>

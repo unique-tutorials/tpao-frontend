@@ -2,48 +2,50 @@
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form">
 
-    <f:Form editable="true">
-        <f:layout>
-            <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
-        </f:layout>
-        <f:formContainers>
-            <f:FormContainer>
-                <f:formElements>
-                    <f:FormElement>
-                        <f:fields>
-                            <DatePicker placeholder="Hesap Tarihi" value="{requestListModel>/interestEmployee/Serno}" />
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement>
-                        <f:fields>
-                            <CheckBox text="Dövize Göre Hesapla" selected="{requestListModel>/interestEmployee/Serno}" />
-                        </f:fields>
-                    </f:FormElement>
-                </f:formElements>
-            </f:FormContainer>
-            <f:FormContainer>
-                <f:formElements>
-                    <f:FormElement>
-                        <f:fields>
-                            <Button type="Ghost" text="Faiz Hesapla" />
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement>
-                        <f:fields>
-                            <Button type="Ghost" text="Faiz Sil" />
-                        </f:fields>
-                    </f:FormElement>
-                </f:formElements>
-            </f:FormContainer>
-        </f:formContainers>
-    </f:Form>
+    <VBox class="sapUiSmallMarginBottom">
+        <f:Form editable="true">
+            <f:layout>
+                <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement>
+                            <f:fields>
+                                <DatePicker placeholder="Hesap Tarihi" value="{requestListModel>/interestEmployee/Serno}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement>
+                            <f:fields>
+                                <CheckBox text="Dövize Göre Hesapla" selected="{requestListModel>/interestEmployee/Serno}" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement>
+                            <f:fields>
+                                <Button type="Ghost" text="Faiz Hesapla" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement>
+                            <f:fields>
+                                <Button type="Emphasized" text="Faiz Sil" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+    </VBox>
     <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
         <columns>
             <Column>
-                <Text text="Ödeme Tarihi" />
+                <Text text="{i18n>PAYMENT_DATE}" />
             </Column>
             <Column>
-                <Text text="Para Birimi" />
+                <Text text="{i18n>CURRENCY}" />
             </Column>
             <Column>
                 <Text text="Ödenen Tutar" />
@@ -52,7 +54,7 @@
                 <Text text="Hesap Tarihi" />
             </Column>
             <Column>
-                <Text text="Gün Sayısı" />
+                <Text text="{i18n>NUMBER_OF_DAYS}" />
             </Column>
             <Column>
                 <Text text="Ortalama Faiz Oranı" />
@@ -76,42 +78,43 @@
             </ColumnListItem>
         </items>
     </Table>
-    <f:Form editable="true">
-        <f:layout>
-            <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
-        </f:layout>
-        <f:formContainers>
-            <f:FormContainer>
-                <f:formElements>
-                    <f:FormElement>
-                       
-                        <f:fields>
-                            <Input placeholder="Dosya Adı" value="{requestListModel>/interestEmployee/Serno}" />
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement>
-                        <f:fields>
-                            <CheckBox text="Mahsuplaştı" selected="{requestListModel>/interestEmployee/Serno}" />
-                        </f:fields>
-                    </f:FormElement>
-                </f:formElements>
-            </f:FormContainer>
-            <f:FormContainer>
-                <f:formElements>
-                    <f:FormElement>
-                        <f:fields>
-                            <Button type="Ghost" text="Mahsuplaştır / Mahsup Göster" />
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement>
-                        <f:fields>
-                            <Button type="Ghost" text="Faiz CSV Oluştur" />
-                        </f:fields>
-                    </f:FormElement>
-                </f:formElements>
-            </f:FormContainer>
-        </f:formContainers>
-    </f:Form>
+    <VBox class="sapUiSmallMarginTopBottom">
+        <f:Form editable="true">
+            <f:layout>
+                <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement>
+                            <f:fields>
+                                <Button type="Ghost" text="Mahsuplaştır / Mahsup Göster" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement>
+                            <f:fields>
+                                <CheckBox text="Mahsuplaştı" selected="{requestListModel>/interestEmployee/Serno}" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement>
+                            <f:fields>
+                                <Input placeholder="{i18n>FILE_NAME}" value="{requestListModel>/interestEmployee/Serno}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement>
+                            <f:fields>
+                                <Button type="Emphasized" text="Faiz CSV Oluştur" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+    </VBox>
     <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
@@ -122,10 +125,10 @@
         </headerToolbar>
         <columns>
             <Column>
-                <Text text="Ödeme Tarihi" />
+                <Text text="{i18n>PAYMENT_DATE}" />
             </Column>
             <Column>
-                <Text text="Para Birimi" />
+                <Text text="{i18n>CURRENCY}" />
             </Column>
             <Column>
                 <Text text="Ödenen Tutar" />
@@ -158,4 +161,41 @@
             </ColumnListItem>
         </items>
     </Table>
+    <VBox class="sapUiSmallMarginTopBottom">
+        <f:Form editable="true">
+            <f:layout>
+                <f:ColumnLayout columnsM="2" columnsL="3" columnsXL="4" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement>
+                            <f:fields>
+                                <Button type="Ghost" text="Ek Ödeme Kaydet" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement>
+                            <f:fields>
+                                <Button type="Ghost" text="Kalan Borç Hesapla" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+                <f:FormContainer>
+                    <f:formElements>
+                        <f:FormElement>
+                            <f:fields>
+                                <Input placeholder="{i18n>FILE_NAME}" value="{requestListModel>/interestEmployee/Serno}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement>
+                            <f:fields>
+                                <Button type="Emphasized" text="Ek Ödeme CSV Oluştur" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+    </VBox>
 </c:FragmentDefinition>

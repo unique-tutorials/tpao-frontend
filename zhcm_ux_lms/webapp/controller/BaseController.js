@@ -58,6 +58,42 @@ sap.ui.define([
 				actions: sap.m.MessageBox.Action.OK // default
 			});
 		},
+		_sweetAlert: function (sMessage, sMessageType) {
+			var sTitle, sText, sIcon;
+			var sI18n = this.getView().getModel("i18n").getResourceBundle();
+			switch (sMessageType) {
+				case 'S':
+					sTitle = sI18n.getText("SUCCESS_TEXT");
+					sText = sMessage;
+					sIcon = "success";
+					break;
+				case 'W':
+					sTitle = sI18n.getText("WARNING_TEXT");
+					sText = sMessage;
+					sIcon = "warning";
+					break;
+				case 'E':
+					sTitle = sI18n.getText("ERROR");
+					sText = sMessage;
+					sIcon = "error";
+					break;
+				case 'I':
+					sTitle = sI18n.getText("INFO_TEXT");
+					sText = sMessage;
+					sIcon = "info";
+					break;
+				default:
+					sText = sMessage;
+					sIcon = "info";
+			}
+			Swal.fire({
+				title: sTitle,
+				text: sText,
+				icon: sIcon,
+				showConfirmButton: false,
+				timer: 2000
+			});
+		},
 
 		/**
 		 * Convenience method for setting the view model.

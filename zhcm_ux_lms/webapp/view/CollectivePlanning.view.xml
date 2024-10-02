@@ -27,7 +27,7 @@
                         </template>
                     </Column>
                     <Column width="11rem">
-                        <m:Label text="İşlemler"/>
+                        <m:Label text="{i18n>ACTION_LIST}"/>
                         <template>
                             <Button icon="sap-icon://menu" type="Accept" press="onExternalTrainerActions" tooltip="{i18n>ACTION_LIST}"></Button>
                         </template>

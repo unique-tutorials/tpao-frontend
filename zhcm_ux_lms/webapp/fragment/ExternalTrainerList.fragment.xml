@@ -9,16 +9,16 @@
                 </Toolbar>
             </headerToolbar>
             <columns>
-                <Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
                     <Text text="{i18n>TRAINER_ID}"/>
                 </Column>
-                <Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
                     <Text text="{i18n>TRAINER_NAME}"/>
                 </Column>
-                <Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
                     <Text text="{i18n>TRAINER_BUKRS}"/>
                 </Column>
-                <Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
                     <Text text="{i18n>ACTION_LIST}"/>
                 </Column>
             </columns>

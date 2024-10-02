@@ -1,0 +1,49 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Dialog afterClose="onDialogAfterClose" >
+        <Table busyIndicatorDelay="0" inset="true" items="{path:'requestStajyerListModel>/attachmentList'}" showNoData="false">
+            <columns>
+                <Column minScreenWidth="Tablet" demandPopin="true" width="30rem">
+                    <Text text="{i18n>ATTACHMENT_FILE_NAME}" />
+                </Column>
+                <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>Qualification_Name}" />
+                </Column> -->
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>ATTACHMENT_FILE_NAME}" visible="false" />
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>ATTACHMENT_FILE_TYPE}" />
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                    <Text text="{i18n>CREATION_DATE}" />
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                    <Text text="{i18n>CREATED_BY}" />
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                    <Text text="{i18n>ACTION_LIST}" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <Link press="onAttachDownload" text="{requestStajyerListModel>Name}" />
+                        <!-- <Text text="{requestStajyerListModel>Qlftx}" /> -->
+                        <Text text="{requestStajyerListModel>Attid}" visible="false" />
+                        <Text text="{requestStajyerListModel>MimeType}" />
+                        <Text text="{ path: 'requestStajyerListModel>Crdat', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy'}}" />
+                        <Text text="{requestStajyerListModel>Uname}" />
+                        <HBox justifyContent="Center">
+                            <Button type="Reject" class="sapUiSmallMarginEnd" icon="sap-icon://delete" press="onDeleteAttachment" />
+                        </HBox>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <buttons>
+            <Button text="{i18n>LABEL_CANCEL}" icon="sap-icon://sys-cancel-2" type="Reject" press="onCloseDialog" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
