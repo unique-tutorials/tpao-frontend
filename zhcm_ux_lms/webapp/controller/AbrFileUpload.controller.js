@@ -34,12 +34,12 @@ sap.ui.define([
         _getRequestList: function () { 
 
         },
-        onNewTrainingRequest: function (oEvent) {
-            if (!this._oNewRequestDialog) {
-				this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
-				this.getView().addDependent(this._oNewRequestDialog);
+        onShowWageSearchHelp: function (oEvent) {
+            if (!this._oNewWageSearchHelpDialog) {
+				this._oNewWageSearchHelpDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrFileUpload.WageSearchHelpDialog", this);
+				this.getView().addDependent(this._oNewWageSearchHelpDialog);
 			}
-			this._oNewRequestDialog.open();
+			this._oNewWageSearchHelpDialog.open();
          }
 	});
 });

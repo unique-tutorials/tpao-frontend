@@ -80,6 +80,7 @@
                             <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Distr'}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
+                            <!-- <Input value="{requestListModel>/identityEmployee/Distr}" /> -->
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DATE_OF_ISSUES}">

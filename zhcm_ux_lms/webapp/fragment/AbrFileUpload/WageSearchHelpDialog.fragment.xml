@@ -1,0 +1,94 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core">
+    <Dialog title="Öğrenci Maaşları Sorgulama" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false" resizable="true" draggable="true">
+        <f:DynamicPage headerExpanded="{/headerExpanded}">
+            <f:header>
+                <f:DynamicPageHeader>
+                    <f:content>
+                        <fb:FilterBar id="filterBarWage" persistencyKey="myPersKey" useToolbar="false" search=".onSearchWage" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                            <fb:filterGroupItems>
+                                <fb:FilterGroupItem name="Name" label="Yıl / Ay" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <FlexBox alignItems="Start" justifyContent="SpaceBetween">
+                                            <Input />
+                                            <ComboBox />
+                                        </FlexBox>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="Category" label="Ödeme Tarihi" groupName="Group2" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <DatePicker />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="SupplierName" label="Oluşturma Kriterleri" groupName="Group4" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <CheckBox />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="SupplierName" label="İsme Göre Alfabetik" groupName="Group5" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <CheckBox />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="SupplierName" label="Burs Dönemi" groupName="Group6" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <CheckBox />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                            </fb:filterGroupItems>
+                        </fb:FilterBar>
+                    </f:content>
+                </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+                <Table inset="false" items="{
+						path: '/ProductCollection'
+					}">
+                    <columns>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Kısıt Maaş"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Öğrenci No"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Adı Soyadı"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Burs Dönemi"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Maaş"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Kırtasiye"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Para Birimi"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <Text text="{Wage}" />
+                                <Text text="{Pernr}" />
+                                <ObjectIdentifier title="{Name}" text="{ProductId}" />
+                                <Text text="{Category}" />
+                                <Text text="{SupplierName}" />
+                                <Text text="{Width}" />
+                                <Text text="{Depth}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </f:content>
+        </f:DynamicPage>
+        <endButton>
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" type="Reject" press=".onCancelWageButtonPress"/>
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>

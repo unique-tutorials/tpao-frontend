@@ -9,7 +9,7 @@
         <VBox class="sapUiSmallMargin">
             <f:Form editable="true">
                 <f:title>
-                    <core:Title text="Öğrenci Arama" />
+                    <core:Title text="{i18n>STUDENT_SEARCH}" />
                 </f:title>
                 <f:layout>
                     <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -17,10 +17,10 @@
                 <f:formContainers>
                     <f:FormContainer>
                         <f:formElements>
-                            <f:FormElement label="Öğrenci No">
+                            <f:FormElement label="{i18n>STUDENT_NUMBER}">
                                 <f:fields>
                                     <Input showValueHelp="true"/>
-                                    <Button text="Sorgula" type="Emphasized"/>
+                                    <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized"/>
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>
@@ -28,12 +28,284 @@
                 </f:formContainers>
             </f:Form>
         </VBox>
-        <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="400px">
+        <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="55rem">
             <content>
                 <IconTabBar stretchContentHeight="true">
                     <items>
-                        <IconTabFilter text="Genel Bilgi" key="info">
+                        <IconTabFilter text="{i18n>STUDENT_INFORMATION}" key="info">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.StudentInformation" type="XML" />
+                            <items>
+                                <IconTabFilter text="{i18n>STUDENT_ACCOUNT_INFORMATION}" key="AbrStdnAccount">
+                                    <f:Form editable="true">
+                                        <f:title>
+                                            <core:Title text="{i18n>STUDENT_ACCOUNT_INFORMATION}" />
+                                        </f:title>
+                                        <f:layout>
+                                            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                                        </f:layout>
+                                        <f:formContainers>
+                                            <f:FormContainer title="{i18n>DOMESTIC}">
+                                                <f:formElements>
+                                                    <f:FormElement label="{i18n>BANK_NAME}">
+                                                        <f:fields>
+                                                            <Input value="{SupplierName}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>BANK_BRANCH}">
+                                                        <f:fields>
+                                                            <Input value="{Street}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>BANK_CITY}">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>TL_FOREIGN_EXCHANGE_NUMBER}">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>TL_FOREIGN_EXCHANGE_IBAN}">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>TL_FOREIGN_EXCHANGE_IBAN}">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>EXPLANATION}">
+                                                        <f:fields>
+                                                            <TextArea rows="5" value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                </f:formElements>
+                                            </f:FormContainer>
+                                            <f:FormContainer title="{i28n>ABROAD}">
+                                                <f:formElements>
+                                                    <f:FormElement label="{i18n>BANK_NAME}">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>BANK_BRANCH}">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>BANK_CITY}">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>ACCOUNT_NUMBER}">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>SWIFT_CODE}">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>IBAN}">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>ACC_NO}">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>ABA_NO}">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>EXPLANATION}">
+                                                        <f:fields>
+                                                            <TextArea rows="5" value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                </f:formElements>
+                                            </f:FormContainer>
+                                        </f:formContainers>
+                                    </f:Form>
+                                </IconTabFilter>
+                                <IconTabFilter text="Dil Okulu Hesap Bilgileri" key="AbrLngAccount">
+                                    <f:Form editable="true">
+                                        <f:title>
+                                            <core:Title text="Dil Okulu Hesap Bilgileri" />
+                                        </f:title>
+                                        <f:layout>
+                                            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                                        </f:layout>
+                                        <f:formContainers>
+                                            <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_SCHOOL}">
+                                                <f:formElements>
+                                                    <f:FormElement label="{i18n>BANK_NAME}">
+                                                        <f:fields>
+                                                            <Input value="{SupplierName}"/>
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>BANK_BRANCH}">
+                                                        <f:fields>
+                                                            <Input value="{Street}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>BANK_CITY}">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="{i18n>TL_FOREIGN_EXCHANGE_NUMBER}">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="TL / Döviz IBAN">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Açıklama">
+                                                        <f:fields>
+                                                            <TextArea rows="5" value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                </f:formElements>
+                                            </f:FormContainer>
+                                            <f:FormContainer title="Yurtdışı Dil Okulu">
+                                                <f:formElements>
+                                                    <f:FormElement label="Banka Adı">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Banka Şubesi">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Banka Şehri">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Hesap No (Account)">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Swift Kodu">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="IBAN">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="ACC No">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="ABA No (Routing)">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Öğrenci ID">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Açıklama">
+                                                        <f:fields>
+                                                            <TextArea rows="5" value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                </f:formElements>
+                                            </f:FormContainer>
+                                        </f:formContainers>
+                                    </f:Form>
+                                </IconTabFilter>
+                                <IconTabFilter text="Master Okulu Hesap Bilgileri" key="AbrMstrAccount">
+                                    <f:Form editable="true">
+                                        <f:title>
+                                            <core:Title text="Master Okulu Hesap Bilgileri" />
+                                        </f:title>
+                                        <f:layout>
+                                            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                                        </f:layout>
+                                        <f:formContainers>
+                                            <f:FormContainer title="Yurtdışı Master Okulu">
+                                                <f:formElements>
+                                                    <f:FormElement label="Banka Adı">
+                                                        <f:fields>
+                                                            <Input value="{SupplierName}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Banka Şubesi">
+                                                        <f:fields>
+                                                            <Input value="{Street}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Banka Şehri">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Hesap No (Account)">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Swift Kodu">
+                                                        <f:fields>
+                                                            <Input value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Açıklama">
+                                                        <f:fields>
+                                                            <TextArea rows="5" value="{ZIPCode}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                </f:formElements>
+                                            </f:FormContainer>
+                                            <f:FormContainer title="">
+                                                <f:formElements>
+                                                    <f:FormElement label="IBAN">
+                                                        <f:fields>
+                                                            <Input value="{Url}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="ACC No">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="ABA No (Routing)">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                    <f:FormElement label="Öğrenci ID">
+                                                        <f:fields>
+                                                            <Input value="{Twitter}" />
+                                                        </f:fields>
+                                                    </f:FormElement>
+                                                </f:formElements>
+                                            </f:FormContainer>
+                                        </f:formContainers>
+                                    </f:Form>
+                                </IconTabFilter>
+                            </items>
                         </IconTabFilter>
                         <IconTabFilter text="Kefil Bilgileri" key="attachments">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorInformation" type="XML" />
@@ -44,7 +316,7 @@
                         <IconTabFilter text="Faiz Tablosu" key="people">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.InterestTable" type="XML" />
                         </IconTabFilter>
-                        <IconTabFilter text="Geri Ödeme Bilgileri" key="people">
+                        <IconTabFilter text="Geri Ödeme Bilgileri" key="people2">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.RefundInformation" type="XML" />
                         </IconTabFilter>
                     </items>
@@ -55,7 +327,6 @@
             <infoToolbar>
             </infoToolbar>
         </Panel>
-
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
@@ -63,7 +334,7 @@
                 <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/>
                 <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
                 <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="Yeni Talep Oluştur" icon="sap-icon://education" press="onNewTrainingRequest" type="Accept" visible="true"/>
+                <Button text="{i18n>CREATE_NEW_REQUEST}" icon="sap-icon://education" press="onNewTrainingRequest" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>
     </Page>

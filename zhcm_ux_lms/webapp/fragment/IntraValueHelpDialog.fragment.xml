@@ -5,27 +5,27 @@
         <content>
             <Table noDataText="{i18n>NO_VALUEHELP_DATA}" busyIndicatorDelay="0" growing="true" growingScrollToLoad="true" alternateRowColors="true" mode="SingleSelectLeft" contentWidth="35rem"  items="{path:'trainerPoolModel>/valueHelpEmployeeSet'}">
                 <columns>
-                    <Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
                         <header>
                             <Text text="{i18n>OR_PERNR}"/>
                         </header>
                     </Column>
-                    <Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
                         <header>
                             <Text text="{i18n>OR_ENAME}"/>
                         </header>
                     </Column>
-                    <Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
                         <header>
                             <Text text="{i18n>OR_STETX}"/>
                         </header>
                     </Column>
-                    <Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
                         <header>
                             <Text text="{i18n>OR_PLSTX}"/>
                         </header>
                     </Column>
-                    <Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
                         <header>
                             <Text text="{i18n>OR_ORGTX}"/>
                         </header>

@@ -65,11 +65,11 @@
                             <CheckBox selected="{requestStajyerListModel>/SelectedStajyer/Nowap}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>CALENDAR_DAY}">
+                    <!-- <f:FormElement label="{i18n>CALENDAR_DAY}">
                         <f:fields>
                             <CheckBox selected="{requestStajyerListModel>/SelectedStajyer/Calda}" />
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                     <f:FormElement label="{i18n>INTERNSHIP_NOTE}">
                         <f:fields>
                             <Input value="{requestStajyerListModel>/SelectedStajyer/Intgr}" />

@@ -67,7 +67,7 @@ sap.ui.define([
             var sPernr = this.getView().getModel("requestListModel").getProperty("/newNumberRequest/Pernr");
         
             if (!sPernr) {
-                sap.m.MessageToast.show("Öğrenci numarası boş bırakılamaz.");
+                this._sweetAlert(this.getText("STUDENT_NUMBER_REQUIRED"), "W");
                 return;
             }
             function readData(sPath, sModelProperty, errorMessage) {
@@ -116,7 +116,6 @@ sap.ui.define([
                     success: function(oData, oResponse) {
                         debugger;
                         if (oData.Mesty === "S") {
-                            // MessageBox.success(that.getText("EDU_TASK_SAVED_SUCCESSFUL"));
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
@@ -137,7 +136,6 @@ sap.ui.define([
                     success: function(oData, oResponse) {
                         debugger;
                         if (oData.Mesty === "S") {
-                             // MessageBox.success(that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"));
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
@@ -158,7 +156,6 @@ sap.ui.define([
                     success: function(oData, oResponse) {
                         debugger;
                         if (oData.Mesty === "S") {
-                            // MessageBox.success(that.getText("IDENTITY_INFORMATION_SAVED_SUCCESSFUL"));
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
@@ -256,6 +253,32 @@ sap.ui.define([
             if (this._oGuarantorIdentityDialog) {
                 this._oGuarantorIdentityDialog.close();
             } 
+        },
+        onShowUnitSearchHelp:function(oEvent){
+            if (!this._oUnitSearchHelpDialog) {
+                this._oUnitSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.UnitSearchHelpDialog", this);
+                this.getView().addDependent(this._oUnitSearchHelpDialog);
+            } else {
+                this._oUnitSearchHelpDialog.close();
+            }
+            this._oUnitSearchHelpDialog.open();
+        },
+        onUnitSelected:function(oEvent){
+            debugger;
+            var oSelectedUnitItem = oEvent.getSource().getBindingContext().getObject();
+        
+            var oViewModel = this.getModel('requestListModel');
+            oViewModel.setProperty("/SelectedEmployee/Unicd", oSelectedUnitItem.Orgeh); 
+            oViewModel.setProperty("/SelectedEmployee/Orgtx", oSelectedUnitItem.Orgtx ); 
+
+            if (this._oUnitSearchHelpDialog) {
+                this._oUnitSearchHelpDialog.close();
+            }
+        },
+        onCancelUnitButtonPress:function(oEvent){
+            if (this._oUnitSearchHelpDialog) {
+                this._oUnitSearchHelpDialog.close();
+            }
         }
         // _callErrorDialog: function (messageText) {
 		// 	var bCompact = !!this.getView().$().closest(".sapUiSizeCompact").length;
@@ -281,13 +304,5 @@ sap.ui.define([
         //         }
         //     });
         // },
-        
-        // onNewTrainingRequest: function (oEvent) {
-        //     if (!this._oNewRequestDialog) {
-		// 		this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
-		// 		this.getView().addDependent(this._oNewRequestDialog);
-		// 	}
-		// 	this._oNewRequestDialog.open();
-        //  },
 	});
 });

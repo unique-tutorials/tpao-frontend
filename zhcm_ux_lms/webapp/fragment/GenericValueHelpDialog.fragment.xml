@@ -5,12 +5,12 @@
 				mode="SingleSelectLeft" contentWidth="35rem" title="Arama yardımı"
 				items="{path:'trainerPoolModel>/valueHelpSet'}">
 				<columns>
-					<Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
 						<header>
 							<Text text="ID"/>
 						</header>
 					</Column>
-					<Column>
+					<Column minScreenWidth="Tablet" demandPopin="true">
 						<header>
 							<Text text="Tanımı"/>
 						</header>
