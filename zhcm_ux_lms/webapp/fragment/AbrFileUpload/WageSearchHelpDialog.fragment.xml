@@ -52,10 +52,10 @@
                             <Text text="Kısıt Maaş"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Öğrenci No"/>
+                            <Text text="{i18n>STUDENT_NUMBER}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Adı Soyadı"/>
+                            <Text text="{i18n>OR_ENAME}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="Burs Dönemi"/>
@@ -67,7 +67,7 @@
                             <Text text="Kırtasiye"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Para Birimi"/>
+                            <Text text="{i18n>CURRENCY}"/>
                         </Column>
                     </columns>
 
