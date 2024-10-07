@@ -15,7 +15,7 @@ sap.ui.define([
         formatter: formatter,
         onInit: function () {
             var oViewModel = new JSONModel();
-            this.setModel(oViewModel, "requestListModel");
+            this.setModel(oViewModel, "abrRequestListModel");
             this._initiateModel();
             this.getRouter().getRoute("AbrRequestList").attachPatternMatched(this._onRequestListMatched, this);
         },
@@ -23,12 +23,32 @@ sap.ui.define([
             this._getRequestList();
         },
         _initiateModel: function () {
-            var oViewModel = this.getModel("requestListModel");
+            var oViewModel = this.getModel("abrRequestListModel");
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},
-                currentRequest: {}
-             
+                currentRequest: {},
+                RequestList:[{
+                    Under:"Bilecik Şeyh Edebali Üniversitesi",
+                    Maste:"Bilgisayar Mühendisliği",
+                    Masten:"Bilgisayar Mühendisliği EN",
+                    Subjet:"Bilgisayar Ağları ve Güvenliği",
+                    Subjen:"Bilgisayar Ağları ve Güvenliği EN",
+                    Count:"Almanya",
+                    Quqta:"23",
+                    Direc:"Ünite Müdürlüğü",
+                    Reaso:"Yüksek Lisans"
+                },{
+                    Under:"Düzce Üniversitesi",
+                    Maste:"Elektronik Mühendisliği",
+                    Masten:"Elektronik Mühendisliği EN",
+                    Subjet:"Bilgisayar Ağları ve Güvenliği",
+                    Subjen:"Bilgisayar Ağları ve Güvenliği EN",
+                    Count:"Fransa",
+                    Quqta:"30",
+                    Direc:"Ünite Müdürlüğü",
+                    Reaso:"Yüksek Lisans"
+                }]
             });
         },
         _getRequestList: function () { 

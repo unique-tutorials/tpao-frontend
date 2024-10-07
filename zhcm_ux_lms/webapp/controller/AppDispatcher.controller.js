@@ -68,13 +68,13 @@ sap.ui.define([
                 },
                 {
                     "appName": "TrpolApp",
-                    "visible": true,
+                    "visible": false,
                     "title": 'Staj Eğitimi',
                     "icon": "sap-icon://group"
                 },
                 {
                     "appName": "TrpolApp",
-                    "visible": true,
+                    "visible": false,
                     "title": 'Beceri Eğitimi',
                     "icon": "sap-icon://group"
                 },
