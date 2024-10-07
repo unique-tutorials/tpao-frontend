@@ -40,6 +40,11 @@ sap.ui.define([
 				this.getView().addDependent(this._oNewWageSearchHelpDialog);
 			}
 			this._oNewWageSearchHelpDialog.open();
+         },
+         onCancelWageButtonPress:function(oEvent){
+            if (this._oNewWageSearchHelpDialog) {
+                this._oNewWageSearchHelpDialog.close();
+            }
          }
 	});
 });

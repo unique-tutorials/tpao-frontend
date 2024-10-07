@@ -39,7 +39,7 @@
                 <f:formContainers>
                     <f:FormContainer>
                         <f:formElements>
-                            <f:FormElement label="Talep No">
+                            <f:FormElement label="{i18n>REQUEST_NUMBER}">
                                 <f:fields>
                                     <Input value="{requestListModel>/ReservationEmployee/Surnm}"/>
                                 </f:fields>
@@ -59,17 +59,17 @@
                                     <DatePicker value="{requestListModel>/ReservationEmployee/Eurnm}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Ülke">
+                            <f:FormElement label="{i18n>OR_LAND1}">
                                 <f:fields>
                                     <ComboBox value="{requestListModel>/ReservationEmployee/Aurnm}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Ülke">
+                            <f:FormElement label="Eyalet">
                                 <f:fields>
-                                    <ComboBox value="{requestListModel>/ReservationEmployee/Burnm}" />
+                                    <ComboBox value="{requestListModel>/ReservationEmployee/Curnm}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Eyalet">
+                            <f:FormElement label="Şehir">
                                 <f:fields>
                                     <ComboBox value="{requestListModel>/ReservationEmployee/Curnm}" />
                                 </f:fields>

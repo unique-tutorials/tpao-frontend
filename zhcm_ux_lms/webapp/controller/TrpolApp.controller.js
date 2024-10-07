@@ -15,24 +15,39 @@ sap.ui.define([
         formatter: formatter,
         onInit: function () {
             var oViewModel = new JSONModel();
-            this.setModel(oViewModel, "requestListModel");
+            this.setModel(oViewModel, "trpolRequestListModel");
             this._initiateModel();
-            this.getRouter().getRoute("AbrTracking").attachPatternMatched(this._onRequestListMatched, this);
+            this.getRouter().getRoute("TrpolApp").attachPatternMatched(this._onRequestListMatched, this);
         },
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
         _initiateModel: function () {
-            var oViewModel = this.getModel("requestListModel");
+            var oViewModel = this.getModel("trpolRequestListModel");
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},
-                currentRequest: {}
+                currentRequest: {},
+                searchParameter:{}
              
             });
         },
         _getRequestList: function () { 
 
         },
+        onShowReservationSearchHelp:function(oEvent){
+            if (!this._oReservationSearchHelpDialog) {
+                this._oReservationSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.TrpolApp.ReservationSearchHelp", this);
+                this.getView().addDependent(this._oReservationSearchHelpDialog);
+            } else {
+                this._oReservationSearchHelpDialog.close();
+            }
+            this._oReservationSearchHelpDialog.open();
+        },
+        onReservationSearchCancelButtonPress:function(oEvent){
+            if (this._oReservationSearchHelpDialog) {
+                this._oReservationSearchHelpDialog.close();
+            }
+        }
 	});
 });
