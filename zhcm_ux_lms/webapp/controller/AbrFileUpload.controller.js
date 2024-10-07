@@ -41,7 +41,7 @@ sap.ui.define([
 			}
 			this._oNewWageSearchHelpDialog.open();
          },
-         onCancelWageButtonPress:function(oEvent){
+        onCancelWageButtonPress:function(oEvent){
             if (this._oNewWageSearchHelpDialog) {
                 this._oNewWageSearchHelpDialog.close();
             }
