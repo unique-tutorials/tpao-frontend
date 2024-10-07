@@ -10,7 +10,7 @@
         <VBox class="sapUiSmallMargin">
             <f:Form editable="true">
                 <f:title>
-                    <core:Title text="Rezervasyon Arama" />
+                    <core:Title text="{i18n>RESERVATION_SEARCH}" />
                 </f:title>
                 <f:layout>
                     <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -18,7 +18,7 @@
                 <f:formContainers>
                     <f:FormContainer>
                         <f:formElements>
-                            <f:FormElement label="Rezervasyon Talep No">
+                            <f:FormElement label="{i18n>RESERVATION_REQUEST_NUMBER}">
                                 <f:fields>
                                     <Input id="idInput" value="{ parts: [{path: 'requestListModel>/reservationRequest/Pernr'},{path: 'requestListModel>/reservationRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}"   valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp"/>
                                     <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchReservationPress"/>
@@ -32,7 +32,7 @@
         <VBox class="sapUiSmallMargin">
             <f:Form id="FormDisplay354" editable="true">
                 <f:title>
-                    <core:Title text="Rezervasyon Bilgileri" />
+                    <core:Title text="{i18n>RESERVATION_INFORMATION}" />
                 </f:title>
                 <f:layout>
                     <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
@@ -40,12 +40,12 @@
                 <f:formContainers>
                     <f:FormContainer>
                         <f:formElements>
-                            <f:FormElement label="Talep No">
+                            <f:FormElement label="{i18n>REQUEST_NUMBER}">
                                 <f:fields>
                                     <Input value="{requestListModel>/TripRequest/Pernr}"/>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Burslu Öğrenci No">
+                            <f:FormElement label="{i18n>SCHOLARSHIP_STUDENT_NUMBER}">
                                 <f:fields>
                                     <Input value="{requestListModel>/TripRequest/Pernt}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
                                 </f:fields>
@@ -65,7 +65,7 @@
                                     <DatePicker value="{requestListModel>/TripRequest/Wname}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Ülke">
+                            <f:FormElement label="{i18n>OR_LAND1}">
                                 <f:fields>
                                     <ComboBox value="{requestListModel>/TripRequest/Rname}" />
                                 </f:fields>

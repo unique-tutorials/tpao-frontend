@@ -69,8 +69,8 @@
                         </f:FormElement>
                         <f:FormElement label="{i18n>UNIT_CODE}">
                             <f:fields>
-                                <Input  value="{requestListModel>/SelectedEmployee/Unicd}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitSearchHelp"/>
-                                <Input  value="{requestListModel>/SelectedEmployee/Orgtx}"/>
+                                <Input value="{requestListModel>/SelectedEmployee/Unicd}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitSearchHelp"/>
+                                <Input value="{requestListModel>/SelectedEmployee/Orgtx}"/>
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>COST_CENTER}">

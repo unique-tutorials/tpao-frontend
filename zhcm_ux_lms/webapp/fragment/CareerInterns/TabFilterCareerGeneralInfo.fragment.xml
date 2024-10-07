@@ -2,7 +2,7 @@
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core">
-    <f:Form editable="true" width="100%">
+    <f:Form editable="true">
         <f:title>
             <core:Title text="{i18n>TAB_GENERAL_INFORMATION}"/>
         </f:title>
@@ -14,23 +14,23 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>IBAN_NO}">
                         <f:fields>
-                            <Input value="{careerInternListModel>/selectedCareer/Iban00}" />
+                            <Input value="{careerInternListModel>/SelectedCareer/Iban00}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>UNIVERSITY}">
                         <f:fields>
-                            <Input value="{careerInternListModel>/selectedCareer/Atext}" />
+                            <Input value="{careerInternListModel>/SelectedCareer/Atext}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>INTERNSHIP_BRANCH}">
                         <f:fields>
-                            <Input value="{careerInternListModel>/selectedCareer/Ftext}" />
+                            <Input value="{careerInternListModel>/SelectedCareer/Ftext}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>INTERNSHIP_TYPE}">
                         <f:fields>
-                            <!-- <Select selectedKey="{careerInternListModel>/selectedCareer/Intyp}" /> -->
-                            <Select forceSelection="false" selectedKey="{careerInternListModel>/selectedCareer/Intyp}" width="100%" items="{  
+                            <!-- <Select selectedKey="{careerInternListModel>/SelectedCareer/Intyp}" /> -->
+                            <Select forceSelection="false" selectedKey="{careerInternListModel>/SelectedCareer/Intyp}" width="100%" items="{  
                             path:'/ValueHelpSet',
                             filters : [
                                 { path : 'Id', operator : 'EQ', value1 : 'Intyp'}
@@ -42,17 +42,17 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>START_DATE}">
                         <f:fields>
-                            <DatePicker value="{path: 'careerInternListModel>/selectedCareer/Begdt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                            <DatePicker value="{path: 'careerInternListModel>/SelectedCareer/Begdt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>END_DATE}">
                         <f:fields>
-                            <DatePicker value="{path: 'careerInternListModel>/selectedCareer/Findt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                            <DatePicker value="{path: 'careerInternListModel>/SelectedCareer/Findt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>NUMBER_OF_DAYS}">
                         <f:fields>
-                            <Input value="{careerInternListModel>/selectedCareer/Nuoda}"/>
+                            <Input value="{careerInternListModel>/SelectedCareer/Nuoda}"/>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -61,27 +61,27 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>NO_PAID}">
                         <f:fields>
-                            <CheckBox selected="{careerInternListModel>/selectedCareer/Nowap}" />
+                            <CheckBox selected="{careerInternListModel>/SelectedCareer/Nowap}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>CALENDAR_DAY}">
+                    <!-- <f:FormElement label="{i18n>CALENDAR_DAY}">
                         <f:fields>
-                            <CheckBox selected="{careerInternListModel>/selectedCareer/Calda}" />
+                            <CheckBox selected="{careerInternListModel>/SelectedCareer/Calda}" />
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                     <f:FormElement label="{i18n>INTERNSHIP_NOTE}">
                         <f:fields>
-                            <Input value="{careerInternListModel>/selectedCareer/Intgr}" />
+                            <Input value="{careerInternListModel>/SelectedCareer/Intgr}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
-                            <TextArea value="{careerInternListModel>/selectedCareer/Descp}" />
+                            <TextArea value="{careerInternListModel>/SelectedCareer/Descp}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DATE_OF_BIRTH}">
                         <f:fields>
-                            <DatePicker value="{path: 'careerInternListModel>/selectedCareer/Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                            <DatePicker value="{path: 'careerInternListModel>/SelectedCareer/Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
