@@ -4,13 +4,13 @@
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Kefil Bilgileri" level="H2"/>
+                    <Title text="{i18n>GUARANTOR_INFORMATION}" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
         <columns>
             <Column>
-                <Text text="Sıra No" />
+                <Text text="{i18n>SEQ_NO}" />
             </Column>
             <Column>
                 <Text text="{i18n>OR_VORNA}" />

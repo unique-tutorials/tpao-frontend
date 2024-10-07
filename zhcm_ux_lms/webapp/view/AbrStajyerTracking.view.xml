@@ -1,17 +1,14 @@
 <mvc:View controllerName="zhcm_ux_lms_abr.controller.AbrStajyerTracking"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:l="sap.ui.layout"
-    xmlns:u="sap.ui.unified"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core" displayBlock="true" height="100%" busyIndicatorDelay="0">
 
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Stajyer Takibi">
         <VBox class="sapUiSmallMargin">
             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.StajyerInformation" type="XML" />
         </VBox>
-        <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="400px">
-            <content>
+        <VBox class="sapUiSmallMargin">
+            <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="400px">
                 <IconTabBar stretchContentHeight="true" id="TabContainerStajyer">
                     <items>
                         <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="stajyerInfo">
@@ -20,29 +17,8 @@
                         <IconTabFilter text="{i18n>INTERNSHIP_DOCUMENTS}" key="internshipDoc">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.StajyerInternshipDoc" type="XML" />
                         </IconTabFilter>
-                        <IconTabFilter text="Stajyer Bilgileri Yükle" key="notes">
-                            <VBox class="sapUiSmallMargin">
-                                <f:Form editable="true">
-                                    <f:title>
-                                        <core:Title text="Excelden Stajyer Bilgileri Yükle" />
-                                    </f:title>
-                                    <f:layout>
-                                        <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-                                    </f:layout>
-                                    <f:formContainers>
-                                        <f:FormContainer>
-                                            <f:formElements>
-                                                <f:FormElement label="Dosya Seçiniz">
-                                                    <f:fields>
-                                                        <u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
-                                                        <Button text="Excelden Yükle" width="200px"/>
-                                                    </f:fields>
-                                                </f:FormElement>
-                                            </f:formElements>
-                                        </f:FormContainer>
-                                    </f:formContainers>
-                                </f:Form>
-                            </VBox>
+                        <IconTabFilter text="{i18n>UPLOAD_INTERN_INFORMATION}" key="uploadExcel">
+                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.UploadExcelInternInformation" type="XML" />
                         </IconTabFilter>
                         <!-- <IconTabFilter text="İletişim Bilgileri" key="people">
                             <Text text="People content goes here ..." />
@@ -64,12 +40,8 @@
                         </IconTabFilter> -->
                     </items>
                 </IconTabBar>
-            </content>
-            <headerToolbar>
-            </headerToolbar>
-            <infoToolbar>
-            </infoToolbar>
-        </Panel>
+            </Panel>
+        </VBox>
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>

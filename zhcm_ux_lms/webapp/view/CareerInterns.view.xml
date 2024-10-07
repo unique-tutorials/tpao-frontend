@@ -10,7 +10,7 @@
         </VBox>
         <VBox class="sapUiSmallMargin">
             <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" height="400px" headerText="empty string">
-                <IconTabBar select="onIconFilterSelect" selectedKey="{trainerPoolModel>/selectedKey}" stretchContentHeight="true" backgroundDesign="Transparent" applyContentPadding="false">
+                <IconTabBar select="onIconFilterSelect" selectedKey="{trainerPoolModel>/selectedKey}" stretchContentHeight="true">
                     <items>
                         <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="INT">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.CareerInterns.TabFilterCareerGeneralInfo" type="XML" />

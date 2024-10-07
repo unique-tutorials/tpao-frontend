@@ -1,5 +1,61 @@
 <c:FragmentDefinition xmlns="sap.m"
-    xmlns:c="sap.ui.core">
-    <UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true" instantUpload="false" noDataDescription="Drop files or use the &quot;Add&quot; button to keep files ready for upload" change="onChange" fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch" uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts" />
-    <Button id="Button" text="Upload Now" press="onStartUpload" />
+    xmlns:c="sap.ui.core"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <Table busyIndicatorDelay="0"  items="{path:'careerInternListModel>/attachmentList'}">
+        <headerToolbar>
+            <Toolbar>
+                <Title text="{i18n>INTERNSHIP_DOCUMENT_LIST}" />
+                <ToolbarSpacer />
+                <Button 
+                text="{i18n>ADD_ATTACHMENT}" 
+                cd:mdl ="attachmentButton" 
+                icon="sap-icon://attachment" 
+                type="Emphasized" 
+                press="onCreateCareerAttachment" 
+                ariaDescribedBy="acceptButtonDescription genericButtonDescription" 
+                enabled="{= ${careerInternListModel>/status} ? false : true}"/>
+                <Button 
+                text="{i18n>ATTACHMENT_LIST}"
+                type="Emphasized"
+                icon="sap-icon://documents"
+                press="onCareertAttachmentList"
+                ariaDescribedBy="acceptButtonDescription genericButtonDescription"
+                />
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <Column minScreenWidth="Tablet" demandPopin="true" width="30rem">
+                <Text text="{i18n>ATTACHMENT_FILE_NAME}" />
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>ATTACHMENT_FILE_NAME}" visible="false" />
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>ATTACHMENT_FILE_TYPE}" />
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                <Text text="{i18n>CREATION_DATE}" />
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                <Text text="{i18n>CREATED_BY}" />
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                <Text text="{i18n>ACTION_LIST}" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Link press="onAttachDownload" text="{careerInternListModel>Name}" />
+                    <Text text="{careerInternListModel>Attid}" visible="false" />
+                    <Text text="{careerInternListModel>MimeType}" />
+                    <Text text="{ path: 'careerInternListModel>Crdat', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy'}}" />
+                    <Text text="{careerInternListModel>Uname}" />
+                    <HBox justifyContent="Center">
+                        <Button type="Reject" class="sapUiSmallMarginEnd" icon="sap-icon://delete" press="onDeleteAttachment" />
+                    </HBox>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
 </c:FragmentDefinition>

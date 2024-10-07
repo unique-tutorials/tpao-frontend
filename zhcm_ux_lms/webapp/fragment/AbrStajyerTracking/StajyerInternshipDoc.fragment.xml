@@ -1,9 +1,9 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
     xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-    <Table busyIndicatorDelay="0"  items="{path:'requestStajyerListModel>/attachmentList'}">
+    <Table busyIndicatorDelay="0" items="{path:'requestStajyerListModel>/attachmentList'}">
         <headerToolbar>
-			<Toolbar >
+			<Toolbar>
 				<Title text="{i18n>INTERNSHIP_DOCUMENT_LIST}" />
 				<ToolbarSpacer />
             <Button
