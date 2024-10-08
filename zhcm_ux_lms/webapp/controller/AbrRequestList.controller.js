@@ -84,11 +84,24 @@ sap.ui.define([
                         "Direc": "Savunma Sanayi Müdürlüğü",
                         "Reaso": "Doktora"
                     }
-                ]
-                
+                ],
+                selectedAbr: null,
+                abrActionData:{
+                    displayEnabled: false
+                }
             });
         },
         _getRequestList: function () { 
+
+        },
+        onAbrItemSelected:function(oEvent){
+            var oSelected = oEvent.getParameter('listItem').getBindingContext("abrRequestListModel").getObject();
+            this.getModel("abrRequestListModel").setProperty("/selectedAbr", oSelected);
+
+            var oAbrActionData = {
+                displayEnabled: true
+            };
+            this.getModel("abrRequestListModel").setProperty("/abrActionData", oAbrActionData);
 
         },
         onNewTrainingRequest: function (oEvent) {
