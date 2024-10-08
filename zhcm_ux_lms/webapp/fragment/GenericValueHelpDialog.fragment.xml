@@ -2,17 +2,17 @@
 	<Dialog title="{i18n>SEARCH_HELP}" state="None" type="Standard" contentWidth="50%" contentHeight="50%">
 		<content>
 			<Table noDataText="{i18n>NO_VALUEHELP_DATA}" busyIndicatorDelay="0" growing="true" growingScrollToLoad="true" alternateRowColors="true"
-				mode="SingleSelectLeft" contentWidth="35rem" title="Arama yardımı"
+				mode="SingleSelectLeft" contentWidth="35rem" title="{i18n>SEARCH_HELP}"
 				items="{path:'trainerPoolModel>/valueHelpSet'}">
 				<columns>
 					<Column minScreenWidth="Tablet" demandPopin="true">
 						<header>
-							<Text text="ID"/>
+							<Text text="{i18n>ID}"/>
 						</header>
 					</Column>
 					<Column minScreenWidth="Tablet" demandPopin="true">
 						<header>
-							<Text text="Tanımı"/>
+							<Text text="{i18n>DEFINITION}"/>
 						</header>
 					</Column>
 				</columns>

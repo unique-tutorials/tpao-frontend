@@ -8,7 +8,7 @@
         <VBox class="sapUiSmallMargin">
             <f:Form editable="true">
                 <f:title>
-                    <core:Title text="Öğrenci Maaşları Sorgulama" />
+                    <core:Title text="{i18n>STUDENT_SALARIES_INQUIRY}" />
                 </f:title>
                 <f:layout>
                     <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -28,7 +28,7 @@
             </f:Form>
             <f:Form editable="true">
                 <f:title>
-                    <core:Title text="Öğrenci Maaş Bilgileri"/>
+                    <core:Title text="{i18n>STUDENT_SALARY_INFORMATION}"/>
                 </f:title>
                 <f:layout>
                     <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -46,7 +46,7 @@
                                     <Input value="{SupplierName}"/>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Kısıt Maaş">
+                            <f:FormElement label="{i18n>RESTRICTED_SALARY}">
                                 <f:fields>
                                     <Input value="{SupplierName}"/>
                                 </f:fields>
@@ -55,12 +55,12 @@
                     </f:FormContainer>
                     <f:FormContainer>
                         <f:formElements>
-                            <f:FormElement label="Burs Dönemi">
+                            <f:FormElement label="{i18n>SCHOLARSHIP_PERIOD}">
                                 <f:fields>
                                     <Input value="{SupplierName}"/>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Maaş">
+                            <f:FormElement label="{i18n>WAGE}">
                                 <f:fields>
                                     <Input value="{SupplierName}"/>
                                 </f:fields>

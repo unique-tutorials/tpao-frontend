@@ -15,7 +15,7 @@ sap.ui.define([
 
 	return BaseController.extend("zhcm_ux_lms_abr.controller.CareerInterns", {
         formatter: formatter,
-        onInit: function () {
+        onInit: function (oEvent) {
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "careerInternListModel");
             this._initiateModel();
@@ -24,7 +24,7 @@ sap.ui.define([
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
-        _initiateModel: function () {
+        _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("careerInternListModel");
             oViewModel.setData({
                 busy: false,
@@ -40,7 +40,7 @@ sap.ui.define([
                 },
             });
         },
-        _getRequestList: function () { 
+        _getRequestList: function (oEvent) { 
 
         },
         onCreateCareerAttachment:function(oEvent){
@@ -58,14 +58,14 @@ sap.ui.define([
 			var oDialog = this._getAttDialog();
 			oDialog.open();
         },
-        _getAttDialog: function () {
+        _getAttDialog: function (oEvent) {
 			if (!this._oUploadAttachmentDialog) {
 				this._oUploadAttachmentDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.CareerInterns.UploadAttachments", this);
 				this.getView().addDependent(this._oUploadAttachmentDialog);
 			}
 			return this._oUploadAttachmentDialog;
 		},
-        onCloseUploadDialog: function () {
+        onCloseUploadDialog: function (oEvent) {
 			// this._sweetAlert(this.getText("FILE_UPLOAD_CANCELLED"), "S");
             if (this._oUploadAttachmentDialog) {
                 this._oUploadAttachmentDialog.close();
@@ -84,7 +84,7 @@ sap.ui.define([
 			}
 			this._oUploadCareerAttachmentListDialog.open();
         },
-        onUpdloadAttAfterClose: function () {
+        onUpdloadAttAfterClose: function (oEvent) {
 			if (this._oUploadAttachmentDialog) {
 				this._oUploadAttachmentDialog.destroy();
 				this._oUploadAttachmentDialog = null;
@@ -178,7 +178,7 @@ sap.ui.define([
 			var oUrlPath = oModel.sServiceUrl + "/PersonnelAttachmentSet(Attid=guid'" + sAttid + "')/$value";
 			window.open(oUrlPath);
 		},
-        onCloseDialog: function () {
+        onCloseDialog: function (oEvent) {
 			if (this._oUploadCareerAttachmentListDialog) {
 				this._oUploadCareerAttachmentListDialog.close();
 				this._oUploadCareerAttachmentListDialog.destroy();

@@ -10,7 +10,7 @@
                     <f:content>
                         <fb:FilterBar id="filterBarWage" persistencyKey="myPersKey" useToolbar="false" search=".onSearchWage" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
                             <fb:filterGroupItems>
-                                <fb:FilterGroupItem name="Name" label="Yıl / Ay" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Name" label="{i18n>YEAR_MONTH}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
                                             <Input />
@@ -18,22 +18,22 @@
                                         </FlexBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Category" label="Ödeme Tarihi" groupName="Group2" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Category" label="{i18n>PAYMENT_DATE}" groupName="Group2" visibleInFilterBar="true">
                                     <fb:control>
                                         <DatePicker />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="Oluşturma Kriterleri" groupName="Group4" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SupplierName" label="{i18n>CREATION_CRITERIA}" groupName="Group4" visibleInFilterBar="true">
                                     <fb:control>
                                         <CheckBox />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="İsme Göre Alfabetik" groupName="Group5" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SupplierName" label="{i18n>ALPHABETICAL_BY_NAME}" groupName="Group5" visibleInFilterBar="true">
                                     <fb:control>
                                         <CheckBox />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="Burs Dönemi" groupName="Group6" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SupplierName" label="{i18n>SCHOLARSHIP_PERIOD}" groupName="Group6" visibleInFilterBar="true">
                                     <fb:control>
                                         <CheckBox />
                                     </fb:control>
@@ -49,7 +49,7 @@
 					}">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Kısıt Maaş"/>
+                            <Text text="{i18n>RESTRICTED_SALARY}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>STUDENT_NUMBER}"/>
@@ -58,13 +58,13 @@
                             <Text text="{i18n>OR_ENAME}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Burs Dönemi"/>
+                            <Text text="{i18n>SCHOLARSHIP_PERIOD}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Maaş"/>
+                            <Text text="{i18n>WAGE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Kırtasiye"/>
+                            <Text text="{i18n>STATIONARY}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>CURRENCY}"/>

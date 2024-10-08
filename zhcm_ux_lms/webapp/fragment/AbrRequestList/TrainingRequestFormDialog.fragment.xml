@@ -14,12 +14,9 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>UNDERGRADUATE_GRADUATION_AREA}">
                                 <f:fields>
-                                    <MultiComboBox items="{
-                                path: '/ProductCollection',
-                                sorter: { path: 'Name' }
-                            }" required="true">
+                                    <ComboBox items="{ path: '/ProductCollection', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Maste' } ]  }" selectedKey="{requestListModel>/TrainRequestList/Mastr}"  required="true">
                                         <core:Item key="{ProductId}" text="{Name}"/>
-                                    </MultiComboBox>
+                                    </ComboBox>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>MASTER_DEGREE_FIELD_TR}">
@@ -102,7 +99,7 @@
             <Table items="{/ProductCollection}">
                 <headerToolbar>
                     <Toolbar >
-                        <Label text="Seçilen Ülke Ve Önceliklendirme Listesi" />
+                        <Label text="{i18n>CNTY_PRIO}" />
                         <ToolbarSpacer />
                         <Button icon="sap-icon://add" text="Ekle" type="Emphasized" press=".onAddNewCountry" />
                     </Toolbar>

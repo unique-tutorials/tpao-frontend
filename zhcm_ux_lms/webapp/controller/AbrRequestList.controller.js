@@ -91,18 +91,18 @@ sap.ui.define([
                 }
             });
         },
-        _getRequestList: function () { 
+        _getRequestList: function (oEvent) { 
 
         },
         onAbrItemSelected:function(oEvent){
             var oSelected = oEvent.getParameter('listItem').getBindingContext("abrRequestListModel").getObject();
             this.getModel("abrRequestListModel").setProperty("/selectedAbr", oSelected);
-
+            
             var oAbrActionData = {
                 displayEnabled: true
             };
             this.getModel("abrRequestListModel").setProperty("/abrActionData", oAbrActionData);
-
+            
         },
         onNewTrainingRequest: function (oEvent) {
             if (!this._oNewRequestDialog) {
@@ -111,12 +111,17 @@ sap.ui.define([
 			}
 			this._oNewRequestDialog.open();
          },
-         onAddNewCountry: async function () {
+         onCancelCreatePage:function(oEvent){
+            if (this._oNewRequestDialog) {
+                this._oNewRequestDialog.close();
+            }
+         },
+         onAddNewCountry: async function (oEvent) {
             if (!this._oNewCountryDialog) {
 				this._oNewCountryDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.CountryNewTable", this);
 				this.getView().addDependent(this._oNewCountryDialog);
 			}
 			this._oNewCountryDialog.open();
-          },
+        },
 	});
 });
