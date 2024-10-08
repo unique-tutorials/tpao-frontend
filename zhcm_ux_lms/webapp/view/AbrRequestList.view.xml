@@ -45,7 +45,7 @@
                                     <cells>
                                         <Text text="{abrRequestListModel>Under}"/>
                                         <Text text="{abrRequestListModel>Maste}"/>
-                                        <Text text="{abrRequestListModel>Masten}" />
+                                        <Text text="{abrRequestListModel>Masten}"/>
                                         <Text text="{abrRequestListModel>Subjet}"/>
                                         <Text text="{abrRequestListModel>Subjen}"/>
                                         <Text text="{abrRequestListModel>Count}"/>
@@ -60,18 +60,18 @@
                     </content>
                 </IconTabFilter>
                 <IconTabFilter icon="sap-icon://pending" iconColor="Critical" count="{abrRequestListModel>/searchResults/PND}" text="{i18n>PENDING_REQUESTS}" key="PND">
-                    <f:DynamicPage headerExpanded="{/headerExpanded}">
+                    <f:DynamicPage headerExpanded="{/headerExpanded}" >
                         <f:header>
                             <f:DynamicPageHeader>
                                 <f:content>
-                                    <fb:FilterBar id="AbrFilterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                                    <fb:FilterBar id="AbrFilterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad" >
                                         <fb:filterGroupItems>
                                             <fb:FilterGroupItem name="Name" label="{i18n>UNDERGRADUATE_GRADUATION_AREA}" groupName="Group1" visibleInFilterBar="true">
                                                 <fb:control>
                                                     <MultiComboBox name="Name" items="{
                                                         path: '/ProductNames',
                                                         templateShareable: true
-                                                    }">
+                                                    }" enabled="{abrRequestListModel>/abrActionData/displayEnabled}">
                                                         <core:Item key="{key}" text="{name}"/>
                                                     </MultiComboBox>
                                                 </fb:control>
@@ -81,7 +81,7 @@
                                                     <MultiComboBox name="Category" items="{
                                                         path: '/ProductCategories',
                                                         templateShareable: true
-                                                    }">
+                                                    }" enabled="{abrRequestListModel>/abrActionData/displayEnabled}">
                                                         <core:Item key="{key}" text="{name}"/>
                                                     </MultiComboBox>
                                                 </fb:control>
@@ -91,7 +91,7 @@
                                                     <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }">
+                                                    }" enabled="{abrRequestListModel>/abrActionData/displayEnabled}">
                                                         <core:Item key="{key}" text="{name}"/>
                                                     </MultiComboBox>
                                                 </fb:control>
@@ -101,7 +101,7 @@
                                                     <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }">
+                                                    }" enabled="{abrRequestListModel>/abrActionData/displayEnabled}">
                                                         <core:Item key="{key}" text="{name}"/>
                                                     </MultiComboBox>
                                                 </fb:control>
@@ -111,7 +111,7 @@
                                                     <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }">
+                                                    }" enabled="{abrRequestListModel>/abrActionData/displayEnabled}">
                                                         <core:Item key="{key}" text="{name}"/>
                                                     </MultiComboBox>
                                                 </fb:control>
@@ -121,7 +121,7 @@
                                                     <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }">
+                                                    }" enabled="{abrRequestListModel>/abrActionData/displayEnabled}">
                                                         <core:Item key="{key}" text="{name}"/>
                                                     </MultiComboBox>
                                                 </fb:control>
@@ -131,7 +131,7 @@
                                                     <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }">
+                                                    }" enabled="{abrRequestListModel>/abrActionData/displayEnabled}">
                                                         <core:Item key="{key}" text="{name}"/>
                                                     </MultiComboBox>
                                                 </fb:control>
@@ -141,7 +141,7 @@
                                                     <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }">
+                                                    }" enabled="{abrRequestListModel>/abrActionData/displayEnabled}">
                                                         <core:Item key="{key}" text="{name}"/>
                                                     </MultiComboBox>
                                                 </fb:control>
@@ -151,7 +151,7 @@
                                                     <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }">
+                                                    }" enabled="{abrRequestListModel>/abrActionData/displayEnabled}">
                                                         <core:Item key="{key}" text="{name}"/>
                                                     </MultiComboBox>
                                                 </fb:control>
@@ -162,7 +162,7 @@
                             </f:DynamicPageHeader>
                         </f:header>
                         <f:content>
-                            <Table id="idPendingTable" mode="MultiSelect" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                            <Table id="idPendingTable" mode="MultiSelect" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" selectionChange="onAbrItemSelected">
                                 <columns>
                                     <Column minScreenWidth="Tablet" demandPopin="true">
                                         <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>

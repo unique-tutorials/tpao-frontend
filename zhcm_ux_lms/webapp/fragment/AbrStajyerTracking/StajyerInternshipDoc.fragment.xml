@@ -28,9 +28,6 @@
             <Column minScreenWidth="Tablet" demandPopin="true" width="30rem">
                 <Text text="{i18n>ATTACHMENT_FILE_NAME}" />
             </Column>
-            <!-- <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>Qualification_Name}" />
-            </Column> -->
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>ATTACHMENT_FILE_NAME}" visible="false" />
             </Column>
@@ -51,7 +48,6 @@
             <ColumnListItem>
                 <cells>
                     <Link press="onAttachDownload" text="{requestStajyerListModel>Name}" />
-                    <!-- <Text text="{requestStajyerListModel>Qlftx}" /> -->
                     <Text text="{requestStajyerListModel>Attid}" visible="false" />
                     <Text text="{requestStajyerListModel>MimeType}" />
                     <Text text="{ path: 'requestStajyerListModel>Crdat', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd.MM.yyyy'}}" />
