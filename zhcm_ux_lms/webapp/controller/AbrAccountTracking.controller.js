@@ -13,7 +13,7 @@ sap.ui.define([
 
 	return BaseController.extend("zhcm_ux_lms_abr.controller.AbrTracking", {
         formatter: formatter,
-        onInit: function () {
+        onInit: function (oEvent) {
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "requestListModel");
             this._initiateModel();
@@ -22,16 +22,15 @@ sap.ui.define([
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
-        _initiateModel: function () {
+        _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("requestListModel");
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {}
-             
             });
         },
-        _getRequestList: function () { 
+        _getRequestList: function (oEvent) { 
 
         },
         onNewTrainingRequest: function (oEvent) {

@@ -87,7 +87,13 @@ sap.ui.define([
                 {
                     "appName": "CareerInternContn",
                     "visible": true,
-                    "title": 'Biz Bize Kariyer Stajyer Devamları',
+                    "title": 'Stajyer Öğrenci Devamsızlık Onayı',
+                    "icon": "sap-icon://group"
+                },
+                {
+                    "appName": "TrainingManager",
+                    "visible": true,
+                    "title": 'Eğitim Yöneticisi',
                     "icon": "sap-icon://group"
                 }
             ],

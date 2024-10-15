@@ -66,6 +66,18 @@ sap.ui.define([
 				this.getView().addDependent(this._oRequestDisplayDialog);
 			}
 			this._oRequestDisplayDialog.open();
+        },
+        onEvaluationDialogButton:function(oEvent){
+            if (!this._oEvaluationDisplayDialog) {
+				this._oEvaluationDisplayDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.ApprovalRequestList.EvaluationDialog", this);
+				this.getView().addDependent(this._oEvaluationDisplayDialog);
+			}
+			this._oEvaluationDisplayDialog.open();
+        },
+        onEvaluationCancelButtonPress:function(oEvent){
+            if (this._oEvaluationDisplayDialog) {
+                this._oEvaluationDisplayDialog.close();
+            }
         }
     });
 });

@@ -55,6 +55,11 @@
                             <Input value="{careerInternListModel>/SelectedCareer/Nuoda}"/>
                         </f:fields>
                     </f:FormElement>
+                    <f:FormElement label="{i18n>INTERNSHIP_NOTE}">
+                        <f:fields>
+                            <Input value="{careerInternListModel>/SelectedCareer/Intgr}" />
+                        </f:fields>
+                    </f:FormElement>
                 </f:formElements>
             </f:FormContainer>
             <f:FormContainer>
@@ -69,11 +74,6 @@
                             <CheckBox selected="{careerInternListModel>/SelectedCareer/Calda}" />
                         </f:fields>
                     </f:FormElement> -->
-                    <f:FormElement label="{i18n>INTERNSHIP_NOTE}">
-                        <f:fields>
-                            <Input value="{careerInternListModel>/SelectedCareer/Intgr}" />
-                        </f:fields>
-                    </f:FormElement>
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
                             <TextArea value="{careerInternListModel>/SelectedCareer/Descp}" />
@@ -82,6 +82,21 @@
                     <f:FormElement label="{i18n>DATE_OF_BIRTH}">
                         <f:fields>
                             <DatePicker value="{path: 'careerInternListModel>/SelectedCareer/Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>CARD_NUMBER}">
+                        <f:fields>
+                            <Input value="{careerInternListModel>/SelectedCareer/Cardn}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>MOBILE_PHONE}">
+                        <f:fields>
+                            <Input value="{careerInternListModel>/SelectedCareer/Phonm}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>EMERGENCY_CONTACT}">
+                        <f:fields>
+                            <Input value="{careerInternListModel>/SelectedCareer/Conem}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

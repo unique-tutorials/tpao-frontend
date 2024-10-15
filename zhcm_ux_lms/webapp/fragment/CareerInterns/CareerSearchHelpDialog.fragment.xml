@@ -26,7 +26,7 @@
 								</fb:FilterGroupItem>
 								<fb:FilterGroupItem name="SupplierName" label="{i18n>YEAR}" groupName="Group1" visibleInFilterBar="true">
 									<fb:control>
-										<DatePicker value="{path: 'careerInternListModel>/searchCareerParameter/Tarih', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}"></DatePicker>
+										<DatePicker value="{path: 'careerInternListModel>/searchCareerParameter/Tarih', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'yyyy'}}"></DatePicker>
 									</fb:control>
 								</fb:FilterGroupItem>
 							</fb:filterGroupItems>
@@ -43,6 +43,9 @@
 						<Column minScreenWidth="Tablet" demandPopin="true">
 							<Text text="{i18n>UNIT}"/>
 						</Column>
+						<!-- <Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="{i18n>REGISTRATION_NUMBER}"/>
+						</Column> -->
 						<Column minScreenWidth="Tablet" demandPopin="true">
 							<Text text="{i18n>OR_VORNA}"/>
 						</Column>

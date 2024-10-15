@@ -44,6 +44,7 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>UNIT}">
                         <f:fields>
+                            <Input value="{careerInternListModel>/SelectedCareer/Orgeh}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitCareerSearchHelp" />
                             <Input value="{careerInternListModel>/SelectedCareer/Orgtx}" />
                         </f:fields>
                     </f:FormElement>
@@ -55,11 +56,6 @@
                 <f:FormElement label="{i18n>REGISTRATION_NUMBER}">
                     <f:fields>
                         <Input value="{careerInternListModel>/SelectedCareer/Orgehx}" />
-                    </f:fields>
-                </f:FormElement>
-                <f:FormElement label="{i18n>UNIT_CODE}">
-                    <f:fields>
-                        <Input value="{careerInternListModel>/SelectedCareer/Orgeh}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>QUOTA_TYPE}">

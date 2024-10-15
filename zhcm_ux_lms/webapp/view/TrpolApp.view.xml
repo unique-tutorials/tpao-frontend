@@ -54,7 +54,7 @@
                                     <DatePicker value="{requestListModel>/ReservationEmployee/Surnm}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Dönüş Tarihi">
+                            <f:FormElement label="{i18n>RETURN_DATE}">
                                 <f:fields>
                                     <DatePicker value="{requestListModel>/ReservationEmployee/Eurnm}" />
                                 </f:fields>
@@ -64,17 +64,17 @@
                                     <ComboBox value="{requestListModel>/ReservationEmployee/Aurnm}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Eyalet">
+                            <f:FormElement label="{i18n>STATE}">
                                 <f:fields>
                                     <ComboBox value="{requestListModel>/ReservationEmployee/Curnm}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Şehir">
+                            <f:FormElement label="{i18n>CITY}">
                                 <f:fields>
                                     <ComboBox value="{requestListModel>/ReservationEmployee/Curnm}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Masraf Merkezi Kodu">
+                            <f:FormElement label="{i18n>COST_CENTER_CODE}">
                                 <f:fields>
                                     <Input value="{requestListModel>/ReservationEmployee/Qurnm}" showValueHelp="true" />
                                 </f:fields>
@@ -110,17 +110,17 @@
                                     <Input />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Eğitim No">
+                            <f:FormElement label="{i18n>TRAINING_NUMBER}">
                                 <f:fields>
                                     <Input value="{requestListModel>/ReservationEmployee/Curnm}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Talep Kayıt Tarihi">
+                            <f:FormElement label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}">
                                 <f:fields>
                                     <DatePicker value="{requestListModel>/ReservationEmployee/Iurnm}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Rezervasyon Yapıldı">
+                            <f:FormElement label="{i18n>RESERVATION_MADE}">
                                 <f:fields>
                                     <CheckBox selected="{requestListModel>/ReservationEmployee/Kurnm}" />
                                 </f:fields>

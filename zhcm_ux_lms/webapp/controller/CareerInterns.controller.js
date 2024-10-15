@@ -31,6 +31,7 @@ sap.ui.define([
 				delay: 0,
                 requestList: [],
                 selectedRequest: {},
+                SelectedEmployee:{},
                 currentRequest: {},
                 searchCareerParameter:{},
                 selectedCareer:{},
@@ -94,7 +95,6 @@ sap.ui.define([
             var oViewModel = this.getModel("careerInternListModel");
             var sPernr = oViewModel.getProperty("/newNumberCareerRequest/Pernr"); 
             var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploader");
-        
             if (!oFileUploader.getValue()) {
                 this._sweetAlert(this.getText("FILE_SELECTION_REQUIRED"), "W");
                 return;
@@ -153,7 +153,7 @@ sap.ui.define([
 							that._sweetAlert(that.getText("ERROR_WHILE_DELETING_DOCUMENTS"), "E");
 						} else {
 							that._sweetAlert(that.getText("DOCUMENTS_WERE_SUCCESSFULLY_DELETED"), "S");
-							window.location.reload();
+							// window.location.reload();
 						}
 						oViewModel.setProperty("/busy", false);
 					},
@@ -297,5 +297,46 @@ sap.ui.define([
             var sCareerPath = oModel.createKey("/CareerIntershipSet", { Pernr: sPernr });
             readData(sCareerPath, "/SelectedCareer", "Kariyer stajyerler bilgisi alınamadı.");
         },
+        onShowUnitCareerSearchHelp:function(oEvent){
+            if (!this._oUnitCareerSearchHelpDialog) {
+                this._oUnitCareerSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.CareerInterns.UnitCareerSearchHelpDialog", this);
+                this.getView().addDependent(this._oUnitCareerSearchHelpDialog);
+            } else {
+                this._oUnitCareerSearchHelpDialog.close();
+            }
+            this._oUnitCareerSearchHelpDialog.open();
+        },
+        onCancelUnitCareerButtonPress:function(oEvent){
+            if (this._oUnitCareerSearchHelpDialog) {
+                this._oUnitCareerSearchHelpDialog.close();
+            }
+        },
+        onUnitCareerSelected:function(oEvent){
+            debugger;
+            var oSelectedUnitItem = oEvent.getSource().getBindingContext().getObject();
+        
+            var oViewModel = this.getModel('careerInternListModel');
+            oViewModel.setProperty("/SelectedEmployee/Unicd", oSelectedUnitItem.Orgeh); 
+            oViewModel.setProperty("/SelectedEmployee/Orgtx", oSelectedUnitItem.Orgtx ); 
+
+            if (this._oUnitCareerSearchHelpDialog) {
+                this._oUnitCareerSearchHelpDialog.close();
+            }
+        },
+        onShowDateSearchHelp:function(oEvent){
+            debugger;
+            if (!this._oDateSearchHelpDialog) {
+                this._oDateSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.CareerInterns.DateSearchHelpDialog", this);
+                this.getView().addDependent(this._oDateSearchHelpDialog);
+            } else {
+                this._oDateSearchHelpDialog.close();
+            }
+            this._oDateSearchHelpDialog.open();
+        },
+        onDateCancelButtonPress:function(oEvent){
+            if (this._oDateSearchHelpDialog) {
+                this._oDateSearchHelpDialog.close();
+            }
+        }
     });
 });

@@ -23,17 +23,17 @@
                                         <DatePicker />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>CREATION_CRITERIA}" groupName="Group4" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SupplierName" label="{i18n>CREATION_CRITERIA}" groupName="Group3" visibleInFilterBar="true">
                                     <fb:control>
                                         <CheckBox />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>ALPHABETICAL_BY_NAME}" groupName="Group5" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SupplierName" label="{i18n>ALPHABETICAL_BY_NAME}" groupName="Group4" visibleInFilterBar="true">
                                     <fb:control>
                                         <CheckBox />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>SCHOLARSHIP_PERIOD}" groupName="Group6" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SupplierName" label="{i18n>SCHOLARSHIP_PERIOD}" groupName="Group5" visibleInFilterBar="true">
                                     <fb:control>
                                         <CheckBox />
                                     </fb:control>

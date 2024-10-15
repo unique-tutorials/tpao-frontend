@@ -42,19 +42,20 @@
                             <Input value="{requestStajyerListModel>/SelectedStajyer/Nachn}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>UNIT}">
+                    <!-- <f:FormElement label="{i18n>UNIT}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Orgtx}" />
+                           
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>
         <f:FormContainer>
             <f:formElements>
-                <f:FormElement label="{i18n>UNIT_CODE}">
+                <f:FormElement label="{i18n>UNIT}">
                     <f:fields>
-                        <Input value="{requestStajyerListModel>/SelectedStajyer/Orgeh}" />
+                        <Input value="{requestStajyerListModel>/SelectedStajyer/Orgeh}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitStajyerSearchHelp" />
+                        <Input value="{requestStajyerListModel>/SelectedStajyer/Orgtx}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>QUOTA_TYPE}">

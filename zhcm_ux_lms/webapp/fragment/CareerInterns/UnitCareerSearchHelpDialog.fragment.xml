@@ -1,0 +1,28 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+<Dialog title="Öğrenci Birimi" state="None" type="Standard" contentWidth="40%" contentHeight="60%" verticalScrolling="false" resizable="true" draggable="true">
+    <Table inset="false" items="{/ScholarshipStudentSet}">
+        <columns>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>UNIT_CODE}" />
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>OR_ORGTX}" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle" type="Active" press=".onUnitCareerSelected">
+                <cells>
+                    <Text text="{Orgeh}" />
+                    <Text text="{Orgtx}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    <endButton>
+        <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" type="Reject" press=".onCancelUnitCareerButtonPress"/>
+    </endButton>
+</Dialog>
+</c:FragmentDefinition>

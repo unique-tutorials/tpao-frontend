@@ -35,6 +35,7 @@ sap.ui.define([
 				delay: 0,
                 requestList: [],
                 selectedRequest: {},
+                SelectedEmployee:{},
                 currentRequest: {},
                 searchStajyerParameter:{},
                 SelectedStajyer:{},
@@ -384,6 +385,46 @@ sap.ui.define([
                     }
                 });
             } 
+        },
+        onMentorValueHelpRequest:function(oEvent){
+            if (!this._oMentorSearchHelpDialog) {
+                this._oMentorSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrStajyerTracking.MentorSearchHelpDialog", this);
+                this.getView().addDependent(this._oMentorSearchHelpDialog);
+            } else {
+                this._oMentorSearchHelpDialog.close();
+            }
+            this._oMentorSearchHelpDialog.open();
+        },
+        onCancelMentorButtonPress:function(oEvent){
+            if (this._oMentorSearchHelpDialog) {
+                this._oMentorSearchHelpDialog.close();
+            }
+        },
+        onShowUnitStajyerSearchHelp:function(oEvent){
+            if (!this._oUnitStajyerSearchHelpDialog) {
+                this._oUnitStajyerSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrStajyerTracking.UnitStajyerSearchHelpDialog", this);
+                this.getView().addDependent(this._oUnitStajyerSearchHelpDialog);
+            } else {
+                this._oUnitStajyerSearchHelpDialog.close();
+            }
+            this._oUnitStajyerSearchHelpDialog.open();
+        },
+        onCancelUnitStajyerButtonPress:function(oEvent){
+            if (this._oUnitStajyerSearchHelpDialog) {
+                this._oUnitStajyerSearchHelpDialog.close();
+            }
+        },
+        onUnitStajyerSelected:function(oEvent){
+            debugger;
+            var oSelectedUnitItem = oEvent.getSource().getBindingContext().getObject();
+        
+            var oViewModel = this.getModel('requestStajyerListModel');
+            oViewModel.setProperty("/SelectedEmployee/Unicd", oSelectedUnitItem.Orgeh); 
+            oViewModel.setProperty("/SelectedEmployee/Orgtx", oSelectedUnitItem.Orgtx ); 
+
+            if (this._oUnitStajyerSearchHelpDialog) {
+                this._oUnitStajyerSearchHelpDialog.close();
+            }
         }
 	});
 });

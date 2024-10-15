@@ -28,6 +28,7 @@ sap.ui.define([
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {},
+                TrainRequestList:{},
                 RequestList:[
                     {
                         "Under": "Bilecik Şeyh Edebali Üniversitesi",
@@ -123,5 +124,29 @@ sap.ui.define([
 			}
 			this._oNewCountryDialog.open();
         },
+        editDraftButtonPress: function(oEvent) {
+            // Dialog daha önce oluşturulmadıysa yeni bir dialog oluştur ve ekle
+            if (!this._oNewRequestDialog) {
+                this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
+                this.getView().addDependent(this._oNewRequestDialog);
+            }
+            
+            // Dialog'u aç
+            this._oNewRequestDialog.open();
+        
+            // Seçilen veriyi al
+            const oSelectedTodo = oEvent.getSource().getBindingContext("abrRequestListModel").getObject();
+            console.log("seçilen öğe:" , oSelectedTodo);
+            
+            // Modeli al ve seçilen veriyi RequestList'e ata
+            const oViewModel = this.getView().getModel("abrRequestListModel");
+            if (oViewModel && oSelectedTodo) {
+                oViewModel.setProperty("/TrainRequestList", { ...oSelectedTodo });
+            } else {
+                // Model ya da seçilen veri eksikse hata logla
+                console.error("Model 'abrRequestListModel' bulunamadı veya oSelectedTodo boş.");
+            }
+        }
+        
 	});
 });
