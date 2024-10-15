@@ -26,7 +26,7 @@
 								</fb:FilterGroupItem>
 								<fb:FilterGroupItem name="SupplierName" label="{i18n>YEAR}" groupName="Group1" visibleInFilterBar="true">
 									<fb:control>
-										<DatePicker value="{path: 'requestStajyerListModel>/searchStajyerParameter/Tarih', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}"></DatePicker>
+										<DatePicker value="{path: 'requestStajyerListModel>/searchStajyerParameter/Tarih', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'yyyy'}}"></DatePicker>
 									</fb:control>
 								</fb:FilterGroupItem>
 							</fb:filterGroupItems>

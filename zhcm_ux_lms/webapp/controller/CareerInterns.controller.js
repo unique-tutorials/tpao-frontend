@@ -15,7 +15,7 @@ sap.ui.define([
 
 	return BaseController.extend("zhcm_ux_lms_abr.controller.CareerInterns", {
         formatter: formatter,
-        onInit: function () {
+        onInit: function (oEvent) {
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "careerInternListModel");
             this._initiateModel();
@@ -24,13 +24,14 @@ sap.ui.define([
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
-        _initiateModel: function () {
+        _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("careerInternListModel");
             oViewModel.setData({
                 busy: false,
 				delay: 0,
                 requestList: [],
                 selectedRequest: {},
+                SelectedEmployee:{},
                 currentRequest: {},
                 searchCareerParameter:{},
                 selectedCareer:{},
@@ -40,7 +41,7 @@ sap.ui.define([
                 },
             });
         },
-        _getRequestList: function () { 
+        _getRequestList: function (oEvent) { 
 
         },
         onCreateCareerAttachment:function(oEvent){
@@ -58,14 +59,14 @@ sap.ui.define([
 			var oDialog = this._getAttDialog();
 			oDialog.open();
         },
-        _getAttDialog: function () {
+        _getAttDialog: function (oEvent) {
 			if (!this._oUploadAttachmentDialog) {
 				this._oUploadAttachmentDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.CareerInterns.UploadAttachments", this);
 				this.getView().addDependent(this._oUploadAttachmentDialog);
 			}
 			return this._oUploadAttachmentDialog;
 		},
-        onCloseUploadDialog: function () {
+        onCloseUploadDialog: function (oEvent) {
 			// this._sweetAlert(this.getText("FILE_UPLOAD_CANCELLED"), "S");
             if (this._oUploadAttachmentDialog) {
                 this._oUploadAttachmentDialog.close();
@@ -84,7 +85,7 @@ sap.ui.define([
 			}
 			this._oUploadCareerAttachmentListDialog.open();
         },
-        onUpdloadAttAfterClose: function () {
+        onUpdloadAttAfterClose: function (oEvent) {
 			if (this._oUploadAttachmentDialog) {
 				this._oUploadAttachmentDialog.destroy();
 				this._oUploadAttachmentDialog = null;
@@ -94,7 +95,6 @@ sap.ui.define([
             var oViewModel = this.getModel("careerInternListModel");
             var sPernr = oViewModel.getProperty("/newNumberCareerRequest/Pernr"); 
             var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploader");
-        
             if (!oFileUploader.getValue()) {
                 this._sweetAlert(this.getText("FILE_SELECTION_REQUIRED"), "W");
                 return;
@@ -153,7 +153,7 @@ sap.ui.define([
 							that._sweetAlert(that.getText("ERROR_WHILE_DELETING_DOCUMENTS"), "E");
 						} else {
 							that._sweetAlert(that.getText("DOCUMENTS_WERE_SUCCESSFULLY_DELETED"), "S");
-							window.location.reload();
+							// window.location.reload();
 						}
 						oViewModel.setProperty("/busy", false);
 					},
@@ -178,7 +178,7 @@ sap.ui.define([
 			var oUrlPath = oModel.sServiceUrl + "/PersonnelAttachmentSet(Attid=guid'" + sAttid + "')/$value";
 			window.open(oUrlPath);
 		},
-        onCloseDialog: function () {
+        onCloseDialog: function (oEvent) {
 			if (this._oUploadCareerAttachmentListDialog) {
 				this._oUploadCareerAttachmentListDialog.close();
 				this._oUploadCareerAttachmentListDialog.destroy();
@@ -297,5 +297,46 @@ sap.ui.define([
             var sCareerPath = oModel.createKey("/CareerIntershipSet", { Pernr: sPernr });
             readData(sCareerPath, "/SelectedCareer", "Kariyer stajyerler bilgisi alınamadı.");
         },
+        onShowUnitCareerSearchHelp:function(oEvent){
+            if (!this._oUnitCareerSearchHelpDialog) {
+                this._oUnitCareerSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.CareerInterns.UnitCareerSearchHelpDialog", this);
+                this.getView().addDependent(this._oUnitCareerSearchHelpDialog);
+            } else {
+                this._oUnitCareerSearchHelpDialog.close();
+            }
+            this._oUnitCareerSearchHelpDialog.open();
+        },
+        onCancelUnitCareerButtonPress:function(oEvent){
+            if (this._oUnitCareerSearchHelpDialog) {
+                this._oUnitCareerSearchHelpDialog.close();
+            }
+        },
+        onUnitCareerSelected:function(oEvent){
+            debugger;
+            var oSelectedUnitItem = oEvent.getSource().getBindingContext().getObject();
+        
+            var oViewModel = this.getModel('careerInternListModel');
+            oViewModel.setProperty("/SelectedEmployee/Unicd", oSelectedUnitItem.Orgeh); 
+            oViewModel.setProperty("/SelectedEmployee/Orgtx", oSelectedUnitItem.Orgtx ); 
+
+            if (this._oUnitCareerSearchHelpDialog) {
+                this._oUnitCareerSearchHelpDialog.close();
+            }
+        },
+        onShowDateSearchHelp:function(oEvent){
+            debugger;
+            if (!this._oDateSearchHelpDialog) {
+                this._oDateSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.CareerInterns.DateSearchHelpDialog", this);
+                this.getView().addDependent(this._oDateSearchHelpDialog);
+            } else {
+                this._oDateSearchHelpDialog.close();
+            }
+            this._oDateSearchHelpDialog.open();
+        },
+        onDateCancelButtonPress:function(oEvent){
+            if (this._oDateSearchHelpDialog) {
+                this._oDateSearchHelpDialog.close();
+            }
+        }
     });
 });

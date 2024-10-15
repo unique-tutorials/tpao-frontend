@@ -54,7 +54,7 @@
                             <Text text="{i18n>DAY}"/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Yurtdışı Dil Öğrenimi Süresi (Esas)">
+                    <f:FormElement label="{i18n>LANGDUR}">
                         <f:fields>
                             <Input value="{requestListModel>/generalEmployee/Dolsy}">
                                 <layoutData>

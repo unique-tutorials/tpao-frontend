@@ -15,17 +15,17 @@
                                         <Input value="{requestListModel>/reserSearchParameter/Pernr}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Name" label="Adı" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Name" label="{i18n>OR_VORNA}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <Input value="{requestListModel>/reserSearchParameter/Name}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SName" label="Soyadı" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SName" label="{i18n>OR_NACHN}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <Input value="{requestListModel>/reserSearchParameter/Sname}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Date" label="Talep Kayıt Tarihi Aralığı" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <DatePicker value="{requestListModel>/reserSearchParameter/Date}" />
                                     </fb:control>
@@ -39,31 +39,31 @@
                 <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom"  items="{/ReservationSet}" itemPress="onEmployeeSelect">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Rezervasyon Yapıldı"/>
+                            <Text text="{i18n>RESERVATION_MADE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Talep No"/>
+                            <Text text="{i18n>REQUEST_NUMBER}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Öğrenci No"/>
+                            <Text text="{i18n>STUDENT_NUMBER}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Adı Soyadı"/>
+                            <Text text="{i18n>OR_ENAME}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Ülke"/>
+                            <Text text="{i18n>OR_LAND1}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Eyalet"/>
+                            <Text text="{i18n>STATE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Şehir"/>
+                            <Text text="{i18n>CITY}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Giriş Tarihi"/>
+                            <Text text="{i18n>ENTRY_DATE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Dönüş Tarihi"/>
+                            <Text text="{i18n>RETURN_DATE}"/>
                         </Column>
                     </columns>
                     <items>

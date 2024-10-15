@@ -13,7 +13,7 @@ sap.ui.define([
 
     return BaseController.extend("zhcm_ux_lms_abr.controller.TrainerPool", {
         formatter: formatter,
-        onInit: function () {
+        onInit: function (oEvent) {
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "trainerPoolModel");
             this._initiateModel();
@@ -29,7 +29,7 @@ sap.ui.define([
 
 
         },
-        _initiateModel: function () {
+        _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("trainerPoolModel");
             oViewModel.setData({
                 selectedKey: "INT",
@@ -149,14 +149,14 @@ sap.ui.define([
             }
             this._oExtraOperationDialog.open();
         },
-        _openEmployeeValueHelpDialog: function () {
+        _openEmployeeValueHelpDialog: function (oEvent) {
             if (!this._oIntraValueHelpDialog) {
                 this._oIntraValueHelpDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.IntraValueHelpDialog", this);
                 this.getView().addDependent(this._oIntraValueHelpDialog);
             }
             this._oIntraValueHelpDialog.open();
         },
-        onCancelAddIntraDialog: function () {
+        onCancelAddIntraDialog: function (oEvent) {
             var oModel = this.getModel();
             var oViewModel = this.getModel("trainerPoolModel");
             var oTable = this._oIntraValueHelpDialog.getAggregation('content')[0];
@@ -164,7 +164,7 @@ sap.ui.define([
             oViewModel.setProperty("/valueHelpEmployeeSet", []);
             this._oIntraValueHelpDialog.close();
         },
-        onAddIntra: function () {
+        onAddIntra: function (oEvent) {
             var oModel = this.getModel();
             var oViewModel = this.getModel("trainerPoolModel");
             var oTable = this._oIntraValueHelpDialog.getAggregation('content')[0];
@@ -193,7 +193,7 @@ sap.ui.define([
             this._oIntraValueHelpDialog.close();
 
         },
-        onSaveExternalTrainer: function () {
+        onSaveExternalTrainer: function (oEvent) {
             var oModel = this.getModel();
             var oViewModel = this.getModel("trainerPoolModel");
             var oCurrentExtra = oViewModel.getProperty("/currentExternalTrainer");
@@ -234,14 +234,14 @@ sap.ui.define([
                 }
             });
         },
-        _openGenericValueHelpDialog: function () {
+        _openGenericValueHelpDialog: function (oEvent) {
             if (!this._oGenericValueHelpDialog) {
                 this._oGenericValueHelpDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.GenericValueHelpDialog", this);
                 this.getView().addDependent(this._oGenericValueHelpDialog);
             }
             this._oGenericValueHelpDialog.open();
         },
-        onCancelGenericValueHelpDialog: function () {
+        onCancelGenericValueHelpDialog: function (oEvent) {
             var oModel = this.getModel();
             var oViewModel = this.getModel("trainerPoolModel");
             var oTable = this._oGenericValueHelpDialog.getAggregation('content')[0];
@@ -250,7 +250,7 @@ sap.ui.define([
             oViewModel.setProperty("/valueHelpSet", []);
 
         },
-        onGenericValueHelpSelection: function () {
+        onGenericValueHelpSelection: function (oEvent) {
             var oModel = this.getModel();
             var oViewModel = this.getModel("trainerPoolModel");
             var sSelectedF4 = oViewModel.getProperty("/sSelectedF4");

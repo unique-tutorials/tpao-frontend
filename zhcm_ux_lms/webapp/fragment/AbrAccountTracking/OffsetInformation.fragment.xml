@@ -1,12 +1,11 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core">
+    xmlns:f="sap.ui.layout.form">
     <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Mahsup Bilgileri" level="H2"/>
+                    <Title text="{i18n>OFFSET_INFORMATION}" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -18,7 +17,7 @@
                 <Text text="{i18n>MONTH}"/>
             </Column>
             <Column>
-                <Text text="Ödeme Türü"/>
+                <Text text="{i18n>PAYMENT_TYPE}"/>
             </Column>
             <Column>
                 <Text text="{i18n>PAYMENT_DATE}"/>
@@ -30,10 +29,10 @@
                 <Text text="{i18n>CURRENCY}"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Mahsup No"/>
+                <Text text="{i18n>OFFSET_NO}"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Ana Para Tutarı"/>
+                <Text text="{i18n>PRINCIPAL_AMOUNT}"/>
             </Column>
         </columns>
         <items>
@@ -58,10 +57,10 @@
         <f:formContainers>
             <f:FormContainer>
                 <f:formElements>
-                    <f:FormElement label="Ana Para Toplamı">
+                    <f:FormElement label="{i18n>PRINCIPAL_TOTAL}">
                         <f:fields>
                             <Input value="{requestListModel>/newNRequest/Pernr}" />
-                            <Button text="Toplamı Göster" type="Emphasized" />
+                            <Button text="{i18n>SHOW_TOTAL}" type="Emphasized" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

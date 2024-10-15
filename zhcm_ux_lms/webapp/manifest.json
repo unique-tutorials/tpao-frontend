@@ -226,6 +226,13 @@
 					"target": [
 						"CareerInternContn"
 					]
+				},
+				{
+					"pattern": "TrainingManager",
+					"name": "TrainingManager",
+					"target": [
+						"TrainingManager"
+					]
 				}
 			],
 			"targets": {
@@ -305,7 +312,13 @@
 					"viewName": "CareerInternContn",
 					"viewId": "CareerInternContn",
 					"viewLevel": 2,
-					"title": "Biz Bize Kariyer Stajyer Devamları"
+					"title": "Stajyer Öğrenci Devamsızlık Onayı"
+				},
+				"TrainingManager": {
+					"viewName": "TrainingManager",
+					"viewId": "TrainingManager",
+					"viewLevel": 2,
+					"title": "Eğitim Yöneticisi"
 				}
 			}
 		},
@@ -327,6 +340,12 @@
 				},
 				{
 					"uri": "utils/moment.js"
+				},
+				{
+					"uri": "utils/XLSX.js"
+				},
+				{
+					"uri": "utils/xlsx-bundle.js"
 				}
 			]
 		},

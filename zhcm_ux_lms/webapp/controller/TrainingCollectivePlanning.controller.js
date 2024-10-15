@@ -13,7 +13,7 @@ sap.ui.define([
 
     return BaseController.extend("zhcm_ux_lms_abr.controller.TrainingCollectivePlanning", {
         formatter: formatter,
-        onInit: function () {
+        onInit: function (oEvent) {
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "collectivePlanningModel");
             this._initiateModel();
@@ -22,7 +22,7 @@ sap.ui.define([
         _onCollectivePlanningMatched: function (oEvent) {
 
         },
-        _initiateModel: function () {
+        _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("collectivePlanningModel");
             oViewModel.setData({
                 hierarchy: {

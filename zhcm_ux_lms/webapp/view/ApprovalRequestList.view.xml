@@ -13,31 +13,31 @@
                 <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
                     <columns>
                         <Column id="idRequestNumberColumn">
-                            <Text text="LİSANS MEZUNİYET ALANI / ALANLARI"/>
+                            <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
                         </Column>
                         <Column >
-                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS ALANI (TÜRKÇE)"/>
+                            <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
                         </Column>
                         <Column >
-                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS ALANI (İNGİLİZCE)"/>
+                            <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
                         </Column>
                         <Column >
-                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS KONUSU (TÜRKÇE)"/>
+                            <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
                         </Column>
-                        <Column >
-                            <Text text="ÖĞRENİM GÖRECEĞİ YÜKSEK LİSANS KONUSU (İNGİLİZCE)"/>
+                        <Column>
+                            <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
                         </Column>
                         <Column id="idRequestReasonColumn">
-                            <Text text="ÖĞRENİM GÖRÜLMESİ TERCİH EDİLEN ÜLKE / ÜLKELER VE ÖNCELİKLENDİRMELERİ"/>
+                            <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="KONTENJAN SAYISI "/>
+                            <Text text="{i18n>NUMBER_OF_QUOTAS} "/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="ÖĞRENCİNİN DÖNÜŞTE İSTİHDAM EDİLECEĞİ ÜNİTE VE MÜDÜRLÜK"/>
+                            <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="BU ALANDA YURT DIŞINDA BURSLU ÖĞRENCİ OKUTMA GEREKÇESİ"/>
+                            <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
                         </Column>
                     </columns>
                     <items>
@@ -61,7 +61,8 @@
           <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                 <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onDisplayRequestDetail"/>
+                <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onDisplayRequestDetail"/>
+                <Button text="{i18n>EVALUATION_CRITERIA}" type="Attention" icon="sap-icon://activate" press=".onEvaluationDialogButton" />
                 <Button text="{i18n>REJECT_ACTION}" type="Reject" icon="sap-icon://employee-rejections" press="onCancelCreatePage"/>
                 <Button text="{i18n>APPROVE_ACTION}" icon="sap-icon://approvals"  visible='{approvalRequestListModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Success"/>
             </OverflowToolbar>

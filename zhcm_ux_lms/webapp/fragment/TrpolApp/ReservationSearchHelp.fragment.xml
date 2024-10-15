@@ -25,7 +25,7 @@
                                         <Input value="{trpolRequestListModel>/searchParameter/Nahcn}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Name" label="Talep Kayıt Tarihi Aralığı" groupName="Group4" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Name" label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}" groupName="Group4" visibleInFilterBar="true">
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
                                             <DatePicker />
@@ -44,7 +44,7 @@
             }">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Rezervasyon Yapıldı"/>
+                            <Text text="{i18n>RESERVATION_MADE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>REQUEST_NUMBER}"/>
@@ -59,28 +59,28 @@
                             <Text text="{i18n>OR_LAND1}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Eyalet"/>
+                            <Text text="{i18n>STATE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Şehir"/>
+                            <Text text="{i18n>CITY}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Gidiş Tarihi"/>
+                            <Text text="{i18n>ENTRY_DATE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Dönüş Tarihi"/>
+                            <Text text="{i18n>RETURN_DATE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>EXPLANATION}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Masraf Merkezi Kodu"/>
+                            <Text text="{i18n>COST_CENTER_CODE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>BUDGET_CODE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Talep Kayıt Tarihi"/>
+                            <Text text="{i18n>REQUEST_REGISTRATION_DATE_RANGE}"/>
                         </Column>
                     </columns>
 
@@ -107,7 +107,7 @@
             </f:content>
         </f:DynamicPage>
         <beginButton>
-            <Button type="Reject" icon="sap-icon://cancel" text="Vazgeç" press=".onReservationSearchCancelButtonPress" />
+            <Button type="Reject" icon="sap-icon://cancel" text="{i18n>CANCEL_BUTTON}" press=".onReservationSearchCancelButtonPress" />
         </beginButton>
     </Dialog>
 </c:FragmentDefinition>

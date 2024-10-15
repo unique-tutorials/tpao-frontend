@@ -4,7 +4,7 @@ xmlns:c="sap.ui.core">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Geri Ödeme Planı" level="H2"/>
+                    <Title text="{i18n>REPAYMENT_PLAN}" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -31,13 +31,13 @@ xmlns:c="sap.ui.core">
     </Table>
     <VBox class="sapUiSmallMargin">
         <ToolbarSpacer />
-        <Button type="Emphasized" text="Toplam Göster"/>
+        <Button type="Emphasized" text="{i18n>TOTAL_SHOW}"/>
     </VBox>
     <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Mahsuplaşan Geri Ödemeler" level="H2"/>
+                    <Title text="{i18n>OFFSET_REPAYMENTS}" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -52,13 +52,13 @@ xmlns:c="sap.ui.core">
                 <Text text="{i18n>AMOUNT}" />
             </Column>
             <Column>
-                <Text text="Mahsuplaşan Tutar" />
+                <Text text="{i18n>OFFSET_AMOUNT}" />
             </Column>
             <Column>
-                <Text text="Mahsup No" />
+                <Text text="{i18n>OFFSET_NO}" />
             </Column>
             <Column>
-                <Text text="Mahsup Tarihi" />
+                <Text text="{i18n>OFFSET_DATE}" />
             </Column>
         </columns>
         <items>

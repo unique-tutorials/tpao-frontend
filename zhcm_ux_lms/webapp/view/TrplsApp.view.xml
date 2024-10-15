@@ -60,7 +60,7 @@
                                     <DatePicker value="{requestListModel>/TripRequest/Qname}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Dönüş Tarihi">
+                            <f:FormElement label="{i18n>RETURN_DATE}">
                                 <f:fields>
                                     <DatePicker value="{requestListModel>/TripRequest/Wname}" />
                                 </f:fields>
@@ -70,7 +70,7 @@
                                     <ComboBox value="{requestListModel>/TripRequest/Rname}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Eyalet">
+                            <f:FormElement label="{i18n>STATE}">
                                 <f:fields>
                                     <ComboBox value="{requestListModel>/TripRequest/Tname}" />
                                 </f:fields>
@@ -79,7 +79,7 @@
                     </f:FormContainer>
                     <f:FormContainer >
                         <f:formElements>
-                            <f:FormElement label="Şehir">
+                            <f:FormElement label="{i18n>CITY}">
                                 <f:fields>
                                     <ComboBox value="{requestListModel>/TripRequest/Yname}" />
                                 </f:fields>
@@ -121,7 +121,7 @@
                 <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
                 <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
                 <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="Kaydet" icon="sap-icon://save" press=".onSaveButton" type="Accept" visible="true"/>
+                <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onSaveButton" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>
     </Page>

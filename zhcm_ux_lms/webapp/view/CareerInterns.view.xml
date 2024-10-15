@@ -1,6 +1,7 @@
 <mvc:View controllerName="zhcm_ux_lms_abr.controller.CareerInterns"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
     xmlns="sap.m"
     xmlns:core="sap.ui.core" displayBlock="true" height="100%" busyIndicatorDelay="0">
 
@@ -14,6 +15,125 @@
                     <items>
                         <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="INT">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.CareerInterns.TabFilterCareerGeneralInfo" type="XML" />
+                        </IconTabFilter>
+                        <IconTabFilter text="{i18n>WUCICONTIN}" key="internship">
+                            <f:Form editable="true">
+                                <f:title>
+                                    <core:Title text="Tarih Aralığı Arama" />
+                                </f:title>
+                                <f:layout>
+                                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="Tarih Aralığı">
+                                                <f:fields>
+                                                    <Input id="DateInput" value="{'requestListModel>/newNumberRequest/Pernr'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowDateSearchHelp"/>
+                                                    <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress"/>
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                            <f:Form editable="true">
+                                <f:title>
+                                    <core:Title text="Devamsızlık Bilgileri"/>
+                                </f:title>
+                                <f:layout>
+                                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="Tarih">
+                                                <f:fields>
+                                                    <Input value="{careerInternListModel>/SelectedCareer/Date}" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="{i18n>EXPLANATION}">
+                                                <f:fields>
+                                                    <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                    <f:FormContainer>
+                                        <f:FormElement label="Tam Gün">
+                                            <f:fields>
+                                                <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                        <f:FormElement label="Yarım Gün">
+                                            <f:fields>
+                                                <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
+                                            </f:fields>
+                                        </f:FormElement>
+                                    </f:FormContainer>
+                                   
+                                    <f:FormContainer>
+                                        <f:FormElement label="Devamsızlık">
+                                            <f:fields>
+                                                <FlexBox alignItems="Start" justifyContent="SpaceBetween">
+                                                    <VBox class="sapUiTinyMargin">
+                                                        <Label text="Tam Gün Sayısı:" />
+                                                        <Input value="{careerInternListModel>/SelectedCareer/Desc}"/>
+                                                    </VBox>
+                                                    <VBox class="sapUiTinyMargin">
+                                                        <Label text="Yarım Gün Sayısı:" />
+                                                        <Input value="{careerInternListModel>/SelectedCareer/Desc}"/>
+                                                    </VBox>
+                                                    <VBox class="sapUiTinyMargin">
+                                                        <Label text="Toplam Maaş Alacağı Gün Sayısı:" />
+                                                        <Input value="{careerInternListModel>/SelectedCareer/Desc}"/>
+                                                    </VBox>
+                                                </FlexBox>
+                                            </f:fields>
+                                        </f:FormElement>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
+                        </IconTabFilter>
+                        <IconTabFilter text="Devamsızlık Girişleri">
+                            <f:Form editable="true">
+                                <f:title>
+                                    <core:Title text="Devamsızlık Bilgileri"/>
+                                </f:title>
+                                <f:layout>
+                                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                                </f:layout>
+                                <f:formContainers>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="Tarih">
+                                                <f:fields>
+                                                    <Input value="{careerInternListModel>/SelectedCareer/Date}" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Gelmeme Nedeni Açıklama">
+                                                <f:fields>
+                                                    <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                    <f:FormContainer>
+                                        <f:formElements>
+                                            <f:FormElement label="Mazeretli">
+                                                <f:fields>
+                                                    <CheckBox selected="{careerInternListModel>/SelectedCareer/Descs}" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                            <f:FormElement label="Raporlu">
+                                                <f:fields>
+                                                    <CheckBox selected="{careerInternListModel>/SelectedCareer/Descd}" />
+                                                </f:fields>
+                                            </f:FormElement>
+                                        </f:formElements>
+                                    </f:FormContainer>
+                                </f:formContainers>
+                            </f:Form>
                         </IconTabFilter>
                         <IconTabFilter text="{i18n>INTERNSHIP_DOCUMENTS}" key="internshipDocCareer">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.CareerInterns.CareerInternshipDoc" type="XML" />

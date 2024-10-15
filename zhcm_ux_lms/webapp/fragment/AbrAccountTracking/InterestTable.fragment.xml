@@ -12,12 +12,12 @@
                     <f:formElements>
                         <f:FormElement>
                             <f:fields>
-                                <DatePicker placeholder="Hesap Tarihi" value="{requestListModel>/interestEmployee/Serno}" />
+                                <DatePicker placeholder="{i18n>ACCOUNT_DATE}" value="{requestListModel>/interestEmployee/Serno}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement>
                             <f:fields>
-                                <CheckBox text="Dövize Göre Hesapla" selected="{requestListModel>/interestEmployee/Serno}" />
+                                <CheckBox text="{i18n>CALCULATE_BY_CURRENCY}" selected="{requestListModel>/interestEmployee/Serno}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -26,12 +26,12 @@
                     <f:formElements>
                         <f:FormElement>
                             <f:fields>
-                                <Button type="Ghost" text="Faiz Hesapla" />
+                                <Button type="Ghost" text="{i18n>CALCULATE_INTEREST}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement>
                             <f:fields>
-                                <Button type="Emphasized" text="Faiz Sil" />
+                                <Button type="Emphasized" text="{i18n>DELETE_INTEREST}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -48,19 +48,19 @@
                 <Text text="{i18n>CURRENCY}" />
             </Column>
             <Column>
-                <Text text="Ödenen Tutar" />
+                <Text text="{i18n>AMOUNT_PAID}" />
             </Column>
             <Column>
-                <Text text="Hesap Tarihi" />
+                <Text text="{i18n>ACCOUNT_DATE}" />
             </Column>
             <Column>
                 <Text text="{i18n>NUMBER_OF_DAYS}" />
             </Column>
             <Column>
-                <Text text="Ortalama Faiz Oranı" />
+                <Text text="{i18n>INTEREST_RATE}" />
             </Column>
             <Column>
-                <Text text="Faiz Tutarı" />
+                <Text text="{i18n>INTEREST_AMOUNT}" />
             </Column>
         </columns>
         <items>
@@ -88,12 +88,12 @@
                     <f:formElements>
                         <f:FormElement>
                             <f:fields>
-                                <Button type="Ghost" text="Mahsuplaştır / Mahsup Göster" />
+                                <Button type="Ghost" text="{i18n>SHOW_OFFSET}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement>
                             <f:fields>
-                                <CheckBox text="Mahsuplaştı" selected="{requestListModel>/interestEmployee/Serno}" />
+                                <CheckBox text="{i18n>OFFSET}" selected="{requestListModel>/interestEmployee/Serno}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -107,7 +107,7 @@
                         </f:FormElement>
                         <f:FormElement>
                             <f:fields>
-                                <Button type="Emphasized" text="Faiz CSV Oluştur" />
+                                <Button type="Emphasized" text="{i18n>CREATE_INTEREST_CSV}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -119,7 +119,7 @@
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Ek Ödemeler" level="H2"/>
+                    <Title text="{i18n>ADDITIONAL_PAYMENTS}" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -131,19 +131,19 @@
                 <Text text="{i18n>CURRENCY}" />
             </Column>
             <Column>
-                <Text text="Ödenen Tutar" />
+                <Text text="{i18n>AMOUNT_PAID}" />
             </Column>
             <Column>
-                <Text text="Hesap Tarihi" />
+                <Text text="{i18n>ACCOUNT_DATE}" />
             </Column>
             <Column>
-                <Text text="Gün Sayısı" />
+                <Text text="{i18n>NUMBER_OF_DAYS}" />
             </Column>
             <Column>
-                <Text text="Ortalama Faiz Oranı" />
+                <Text text="{i18n>INTEREST_RATE}" />
             </Column>
             <Column>
-                <Text text="Faiz Tutarı" />
+                <Text text="{i18n>INTEREST_AMOUNT }" />
             </Column>
         </columns>
         <items>
@@ -171,12 +171,12 @@
                     <f:formElements>
                         <f:FormElement>
                             <f:fields>
-                                <Button type="Ghost" text="Ek Ödeme Kaydet" />
+                                <Button type="Ghost" text="{i18n>SAVE_ADDITIONAL_PAYMENT}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement>
                             <f:fields>
-                                <Button type="Ghost" text="Kalan Borç Hesapla" />
+                                <Button type="Ghost" text="{i18n>REMAINING_DEBT}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -190,7 +190,7 @@
                         </f:FormElement>
                         <f:FormElement>
                             <f:fields>
-                                <Button type="Emphasized" text="Ek Ödeme CSV Oluştur" />
+                                <Button type="Emphasized" text="{i18n>CREATE_ADDITIONAL_PAYMENT_CSV}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>

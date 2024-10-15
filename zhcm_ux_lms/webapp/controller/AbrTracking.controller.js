@@ -15,14 +15,14 @@ sap.ui.define([
 
 	return BaseController.extend("zhcm_ux_lms_abr.controller.AbrTracking", {
         formatter: formatter,
-        onInit: function () {
+        onInit: function (oEvent) {
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "requestListModel");
             this._initiateModel();
             this.getRouter().getRoute("AbrTracking").attachPatternMatched(this._onRequestListMatched, this);
         },
         
-        _initiateModel: function () {
+        _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("requestListModel");
             oViewModel.setData({
                 requestList: [],
@@ -231,25 +231,25 @@ sap.ui.define([
             }
             return aFilters;
         },    
-        _getRequestList: function () { 
+        _getRequestList: function (oEvent) { 
 
         },
-        onCancelSearchStudentDialog:function(){
+        onCancelSearchStudentDialog:function(oEvent){
             if (this._oSearchHelpDialog) {
                 this._oSearchHelpDialog.close();
             }
         },
-        onCancelGuarantorDialog:function(){
+        onCancelGuarantorDialog:function(oEvent){
             if (this._oGuarantorDialog) {
                 this._oGuarantorDialog.close();
             }
         },
-        onCancelGuarantorContact:function(){
+        onCancelGuarantorContact:function(oEvent){
             if (this._oGuarantorContactDialog) {
                 this._oGuarantorContactDialog.close();
             } 
         },
-        onCancelGuarantorIdentity:function(){
+        onCancelGuarantorIdentity:function(oEvent){
             if (this._oGuarantorIdentityDialog) {
                 this._oGuarantorIdentityDialog.close();
             } 

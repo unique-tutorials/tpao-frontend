@@ -13,7 +13,7 @@ sap.ui.define([
 
     return BaseController.extend("zhcm_ux_lms_abr.controller.AppDispatcher", {
         formatter: formatter,
-        onInit: function () {
+        onInit: function (oEvent) {
             var oViewModel;
             oViewModel = new JSONModel({
                 busy: false,
@@ -87,7 +87,13 @@ sap.ui.define([
                 {
                     "appName": "CareerInternContn",
                     "visible": true,
-                    "title": 'Biz Bize Kariyer Stajyer Devamları',
+                    "title": 'Stajyer Öğrenci Devamsızlık Onayı',
+                    "icon": "sap-icon://group"
+                },
+                {
+                    "appName": "TrainingManager",
+                    "visible": true,
+                    "title": 'Eğitim Yöneticisi',
                     "icon": "sap-icon://group"
                 }
             ],
@@ -184,7 +190,7 @@ sap.ui.define([
         //         }
         //     });
         // },
-        _addTiles:function(){
+        _addTiles:function(oEvent){
             var oViewModel = this.getModel("appDispatcherView");
             var oThis = this;
             var oPage = this.byId("idAppDispatcherPage");
@@ -237,17 +243,17 @@ sap.ui.define([
             this.getRouter().navTo(oTarget.appName);
             debugger;
         },
-        onTrainerPoolPage: function () {
+        onTrainerPoolPage: function (oTarget) {
 			this.getRouter().navTo("trainerpool");
 		},
         onMyTrainingRequestPage: function (oTarget) {
             debugger;
 			this.getRouter().navTo("trainingRequestList");
 		},
-        onApproveTrainingRequestPage: function () {
+        onApproveTrainingRequestPage: function (oTarget) {
 			this.getRouter().navTo("approvalRequestList");
 		},
-        onCollectivePlanningPage: function () {
+        onCollectivePlanningPage: function (oTarget) {
 			this.getRouter().navTo("collectivePlanning");
 		},
     });

@@ -12,7 +12,7 @@ sap.ui.define([
     "use strict";
     return BaseController.extend("zhcm_ux_lms_abr.controller.ApprovalRequestList", {
         formatter: formatter,
-        onInit: function () {
+        onInit: function (oEvent) {
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "approvalRequestListModel");
             //this._initiateModel();
@@ -21,7 +21,7 @@ sap.ui.define([
         _onApprovalRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
-        _initiateModel: function () {
+        _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("approvalRequestListModel");
             oViewModel.setData({
                 requestList: [
@@ -57,15 +57,27 @@ sap.ui.define([
 
             });
         },
-        _getRequestList: function () {
+        _getRequestList: function (oEvent) {
 
         },
-        onDisplayRequestDetail: function () {
+        onDisplayRequestDetail: function (oEvent) {
             if (!this._oRequestDisplayDialog) {
 				this._oRequestDisplayDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.ApprovalRequestFormDialog", this);
 				this.getView().addDependent(this._oRequestDisplayDialog);
 			}
 			this._oRequestDisplayDialog.open();
+        },
+        onEvaluationDialogButton:function(oEvent){
+            if (!this._oEvaluationDisplayDialog) {
+				this._oEvaluationDisplayDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.ApprovalRequestList.EvaluationDialog", this);
+				this.getView().addDependent(this._oEvaluationDisplayDialog);
+			}
+			this._oEvaluationDisplayDialog.open();
+        },
+        onEvaluationCancelButtonPress:function(oEvent){
+            if (this._oEvaluationDisplayDialog) {
+                this._oEvaluationDisplayDialog.close();
+            }
         }
     });
 });
