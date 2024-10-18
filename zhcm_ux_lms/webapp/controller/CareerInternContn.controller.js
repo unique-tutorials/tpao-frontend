@@ -27,7 +27,29 @@ sap.ui.define([
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {},
-                searchCareerContnParameter:{}
+                searchCareerContnParameter:{},
+                inApprovalList: [
+                    {
+                        Reqne:"Alkonost",
+                        Trnam:"20.05.1999",
+                        Trtyp:"Müdürlük",
+                        Trcnt:"2024",
+                        Trnqp:"Ağustos",
+                        Trnqn:"Hasta",
+                        Reqno:"Aktif",
+                        Reqnw:"Pasif"
+                    },   
+                    {
+                        Reqne:"Alkonost",
+                        Trnam:"20.05.1999",
+                        Trtyp:"Müdürlük",
+                        Trcnt:"2024",
+                        Trnqp:"Ağustos",
+                        Trnqn:"Hasta",
+                        Reqno:"Aktif",
+                        Reqnw:"Pasif"
+                    }
+                ]
              
             });
         },

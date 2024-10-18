@@ -24,7 +24,7 @@
     </f:Form>
     <f:Form id="ContnForm" editable="true">
         <f:title>
-            <core:Title text="Stajyer Öğrencilerinin Devamsızlıkları" />
+            <core:Title text="{i18n>ABSENCE_TITLE}" />
         </f:title>
         <f:layout>
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -37,12 +37,17 @@
                             <Input value="{careerInternListModel>/selectedCareer/Vorna}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Gelmeme Nedeni">
+                    <f:FormElement label="{i18n>REASON_FOR_NOT_COMING}">
                         <f:fields>
                             <Input value="{careerInternListModel>/selectedCareer/Unicd}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Akış Detayı">
+                    <f:FormElement label="{i18n>DATE}">
+                        <f:fields>
+                            <DatePicker value="{careerInternListModel>/selectedCareer/Unicd}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>FLOW_DETAIL}">
                         <f:fields>
                             <Input value="{careerInternListModel>/selectedCareer/Vornaw}" />
                         </f:fields>
@@ -52,16 +57,16 @@
         </f:formContainers>
         <f:FormContainer>
             <f:formElements>
-                <f:FormElement label="Mazeret Geçerlilik">
-                        <f:fields>
-                            <CheckBox selected="{careerInternListModel>/selectedCareer/Vornad}" />
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="Raporluluk">
-                        <f:fields>
-                            <CheckBox selected="{careerInternListModel>/selectedCareer/Vornaw}" />
-                        </f:fields>
-                    </f:FormElement>
+                <f:FormElement label="{i18n>EXCUSE_VALIDITY}">
+                    <f:fields>
+                        <CheckBox selected="{careerInternListModel>/selectedCareer/Vornad}" />
+                    </f:fields>
+                </f:FormElement>
+                <f:FormElement label="{i18n>WITH_REPORT}">
+                    <f:fields>
+                        <CheckBox selected="{careerInternListModel>/selectedCareer/Vornaw}" />
+                    </f:fields>
+                </f:FormElement>
             </f:formElements>
         </f:FormContainer>
     </f:Form>

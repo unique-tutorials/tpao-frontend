@@ -26,49 +26,9 @@
                     </f:FormContainer>
                 </f:formContainers>
             </f:Form>
-            <f:Form editable="true">
-                <f:title>
-                    <core:Title text="{i18n>STUDENT_SALARY_INFORMATION}"/>
-                </f:title>
-                <f:layout>
-                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-                </f:layout>
-                <f:formContainers>
-                    <f:FormContainer>
-                        <f:formElements>
-                            <f:FormElement label="{i18n>OR_ENAME}">
-                                <f:fields>
-                                    <Input value="{SupplierName}"/>
-                                </f:fields>
-                            </f:FormElement>
-                            <f:FormElement label="{i18n>RESTRICTED_SALARY}">
-                                <f:fields>
-                                    <Input value="{SupplierName}"/>
-                                </f:fields>
-                            </f:FormElement>
-                            <f:FormElement label="{i18n>SCHOLARSHIP_PERIOD}">
-                                <f:fields>
-                                    <Input value="{SupplierName}"/>
-                                </f:fields>
-                            </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                    <f:FormContainer>
-                        <f:formElements>
-                            <f:FormElement label="{i18n>WAGE}">
-                                <f:fields>
-                                    <Input value="{SupplierName}"/>
-                                </f:fields>
-                            </f:FormElement>
-                            <f:FormElement label="{i18n>CURRENCY}">
-                                <f:fields>
-                                    <Input value="{SupplierName}"/>
-                                </f:fields>
-                            </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                </f:formContainers>
-            </f:Form>
+            <VBox class="sapUiSmallMarginTop">
+                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrFileUpload.StudentSalaryInformation" type="XML" />
+            </VBox>
         </VBox>
         <footer>
             <OverflowToolbar>

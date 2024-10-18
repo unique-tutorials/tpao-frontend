@@ -16,7 +16,7 @@
                                         <MultiComboBox name="Name" items="{
                                                         path: '/ProductNames',
                                                         templateShareable: true
-                                                    }" enabled="{trainingManagerListModel>/abrActionData/displayEnabled}">
+                                                    }">
                                             <core:Item key="{key}" text="{name}"/>
                                         </MultiComboBox>
                                     </fb:control>
@@ -26,7 +26,7 @@
                                         <MultiComboBox name="Category" items="{
                                                         path: '/ProductCategories',
                                                         templateShareable: true
-                                                    }" enabled="{trainingManagerListModel>/abrActionData/displayEnabled}">
+                                                    }">
                                             <core:Item key="{key}" text="{name}"/>
                                         </MultiComboBox>
                                     </fb:control>
@@ -36,7 +36,7 @@
                                         <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }" enabled="{trainingManagerListModel>/abrActionData/displayEnabled}">
+                                                    }">
                                             <core:Item key="{key}" text="{name}"/>
                                         </MultiComboBox>
                                     </fb:control>
@@ -46,7 +46,7 @@
                                         <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }" enabled="{trainingManagerListModel>/abrActionData/displayEnabled}">
+                                                    }">
                                             <core:Item key="{key}" text="{name}"/>
                                         </MultiComboBox>
                                     </fb:control>
@@ -56,7 +56,7 @@
                                         <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }" enabled="{trainingManagerListModel>/abrActionData/displayEnabled}">
+                                                    }">
                                             <core:Item key="{key}" text="{name}"/>
                                         </MultiComboBox>
                                     </fb:control>
@@ -66,7 +66,7 @@
                                         <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }" enabled="{trainingManagerListModel>/abrActionData/displayEnabled}">
+                                                    }">
                                             <core:Item key="{key}" text="{name}"/>
                                         </MultiComboBox>
                                     </fb:control>
@@ -76,7 +76,7 @@
                                         <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }" enabled="{trainingManagerListModel>/abrActionData/displayEnabled}">
+                                                    }">
                                             <core:Item key="{key}" text="{name}"/>
                                         </MultiComboBox>
                                     </fb:control>
@@ -86,7 +86,7 @@
                                         <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }" enabled="{trainingManagerListModel>/abrActionData/displayEnabled}">
+                                                    }">
                                             <core:Item key="{key}" text="{name}"/>
                                         </MultiComboBox>
                                     </fb:control>
@@ -96,7 +96,7 @@
                                         <MultiComboBox name="SupplierName" items="{
                                                         path: '/ProductSuppliers',
                                                         templateShareable: true
-                                                    }" enabled="{trainingManagerListModel>/abrActionData/displayEnabled}">
+                                                    }">
                                             <core:Item key="{key}" text="{name}"/>
                                         </MultiComboBox>
                                     </fb:control>
@@ -159,7 +159,7 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
+                <Button text="{i18n>EDIT}" icon="sap-icon://edit" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' type="Attention"/>
                 <Button text="{i18n>EXPORT_EXCEL}" icon="sap-icon://excel-attachment" type="Accept" press="onDataExportToExcel" />
             </OverflowToolbar>
         </footer>

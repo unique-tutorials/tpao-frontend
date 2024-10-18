@@ -1,0 +1,53 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="Teknik Değerlendirme" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>Q_UNIT}">
+                        <f:fields>
+                            <Input value="{SupplierName}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>UNIT}">
+                        <f:fields>
+                            <Input value="{Street}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>STUDENT_ENAME}">
+                        <f:fields>
+                            <Input value="{ZIPCode}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>EVALUATION_DATE}">
+                        <f:fields>
+                            <Input value="{ZIPCode}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>TECHNICAL_ENAME}">
+                        <f:fields>
+                            <Input value="{Street}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>REGISTRATION_NUMBER}">
+                        <f:fields>
+                            <Input value="{ZIPCode}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+</c:FragmentDefinition>

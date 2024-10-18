@@ -38,27 +38,27 @@ sap.ui.define([
                 },
                 {
                     "appName": "TrplsApp",
-                    "visible": true,
+                    "visible": false,
                     "title": 'Burslu Öğrenci Seyahat ',
-                    "icon": "sap-icon://activity-items"
+                    "icon": "sap-icon://suitcase"
                 },
                 {
                     "appName": "TrpolApp",
-                    "visible": true,
+                    "visible": false,
                     "title": 'Personel Seyahat Rezervasyon Talebi (Sorgu)',
-                    "icon": "sap-icon://group"
+                    "icon": "sap-icon://travel-request"
                 },
                 {
                     "appName": "AbrAccountTracking",
                     "visible": true,
                     "title": 'Burslu Öğrenci Takibi (Muhasebe)',
-                    "icon": "sap-icon://group"
+                    "icon": "sap-icon://collections-management"
                 },
                 {
                     "appName": "AbrFileUpload",
                     "visible": true,
                     "title": 'Yurt Dışı eğitim – Burslu Öğrenci Maaşları',
-                    "icon": "sap-icon://group"
+                    "icon": "sap-icon://customer-financial-fact-sheet"
                 },
                 {
                     "appName": "AbrStajyerTracking",
@@ -80,7 +80,7 @@ sap.ui.define([
                 },
                 {
                     "appName": "CareerInterns",
-                    "visible": true,
+                    "visible": false,
                     "title": 'Biz Bize Kariyer Stajyerler',
                     "icon": "sap-icon://group"
                 },
@@ -88,13 +88,19 @@ sap.ui.define([
                     "appName": "CareerInternContn",
                     "visible": true,
                     "title": 'Stajyer Öğrenci Devamsızlık Onayı',
-                    "icon": "sap-icon://group"
+                    "icon": "sap-icon://approvals"
                 },
                 {
                     "appName": "TrainingManager",
                     "visible": true,
                     "title": 'Eğitim Yöneticisi',
-                    "icon": "sap-icon://group"
+                    "icon": "sap-icon://employee"
+                },
+                {
+                    "appName": "InternStudentTracking",
+                    "visible": true,
+                    "title": 'Stajyer Öğrenci Takibi',
+                    "icon": "sap-icon://employee"
                 }
             ],
                 appAuthorization: {

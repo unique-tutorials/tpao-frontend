@@ -322,21 +322,6 @@ sap.ui.define([
             if (this._oUnitCareerSearchHelpDialog) {
                 this._oUnitCareerSearchHelpDialog.close();
             }
-        },
-        onShowDateSearchHelp:function(oEvent){
-            debugger;
-            if (!this._oDateSearchHelpDialog) {
-                this._oDateSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.CareerInterns.DateSearchHelpDialog", this);
-                this.getView().addDependent(this._oDateSearchHelpDialog);
-            } else {
-                this._oDateSearchHelpDialog.close();
-            }
-            this._oDateSearchHelpDialog.open();
-        },
-        onDateCancelButtonPress:function(oEvent){
-            if (this._oDateSearchHelpDialog) {
-                this._oDateSearchHelpDialog.close();
-            }
         }
     });
 });

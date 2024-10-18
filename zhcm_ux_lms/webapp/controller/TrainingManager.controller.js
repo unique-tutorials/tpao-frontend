@@ -85,24 +85,24 @@ sap.ui.define([
                     }
                 ],
                 selectedAbr: null,
-                abrActionData:{
-                    displayEnabled: false
-                }
+                // abrActionData:{
+                //     displayEnabled: false
+                // }
             });
         },
         _getRequestList: function (oEvent) { 
 
         },
-        onAbrItemSelected:function(oEvent){
-            var oSelected = oEvent.getParameter('listItem').getBindingContext("trainingManagerListModel").getObject();
-            this.getModel("trainingManagerListModel").setProperty("/selectedAbr", oSelected);
+        // onAbrItemSelected:function(oEvent){
+        //     var oSelected = oEvent.getParameter('listItem').getBindingContext("trainingManagerListModel").getObject();
+        //     this.getModel("trainingManagerListModel").setProperty("/selectedAbr", oSelected);
             
-            var oAbrActionData = {
-                displayEnabled: true
-            };
-            this.getModel("trainingManagerListModel").setProperty("/abrActionData", oAbrActionData);
+        //     var oAbrActionData = {
+        //         displayEnabled: true
+        //     };
+        //     this.getModel("trainingManagerListModel").setProperty("/abrActionData", oAbrActionData);
             
-        },
+        // },
       
         onDataExportToExcel: function(oEvent) {
             debugger;

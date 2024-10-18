@@ -1,0 +1,110 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <f:Form id="FormChange354" editable="true">
+        <f:title>
+            <core:Title text="Teknik Değerlendirme" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>Q_UNIT}">
+                        <f:fields>
+                            <Input value="{SupplierName}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>UNIT}">
+                        <f:fields>
+                            <Input value="{Street}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>STUDENT_ENAME}">
+                        <f:fields>
+                            <Input value="{ZIPCode}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>GOAL_STUDY}">
+                        <f:fields>
+                            <Input value="{ZIPCode}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>REPORT_DATE}">
+                        <f:fields>
+                            <Input value="{SupplierName}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>TECHNICAL_ENAME}">
+                        <f:fields>
+                            <Input value="{Street}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>REGISTRATION_NUMBER}">
+                        <f:fields>
+                            <Input value="{ZIPCode}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+
+    <!-- <List headerText="Bilgi Seviyesi Açıklaması" headerLevel="H2" items="{
+			path: '/productCollection'
+		}">
+        <StandardListItem title="{title}" description="{description}" />
+    </List> -->
+    <VBox class="sapUiSmallMarginTop">
+        <List headerText="Bilgi Seviyesi Açıklaması" headerLevel="H2">
+            <StandardListItem title="Başlangıç (1)" description="Aday mühendis konu hakkında hiçbir bilgiye sahip değildir." />
+            <StandardListItem title="Temel (2)" description="Aday mühendis konu hakkında teorik bilgi sahibidir fakat herhangi bir uygulamada bulunamaz." />
+            <StandardListItem title="Uygulama (3)" description="Aday mühendis konu hakkında bir gözetmen / danışman eşliğinde veya gözetiminde uygulama yapabilir." />
+            <StandardListItem title="Uzman (4)" description="Aday mühendis konu hakkında yalnız çalışma yapabilir ve başka bir kişiye bilgisini aktarabilir verebilir." />
+            <StandardListItem title="Yetkin (5)" description="Aday mühendis konu hakkında değerlendirme yapabilir ve proje geliştirebilir." />
+        </List>
+    </VBox>
+    <Table id="idProductsTable" inset="false" items="{internStudentListModel>/technicalEvaluation}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Products" level="H2"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Gerçekleşen Hafta (Tarih Belirtiniz)" />
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Gerçekleşen Çalışma Tanımı" />
+            </Column>
+            <Column minScreenWidth="Desktop" demandPopin="true" >
+                <Text text="Çalışma Öncesi Yetkinlik Seviyesi" />
+            </Column>
+            <Column minScreenWidth="Desktop" demandPopin="true" >
+                <Text text="Çalışma Sonrası Yetkinlik Düzeyi" />
+            </Column>
+            <Column hAlign="End">
+                <Text text="Yorumlar" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{internStudentListModel>SupplierName}" />
+                    <Text text="{internStudentListModel>WorkDescription}" />
+                    <Text text="{internStudentListModel>BeforeSkillLevel}" />
+                    <Text text="{internStudentListModel>AfterSkillLevel}" />
+                    <Text text="{internStudentListModel>Comments}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</c:FragmentDefinition>

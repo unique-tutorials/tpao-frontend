@@ -4,12 +4,19 @@
 >
  <Dialog title="Mentör Seçim Ekranı" state="None" type="Standard" contentWidth="40%" contentHeight="60%" verticalScrolling="false" resizable="true" draggable="true">
     <Table inset="false" items="{/ScholarshipStudentSet}" >
+        <headerToolbar>
+            <Toolbar >
+              <!-- <Text text="Mentör Arama" /> -->
+              <ToolbarSpacer/>
+              <SearchField placeholder="Arama" width="{= ${device>/system/phone} ? '200px' : '70%' }" value="{listViewModel>/queryString}" search=".onSearchProject" />
+            </Toolbar>
+          </headerToolbar>
         <columns>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>UNIT_CODE}" />
+                <Text text="Personel Kodu" />
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>OR_ORGTX}" />
+                <Text text="Personel Adı" />
             </Column>
         </columns>
         <items>
