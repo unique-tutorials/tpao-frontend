@@ -87,24 +87,24 @@ sap.ui.define([
                     }
                 ],
                 selectedAbr: null,
-                abrActionData:{
-                    displayEnabled: false
-                }
+                // abrActionData:{
+                //     displayEnabled: false
+                // }
             });
         },
         _getRequestList: function (oEvent) { 
 
         },
-        onAbrItemSelected:function(oEvent){
-            var oSelected = oEvent.getParameter('listItem').getBindingContext("abrRequestListModel").getObject();
-            this.getModel("abrRequestListModel").setProperty("/selectedAbr", oSelected);
+        // onAbrItemSelected:function(oEvent){
+        //     var oSelected = oEvent.getParameter('listItem').getBindingContext("abrRequestListModel").getObject();
+        //     this.getModel("abrRequestListModel").setProperty("/selectedAbr", oSelected);
             
-            var oAbrActionData = {
-                displayEnabled: true
-            };
-            this.getModel("abrRequestListModel").setProperty("/abrActionData", oAbrActionData);
+        //     var oAbrActionData = {
+        //         displayEnabled: true
+        //     };
+        //     this.getModel("abrRequestListModel").setProperty("/abrActionData", oAbrActionData);
             
-        },
+        // },
         onNewTrainingRequest: function (oEvent) {
             if (!this._oNewRequestDialog) {
 				this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
@@ -117,12 +117,17 @@ sap.ui.define([
                 this._oNewRequestDialog.close();
             }
          },
-         onAddNewCountry: async function (oEvent) {
+         onAddNewCountry: function (oEvent) {
             if (!this._oNewCountryDialog) {
 				this._oNewCountryDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.CountryNewTable", this);
 				this.getView().addDependent(this._oNewCountryDialog);
 			}
 			this._oNewCountryDialog.open();
+        },
+        onCancelSearchStudentDialog:function(oEvent){
+            if (this._oNewCountryDialog) {
+               this._oNewCountryDialog.close();
+            }
         },
         editDraftButtonPress: function(oEvent) {
             // Dialog daha önce oluşturulmadıysa yeni bir dialog oluştur ve ekle

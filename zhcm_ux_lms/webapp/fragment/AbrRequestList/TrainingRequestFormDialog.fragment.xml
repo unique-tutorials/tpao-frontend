@@ -14,25 +14,16 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>UNDERGRADUATE_GRADUATION_AREA}">
                                 <f:fields>
-                                    <!-- <ComboBox items="{ path: '/ProductCollection', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Maste' } ]  }" selectedKey="{abrRequestListModel>/TrainRequestList/Mastr}" required="true">
-                                        <core:Item key="{ProductId}" text="{Name}"/>
-                                    </ComboBox> -->
                                     <ComboBox value="{abrRequestListModel>/TrainRequestList/Under}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>MASTER_DEGREE_FIELD_TR}">
                                 <f:fields>
-                                    <!-- <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Mastr' } ] }" selectedKey="{abrRequestListModel>/TrainRequestList/Mastr}" required="true">
-                                        <core:ListItem key="{Key}" text="{Value}"/>
-                                    </ComboBox> -->
                                     <ComboBox value="{abrRequestListModel>/TrainRequestList/Maste}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>MASTER_DEGREE_FIELD_EN}">
                                 <f:fields>
-                                    <!-- <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Masen' } ] }" selectedKey="{abrRequestListModel>/TrainRequestList/Masen}" required="true">
-                                        <core:ListItem key="{Key}" text="{Value}"/>
-                                    </ComboBox> -->
                                     <ComboBox value="{abrRequestListModel>/TrainRequestList/Masten}" />
                                 </f:fields>
                             </f:FormElement>
@@ -46,21 +37,6 @@
                                     <TextArea rows="4" value="{abrRequestListModel>/TrainRequestList/Subjen}" required="true" />
                                 </f:fields>
                             </f:FormElement>
-                            <!-- <f:FormElement label="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY}">
-                            <f:fields>
-                                <MultiComboBox items="{
-                                path: '/ProductCollection',
-                                sorter: { path: 'SurName' }
-                            }" required="true">
-                                    <core:Item key="{ProductName}" text="{SurName}"/>
-                                </MultiComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>PRIORITIZATIONS}">
-                            <f:fields>
-                                <Input value="{abrRequestListModel>/TrainRequestList/Prior}" required="true" />
-                            </f:fields>
-                        </f:FormElement> -->
                             <f:FormElement label="{i18n>NUMBER_OF_QUOTAS}">
                                 <f:fields>
                                     <ComboBox value="{abrRequestListModel>/TrainRequestList/Quqta}" required="true" />
@@ -68,17 +44,11 @@
                             </f:FormElement>
                             <f:FormElement label="{i18n>UNIT_ON_RETURN}">
                                 <f:fields>
-                                    <!-- <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Unit' } ] }" selectedKey="{abrRequestListModel>/TrainRequestList/Unit}" required="true">
-                                        <core:ListItem key="{Key}" text="{Value}"/>
-                                    </ComboBox> -->
                                     <ComboBox value="{abrRequestListModel>/TrainRequestList/Direc}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>DIRECTORATE_ON_RETURN}">
                                 <f:fields>
-                                    <!-- <ComboBox items="{ path:'/ProductCollection' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Direc' } ] }" selectedKey="{abrRequestListModel>/TrainRequestList/Direc}" required="true">
-                                        <core:ListItem key="{Key}" text="{Value}"/>
-                                    </ComboBox> -->
                                     <ComboBox value="{abrRequestListModel>/TrainRequestList/Direc}" />
                                 </f:fields>
                             </f:FormElement>
@@ -87,15 +57,6 @@
                                     <TextArea rows="4" value="{abrRequestListModel>/TrainRequestList/Reaso}" required="true" />
                                 </f:fields>
                             </f:FormElement>
-                            <!-- <f:FormElement label="{i18n>SUGGESTED_TRAINER}">
-                            <f:fields>
-                                <Input cd:inputId="ORGEH" textFormatMode="KeyValue" showSuggestion="true" value="{employmentRequestModel>/currentRequest/Orgtx}" showValueHelp="true" valueHelpRequest="onValueHelpRequest" suggestionItems="{employmentRequestModel>/valueHelpSet}">
-                                    <suggestionItems>
-                                        <core:ListItem key="{Vhkey}" text="{Vhval}" additionalText="{Vhval}" />
-                                    </suggestionItems>
-                                </Input>
-                            </f:fields>
-                        </f:FormElement> -->
                         </f:formElements>
                     </f:FormContainer>
                 </f:formContainers>

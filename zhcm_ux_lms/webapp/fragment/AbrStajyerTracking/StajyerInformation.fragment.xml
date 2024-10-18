@@ -42,22 +42,22 @@
                             <Input value="{requestStajyerListModel>/SelectedStajyer/Nachn}" />
                         </f:fields>
                     </f:FormElement>
-                    <!-- <f:FormElement label="{i18n>UNIT}">
+                    <f:FormElement label="{i18n>REGISTRATION_NUMBER}">
                         <f:fields>
-                           
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Orgehx}" />
                         </f:fields>
-                    </f:FormElement> -->
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>UNIT}">
+                        <f:fields>
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Orgeh}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitStajyerSearchHelp" />
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Orgtx}" />
+                        </f:fields>
+                    </f:FormElement>
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>
         <f:FormContainer>
             <f:formElements>
-                <f:FormElement label="{i18n>UNIT}">
-                    <f:fields>
-                        <Input value="{requestStajyerListModel>/SelectedStajyer/Orgeh}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitStajyerSearchHelp" />
-                        <Input value="{requestStajyerListModel>/SelectedStajyer/Orgtx}" />
-                    </f:fields>
-                </f:FormElement>
                 <f:FormElement label="{i18n>QUOTA_TYPE}">
                     <f:fields>
                         <!-- <Input value="{requestStajyerListModel>/SelectedStajyer/Quoty}" /> -->
@@ -69,6 +69,16 @@
                         }">
                             <core:Item key="{Key}" text="{Value}"/>
                         </Select>
+                    </f:fields>
+                </f:FormElement>
+                <f:FormElement label="{i18n>ADDRESS}">
+                    <f:fields>
+                        <Input value="{requestStajyerListModel>/SelectedStajyer/Orgehx}" />
+                    </f:fields>
+                </f:FormElement>
+                <f:FormElement label="{i18n>STUDENT_GENDER}">
+                    <f:fields>
+                        <Input value="{requestStajyerListModel>/SelectedStajyer/Orgehx}" />
                     </f:fields>
                 </f:FormElement>
             </f:formElements>

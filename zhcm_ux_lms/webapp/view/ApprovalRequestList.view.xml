@@ -12,22 +12,22 @@
             <content>
                 <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
                     <columns>
-                        <Column id="idRequestNumberColumn">
+                        <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
                         </Column>
-                        <Column >
+                        <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
                         </Column>
-                        <Column >
+                        <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
                         </Column>
-                        <Column >
+                        <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
                         </Column>
-                        <Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
                         </Column>
-                        <Column id="idRequestReasonColumn">
+                        <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">

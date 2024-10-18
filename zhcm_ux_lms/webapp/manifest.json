@@ -120,6 +120,8 @@
 					"stretch": true,
 					"files": [
 						"AbrStajyerTracking.view.xml",
+						"InternStudentTracking.view.xml",
+						"InternStudentTracking.controller.js",
 						"AbrStajyerTracking.controller.js",
 						"CareerInterns.view.xml",
 						"CareerInterns.controller.js",
@@ -233,6 +235,13 @@
 					"target": [
 						"TrainingManager"
 					]
+				},
+				{
+					"pattern": "InternStudentTracking",
+					"name": "InternStudentTracking",
+					"target": [
+						"InternStudentTracking"
+					]
 				}
 			],
 			"targets": {
@@ -319,6 +328,12 @@
 					"viewId": "TrainingManager",
 					"viewLevel": 2,
 					"title": "Eğitim Yöneticisi"
+				},
+				"InternStudentTracking": {
+					"viewName": "InternStudentTracking",
+					"viewId": "InternStudentTracking",
+					"viewLevel": 2,
+					"title": "Stajyer Öğrenci Takibi"
 				}
 			}
 		},

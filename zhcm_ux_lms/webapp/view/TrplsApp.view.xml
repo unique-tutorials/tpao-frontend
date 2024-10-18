@@ -20,7 +20,7 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>RESERVATION_REQUEST_NUMBER}">
                                 <f:fields>
-                                    <Input id="idInput" value="{ parts: [{path: 'requestListModel>/reservationRequest/Pernr'},{path: 'requestListModel>/reservationRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}"   valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReserSearchHelp"/>
+                                    <Input id="idInput" value="{ parts: [{path: 'requestListModel>/reservationRequest/Pernr'},{path: 'requestListModel>/reservationRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}"   valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp"/>
                                     <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchReservationPress"/>
                                 </f:fields>
                             </f:FormElement>

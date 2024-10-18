@@ -35,97 +35,108 @@
 				</f:DynamicPageHeader>
 			</f:header>
 			<f:content>
-				<Table id="stajyerTable" inset="false" items="{/IntershipStudentSet}" popinLayout="GridSmall" autoPopinMode="true">
-					<columns>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>QUOTA_TYPE}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>UNIT}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>OR_VORNA}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>OR_NACHN}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>IBAN_NO}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>UNIVERSITY}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>INTERNSHIP_BRANCH}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>INTERNSHIP_TYPE}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>NO_PAID}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>CLASS}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>START_DATE}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>END_DATE}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>NUMBER_OF_DAYS}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>CALENDAR_DAY}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>INTERNSHIP_NOTE}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>EXPLANATION}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-							<Text text="{i18n>DATE_OF_BIRTH}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>CARD_NUMBER}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>MOBILE_PHONE}"/>
-						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="{i18n>EMERGENCY_CONTACT}"/>
-						</Column>
-					</columns>
-
-					<items>
-						<ColumnListItem type="Active" press=".onItemStajyerSelected">
-							<cells>
-								<Text text="{Quoty}" />
-								<ObjectIdentifier title="{Orgeh}" text="{Orgtx}"/>
-								<Text text="{Vorna}" />
-								<Text text="{Nachn}" />
-								<Text text="{Iban00}" />
-								<Text text="{Atext}" />
-								<Text text="{Ftext}" />
-								<Text text="{Intyp}" />
-								<Text text="{Nowap}" />
-								<Text text="{Class}" />
-								<Text text="{path: 'Begdt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
-								<Text text="{path: 'Findt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
-								<Text text="{Nuoda}" />
-								<Text text="{Calda}" />
-								<Text text="{Intgr}" />
-								<Text text="{Descp}" />
-								<Text text="{path: 'Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />					
-							    <Text text="{Cardn}" />
-								<Text text="{Phonm}" />
-								<Text text="{Conem}" />
-							</cells>
-						</ColumnListItem>
-					</items>
-				</Table>
+				<ScrollContainer
+					focusable="false"
+					height="auto"
+					horizontal="true"
+					vertical="false"
+					width="100%"
+				>
+					<content>
+						<Table width="3000px" id="stajyerTable" inset="false" items="{/IntershipStudentSet}">
+							<columns>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>QUOTA_TYPE}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>UNIT}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>OR_VORNA}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>OR_NACHN}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>IBAN_NO}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>UNIVERSITY}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>INTERNSHIP_BRANCH}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>INTERNSHIP_TYPE}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>NO_PAID}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>CLASS}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>START_DATE}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>END_DATE}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>NUMBER_OF_DAYS}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>CALENDAR_DAY}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>INTERNSHIP_NOTE}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>EXPLANATION}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+									<Text text="{i18n>DATE_OF_BIRTH}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>CARD_NUMBER}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>MOBILE_PHONE}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>EMERGENCY_CONTACT}"/>
+								</Column>
+							</columns>
+		
+							<items>
+								<ColumnListItem type="Active" press=".onItemStajyerSelected">
+									<cells>
+										<Text text="{Quoty}" />
+										<ObjectIdentifier title="{Orgeh}" text="{Orgtx}"/>
+										<Text text="{Vorna}" />
+										<Text text="{Nachn}" />
+										<Text text="{Iban00}" />
+										<Text text="{Atext}" />
+										<Text text="{Ftext}" />
+										<Text text="{Intyp}" />
+										<Text text="{Nowap}" />
+										<Text text="{Class}" />
+										<Text text="{path: 'Begdt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+										<Text text="{path: 'Findt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+										<Text text="{Nuoda}" />
+										<Text text="{Calda}" />
+										<Text text="{Intgr}" />
+										<Text text="{Descp}" />
+										<Text text="{path: 'Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />					
+										<Text text="{Cardn}" />
+										<Text text="{Phonm}" />
+										<Text text="{Conem}" />
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>	
+					</content>
+				</ScrollContainer>
+			
 			</f:content>
 		</f:DynamicPage>
 		<beginButton>

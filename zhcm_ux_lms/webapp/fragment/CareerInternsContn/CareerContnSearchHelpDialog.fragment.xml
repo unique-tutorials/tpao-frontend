@@ -11,11 +11,8 @@
 					<f:content>
 						<fb:FilterBar id="CareerContnFilter" persistencyKey="myPersKey" useToolbar="false" search=".onCareerContnSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
 							<fb:filterGroupItems>
-								<fb:FilterGroupItem name="Name" label="Birim" groupName="Group1" visibleInFilterBar="true">
+								<fb:FilterGroupItem name="Name" label="{i18n>UNIT}" groupName="Group1" visibleInFilterBar="true">
 									<fb:control>
-										<!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Werks' } ] }" selectedKey="{careerContnListModel>/searchCareerContnParameter/Werks1}">
-											<core:ListItem key="{Key}" text="{Value}"/>
-										</ComboBox> -->
 										<FlexBox>
 											<items>
 												<Input valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onShowStudentAbsenceSearchHelp"  />
@@ -24,7 +21,7 @@
 										</FlexBox>
 									</fb:control>
 								</fb:FilterGroupItem>
-								<fb:FilterGroupItem name="StartDate" label="Yıl / Dönem" groupName="Group2" visibleInFilterBar="true">
+								<fb:FilterGroupItem name="StartDate" label="{i18n>YEAR_TERM}" groupName="Group2" visibleInFilterBar="true">
 									<fb:control>
 										<FlexBox>
 											<items>
@@ -50,16 +47,16 @@
 							<Text text="{i18n>DATE}"/>
 						</Column>
 						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="Gelmeme Nedeni"/>
+							<Text text="{i18n>REASON_FOR_NOT_COMING}"/>
 						</Column>
 						<Column minScreenWidth="Tablet" demandPopin="true">
-							<Text text="Mazeret Geçerlilik"/>
+							<Text text="{i18n>EXCUSED}"/>
 						</Column>
 						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
-							<Text text="Raporluluk"/>
+							<Text text="{i18n>WITH_REPORT}"/>
 						</Column>
 						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-							<Text text="Akış Detayı"/>
+							<Text text="{i18n>FLOW_DETAIL}"/>
 						</Column>
 					</columns>
 					<items>

@@ -37,6 +37,63 @@ sap.ui.define([
                 selectedRequest: {},
                 SelectedEmployee:{},
                 currentRequest: {},
+                RequestList:[
+                    {
+                        "Under": "Bilecik Şeyh Edebali Üniversitesi",
+                        "Maste": "Bilgisayar Mühendisliği",
+                        "Masten": "Computer Engineering",
+                        "Subjet": "Bilgisayar Ağları ve Güvenliği",
+                        "Subjen": "Computer Networks and Security",
+                        "Count": "Almanya",
+                        "Quqta": "23",
+                        "Direc": "Ünite Müdürlüğü",
+                        "Reaso": "Yüksek Lisans"
+                    },
+                    {
+                        "Under": "Düzce Üniversitesi",
+                        "Maste": "Elektronik Mühendisliği",
+                        "Masten": "Electronics Engineering",
+                        "Subjet": "Nesnelerin İnterneti",
+                        "Subjen": "Internet of Things (IoT)",
+                        "Count": "Fransa",
+                        "Quqta": "30",
+                        "Direc": "Ünite Müdürlüğü",
+                        "Reaso": "Yüksek Lisans"
+                    },
+                    {
+                        "Under": "İstanbul Teknik Üniversitesi",
+                        "Maste": "Makine Mühendisliği",
+                        "Masten": "Mechanical Engineering",
+                        "Subjet": "Enerji Sistemleri",
+                        "Subjen": "Energy Systems",
+                        "Count": "İsveç",
+                        "Quqta": "15",
+                        "Direc": "Teknoloji Geliştirme Müdürlüğü",
+                        "Reaso": "Doktora"
+                    },
+                    {
+                        "Under": "Boğaziçi Üniversitesi",
+                        "Maste": "Endüstri Mühendisliği",
+                        "Masten": "Industrial Engineering",
+                        "Subjet": "Operasyonel Araştırmalar",
+                        "Subjen": "Operational Research",
+                        "Count": "İngiltere",
+                        "Quqta": "20",
+                        "Direc": "Araştırma Geliştirme Müdürlüğü",
+                        "Reaso": "Yüksek Lisans"
+                    },
+                    {
+                        "Under": "Orta Doğu Teknik Üniversitesi",
+                        "Maste": "Havacılık ve Uzay Mühendisliği",
+                        "Masten": "Aerospace Engineering",
+                        "Subjet": "Uçak Tasarımı",
+                        "Subjen": "Aircraft Design",
+                        "Count": "ABD",
+                        "Quqta": "10",
+                        "Direc": "Savunma Sanayi Müdürlüğü",
+                        "Reaso": "Doktora"
+                    }
+                ],
                 searchStajyerParameter:{},
                 SelectedStajyer:{},
                 newNumberStajyerRequest:{
@@ -425,6 +482,130 @@ sap.ui.define([
             if (this._oUnitStajyerSearchHelpDialog) {
                 this._oUnitStajyerSearchHelpDialog.close();
             }
+        },
+        onShowDateSearchHelp:function(oEvent){
+            debugger;
+            if (!this._oDateSearchHelpDialog) {
+                this._oDateSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrStajyerTracking.DateSearchHelpDialog", this);
+                this.getView().addDependent(this._oDateSearchHelpDialog);
+            } else {
+                this._oDateSearchHelpDialog.close();
+            }
+            this._oDateSearchHelpDialog.open();
+        },
+        onDateCancelButtonPress:function(oEvent){
+            if (this._oDateSearchHelpDialog) {
+                this._oDateSearchHelpDialog.close();
+            }
+        },
+        onDataExportToExcel: function (oEvent) {
+            debugger;
+            var oControlModel = this.getModel("requestStajyerListModel");
+            var aPlanningData = oControlModel.getProperty("/RequestList");
+        
+            if (aPlanningData && aPlanningData.length > 0) {
+                var aColumns = [];
+                aColumns.push({
+                    name: "Under",
+                    template: {
+                        content: {
+                            path: "Under"
+                        }
+                    }
+                });
+                aColumns.push({
+                    name: "Maste",
+                    template: {
+                        content: {
+                            path: "Maste"
+                        }
+                    }
+                });
+        
+                var aDownload = [];
+                for (var i = 0; i < aPlanningData.length; i++) {
+                    var oData = aPlanningData[i];
+                    var oDownloadObject = {
+                        "STAJYER_NO": "",
+                        "ADI": "",
+                        "SOYADI":"",
+                        "SİCİL_NO":"",
+                        "BİRİM_KODU":"",
+                        "BİRİM":"",
+                        "KONTENJAN_TİPİ":"",
+                        "ADRES":"",
+                        "CİNSİYETİ":"",
+                        "IBAN_NO":"",
+                        "ÜNİVERSİTE":"",
+                        "BÖLÜMÜ_STAJ DALI":"",
+                        "STAJ_TÜRÜ":"",
+                        "BAŞLANGIÇ_TARİHİ":"",
+                        "BİTİŞ_TARİHİ ":"",
+                        "GÜN_SAYISI":"",
+                        "STAJ_NOTU":"",
+                        "AÇIKLAMA":"",
+                        "DOĞUM_TARİHİ":"",
+                        "KART_NUMARASI":"",
+                        "CEP_TELEFONU":"",
+                        "ACİL_DURUMDA_ULAŞILACAK_KİŞİ":"",
+                        "MENTOR":""
+                    };
+                    aDownload.push(oDownloadObject);
+                }
+        
+                var ws = XLSX.utils.json_to_sheet(aDownload);
+                var wb = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(wb, ws, "Template");
+                XLSX.writeFile(wb, "Örnek_stajyer_excel_şablon.xlsx");
+            }
         }
+        // handleDataUploadComplete: function (oEvent) {
+		// 	var that = this;
+		// 	var file = oEvent.getParameter("files");
+		// 	if (file && window.FileReader) {
+		// 		var reader = new FileReader();
+		// 		reader.onload = function (evn) {
+		// 			var strCSV = evn.target.result;
+		// 			var oWorkBook = XLSX.read(strCSV, {
+		// 				type: "binary"
+		// 			});
+		// 			oWorkBook.SheetNames.forEach(function (sheetName) {
+		// 				that._uploadExcelToScreen(oWorkBook.Sheets[sheetName]);
+		// 			});
+		// 		};
+		// 		reader.readAsBinaryString(file)
+		// 		sap.ui.getCore().byId("fileUploader").clear();
+		// 	} else {
+	
+		// 	}
+
+		// },
+        // _uploadExcelToScreen: function (oWorkBookSheet) {
+
+        //     var oCurrentPlanningData = this.getModel("requestStajyerListModel").getProperty("/planningData");
+        //     if (oCurrentPlanningData) {
+        //         if (oCurrentPlanningData.length > 0) {
+        //             sap.m.MessageBox.error(this.getText("LIST_HAVE_TO_BE_EMPTY"));
+        //             this.closeBusyFragment();
+        //             return;
+        //         }
+        //     }
+        
+        //     var that = this;
+        //     var aErrorMessage = []; 
+        
+        //     var aPlanningData = [];
+        
+        //     if (aErrorMessage.length > 0) {
+        //         var sDescription = "Yetki veya diğer sebepler nedeni ile eklenemeyen personeller";
+        //         that._callWarningListDialog(aErrorMessage, "Uyarı", sDescription, "Warning", "sap-icon://warning");
+        //     }
+        
+        //     that.getModel("requestStajyerListModel").setProperty("/planningData", _.cloneDeep(aPlanningData));
+        //     that._updatePlanningDataList();
+        //     that.onTriggerRefresh();
+        //     that.closeBusyFragment();
+        // }
+        
 	});
 });

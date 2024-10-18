@@ -1,0 +1,102 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+<f:Form editable="true">
+    <f:title>
+        <core:Title text="Tarih Aralığı Sorgulama"/>
+    </f:title>
+    <f:layout>
+        <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+    </f:layout>
+    <f:formContainers>
+        <f:FormContainer>
+            <f:formElements>
+                <f:FormElement>
+                    <f:fields>
+                        <FlexBox alignItems="Start" justifyContent="SpaceBetween">
+                            <VBox class="sapUiTinyMargin">
+                                <DatePicker />
+                            </VBox>
+                            <VBox class="sapUiTinyMargin">
+                                <DatePicker />
+                            </VBox>
+                        </FlexBox>
+                        <VBox class="sapUiTinyMargin">
+                            <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress" width="100px"/>
+                        </VBox>
+                    </f:fields>
+                </f:FormElement>
+            </f:formElements>
+        </f:FormContainer>
+    </f:formContainers>
+</f:Form>
+<Table inset="false" items="{
+    path: '/ProductCollection',
+    sorter: {
+        path: 'Name'
+    }
+}" class="sapUiSmallMarginBottom">
+    <headerToolbar >
+        <OverflowToolbar>
+            <content>
+                <Title text="Devamsızlık Bilgileri" level="H2"/>
+                <ToolbarSpacer />
+            </content>
+        </OverflowToolbar>
+    </headerToolbar>
+    <columns>
+        <Column minScreenWidth="Tablet" demandPopin="true">
+            <Text text="Tarih" />
+        </Column>
+        <Column minScreenWidth="Tablet" demandPopin="true">
+            <Text text="Açıklama" />
+        </Column>
+        <Column minScreenWidth="Desktop" demandPopin="true">
+            <Text text="Tam Gün" />
+        </Column>
+        <Column minScreenWidth="Desktop" demandPopin="true">
+            <Text text="Yarım gün" />
+        </Column>
+    </columns>
+    <items>
+        <ColumnListItem vAlign="Middle">
+            <cells>
+                <Text text="{SupplierName}" />
+                <Text text="{Width}" />
+                <Text text="{Width}" />
+                <Text text="{Width}" />
+            </cells>
+        </ColumnListItem>
+    </items>
+</Table>
+<f:Form>
+    <f:layout>
+        <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+    </f:layout>
+    <f:formContainers>
+        <f:FormContainer>
+            <f:FormElement>
+                <f:fields>
+                    <FlexBox alignItems="Start" justifyContent="SpaceBetween">
+                        <VBox class="sapUiTinyMargin">
+                            <Label text="Tam Gün Sayısı:" />
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Desc}"/>
+                        </VBox>
+                        <VBox class="sapUiTinyMargin">
+                            <Label text="Yarım Gün Sayısı:" />
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Desc}"/>
+                        </VBox>
+                        <VBox class="sapUiTinyMargin">
+                            <Label text="Toplam Maaş Alacağı Gün Sayısı:" />
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Desc}"/>
+                        </VBox>
+                    </FlexBox>
+                </f:fields>
+            </f:FormElement>
+        </f:FormContainer>
+    </f:formContainers>
+</f:Form>
+</c:FragmentDefinition>

@@ -1,28 +1,27 @@
-<c:FragmentDefinition
-	xmlns="sap.m"
+<c:FragmentDefinition xmlns="sap.m"
 	xmlns:c="sap.ui.core"
 	xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core"
-	xmlns:u="sap.ui.unified"
->
-<f:Form editable="true">
-	<f:title>
-		<core:Title text="{i18n>UPLOAD_FROM_EXCEL}" />
-	</f:title>
-	<f:layout>
-		<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-	</f:layout>
-	<f:formContainers>
-		<f:FormContainer>
-			<f:formElements>
-				<f:FormElement label="{i18n>SELECT_FILE}">
-					<f:fields>
-						<u:FileUploader id="fileUploader" name="myFileUpload" uploadUrl="upload/" tooltip="Upload your file to the local server" uploadComplete="handleUploadComplete"/>
-						<Button type="Emphasized" text="{i18n>LOAD_FROM_EXCEL}" width="200px"/>
-					</f:fields>
-				</f:FormElement>
-			</f:formElements>
-		</f:FormContainer>
-	</f:formContainers>
-</f:Form>
+	xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+	<f:Form editable="true">
+		<f:title>
+			<core:Title text="{i18n>UPLOAD_FROM_EXCEL}" />
+		</f:title>
+		<f:layout>
+			<f:ColumnLayout />
+		</f:layout>
+		<f:formContainers>
+			<f:FormContainer>
+				<f:formElements>
+					<f:FormElement label="{i18n>SELECT_FILE}">
+						<f:fields>
+							<u:FileUploader id="fileUploader" fileType='xls,xlsx'  uploadUrl="upload/"/>
+							<Button type="Emphasized" text="{i18n>LOAD_FROM_EXCEL}" press=".handleDataUploadComplete" />
+							<Button type="Emphasized" text="{i18n>EXPORT_EXCEL_FORMAT}" press=".onDataExportToExcel"/>
+						</f:fields>
+					</f:FormElement>
+				</f:formElements>
+			</f:FormContainer>
+		</f:formContainers>
+	</f:Form>
 </c:FragmentDefinition>

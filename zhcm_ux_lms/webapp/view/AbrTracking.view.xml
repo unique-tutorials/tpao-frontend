@@ -70,7 +70,7 @@
                 <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
                 <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
                 <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="Kaydet" icon="sap-icon://save" press=".onSave" type="Accept" visible="true"/>
+                <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onSave" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>
     </Page>
