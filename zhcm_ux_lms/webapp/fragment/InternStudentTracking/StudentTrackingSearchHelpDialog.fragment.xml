@@ -10,7 +10,7 @@
                     <f:content>
                         <fb:FilterBar id="studentTrackingFilterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
                             <fb:filterGroupItems>
-                                <fb:FilterGroupItem name="EName" label="{i18n>STUDENT_ENAME}" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="EName" label="{i18n>INTERN_NUMBER}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Ename' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/Ename}">
 											<core:ListItem key="{Key}" text="{Value}"/>
@@ -61,7 +61,7 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{TECHNICAL_ENAME}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+                        <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>REGISTRATION_NUMBER}"/>
                         </Column>
                     </columns>

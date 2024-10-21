@@ -314,7 +314,7 @@ html.sap-phone .lmsDisplayOnlyCheckBox {
 }
 
 .lmsMainPage .sapMPageEnableScrolling::after {
-    background: url(../images/recruitment_medium2.jpeg) center/cover;
+    background: url(../images/Study.webp) center/cover;
     background-repeat: no-repeat!important;
     content: "";
     opacity: .3!important;
