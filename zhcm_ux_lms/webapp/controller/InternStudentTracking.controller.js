@@ -28,6 +28,7 @@ sap.ui.define([
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {},
+				searchTrackingParameter:{},
 				suggestionActionData: {
                     deleteEnabled: false,
                     displayEnabled: false,
