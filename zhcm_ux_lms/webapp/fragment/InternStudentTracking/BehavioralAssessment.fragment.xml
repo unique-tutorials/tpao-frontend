@@ -79,7 +79,7 @@
             <Column minScreenWidth="Tablet" demandPopin="true" >
                 <Text text="Değerlendirme Soruları" />
             </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+            <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End" width="12rem"> 
                 <Text text="Puan" />
             </Column>
         </columns>
@@ -88,8 +88,8 @@
                 <cells>
                     <Text text="{internStudentListModel>numb}"/>
                     <Text text="{internStudentListModel>Ques}" />
-                    <HBox alignItems="Start">
-                        <Input
+                    <HBox alignItems="End" justifyContent="End">
+                        <Input 
                             value="{internStudentListModel>Point}"
                             visible="{= ${internStudentListModel>/suggestionActionData/priorityEditable} }"
                         />
