@@ -29,9 +29,9 @@
             </f:Form>
         </VBox>
         <VBox class="sapUiSmallMargin">
-            <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="55rem">
+            <Panel accessibleRole="Form" backgroundDesign="Transparent" expandAnimation="true" expandable="false" expanded="true">
                 <content>
-                    <IconTabBar stretchContentHeight="true">
+                    <IconTabBar stretchContentHeight="false">
                         <items>
                             <IconTabFilter text="{i18n>STUDENT_INFORMATION}" key="info">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.StudentInformation" type="XML" />
