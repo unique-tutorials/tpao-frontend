@@ -8,9 +8,9 @@
             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.StudentInformation" type="XML" />
         </VBox>
         <VBox class="sapUiSmallMargin">
-            <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="55rem">
+            <Panel accessibleRole="Form" expandAnimation="true" expandable="false" expanded="true" backgroundDesign="Transparent">
                 <content>
-                    <IconTabBar stretchContentHeight="true" id="TabContainer">
+                    <IconTabBar stretchContentHeight="false" id="TabContainer">
                         <items>
                             <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="General">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.TabFilterGeneralInfo" type="XML" />

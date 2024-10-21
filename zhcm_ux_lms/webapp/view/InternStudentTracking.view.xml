@@ -28,7 +28,7 @@
 			</f:Form>
 		</VBox>
 		<VBox class="sapUiSmallMargin">
-			<Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="Veri Giriş Ekranı">
+			<Panel accessibleRole="Form" backgroundDesign="Transparent" expandAnimation="true" expandable="false" expanded="true">
 				<content>
 					<IconTabBar stretchContentHeight="false" id="TabContainer" >
 						<items>
