@@ -55,19 +55,9 @@
             </f:FormContainer>
         </f:formContainers>
     </f:Form>
-
-    <!-- <List headerText="Bilgi Seviyesi Açıklaması" headerLevel="H2" items="{
-			path: '/productCollection'
-		}">
-        <StandardListItem title="{title}" description="{description}" />
-    </List> -->
-    <VBox class="sapUiSmallMarginTop">
-        <List headerText="Bilgi Seviyesi Açıklaması" headerLevel="H2">
-            <StandardListItem title="Başlangıç (1)" description="Aday mühendis konu hakkında hiçbir bilgiye sahip değildir." />
-            <StandardListItem title="Temel (2)" description="Aday mühendis konu hakkında teorik bilgi sahibidir fakat herhangi bir uygulamada bulunamaz." />
-            <StandardListItem title="Uygulama (3)" description="Aday mühendis konu hakkında bir gözetmen / danışman eşliğinde veya gözetiminde uygulama yapabilir." />
-            <StandardListItem title="Uzman (4)" description="Aday mühendis konu hakkında yalnız çalışma yapabilir ve başka bir kişiye bilgisini aktarabilir verebilir." />
-            <StandardListItem title="Yetkin (5)" description="Aday mühendis konu hakkında değerlendirme yapabilir ve proje geliştirebilir." />
+    <VBox class="sapUiSmallMarginTopBottom">
+        <List headerText="Bilgi Seviyesi Açıklaması" headerLevel="H2" items="{internStudentListModel>/levelDescriptionList}">
+            <StandardListItem title="{internStudentListModel>title}" description="{internStudentListModel>description}" />
         </List>
     </VBox>
     <Table id="idProductsTable" inset="false" items="{internStudentListModel>/technicalEvaluation}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
@@ -85,10 +75,10 @@
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="Gerçekleşen Çalışma Tanımı" />
             </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true" >
+            <Column minScreenWidth="Desktop" demandPopin="true">
                 <Text text="Çalışma Öncesi Yetkinlik Seviyesi" />
             </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true" >
+            <Column minScreenWidth="Desktop" demandPopin="true">
                 <Text text="Çalışma Sonrası Yetkinlik Düzeyi" />
             </Column>
             <Column hAlign="End">
