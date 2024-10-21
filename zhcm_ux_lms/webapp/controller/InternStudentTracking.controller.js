@@ -113,37 +113,37 @@ sap.ui.define([
 					{
 						numb:"1",
 						Ques:"Öğrenci işi öğrenmek için heveslidir, mesleki konulara karşı sorgular",
-						Point:null
+						Point:"0"
 					},
 					{
 						numb:"2",
 						Ques:"Öğrenci önceden belirttiği zaman planında şirkete düzenli olarak gelir.",
-						Point:null
+						Point:"0"
 					},
 					{
 						numb:"3",
 						Ques:"Öğrenci yerine getirmesi gereken yükümlülükleri, zamanında ve eksiklik olarak yapar.",
-						Point:null
+						Point:"0"
 					},{
 						numb:"4",
 						Ques:"Öğrenci öğrendiklerinin kalıcı olmasını sağlamaya çalışır.(Notlar alır, uygulama ve/veya pratik yapmayı dener.)",
-						Point:null
+						Point:"0"
 					},{
 						numb:"5",
 						Ques:"Öğrenci iş ilişkisinde bulunduğu her seviyedeki kişilerle yapıcı ilişkiler kurar, yöneticilerine ve çalışma arkadaşlarına karşı saygılı davranır.",
-						Point:null
+						Point:"0"
 					},{
 						numb:"6",
 						Ques:"Öğrenci görüş ve düşüncelerini açık ve net olarak ifade eder.",
-						Point:null
+						Point:"0"
 					},{
 						numb:"7",
 						Ques:"Öğrenci işle ilgili detayları doğru bir şekilde ele alır, bütüne bakarken detayları gözden kaçırmaz ve sorumluluk gösterir.",
-						Point:null
+						Point:"0"
 					},{
 						numb:"8",
 						Ques:"Öğrenci yaptığı çalışmalarda durum ve olayların neden-sonuç ilişkilerini dikkate alarak değerlendirir.",
-						Point:null
+						Point:"0"
 					},{
 						numb:"9",
 						Ques:"Görüş ve Öneriler",

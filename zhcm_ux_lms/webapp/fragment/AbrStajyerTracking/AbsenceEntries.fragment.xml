@@ -31,12 +31,7 @@
             </f:FormContainer>
         </f:formContainers>
     </f:Form>
-    <Table inset="false" items="{
-    path: '/ProductCollection',
-    sorter: {
-        path: 'Name'
-    }
-}" class="sapUiSmallMarginBottom">
+    <Table inset="false" items="{ProductCollection}" class="sapUiSmallMarginTopBottom" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar >
             <OverflowToolbar>
                 <content>

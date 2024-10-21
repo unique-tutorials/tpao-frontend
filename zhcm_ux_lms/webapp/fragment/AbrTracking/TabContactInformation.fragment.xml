@@ -22,7 +22,7 @@
             </f:FormContainer>
         </f:formContainers>
     </f:Form>
-    <Table width="auto" noDataText="{i18n>NO_DATA}" growing="true" growingScrollToLoad="true"  class="sapUiSmallMarginBottom">
+    <Table width="auto" noDataText="{i18n>NO_DATA}" class="sapUiSmallMarginBottom" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>

@@ -32,11 +32,11 @@
 				<content>
 					<IconTabBar stretchContentHeight="false" id="TabContainer" >
 						<items>
-							<IconTabFilter text="Teknik Değerlendirme" key="General" icon="sap-icon://measurement-document">
+							<IconTabFilter text="Teknik Değerlendirme" key="General">
 								<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.StudenTrackingtInformation" type="XML" />
 							</IconTabFilter>
 
-							<IconTabFilter text="Aday Davranışsal Değerlendirme" key="Behavioral" icon="sap-icon://hr-approval">
+							<IconTabFilter text="Aday Davranışsal Değerlendirme" key="Behavioral">
 								<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.BehavioralAssessment" type="XML" />
 							</IconTabFilter>
 						</items>
@@ -47,5 +47,14 @@
 		<!-- <VBox class="sapUiSmallMargin">
             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.StudenTrackingtInformation" type="XML" />
         </VBox> -->
+		<footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <!-- <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/> -->
+                <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/>
+                <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
+                <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSavePress" type="Accept"/>
+            </OverflowToolbar>
+        </footer>
 	</Page>
 </mvc:View>
