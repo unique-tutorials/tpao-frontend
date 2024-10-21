@@ -64,25 +64,25 @@
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Bilgiler" level="H2"/>
+                    <Title text="{i18n>INFO}" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
         <columns>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Gerçekleşen Hafta (Tarih Belirtiniz)" />
+                <Text text="{i18n>ACTUAL_WEEK}" />
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Gerçekleşen Çalışma Tanımı" />
+                <Text text="{i18n>DESC_OF_WORK_PERFORMED}" />
             </Column>
             <Column minScreenWidth="Desktop" demandPopin="true">
-                <Text text="Çalışma Öncesi Yetkinlik Seviyesi" />
+                <Text text="{i18n>PRE_WORK_COMPETENCE_LEVEL}" />
             </Column>
             <Column minScreenWidth="Desktop" demandPopin="true">
-                <Text text="Çalışma Sonrası Yetkinlik Düzeyi" />
+                <Text text="{i18n>POST_STUDY_COMPETENCY_LEVEL}" />
             </Column>
             <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
-                <Text text="Yorumlar" />
+                <Text text="{i18n>COMMENTS}" />
             </Column>
         </columns>
         <items>

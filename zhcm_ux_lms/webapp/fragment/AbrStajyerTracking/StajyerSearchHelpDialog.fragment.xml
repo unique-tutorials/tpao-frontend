@@ -35,13 +35,7 @@
 				</f:DynamicPageHeader>
 			</f:header>
 			<f:content>
-				<ScrollContainer
-					focusable="false"
-					height="auto"
-					horizontal="true"
-					vertical="false"
-					width="100%"
-				>
+				<ScrollContainer focusable="false" height="auto" horizontal="true" vertical="false" width="100%">
 					<content>
 						<Table width="3000px" id="stajyerTable" inset="false" items="{/IntershipStudentSet}">
 							<columns>
@@ -106,7 +100,7 @@
 									<Text text="{i18n>EMERGENCY_CONTACT}"/>
 								</Column>
 							</columns>
-		
+
 							<items>
 								<ColumnListItem type="Active" press=".onItemStajyerSelected">
 									<cells>
@@ -126,17 +120,17 @@
 										<Text text="{Calda}" />
 										<Text text="{Intgr}" />
 										<Text text="{Descp}" />
-										<Text text="{path: 'Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />					
+										<Text text="{path: 'Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
 										<Text text="{Cardn}" />
 										<Text text="{Phonm}" />
 										<Text text="{Conem}" />
 									</cells>
 								</ColumnListItem>
 							</items>
-						</Table>	
+						</Table>
 					</content>
 				</ScrollContainer>
-			
+
 			</f:content>
 		</f:DynamicPage>
 		<beginButton>

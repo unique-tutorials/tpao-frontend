@@ -51,7 +51,7 @@
                 <Text text="Mazeretli" />
             </Column>
             <Column minScreenWidth="Desktop" demandPopin="true">
-                <Text text="Raporlu" />
+                <Text text="{i18n>WITH_REPORT}" />
             </Column>
         </columns>
         <items>
