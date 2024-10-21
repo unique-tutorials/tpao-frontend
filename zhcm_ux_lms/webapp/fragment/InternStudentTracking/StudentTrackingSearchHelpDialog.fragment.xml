@@ -10,56 +10,35 @@
                     <f:content>
                         <fb:FilterBar id="studentTrackingFilterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
                             <fb:filterGroupItems>
-                                <fb:FilterGroupItem name="Name" label="Öğrencinin Adı ve Soyadı" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="EName" label="{i18n>STUDENT_ENAME}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="Name" items="{
-                                            path: '/ProductNames',
-                                            templateShareable: true
-                                        }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Ename' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/Ename}">
+											<core:ListItem key="{Key}" text="{Value}"/>
+										</ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Category" label="Birimi" groupName="Group2" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Unit" label="{i18n>UNIT}" groupName="Group2" visibleInFilterBar="true">
                                     <fb:control>
-                                        <!-- <MultiComboBox name="Category" items="{
-                                            path: '/ProductCategories',
-                                            templateShareable: true
-                                        }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox> -->
                                         <Input valueHelpOnly="true" showValueHelp="true" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="Ünite" groupName="Group3" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="QUnit" label="{i18n>Q_UNIT}" groupName="Group3" visibleInFilterBar="true">
                                     <fb:control>
-                                        <!-- <MultiComboBox name="SupplierName" items="{
-                                            path: '/ProductSuppliers',
-                                            templateShareable: true
-                                        }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox> -->
                                         <Input valueHelpOnly="true" showValueHelp="true"  />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="Teknik Danışmanın Adı ve Soyadı" groupName="Group4" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="TecEn" label="{i18n>TECHNICAL_ENAME}" groupName="Group4" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="SupplierName" items="{
-                                            path: '/ProductSuppliers',
-                                            templateShareable: true
-                                        }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'TEname' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/TEname}">
+											<core:ListItem key="{Key}" text="{Value}"/>
+										</ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="Sicil No" groupName="Group5" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="RegNu" label="{i18n>REGISTRATION_NUMBER}" groupName="Group5" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="SupplierName" items="{
-                                            path: '/ProductSuppliers',
-                                            templateShareable: true
-                                        }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'RegNo' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/RegNo}">
+											<core:ListItem key="{Key}" text="{Value}"/>
+										</ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                             </fb:filterGroupItems>
@@ -68,35 +47,32 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="StudentTrackingTable" inset="false" items="{
-                    path: '/ProductCollection'
-                }">
+                <Table id="StudentTrackingTable" inset="false" items="{internStudentListModel>/ProductCollection}">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Öğrencinin Adı ve Soyadı"/>
+                            <Text text="{i18n>STUDENT_ENAME}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Birimi"/>
+                            <Text text="{i18n>UNIT}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Ünite"/>
+                            <Text text="{i18n>Q_UNIT}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Teknik Danışmanın Adı ve Soyadı"/>
+                            <Text text="{TECHNICAL_ENAME}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-                            <Text text="Sicil No"/>
+                            <Text text="{i18n>REGISTRATION_NUMBER}"/>
                         </Column>
                     </columns>
-
                     <items>
                         <ColumnListItem vAlign="Middle">
                             <cells>
-                                <ObjectIdentifier title="{Name}" text="{ProductId}" />
-                                <Text text="{Category}" />
-                                <Text text="{SupplierName}" />
-                                <Text text="{Category}" />
-                                <Text text="{SupplierName}" />
+                                <ObjectIdentifier title="{internStudentListModel>Name}" text="{internStudentListModel>ProductId}" />
+                                <Text text="{internStudentListModel>Category}" />
+                                <Text text="{internStudentListModel>SupplierName}" />
+                                <Text text="{internStudentListModel>Category}" />
+                                <Text text="{internStudentListModel>SupplierName}" />
                             </cells>
                         </ColumnListItem>
                     </items>

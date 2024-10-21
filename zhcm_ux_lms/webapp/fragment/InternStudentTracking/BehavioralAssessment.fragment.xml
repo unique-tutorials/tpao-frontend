@@ -4,7 +4,7 @@
     xmlns:core="sap.ui.core">
     <f:Form editable="true">
         <f:title>
-            <core:Title text="Teknik Değerlendirme" />
+            <core:Title text="{i18n>TECHNICAL_EVALUATION}" />
         </f:title>
         <f:layout>
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -51,7 +51,7 @@
         </f:formContainers>
     </f:Form>
     <VBox class="sapUiSmallMarginTopBottom">
-        <List headerText="Bilgi Seviyesi Açıklaması" headerLevel="H2" items="{internStudentListModel>/ratingScaleList}">
+        <List headerText="{i18n>INFO_LEVEL_DESC}" headerLevel="H2" items="{internStudentListModel>/ratingScaleList}">
             <infoToolbar>
                 <OverflowToolbar active="true">
                     <Label text="Dolduracağınız bu anketin amacı Biz Bize Kariyer Programı Kapsamında gelişimine destek verdiğiniz
@@ -68,19 +68,19 @@
                 <content>
                     <Title text="Products" level="H2"/>
                     <ToolbarSpacer />
-                    <Button icon="sap-icon://edit" press="onEditPress" />
+                    <Button icon="sap-icon://edit" press="onEditPress" type="Accept" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
         <columns>
             <Column width="8rem">
-                <Text text="Soru Sıra No" />
+                <Text text="{i18n>Q_ORDER_NUMBER}" />
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true" >
-                <Text text="Değerlendirme Soruları" />
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>EVALUATION_QUESTIONS}" />
             </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End" width="12rem"> 
-                <Text text="Puan" />
+            <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End" width="12rem">
+                <Text text="{i18n>POINT}" />
             </Column>
         </columns>
         <items>
@@ -89,16 +89,9 @@
                     <Text text="{internStudentListModel>numb}"/>
                     <Text text="{internStudentListModel>Ques}" />
                     <HBox alignItems="End" justifyContent="End">
-                        <Input 
-                            value="{internStudentListModel>Point}"
-                            visible="{= ${internStudentListModel>/suggestionActionData/priorityEditable} }"
-                        />
-                        <Text
-                            text="{internStudentListModel>Point}"
-                            visible="{= ${internStudentListModel>/suggestionActionData/priorityDisplay} }"
-                        />
+                        <Input value="{internStudentListModel>Point}" visible="{= ${internStudentListModel>/suggestionActionData/priorityEditable} }" />
+                        <Text text="{internStudentListModel>Point}" visible="{= ${internStudentListModel>/suggestionActionData/priorityDisplay} }" />
                     </HBox>
-                    <!-- <Text text="{internStudentListModel>Point}" /> -->
                 </cells>
             </ColumnListItem>
         </items>

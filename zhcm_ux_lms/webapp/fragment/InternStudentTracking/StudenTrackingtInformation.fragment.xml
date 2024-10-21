@@ -56,7 +56,7 @@
         </f:formContainers>
     </f:Form>
     <VBox class="sapUiSmallMarginTopBottom">
-        <List headerText="Bilgi Seviyesi Açıklaması" headerLevel="H2" items="{internStudentListModel>/levelDescriptionList}">
+        <List headerText="{i18n>INFO_LEVEL_DESC}" headerLevel="H2" items="{internStudentListModel>/levelDescriptionList}">
             <StandardListItem title="{internStudentListModel>title}" description="{internStudentListModel>description}" />
         </List>
     </VBox>
@@ -64,7 +64,7 @@
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Products" level="H2"/>
+                    <Title text="Bilgiler" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -81,7 +81,7 @@
             <Column minScreenWidth="Desktop" demandPopin="true">
                 <Text text="Çalışma Sonrası Yetkinlik Düzeyi" />
             </Column>
-            <Column hAlign="End">
+            <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
                 <Text text="Yorumlar" />
             </Column>
         </columns>
