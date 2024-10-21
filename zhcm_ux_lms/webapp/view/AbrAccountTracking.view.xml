@@ -28,46 +28,48 @@
                 </f:formContainers>
             </f:Form>
         </VBox>
-        <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="55rem">
-            <content>
-                <IconTabBar stretchContentHeight="true">
-                    <items>
-                        <IconTabFilter text="{i18n>STUDENT_INFORMATION}" key="info">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.StudentInformation" type="XML" />
-                            <IconTabBar>
-                                <items>
-                                    <IconTabFilter text="{i18n>STUDENT_ACCOUNT_INFORMATION}" key="AbrStdnAccount">
-                                        <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.StudentAccountInformation" type="XML" />
-                                    </IconTabFilter>
-                                    <IconTabFilter text="{i18n>LANGUAGE_SCHOOL_ACCOUNT_INFORMATION}" key="AbrLngAccount">
-                                        <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.LanguageSchoolAccount" type="XML" />
-                                    </IconTabFilter>
-                                    <IconTabFilter text="{i18n>MASTER_SCHOOL_ACCOUNT_INFORMATION}" key="AbrMstrAccount">
-                                        <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.MasterSchoolAccount" type="XML" />
-                                    </IconTabFilter>
-                                </items>
-                            </IconTabBar>
-                        </IconTabFilter>
-                        <IconTabFilter text="{i18n>GUARANTOR_INFORMATION}" key="attachments">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorInformation" type="XML" />
-                        </IconTabFilter>
-                        <IconTabFilter text="{i18n>OFFSET_INFORMATION}" key="notes">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.OffsetInformation" type="XML" />
-                        </IconTabFilter>
-                        <IconTabFilter text="{i18n>INTEREST_TABLE}" key="people">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.InterestTable" type="XML" />
-                        </IconTabFilter>
-                        <IconTabFilter text="{i18n>REFUND_INFORMATION}" key="people2">
-                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.RefundInformation" type="XML" />
-                        </IconTabFilter>
-                    </items>
-                </IconTabBar>
-            </content>
-            <headerToolbar>
-            </headerToolbar>
-            <infoToolbar>
-            </infoToolbar>
-        </Panel>
+        <VBox class="sapUiSmallMargin">
+            <Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string" height="55rem">
+                <content>
+                    <IconTabBar stretchContentHeight="true">
+                        <items>
+                            <IconTabFilter text="{i18n>STUDENT_INFORMATION}" key="info">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.StudentInformation" type="XML" />
+                                <IconTabBar>
+                                    <items>
+                                        <IconTabFilter text="{i18n>STUDENT_ACCOUNT_INFORMATION}" key="AbrStdnAccount">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.StudentAccountInformation" type="XML" />
+                                        </IconTabFilter>
+                                        <IconTabFilter text="{i18n>LANGUAGE_SCHOOL_ACCOUNT_INFORMATION}" key="AbrLngAccount">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.LanguageSchoolAccount" type="XML" />
+                                        </IconTabFilter>
+                                        <IconTabFilter text="{i18n>MASTER_SCHOOL_ACCOUNT_INFORMATION}" key="AbrMstrAccount">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.MasterSchoolAccount" type="XML" />
+                                        </IconTabFilter>
+                                    </items>
+                                </IconTabBar>
+                            </IconTabFilter>
+                            <IconTabFilter text="{i18n>GUARANTOR_INFORMATION}" key="attachments">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorInformation" type="XML" />
+                            </IconTabFilter>
+                            <IconTabFilter text="{i18n>OFFSET_INFORMATION}" key="notes">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.OffsetInformation" type="XML" />
+                            </IconTabFilter>
+                            <IconTabFilter text="{i18n>INTEREST_TABLE}" key="people">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.InterestTable" type="XML" />
+                            </IconTabFilter>
+                            <IconTabFilter text="{i18n>REFUND_INFORMATION}" key="people2">
+                                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.RefundInformation" type="XML" />
+                            </IconTabFilter>
+                        </items>
+                    </IconTabBar>
+                </content>
+                <headerToolbar>
+                </headerToolbar>
+                <infoToolbar>
+                </infoToolbar>
+            </Panel>
+        </VBox>
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>

@@ -1,0 +1,82 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="Tarih Aralığı Arama" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="Tarih Aralığı">
+                        <f:fields>
+                            <Input id="DateInput" value="{'requestListModel>/newNumberRequest/Pernr'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowDateSearchHelp"/>
+                            <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress" width="100px"/>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="Devamsızlık Bilgileri"/>
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>DATE }">
+                        <f:fields>
+                            <DatePicker value="{careerInternListModel>/SelectedCareer/Date}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>EXPLANATION}">
+                        <f:fields>
+                            <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:FormElement label="Tam Gün">
+                    <f:fields>
+                        <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
+                    </f:fields>
+                </f:FormElement>
+                <f:FormElement label="Yarım Gün">
+                    <f:fields>
+                        <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
+                    </f:fields>
+                </f:FormElement>
+            </f:FormContainer>
+
+            <f:FormContainer>
+                <f:FormElement label="Devamsızlık">
+                    <f:fields>
+                        <FlexBox alignItems="Start" justifyContent="SpaceBetween">
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="Tam Gün Sayısı:" />
+                                <Input value="{careerInternListModel>/SelectedCareer/Desc}"/>
+                            </VBox>
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="Yarım Gün Sayısı:" />
+                                <Input value="{careerInternListModel>/SelectedCareer/Desc}"/>
+                            </VBox>
+                            <VBox class="sapUiTinyMargin">
+                                <Label text="Toplam Maaş Alacağı Gün Sayısı:" />
+                                <Input value="{careerInternListModel>/SelectedCareer/Desc}"/>
+                            </VBox>
+                        </FlexBox>
+                    </f:fields>
+                </f:FormElement>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+</c:FragmentDefinition>

@@ -28,6 +28,34 @@ sap.ui.define([
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {},
+				suggestionActionData: {
+                    deleteEnabled: false,
+                    displayEnabled: false,
+                    priorityEditable: false,
+                    priorityDisplay: true
+                },
+				ratingScaleList:[
+					{
+						titles:"1 Puan =",
+						desc:"Kesinlikle Katılmıyorum / Çok Düşük",
+					},
+					{
+						titles:"2 Puan =",
+						desc:"Katılmıyorum / Düşük",
+					},
+					{
+						titles:"3 Puan =",
+						desc:"Kararsızım / Orta",
+					},
+					{
+						titles:"4 Puan =",
+						desc:"Katılıyorum / Yüksek",
+					},
+					{
+						titles:"5 Puan =",
+						desc:"Kesinlikle Katılıyorum / Çok Yüksek olarak değerlendirilmiştir.",
+					},
+				],
 				technicalEvaluation: [
 					{
 						"SupplierName": "08.10.2024 - 14.10.2024",
@@ -58,7 +86,7 @@ sap.ui.define([
 						"Comments": "Optimizasyon tekniklerinde yetkin hale geldi."
 					}
 				],
-				productCollection:[
+				levelDescriptionList:[
 					{
 						title: "Başlangıç (1)",
 						description: "Aday mühendis konu hakkında hiçbir bilgiye sahip değildir."
@@ -79,6 +107,47 @@ sap.ui.define([
 						title: "Yetkin (5)",
 						description: "Aday mühendis konu hakkında değerlendirme yapabilir ve proje geliştirebilir."
 					}
+				],
+				evaluationQuestionsList : [
+					{
+						numb:"1",
+						Ques:"Öğrenci işi öğrenmek için heveslidir, mesleki konulara karşı sorgular",
+						Point:null
+					},
+					{
+						numb:"2",
+						Ques:"Öğrenci önceden belirttiği zaman planında şirkete düzenli olarak gelir.",
+						Point:null
+					},
+					{
+						numb:"3",
+						Ques:"Öğrenci yerine getirmesi gereken yükümlülükleri, zamanında ve eksiklik olarak yapar.",
+						Point:null
+					},{
+						numb:"4",
+						Ques:"Öğrenci öğrendiklerinin kalıcı olmasını sağlamaya çalışır.(Notlar alır, uygulama ve/veya pratik yapmayı dener.)",
+						Point:null
+					},{
+						numb:"5",
+						Ques:"Öğrenci iş ilişkisinde bulunduğu her seviyedeki kişilerle yapıcı ilişkiler kurar, yöneticilerine ve çalışma arkadaşlarına karşı saygılı davranır.",
+						Point:null
+					},{
+						numb:"6",
+						Ques:"Öğrenci görüş ve düşüncelerini açık ve net olarak ifade eder.",
+						Point:null
+					},{
+						numb:"7",
+						Ques:"Öğrenci işle ilgili detayları doğru bir şekilde ele alır, bütüne bakarken detayları gözden kaçırmaz ve sorumluluk gösterir.",
+						Point:null
+					},{
+						numb:"8",
+						Ques:"Öğrenci yaptığı çalışmalarda durum ve olayların neden-sonuç ilişkilerini dikkate alarak değerlendirir.",
+						Point:null
+					},{
+						numb:"9",
+						Ques:"Görüş ve Öneriler",
+						Point:null
+					}
 				]
             });
         },
@@ -96,6 +165,17 @@ sap.ui.define([
             if (this._oNewWageSearchHelpDialog) {
                 this._oNewWageSearchHelpDialog.close();
             }
-         }
+         },
+		 onEditPress: function () {
+            var oViewModel = this.getModel("internStudentListModel"),
+                sVisible = oViewModel.getProperty("/suggestionActionData/priorityEditable");
+            if (!sVisible) {
+                oViewModel.setProperty("/suggestionActionData/priorityEditable", true);
+                oViewModel.setProperty("/suggestionActionData/priorityDisplay", false);
+            } else {
+                oViewModel.setProperty("/suggestionActionData/priorityEditable", false);
+                oViewModel.setProperty("/suggestionActionData/priorityDisplay", true);
+            }
+        },
 	});
 });
