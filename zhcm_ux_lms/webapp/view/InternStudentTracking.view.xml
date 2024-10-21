@@ -2,23 +2,48 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
 	xmlns:c="sap.ui.core"
+	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core" displayBlock="true" height="100%" busyIndicatorDelay="0">
 	<Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Stajyer Öğrenci Takibi">
-		<Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="empty string">
-		<content>
-			<IconTabBar stretchContentHeight="false" id="TabContainer" >
-				<items>
-					<IconTabFilter text="Teknik Değerlendirme" key="General">
-						<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.StudenTrackingtInformation" type="XML" />
-					</IconTabFilter>
-					
-					<IconTabFilter text="Aday Davranışsal Değerlendirme" key="Behavioral">
-						<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.BehavioralAssessment" type="XML" />
-					</IconTabFilter>
-				</items>
-			</IconTabBar>
-		</content>
-		</Panel>
+		<VBox class="sapUiSmallMargin">
+			<f:Form editable="true">
+				<f:title>
+					<core:Title text="{i18n>INTERN_SEARCH}" />
+				</f:title>
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Öğrenci No">
+								<f:fields>
+									<Input id="idStudentTrackingInput" value="{ parts: [{path: 'internStudentListModel>/newNumberStdnTrackingRequest/Pernr'},{path: 'internStudentListModel>/newNumberStdnTrackingRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onShowStudentTrackingSearchHelp"/>
+									<Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchStdnTrackingPress"/>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</VBox>
+		<VBox class="sapUiSmallMargin">
+			<Panel accessibleRole="Form" backgroundDesign="Translucent" expandAnimation="true" expandable="false" expanded="true" headerText="Veri Giriş Ekranı">
+				<content>
+					<IconTabBar stretchContentHeight="false" id="TabContainer" >
+						<items>
+							<IconTabFilter text="Teknik Değerlendirme" key="General" icon="sap-icon://measurement-document">
+								<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.StudenTrackingtInformation" type="XML" />
+							</IconTabFilter>
+
+							<IconTabFilter text="Aday Davranışsal Değerlendirme" key="Behavioral" icon="sap-icon://hr-approval">
+								<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.BehavioralAssessment" type="XML" />
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Panel>
+		</VBox>
 		<!-- <VBox class="sapUiSmallMargin">
             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.StudenTrackingtInformation" type="XML" />
         </VBox> -->

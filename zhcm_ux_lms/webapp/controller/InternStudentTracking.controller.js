@@ -177,5 +177,17 @@ sap.ui.define([
                 oViewModel.setProperty("/suggestionActionData/priorityDisplay", true);
             }
         },
+		onShowStudentTrackingSearchHelp: function(oEvent){
+			if (!this._oNewStudentTrackingSearchHelpDialog) {
+				this._oNewStudentTrackingSearchHelpDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.InternStudentTracking.StudentTrackingSearchHelpDialog", this);
+				this.getView().addDependent(this._oNewStudentTrackingSearchHelpDialog);
+			}
+			this._oNewStudentTrackingSearchHelpDialog.open();
+		},
+		onCancelStudentTrackingButtonPress:function(oEvent){
+			if (this._oNewStudentTrackingSearchHelpDialog) {
+				this._oNewStudentTrackingSearchHelpDialog.close();
+			}
+		}
 	});
 });

@@ -1,0 +1,110 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar">
+    <Dialog title="Stajyer Öğrenci Takibi Arama" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
+        <f:DynamicPage headerExpanded="{/headerExpanded}">
+            <f:header>
+                <f:DynamicPageHeader>
+                    <f:content>
+                        <fb:FilterBar id="studentTrackingFilterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                            <fb:filterGroupItems>
+                                <fb:FilterGroupItem name="Name" label="Öğrencinin Adı ve Soyadı" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiComboBox name="Name" items="{
+                                            path: '/ProductNames',
+                                            templateShareable: true
+                                        }">
+                                            <core:Item key="{key}" text="{name}"/>
+                                        </MultiComboBox>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="Category" label="Birimi" groupName="Group2" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <!-- <MultiComboBox name="Category" items="{
+                                            path: '/ProductCategories',
+                                            templateShareable: true
+                                        }">
+                                            <core:Item key="{key}" text="{name}"/>
+                                        </MultiComboBox> -->
+                                        <Input valueHelpOnly="true" showValueHelp="true" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="SupplierName" label="Ünite" groupName="Group3" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <!-- <MultiComboBox name="SupplierName" items="{
+                                            path: '/ProductSuppliers',
+                                            templateShareable: true
+                                        }">
+                                            <core:Item key="{key}" text="{name}"/>
+                                        </MultiComboBox> -->
+                                        <Input valueHelpOnly="true" showValueHelp="true"  />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="SupplierName" label="Teknik Danışmanın Adı ve Soyadı" groupName="Group4" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiComboBox name="SupplierName" items="{
+                                            path: '/ProductSuppliers',
+                                            templateShareable: true
+                                        }">
+                                            <core:Item key="{key}" text="{name}"/>
+                                        </MultiComboBox>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="SupplierName" label="Sicil No" groupName="Group5" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <MultiComboBox name="SupplierName" items="{
+                                            path: '/ProductSuppliers',
+                                            templateShareable: true
+                                        }">
+                                            <core:Item key="{key}" text="{name}"/>
+                                        </MultiComboBox>
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+                            </fb:filterGroupItems>
+                        </fb:FilterBar>
+                    </f:content>
+                </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+                <Table id="StudentTrackingTable" inset="false" items="{
+                    path: '/ProductCollection'
+                }">
+                    <columns>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Öğrencinin Adı ve Soyadı"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Birimi"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Ünite"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Teknik Danışmanın Adı ve Soyadı"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+                            <Text text="Sicil No"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <ObjectIdentifier title="{Name}" text="{ProductId}" />
+                                <Text text="{Category}" />
+                                <Text text="{SupplierName}" />
+                                <Text text="{Category}" />
+                                <Text text="{SupplierName}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </f:content>
+        </f:DynamicPage>
+        <beginButton>
+            <Button icon="sap-icon://cancel" text="{i18n>CANCEL_BUTTON}" type="Reject" press=".onCancelStudentTrackingButtonPress" />
+        </beginButton>
+    </Dialog>
+</c:FragmentDefinition>
