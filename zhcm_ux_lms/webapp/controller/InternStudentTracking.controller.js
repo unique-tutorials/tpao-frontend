@@ -37,24 +37,19 @@ sap.ui.define([
                 },
 				ratingScaleList:[
 					{
-						titles:"1 Puan =",
-						desc:"Kesinlikle Katılmıyorum / Çok Düşük",
+						titles:"1 Puan = Kesinlikle Katılmıyorum / Çok Düşük",
 					},
 					{
-						titles:"2 Puan =",
-						desc:"Katılmıyorum / Düşük",
+						titles:"2 Puan = Katılmıyorum / Düşük",
 					},
 					{
-						titles:"3 Puan =",
-						desc:"Kararsızım / Orta",
+						titles:"3 Puan = Kararsızım / Orta",
 					},
 					{
-						titles:"4 Puan =",
-						desc:"Katılıyorum / Yüksek",
+						titles:"4 Puan = Katılıyorum / Yüksek",
 					},
 					{
-						titles:"5 Puan =",
-						desc:"Kesinlikle Katılıyorum / Çok Yüksek olarak değerlendirilmiştir.",
+						titles:"5 Puan = Kesinlikle Katılıyorum / Çok Yüksek olarak değerlendirilmiştir.",
 					},
 				],
 				technicalEvaluation: [
@@ -89,24 +84,19 @@ sap.ui.define([
 				],
 				levelDescriptionList:[
 					{
-						title: "Başlangıç (1)",
-						description: "Aday mühendis konu hakkında hiçbir bilgiye sahip değildir."
+						title: "Başlangıç (1) : Aday mühendis konu hakkında hiçbir bilgiye sahip değildir."
 					},
 					{
-						title: "Temel (2)",
-						description: "Aday mühendis konu hakkında teorik bilgi sahibidir fakat herhangi bir uygulamada bulunamaz."
+						title: "Temel (2) : Aday mühendis konu hakkında teorik bilgi sahibidir fakat herhangi bir uygulamada bulunamaz.",
 					},
 					{
-						title: "Uygulama (3)",
-						description: "Aday mühendis konu hakkında bir gözetmen / danışman eşliğinde veya gözetiminde uygulama yapabilir."
+						title: "Uygulama (3) : Aday mühendis konu hakkında bir gözetmen / danışman eşliğinde veya gözetiminde uygulama yapabilir."
 					},
 					{
-						title: "Uzman (4)",
-						description: "Aday mühendis konu hakkında yalnız çalışma yapabilir ve başka bir kişiye bilgisini aktarabilir verebilir."
+						title: "Uzman (4) : Aday mühendis konu hakkında yalnız çalışma yapabilir ve başka bir kişiye bilgisini aktarabilir verebilir.",
 					},
 					{
-						title: "Yetkin (5)",
-						description: "Aday mühendis konu hakkında değerlendirme yapabilir ve proje geliştirebilir."
+						title: "Yetkin (5) : Aday mühendis konu hakkında değerlendirme yapabilir ve proje geliştirebilir.",
 					}
 				],
 				evaluationQuestionsList : [

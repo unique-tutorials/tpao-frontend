@@ -11,19 +11,19 @@ sap.ui.define([
 ], function (BaseController, JSONModel, History, formatter, Filter, FilterOperator, SharedData) {
     "use strict";
 
-	return BaseController.extend("zhcm_ux_lms_abr.controller.AbrTracking", {
+	return BaseController.extend("zhcm_ux_lms_abr.controller.AbrAccountTracking", {
         formatter: formatter,
         onInit: function (oEvent) {
             var oViewModel = new JSONModel();
-            this.setModel(oViewModel, "requestListModel");
+            this.setModel(oViewModel, "AbrAccountListModel");
             this._initiateModel();
-            this.getRouter().getRoute("AbrTracking").attachPatternMatched(this._onRequestListMatched, this);
+            this.getRouter().getRoute("AbrAccountListModel").attachPatternMatched(this._onRequestListMatched, this);
         },
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
         _initiateModel: function (oEvent) {
-            var oViewModel = this.getModel("requestListModel");
+            var oViewModel = this.getModel("AbrAccountListModel");
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},

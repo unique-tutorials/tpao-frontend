@@ -51,15 +51,12 @@
         </f:formContainers>
     </f:Form>
     <VBox class="sapUiSmallMarginTopBottom">
+        <MessageStrip class="sapUiSmallMarginBottom" text="Dolduracağınız bu anketin amacı Biz Bize Kariyer Programı Kapsamında gelişimine destek verdiğiniz
+        stajerlerinizi değerlendirmek ve Biz Bize Kariyer programını geliştir olup, dolduracağınız anket bizim için
+        önem arz etmektedir." type="Information" showIcon="true">
+        </MessageStrip>
         <List headerText="{i18n>INFO_LEVEL_DESC}" headerLevel="H2" items="{internStudentListModel>/ratingScaleList}">
-            <infoToolbar>
-                <OverflowToolbar active="true">
-                    <Label text="Dolduracağınız bu anketin amacı Biz Bize Kariyer Programı Kapsamında gelişimine destek verdiğiniz
-                    stajerlerinizi değerlendirmek ve Biz Bize Kariyer programını geliştir olup, dolduracağınız anket bizim için
-                    önem arz etmektedir." />
-                </OverflowToolbar>
-            </infoToolbar>
-            <StandardListItem title="{internStudentListModel>titles}" description="{internStudentListModel>desc}" />
+            <StandardListItem title="{internStudentListModel>titles}" />
         </List>
     </VBox>
     <Table inset="false" items="{internStudentListModel>/evaluationQuestionsList}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">

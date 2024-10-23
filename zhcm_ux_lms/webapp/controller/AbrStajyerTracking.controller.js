@@ -558,10 +558,13 @@ sap.ui.define([
                 XLSX.utils.book_append_sheet(wb, ws, "Template");
                 XLSX.writeFile(wb, "Örnek_stajyer_excel_şablon.xlsx");
             }
-        }
+        },
         // handleDataUploadComplete: function (oEvent) {
+        //     debugger;
 		// 	var that = this;
+
 		// 	var file = oEvent.getParameter("files");
+
 		// 	if (file && window.FileReader) {
 		// 		var reader = new FileReader();
 		// 		reader.onload = function (evn) {

@@ -64,7 +64,7 @@
             </Panel>
         </VBox>
         <footer>
-            <OverflowToolbar>
+            <OverflowToolbar >
                 <ToolbarSpacer/>
                 <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
                 <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>

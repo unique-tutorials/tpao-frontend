@@ -61,8 +61,15 @@
                     <Text text="{requestListModel>/contactEmployee/Adres}"/>
                     <Text text="{requestListModel>/contactEmployee/Poscd}"/>
                     <Text text="{requestListModel>/contactEmployee/Contr}"/>
-                    <Text text="{requestListModel>/contactEmployee/City}"/>
-                    <Text text="{requestListModel>/contactEmployee/Distr}"/>
+                    <!-- <Text text="{requestListModel>/contactEmployee/City}"/> -->
+                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/contactEmployee/City}">
+                        <core:ListItem key="{Key}" text="{Value}"/>
+                    </ComboBox>
+                    <!-- <Text text="{requestListModel>/contactEmployee/Distr}"/> -->
+                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{requestListModel>/contactEmployee/Distr}">
+                        <core:ListItem key="{Key}" text="{Value}"/>
+                    </ComboBox>
+                       
                 </cells>
             </ColumnListItem>
         </items>

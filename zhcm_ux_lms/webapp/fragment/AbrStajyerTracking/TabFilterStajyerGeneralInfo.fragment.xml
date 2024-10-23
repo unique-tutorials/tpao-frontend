@@ -75,12 +75,12 @@
                             <CheckBox selected="{requestStajyerListModel>/SelectedStajyer/Calda}" />
                         </f:fields>
                     </f:FormElement> -->
-                 
+
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
                             <TextArea value="{requestStajyerListModel>/SelectedStajyer/Descp}" />
                         </f:fields>
-                    </f:FormElement>    
+                    </f:FormElement>
                     <f:FormElement label="{i18n>DATE_OF_BIRTH}">
                         <f:fields>
                             <DatePicker value="{path: 'requestStajyerListModel>/SelectedStajyer/Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />

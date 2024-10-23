@@ -1,57 +1,57 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core">
     <Dialog title="Bakım Tablosu" state="None" type="Standard" contentWidth="80%" contentHeight="80%">
-        <Table items="{/ProductCollection}">
+        <Table items="{approvalRequestListModel>/requestList}">
             <columns>
                 <Column minScreenWidth="Tablet" demandPopin="true">
-                    <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}" />
+                    <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
                 </Column>
                 <Column minScreenWidth="Tablet" demandPopin="true">
-                    <Text text="{i18n>MASTER_DEGREE_FIELD_TR}" />
+                    <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
                 </Column>
                 <Column minScreenWidth="Tablet" demandPopin="true">
-                    <Text text="{i18n>MASTER_DEGREE_FIELD_EN}" />
+                    <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
                 </Column>
                 <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
-                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}" />
+                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
                 </Column>
                 <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}" />
+                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
                 </Column>
                 <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-                    <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}" />
+                    <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
                 </Column>
                 <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-                    <Text text="{i18n>NUMBER_OF_QUOTAS}" />
+                    <Text text="{i18n>NUMBER_OF_QUOTAS}"/>
                 </Column>
                 <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-                    <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}" />
+                    <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}"/>
                 </Column>
                 <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
-                    <Text text="{i18n>REASON_FOR_SCHOLARSHIP}" />
+                    <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
                 </Column>
             </columns>
             <items>
                 <ColumnListItem>
                     <cells>
-                        <Text text="{ProductId}"/>
-                        <Text text="{SupplierName}" />
-                        <Text text="{Width}" />
-                        <Text text="{Depth}" />
-                        <Text text="{Height}" />
-                        <Text text="{Height}" />
-                        <Text text="{Height}" />
-                        <Text text="{Height}" />
-                        <Text text="{Height}" />
+                        <Text text="{approvalRequestListModel>Under}"/>
+                        <Text text="{approvalRequestListModel>Maste}"/>
+                        <Text text="{approvalRequestListModel>Masten}"/>
+                        <Text text="{approvalRequestListModel>Subjet}"/>
+                        <Text text="{approvalRequestListModel>Subjen}"/>
+                        <Text text="{approvalRequestListModel>Count}"/>
+                        <Text text="{approvalRequestListModel>Quqta}"/>
+                        <Text text="{approvalRequestListModel>Direc}"/>
+                        <Text text="{approvalRequestListModel>Reaso}"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
         <beginButton>
-            <Button text="{i18n>CANCEL_BUTTON}" type="Reject" icon="sap-icon://cancel" press=".onEvaluationCancelButtonPress" />
+            <Button text="{i18n>CANCEL_BUTTON}" type="Reject" icon="sap-icon://cancel" press=".onEvaluationCancelButtonPress"/>
         </beginButton>
         <endButton>
-            <Button text="{i18n>SAVE_BUTTON}" type="Accept" icon="sap-icon://save" />
+            <Button text="{i18n>SAVE_BUTTON}" type="Accept" icon="sap-icon://save"/>
         </endButton>
     </Dialog>
 </c:FragmentDefinition>

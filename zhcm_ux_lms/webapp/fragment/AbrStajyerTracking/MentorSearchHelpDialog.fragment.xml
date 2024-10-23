@@ -6,17 +6,16 @@
     <Table inset="false" items="{/ScholarshipStudentSet}" >
         <headerToolbar>
             <Toolbar >
-              <!-- <Text text="Mentör Arama" /> -->
               <ToolbarSpacer/>
               <SearchField placeholder="Arama" width="{= ${device>/system/phone} ? '200px' : '70%' }" value="{listViewModel>/queryString}" search=".onSearchProject" />
             </Toolbar>
           </headerToolbar>
         <columns>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Personel Kodu" />
+                <Text text="{i18n>PERSONNEL_CODE}" />
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Personel Adı" />
+                <Text text="{i18n>PERSONNEL_NAME}" />
             </Column>
         </columns>
         <items>

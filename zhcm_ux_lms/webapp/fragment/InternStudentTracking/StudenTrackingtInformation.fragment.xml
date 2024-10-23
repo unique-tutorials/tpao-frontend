@@ -57,7 +57,7 @@
     </f:Form>
     <VBox class="sapUiSmallMarginTopBottom">
         <List headerText="{i18n>INFO_LEVEL_DESC}" headerLevel="H2" items="{internStudentListModel>/levelDescriptionList}">
-            <StandardListItem title="{internStudentListModel>title}" description="{internStudentListModel>description}" />
+            <StandardListItem title="{internStudentListModel>title}" />
         </List>
     </VBox>
     <Table id="idProductsTable" inset="false" items="{internStudentListModel>/technicalEvaluation}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">

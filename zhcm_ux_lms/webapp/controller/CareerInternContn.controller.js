@@ -50,7 +50,6 @@ sap.ui.define([
                         Reqnw:"Pasif"
                     }
                 ]
-             
             });
         },
         _getRequestList: function (oEvent) { 

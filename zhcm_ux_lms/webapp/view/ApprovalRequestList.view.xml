@@ -2,7 +2,8 @@
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:semantic="sap.f.semantic"
-    xmlns:footerbar="sap.ushell.ui.footerbar" busy="{approvalListView>/busy}" busyIndicatorDelay="100">
+    xmlns:footerbar="sap.ushell.ui.footerbar" busy="{approvalListView>/busy}" busyIndicatorDelay="100"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>APPROVE_TRAINING_REQUEST_FORM}">
         <IconTabBar id="idIconTabBar" select="onIconFilterSelect" stretchContentHeight="true" selectedKey="{requestListModel>/selectedKey}">
             <items>
@@ -10,7 +11,7 @@
                 <IconTabFilter icon="sap-icon://approvals" iconColor="Critical" count="{approvalRequestListModel>/searchResults/APP}" text="{i18n>APPROVED_REQUEST}" key="PND"/>
             </items>
             <content>
-                <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                <Table mode="MultiSelect" selectionChange="onSelectionChange" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/approvalList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
@@ -39,19 +40,31 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
                         </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End" width="5rem">
+                            <Text text="{i18n>ACTION_LIST}"/>
+                        </Column>
                     </columns>
                     <items>
                         <ColumnListItem type="Navigation" press="onAvailableRequestActions">
                             <cells>
-                                <Text text="{approvalRequestListModel>Reqno}"/>
-                                <Text text="{approvalRequestListModel>Trnam}"/>
-                                <Text text="{approvalRequestListModel>Trtyp}"/>
-                                <Text text="{approvalRequestListModel>Trcnt}"/>
-                                <Text text="{approvalRequestListModel>Trnqp}"/>
-                                <Text text="{approvalRequestListModel>Trnqn}"/>
-                                <Text text="{approvalRequestListModel>Reqno}"/>
-                                <Text text="{approvalRequestListModel>Reqno}"/>
-                                <Text text="{approvalRequestListModel>Reqno}"/>
+                                <Text text="{approvalRequestListModel>Under}"/>
+                                <Text text="{approvalRequestListModel>Maste}"/>
+                                <Text text="{approvalRequestListModel>Masten}"/>
+                                <Text text="{approvalRequestListModel>Subjet}"/>
+                                <Text text="{approvalRequestListModel>Subjen}"/>
+                                <Text text="{approvalRequestListModel>Count}"/>
+                                <Text text="{approvalRequestListModel>Quqta}"/>
+                                <Text text="{approvalRequestListModel>Direc}"/>
+                                <Text text="{approvalRequestListModel>Reaso}"/>
+                                    <MenuButton icon="sap-icon://settings" defaultAction="onDefaultAction" beforeMenuOpen="onBeforeMenuOpen" useDefaultActionOnly="true"
+                                    menuPosition="LeftBottom">
+                                    <menu>
+                                        <Menu itemSelected="onMenuAction">
+                                            <MenuItem text="{i18n>DISPLAY_ACTION}" cd:Type="Display" icon="sap-icon://display" press="onSetting"/>
+                                            <MenuItem text="{i18n>EDIT_ACTION}" cd:Type="Edit" icon="sap-icon://edit" press="onSetting"/>
+                                        </Menu>
+                                    </menu>
+                                </MenuButton>
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -61,10 +74,10 @@
           <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onDisplayRequestDetail"/>
+                <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onDisplayRequestDetail"/> -->
                 <Button text="{i18n>EVALUATION_CRITERIA}" type="Attention" icon="sap-icon://activate" press=".onEvaluationDialogButton" />
-                <Button text="{i18n>REJECT_ACTION}" type="Reject" icon="sap-icon://employee-rejections" press="onCancelCreatePage"/>
-                <Button text="{i18n>APPROVE_ACTION}" icon="sap-icon://approvals"  visible='{approvalRequestListModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Success"/>
+                <Button enabled="{approvalRequestListModel>/aplicationSetting/approveEnabled}" text="{i18n>REJECT_ACTION}" type="Reject" icon="sap-icon://employee-rejections" press="onCancelCreatePage"/>
+                <Button enabled="{approvalRequestListModel>/aplicationSetting/approveEnabled}" text="{i18n>APPROVE_ACTION}" icon="sap-icon://approvals"  visible='{approvalRequestListModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Success"/>
             </OverflowToolbar>
         </footer>
     </Page>

@@ -10,7 +10,19 @@
             <items>
                 <IconTabFilter icon="sap-icon://save" iconColor="Neutral" count="{abrRequestListModel>/searchResults/DRF}" text="{i18n>DRAFT_REQUESTS}" key="DRF">
                     <content>
-                        <Table id="idSaveTable" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" mode="MultiSelect">
+                        <Table id="idSaveTable" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" updateFinished="onUpdateFinished" updateStarted="onUpdateStarted" class="lmsTable">
+                            <!-- <headerToolbar>
+                                <Toolbar>
+                                    <ToolbarSpacer/>
+                                    <SearchField id="searchField" placeholder="{i18n>REQUEST_SEARCH_TOOLTIP}" search="onSearch"
+                                        width="{= ${device>/system/phone} ? '100%' : '50%' }"></SearchField>
+                                </Toolbar>
+                            </headerToolbar> -->
+                            <infoToolbar>
+                                <Toolbar>
+                                    <Title id="tableHeader" text="Taslak Talepler"/>
+                                </Toolbar>
+                            </infoToolbar>
                             <columns>
                                 <Column minScreenWidth="Tablet" demandPopin="true">
                                     <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
@@ -55,13 +67,14 @@
                                         <Text text="{abrRequestListModel>Quqta}"/>
                                         <Text text="{abrRequestListModel>Direc}"/>
                                         <Text text="{abrRequestListModel>Reaso}"/>
-                                        <MenuButton icon="sap-icon://settings" type="Accept">
+                                        <!-- <MenuButton icon="sap-icon://settings" type="Accept">
                                             <menu>
                                                 <Menu>
                                                     <MenuItem text="{i18n>EDIT}" icon="sap-icon://edit" press=".editDraftButtonPress" />
+                                                        <MenuItem text="{i18n>EDIT}" icon="sap-icon://edit" press=".editDraftButtonPress" />
                                                 </Menu>
                                             </menu>
-                                        </MenuButton>
+                                        </MenuButton> -->
                                         <Button icon="sap-icon://menu" type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button>
                                     </cells>
                                 </ColumnListItem>
@@ -172,7 +185,12 @@
                             </f:DynamicPageHeader>
                         </f:header>
                         <f:content>
-                            <Table id="idPendingTable" mode="MultiSelect" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" selectionChange="onAbrItemSelected">
+                            <Table id="idPendingTable" mode="MultiSelect" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" selectionChange="onAbrItemSelected" class="lmsTable">
+                                <infoToolbar>
+                                    <Toolbar>
+                                        <Title text="Onaydaki Talepler"/>
+                                    </Toolbar>
+                                </infoToolbar>
                                 <columns>
                                     <Column minScreenWidth="Tablet" demandPopin="true">
                                         <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
@@ -224,7 +242,12 @@
                 </IconTabFilter>
                 <IconTabFilter icon="sap-icon://accept" iconColor="Positive" count="{abrRequestListModel>/searchResults/APP}" text="{i18n>APPROVED_REQUESTS}" key="APP">
                     <content>
-                        <Table id="idAcceptTable" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                        <Table id="idAcceptTable" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="lmsTable">
+                            <infoToolbar>
+                                <Toolbar>
+                                    <Title text="Onaylanan Talepler"/>
+                                </Toolbar>
+                            </infoToolbar>
                             <columns>
                                 <Column minScreenWidth="Tablet" demandPopin="true">
                                     <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
@@ -375,7 +398,12 @@
                         </f:DynamicPageHeader>
                     </f:header>
                     <f:content>
-                        <Table id="idDeclineTable" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                        <Table id="idDeclineTable" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="lmsTable">
+                            <infoToolbar>
+                                <Toolbar>
+                                    <Title text="Reddedilen Talepler"/>
+                                </Toolbar>
+                            </infoToolbar>
                             <columns>
                                 <Column minScreenWidth="Tablet" demandPopin="true">
                                     <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
@@ -444,9 +472,9 @@
                 <ToolbarSpacer/>
                 <!-- <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/> -->
                 <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
-                <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
+                <!-- <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
                 <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" type="Success" visible="true"/>
+                <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" type="Success" visible="true"/> -->
                 <Button text="{i18n>CREATE_NEW_REQUEST}" icon="sap-icon://education" press=".onNewTrainingRequest" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>
