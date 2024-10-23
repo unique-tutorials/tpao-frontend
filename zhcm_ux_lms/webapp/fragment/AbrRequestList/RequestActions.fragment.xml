@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+		<ActionSheet title="{i18n>ACTION_LIST}" showCancelButton="false" placement="Auto">
+		<!-- <Button icon="sap-icon://history" cd:actionId="History" text="{i18n>REQUEST_HISTORY}" press="onRequestActionSelected" type="Unstyled"/> -->
+		<Button visible="{requestListModel>/aplicationSetting/visible}" icon="sap-icon://complete" cd:actionId="Aproved" cd:actionType="SEND" text="{i18n>SEND_ACTION}" press="onRequestActionSelected" type="Attention"/>
+		<Button visible="{requestListModel>/aplicationSetting/visible}" icon="sap-icon://edit" cd:actionId="Edit" text="{i18n>EDIT_ACTION}" press="onRequestActionSelected" type="Critical"/>
+		<Button icon="sap-icon://display" cd:actionId="Display" text="{i18n>DISPLAY_ACTION}" press="onRequestActionSelected" type="Default"/>
+		<Button visible="{requestListModel>/aplicationSetting/visible}" icon="sap-icon://delete" cd:actionId="Delete" text="{i18n>DELETE_ACTION}" press="onRequestActionSelected" type="Reject"/>
+	</ActionSheet>
+</core:FragmentDefinition>

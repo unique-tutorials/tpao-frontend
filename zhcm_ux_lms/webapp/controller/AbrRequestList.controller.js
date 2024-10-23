@@ -29,6 +29,10 @@ sap.ui.define([
                 selectedRequest: {},
                 currentRequest: {},
                 TrainRequestList:{},
+                aplicationSetting: {
+                    enabled: true,
+                    visible: true,
+                  },
                 RequestList:[
                     {
                         "Under": "Bilecik Şeyh Edebali Üniversitesi",
@@ -130,28 +134,50 @@ sap.ui.define([
             }
         },
         editDraftButtonPress: function(oEvent) {
-            // Dialog daha önce oluşturulmadıysa yeni bir dialog oluştur ve ekle
             if (!this._oNewRequestDialog) {
                 this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
                 this.getView().addDependent(this._oNewRequestDialog);
             }
             
-            // Dialog'u aç
             this._oNewRequestDialog.open();
-        
-            // Seçilen veriyi al
+
             const oSelectedTodo = oEvent.getSource().getBindingContext("abrRequestListModel").getObject();
             console.log("seçilen öğe:" , oSelectedTodo);
             
-            // Modeli al ve seçilen veriyi RequestList'e ata
             const oViewModel = this.getView().getModel("abrRequestListModel");
             if (oViewModel && oSelectedTodo) {
                 oViewModel.setProperty("/TrainRequestList", { ...oSelectedTodo });
             } else {
-                // Model ya da seçilen veri eksikse hata logla
                 console.error("Model 'abrRequestListModel' bulunamadı veya oSelectedTodo boş.");
             }
-        }
+        },
+        onAvailableRequestActions:function(oEvent){
+            var oSource = oEvent.getSource();
+            var oData = this.getModel().getProperty(
+              oSource.getParent().getBindingContextPath()
+            );
+            if (!oData) {
+              var oData = {};
+            }
+            this._openRequestActions(oData, oSource);
+        },
+        _openRequestActions: function (oData, oSource) {
+            var oViewModel = this.getModel("abrRequestListModel");
+            if (oData.Lmssf === "DRF") {
+              oViewModel.setProperty("/aplicationSetting/visible", true);
+            } else {
+              oViewModel.setProperty("/aplicationSetting/visible", false);
+            }
+            if (!this._requestActions) {
+              this._requestActions = sap.ui.xmlfragment(
+                "zhcm_ux_lms_abr.fragment.AbrRequestList.RequestActions",
+                this
+              );
+              this.getView().addDependent(this._requestActions);
+            }
+            this._requestActions.data("formData", oData);
+            this._requestActions.openBy(oSource);
+          },
         
 	});
 });

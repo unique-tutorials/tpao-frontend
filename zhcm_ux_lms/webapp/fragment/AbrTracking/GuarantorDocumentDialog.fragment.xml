@@ -2,7 +2,8 @@
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
     xmlns:l="sap.ui.layout"
-    xmlns:grid="sap.ui.layout.cssgrid">
+    xmlns:grid="sap.ui.layout.cssgrid"
+    xmlns:u="sap.ui.unified">
     <Dialog title="{i18n>GUARANTOR_DOC_TITLE}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
 
         <content>
@@ -57,7 +58,13 @@
                                         <f:formElements>
                                             <f:FormElement label="{i18n>FILE_NAME}">
                                                 <f:fields>
-                                                    <Input />
+                                                    <u:FileUploader
+                                                    width="100%"
+                                                    id="fileUploader"
+                                                    name="myFileUpload"
+                                                    uploadUrl="upload/"
+                                                    tooltip="Upload your file to the local server"
+                                                    uploadComplete="handleUploadComplete"/>
                                                 </f:fields>
                                             </f:FormElement>
                                             <f:FormElement label="{i18n>DOCUMENT_TYPE_DT}">
@@ -94,7 +101,13 @@
                                             <f:formElements>
                                                 <f:FormElement label="{i18n>FILE_NAME}">
                                                     <f:fields>
-                                                        <Input />
+                                                        <u:FileUploader
+                                                        width="100%"
+                                                        id="fileUploader2"
+                                                        name="myFileUpload"
+                                                        uploadUrl="upload/"
+                                                        tooltip="Upload your file to the local server"
+                                                        uploadComplete="handleUploadComplete"/>
                                                     </f:fields>
                                                 </f:FormElement>
                                                 <f:FormElement label="{i18n>DOCUMENT_NAME_DT}">

@@ -93,7 +93,7 @@
             <OverflowToolbar>
                 <ToolbarSpacer/>
                 <Button text="{i18n>CANCEL_ACTION}" type="Reject" icon="sap-icon://cancel" press="onCancelCreatePage"/>
-                <Button text="{i18n>SAVE_ACTION}" type="Success" icon="sap-icon://save" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' cd:actionType="NEW" press="onSaveSendEmploymentRequest" />
+                <Button text="{i18n>SAVE_DRAFT}" type="Success" icon="sap-icon://save" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' cd:actionType="NEW" press="onSaveSendEmploymentRequest" />
                 <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" cd:actionType="INA" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
             </OverflowToolbar>
         </footer>

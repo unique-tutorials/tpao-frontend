@@ -36,7 +36,7 @@
 								<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.StudenTrackingtInformation" type="XML" />
 							</IconTabFilter>
 
-							<IconTabFilter text="Aday Davranışsal Değerlendirme" key="Behavioral">
+							<IconTabFilter text="{i18n>CANDIDATE_BEHAVIORAL_ASSESSMENT}" key="Behavioral">
 								<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.BehavioralAssessment" type="XML" />
 							</IconTabFilter>
 						</items>

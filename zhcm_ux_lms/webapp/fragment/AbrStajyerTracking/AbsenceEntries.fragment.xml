@@ -4,7 +4,7 @@
     xmlns:core="sap.ui.core">
     <f:Form editable="true">
         <f:title>
-            <core:Title text="Tarih Aralığı Sorgulama"/>
+            <core:Title text="{i18n>DATE_RANGE_INQUIRY}"/>
         </f:title>
         <f:layout>
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -35,7 +35,7 @@
         <headerToolbar >
             <OverflowToolbar>
                 <content>
-                    <Title text="Devamsızlık Giriş Bilgileri" level="H2"/>
+                    <Title text="{i18n>ABSENCE_LOGIN_INFORMATION}" level="H2"/>
                     <ToolbarSpacer />
                 </content>
             </OverflowToolbar>
@@ -45,10 +45,10 @@
                 <Text text="{i18n>DATE}" />
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Gelmeme Nedeni Açıklama" />
+                <Text text="{i18n>NON_COMING_EXPLANATION}" />
             </Column>
             <Column minScreenWidth="Desktop" demandPopin="true">
-                <Text text="Mazeretli" />
+                <Text text="{i18n>Q_EXCUSED}" />
             </Column>
             <Column minScreenWidth="Desktop" demandPopin="true">
                 <Text text="{i18n>WITH_REPORT}" />

@@ -129,10 +129,13 @@ html.sap-phone .lmsDisplayOnlyCheckBox {
 }
 
 .lmsTable .sapMTB-Info-CTX.sapMTB {
-    background: #697988!important;
-    color: #fff!important;
-    border-left: 5px solid #e9910f
+    background-color: #f1f8ff;
+    color: #fff !important;
+    border-left: 5px solid #0064d9;
 }
+/* .sapMSticky>.sapMListHdrText, .sapMSticky>.sapMListHdrTBar.sapMTB-Transparent-CTX {
+    background: transparent;
+} */
 
 .lmsBtnEmphasized,
 .lmsBtnReject {
@@ -314,8 +317,8 @@ html.sap-phone .lmsDisplayOnlyCheckBox {
 }
 
 .lmsMainPage .sapMPageEnableScrolling::after {
-    background: url(../images/Study.webp) center/cover;
-    background-repeat: no-repeat!important;
+    /* background: url(../images/Study.webp) center/cover;
+    background-repeat: no-repeat!important; */
     content: "";
     opacity: .3!important;
     top: 0;
