@@ -60,7 +60,7 @@
             <StandardListItem title="{internStudentListModel>title}" />
         </List>
     </VBox>
-    <Table id="idProductsTable" inset="false" items="{internStudentListModel>/technicalEvaluation}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <Table id="idProductsTable" inset="false" items="{/technicalEvaluation}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
@@ -88,11 +88,11 @@
         <items>
             <ColumnListItem vAlign="Middle">
                 <cells>
-                    <Text text="{internStudentListModel>SupplierName}" />
-                    <Text text="{internStudentListModel>WorkDescription}" />
-                    <Text text="{internStudentListModel>BeforeSkillLevel}" />
-                    <Text text="{internStudentListModel>AfterSkillLevel}" />
-                    <Text text="{internStudentListModel>Comments}" />
+                    <Text text="{SupplierName}" />
+                    <Text text="{WorkDescription}" />
+                    <Text text="{BeforeSkillLevel}" />
+                    <Text text="{AfterSkillLevel}" />
+                    <Text text="{Comments}" />
                 </cells>
             </ColumnListItem>
         </items>
