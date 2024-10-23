@@ -3,7 +3,8 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns:f="sap.f"
-    xmlns:fb="sap.ui.comp.filterbar" displayBlock="true" height="100%" busyIndicatorDelay="0">
+    xmlns:fb="sap.ui.comp.filterbar" displayBlock="true" height="100%" busyIndicatorDelay="0"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Eğitim Yöneticisi">
         <f:DynamicPage headerExpanded="{/headerExpanded}">
             <f:header>
@@ -107,7 +108,7 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="idPendingTable" mode="MultiSelect" busy="{trainingManagerListModel>/tableBusy}" width="auto" items="{trainingManagerListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{trainingManagerListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" selectionChange="onAbrItemSelected">
+                <Table id="idPendingTable" busy="{trainingManagerListModel>/tableBusy}" width="auto" items="{trainingManagerListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{trainingManagerListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" selectionChange="onAbrItemSelected">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
@@ -136,6 +137,9 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
                         </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End" width="5rem">
+                            <Text text="{i18n>ACTION_LIST}"/>
+                        </Column>
                     </columns>
                     <items>
                         <ColumnListItem type="Navigation" press="onAvailableRequestActions">
@@ -149,7 +153,16 @@
                                 <Text text="{trainingManagerListModel>Quqta}"/>
                                 <Text text="{trainingManagerListModel>Direc}"/>
                                 <Text text="{trainingManagerListModel>Reaso}"/>
-                                <Button icon="sap-icon://menu" type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button>
+                                <MenuButton icon="sap-icon://settings" defaultAction="onDefaultAction" beforeMenuOpen="onBeforeMenuOpen" useDefaultActionOnly="true"
+                                    menuPosition="LeftBottom">
+                                    <menu>
+                                        <Menu itemSelected="onMenuAction">
+                                            <!-- <MenuItem text="{i18n>DISPLAY_ACTION}" cd:Type="Display" icon="sap-icon://display" press="onSetting"/> -->
+                                            <MenuItem text="{i18n>EDIT_ACTION}" cd:Type="Edit" icon="sap-icon://edit" press="onSetting"/>
+                                        </Menu>
+                                    </menu>
+                                </MenuButton>
+                                <!-- <Button icon="sap-icon://menu" type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button> -->
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -159,7 +172,7 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>EDIT}" icon="sap-icon://edit" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' type="Attention"/>
+                <!-- <Button text="{i18n>EDIT}" icon="sap-icon://edit" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' type="Attention"/> -->
                 <Button text="{i18n>EXPORT_EXCEL}" icon="sap-icon://excel-attachment" type="Accept" press="onDataExportToExcel" />
             </OverflowToolbar>
         </footer>
