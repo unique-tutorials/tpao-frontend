@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+>
+    <ActionSheet
+        title="{i18n>ACTION_LIST}"
+        showCancelButton="false"
+        placement="Auto"
+    >
+     <Button
+            text="{i18n>REQUEST_HISTORY}"
+            cd:Type="History"
+            icon="sap-icon://history" 
+            press="onSetting"
+        />
+        <Button
+            text="{i18n>DISPLAY_ACTION}"
+            cd:Type="Display"
+            icon="sap-icon://display"
+            press="onSetting"
+        />
+        <Button
+            text="{i18n>EDIT_ACTION}"
+            cd:Type="Edit"
+            icon="sap-icon://edit"
+            press="onSetting"
+            visible="{approvalRequestListModel>/Sprad}"
+        />
+    </ActionSheet>
+</core:FragmentDefinition>

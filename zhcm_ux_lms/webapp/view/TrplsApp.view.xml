@@ -20,7 +20,7 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>RESERVATION_REQUEST_NUMBER}">
                                 <f:fields>
-                                    <Input id="idInput" value="{ parts: [{path: 'requestListModel>/reservationRequest/Pernr'},{path: 'requestListModel>/reservationRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}"   valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp"/>
+                                    <Input id="idInput" value="{ parts: [{path: 'trplsRequestListModel>/newNumberReserRequest/Pernr'},{path: 'trplsRequestListModel>/newNumberReserRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}"   valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp"/>
                                     <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchReservationPress"/>
                                 </f:fields>
                             </f:FormElement>
@@ -42,71 +42,71 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>REQUEST_NUMBER}">
                                 <f:fields>
-                                    <Input value="{requestListModel>/TripRequest/Pernr}"/>
+                                    <Input value="{trplsRequestListModel>/selectedReservation/Rezno}"/>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>SCHOLARSHIP_STUDENT_NUMBER}">
                                 <f:fields>
-                                    <Input value="{requestListModel>/TripRequest/Pernt}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
+                                    <Input value="{trplsRequestListModel>/selectedReservation/Pernr}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Burslu Öğrenci Adı Soyadı">
                                 <f:fields>
-                                    <Input value="{requestListModel>/TripRequest/Ename}" />
+                                    <Input value="{requestListModel>/selectedReservation/Vorna}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Gidiş Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{requestListModel>/TripRequest/Qname}" />
+                                    <DatePicker value="{trplsRequestListModel>/selectedReservation/Depda}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>RETURN_DATE}">
                                 <f:fields>
-                                    <DatePicker value="{requestListModel>/TripRequest/Wname}" />
+                                    <DatePicker value="{trplsRequestListModel>/selectedReservation/Retda}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>OR_LAND1}">
                                 <f:fields>
-                                    <ComboBox value="{requestListModel>/TripRequest/Rname}" />
+                                    <ComboBox value="{trplsRequestListModel>/selectedReservation/Conry}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>STATE}">
                                 <f:fields>
-                                    <ComboBox value="{requestListModel>/TripRequest/Tname}" />
+                                    <ComboBox value="{trplsRequestListModel>/selectedReservation/Citys}" />
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>
                     </f:FormContainer>
                     <f:FormContainer >
                         <f:formElements>
-                            <f:FormElement label="{i18n>CITY}">
+                            <!-- <f:FormElement label="{i18n>CITY}">
                                 <f:fields>
-                                    <ComboBox value="{requestListModel>/TripRequest/Yname}" />
+                                    <ComboBox value="{trplsRequestListModel>/selectedReservation/Yname}" />
                                 </f:fields>
-                            </f:FormElement>
+                            </f:FormElement> -->
                             <f:FormElement label="{i18n>EXPLANATION}">
                                 <f:fields>
-                                    <TextArea rows="5" value="{requestListModel>/TripRequest/Uname}" />
+                                    <TextArea rows="5" value="{trplsRequestListModel>/selectedReservation/Descp}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Masraf Merkez Kodu">
                                 <f:fields>
-                                    <Input value="{requestListModel>/TripRequest/Iname}" showValueHelp="true" />
+                                    <Input value="{trplsRequestListModel>/selectedReservation/Iname}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>BUDGET_CODE}">
                                 <f:fields>
-                                    <Input value="{requestListModel>/TripRequest/Oname}" showValueHelp="true" />
+                                    <Input value="{trplsRequestListModel>/selectedReservation/Oname}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Talep Kayıt Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{requestListModel>/TripRequest/Aname}" />
+                                    <DatePicker value="{trplsRequestListModel>/selectedReservation/Rered}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Rezarvasyon Yapıldı">
                                 <f:fields>
-                                    <CheckBox selected="{requestListModel>/TripRequest/Sname}" />
+                                    <CheckBox selected="{trplsRequestListModel>/selectedReservation/Resma}" />
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>

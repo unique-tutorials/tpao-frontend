@@ -8,464 +8,84 @@
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Yurt Dışı Burslu Öğrenci Talepleri">
         <IconTabBar id="idIconTabBar" select="onIconFilterSelect" stretchContentHeight="true" selectedKey="{abrRequestListModel>/selectedKey}">
             <items>
-                <IconTabFilter icon="sap-icon://save" iconColor="Neutral" count="{abrRequestListModel>/searchResults/DRF}" text="{i18n>DRAFT_REQUESTS}" key="DRF">
-                    <content>
-                        <Table id="idSaveTable" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" updateFinished="onUpdateFinished" updateStarted="onUpdateStarted" class="lmsTable">
-                            <!-- <headerToolbar>
-                                <Toolbar>
-                                    <ToolbarSpacer/>
-                                    <SearchField id="searchField" placeholder="{i18n>REQUEST_SEARCH_TOOLTIP}" search="onSearch"
-                                        width="{= ${device>/system/phone} ? '100%' : '50%' }"></SearchField>
-                                </Toolbar>
-                            </headerToolbar> -->
-                            <infoToolbar>
-                                <Toolbar>
-                                    <Title id="tableHeader" text="Taslak Talepler"/>
-                                </Toolbar>
-                            </infoToolbar>
-                            <columns>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true" width="6rem">
-                                    <Text text="{i18n>NUMBER_OF_QUOTAS}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true" width="12rem">
-                                    <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End" width="5rem">
-                                    <Text text="{i18n>ACTION_LIST}"/>
-                                </Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem type="Navigation" press="onAvailableRequestActions">
-                                    <cells>
-                                        <Text text="{abrRequestListModel>Under}"/>
-                                        <Text text="{abrRequestListModel>Maste}"/>
-                                        <Text text="{abrRequestListModel>Masten}"/>
-                                        <Text text="{abrRequestListModel>Subjet}"/>
-                                        <Text text="{abrRequestListModel>Subjen}"/>
-                                        <Text text="{abrRequestListModel>Count}"/>
-                                        <Text text="{abrRequestListModel>Quqta}"/>
-                                        <Text text="{abrRequestListModel>Direc}"/>
-                                        <Text text="{abrRequestListModel>Reaso}"/>
-                                        <!-- <MenuButton icon="sap-icon://settings" type="Accept">
-                                            <menu>
-                                                <Menu>
-                                                    <MenuItem text="{i18n>EDIT}" icon="sap-icon://edit" press=".editDraftButtonPress" />
-                                                        <MenuItem text="{i18n>EDIT}" icon="sap-icon://edit" press=".editDraftButtonPress" />
-                                                </Menu>
-                                            </menu>
-                                        </MenuButton> -->
-                                        <Button icon="sap-icon://menu" type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button>
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-                    </content>
-                </IconTabFilter>
-                <IconTabFilter icon="sap-icon://pending" iconColor="Critical" count="{abrRequestListModel>/searchResults/PND}" text="{i18n>PENDING_REQUESTS}" key="PND">
-                    <f:DynamicPage headerExpanded="{/headerExpanded}">
-                        <f:header>
-                            <f:DynamicPageHeader>
-                                <f:content>
-                                    <fb:FilterBar id="AbrFilterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
-                                        <fb:filterGroupItems>
-                                            <fb:FilterGroupItem name="Name" label="{i18n>UNDERGRADUATE_GRADUATION_AREA}" groupName="Group1" visibleInFilterBar="true">
-                                                <fb:control>
-                                                    <MultiComboBox name="Name" items="{
-                                                        path: '/ProductNames',
-                                                        templateShareable: true
-                                                    }">
-                                                        <core:Item key="{key}" text="{name}"/>
-                                                    </MultiComboBox>
-                                                </fb:control>
-                                            </fb:FilterGroupItem>
-                                            <fb:FilterGroupItem name="Category" label="{i18n>MASTER_DEGREE_FIELD_TR}" groupName="Group2" visibleInFilterBar="true">
-                                                <fb:control>
-                                                    <MultiComboBox name="Category" items="{
-                                                        path: '/ProductCategories',
-                                                        templateShareable: true
-                                                    }">
-                                                        <core:Item key="{key}" text="{name}"/>
-                                                    </MultiComboBox>
-                                                </fb:control>
-                                            </fb:FilterGroupItem>
-                                            <fb:FilterGroupItem name="SupplierName" label="{i18n>MASTER_DEGREE_FIELD_EN}" groupName="Group3" visibleInFilterBar="true">
-                                                <fb:control>
-                                                    <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                                        <core:Item key="{key}" text="{name}"/>
-                                                    </MultiComboBox>
-                                                </fb:control>
-                                            </fb:FilterGroupItem>
-                                            <fb:FilterGroupItem name="SupplierName" label="{i18n>MASTER_DEGREE_SUBJECT_TR}" groupName="Group4" visibleInFilterBar="true">
-                                                <fb:control>
-                                                    <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                                        <core:Item key="{key}" text="{name}"/>
-                                                    </MultiComboBox>
-                                                </fb:control>
-                                            </fb:FilterGroupItem>
-                                            <fb:FilterGroupItem name="SupplierName" label="{i18n>MASTER_DEGREE_SUBJECT_EN}" groupName="Group5" visibleInFilterBar="true">
-                                                <fb:control>
-                                                    <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                                        <core:Item key="{key}" text="{name}"/>
-                                                    </MultiComboBox>
-                                                </fb:control>
-                                            </fb:FilterGroupItem>
-                                            <fb:FilterGroupItem name="SupplierName" label="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}" groupName="Group6" visibleInFilterBar="true">
-                                                <fb:control>
-                                                    <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                                        <core:Item key="{key}" text="{name}"/>
-                                                    </MultiComboBox>
-                                                </fb:control>
-                                            </fb:FilterGroupItem>
-                                            <fb:FilterGroupItem name="SupplierName" label="{i18n>NUMBER_OF_QUOTAS}" groupName="Group7" visibleInFilterBar="true">
-                                                <fb:control>
-                                                    <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                                        <core:Item key="{key}" text="{name}"/>
-                                                    </MultiComboBox>
-                                                </fb:control>
-                                            </fb:FilterGroupItem>
-                                            <fb:FilterGroupItem name="SupplierName" label="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}" groupName="Group8" visibleInFilterBar="true">
-                                                <fb:control>
-                                                    <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                                        <core:Item key="{key}" text="{name}"/>
-                                                    </MultiComboBox>
-                                                </fb:control>
-                                            </fb:FilterGroupItem>
-                                            <fb:FilterGroupItem name="SupplierName" label="{i18n>REASON_FOR_SCHOLARSHIP}" groupName="Group9" visibleInFilterBar="true">
-                                                <fb:control>
-                                                    <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                                        <core:Item key="{key}" text="{name}"/>
-                                                    </MultiComboBox>
-                                                </fb:control>
-                                            </fb:FilterGroupItem>
-                                        </fb:filterGroupItems>
-                                    </fb:FilterBar>
-                                </f:content>
-                            </f:DynamicPageHeader>
-                        </f:header>
-                        <f:content>
-                            <Table id="idPendingTable" mode="MultiSelect" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" selectionChange="onAbrItemSelected" class="lmsTable">
-                                <infoToolbar>
-                                    <Toolbar>
-                                        <Title text="Onaydaki Talepler"/>
-                                    </Toolbar>
-                                </infoToolbar>
-                                <columns>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="{i18n>NUMBER_OF_QUOTAS}"/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}"/>
-                                    </Column>
-                                    <Column minScreenWidth="Tablet" demandPopin="true">
-                                        <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
-                                    </Column>
-                                </columns>
-                                <items>
-                                    <ColumnListItem type="Navigation" press="onAvailableRequestActions">
-                                        <cells>
-                                            <Text text="{abrRequestListModel>Under}"/>
-                                            <Text text="{abrRequestListModel>Maste}"/>
-                                            <Text text="{abrRequestListModel>Masten}" />
-                                            <Text text="{abrRequestListModel>Subjet}"/>
-                                            <Text text="{abrRequestListModel>Subjen}"/>
-                                            <Text text="{abrRequestListModel>Count}"/>
-                                            <Text text="{abrRequestListModel>Quqta}"/>
-                                            <Text text="{abrRequestListModel>Direc}"/>
-                                            <Text text="{abrRequestListModel>Reaso}"/>
-                                            <Button icon="sap-icon://menu" type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button>
-                                        </cells>
-                                    </ColumnListItem>
-                                </items>
-                            </Table>
-                        </f:content>
-                    </f:DynamicPage>
-                </IconTabFilter>
-                <IconTabFilter icon="sap-icon://accept" iconColor="Positive" count="{abrRequestListModel>/searchResults/APP}" text="{i18n>APPROVED_REQUESTS}" key="APP">
-                    <content>
-                        <Table id="idAcceptTable" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="lmsTable">
-                            <infoToolbar>
-                                <Toolbar>
-                                    <Title text="Onaylanan Talepler"/>
-                                </Toolbar>
-                            </infoToolbar>
-                            <columns>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true" width="6rem">
-                                    <Text text="{i18n>NUMBER_OF_QUOTAS}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true" width="12rem">
-                                    <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
-                                </Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem press="onAvailableRequestActions">
-                                    <cells>
-                                        <Text text="{abrRequestListModel>Under}"/>
-                                        <Text text="{abrRequestListModel>Maste}"/>
-                                        <Text text="{abrRequestListModel>Masten}"/>
-                                        <Text text="{abrRequestListModel>Subjet}"/>
-                                        <Text text="{abrRequestListModel>Subjen}"/>
-                                        <Text text="{abrRequestListModel>Count}"/>
-                                        <Text text="{abrRequestListModel>Quqta}"/>
-                                        <Text text="{abrRequestListModel>Direc}"/>
-                                        <Text text="{abrRequestListModel>Reaso}"/>
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-                    </content>
-                </IconTabFilter>
-                <IconTabFilter icon="sap-icon://decline" iconColor="Negative" count="{abrRequestListModel>/searchResults/REJ}" text="{i18n>REJECTED_REQUESTS}" key="REJ">
-                    <f:DynamicPage headerExpanded="{/headerExpanded}">
-                    <f:header>
-                        <f:DynamicPageHeader>
-                            <f:content>
-                                <fb:FilterBar id="AbrFilterbarSelect" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
-                                    <fb:filterGroupItems>
-                                        <fb:FilterGroupItem name="Name" label="{i18n>UNDERGRADUATE_GRADUATION_AREA}" groupName="Group1" visibleInFilterBar="true">
-                                            <fb:control>
-                                                <MultiComboBox name="Name" items="{
-                                                    path: '/ProductNames',
-                                                    templateShareable: true
-                                                }">
-                                                    <core:Item key="{key}" text="{name}"/>
-                                                </MultiComboBox>
-                                            </fb:control>
-                                        </fb:FilterGroupItem>
-                                        <fb:FilterGroupItem name="Category" label="{i18n>MASTER_DEGREE_FIELD_TR}" groupName="Group2" visibleInFilterBar="true">
-                                            <fb:control>
-                                                <MultiComboBox name="Category" items="{
-                                                    path: '/ProductCategories',
-                                                    templateShareable: true
-                                                }">
-                                                    <core:Item key="{key}" text="{name}"/>
-                                                </MultiComboBox>
-                                            </fb:control>
-                                        </fb:FilterGroupItem>
-                                        <fb:FilterGroupItem name="SupplierName" label="{i18n>MASTER_DEGREE_FIELD_EN}" groupName="Group3" visibleInFilterBar="true">
-                                            <fb:control>
-                                                <MultiComboBox name="SupplierName" items="{
-                                                    path: '/ProductSuppliers',
-                                                    templateShareable: true
-                                                }">
-                                                    <core:Item key="{key}" text="{name}"/>
-                                                </MultiComboBox>
-                                            </fb:control>
-                                        </fb:FilterGroupItem>
-                                        <fb:FilterGroupItem name="SupplierName" label="{i18n>MASTER_DEGREE_SUBJECT_TR}" groupName="Group4" visibleInFilterBar="true">
-                                            <fb:control>
-                                                <MultiComboBox name="SupplierName" items="{
-                                                    path: '/ProductSuppliers',
-                                                    templateShareable: true
-                                                }">
-                                                    <core:Item key="{key}" text="{name}"/>
-                                                </MultiComboBox>
-                                            </fb:control>
-                                        </fb:FilterGroupItem>
-                                        <fb:FilterGroupItem name="SupplierName" label="{i18n>MASTER_DEGREE_SUBJECT_EN}" groupName="Group5" visibleInFilterBar="true">
-                                            <fb:control>
-                                                <MultiComboBox name="SupplierName" items="{
-                                                    path: '/ProductSuppliers',
-                                                    templateShareable: true
-                                                }">
-                                                    <core:Item key="{key}" text="{name}"/>
-                                                </MultiComboBox>
-                                            </fb:control>
-                                        </fb:FilterGroupItem>
-                                        <fb:FilterGroupItem name="SupplierName" label="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}" groupName="Group6" visibleInFilterBar="true">
-                                            <fb:control>
-                                                <MultiComboBox name="SupplierName" items="{
-                                                    path: '/ProductSuppliers',
-                                                    templateShareable: true
-                                                }">
-                                                    <core:Item key="{key}" text="{name}"/>
-                                                </MultiComboBox>
-                                            </fb:control>
-                                        </fb:FilterGroupItem>
-                                        <fb:FilterGroupItem name="SupplierName" label="{i18n>NUMBER_OF_QUOTAS}" groupName="Group7" visibleInFilterBar="true">
-                                            <fb:control>
-                                                <MultiComboBox name="SupplierName" items="{
-                                                    path: '/ProductSuppliers',
-                                                    templateShareable: true
-                                                }">
-                                                    <core:Item key="{key}" text="{name}"/>
-                                                </MultiComboBox>
-                                            </fb:control>
-                                        </fb:FilterGroupItem>
-                                        <fb:FilterGroupItem name="SupplierName" label="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}" groupName="Group8" visibleInFilterBar="true">
-                                            <fb:control>
-                                                <MultiComboBox name="SupplierName" items="{
-                                                    path: '/ProductSuppliers',
-                                                    templateShareable: true
-                                                }">
-                                                    <core:Item key="{key}" text="{name}"/>
-                                                </MultiComboBox>
-                                            </fb:control>
-                                        </fb:FilterGroupItem>
-                                        <fb:FilterGroupItem name="SupplierName" label="{i18n>REASON_FOR_SCHOLARSHIP}" groupName="Group9" visibleInFilterBar="true">
-                                            <fb:control>
-                                                <MultiComboBox name="SupplierName" items="{
-                                                    path: '/ProductSuppliers',
-                                                    templateShareable: true
-                                                }">
-                                                    <core:Item key="{key}" text="{name}"/>
-                                                </MultiComboBox>
-                                            </fb:control>
-                                        </fb:FilterGroupItem>
-                                    </fb:filterGroupItems>
-                                </fb:FilterBar>
-                            </f:content>
-                        </f:DynamicPageHeader>
-                    </f:header>
-                    <f:content>
-                        <Table id="idDeclineTable" busy="{abrRequestListModel>/tableBusy}" width="auto" items="{abrRequestListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="lmsTable">
-                            <infoToolbar>
-                                <Toolbar>
-                                    <Title text="Reddedilen Talepler"/>
-                                </Toolbar>
-                            </infoToolbar>
-                            <columns>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true" width="6rem">
-                                    <Text text="{i18n>NUMBER_OF_QUOTAS}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true">
-                                    <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true" width="12rem">
-                                    <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
-                                </Column>
-                                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End" width="5rem">
-                                    <Text text="{i18n>ACTION_LIST}"/>
-                                </Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem press="onAvailableRequestActions">
-                                    <cells>
-                                        <Text text="{abrRequestListModel>Under}"/>
-                                        <Text text="{abrRequestListModel>Maste}"/>
-                                        <Text text="{abrRequestListModel>Masten}"/>
-                                        <Text text="{abrRequestListModel>Subjet}"/>
-                                        <Text text="{abrRequestListModel>Subjen}"/>
-                                        <Text text="{abrRequestListModel>Count}"/>
-                                        <Text text="{abrRequestListModel>Quqta}"/>
-                                        <Text text="{abrRequestListModel>Direc}"/>
-                                        <Text text="{abrRequestListModel>Reaso}"/>
-                                        <MenuButton icon="sap-icon://settings" type="Accept">
-                                            <menu>
-                                                <Menu>
-                                                    <MenuItem text="{i18n>EDIT}" icon="sap-icon://edit" press=".editDraftDeclineButtonPress" />
-                                                    <!-- <MenuItem text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" press=".editDraftDeclineButtonPress" /> -->
-                                                </Menu>
-                                            </menu>
-                                        </MenuButton>
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-                    </f:content>
-                    </f:DynamicPage>
-                </IconTabFilter>
-                <!-- <IconTabSeparator/> -->
-                <!-- <IconTabFilter icon="sap-icon://checklist" count="{abrRequestListModel>/searchResults/ALL}" text="{i18n>ALL_REQUESTS}" key="ALL"/> -->
+                <IconTabFilter icon="sap-icon://save" iconColor="Neutral" count="{abrRequestListModel>/searchResults/DRF}" text="{i18n>DRAFT_REQUESTS}" key="DRF" />
+                <IconTabFilter icon="sap-icon://pending" iconColor="Critical" count="{abrRequestListModel>/searchResults/PND}" text="{i18n>PENDING_REQUESTS}" key="PND" />
+                <IconTabFilter icon="sap-icon://accept" iconColor="Positive" count="{abrRequestListModel>/searchResults/APP}" text="{i18n>APPROVED_REQUESTS}" key="APP" />
+                <IconTabFilter icon="sap-icon://decline" iconColor="Negative" count="{abrRequestListModel>/searchResults/REJ}" text="{i18n>REJECTED_REQUESTS}" key="REJ" />
+                <IconTabSeparator/>
+                <IconTabFilter icon="sap-icon://checklist" count="{abrRequestListModel>/searchResults/ALL}" text="{i18n>ALL_REQUESTS}" key="ALL"/>
             </items>
+            <content>
+                <Table id="idTrainingRequestTable" width="auto"
+                items="{ path: '/ScholarshipStudentRequestSet',filters : [ { path : 'Lmsap', operator : 'EQ', value1 : 'MY_REQUESTS'}, { path : 'Lmssf', operator : 'EQ', value1 : 'DRF'} ] }"
+                noDataText="{abrRequestListModel>/tableNoDataText}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true"
+                growingScrollToLoad="true" updateFinished="onUpdateFinished" updateStarted="onUpdateStarted" class="lmsTable">
+                <headerToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer/>
+                        <SearchField id="searchField" placeholder="{i18n>REQUEST_SEARCH_TOOLTIP}" search="onSearch"
+                            width="{= ${device>/system/phone} ? '100%' : '50%' }"></SearchField>
+                    </Toolbar>
+                </headerToolbar>   
+                <infoToolbar>
+                        <Toolbar>
+                            <Title id="tableHeader" text="{abrRequestListModel>/requestListTableTitle}"/>
+                        </Toolbar>
+                    </infoToolbar>
+                    <columns>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Talep Numarası"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
+                        </Column>
+                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
+                        </Column> -->
+                        <Column minScreenWidth="Tablet" demandPopin="true" width="6rem">
+                            <Text text="{i18n>NUMBER_OF_QUOTAS}"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true" width="12rem">
+                            <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End" width="5rem">
+                            <Text text="{i18n>ACTION_LIST}"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+                            <cells>
+                                <Text text="{path:'Lmsno' , formatter:'.formatter.formatTrfno'}" />
+                                <Text text="{Madef}"/>
+                                <Text text="{Grfst}"/>
+                                <Text text="{Grfsi}"/>
+                                <Text text="{Ylskt}"/>
+                                <Text text="{Ylski}"/>
+                                <!-- <Text text="{Counr}"/> -->
+                                <Text text="{Kntjs}"/>
+                                <Text text="{Orgeh}" />
+                                <Text text="{Okugr}"/>
+                                <Button icon="sap-icon://menu" type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </content>
         </IconTabBar>
         <footer>
             <OverflowToolbar>

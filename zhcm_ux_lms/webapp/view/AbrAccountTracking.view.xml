@@ -1,4 +1,4 @@
-<mvc:View controllerName="zhcm_ux_lms_abr.controller.AbrTracking"
+<mvc:View controllerName="zhcm_ux_lms_abr.controller.AbrAccountTracking"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:f="sap.ui.layout.form"

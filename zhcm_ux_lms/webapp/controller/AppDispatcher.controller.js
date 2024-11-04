@@ -38,13 +38,13 @@ sap.ui.define([
                 },
                 {
                     "appName": "TrplsApp",
-                    "visible": false,
+                    "visible": true,
                     "title": 'Burslu Öğrenci Seyahat ',
                     "icon": "sap-icon://suitcase"
                 },
                 {
                     "appName": "TrpolApp",
-                    "visible": false,
+                    "visible": true,
                     "title": 'Personel Seyahat Rezervasyon Talebi (Sorgu)',
                     "icon": "sap-icon://travel-request"
                 },

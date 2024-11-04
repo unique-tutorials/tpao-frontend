@@ -339,6 +339,14 @@
             </f:FormContainer>
             <f:FormContainer>
                 <f:formElements>
+                    <f:FormElement label="{i18n>ACCOUNT_RESTRICTION}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/generalEmployee/Restr', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_TO_BE_PAID}">
                         <f:fields>
                             <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Payac' } ] }" selectedKey="{requestListModel>/generalEmployee/Payac}">

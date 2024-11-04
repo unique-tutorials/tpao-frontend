@@ -12,24 +12,29 @@
                             <fb:filterGroupItems>
                                 <fb:FilterGroupItem name="StudentNumber" label="Öğrenci No" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input value="{requestListModel>/reserSearchParameter/Pernr}"/>
+                                        <Input value="{trplsRequestListModel>/reserSearchParameter/Pernr}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="Name" label="{i18n>OR_VORNA}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input value="{requestListModel>/reserSearchParameter/Name}"/>
+                                        <Input value="{trplsRequestListModel>/reserSearchParameter/Vorna}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="SName" label="{i18n>OR_NACHN}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input value="{requestListModel>/reserSearchParameter/Sname}" />
+                                        <Input value="{trplsRequestListModel>/reserSearchParameter/Nachn}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
-                                            <DatePicker value="{requestListModel>/reserSearchParameter/Date}" />
-                                            <DatePicker value="{requestListModel>/reserSearchParameter/Date}" /> 
+                                        
+                                            <DatePicker placeholder="Başlangıç" change="onQueryDateChanged"
+                                            value="{path:'trplsRequestListModel>/reserSearchParameter/beginDate', 
+                                            type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
+                                            <DatePicker placeholder="Bitiş"  change="onQueryDateChanged"
+                                            value="{path:'trplsRequestListModel>/reserSearchParameter/endDate',
+                                            type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
                                         </FlexBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
@@ -39,7 +44,7 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom"  items="{/ReservationSet}" itemPress="onEmployeeSelect">
+                <Table id="reservationTable" inset="false" class="sapUiSmallMarginBottom"  items="{/TravelReservationSet}" itemPress="onEmployeeSelect">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>RESERVATION_MADE}"/>
@@ -72,22 +77,27 @@
                             <Text text="{i18n>EXPLANATION}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>STUDENT_ACTIVE}"/>
+                            <Text text="Talep Kayıt Tarihi"/>
                         </Column>
+                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>STUDENT_ACTIVE}"/>
+                        </Column> -->
                     </columns>
                     <items>
                         <ColumnListItem type="Active" press=".onItemSelected">
                             <cells>
-                                <CheckBox text="{Rescb}"/>
-                                <Text text="{Numb}"/>
-                                <Text text="{Numbs}"/>
-                                <Text text="{Sname}"/>
-                                <Text text="{City}"/>
-                                <Text text="{Land}"/>
-                                <Text text="{Atex}"/>
-                                <Text text="{Lalsa}"/>
-                                <Text text="{Lalsa}"/>
-                                <Text text="{Lalsa}"/>
+                                <CheckBox text="{Resma}"/>
+                                <Text text="{Rezno}"/>
+                                <Text text="{Pernr}"/>
+                                <ObjectIdentifier text="{Vorna}" title="{Nachn}" />
+                                <!-- <Text text=""/>
+                                <Text text=""/> -->
+                                <Text text="{Conry}"/>
+                                <Text text="{Citys}"/>
+                                <Text text="{Depda}"/>
+                                <Text text="{Retda}"/>
+                                <Text text="{Descp}"/>
+                                <Text text="{Rered}" />
                             </cells>
                         </ColumnListItem>
                     </items>

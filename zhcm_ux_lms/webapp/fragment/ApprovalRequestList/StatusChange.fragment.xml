@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns="sap.m" xmlns:table="sap.ui.table" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog title="{i18n>STATUS_CHANGE_CONFIRMATION}" showHeader="true" stretch="{device>/system/phone}" id="idStatusChangeDialog"
+		resizable="false" draggable="false" type="Message" afterClose="onStatusChangeDialogClosed" state="Warning">
+		<content>
+			<Text text="{approvalRequestListModel>/statusChangeDialog/informationNote}" wrapping="true" renderWhitespace="true"></Text>
+			<TextArea value="{approvalRequestListModel>/statusChangeDialog/statusChangeNote}" valueLiveUpdate="true" width="100%"
+				placeholder="{approvalRequestListModel>/statusChangeDialog/statusChangePlaceholder}" rows="5"></TextArea>
+			
+		</content>
+		<beginButton>
+			<Button type="{ path: 'approvalRequestListModel>/statusChangeDialog/beginButtonType', formatter: '.formatter.getFormActionType' }"
+				icon="{approvalRequestListModel>/statusChangeDialog/beginButtonIcon}" text="{approvalRequestListModel>/statusChangeDialog/beginButtonText}"
+				press="onStatusChangeConfirmed"
+				enabled="{ parts:[ { path: 'approvalRequestListModel>/statusChangeDialog/statusChangeNoteRequired' }, { path: 'approvalRequestListModel>/statusChangeDialog/statusChangeNote'} ], formatter: '.formatter.getFormActionEnabled' }"></Button>
+		</beginButton>
+		<endButton>
+			<Button type="Default" text="{i18n>CANCEL_ACTION}" press="onStatusChangeCancelled"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

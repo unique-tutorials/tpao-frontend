@@ -1,0 +1,26 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+<TableSelectDialog title="{i18n>QUALIFACATION_PROFILE_SEARCH}" class="sapUiPopupWithPadding" items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Madef'}]}"
+    search="onQualificationProfileSearch" confirm="onQualificationProfileSelect"  contentWidth="{= ${device>/system/phone} ? '100%' : '75%'}">
+<columns>
+    <Column>
+        <header>
+            <Text text="Kodu"/>
+        </header>
+    </Column>
+    <Column>
+        <header>
+            <Text text="Lisans Mezuniyet Alanı"/>
+        </header>
+    </Column>
+</columns>
+    <ColumnListItem>
+    <cells>
+      <Text text="{Key}"/>
+       <Text text="{Value}"/>
+    </cells>
+</ColumnListItem>
+</TableSelectDialog>
+</c:FragmentDefinition>

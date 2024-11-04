@@ -15,25 +15,79 @@ sap.ui.define([
         formatter: formatter,
         onInit: function (oEvent) {
             var oViewModel = new JSONModel();
-            this.setModel(oViewModel, "requestListModel");
+            this.setModel(oViewModel, "trplsRequestListModel");
             this._initiateModel();
-            this.getRouter().getRoute("AbrTracking").attachPatternMatched(this._onRequestListMatched, this);
+            this.getRouter().getRoute("TrplsApp").attachPatternMatched(this._onRequestListMatched, this);
         },
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
         _initiateModel: function (oEvent) {
-            var oViewModel = this.getModel("requestListModel");
+            var oViewModel = this.getModel("trplsRequestListModel");
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},
-                currentRequest: {}
+                currentRequest: {},
+                reserSearchParameter: {
+                    beginDate:"01.08.2024",
+                    endDate:"15.10.2024"
+                },
+                reservationRequest: {}
              
             });
         },
         _getRequestList: function (oEvent) { 
 
         },
+        onSearch:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("trplsRequestListModel");
+            var oFilter = oViewModel.getProperty('/reserSearchParameter');
+            var sPath = "/TravelReservationSet";
+            var aFilters = this._getFilters(oFilter);
+  
+            // var oQueryParam = oViewModel.getProperty("/queryParameters");
+            aFilters.push(new Filter("Rered", FilterOperator.BT, oFilter.beginDate, oFilter.endDate));
+            var oTable = this.getView().byId('reservationTable') || sap.ui.getCore().byId('reservationTable');
+            oTable.getBinding('items').filter(aFilters,"Application");
+            
+            oModel.read(sPath, {
+                filters: aFilters,
+                success: function(oData) {
+                   
+                    console.log(oData);
+                },
+                error: function(oError) {
+                    sap.m.MessageToast.show("Veri yüklenirken hata oluştu.");
+                }
+            });
+        },
+   
+        _getFilters: function (oFilter) {
+            var aFilters = [];
+            var aKeys = Object.keys(oFilter);
+            for (var i = 0; i < aKeys.length; i++) {
+                var sVal = oFilter[aKeys[i]].toString();
+                if(sVal){
+                    var oFilterElement = new Filter(aKeys[i],FilterOperator.EQ , sVal);
+                    aFilters.push(oFilterElement);
+                }
+            }
+            return aFilters;
+        },
+        onItemSelected: function(oEvent) {
+            debugger;
+            var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
+        
+            var oViewModel = this.getModel('trplsRequestListModel');
+            oViewModel.setProperty("/newNumberReserRequest/Pernr", oSelectedItem.Pernr); 
+            oViewModel.setProperty("/newNumberReserRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
+        
+            if (this._oReserSearchHelpDialog) {
+                this._oReserSearchHelpDialog.close();
+            }
+        }, 
         onShowReservationSearchHelp: function(oEvent) {
             if (!this._oReserSearchHelpDialog) {
                 this._oReserSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.TrplsApp.ReservationSearchHelpDialog", this);

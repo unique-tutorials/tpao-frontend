@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<ActionSheet showCancelButton="true" placement="Auto" buttons="{approvalRequestListModel>/formActions}">
+		<Button text="{= ${approvalRequestListModel>Lmsbx} }"
+			icon="{approvalRequestListModel>Lmsbi}" press="onFormActionSelected" enabled="{= !${approvalRequestListModel>Noact} }"
+			type="{ path:'approvalRequestListModel>Lmsbs', formatter: '.formatter.getFormActionType' }" cd:buttonId="{approvalRequestListModel>Lmsbt}"/>
+	</ActionSheet>
+</core:FragmentDefinition>

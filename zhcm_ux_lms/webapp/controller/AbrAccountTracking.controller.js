@@ -17,7 +17,7 @@ sap.ui.define([
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "AbrAccountListModel");
             this._initiateModel();
-            this.getRouter().getRoute("AbrAccountListModel").attachPatternMatched(this._onRequestListMatched, this);
+            this.getRouter().getRoute("AbrAccountTracking").attachPatternMatched(this._onRequestListMatched, this);
         },
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
@@ -39,6 +39,10 @@ sap.ui.define([
 				this.getView().addDependent(this._oNewRequestDialog);
 			}
 			this._oNewRequestDialog.open();
+         },
+         openGuarantorDialog:function(oEvent){
+            debugger;
          }
+    
 	});
 });
