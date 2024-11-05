@@ -29,8 +29,6 @@ sap.ui.define([
                 selectedRequest: {},
                 currentRequest: {},
                 reserSearchParameter: {
-                    beginDate:"01.08.2024",
-                    endDate:"15.10.2024"
                 },
                 reservationRequest: {}
              
@@ -44,24 +42,27 @@ sap.ui.define([
             var oModel = this.getModel();
             var oViewModel = this.getModel("trplsRequestListModel");
             var oFilter = oViewModel.getProperty('/reserSearchParameter');
-            var sPath = "/TravelReservationSet";
             var aFilters = this._getFilters(oFilter);
-  
-            // var oQueryParam = oViewModel.getProperty("/queryParameters");
-            aFilters.push(new Filter("Rered", FilterOperator.BT, oFilter.beginDate, oFilter.endDate));
+
             var oTable = this.getView().byId('reservationTable') || sap.ui.getCore().byId('reservationTable');
             oTable.getBinding('items').filter(aFilters,"Application");
+           
+
+            // aFilters.push(new Filter("Rered", FilterOperator.BT, oFilter.beginDate, oFilter.endDate));
+            // var oTable = this.getView().byId('reservationTable') || sap.ui.getCore().byId('reservationTable');
+            // oTable.getBinding('items').filter(aFilters,"Application");
             
-            oModel.read(sPath, {
-                filters: aFilters,
-                success: function(oData) {
+            // oModel.read(sPath, {
+            //     filters: aFilters,
+            //     success: function(oData) {
                    
-                    console.log(oData);
-                },
-                error: function(oError) {
-                    sap.m.MessageToast.show("Veri yüklenirken hata oluştu.");
-                }
-            });
+            //         console.log(oData);
+            //     },
+            //     error: function(oError) {
+            //         sap.m.MessageToast.show("Veri yüklenirken hata oluştu.");
+            //     }
+            // });
+            
         },
    
         _getFilters: function (oFilter) {
