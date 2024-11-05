@@ -29,12 +29,10 @@
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
                                         
-                                            <DatePicker placeholder="Başlangıç" change="onQueryDateChanged"
-                                            value="{path:'trplsRequestListModel>/reserSearchParameter/beginDate', 
+                                            <DatePicker placeholder="Başlangıç"
+                                            value="{path:'trplsRequestListModel>/reserSearchParameter/Rered', 
                                             type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
-                                            <DatePicker placeholder="Bitiş"  change="onQueryDateChanged"
-                                            value="{path:'trplsRequestListModel>/reserSearchParameter/endDate',
-                                            type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
+                                         
                                         </FlexBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>

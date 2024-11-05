@@ -32,7 +32,14 @@ sap.ui.define([
                 SelectedEmployee:{},
                 generalEmployee:{},
                 schoolEmployee:{},
+                financialEmployee:{},
+                abroadEmployee:{},
+                domesticAccount:{},
+                otherAccount:{},
+                domesticEmployee:{},
+                abroadOtherEmployee:{},
                 identityEmployee:{},
+                masterEmployee:{},
                 contactEmployee:{},
                 newNumberRequest:{
                     Pernr:null,
@@ -62,6 +69,7 @@ sap.ui.define([
             oTable.getBinding('items').filter(aFilters,"Application");
         },
         onSearchStudentPress: function (oEvent) {
+            debugger;
             var that = this;
             var oModel = this.getModel();
             var sPernr = this.getView().getModel("requestListModel").getProperty("/newNumberRequest/Pernr");
@@ -94,6 +102,34 @@ sap.ui.define([
             var sSchoolInfoPath = oModel.createKey("/SchoolInformationSet", { Pernr: sPernr});
             readData(sSchoolInfoPath, "/schoolEmployee", "Okul bilgileri alınamadı.");
 
+            // Mali / Yurtiçi Dil bilgileri al
+            var sLanguageSchoolInfoPath = oModel.createKey("/DomesticLanguageSchoolInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+            readData(sLanguageSchoolInfoPath, "/financialEmployee", "Dil okul bilgileri alınamadı.");
+
+             // Mali / YurtDışı Dil bilgileri al
+             var sAbroadInfoPath = oModel.createKey("/LanguageSchoolAbroadSet", { Pernr: sPernr, Partner:"ASD123"});
+             readData(sAbroadInfoPath, "/abroadEmployee", "Yurt dışı dil bilgileri alınamadı.");
+
+            // Master Okul bilgileri al
+            var sMasterInfoPath = oModel.createKey("/MasterSchoolInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+            readData(sMasterInfoPath, "/masterEmployee", "Master okul bilgileri alınamadı.");
+
+            // Öğrenci Yurt içi Döviz Hesap bilgileri al
+            var sDomesticAccountInfoPath = oModel.createKey("/ForeignCurrencyAccountSet", { Pernr: sPernr, Partner:"ASD123"});
+            readData(sDomesticAccountInfoPath, "/domesticAccount", "Yurt içi Döviz Hesap bilgileri alınamadı.");
+
+            // Diğer Hesap bilgileri al
+            var sotherAccountInfoPath = oModel.createKey("/OtherAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+            readData(sotherAccountInfoPath, "/otherAccount", "Diğer Hesap bilgileri alınamadı.");
+
+            // Öğrenci Yurt içi Hesap bilgileri al
+            var sDomesticEmployeeInfoPath = oModel.createKey("/StudentDomesticAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+            readData(sDomesticEmployeeInfoPath, "/domesticEmployee", "Öğrenci Yurt içi bilgileri alınamadı.");
+
+             // Öğrenci Yurt dışı Hesap bilgileri al
+             var sAbroadOtherEmployeeInfoPath = oModel.createKey("/AbroadOtherAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+             readData(sAbroadOtherEmployeeInfoPath, "/abroadOtherEmployee", "Öğrenci Yurt dışı bilgileri alınamadı.");
+
             // Kimlik bilgilerini al
             var sIdentityInfoPath = oModel.createKey("/IdentityInformationSet", { Pernr: sPernr });
             readData(sIdentityInfoPath, "/identityEmployee", "Kimlik bilgileri alınamadı.");
@@ -101,13 +137,16 @@ sap.ui.define([
             // İletişim bilgilerini al
             var sContactInfoPath = oModel.createKey("/ContactInformationSet", { Pernr: sPernr });
             readData(sContactInfoPath, "/contactEmployee", "İletişim bilgileri alınamadı.");
+
         },
         onSave: function(oEvent) {
+            debugger;
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var oEntry = oViewModel.getProperty('/generalEmployee');
             var oIdEntry = oViewModel.getProperty('/identityEmployee');
             var oShlEntry = oViewModel.getProperty('/schoolEmployee');
+            var oFinEntry = oViewModel.getProperty('/financialEmployee');
             var that = this;
             
             // Genel bilgiler sekmesi seçiliyse
@@ -150,6 +189,26 @@ sap.ui.define([
                     }
                 });
             }
+            // Yurtiçi dil okul bilgiler sekmesi seçiliyse
+            if (this.byId("TabBarFinancial").getSelectedKey() === "LanguageSchool") {
+                oModel.create("/TravelReservationSet", oFinEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                                });
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
+            } 
             // Kimlik bilgileri sekmesi seçiliyse
             else if (this.byId("TabContainer").getSelectedKey() === "Identity") {
                 oModel.create("/IdentityInformationSet", oIdEntry, {
