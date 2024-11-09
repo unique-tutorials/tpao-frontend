@@ -67,16 +67,7 @@
                     </f:formElements>
                 </f:FormContainer>
                 <f:FormContainer>
-                    <f:formElements>
-                        <f:FormElement label="{i18n>STUDENT_COUNTRY}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/SelectedEmployee/Conry}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                                <Input enabled="false"/>
-                            </f:fields>
-                        </f:FormElement>
-                     
+                    <f:formElements>               
                         <f:FormElement label="{i18n>UNIT_CODE}">
                             <f:fields>
                                 <Input value="{requestListModel>/SelectedEmployee/Unicd}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitSearchHelp"/>

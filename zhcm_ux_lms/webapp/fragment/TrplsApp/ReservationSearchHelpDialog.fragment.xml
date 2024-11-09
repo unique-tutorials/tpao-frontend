@@ -28,11 +28,10 @@
                                 <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
-                                        
-                                            <DatePicker placeholder="Başlangıç"
-                                            value="{path:'trplsRequestListModel>/reserSearchParameter/Rered', 
+
+                                            <DatePicker placeholder="Başlangıç" value="{path:'trplsRequestListModel>/reserSearchParameter/Rered', 
                                             type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
-                                         
+
                                         </FlexBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
@@ -42,7 +41,7 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="reservationTable" inset="false" class="sapUiSmallMarginBottom"  items="{/TravelReservationSet}" itemPress="onEmployeeSelect">
+                <Table id="reservationTable" inset="false" class="sapUiSmallMarginBottom" items="{/TravelReservationSet}" itemPress="onEmployeeSelect">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>RESERVATION_MADE}"/>
@@ -62,9 +61,9 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>STATE}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>CITY}"/>
-                        </Column>
+                        </Column> -->
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>ENTRY_DATE}"/>
                         </Column>
@@ -92,10 +91,31 @@
                                 <Text text=""/> -->
                                 <Text text="{Conry}"/>
                                 <Text text="{Citys}"/>
-                                <Text text="{Depda}"/>
-                                <Text text="{Retda}"/>
+                                <Text text="{
+                                    path: 'Depda', 
+                                    type: 'sap.ui.model.type.Date', 
+                                    formatOptions: { 
+                                        pattern: 'dd.MM.yyyy', 
+                                        UTC: true 
+                                    }
+                                }"/>
+                                <Text text="{
+                                    path: 'Retda', 
+                                    type: 'sap.ui.model.type.Date', 
+                                    formatOptions: { 
+                                        pattern: 'dd.MM.yyyy', 
+                                        UTC: true 
+                                    }
+                                }"/>
                                 <Text text="{Descp}"/>
-                                <Text text="{Rered}" />
+                                <Text text="{
+                                    path: 'Rered', 
+                                    type: 'sap.ui.model.type.Date', 
+                                    formatOptions: { 
+                                        pattern: 'dd.MM.yyyy', 
+                                        UTC: true 
+                                    }
+                                }"/>
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -103,7 +123,7 @@
             </f:content>
         </f:DynamicPage>
         <beginButton>
-            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelSearchStudentDialog" type="Reject" />
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelReservationDialog" type="Reject" />
         </beginButton>
     </Dialog>
 </core:FragmentDefinition>

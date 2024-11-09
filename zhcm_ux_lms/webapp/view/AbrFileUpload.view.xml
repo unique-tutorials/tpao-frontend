@@ -1,43 +1,126 @@
 <mvc:View controllerName="zhcm_ux_lms_abr.controller.AbrFileUpload"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.f"
+    xmlns:fb="sap.ui.comp.filterbar">
 
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Burslu Öğrenci Maaşları">
-        <VBox class="sapUiSmallMargin">
-            <f:Form editable="true">
-                <f:title>
-                    <core:Title text="{i18n>STUDENT_SALARIES_INQUIRY}" />
-                </f:title>
-                <f:layout>
-                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-                </f:layout>
-                <f:formContainers>
-                    <f:FormContainer>
-                        <f:formElements>
-                            <f:FormElement label="{i18n>STUDENT_NUMBER}">
-                                <f:fields>
-                                    <Input id="idInputNumbers" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onShowWageSearchHelp"/>
-                                    <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchWagePress"/>
-                                </f:fields>
-                            </f:FormElement>
-                        </f:formElements>
-                    </f:FormContainer>
-                </f:formContainers>
-            </f:Form>
-            <VBox class="sapUiSmallMarginTop">
-                <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrFileUpload.StudentSalaryInformation" type="XML" />
-            </VBox>
-        </VBox>
+            <f:DynamicPage headerExpanded="{/headerExpanded}">
+                <f:header>
+                    <f:DynamicPageHeader>
+                        <f:content>
+                            <fb:FilterBar id="filterBarWage" persistencyKey="myPersKey" useToolbar="false" search=".onSearchWage" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                                <fb:filterGroupItems>
+                                    <fb:FilterGroupItem name="Name" label="{i18n>YEAR_MONTH}" groupName="Group1" visibleInFilterBar="true">
+                                        <fb:control>
+                                            <FlexBox alignItems="Start" justifyContent="SpaceBetween">
+                                                <Input />
+                                                <ComboBox />
+                                            </FlexBox>
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+                                    <!-- <fb:FilterGroupItem name="Category" label="{i18n>PAYMENT_DATE}" groupName="Group2" visibleInFilterBar="true">
+                                        <fb:control>
+                                            <DatePicker />
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+                                    <fb:FilterGroupItem name="SupplierName" label="{i18n>CREATION_CRITERIA}" groupName="Group3" visibleInFilterBar="true">
+                                        <fb:control>
+                                            <CheckBox />
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+                                    <fb:FilterGroupItem name="SupplierName" label="{i18n>ALPHABETICAL_BY_NAME}" groupName="Group4" visibleInFilterBar="true">
+                                        <fb:control>
+                                            <CheckBox />
+                                        </fb:control>
+                                    </fb:FilterGroupItem>
+                                    <fb:FilterGroupItem name="SupplierName" label="{i18n>SCHOLARSHIP_PERIOD}" groupName="Group5" visibleInFilterBar="true">
+                                        <fb:control>
+                                            <CheckBox />
+                                        </fb:control>
+                                    </fb:FilterGroupItem> -->
+                                </fb:filterGroupItems>
+                            </fb:FilterBar>
+                        </f:content>
+                    </f:DynamicPageHeader>
+                </f:header>
+                <f:content>
+                    <Table inset="false" items="{
+                            path: '/ProductCollection'
+                        }">
+                        <columns>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>RESTRICTED_SALARY}"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>STUDENT_NUMBER}"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>OR_ENAME}"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>SCHOLARSHIP_PERIOD}"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>WAGE}"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>STATIONARY}"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="{i18n>CURRENCY}"/>
+                            </Column>
+                            <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="Ödeme Tarihi"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="Ay Günü"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="Eksik Gün"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="Fazla Gün"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="Günlük Plan"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="Yıl"/>
+                            </Column>
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="Ay"/>
+                            </Column> -->
+                        </columns>
+    
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text text="{Wage}" />
+                                    <Text text="{Pernr}" />
+                                    <ObjectIdentifier title="{Name}" text="{ProductId}" />
+                                    <Text text="{Category}" />
+                                    <Text text="{SupplierName}" />
+                                    <Text text="{Width}" />
+                                    <Text text="{Depth}" />
+                                    <!-- <Text text="{Depth}" />
+                                    <Text text="{Depth}" />
+                                    <Text text="{Depth}" />
+                                    <Text text="{Depth}" />
+                                    <Text text="{Depth}" />
+                                    <Text text="{Depth}" />
+                                    <Text text="{Depth}" /> -->
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </f:content>
+            </f:DynamicPage>
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
-                <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/>
-                <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
                 <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="{i18n>CREATE_NEW_REQUEST}" icon="sap-icon://education" press="onNewTrainingRequest" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>
     </Page>

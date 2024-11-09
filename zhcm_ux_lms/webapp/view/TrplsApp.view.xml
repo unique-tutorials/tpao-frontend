@@ -20,10 +20,16 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>RESERVATION_REQUEST_NUMBER}">
                                 <f:fields>
-                                    <Input id="idInput" value="{ parts: [{path: 'trplsRequestListModel>/newNumberReserRequest/Pernr'},{path: 'trplsRequestListModel>/newNumberReserRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}"   valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp"/>
+                                    <Input id="idInput" value="{ parts: [{path: 'trplsRequestListModel>/newNumberReserRequest/Rezno'},{path: 'trplsRequestListModel>/newNumberReserRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}"   valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp"/>
                                     <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchReservationPress"/>
                                 </f:fields>
                             </f:FormElement>
+                            <!-- <f:FormElement label="{i18n>STUDENT_NUMBER}">
+                                <f:fields>
+                                    <Input id="idInput" value="{ parts: [{path: 'requestListModel>/newNumberRequest/Pernr'},{path: 'requestListModel>/newNumberRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onShowPersonSearchHelp"/>
+                                    <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchStudentPress"/>
+                                </f:fields>
+                            </f:FormElement> -->
                         </f:formElements>
                     </f:FormContainer>
                 </f:formContainers>
@@ -42,37 +48,48 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>REQUEST_NUMBER}">
                                 <f:fields>
-                                    <Input value="{trplsRequestListModel>/selectedReservation/Rezno}"/>
+                                    <Input value="{trplsRequestListModel>/reservationEmployee/Rezno}"/>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>SCHOLARSHIP_STUDENT_NUMBER}">
                                 <f:fields>
-                                    <Input value="{trplsRequestListModel>/selectedReservation/Pernr}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
+                                    <Input value="{trplsRequestListModel>/reservationEmployee/Pernr}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Burslu Öğrenci Adı Soyadı">
+                            <f:FormElement label="Öğrenci Adı">
                                 <f:fields>
-                                    <Input value="{requestListModel>/selectedReservation/Vorna}" />
+                                    <Input value="{trplsRequestListModel>/reservationEmployee/Vorna}" />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Öğrenci Soyadı">
+                                <f:fields>
+                                    <Input value="{trplsRequestListModel>/reservationEmployee/Nachn}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Gidiş Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{trplsRequestListModel>/selectedReservation/Depda}" />
+                                    <DatePicker value="{path:'trplsRequestListModel>/reservationEmployee/Depda', 
+                                        type: 'sap.ui.model.type.Date', 
+                                        formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                                    </DatePicker>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>RETURN_DATE}">
                                 <f:fields>
-                                    <DatePicker value="{trplsRequestListModel>/selectedReservation/Retda}" />
+                                    <DatePicker value="{path:'trplsRequestListModel>/reservationEmployee/Retda', 
+                                        type: 'sap.ui.model.type.Date', 
+                                        formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                                    </DatePicker>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>OR_LAND1}">
                                 <f:fields>
-                                    <ComboBox value="{trplsRequestListModel>/selectedReservation/Conry}" />
+                                    <ComboBox value="{trplsRequestListModel>/reservationEmployee/Conry}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>STATE}">
                                 <f:fields>
-                                    <ComboBox value="{trplsRequestListModel>/selectedReservation/Citys}" />
+                                    <ComboBox value="{trplsRequestListModel>/reservationEmployee/Citys}" />
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>
@@ -81,32 +98,35 @@
                         <f:formElements>
                             <!-- <f:FormElement label="{i18n>CITY}">
                                 <f:fields>
-                                    <ComboBox value="{trplsRequestListModel>/selectedReservation/Yname}" />
+                                    <ComboBox value="{trplsRequestListModel>/reservationEmployee/Yname}" />
                                 </f:fields>
                             </f:FormElement> -->
                             <f:FormElement label="{i18n>EXPLANATION}">
                                 <f:fields>
-                                    <TextArea rows="5" value="{trplsRequestListModel>/selectedReservation/Descp}" />
+                                    <TextArea rows="5" value="{trplsRequestListModel>/reservationEmployee/Descp}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Masraf Merkez Kodu">
                                 <f:fields>
-                                    <Input value="{trplsRequestListModel>/selectedReservation/Iname}" showValueHelp="true" />
+                                    <Input value="{trplsRequestListModel>/reservationEmployee/Iname}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>BUDGET_CODE}">
                                 <f:fields>
-                                    <Input value="{trplsRequestListModel>/selectedReservation/Oname}" showValueHelp="true" />
+                                    <Input value="{trplsRequestListModel>/reservationEmployee/Oname}" showValueHelp="true" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Talep Kayıt Tarihi">
                                 <f:fields>
-                                    <DatePicker value="{trplsRequestListModel>/selectedReservation/Rered}" />
+                                    <DatePicker value="{path:'trplsRequestListModel>/reservationEmployee/Rered', 
+                                        type: 'sap.ui.model.type.Date', 
+                                        formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
+                                    </DatePicker>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Rezarvasyon Yapıldı">
                                 <f:fields>
-                                    <CheckBox selected="{trplsRequestListModel>/selectedReservation/Resma}" />
+                                    <CheckBox selected="{trplsRequestListModel>/reservationEmployee/Resma}" />
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>
@@ -117,11 +137,8 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
-                <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/>
-                <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
                 <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onSaveButton" type="Accept" visible="true"/>
+                <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onReservationSaveButton" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>
     </Page>

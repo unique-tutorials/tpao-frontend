@@ -28,9 +28,13 @@ sap.ui.define([
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {},
-                reserSearchParameter: {
+                reserSearchParameter: {},
+                reservationRequest: {},
+                reservationEmployee:{},
+                newNumberReserRequest:{
+                    Rezno:null,
+                    Ename:""                 
                 },
-                reservationRequest: {}
              
             });
         },
@@ -82,7 +86,7 @@ sap.ui.define([
             var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
         
             var oViewModel = this.getModel('trplsRequestListModel');
-            oViewModel.setProperty("/newNumberReserRequest/Pernr", oSelectedItem.Pernr); 
+            oViewModel.setProperty("/newNumberReserRequest/Rezno", oSelectedItem.Rezno); 
             oViewModel.setProperty("/newNumberReserRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
         
             if (this._oReserSearchHelpDialog) {
@@ -98,12 +102,91 @@ sap.ui.define([
             }
             this._oReserSearchHelpDialog.open();
         },
+        onCancelReservationDialog:function(oEvent){
+            if (this._oReserSearchHelpDialog) {
+                this._oReserSearchHelpDialog.close(); 
+            }
+        },
         onNewTrainingRequest: function (oEvent) {
             if (!this._oNewRequestDialog) {
 				this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
 				this.getView().addDependent(this._oNewRequestDialog);
 			}
 			this._oNewRequestDialog.open();
-         }
+         },
+
+        //  onSearchReservationPress: function (oEvent) {
+        //     debugger;
+        //     var that = this;
+        //     var oModel = this.getModel();
+        //     var sRezno = this.getView().getModel("trplsRequestListModel").getProperty("/newNumberReserRequest/Rezno");
+
+        //     function readData(sPath, sModelProperty, errorMessage) {
+        //         oModel.read(sPath, {
+                   
+        //             success: function (oData) {
+        //                 var oViewModel = that.getModel("trplsRequestListModel");
+        //                 oViewModel.setProperty(sModelProperty, oData);
+        //                 console.log(oData);
+        //             },
+        //             error: function () {
+        //                 sap.m.MessageToast.show(errorMessage);
+        //             }
+        //         });
+        //     }
+          
+        //     var sReservationPath = oModel.createKey("/TravelReservationSet", { Rezno: sRezno });
+        //     readData(sReservationPath, "/reservationEmployee", "Rezervasyon bilgileri alınamadı.");
+        
+        // },
+        onSearchReservationPress: function (oEvent) {
+            debugger;
+            var that = this;
+            var oModel = this.getModel();
+            var oViewModel = this.getView().getModel("trplsRequestListModel");
+            var sRezno = oViewModel.getProperty("/newNumberReserRequest/Rezno");
+
+            var aFilters = [];
+            aFilters.push(new Filter("Rezno", FilterOperator.EQ, sRezno))
+        
+            // $filter parametresi ile sRezno'yu istek URL'sine ekleyin
+            oModel.read("/TravelReservationSet", {
+                filters: aFilters,
+                success: function (oData) {
+                    oViewModel.setProperty("/reservationEmployee", oData.results[0]);
+                    sap.m.MessageToast.show("Rezervasyon bilgileri alındı.");
+                    console.log("Rezervasyon bilgileri dataa:", oData);
+                },
+                error: function () {
+                    sap.m.MessageToast.show("Rezervasyon bilgileri alınamadı.");
+                }
+            });
+        },
+        onReservationSaveButton:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("trplsRequestListModel");
+            var oReservationEntry = oViewModel.getProperty('/reservationEmployee');
+             // Genel bilgiler sekmesi seçiliyse
+            // Yurtiçi dil okul bilgiler sekmesi seçiliyse
+                oModel.create("/TravelReservationSet", oReservationEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                                });
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
+        }
+        
 	});
 });

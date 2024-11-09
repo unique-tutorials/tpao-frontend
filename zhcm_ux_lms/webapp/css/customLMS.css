@@ -10,6 +10,9 @@
     visibility: false;
     display: none;
 }
+.toolbar-border-none{
+    border: none !important;
+}
 
 .lmsRequestPage .sapFDynamicPageTitleMainRight {
     width: 30px!important

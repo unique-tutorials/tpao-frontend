@@ -14,6 +14,14 @@
         <f:formContainers>
             <f:FormContainer>
                 <f:formElements>
+                    <f:FormElement label="{i18n>STUDENT_COUNTRY}">
+                        <f:fields>
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/generalEmployee/Conry}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                            <Input enabled="false"/>
+                        </f:fields>
+                    </f:FormElement>
                     <f:FormElement label="{i18n>SALARY_CURRENCY}">
                         <f:fields>
                             <!-- <Input /> -->
