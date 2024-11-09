@@ -16,7 +16,7 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>STUDENT_COUNTRY}">
                         <f:fields>
-                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/generalEmployee/Conry}">
+                            <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/generalEmployee/Conry}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
                             <Input enabled="false"/>
@@ -25,9 +25,9 @@
                     <f:FormElement label="{i18n>SALARY_CURRENCY}">
                         <f:fields>
                             <!-- <Input /> -->
-                            <Input value="{requestListModel>/generalEmployee/Salry}" />
-                            <ComboBox items="{ path:'/ValueHelpSet', length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{path:'requestListModel>/generalEmployee/Waers'}">
-                                <core:ListItem key="{Key}" text="{Value}"/>
+                            <Input value="{requestListModel>/generalEmployee/Salry}" enabled="false" />
+                            <ComboBox items="{ path:'/ValueHelpSet', length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{path:'requestListModel>/generalEmployee/Waers'}" enabled="false">
+                                <core:ListItem key="{Key}" text="{Value}" />
                             </ComboBox>
                             <!-- <ComboBox width="auto" selectionChange="getValueHelpList" items="{requestListModel>/benefitList}" selectedKey="{requestListModel>/generalEmployee/Waers}">
                                     <core:Item key="{benefitsModel>Key}" text="{benefitsModel>Value}" />
@@ -36,8 +36,8 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>STATIONERY_FEE}">
                         <f:fields>
-                            <Input />
-                            <Input value="{requestListModel>/generalEmployee/Stafe}" />
+                            <Input value="{requestListModel>/generalEmployee/Stafe}" enabled="false" />
+                            <Input enabled="false" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DOMESTIC_LANGUAGE_LEARNING_DURATION}">
@@ -304,17 +304,17 @@
                     </f:FormElement>
                     <f:FormElement>
                         <f:fields>
-                            <Button text="{i18n>CALCULATE_COMPULSORY_SERVICE_PERIOD}"/>
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement>
-                        <f:fields>
                             <Text/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement>
                         <f:fields>
                             <Text/>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement>
+                        <f:fields>
+                            <Button text="{i18n>CALCULATE_COMPULSORY_SERVICE_PERIOD}" press=".calculationButtonPress"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement>
