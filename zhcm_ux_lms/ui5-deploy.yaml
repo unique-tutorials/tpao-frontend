@@ -17,9 +17,9 @@ builder:
           url: http://s06sds4a01.tpao.gov.tr:8000
           client: "100"
         app:
-          name: ZHCM_UX_LMS
-          description: Eğitim Yönetimi Uygulamaları
-          package: ZHR_LMS
-          transport: S4DK902363
+          name: ZHCM_UX_LMS_ABR
+          description: Yurdışı Burslu Personel Eğitimi
+          package: ZHR_LMS_ABR
+          transport: S4DK905285
         exclude:
           - /test/

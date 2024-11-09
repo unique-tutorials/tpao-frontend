@@ -1,44 +1,70 @@
-<c:FragmentDefinition
-	xmlns="sap.m"
-	xmlns:c="sap.ui.core"
->
-<Table busy="{feeRequestListModel>/tableBusy}" width="auto" items="{feeRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{feeRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
-    <columns>
-        <Column minScreenWidth="Tablet" demandPopin="true">
-            <Text text="{i18n>FEE_PERIOD}"/>
-        </Column>
-        <Column minScreenWidth="Tablet" demandPopin="true">
-            <Text text="{i18n>DATE}"/>
-        </Column>
-        <Column minScreenWidth="Tablet" demandPopin="true">
-            <Text text="{i18n>SCHOOL_FEE}"/>
-        </Column>
-        <Column minScreenWidth="Tablet" demandPopin="true">
-            <Text text="{i18n>CURRENCY}"/>
-        </Column>
-        <Column minScreenWidth="Tablet" demandPopin="true">
-            <Text text="{i18n>EXCHANGE_DOCUMENT_NUMBER}"/>
-        </Column>
-        <Column minScreenWidth="Tablet" demandPopin="true">
-            <Text text="{i18n>TO_SENT}"/>
-        </Column>
-        <Column minScreenWidth="Tablet" demandPopin="true"> 
-            <Text text="{i18n>SEND}"/>
-        </Column>
-     
-    </columns>
-    <items>
-        <ColumnListItem type="Navigation" press="onAvailableRequestActions">
-            <cells>
-                <Text text="{feeRequestListModel>Feper}"/>
-                <Text text="{feeRequestListModel>Date}"/>
-                <Text text="{feeRequestListModel>Sclfe}"/>
-                <Text text="{feeRequestListModel>Curren}"/>
-                <Text text="{feeRequestListModel>Exchn}"/>
-                <Text text="{feeRequestListModel>Tosen}"/>
-                <Text text="{feeRequestListModel>Send}"/>
-            </cells>
-        </ColumnListItem>
-    </items>
-</Table>
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <Table busy="{requestListModel>/tableBusy}" width="auto" items="{requestListModel>/schoolFeeList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{requestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Okul Ücret Bilgileri" level="H2"/>
+                    <ToolbarSpacer />
+                    <Button text="Okul Ücret Bilgisi Sorgula" press=".onSchoolFeeButtonPress" type="Neutral" />
+                    <Button text="Yeni Okul Ücreti Ekle" press=".onSchollInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>FEE_PERIOD}"/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>DATE}"/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>SCHOOL_FEE}"/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>CURRENCY}"/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>EXCHANGE_DOCUMENT_NUMBER}"/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Kambiyo Belge Tarihi"/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>TO_SENT}"/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>SEND}"/>
+            </Column>
+
+        </columns>
+        <items>
+            <ColumnListItem type="Navigation" press=".onSchoolFeeNavigationDialog">
+                <cells>
+                    <Text text="{requestListModel>Wagpe}"/>
+                    <Text text="{
+                        path: 'requestListModel>Dates', 
+                        type: 'sap.ui.model.type.Date', 
+                        formatOptions: { 
+                            pattern: 'dd.MM.yyyy', 
+                            UTC: true 
+                        }
+                    }"/>
+                    <Text text="{requestListModel>Schpy}"/>
+                    <Text text="{requestListModel>Waers}"/>
+                    <Text text="{requestListModel>Kamno}"/>
+                    <Text text="{
+                        path: 'requestListModel>Kamdt', 
+                        type: 'sap.ui.model.type.Date', 
+                        formatOptions: { 
+                            pattern: 'dd.MM.yyyy', 
+                            UTC: true 
+                        }
+                    }"/>
+                    <Text text="{requestListModel>Sent}"/>
+                    <Button text="Gönder" type="Emphasized" press=".onSendSchoolFeeButtonPress"/>
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
 </c:FragmentDefinition>

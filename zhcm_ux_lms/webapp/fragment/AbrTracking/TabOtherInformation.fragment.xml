@@ -1,11 +1,14 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core">
-    <Table busy="{otherRequestListModel>/tableBusy}" width="auto" items="{otherRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{otherRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+
+    <Table busy="{otherRequestListModel>/tableBusy}" width="auto" items="{requestListModel>/guarantorList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{otherRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
 			<OverflowToolbar>
 				<content>
 					<Title text="{i18n>GUARANTORS}" level="H2"/>
-				</content>
+                    <ToolbarSpacer />
+                    <Button text="Kefil Bilgisi Sorgula" press=".onGuarantorButtonPress" type="Neutral" />
+                 </content>
 			</OverflowToolbar>
 		</headerToolbar>
         <columns>
@@ -18,25 +21,13 @@
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>OR_NACHN}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>TAX_OFFICE}"/>
-            </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>TAX_OFFICE_PROVINCE}"/>
-            </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>TAX_NUMBER}"/>
-            </Column>
         </columns>
         <items>
-            <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+            <ColumnListItem type="Navigation" >
                 <cells>
-                    <Text text="{otherRequestListModel>Serin}"/>
-                    <Text text="{otherRequestListModel>Vorna}"/>
-                    <Text text="{otherRequestListModel>Nachn}"/>
-                    <Text text="{otherRequestListModel>Taxof}"/>
-                    <Text text="{otherRequestListModel>Toprv}"/>
-                    <Text text="{otherRequestListModel>Txnum}"/>
+                    <Text text="{requestListModel>Sirno}"/>
+                    <Text text="{requestListModel>Vorna}"/>
+                    <Text text="{requestListModel>Nachn}"/>
                 </cells>
             </ColumnListItem>
         </items>

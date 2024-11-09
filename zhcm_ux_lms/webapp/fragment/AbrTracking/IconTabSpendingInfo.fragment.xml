@@ -1,6 +1,16 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core">
-    <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <Table busy="{requestListModel>/tableBusy}" width="auto" items="{requestListModel>/expendInfoList}" noDataText="{i18n>NO_DATA}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Genel Harcama Bilgileri" level="H2"/>
+                    <ToolbarSpacer />
+                    <Button text="Genel Harcama Bilgisi Sorgula" press=".onPaynoButtonPress" type="Neutral" />
+                    <Button text="Yeni Fatura Ekle" press=".onExpendInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
         <columns>
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>EXPENDITURE_ITEM}"/>
@@ -15,25 +25,32 @@
                 <Text text="{i18n>INVOICE_AMOUNT}"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>EXPLANATION} "/>
+            </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>TO_SENT}"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>SEND}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>EXPLANATION} "/>
-            </Column>
         </columns>
         <items>
-            <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+            <ColumnListItem type="Navigation" press=".onExpendInfoNavigationDialog">
                 <cells>
-                    <Text text="{approvalRequestListModel>Reqno}"/>
-                    <Text text="{approvalRequestListModel>Trnam}"/>
-                    <Text text="{approvalRequestListModel>Trtyp}"/>
-                    <Text text="{approvalRequestListModel>Trcnt}"/>
-                    <Text text="{approvalRequestListModel>Trnqp}"/>
-                    <Text text="{approvalRequestListModel>Trnqn}"/>
-                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{requestListModel>Paytp}"/>
+                    <Text text="{requestListModel>Payno}"/>
+                    <Text text="{
+                        path: 'requestListModel>Paydt', 
+                        type: 'sap.ui.model.type.Date', 
+                        formatOptions: { 
+                            pattern: 'dd.MM.yyyy', 
+                            UTC: true 
+                        }
+                    }"/>
+                    <Text text="{requestListModel>Payam}"/>
+                    <Text text="{requestListModel>Descp}"/>
+                    <Text text="{requestListModel>Sent}"/>
+                    <Button text="Gönder" press=".onSendExpendButtonPress" type="Emphasized"/>
                 </cells>
             </ColumnListItem>
         </items>
