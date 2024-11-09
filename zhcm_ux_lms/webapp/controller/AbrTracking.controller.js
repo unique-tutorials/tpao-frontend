@@ -881,6 +881,43 @@ sap.ui.define([
                 this._oUnitSearchHelpDialog.close();
             }
         },
+        calculationButtonPress: function() {
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var oEntry = oViewModel.getProperty('/generalEmployee');
+            
+      
+            var Opera = "1";
+        
+           
+            oEntry.Opera = Opera;
+        
+            var that = this;
+            if (Opera === "1") {
+                if (this.byId("TabContainer").getSelectedKey() === "General") {
+                    oModel.create("/GeneralInformationSet", oEntry, {
+                        success: function(oData, oResponse) {
+                            debugger;
+                            if (oData.Mesty === "S") {
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+                        },
+                        error: function() {
+                            debugger;
+                        }
+                    });
+                }
+            }
+        }
+        
+        
      
         // getValueHelpList: function () {
         //     var that = this;
