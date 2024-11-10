@@ -8,12 +8,12 @@
         showCancelButton="false"
         placement="Auto"
     >
-     <Button
+     <!-- <Button
             text="{i18n>REQUEST_HISTORY}"
             cd:Type="History"
             icon="sap-icon://history" 
             press="onSetting"
-        />
+        /> -->
         <Button
             text="{i18n>DISPLAY_ACTION}"
             cd:Type="Display"
