@@ -10,45 +10,32 @@
                 <f:header>
                     <f:DynamicPageHeader>
                         <f:content>
-                            <fb:FilterBar id="filterBarWage" persistencyKey="myPersKey" useToolbar="false" search=".onSearchWage" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                            <fb:FilterBar id="filterBarWage" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
                                 <fb:filterGroupItems>
                                     <fb:FilterGroupItem name="Name" label="{i18n>YEAR_MONTH}" groupName="Group1" visibleInFilterBar="true">
                                         <fb:control>
-                                            <FlexBox alignItems="Start" justifyContent="SpaceBetween">
-                                                <Input />
-                                                <ComboBox />
-                                            </FlexBox>
+                                            <DatePicker 
+                                            value="{
+                                                path: 'wageRequestListModel>/wageSearchRequest/Wagpe',
+                                                type: 'sap.ui.model.type.Date',
+                                               
+                                                formatOptions: {
+                                                    source: {
+                                                        pattern: 'yyyyMM'
+                                                    },
+                                                    pattern: 'MM-y'
+                                                }
+                                            }"
+                                            class="sapUiSmallMarginBottom" />
                                         </fb:control>
                                     </fb:FilterGroupItem>
-                                    <!-- <fb:FilterGroupItem name="Category" label="{i18n>PAYMENT_DATE}" groupName="Group2" visibleInFilterBar="true">
-                                        <fb:control>
-                                            <DatePicker />
-                                        </fb:control>
-                                    </fb:FilterGroupItem>
-                                    <fb:FilterGroupItem name="SupplierName" label="{i18n>CREATION_CRITERIA}" groupName="Group3" visibleInFilterBar="true">
-                                        <fb:control>
-                                            <CheckBox />
-                                        </fb:control>
-                                    </fb:FilterGroupItem>
-                                    <fb:FilterGroupItem name="SupplierName" label="{i18n>ALPHABETICAL_BY_NAME}" groupName="Group4" visibleInFilterBar="true">
-                                        <fb:control>
-                                            <CheckBox />
-                                        </fb:control>
-                                    </fb:FilterGroupItem>
-                                    <fb:FilterGroupItem name="SupplierName" label="{i18n>SCHOLARSHIP_PERIOD}" groupName="Group5" visibleInFilterBar="true">
-                                        <fb:control>
-                                            <CheckBox />
-                                        </fb:control>
-                                    </fb:FilterGroupItem> -->
                                 </fb:filterGroupItems>
                             </fb:FilterBar>
                         </f:content>
                     </f:DynamicPageHeader>
                 </f:header>
                 <f:content>
-                    <Table inset="false" items="{
-                            path: '/ProductCollection'
-                        }">
+                    <Table id="idSalariesSetTable" inset="false" items="{/StudentSalariesSet}">
                         <columns>
                             <Column minScreenWidth="Tablet" demandPopin="true">
                                 <Text text="{i18n>RESTRICTED_SALARY}"/>
@@ -59,9 +46,9 @@
                             <Column minScreenWidth="Tablet" demandPopin="true">
                                 <Text text="{i18n>OR_ENAME}"/>
                             </Column>
-                            <Column minScreenWidth="Tablet" demandPopin="true">
+                            <!-- <Column minScreenWidth="Tablet" demandPopin="true">
                                 <Text text="{i18n>SCHOLARSHIP_PERIOD}"/>
-                            </Column>
+                            </Column> -->
                             <Column minScreenWidth="Tablet" demandPopin="true">
                                 <Text text="{i18n>WAGE}"/>
                             </Column>
@@ -71,46 +58,23 @@
                             <Column minScreenWidth="Tablet" demandPopin="true">
                                 <Text text="{i18n>CURRENCY}"/>
                             </Column>
-                            <!-- <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Ödeme Tarihi"/>
-                            </Column>
                             <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Ay Günü"/>
+                                <Text text="Fazla gün"/>
                             </Column>
-                            <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Eksik Gün"/>
-                            </Column>
-                            <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Fazla Gün"/>
-                            </Column>
-                            <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Günlük Plan"/>
-                            </Column>
-                            <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Yıl"/>
-                            </Column>
-                            <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Ay"/>
-                            </Column> -->
+                       
                         </columns>
     
                         <items>
                             <ColumnListItem vAlign="Middle">
                                 <cells>
-                                    <Text text="{Wage}" />
+                                    <Text text="{Consa}" />
                                     <Text text="{Pernr}" />
-                                    <ObjectIdentifier title="{Name}" text="{ProductId}" />
-                                    <Text text="{Category}" />
-                                    <Text text="{SupplierName}" />
-                                    <Text text="{Width}" />
-                                    <Text text="{Depth}" />
-                                    <!-- <Text text="{Depth}" />
-                                    <Text text="{Depth}" />
-                                    <Text text="{Depth}" />
-                                    <Text text="{Depth}" />
-                                    <Text text="{Depth}" />
-                                    <Text text="{Depth}" />
-                                    <Text text="{Depth}" /> -->
+                                    <Text text="{Ename}" />
+                                    <!-- <Text text="{Category}" /> -->
+                                    <Text text="{Salry}" />
+                                    <Text text="{Stafe}" />
+                                    <Text text="{Waers}" />
+                                    <Text text="{Extda}" />
                                 </cells>
                             </ColumnListItem>
                         </items>

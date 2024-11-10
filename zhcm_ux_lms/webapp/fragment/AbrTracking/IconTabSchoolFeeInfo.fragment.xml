@@ -61,7 +61,7 @@
                             UTC: true 
                         }
                     }"/>
-                    <Text text="{requestListModel>Sent}"/>
+                    <CheckBox selected="{requestListModel>Sent}"/>
                     <Button text="Gönder" type="Emphasized" press=".onSendSchoolFeeButtonPress"/>
                 </cells>
             </ColumnListItem>
