@@ -386,19 +386,30 @@ sap.ui.define([
                     if (!this._oDescDialog) {
                         this._oDescDialog = new sap.m.Dialog({
                             title: "Açıklama Girişi",
+                            contentWidth: "40%", 
                             content: [
-                                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                                new sap.m.TextArea("desc2TextArea", {
-                                    width: "100%",
-                                    placeholder: "Açıklama giriniz...",
-                                    liveChange: function(oEvent) {
-                                        var sValue = oEvent.getParameter("value");
-                                        oEntry.Descp2 = sValue; 
-                                    }
-                                })
+                                new sap.m.VBox({
+                                    items: [
+                                        new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
+                                        new sap.m.TextArea("desc2TextArea", {
+                                            width: "100%",
+                                            placeholder: "Açıklama giriniz...",
+                                            liveChange: function(oEvent) {
+                                                var sValue = oEvent.getParameter("value");
+                                                oEntry.Descp2 = sValue; 
+                                            },
+                                            layoutData: new sap.ui.layout.GridData({
+                                                span: "L12 M12 S12",
+                                                margin: true
+                                            })
+                                        }).addStyleClass("sapUiTinyMarginTop")
+                                    ]
+                                }).addStyleClass("sapUiSmallMargin")
                             ],
                             beginButton: new sap.m.Button({
                                 text: "Kaydet",
+                                icon:"sap-icon://save",
+                                type:"Accept",
                                 press: function() {
                                     that._oDescDialog.close();
                                     oModel.create("/GeneralInformationSet", oEntry, {
@@ -430,6 +441,7 @@ sap.ui.define([
                             })
                         });
                     }
+                    
                     this._oDescDialog.open();
                 } else {
                     oModel.create("/GeneralInformationSet", oEntry, {
@@ -785,8 +797,8 @@ sap.ui.define([
             var oViewModel = this.getModel("requestListModel");
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr", sPernr);
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
-            aFilters.push(new Filter("ObjectId", FilterOperator.EQ, sObject));
-            aFilters.push(new Filter("ArcDocId", FilterOperator.EQ, sArcDoc));
+            // aFilters.push(new Filter("ObjectId", FilterOperator.EQ, sObject));
+            // aFilters.push(new Filter("ArcDocId", FilterOperator.EQ, sArcDoc));
 
             // aFilters.push(new Filter("Dotyp", FilterOperator.EQ, '1'));
 

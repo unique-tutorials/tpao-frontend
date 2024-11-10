@@ -28,7 +28,9 @@ sap.ui.define([
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {},
+                reserSearchParameter:{},
                 searchParameter:{}
+                
              
             });
         },
@@ -48,6 +50,30 @@ sap.ui.define([
             if (this._oReservationSearchHelpDialog) {
                 this._oReservationSearchHelpDialog.close();
             }
-        }
+        },
+        onReservationSearch:function(oEvent){
+            debugger;
+            var oViewModel = this.getModel('trpolRequestListModel');
+       
+            var oFilter = oViewModel.getProperty('/reserSearchParameter');
+            var aFilters = this._getFilters(oFilter);
+            console.log(oFilter);
+
+            var oTable = this.getView().byId('reservationTable') || sap.ui.getCore().byId('reservationTable');
+            oTable.getBinding('items').filter(aFilters,"Application");
+        },
+        _getFilters: function (oFilter) {
+            debugger;
+            var aFilters = [];
+            var aKeys = Object.keys(oFilter);
+            for (var i = 0; i < aKeys.length; i++) {
+                var sVal = oFilter[aKeys[i]].toString();
+                if(sVal){
+                    var oFilterElement = new Filter(aKeys[i],FilterOperator.EQ , sVal);
+                    aFilters.push(oFilterElement);
+                }
+            }
+            return aFilters;
+        },
 	});
 });

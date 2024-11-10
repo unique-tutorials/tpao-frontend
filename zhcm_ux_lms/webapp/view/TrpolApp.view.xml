@@ -5,32 +5,32 @@
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar">
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Personel Seyahat Rezervasyon Talebi Sorgu">
-        <f:DynamicPage headerExpanded="{requestListModel>/isHeaderExpanded}">
+        <f:DynamicPage headerExpanded="{trplsRequestListModel>/isHeaderExpanded}">
             <f:header>
                 <f:DynamicPageHeader>
                     <f:content>
-                        <fb:FilterBar persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                        <fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onReservationSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
                             <fb:filterGroupItems>
                                 <fb:FilterGroupItem name="StudentNumber" label="Öğrenci No" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input value="{trplsRequestListModel>/reserSearchParameter/Pernr}"/>
+                                        <Input value="{trpolRequestListModel>/reserSearchParameter/Pernr}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Name" label="{i18n>OR_VORNA}" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Name" label="{i18n>OR_VORNA}" groupName="Group2" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input value="{trplsRequestListModel>/reserSearchParameter/Vorna}"/>
+                                        <Input value="{trpolRequestListModel>/reserSearchParameter/Vorna}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SName" label="{i18n>OR_NACHN}" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SName" label="{i18n>OR_NACHN}" groupName="Group3" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input value="{trplsRequestListModel>/reserSearchParameter/Nachn}" />
+                                        <Input value="{trpolRequestListModel>/reserSearchParameter/Nachn}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}" groupName="Group4" visibleInFilterBar="true">
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
 
-                                            <DatePicker placeholder="Başlangıç" value="{path:'trplsRequestListModel>/reserSearchParameter/Rered', 
+                                            <DatePicker placeholder="Başlangıç" value="{path:'trpolRequestListModel>/reserSearchParameter/Rered', 
                                             type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
 
                                         </FlexBox>

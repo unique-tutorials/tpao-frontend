@@ -99,13 +99,13 @@
                         <ColumnListItem type="Navigation" press="onAvailableRequestActions">
                             <cells>
                                 <Text text="{path: 'Lmsno' , formatter: '.formatter.formatTrfno'}"/>
-                                <Text text="{Madef}"/>
-                                <Text text="{Grfst}"/>
-                                <Text text="{Grfsi}"/>
+                                <Text text="{Ftext}"/>
+                                <Text text="{Ftext1}"/>
+                                <Text text="{Ftext2}"/>
                                 <Text text="{Ylskt}"/>
                                 <Text text="{Ylski}"/>
                                 <Text text="{Kntjs}"/>
-                                <Text text="{Orgeh}" />
+                                <Text text="{Orgex}" />
                                 <Text text="{Okugr}"/>
                                 <Button icon="sap-icon://menu"  type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button>
                             </cells>
