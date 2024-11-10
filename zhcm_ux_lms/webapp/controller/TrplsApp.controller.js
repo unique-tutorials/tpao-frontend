@@ -162,31 +162,37 @@ sap.ui.define([
                 }
             });
         },
-        onReservationSaveButton:function(oEvent){
+        onReservationSaveButton: function(oEvent) {
             debugger;
             var oModel = this.getModel();
             var oViewModel = this.getModel("trplsRequestListModel");
             var oReservationEntry = oViewModel.getProperty('/reservationEmployee');
-             // Genel bilgiler sekmesi seçiliyse
-            // Yurtiçi dil okul bilgiler sekmesi seçiliyse
-                oModel.create("/TravelReservationSet", oReservationEntry, {
-                    success: function(oData, oResponse) {
-                        debugger;
-                        if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                                });
-                        }
-                    },
-                    error: function() {
-                        debugger;
+        
+            if (oReservationEntry.Rezno === null) {
+                delete oReservationEntry.Rezno;
+            }
+
+            oModel.create("/TravelReservationSet", oReservationEntry, {
+                success: function(oData, oResponse) {
+                    debugger;
+                    if (oData.Mesty === "S") {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    } else if (oData.Mesty === "E") {
+                        MessageToast.show(oData.Messg || "Bir hata oluştu.");
                     }
-                });
+                },
+                error: function() {
+                    debugger;
+                }
+            });
         }
+        
         
 	});
 });

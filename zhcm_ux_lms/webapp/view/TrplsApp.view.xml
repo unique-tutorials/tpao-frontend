@@ -53,7 +53,7 @@
                             </f:FormElement>
                             <f:FormElement label="{i18n>SCHOLARSHIP_STUDENT_NUMBER}">
                                 <f:fields>
-                                    <Input value="{trplsRequestListModel>/reservationEmployee/Pernr}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowReservationSearchHelp" />
+                                    <Input value="{trplsRequestListModel>/reservationEmployee/Pernr}" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="Öğrenci Adı">
@@ -84,12 +84,16 @@
                             </f:FormElement>
                             <f:FormElement label="{i18n>OR_LAND1}">
                                 <f:fields>
-                                    <ComboBox value="{trplsRequestListModel>/reservationEmployee/Conry}" />
+                                    <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{trplsRequestListModel>/reservationEmployee/Conry}">
+                                        <core:ListItem key="{Key}" text="{Value}"/>
+                                    </ComboBox>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>STATE}">
                                 <f:fields>
-                                    <ComboBox value="{trplsRequestListModel>/reservationEmployee/Citys}" />
+                                    <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Citys' } ] }" selectedKey="{trplsRequestListModel>/reservationEmployee/Citys}">
+                                        <core:ListItem key="{Key}" text="{Value}" />
+                                    </ComboBox>
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>
@@ -106,7 +110,7 @@
                                     <TextArea rows="5" value="{trplsRequestListModel>/reservationEmployee/Descp}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Masraf Merkez Kodu">
+                            <!-- <f:FormElement label="Masraf Merkez Kodu">
                                 <f:fields>
                                     <Input value="{trplsRequestListModel>/reservationEmployee/Iname}" showValueHelp="true" />
                                 </f:fields>
@@ -115,7 +119,7 @@
                                 <f:fields>
                                     <Input value="{trplsRequestListModel>/reservationEmployee/Oname}" showValueHelp="true" />
                                 </f:fields>
-                            </f:FormElement>
+                            </f:FormElement> -->
                             <f:FormElement label="Talep Kayıt Tarihi">
                                 <f:fields>
                                     <DatePicker value="{path:'trplsRequestListModel>/reservationEmployee/Rered', 
