@@ -49,7 +49,7 @@
                     }"/>
                     <Text text="{requestListModel>Payam}"/>
                     <Text text="{requestListModel>Descp}"/>
-                    <Text text="{requestListModel>Sent}"/>
+                    <CheckBox selected="{requestListModel>Sent}"/>
                     <Button text="Gönder" press=".onSendExpendButtonPress" type="Emphasized"/>
                 </cells>
             </ColumnListItem>
