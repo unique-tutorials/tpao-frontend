@@ -80,6 +80,31 @@ sap.ui.define([
                 }
             }
             return aFilters;
+        },
+        onSendSalariesButtonPress:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oSource = oEvent.getSource();
+            // oViewModel = this.getModel("requestListModel")
+            var salaryInfoList = oSource.getBindingContext("wageRequestListModel").getObject();
+            var oUrlParameters = {
+                "Pernr": salaryInfoList.Pernr,
+                "Wagpe": salaryInfoList.Wagpe
+            };
+ 
+            this._openBusyFragment("TRAINING_PARTICIPANT_SAVE_OPERATION", []);
+            oModel.callFunction("/SentSalary", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    // that.getModel("requestListModel").setProperty("/expendInfoList");
+                    this._sweetAlert(this.getText("SAVE_SUCCESSFUL"), "S");
+                    this._closeBusyFragment();
+                }.bind(this),
+                error: function (oError) {
+                    debugger;
+                }.bind(this)
+            }); 
         }
             
 	});

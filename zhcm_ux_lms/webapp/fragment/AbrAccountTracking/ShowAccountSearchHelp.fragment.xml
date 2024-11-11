@@ -3,7 +3,7 @@
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar">
     <Dialog title="Burslu Öğrenci Takibi (Muhasebe)" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
-        <f:DynamicPage headerExpanded="{AbrAccountListModel>/isHeaderExpanded}">
+        <f:DynamicPage headerExpanded="{abrAccountListModel>/isHeaderExpanded}">
             <f:header>
                 <f:DynamicPageHeader>
                     <f:content>
@@ -11,24 +11,24 @@
                             <fb:filterGroupItems>
                                 <fb:FilterGroupItem name="StudentNumber" label="{i18n>STUDENT_NUMBER}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input value="{AbrAccountListModel>/searchAccountParameter/Pernr}"/>
+                                        <Input value="{abrAccountListModel>/searchAccountParameter/Pernr}"/>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="EmploymentUnit" label="{i18n>UNIT_OF_EMPLOYMENT}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{AbrAccountListModel>/searchAccountParameter/Orgeh}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{abrAccountListModel>/searchAccountParameter/Orgeh}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="Name" label="{i18n>STUDENT_NAME}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input value="{AbrAccountListModel>/searchAccountParameter/Vorna}" />
+                                        <Input value="{abrAccountListModel>/searchAccountParameter/Vorna}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="Surname" label="{i18n>STUDENT_SURNAME}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input value="{AbrAccountListModel>/searchAccountParameter/Nachn}" />
+                                        <Input value="{abrAccountListModel>/searchAccountParameter/Nachn}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
                             </fb:filterGroupItems>

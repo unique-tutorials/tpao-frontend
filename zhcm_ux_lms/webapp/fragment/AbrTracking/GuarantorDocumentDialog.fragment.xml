@@ -34,7 +34,7 @@
                             <items>
                                 <ColumnListItem vAlign="Inherit">
                                     <cells>
-                                        <Text text="{requestListModel>Docnm}"/>
+                                        <Text text="{requestListModel>Id}"/>
                                         <Text text="{requestListModel>Doctp}"/>
                                         <Text text="{requestListModel>Firdt}"/>
                                         <Text text="{requestListModel>Lasdt}"/>

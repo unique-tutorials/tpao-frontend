@@ -14,37 +14,37 @@
                 <f:formElements>
                     <f:FormElement label="Partner Seçiniz">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/domesticAccountEmployee/Partner}" />
+                            <Input value="{abrAccountListModel>/domesticEmployee/Partner}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/domesticEmployee/Banka}" />
+                            <Input value="{abrAccountListModel>/domesticEmployee/Banka}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_BRANCH}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/domesticEmployee/Brnch}" />
+                            <Input value="{abrAccountListModel>/domesticEmployee/Brnch}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/domesticEmployee/City}" />
+                            <Input value="{abrAccountListModel>/domesticEmployee/City}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TL_ACCOUNT_NUMBER}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/domesticEmployee/Bankn}" />
+                            <Input value="{abrAccountListModel>/domesticEmployee/Bankn}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TL_IBAN}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/domesticEmployee/Iban00}" />
+                            <Input value="{abrAccountListModel>/domesticEmployee/Iban00}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
-                            <TextArea rows="3" value="{AbrAccountListModel>/domesticEmployee/Descp}" />
+                            <TextArea rows="3" value="{abrAccountListModel>/domesticEmployee/Descp}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -53,56 +53,57 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/abroadOtherAccountEmployee/Partner}" />
+                            <Input value="{abrAccountListModel>/abroadOtherEmployee/Partner}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/abroadOtherAccountEmployee/Banka}" />
+                            <Input value="{abrAccountListModel>/abroadOtherEmployee/Banka}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_BRANCH}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/abroadOtherAccountEmployee/Brnch}" />
+                            <Input value="{abrAccountListModel>/abroadOtherEmployee/Brnch}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/abroadOtherAccountEmployee/City}" />
+                            <Input value="{abrAccountListModel>/abroadOtherEmployee/City}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_NUMBER}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/abroadOtherAccountEmployee/Bankn}" />
+                            <Input value="{abrAccountListModel>/abroadOtherEmployee/Bankn}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>SWIFT_CODE}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/abroadOtherAccountEmployee/Swift}" />
+                            <Input value="{abrAccountListModel>/abroadOtherEmployee/Swift}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>IBAN}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/abroadOtherAccountEmployee/Iban00}" />
+                            <Input value="{abrAccountListModel>/abroadOtherEmployee/Iban00}" />
                         </f:fields>
                     </f:FormElement>
                     <!-- <f:FormElement label="{i18n>ACC_NO}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/abroadOtherEmployee/Banka}" />
+                            <Input value="{abrAccountListModel>/abroadOtherEmployee/Banka}" />
                         </f:fields>
                     </f:FormElement> -->
                     <f:FormElement label="{i18n>ABA_NO}">
                         <f:fields>
-                            <Input value="{AbrAccountListModel>/abroadOtherAccountEmployee/Abano}" />
+                            <Input value="{abrAccountListModel>/abroadOtherEmployee/Abano}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
-                            <TextArea rows="3" value="{AbrAccountListModel>/abroadOtherAccountEmployee/Descp}" />
+                            <TextArea rows="3" value="{abrAccountListModel>/abroadOtherEmployee/Descp}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
             </f:FormContainer>
+
         </f:formContainers>
     </f:Form>
 </c:FragmentDefinition>

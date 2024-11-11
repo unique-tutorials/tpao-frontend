@@ -1,29 +1,8 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:l="sap.ui.layout"
-    xmlns:core="sap.ui.core">
+    xmlns:l="sap.ui.layout">
     <Dialog title="{i18n>GUARANTOR_CONTACT_INFORMATION}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
-        <f:Form editable="false" class="sapUiSmallMarginBottom">
-            <f:title>
-                <core:Title text="{i18n>CONTACT_INFORMATION}" />
-            </f:title>
-            <f:layout>
-                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-            </f:layout>
-            <f:formContainers>
-                <f:FormContainer>
-                    <f:formElements>
-                        <f:FormElement label="{i18n>WEB_ADDRESS}">
-                            <f:fields>
-                                <Input />
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-            </f:formContainers>
-        </f:Form>
-        <Table busy="{contactRequestListModel>/tableBusy}" width="auto" items="{contactRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{contactRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+        <Table busy="{contactRequestListModel>/tableBusy}" width="auto" items="{requestListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{contactRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
             <headerToolbar>
                 <OverflowToolbar>
                     <content>
@@ -57,20 +36,20 @@
             <items>
                 <ColumnListItem >
                     <cells>
-                        <Text text="{contactRequestListModel>Type}"/>
-                        <Text text="{contactRequestListModel>Merni}"/>
-                        <Text text="{contactRequestListModel>Addrs}"/>
-                        <Text text="{contactRequestListModel>Code}"/>
-                        <Text text="{contactRequestListModel>Land}"/>
-                        <Text text="{contactRequestListModel>Provc}"/>
-                        <Text text="{contactRequestListModel>Distr}"/>
+                        <Text text="{requestListModel>Adtyp}"/>
+                        <Text text="{requestListModel>Merni}"/>
+                        <Text text="{requestListModel>Stras}"/>
+                        <Text text="{requestListModel>Pstlz}"/>
+                        <Text text="{requestListModel>Conry}"/>
+                        <Text text="{requestListModel>City}"/>
+                        <Text text="{requestListModel>Distr}"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
         <l:VerticalLayout width="100%" class="gridWrapper">
             <l:Grid containerQuery="true" class="smod-background" defaultSpan="XL6 L6 M6 S12">
-                <Table busy="{phoneRequestListModel>/tableBusy}" items="{phoneRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                <Table busy="{phoneRequestListModel>/tableBusy}" items="{requestListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
@@ -92,14 +71,14 @@
                     <items>
                         <ColumnListItem >
                             <cells>
-                                <Text text="{phoneRequestListModel>Ptype}"/>
-                                <Text text="{phoneRequestListModel>PNumb}"/>
-                                <CheckBox selected="{phoneRequestListModel>PDeft}"/>
+                                <Text text="{requestListModel>Photy}"/>
+                                <Text text="{requestListModel>Phonm}"/>
+                                <CheckBox selected="{requestListModel>Pfult}"/>
                             </cells>
                         </ColumnListItem>
                     </items>
                 </Table>
-                <Table busy="{mailRequestListModel>/tableBusy}" items="{mailRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{mailRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                <Table busy="{mailRequestListModel>/tableBusy}" items="{requestListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{mailRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
@@ -119,8 +98,8 @@
                     <items>
                         <ColumnListItem >
                             <cells>
-                                <Text text="{mailRequestListModel>Emads}"/>
-                                <CheckBox selected="{mailRequestListModel>EDeft}"/>
+                                <Text text="{requestListModel>Email}"/>
+                                <CheckBox selected="{requestListModel>Mfult}"/>
                             </cells>
                         </ColumnListItem>
                     </items>

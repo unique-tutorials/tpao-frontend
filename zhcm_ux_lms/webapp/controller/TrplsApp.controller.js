@@ -168,9 +168,9 @@ sap.ui.define([
             var oViewModel = this.getModel("trplsRequestListModel");
             var oReservationEntry = oViewModel.getProperty('/reservationEmployee');
         
-            if (oReservationEntry.Rezno === null) {
-                delete oReservationEntry.Rezno;
-            }
+            // if (oReservationEntry.Rezno === null) {
+            //     delete oReservationEntry.Rezno;
+            // }
 
             oModel.create("/TravelReservationSet", oReservationEntry, {
                 success: function(oData, oResponse) {
@@ -179,7 +179,7 @@ sap.ui.define([
                         Swal.fire({
                             position: "center",
                             icon: "success",
-                            title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                            title: that.getText("Rezervasyon Bilgileri Başarılı olarak kaydedildi."),
                             showConfirmButton: false,
                             timer: 1500
                         });

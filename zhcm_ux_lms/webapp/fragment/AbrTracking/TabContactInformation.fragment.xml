@@ -3,7 +3,7 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core">
-    <f:Form editable="false" class="sapUiSmallMarginBottom">
+    <!-- <f:Form editable="false" class="sapUiSmallMarginBottom">
         <f:title>
             <core:Title text="{i18n>CONTACT_INFORMATION}" />
         </f:title>
@@ -21,7 +21,7 @@
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>
-    </f:Form>
+    </f:Form> -->
     <Table width="auto" noDataText="{i18n>NO_DATA}" class="sapUiSmallMarginBottom" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
@@ -56,19 +56,19 @@
         <items>
             <ColumnListItem>
                 <cells>
-                    <Text text="{requestListModel>/contactEmployee/Adtyp}"/>
+                    <Text text="{requestListModel>/contactEmployee/Adrty}"/>
                     <Text text="{requestListModel>/contactEmployee/Merni}"/>
                     <Text text="{requestListModel>/contactEmployee/Adres}"/>
-                    <Text text="{requestListModel>/contactEmployee/Poscd}"/>
-                    <Text text="{requestListModel>/contactEmployee/Contr}"/>
-                    <!-- <Text text="{requestListModel>/contactEmployee/City}"/> -->
-                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/contactEmployee/City}">
+                    <Text text="{requestListModel>/contactEmployee/Pstlz}"/>
+                    <Text text="{requestListModel>/contactEmployee/Conry}"/>
+                    <Text text="{requestListModel>/contactEmployee/City}"/>
+                    <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/contactEmployee/City}">
                         <core:ListItem key="{Key}" text="{Value}"/>
-                    </ComboBox>
-                    <!-- <Text text="{requestListModel>/contactEmployee/Distr}"/> -->
-                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{requestListModel>/contactEmployee/Distr}">
+                    </ComboBox> -->
+                    <Text text="{requestListModel>/contactEmployee/Stras}"/>
+                    <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{requestListModel>/contactEmployee/Distr}">
                         <core:ListItem key="{Key}" text="{Value}"/>
-                    </ComboBox>
+                    </ComboBox> -->
                        
                 </cells>
             </ColumnListItem>

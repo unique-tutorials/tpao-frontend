@@ -46,11 +46,11 @@
                 <f:formContainers>
                     <f:FormContainer>
                         <f:formElements>
-                            <f:FormElement label="{i18n>REQUEST_NUMBER}">
+                            <!-- <f:FormElement label="{i18n>REQUEST_NUMBER}">
                                 <f:fields>
                                     <Input value="{trplsRequestListModel>/reservationEmployee/Rezno}"/>
                                 </f:fields>
-                            </f:FormElement>
+                            </f:FormElement> -->
                             <f:FormElement label="{i18n>SCHOLARSHIP_STUDENT_NUMBER}">
                                 <f:fields>
                                     <Input value="{trplsRequestListModel>/reservationEmployee/Pernr}" />

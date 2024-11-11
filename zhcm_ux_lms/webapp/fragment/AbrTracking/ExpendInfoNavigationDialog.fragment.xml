@@ -1,7 +1,8 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified">
     <Dialog title="Genel Harcama Faturası" contentWidth="70%" contentHeight="70%" verticalScrolling="false">
         <VBox class="sapUiSmallMargin">
             <f:Form editable="true">
@@ -40,11 +41,6 @@
                                     <Input value="{requestListModel>/expendInfoDialogRequest/Paynoa}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onShowUnitExpendSearchHelp"/>
                                 </f:fields>
                             </f:FormElement> -->
-                            <f:FormElement label="Masraf Merkezi">
-                                <f:fields>
-                                    <Input value="{requestListModel>/expendInfoDialogRequest/Kostl}"/>
-                                </f:fields>
-                            </f:FormElement>
                             <f:FormElement label="Faturanın Konusu">
                                 <f:fields>
                                     <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Invsu' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Invsu}">
@@ -87,6 +83,27 @@
                                     <Input value="{requestListModel>/expendInfoDialogRequest/Payam}" />
                                 </f:fields>
                             </f:FormElement>
+                            <f:FormElement label="Fatura Toplamı">
+                                <f:fields>
+                                    <u:FileUploader 
+                                        id="idAttachmentFileUploaderPayment" 
+                                        name="FileUploaderPayment" 
+                                        uploadUrl="" 
+                                        width="550px"
+                                        uploadComplete="onAttachmentUploadComplete" 
+                                        change="onAttachmentFileChange" 
+                                        typeMissmatch="onFileTypeMissmatch" 
+                                        style="Emphasized" 
+                                        icon="sap-icon://attachment"
+                                        fileType="pdf" 
+                                        maximumFileSize="5" 
+                                        fileSizeExceed="onFileSizeExceed" 
+                                        placeholder="{i18n>LABEL_UPLOAD_PLACEHOLDER}" 
+                                        sendXHR="true" 
+                                        useMultipart="false" />
+                                </f:fields>
+                            </f:FormElement>
+                            
                         </f:formElements>
                     </f:FormContainer>
                 </f:formContainers>

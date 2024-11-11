@@ -21,51 +21,46 @@
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>OR_NACHN}"/>
             </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="{i18n>ACTION_LIST}" />
+            </Column>
         </columns>
         <items>
-            <ColumnListItem type="Navigation" >
+            <ColumnListItem type="Navigation">
                 <cells>
                     <Text text="{requestListModel>Sirno}"/>
                     <Text text="{requestListModel>Vorna}"/>
                     <Text text="{requestListModel>Nachn}"/>
+                        <MenuButton icon="sap-icon://settings"  type="Accept">
+                            <menu>
+                                <Menu>
+                                    <MenuItem
+                                        text="Kefil Bilgileri"
+                                        icon="sap-icon://edit"
+                                        press="openGuarantorDialog"
+                                    />
+                                    <MenuItem
+                                        text="İletişim Bilgileri"
+                                        icon="sap-icon://delete"
+                                        press="openGuarantorContactDialog"
+                                    />
+                                    <MenuItem
+                                        text="Kimlik Bilgileri"
+                                        icon="sap-icon://idea-wall"
+                                        press="openGuarantorIdentityDialog"
+                                    />
+                                </Menu>
+                            </menu>
+                        </MenuButton>   
                 </cells>
             </ColumnListItem>
         </items>
     </Table>
-    <FlexBox alignItems="Start" justifyContent="SpaceBetween" class="sapUiSmallMarginTopBottom">
+    <!-- <FlexBox alignItems="Start" justifyContent="SpaceBetween" class="sapUiSmallMarginTopBottom">
         <Button text="{i18n>DOC_OF_THE_GUARANTOR}" type="Emphasized" icon="sap-icon://insurance-life" press=".openGuarantorDialog" />
         <HBox>
             <Button text="{i18n>CONTACT}" type="Neutral" class="sapUiSmallMarginEnd" icon="sap-icon://call" press=".openGuarantorContactDialog" />
             <Button text="{i18n>IDENTITY}" type="Neutral" icon="sap-icon://biometric-thumb" press=".openGuarantorIdentityDialog" />
         </HBox>
-    </FlexBox>
-    <Table busy="{discretionRequestListModel>/tableBusy}" width="auto" items="{discretionRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{discretionRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
-        <headerToolbar>
-			<OverflowToolbar>
-				<content>
-					<Title text="{i18n>CERTIFICATE_OF_APPRECIATION}" level="H2"/>
-				</content>
-			</OverflowToolbar>
-		</headerToolbar>
-        <columns>
-            <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>DOCUMENT_TYPE}"/>
-            </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>DATE_OF_ISSUE}"/>
-            </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>REASON_FOR_ISSUANCE}"/>
-            </Column>
-        </columns>
-        <items>
-            <ColumnListItem type="Navigation" press="onAvailableRequestActions">
-                <cells>
-                    <Text text="{discretionRequestListModel>Dtype}"/>
-                    <Text text="{discretionRequestListModel>Issue}"/>
-                    <Text text="{discretionRequestListModel>Rissu}"/>
-                </cells>
-            </ColumnListItem>
-        </items>
-    </Table>
+    </FlexBox> -->
 </c:FragmentDefinition>
