@@ -59,9 +59,9 @@ sap.ui.define([
             debugger;
             var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
         
-            var oViewModel = this.getModel('AbrAccountListModel');
-            oViewModel.setProperty("/newAccountNumberRequest/Pernr", oSelectedItem.Pernr); 
-            oViewModel.setProperty("/newAccountNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
+            var oViewModel = this.getModel('requestListModel');
+            oViewModel.setProperty("/newNumberRequest/Pernr", oSelectedItem.Pernr); 
+            oViewModel.setProperty("/newNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
         
             if (this._oSearchHelpDialog) {
                 this._oSearchHelpDialog.close();
