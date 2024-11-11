@@ -24,7 +24,10 @@ sap.ui.define([
         _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("trainingManagerListModel");
             oViewModel.setData({
+                requestListTableTitle: "",
+                managerSearchRequest:{},
                 requestList: [],
+                managerList:{},
                 selectedRequest: {},
                 currentRequest: {},
                 RequestList:[
@@ -93,17 +96,45 @@ sap.ui.define([
         _getRequestList: function (oEvent) { 
 
         },
-        // onAbrItemSelected:function(oEvent){
-        //     var oSelected = oEvent.getParameter('listItem').getBindingContext("trainingManagerListModel").getObject();
-        //     this.getModel("trainingManagerListModel").setProperty("/selectedAbr", oSelected);
-            
-        //     var oAbrActionData = {
-        //         displayEnabled: true
-        //     };
-        //     this.getModel("trainingManagerListModel").setProperty("/abrActionData", oAbrActionData);
-            
-        // },
-      
+        onSearch: function(oEvent) {
+            debugger;
+            // Get the model to fetch the data
+            var oViewModel = this.getModel('trainingManagerListModel');
+            var oFilter = oViewModel.getProperty('/managerSearchRequest'); 
+            var aFilters = this._getFilters(oFilter);
+        
+        },
+        
+        _getFilters: function(oFilter) {
+            var aFilters = [];
+
+        },
+        
+        getRecruiterList: function () {
+            debugger;
+			var oModel = this.getModel();
+            var oViewModel = this.getView().getModel("trainingManagerListModel");
+			oViewModel.setProperty("/managerList", []);
+			oViewModel.setProperty("/busy", true);
+			var aFilters = [
+				new Filter("Lmsap", FilterOperator.EQ, 'ALL_APPROVED'),
+				new Filter("Lmssf", FilterOperator.EQ, "DRF")
+			];
+			oModel.read("/ScholarshipStudentRequestSet", {
+				filters: aFilters,
+				success: function (oData, oResponse) {
+					oViewModel.setProperty("/busy", false);
+					oViewModel.setProperty("/managerList", oData.results);
+				},
+				error: function (oError) {
+					oViewModel.setProperty("/busy", false);
+					MessageBox.warning("İşe alım uzmanları okunamadı");
+				}
+			});
+
+		},
+        
+           
         onDataExportToExcel: function(oEvent) {
             debugger;
             var sCurrentLocale = sap.ui.getCore().getConfiguration().getLanguage();
@@ -176,7 +207,7 @@ sap.ui.define([
             var sMasterFieldEn = 'Öğreni̇m Göreceği̇ Yüksek Li̇sans Alanı (İngi̇li̇zce)';
             var sSubjectTr = 'Öğreni̇m Göreceği̇ Yüksek Li̇sans Konusu (Türkçe)';
             var sSubjectEn = 'Öğreni̇m Göreceği̇ Yüksek Li̇sans Konusu (İngi̇li̇zce)';
-            var sPreferredCountry = 'Öğreni̇m Görülmesi̇ Terci̇h Edi̇len Ülke / Ülkeler Ve Önceli̇klendi̇rmeleri̇';
+
             var sQuota = 'Kontenjan Sayısı';
             var sUnit = 'Öğrenci̇ni̇n Dönüşte İsti̇hdam Edi̇leceği̇ Üni̇te Ve Müdürlük';
             var sJustification = 'Bu Alanda Yurt Dışında Burslu Öğrenci̇ Okutma Gerekçesi̇';
@@ -188,7 +219,6 @@ sap.ui.define([
             aRows.push(this._getHeaderColumn(sMasterFieldEn));
             aRows.push(this._getHeaderColumn(sSubjectTr));
             aRows.push(this._getHeaderColumn(sSubjectEn));
-            aRows.push(this._getHeaderColumn(sPreferredCountry));
             aRows.push(this._getHeaderColumn(sQuota));
             aRows.push(this._getHeaderColumn(sUnit));
             aRows.push(this._getHeaderColumn(sJustification));
@@ -198,22 +228,21 @@ sap.ui.define([
         
         _addBodyColums: function() {
             var oControlModel = this.getModel("trainingManagerListModel");
-            var aPlanningData = oControlModel.getProperty("/RequestList");
+            var aPlanningData = oControlModel.getProperty("/managerList");
         
             var aBodyRows = []; 
             for (var i = 0; i < aPlanningData.length; i++) {
                 var aColumns = [
                     "Tpao",
                     "Tpao Genel Müdürlük",
-                    aPlanningData[i].Under,
-                    aPlanningData[i].Maste,
-                    aPlanningData[i].Masten,
-                    aPlanningData[i].Subjet,
-                    aPlanningData[i].Subjen,
-                    aPlanningData[i].Count,
-                    aPlanningData[i].Quqta,
-                    aPlanningData[i].Direc,
-                    aPlanningData[i].Reaso
+                    aPlanningData[i].Ftext,
+                    aPlanningData[i].Ftext1,
+                    aPlanningData[i].Ftext2,
+                    aPlanningData[i].Ylskt,
+                    aPlanningData[i].Ylski,
+                    aPlanningData[i].Kntjs,
+                    aPlanningData[i].Orgex,
+                    aPlanningData[i].Okugr
                 ];
                 aBodyRows.push(aColumns);
             }
@@ -322,6 +351,7 @@ sap.ui.define([
 			};
 
 			return oHeaderObj;
-		},
+		}
+
     });
 });
