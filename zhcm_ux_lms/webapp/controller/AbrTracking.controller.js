@@ -59,9 +59,9 @@ sap.ui.define([
             debugger;
             var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
         
-            var oViewModel = this.getModel('requestListModel');
-            oViewModel.setProperty("/newNumberRequest/Pernr", oSelectedItem.Pernr); 
-            oViewModel.setProperty("/newNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
+            var oViewModel = this.getModel('AbrAccountListModel');
+            oViewModel.setProperty("/newAccountNumberRequest/Pernr", oSelectedItem.Pernr); 
+            oViewModel.setProperty("/newAccountNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
         
             if (this._oSearchHelpDialog) {
                 this._oSearchHelpDialog.close();
@@ -370,6 +370,7 @@ sap.ui.define([
             readData(sContactInfoPath, "/contactEmployee", "İletişim bilgileri alınamadı.");
 
         },
+        
         onSave: function(oEvent) {
             debugger;
             var oModel = this.getModel();
@@ -385,7 +386,7 @@ sap.ui.define([
                 if (!oEntry.Descp2 || oEntry.Descp2.trim() === "") {
                     if (!this._oDescDialog) {
                         this._oDescDialog = new sap.m.Dialog({
-                            title: "Açıklama Girişi",
+                            title: "Genel Bilgiler Açıklama Girişi",
                             contentWidth: "40%", 
                             content: [
                                 new sap.m.VBox({
@@ -467,26 +468,88 @@ sap.ui.define([
             }
     
             else if (this.byId("TabContainer").getSelectedKey() === "School") {
-                oModel.create("/SchoolInformationSet", oShlEntry, {
-                    success: function(oData, oResponse) {
-                        debugger;
-                        if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                              });
-                        } else if (oData.Mesty === "E") {
-                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
-                        }
-        
-                    },
-                    error: function() {
-                        debugger;
+                if (!oShlEntry.Descp || oShlEntry.Descp.trim() === "") {
+                    if (!this._oSchoolDescDialog) {
+                        this._oSchoolDescDialog = new sap.m.Dialog({
+                            title: "Öğrenim Bilgileri Açıklama Girişi",
+                            contentWidth: "40%", 
+                            content: [
+                                new sap.m.VBox({
+                                    items: [
+                                        new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
+                                        new sap.m.TextArea("schoolDescTextArea", {
+                                            width: "100%",
+                                            placeholder: "Açıklama giriniz...",
+                                            liveChange: function(oEvent) {
+                                                var sValue = oEvent.getParameter("value");
+                                                oShlEntry.Descp = sValue; 
+                                            },
+                                            layoutData: new sap.ui.layout.GridData({
+                                                span: "L12 M12 S12",
+                                                margin: true
+                                            })
+                                        }).addStyleClass("sapUiTinyMarginTop")
+                                    ]
+                                }).addStyleClass("sapUiSmallMargin")
+                            ],
+                            beginButton: new sap.m.Button({
+                                text: "Kaydet",
+                                icon: "sap-icon://save",
+                                type: "Accept",
+                                press: function() {
+                                    that._oSchoolDescDialog.close();
+                                    oModel.create("/SchoolInformationSet", oShlEntry, {
+                                        success: function(oData, oResponse) {
+                                            debugger;
+                                            if (oData.Mesty === "S") {
+                                                Swal.fire({
+                                                    position: "center",
+                                                    icon: "success",
+                                                    title: that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"),
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                });
+                                            } else if (oData.Mesty === "E") {
+                                                MessageToast.show(oData.Messg || "Bir hata oluştu.");
+                                            }
+                                        },
+                                        error: function() {
+                                            MessageToast.show("Veri kaydedilirken bir hata oluştu");
+                                        }
+                                    });
+                                }
+                            }),
+                            endButton: new sap.m.Button({
+                                text: "İptal",
+                                press: function() {
+                                    that._oSchoolDescDialog.close();
+                                }
+                            })
+                        });
                     }
-                });
+        
+                    this._oSchoolDescDialog.open();
+                } else {
+                    oModel.create("/SchoolInformationSet", oShlEntry, {
+                        success: function(oData, oResponse) {
+                            debugger;
+                            if (oData.Mesty === "S") {
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"),
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            } else if (oData.Mesty === "E") {
+                                MessageToast.show(oData.Messg || "Bir hata oluştu.");
+                            }
+                        },
+                        error: function() {
+                            debugger;
+                        }
+                    });
+                }
             }
            
             else if (this.byId("TabContainer").getSelectedKey() === "Identity") {

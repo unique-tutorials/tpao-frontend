@@ -19,8 +19,8 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>STUDENT_NUMBER}">
                                 <f:fields>
-                                    <Input showValueHelp="true"/>
-                                    <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized"/>
+                                    <Input id="idAccountInput" value="{ parts: [{path: 'AbrAccountListModel>/newAccountNumberRequest/Pernr'},{path: 'AbrAccountListModel>/newAccountNumberRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowAccountSearchHelp"/>
+                                    <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onAccountSearchButtonPress"/>
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>

@@ -15,37 +15,37 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>STUDENT_NAME}">
                         <f:fields>
-                            <Input value="{requestListModel>/StudentEmployee/Ename}" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Vorna}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>STUDENT_SURNAME}">
                         <f:fields>
-                            <Input value="{requestListModel>/StudentEmployee/Aname}" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Nachn}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TRAINING_DAY}">
                         <f:fields>
-                            <Input value="{requestListModel>/StudentEmployee/Bname}" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Bname}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>COMPULSORY_SERVICE_PERIOD}">
                         <f:fields>
-                            <Input value="{requestListModel>/StudentEmployee/Cname}" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Cname}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DEPARTURE_ABROAD_DATE}">
                         <f:fields>
-                            <DatePicker value="{requestListModel>/StudentEmployee/Dname}" />
+                            <DatePicker value="{AbrAccountListModel>/accountEmployee/Dname}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DATE_TO_START_WORK}">
                         <f:fields>
-                            <DatePicker value="{requestListModel>/StudentEmployee/Fname}" />
+                            <DatePicker value="{AbrAccountListModel>/accountEmployee/Fname}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>CASE_START_DATE}">
                         <f:fields>
-                            <DatePicker value="{requestListModel>/StudentEmployee/Gname}" />
+                            <DatePicker value="{AbrAccountListModel>/accountEmployee/Gname}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -54,39 +54,39 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>COUNTRY_OF_DESTINATION}">
                         <f:fields>
-                            <ComboBox value="{requestListModel>/StudentEmployee/Hname}" />
+                            <ComboBox value="{AbrAccountListModel>/accountEmployee/Hname}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>SCHOOL_ATTENDED}">
                         <f:fields>
-                            <ComboBox value="{requestListModel>/StudentEmployee/Nname}" />
+                            <ComboBox value="{AbrAccountListModel>/accountEmployee/Nname}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>SCHOOL_NUMBER}">
                         <f:fields>
-                            <Input value="{requestListModel>/StudentEmployee/Pname}" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Pname}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TAX_NUMBER_NUB}">
                         <f:fields>
-                            <Input value="{requestListModel>/StudentEmployee/Rname}" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Rname}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TAX_OFFICE_PROVINCE}">
                         <f:fields>
-                            <Input value="{requestListModel>/StudentEmployee/Sname}" />
-                            <Input value="{requestListModel>/StudentEmployee/Oname}" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Sname}" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Oname}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>COST_CENTER}">
                         <f:fields>
-                            <Input value="{requestListModel>/StudentEmployee/Lname}" showValueHelp="true" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Lname}" showValueHelp="true" />
                             <CheckBox text="{i18n>STUDENT_ACTIVE}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BUDGET_CODE}">
                         <f:fields>
-                            <Input value="{requestListModel>/StudentEmployee/Mname}" showValueHelp="true" />
+                            <Input value="{AbrAccountListModel>/accountEmployee/Mname}" showValueHelp="true" />
                             <CheckBox text="{i18n>EXECUTOR_DEFENDANT}" />
                         </f:fields>
                     </f:FormElement>

@@ -27,22 +27,133 @@ sap.ui.define([
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},
-                currentRequest: {}
+                currentRequest: {},
+                searchAccountParameter:{},
+                accountEmployee:{},
+                newAccountNumberRequest:{
+                    Pernr:null,
+                    Ename:""                 
+                },
             });
         },
         _getRequestList: function (oEvent) { 
 
         },
-        onNewTrainingRequest: function (oEvent) {
-            if (!this._oNewRequestDialog) {
-				this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
-				this.getView().addDependent(this._oNewRequestDialog);
-			}
-			this._oNewRequestDialog.open();
-         },
+        // onNewTrainingRequest: function (oEvent) {
+        //     if (!this._oNewRequestDialog) {
+		// 		this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
+		// 		this.getView().addDependent(this._oNewRequestDialog);
+		// 	}
+		// 	this._oNewRequestDialog.open();
+        //  },
          openGuarantorDialog:function(oEvent){
             debugger;
-         }
-    
+         },
+         onShowAccountSearchHelp:function(oEvent){
+            if (!this._oAccountSearchHelp) {
+				this._oAccountSearchHelp = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrAccountTracking.ShowAccountSearchHelp", this);
+				this.getView().addDependent(this._oAccountSearchHelp);
+			}
+			this._oAccountSearchHelp.open();
+         },
+         onCancelAccountSearchDialog:function(oEvent){
+            if (this._oAccountSearchHelp) {
+                this._oAccountSearchHelp.close();
+            }
+        },
+        onSearch:function(oEvent){
+            debugger;
+            var oViewModel = this.getModel('AbrAccountListModel');
+            var oFilter = oViewModel.getProperty('/searchAccountParameter');
+            var aFilters = this._getFilters(oFilter);
+
+            var oTable = this.getView().byId('studentTableAccount') || sap.ui.getCore().byId('studentTableAccount');
+            oTable.getBinding('items').filter(aFilters,"Application");
+        },
+        _getFilters: function (oFilter) {
+            var aFilters = [];
+            var aKeys = Object.keys(oFilter);
+            for (var i = 0; i < aKeys.length; i++) {
+                var sVal = oFilter[aKeys[i]].toString();
+                if(sVal){
+                    var oFilterElement = new Filter(aKeys[i],FilterOperator.EQ , sVal);
+                    aFilters.push(oFilterElement);
+                }
+            }
+            return aFilters;
+        },
+        onItemSelected: function(oEvent) {
+            debugger;
+            var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
+        
+            var oViewModel = this.getModel('AbrAccountListModel');
+            oViewModel.setProperty("/newAccountNumberRequest/Pernr", oSelectedItem.Pernr); 
+            oViewModel.setProperty("/newAccountNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
+        
+            if (this._oAccountSearchHelp) {
+                this._oAccountSearchHelp.close();
+            }
+        },
+        // onAccountSearchButtonPress:function(oEvent){
+
+        // },
+        onAccountSearchButtonPress: function (oEvent) {
+            debugger;
+            var that = this;
+            var oModel = this.getModel();
+            var sPernr = this.getView().getModel("AbrAccountListModel").getProperty("/newAccountNumberRequest/Pernr");
+
+            var aFilters = [];
+            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
+            // var sPayno = this.getView().getModel("requestListModel").getProperty("/expendInfoList/Payno");
+
+            // if (!sPayno) {
+            //     this._sweetAlert(this.getText("INVOICE_NUMBER_REQUIRED"), "W");
+            //     return;
+            // }
+        
+            if (!sPernr) {
+                this._sweetAlert(this.getText("STUDENT_NUMBER_REQUIRED"), "W");
+                return;
+            }
+            function readData(sPath, sModelProperty, errorMessage) {
+                oModel.read(sPath, {
+                    filters: aFilters,
+                    success: function (oData) {
+                        var oViewModel = that.getModel("AbrAccountListModel");
+                        oViewModel.setProperty(sModelProperty, oData);
+                        console.log(oData);
+                    },
+                    error: function () {
+                        sap.m.MessageToast.show(errorMessage);
+                    }
+                });
+            }
+            // Öğrenci bilgileri al
+            var sScholarshipPath = oModel.createKey("/ScholarShipstudentAbroadSet", { Pernr: sPernr });
+            readData(sScholarshipPath, "/SelectedEmployee", "Öğrenci bilgisi alınamadı.");
+        
+            // Genel bilgileri al
+            var sGeneralInfoPath = oModel.createKey("/GeneralInformationSet", { Pernr: sPernr });
+            readData(sGeneralInfoPath, "/generalEmployee", "Genel bilgiler alınamadı.");
+
+            // Öğrenci Yurt içi Döviz Hesap bilgileri al
+            var sDomesticAccountInfoPath = oModel.createKey("/ForeignCurrencyAccountSet", { Pernr: sPernr, Partner:"ASD123"});
+            readData(sDomesticAccountInfoPath, "/domesticAccount", "Yurt içi Döviz Hesap bilgileri alınamadı.");
+
+            // Diğer Hesap bilgileri al
+            var sotherAccountInfoPath = oModel.createKey("/OtherAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+            readData(sotherAccountInfoPath, "/otherAccount", "Diğer Hesap bilgileri alınamadı.");
+
+            // Öğrenci Yurt içi Hesap bilgileri al
+            var sDomesticEmployeeInfoPath = oModel.createKey("/StudentDomesticAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+            readData(sDomesticEmployeeInfoPath, "/domesticEmployee", "Öğrenci Yurt içi bilgileri alınamadı.");
+
+             // Öğrenci Yurt dışı Hesap bilgileri al
+             var sAbroadOtherEmployeeInfoPath = oModel.createKey("/AbroadOtherAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+             readData(sAbroadOtherEmployeeInfoPath, "/abroadOtherEmployee", "Öğrenci Yurt dışı bilgileri alınamadı.");
+
+
+        },
 	});
 });

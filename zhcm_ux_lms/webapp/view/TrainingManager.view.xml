@@ -12,94 +12,52 @@
                     <f:content>
                         <fb:FilterBar id="TrainingFilter" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
                             <fb:filterGroupItems>
-                                <fb:FilterGroupItem name="Name" label="{i18n>UNDERGRADUATE_GRADUATION_AREA}" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Undergraduate" label="{i18n>UNDERGRADUATE_GRADUATION_AREA}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="Name" items="{
-                                                        path: '/ProductNames',
-                                                        templateShareable: true
-                                                    }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Madef' } ] }" selectedKey="{trainingManagerListModel>/managerSearchRequest/Madef}"  enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
+                                            <core:ListItem key="{Key}" text="{Value}"/>
+                                        </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Category" label="{i18n>MASTER_DEGREE_FIELD_TR}" groupName="Group2" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="MasterDegreeTr" label="{i18n>MASTER_DEGREE_FIELD_TR}" groupName="Group2" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="Category" items="{
-                                                        path: '/ProductCategories',
-                                                        templateShareable: true
-                                                    }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfst' } ] }" selectedKey="{trainingManagerListModel>/managerSearchRequest/Grfst}"  enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
+                                            <core:ListItem key="{Key}" text="{Value}"/>
+                                        </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>MASTER_DEGREE_FIELD_EN}" groupName="Group3" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="MasterDegreeEn" label="{i18n>MASTER_DEGREE_FIELD_EN}" groupName="Group3" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfsi' } ] }" selectedKey="{trainingManagerListModel>/managerSearchRequest/Grfsi}"  enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
+                                            <core:ListItem key="{Key}" text="{Value}"/>
+                                        </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>MASTER_DEGREE_SUBJECT_TR}" groupName="Group4" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SubjectTr" label="{i18n>MASTER_DEGREE_SUBJECT_TR}" groupName="Group4" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <Input value="{trainingManagerListModel>/managerSearchRequest/Ylskt}" enabled="{trainingManagerListModel>/aplicationSetting/enabled}" required="true" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>MASTER_DEGREE_SUBJECT_EN}" groupName="Group5" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="SubjectEn" label="{i18n>MASTER_DEGREE_SUBJECT_EN}" groupName="Group5" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <Input value="{trainingManagerListModel>/managerSearchRequest/Ylski}" enabled="{trainingManagerListModel>/aplicationSetting/enabled}" required="true" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}" groupName="Group6" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="NumberOf" label="{i18n>NUMBER_OF_QUOTAS}" groupName="Group7" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <Input value="{trainingManagerListModel>/managerSearchRequest/Kntjs}" required="true" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>NUMBER_OF_QUOTAS}" groupName="Group7" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="UnitReturn" label="{i18n>UNIT_ON_RETURN}" groupName="Group8" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{trainingManagerListModel>/managerSearchRequest/Orgeh}"  enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
+                                            <core:ListItem key="{Key}" text="{Value}"/>
+                                        </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}" groupName="Group8" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="ReasonScholarship" label="{i18n>REASON_FOR_SCHOLARSHIP}" groupName="Group9" visibleInFilterBar="true">
                                     <fb:control>
-                                        <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
-                                    </fb:control>
-                                </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="SupplierName" label="{i18n>REASON_FOR_SCHOLARSHIP}" groupName="Group9" visibleInFilterBar="true">
-                                    <fb:control>
-                                        <MultiComboBox name="SupplierName" items="{
-                                                        path: '/ProductSuppliers',
-                                                        templateShareable: true
-                                                    }">
-                                            <core:Item key="{key}" text="{name}"/>
-                                        </MultiComboBox>
+                                        <Input value="{trainingManagerListModel>/managerSearchRequest/Okugr}" enabled="{trainingManagerListModel>/aplicationSetting/enabled}" required="true" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
                             </fb:filterGroupItems>
@@ -108,7 +66,16 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="idPendingTable" busy="{trainingManagerListModel>/tableBusy}" width="auto" items="{trainingManagerListModel>/RequestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{trainingManagerListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" selectionChange="onAbrItemSelected">
+                <Table id="idPendingTable" busy="{trainingManagerListModel>/tableBusy}" width="auto" items="{trainingManagerListModel>/managerList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{trainingManagerListModel>/tableBusyDelay}" growing="true" >
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="Onaylanan Talepler" level="H2"/>
+                                <ToolbarSpacer />
+                                <Button text="Filtrele" press=".getRecruiterList" type="Emphasized" icon="sap-icon://filter" />
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
@@ -126,9 +93,6 @@
                             <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
-                        </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>NUMBER_OF_QUOTAS}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
@@ -137,32 +101,19 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End" width="5rem">
-                            <Text text="{i18n>ACTION_LIST}"/>
-                        </Column>
                     </columns>
                     <items>
                         <ColumnListItem type="Navigation" press="onAvailableRequestActions">
                             <cells>
-                                <Text text="{trainingManagerListModel>Under}"/>
-                                <Text text="{trainingManagerListModel>Maste}"/>
-                                <Text text="{trainingManagerListModel>Masten}"/>
-                                <Text text="{trainingManagerListModel>Subjet}"/>
-                                <Text text="{trainingManagerListModel>Subjen}"/>
-                                <Text text="{trainingManagerListModel>Count}"/>
-                                <Text text="{trainingManagerListModel>Quqta}"/>
-                                <Text text="{trainingManagerListModel>Direc}"/>
-                                <Text text="{trainingManagerListModel>Reaso}"/>
-                                <MenuButton icon="sap-icon://settings" defaultAction="onDefaultAction" beforeMenuOpen="onBeforeMenuOpen" useDefaultActionOnly="true"
-                                    menuPosition="LeftBottom">
-                                    <menu>
-                                        <Menu itemSelected="onMenuAction">
-                                            <!-- <MenuItem text="{i18n>DISPLAY_ACTION}" cd:Type="Display" icon="sap-icon://display" press="onSetting"/> -->
-                                            <MenuItem text="{i18n>EDIT_ACTION}" cd:Type="Edit" icon="sap-icon://edit" press="onSetting"/>
-                                        </Menu>
-                                    </menu>
-                                </MenuButton>
-                                <!-- <Button icon="sap-icon://menu" type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button> -->
+                                <!-- <Text text="{path:'Lmsno' , formatter:'.formatter.formatTrfno'}" /> -->
+                                <Text text="{trainingManagerListModel>Ftext}"/>
+                                <Text text="{trainingManagerListModel>Ftext1}"/>
+                                <Text text="{trainingManagerListModel>Ftext2}"/>
+                                <Text text="{trainingManagerListModel>Ylskt}"/>
+                                <Text text="{trainingManagerListModel>Ylski}"/>
+                                <Text text="{trainingManagerListModel>Kntjs}"/>
+                                <Text text="{trainingManagerListModel>Orgex}"/>
+                                <Text text="{trainingManagerListModel>Okugr}"/>
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -172,7 +123,6 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <!-- <Button text="{i18n>EDIT}" icon="sap-icon://edit" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' type="Attention"/> -->
                 <Button text="{i18n>EXPORT_EXCEL}" icon="sap-icon://excel-attachment" type="Accept" press="onDataExportToExcel" />
             </OverflowToolbar>
         </footer>
