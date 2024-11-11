@@ -83,7 +83,7 @@
                     <items>
                         <ColumnListItem type="Active" press=".onItemSelected">
                             <cells>
-                                <CheckBox text="{Resma}"/>
+                                <CheckBox selected="{Resma}"/>
                                 <Text text="{Rezno}"/>
                                 <Text text="{Pernr}"/>
                                 <ObjectIdentifier text="{Vorna}" title="{Nachn}" />

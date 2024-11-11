@@ -33,6 +33,9 @@
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>SEND}"/>
             </Column>
+            <Column minScreenWidth="Tablet" demandPopin="true">
+                <Text text="Fatura Evrakı"/>
+            </Column>
         </columns>
         <items>
             <ColumnListItem type="Navigation" press=".onExpendInfoNavigationDialog">
@@ -51,6 +54,7 @@
                     <Text text="{requestListModel>Descp}"/>
                     <CheckBox selected="{requestListModel>Sent}"/>
                     <Button text="Gönder" press=".onSendExpendButtonPress" type="Emphasized"/>
+                    <Link press=".onAttachDownload" text="{requestListModel>FileName}" />
                 </cells>
             </ColumnListItem>
         </items>

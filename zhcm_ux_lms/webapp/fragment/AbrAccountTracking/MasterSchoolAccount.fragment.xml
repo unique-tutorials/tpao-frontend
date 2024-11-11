@@ -4,66 +4,81 @@
     xmlns:core="sap.ui.core">
     <f:Form editable="true">
         <f:title>
-            <core:Title text="{i18n>MASTER_SCHOOL_ACCOUNT_INFORMATION}" />
+            <core:Title text="{i18n>MASTERS_SCHOOL}" />
         </f:title>
         <f:layout>
-            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
         </f:layout>
         <f:formContainers>
             <f:FormContainer title="{i18n>OVERSEAS_MASTER_SCHOOL}">
                 <f:formElements>
+                    <f:FormElement label="Partner Seçiniz">
+                        <f:fields>
+                            <Input value="{requestListModel>/masterEmployee/Partner}" />
+                            <Button text="Gönder" press=".onMasterButtonPress" />
+                        </f:fields>
+                    </f:FormElement>
+                    <!-- <f:FormElement label="{i18n>RECIPIENT_NAME}">
+                        <f:fields>
+                            <Input value="{requestListModel>/masterEmployee/NameFirst}" />
+                        </f:fields>
+                    </f:FormElement> -->
                     <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
-                            <Input value="{SupplierName}" />
+                            <Input value="{requestListModel>/masterEmployee/Banka}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_BRANCH}">
                         <f:fields>
-                            <Input value="{Street}" />
+                            <Input value="{requestListModel>/masterEmployee/Brnch}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{ZIPCode}" />
+                            <Input value="{requestListModel>/masterEmployee/Brnch}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_NUMBER}">
                         <f:fields>
-                            <Input value="{ZIPCode}" />
+                            <Input value="{requestListModel>/masterEmployee/Bankn}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>SWIFT_CODE}">
                         <f:fields>
-                            <Input value="{ZIPCode}" />
+                            <Input value="{requestListModel>/masterEmployee/Swift}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>EXPLANATION}">
-                        <f:fields>
-                            <TextArea rows="5" value="{ZIPCode}" />
-                        </f:fields>
-                    </f:FormElement>
-                </f:formElements>
-            </f:FormContainer>
-            <f:FormContainer title="">
-                <f:formElements>
                     <f:FormElement label="{i18n>IBAN}">
                         <f:fields>
-                            <Input value="{Url}" />
+                            <Input value="{requestListModel>/masterEmployee/Iban00}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>ACC_NO}">
+                    <!-- <f:FormElement label="{i18n>ACC_NO}">
                         <f:fields>
-                            <Input value="{Twitter}" />
+                            <Input value="{requestListModel>/masterEmployee/Webad}" />
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                     <f:FormElement label="{i18n>ABA_NO}">
                         <f:fields>
-                            <Input value="{Twitter}" />
+                            <Input value="{requestListModel>/masterEmployee/Abano}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>STUDENT_ID}">
+                    <!-- <f:FormElement label="{i18n>STUDENT_ID}">
                         <f:fields>
-                            <Input value="{Twitter}" />
+                            <Input value="{requestListModel>/masterEmployee/Pernr}" />
+                        </f:fields>
+                    </f:FormElement> -->
+                    <f:FormElement label="{i18n>EXPLANATION}">
+                        <f:fields>
+                            <TextArea rows="3" value="{requestListModel>/masterEmployee/Descp}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="">
+                        <f:fields>
+                            <Toolbar class="toolbar-border-none">
+                                <ToolbarSpacer/>
+                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onMasterSavePress" width="150px" />
+                            </Toolbar>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

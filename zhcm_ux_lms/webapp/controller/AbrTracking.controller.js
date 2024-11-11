@@ -48,6 +48,7 @@ sap.ui.define([
                 guarantorList:{},
                 attachmentGuarantorList:[],
                 guarantorListRequest:{},
+                guarantorIdentityList:{},
                 documentList:{},
                 newNumberRequest:{
                     Pernr:null,
@@ -204,6 +205,47 @@ sap.ui.define([
                     sap.m.MessageToast.show("Yurt dışı dil okul bilgileri alınamadı.");
                 }
             });
+        },
+        onAttachmentPaymentUploadPress: function (oEvent) {
+            debugger;
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+            var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploaderPayment");
+
+            if (!oFileUploader.getValue()) {
+                this._sweetAlert(this.getText("FILE_SELECTION_REQUIRED"), "W");
+                return;
+            }
+
+            if (!sPernr) {
+                this._sweetAlert(this.getText("NUMBER_REQUIRED"), "W");
+                return;
+            }
+
+            var oModel = this.getModel();
+            oFileUploader.destroyHeaderParameters();
+            oModel.refreshSecurityToken();
+            oFileUploader.addHeaderParameter(new sap.ui.unified.FileUploaderParameter({
+                name: "x-csrf-token",
+                value: oModel.getSecurityToken()
+            }));
+
+            var sFileName = oFileUploader.getValue();
+            sFileName = encodeURIComponent(sFileName);
+            oFileUploader.addHeaderParameter(new sap.ui.unified.FileUploaderParameter({
+                name: "content-disposition",
+                value: "inline; filename='" + sFileName + "'"
+            }));
+
+
+            var oCurrentDocParams = oViewModel.getProperty('/expendInfoDialogRequest');
+            var sPath = "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/GeneralExpenditureAttachmentSet(Pernr='"+sPernr+"',Payno='"+oCurrentDocParams.Payno+"',Ptype='LMSABR',Dotyp='3')/PersonnelAttachmentSet";
+            oFileUploader.setUploadUrl(sPath);
+
+            this._openBusyFragment("ATTACHMENT_BEING_UPLOADED");
+            oFileUploader.upload();
+            sap.m.MessageToast.show("Başarılı");
+            this._closeBusyFragment("ATTACHMENT_UPLOADED");
         },
         // burada sadece pernr
         onPaynoButtonPress: function () {
@@ -757,9 +799,11 @@ sap.ui.define([
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             var oRequets = oViewModel.getProperty("/expendInfoDialogRequest");
             oRequets.Pernr = sPernr
+            delete oRequets.Kostl
 
             oModel.create("/GeneralExpenditureInformationSet", oRequets, {
                 success: function (oData, oResponse) {
+                    that.onAttachmentPaymentUploadPress();
                     that._sweetAlert(that.getText("SAVE_SUCCESSFUL"), "S");
                     that._oExpendInfoDialog.close();
                     that.clearFormDialog();
@@ -850,7 +894,7 @@ sap.ui.define([
             }
             this._oGuarantorDialog.open();
          },
-         _getGuarantorList:function(sPernr){
+         _getGuarantorList: function (sPernr) {
             debugger;
             var that = this;
             var sServiceUrl = "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/";
@@ -860,21 +904,11 @@ sap.ui.define([
             var oViewModel = this.getModel("requestListModel");
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr", sPernr);
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
-            // aFilters.push(new Filter("ObjectId", FilterOperator.EQ, sObject));
-            // aFilters.push(new Filter("ArcDocId", FilterOperator.EQ, sArcDoc));
+            aFilters.push(new Filter("Ptype", FilterOperator.EQ, 'LMSABR'));
+            aFilters.push(new Filter("Dotyp", FilterOperator.EQ, '1'));
+            aFilters.push(new Filter("Sirno", FilterOperator.EQ, '01'));
 
-            // aFilters.push(new Filter("Dotyp", FilterOperator.EQ, '1'));
-
-            // var sPath = "/GeneralExpenditureInformation(Pernr='" + expendInfoList.Pernr + "',Payno='" + expendInfoList.Payno + "')";
-            // var sPath = oModel.createKey("/GuarantorInformationSet", {
-            //     "Pernr": eGuarantorInfoList.Pernr
-            // });
-            // var sPath = "/GuarantorAdditionalSet"
-            // var aFilters = [];
-            // aFilters.push(new Filter("Pernr", FilterOperator.EQ, eGuarantorInfoList.Pernr));
-            // aFilters.push(new Filter("Sirno", FilterOperator.EQ, eGuarantorInfoList.Sirno));
-
-            oModel.read("/GuarantorAdditionalSet", {
+            oModel.read("/PersonnelAttachmentSet", {
                 filters: aFilters,
                 success: (oData, oResponse) => {
                     debugger;
@@ -884,25 +918,23 @@ sap.ui.define([
                     that.getModel("requestListModel").setProperty("/busy", false);
                 }
             });
-           
-         },
-
-         onAttachmentGuarantorUploadPress: function (oEvent) {
+        },
+        onAttachmentGuarantorUploadPress: function (oEvent) {
             debugger;
             var oViewModel = this.getModel("requestListModel");
-            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"); 
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             var oFileUploader = sap.ui.getCore().byId("idGuarantorFileUploader");
-        
+
             if (!oFileUploader.getValue()) {
                 this._sweetAlert(this.getText("FILE_SELECTION_REQUIRED"), "W");
                 return;
             }
-        
+
             if (!sPernr) {
                 this._sweetAlert(this.getText("NUMBER_REQUIRED"), "W");
                 return;
             }
-        
+
             var oModel = this.getModel();
             oFileUploader.destroyHeaderParameters();
             oModel.refreshSecurityToken();
@@ -910,24 +942,48 @@ sap.ui.define([
                 name: "x-csrf-token",
                 value: oModel.getSecurityToken()
             }));
-        
+
             var sFileName = oFileUploader.getValue();
             sFileName = encodeURIComponent(sFileName);
             oFileUploader.addHeaderParameter(new sap.ui.unified.FileUploaderParameter({
                 name: "content-disposition",
                 value: "inline; filename='" + sFileName + "'"
             }));
-        
-            var sPath = oModel.sServiceUrl + "/GuarantorAttachmentOperationSet(Pernr='" + sPernr + "',Sirno='" + "01" + "',Ptype='" + 'LMSABR' + "',Dotyp='" +
-							'1' + "')/PersonnelAttachmentSet";
+
+            var oCurrentDocParams = oViewModel.getProperty('/documentList');
+            var sEntty = oModel.createKey('/GuarantorAttachmentOperationSet',{
+                Pernr: sPernr,
+                Firdt: oCurrentDocParams.Firdt,
+                Sirno: '01',//Sıra no tablodaki sıra no alanından alınmalı
+                Ptype:'LMSABR',
+                Dotyp:'1',
+                Docnm: oCurrentDocParams.Docnm,
+                Doctp: oCurrentDocParams.Doctp,
+                Descp:oCurrentDocParams.Descp,
+                Firdt:oCurrentDocParams.Firdt,
+                Lasdt:oCurrentDocParams.Lasdt
+            });
+            var sPath = "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/"+sEntty +'/PersonnelAttachmentSet';
+            //var sPath = "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/GuarantorAttachmentOperationSet(Pernr='"+sPernr+"',Sirno='01',Ptype='LMSABR',Dotyp='1',Docnm='"+oCurrentDocParams.Docnm+"',Doctp='"+oCurrentDocParams.Doctp+"',Descp='"+oCurrentDocParams.Descp+"',Firdt=datetime'2024-11-11T08%3A37%3A34.221',Lasdt=datetime'2024-11-11T08%3A37%3A34.221')/PersonnelAttachmentSet";
+            
+            
             oFileUploader.setUploadUrl(sPath);
-        
+
             this._openBusyFragment("ATTACHMENT_BEING_UPLOADED");
             oFileUploader.upload();
             sap.m.MessageToast.show("Başarılı");
             this._closeBusyFragment("ATTACHMENT_UPLOADED");
         },
+
          openGuarantorContactDialog:function(oEvent){
+            debugger;
+            // var oSource = oEvent.getSource(),
+            // var oModel = this.getModel();
+            // var oViewModel = this.getModel("requestListModel");
+            var sPernr = this.getView().getModel("requestListModel").getProperty("/newNumberRequest/Pernr");
+            // var eGuarantorInfoList = oSource.getBindingContext("requestListModel").getObject();
+            this._getGuarantorContactList(sPernr);
+
             if (!this._oGuarantorContactDialog) {
                 this._oGuarantorContactDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorContactDialog", this);
                 this.getView().addDependent(this._oGuarantorContactDialog);
@@ -936,7 +992,36 @@ sap.ui.define([
             }
             this._oGuarantorContactDialog.open();
          },
+         onAttachDownload: function (oEvent) {
+            var sAttid = oEvent.getSource().getBindingContext("requestListModel").getObject("Attid")
+            var oModel = this.getModel();
+            var oUrlPath = oModel.sServiceUrl + "/PersonnelAttachmentSet(Attid=guid'" + sAttid + "')/$value";
+            window.open(oUrlPath);
+        },
+         _getGuarantorContactList:function(sPernr){
+            debugger;
+            var that = this;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var aFilters = [];
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr", sPernr);
+            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
+            aFilters.push(new Filter("Sirno", FilterOperator.EQ, "01"));
+        
+            oModel.read("/GuarantorInformationSet", {
+                filters: aFilters,
+                success: (oData, oResponse) => {
+                    debugger;
+                    that.getModel("requestListModel").setProperty("/guarantorContactList", oData.results);
+                },
+                error: (oError) => {
+                    that.getModel("requestListModel").setProperty("/busy", false);
+                }
+            });
+         },
          openGuarantorIdentityDialog:function(oEvent){
+            var sPernr = this.getView().getModel("requestListModel").getProperty("/newNumberRequest/Pernr");
+            this._getGuarantorIdentityList(sPernr);
             if (!this._oGuarantorIdentityDialog) {
                 this._oGuarantorIdentityDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorIdentityDialog", this);
                 this.getView().addDependent(this._oGuarantorIdentityDialog);
@@ -945,6 +1030,28 @@ sap.ui.define([
             }
             this._oGuarantorIdentityDialog.open();
          },
+         _getGuarantorIdentityList:function(sPernr){
+            debugger;
+            var that = this;
+            var oModel = this.getModel();
+            var aFilters = [];
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr", sPernr);
+            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
+            aFilters.push(new Filter("Sirno", FilterOperator.EQ, "01"));
+        
+            oModel.read("/GuarantorInformationSet", {
+                filters: aFilters,
+                success: (oData, oResponse) => {
+                    debugger;
+                    that.getModel("requestListModel").setProperty("/guarantorIdentityList", oData.results);
+                },
+                error: (oError) => {
+                    that.getModel("requestListModel").setProperty("/busy", false);
+                }
+            });
+         },
+
          onShowPersonSearchHelp: function(oEvent) {
             if (!this._oSearchHelpDialog) {
                 this._oSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.StudentSearchHelpDialog", this);

@@ -15,7 +15,7 @@ sap.ui.define([
         formatter: formatter,
         onInit: function (oEvent) {
             var oViewModel = new JSONModel();
-            this.setModel(oViewModel, "AbrAccountListModel");
+            this.setModel(oViewModel, "abrAccountListModel");
             this._initiateModel();
             this.getRouter().getRoute("AbrAccountTracking").attachPatternMatched(this._onRequestListMatched, this);
         },
@@ -23,7 +23,7 @@ sap.ui.define([
             this._getRequestList();
         },
         _initiateModel: function (oEvent) {
-            var oViewModel = this.getModel("AbrAccountListModel");
+            var oViewModel = this.getModel("abrAccountListModel");
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},
@@ -31,6 +31,7 @@ sap.ui.define([
                 searchAccountParameter:{},
                 accountEmployee:{},
                 domesticAccountEmployee:{},
+                abroadOtherEmployee:{},
                 newAccountNumberRequest:{
                     Pernr:null,
                     Ename:""                 
@@ -57,7 +58,7 @@ sap.ui.define([
         },
         onSearch:function(oEvent){
             debugger;
-            var oViewModel = this.getModel('AbrAccountListModel');
+            var oViewModel = this.getModel('abrAccountListModel');
             var oFilter = oViewModel.getProperty('/searchAccountParameter');
             var aFilters = this._getFilters(oFilter);
 
@@ -80,7 +81,7 @@ sap.ui.define([
             debugger;
             var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
         
-            var oViewModel = this.getModel('AbrAccountListModel');
+            var oViewModel = this.getModel('abrAccountListModel');
             oViewModel.setProperty("/newAccountNumberRequest/Pernr", oSelectedItem.Pernr); 
             oViewModel.setProperty("/newAccountNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
         
@@ -88,14 +89,12 @@ sap.ui.define([
                 this._oAccountSearchHelp.close();
             }
         },
-        // onAccountSearchButtonPress:function(oEvent){
 
-        // },
         onAccountSearchButtonPress: function (oEvent) {
             debugger;
             var that = this;
             var oModel = this.getModel();
-            var sPernr = this.getView().getModel("AbrAccountListModel").getProperty("/newAccountNumberRequest/Pernr");
+            var sPernr = this.getView().getModel("abrAccountListModel").getProperty("/newAccountNumberRequest/Pernr");
 
             var aFilters = [];
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
@@ -114,7 +113,7 @@ sap.ui.define([
                 oModel.read(sPath, {
                     filters: aFilters,
                     success: function (oData) {
-                        var oViewModel = that.getModel("AbrAccountListModel");
+                        var oViewModel = that.getModel("abrAccountListModel");
                         oViewModel.setProperty(sModelProperty, oData);
                         console.log(oData);
                     },
@@ -126,13 +125,11 @@ sap.ui.define([
 
             // Öğrenci Yurt içi Hesap bilgileri al
             var sDomesticEmployeeInfoPath = oModel.createKey("/StudentDomesticAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
-            readData(sDomesticEmployeeInfoPath, "/domesticAccountEmployee", "Öğrenci Yurt içi bilgileri alınamadı.");
+            readData(sDomesticEmployeeInfoPath, "/domesticEmployee", "Öğrenci Yurt içi bilgileri alınamadı.");
 
              // Öğrenci Yurt dışı Hesap bilgileri al
              var sAbroadOtherEmployeeInfoPath = oModel.createKey("/AbroadOtherAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
-             readData(sAbroadOtherEmployeeInfoPath, "/abroadOtherAccountEmployee", "Öğrenci Yurt dışı bilgileri alınamadı.");
-
-
+             readData(sAbroadOtherEmployeeInfoPath, "/abroadOtherEmployee", "Öğrenci Yurt dışı bilgileri alınamadı.");
         },
 	});
 });

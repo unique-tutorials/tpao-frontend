@@ -266,7 +266,7 @@ sap.ui.define([
             }));
         
             var sPath = oModel.sServiceUrl + "/PersonnelAttachmentOperationSet(Pernr='" + sPernr + "',Dotyp='" + '2' + "',Ptype='" +
-							'LMSABR' + "')/PersonnelAttachmentSet";
+                            'LMSABR' + "')/PersonnelAttachmentSet";
             oFileUploader.setUploadUrl(sPath);
         
             this._openBusyFragment("ATTACHMENT_BEING_UPLOADED");
@@ -285,7 +285,7 @@ sap.ui.define([
             var sPernr = oViewModel.getProperty("/newNumberStajyerRequest/Pernr", sPernr);
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
             aFilters.push(new Filter("Ptype", FilterOperator.EQ, 'LMSABR'));
-            aFilters.push(new Filter("Doctp", FilterOperator.EQ, '2'));
+            aFilters.push(new Filter("Dotyp", FilterOperator.EQ, '2'));
 
         
             oModel.read("/PersonnelAttachmentSet", {
