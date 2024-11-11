@@ -35,12 +35,12 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>DEPARTURE_ABROAD_DATE}">
                         <f:fields>
-                            <DatePicker value="{AbrAccountListModel>/accountEmployee/Dname}" />
+                            <DatePicker value="{AbrAccountListModel>/accountEmployee/Abrdt}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DATE_TO_START_WORK}">
                         <f:fields>
-                            <DatePicker value="{AbrAccountListModel>/accountEmployee/Fname}" />
+                            <DatePicker value="{AbrAccountListModel>/accountEmployee/Sjbdt}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>CASE_START_DATE}">
