@@ -30,6 +30,7 @@ sap.ui.define([
                 currentRequest: {},
                 searchAccountParameter:{},
                 accountEmployee:{},
+                domesticAccountEmployee:{},
                 newAccountNumberRequest:{
                     Pernr:null,
                     Ename:""                 
@@ -39,13 +40,6 @@ sap.ui.define([
         _getRequestList: function (oEvent) { 
 
         },
-        // onNewTrainingRequest: function (oEvent) {
-        //     if (!this._oNewRequestDialog) {
-		// 		this._oNewRequestDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrRequestList.TrainingRequestFormDialog", this);
-		// 		this.getView().addDependent(this._oNewRequestDialog);
-		// 	}
-		// 	this._oNewRequestDialog.open();
-        //  },
          openGuarantorDialog:function(oEvent){
             debugger;
          },
@@ -129,29 +123,14 @@ sap.ui.define([
                     }
                 });
             }
-            // Öğrenci bilgileri al
-            var sScholarshipPath = oModel.createKey("/ScholarShipstudentAbroadSet", { Pernr: sPernr });
-            readData(sScholarshipPath, "/SelectedEmployee", "Öğrenci bilgisi alınamadı.");
-        
-            // Genel bilgileri al
-            var sGeneralInfoPath = oModel.createKey("/GeneralInformationSet", { Pernr: sPernr });
-            readData(sGeneralInfoPath, "/generalEmployee", "Genel bilgiler alınamadı.");
-
-            // Öğrenci Yurt içi Döviz Hesap bilgileri al
-            var sDomesticAccountInfoPath = oModel.createKey("/ForeignCurrencyAccountSet", { Pernr: sPernr, Partner:"ASD123"});
-            readData(sDomesticAccountInfoPath, "/domesticAccount", "Yurt içi Döviz Hesap bilgileri alınamadı.");
-
-            // Diğer Hesap bilgileri al
-            var sotherAccountInfoPath = oModel.createKey("/OtherAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
-            readData(sotherAccountInfoPath, "/otherAccount", "Diğer Hesap bilgileri alınamadı.");
 
             // Öğrenci Yurt içi Hesap bilgileri al
             var sDomesticEmployeeInfoPath = oModel.createKey("/StudentDomesticAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
-            readData(sDomesticEmployeeInfoPath, "/domesticEmployee", "Öğrenci Yurt içi bilgileri alınamadı.");
+            readData(sDomesticEmployeeInfoPath, "/domesticAccountEmployee", "Öğrenci Yurt içi bilgileri alınamadı.");
 
              // Öğrenci Yurt dışı Hesap bilgileri al
              var sAbroadOtherEmployeeInfoPath = oModel.createKey("/AbroadOtherAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
-             readData(sAbroadOtherEmployeeInfoPath, "/abroadOtherEmployee", "Öğrenci Yurt dışı bilgileri alınamadı.");
+             readData(sAbroadOtherEmployeeInfoPath, "/abroadOtherAccountEmployee", "Öğrenci Yurt dışı bilgileri alınamadı.");
 
 
         },
