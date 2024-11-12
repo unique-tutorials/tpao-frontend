@@ -47,7 +47,9 @@
                         </f:FormElement>
                         <f:FormElement label="Para Birimi">
                             <f:fields>
-                                <Input value="{requestListModel>/schoolInfoDialogRequest/Waers}"/>
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/schoolInfoDialogRequest/Waers}">
+                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                </ComboBox>
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="Kambiyo Belge No">
