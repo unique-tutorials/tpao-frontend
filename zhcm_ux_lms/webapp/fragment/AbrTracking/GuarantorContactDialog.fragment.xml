@@ -2,7 +2,7 @@
     xmlns:c="sap.ui.core"
     xmlns:l="sap.ui.layout">
     <Dialog title="{i18n>GUARANTOR_CONTACT_INFORMATION}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
-        <Table busy="{contactRequestListModel>/tableBusy}" width="auto" items="{requestListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{contactRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+        <Table busy="{requestListModel>/tableBusy}" width="auto" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{requestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
             <headerToolbar>
                 <OverflowToolbar>
                     <content>
@@ -36,20 +36,20 @@
             <items>
                 <ColumnListItem >
                     <cells>
-                        <Text text="{requestListModel>Adtyp}"/>
-                        <Text text="{requestListModel>Merni}"/>
-                        <Text text="{requestListModel>Stras}"/>
-                        <Text text="{requestListModel>Pstlz}"/>
-                        <Text text="{requestListModel>Conry}"/>
-                        <Text text="{requestListModel>City}"/>
-                        <Text text="{requestListModel>Distr}"/>
+                        <Text text="{requestListModel>/guarantorContactList/Adtyp}"/>
+                        <Text text="{requestListModel>/guarantorContactList/Merni}"/>
+                        <Text text="{requestListModel>/guarantorContactList/Stras}"/>
+                        <Text text="{requestListModel>/guarantorContactList/Pstlz}"/>
+                        <Text text="{requestListModel>/guarantorContactList/Conry}"/>
+                        <Text text="{requestListModel>/guarantorContactList/Bezei}"/>
+                        <Text text="{requestListModel>/guarantorContactList/Distx}"/>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
         <l:VerticalLayout width="100%" class="gridWrapper">
             <l:Grid containerQuery="true" class="smod-background" defaultSpan="XL6 L6 M6 S12">
-                <Table busy="{phoneRequestListModel>/tableBusy}" items="{requestListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                <Table busy="{requestListModel>/tableBusy}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{requestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
@@ -71,14 +71,14 @@
                     <items>
                         <ColumnListItem >
                             <cells>
-                                <Text text="{requestListModel>Photy}"/>
-                                <Text text="{requestListModel>Phonm}"/>
-                                <CheckBox selected="{requestListModel>Pfult}"/>
+                                <Text text="{requestListModel>/guarantorContactList/Photy}"/>
+                                <Text text="{requestListModel>/guarantorContactList/Phonm}"/>
+                                <CheckBox selected="{requestListModel>/guarantorContactList/Pfult}"/>
                             </cells>
                         </ColumnListItem>
                     </items>
                 </Table>
-                <Table busy="{mailRequestListModel>/tableBusy}" items="{requestListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{mailRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                <Table busy="{requestListModel>/tableBusy}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{requestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
@@ -98,8 +98,8 @@
                     <items>
                         <ColumnListItem >
                             <cells>
-                                <Text text="{requestListModel>Email}"/>
-                                <CheckBox selected="{requestListModel>Mfult}"/>
+                                <Text text="{requestListModel>/guarantorContactList/Email}"/>
+                                <CheckBox selected="{requestListModel>/guarantorContactList/Mfult}"/>
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -109,5 +109,8 @@
         <beginButton>
             <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorContact" type="Reject" />
         </beginButton>
+        <endButton>
+            <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://cancel" press=".onSaveGuarantorContact" type="Reject" />
+        </endButton>
     </Dialog>
 </c:FragmentDefinition>

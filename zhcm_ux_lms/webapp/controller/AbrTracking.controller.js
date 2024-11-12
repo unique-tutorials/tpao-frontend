@@ -48,6 +48,7 @@ sap.ui.define([
                 guarantorList:{},
                 attachmentGuarantorList:[],
                 guarantorListRequest:{},
+                guarantorContactList:{},
                 guarantorIdentityList:{},
                 documentList:{},
                 newNumberRequest:{
@@ -1009,16 +1010,16 @@ sap.ui.define([
             var that = this;
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
-            var aFilters = [];
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr", sPernr);
-            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
-            aFilters.push(new Filter("Sirno", FilterOperator.EQ, "01"));
+            var sPath = oModel.createKey("/GuarantorInformationSet",{
+                Pernr: sPernr,
+                Sirno: '01'
+            });
         
-            oModel.read("/GuarantorInformationSet", {
-                filters: aFilters,
+            oModel.read(sPath, {
                 success: (oData, oResponse) => {
                     debugger;
-                    that.getModel("requestListModel").setProperty("/guarantorContactList", oData.results);
+                    that.getModel("requestListModel").setProperty("/guarantorContactList", oData);
                 },
                 error: (oError) => {
                     that.getModel("requestListModel").setProperty("/busy", false);
@@ -1057,6 +1058,32 @@ sap.ui.define([
                     that.getModel("requestListModel").setProperty("/busy", false);
                 }
             });
+         },
+         onSaveGuarantorIdentity:function(oEvent){
+            debugger;
+            var that = this;
+            var oModel = this.getModel(),
+            oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+            var oRequets = oViewModel.getProperty("/guarantorIdentityList");
+            oRequets.Pernr = sPernr
+            oRequets.Sirno = "01"
+            // delete oRequets.Kostl
+
+            oModel.create("/GuarantorInformationSet", oRequets, {
+                success: function (oData, oResponse) {
+                    // that.onAttachmentPaymentUploadPress();
+                    that._sweetAlert(that.getText("SAVE_SUCCESSFUL"), "S");
+                    that._oExpendInfoDialog.close();
+                    that.clearFormDialog();
+                    that._closeBusyFragment();
+                },
+                error: function (oError) {
+                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._closeBusyFragment();
+                }.bind(this)
+            });
+
          },
 
          onShowPersonSearchHelp: function(oEvent) {

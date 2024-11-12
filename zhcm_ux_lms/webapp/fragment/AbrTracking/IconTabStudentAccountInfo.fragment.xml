@@ -15,6 +15,7 @@
                     <f:FormElement label="Partner Seçiniz">
                         <f:fields>
                             <Input value="{requestListModel>/domesticEmployee/Partner}" />
+                            <Button text="Gönder" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_NAME}">
@@ -47,6 +48,14 @@
                             <TextArea rows="3" value="{requestListModel>/domesticEmployee/Descp}" />
                         </f:fields>
                     </f:FormElement>
+                    <f:FormElement label="">
+                        <f:fields>
+                            <Toolbar class="toolbar-border-none">
+                                <ToolbarSpacer/>
+                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" width="150px" />
+                            </Toolbar>
+                        </f:fields>
+                    </f:FormElement>
                 </f:formElements>
             </f:FormContainer>
             <f:FormContainer title="{i18n>ABROAD}">
@@ -54,6 +63,7 @@
                     <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Input value="{requestListModel>/abroadOtherEmployee/Partner}" />
+                            <Button text="Gönder" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_NAME}">
@@ -99,6 +109,14 @@
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
                             <TextArea rows="3" value="{requestListModel>/abroadOtherEmployee/Descp}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="">
+                        <f:fields>
+                            <Toolbar class="toolbar-border-none">
+                                <ToolbarSpacer/>
+                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" width="150px" />
+                            </Toolbar>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

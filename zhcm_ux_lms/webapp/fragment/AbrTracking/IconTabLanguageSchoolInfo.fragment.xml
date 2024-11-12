@@ -39,7 +39,7 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{requestListModel>/financialEmployee/City}" />
+                            <Input value="{requestListModel>/financialEmployee/Bezei}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TL_FOREIGN_EXCHANGE_NUMBER}">

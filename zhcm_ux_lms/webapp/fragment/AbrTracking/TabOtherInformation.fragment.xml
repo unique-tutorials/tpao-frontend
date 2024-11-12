@@ -36,17 +36,17 @@
                                 <Menu>
                                     <MenuItem
                                         text="Kefil Bilgileri"
-                                        icon="sap-icon://edit"
+                                        icon="sap-icon://account"
                                         press="openGuarantorDialog"
                                     />
                                     <MenuItem
                                         text="İletişim Bilgileri"
-                                        icon="sap-icon://delete"
+                                        icon="sap-icon://call"
                                         press="openGuarantorContactDialog"
                                     />
                                     <MenuItem
                                         text="Kimlik Bilgileri"
-                                        icon="sap-icon://idea-wall"
+                                        icon="sap-icon://business-card"
                                         press="openGuarantorIdentityDialog"
                                     />
                                 </Menu>
