@@ -37,7 +37,7 @@
                 <ColumnListItem >
                     <cells>
                         <Text text="{requestListModel>/guarantorContactList/Adtyp}"/>
-                        <Text text="{requestListModel>/guarantorContactList/Merni}"/>
+                        <Text text="{requestListModel>/guarantorContactList/Mernis}"/>
                         <Text text="{requestListModel>/guarantorContactList/Stras}"/>
                         <Text text="{requestListModel>/guarantorContactList/Pstlz}"/>
                         <Text text="{requestListModel>/guarantorContactList/Conry}"/>
@@ -110,7 +110,7 @@
             <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorContact" type="Reject" />
         </beginButton>
         <endButton>
-            <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://cancel" press=".onSaveGuarantorContact" type="Reject" />
+            <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://cancel" press=".onSaveGuarantorContact" type="Accept" />
         </endButton>
     </Dialog>
 </c:FragmentDefinition>
