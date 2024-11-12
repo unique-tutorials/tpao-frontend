@@ -42,19 +42,19 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>DOMESTIC_LANGUAGE_LEARNING_DURATION}">
                         <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Dodly}">
+                            <Input value="{requestListModel>/generalEmployee/Dodly}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>YEAR}"/>
-                            <Input value="{requestListModel>/generalEmployee/Dodlm}">
+                            <Input value="{requestListModel>/generalEmployee/Dodlm}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
-                            <Text text="{i18n>MONTH}"/>
-                            <Input value="{requestListModel>/generalEmployee/Dodld}">
+                            <Text text="{i18n>MONTH}" />
+                            <Input value="{requestListModel>/generalEmployee/Dodld}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -64,19 +64,19 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>LANGDUR}">
                         <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Dolsy}">
+                            <Input value="{requestListModel>/generalEmployee/Dolsy}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>YEAR}"/>
-                            <Input value="{requestListModel>/generalEmployee/Dolsm}">
+                            <Input value="{requestListModel>/generalEmployee/Dolsm}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>MONTH}"/>
-                            <Input value="{requestListModel>/generalEmployee/Dolsd}">
+                            <Input value="{requestListModel>/generalEmployee/Dolsd}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -86,19 +86,19 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>DURATION_OF_LANGUAGE_LEARNING_ABROAD_EXTENSION}">
                         <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Dlsay}">
+                            <Input value="{requestListModel>/generalEmployee/Dlsay}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>YEAR}"/>
-                            <Input value="{requestListModel>/generalEmployee/Dlsam}">
+                            <Input value="{requestListModel>/generalEmployee/Dlsam}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>MONTH}"/>
-                            <Input value="{requestListModel>/generalEmployee/Dlsad}">
+                            <Input value="{requestListModel>/generalEmployee/Dlsad}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -108,19 +108,19 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>OFFICIAL_SCHOLARSHIP_REGULAR_TERM}">
                         <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Oscny}">
+                            <Input value="{requestListModel>/generalEmployee/Oscny}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>YEAR}"/>
-                            <Input value="{requestListModel>/generalEmployee/Oscnm}">
+                            <Input value="{requestListModel>/generalEmployee/Oscnm}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>MONTH}"/>
-                            <Input value="{requestListModel>/generalEmployee/Oscnd}">
+                            <Input value="{requestListModel>/generalEmployee/Oscnd}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -130,19 +130,19 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>OFFICIAL_SCHOLARSHIP_EXTENSION}">
                         <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Ofscy}">
+                            <Input value="{requestListModel>/generalEmployee/Ofscy}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>YEAR}"/>
-                            <Input value="{requestListModel>/generalEmployee/Ofscm}">
+                            <Input value="{requestListModel>/generalEmployee/Ofscm}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>MONTH}"/>
-                            <Input value="{requestListModel>/generalEmployee/Ofscd}">
+                            <Input value="{requestListModel>/generalEmployee/Ofscd}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -152,19 +152,19 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>OFFICIAL_SCHOLARSHIP_FREE_EXTENSION}">
                         <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Ofnsy}">
+                            <Input value="{requestListModel>/generalEmployee/Ofnsy}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>YEAR}"/>
-                            <Input value="{requestListModel>/generalEmployee/Ofnsm}">
+                            <Input value="{requestListModel>/generalEmployee/Ofnsm}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>MONTH}"/>
-                            <Input value="{requestListModel>/generalEmployee/Ofnsd}">
+                            <Input value="{requestListModel>/generalEmployee/Ofnsd}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -174,19 +174,19 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>COMPULSORY_SERVICE_PERIOD}">
                         <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Cosey}">
+                            <Input value="{requestListModel>/generalEmployee/Cosey}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>YEAR}"/>
-                            <Input value="{requestListModel>/generalEmployee/Cosem}">
+                            <Input value="{requestListModel>/generalEmployee/Cosem}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
                             </Input>
                             <Text text="{i18n>MONTH}"/>
-                            <Input value="{requestListModel>/generalEmployee/Cosed}">
+                            <Input value="{requestListModel>/generalEmployee/Cosed}" enabled="false">
                                 <layoutData>
                                     <l:GridData span="XL1 L1 M1 S4" />
                                 </layoutData>
@@ -238,7 +238,7 @@
                             </DatePicker>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>TAX_NUMBER_NUB}">
+                    <!-- <f:FormElement label="{i18n>TAX_NUMBER_NUB}">
                         <f:fields>
                             <Input value="{requestListModel>/generalEmployee/Taxnm}"/>
                         </f:fields>
@@ -252,7 +252,7 @@
                         <f:fields>
                             <Input value="{requestListModel>/generalEmployee/Taxop}"/>
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                 </f:formElements>
             </f:FormContainer>
             <f:FormContainer>
@@ -355,11 +355,11 @@
                             </DatePicker>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>ACCOUNT_TO_BE_PAID}">
+                    <f:FormElement label="">
                         <f:fields>
-                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Payac' } ] }" selectedKey="{requestListModel>/generalEmployee/Payac}">
+                            <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Payac' } ] }" selectedKey="{requestListModel>/generalEmployee/Payac}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
-                            </ComboBox>
+                            </ComboBox> -->
                             <Button text="{i18n>DOCUMENTS}" type="Emphasized"/>
                         </f:fields>
                     </f:FormElement>
