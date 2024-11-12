@@ -75,10 +75,9 @@
                                             </f:FormElement>
                                             <f:FormElement label="{i18n>DOCUMENT_TYPE_DT}">
                                                 <f:fields>
-                                                    <Input value="{requestListModel>/documentList/Doctp}" />
-                                                        <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Doctp' } ] }" selectedKey="{requestListModel>/documentList/Doctp}">
+                                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Doctp' } ] }" selectedKey="{requestListModel>/documentList/Doctp}">
                                                             <core:ListItem key="{Key}" text="{Value}"/>
-                                                        </ComboBox> -->
+                                                        </ComboBox>
                                                 </f:fields>
                                             </f:FormElement>
                                             <f:FormElement label="{i18n>DOCUMENT_NAME_DT}">
@@ -94,7 +93,7 @@
                                                     </DatePicker>
                                                 </f:fields>
                                             </f:FormElement>
-                                            <f:FormElement label="{i18n>FIRST_USE_DATE}">
+                                            <f:FormElement label="Son Kullanım Tarihi">
                                                 <f:fields>
                                                     <DatePicker value="{path: 'requestListModel>/documentList/Lasdt', 
                                                         type: 'sap.ui.model.type.Date', 

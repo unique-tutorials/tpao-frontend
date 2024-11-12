@@ -3,6 +3,7 @@
 	xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
 >
 <f:Form editable="true">
     <f:title>
@@ -13,89 +14,101 @@
     </f:layout>
     <f:formContainers>
         <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_SCHOOL}">
+         <f:FormElement label="Partner Seçiniz">
+                        <f:fields>
+                            <Input  enabled="false" value="{abrAccountListModel>/financialEmployee/Partner}"  />
+                              <Button  enabled="false" text="Gönder" press=".onPartnerButtonPress"  cd:type="FINANCE"/>
+                        </f:fields>
+                    </f:FormElement>
             <f:formElements>
                 <f:FormElement label="{i18n>BANK_NAME}">
                     <f:fields>
-                        <Input value="{SupplierName}"/>
+                        <Text text="{abrAccountListModel>/financialEmployee/Banka}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>BANK_BRANCH}">
                     <f:fields>
-                        <Input value="{Street}" />
+                          <Text text="{abrAccountListModel>/financialEmployee/Brnch}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>BANK_CITY}">
                     <f:fields>
-                        <Input value="{ZIPCode}" />
+                        <Text text="{abrAccountListModel>/financialEmployee/City}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>TL_FOREIGN_EXCHANGE_NUMBER}">
                     <f:fields>
-                        <Input value="{ZIPCode}" />
+                        <Text text="{abrAccountListModel>/financialEmployee/Bankn}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>TL_CURRENCY_IBAN}">
                     <f:fields>
-                        <Input value="{ZIPCode}" />
+                         <Text text="{abrAccountListModel>/financialEmployee/Iban00}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>EXPLANATION}">
                     <f:fields>
-                        <TextArea rows="5" value="{ZIPCode}" />
+                        <TextArea enabled="false" rows="3" value="{abrAccountListModel>/financialEmployee/Descp}"  />
                     </f:fields>
                 </f:FormElement>
             </f:formElements>
         </f:FormContainer>
         <f:FormContainer title="{i18n>FOREIGN_LANGUAGE_SCHOOL}">
             <f:formElements>
+             <f:FormElement label="Partner Seçiniz">
+                        <f:fields>
+                            <Input  enabled="false" value="{abrAccountListModel>/abroadEmployee/Partner}"  />
+                              <Button  enabled="false" text="Gönder" press=".onPartnerButtonPress"  cd:type="ABROADEMPLOYEE"/>
+                        </f:fields>
+                    </f:FormElement>
                 <f:FormElement label="{i18n>BANK_NAME}">
                     <f:fields>
-                        <Input value="{Url}" />
+                          <Text text="{abrAccountListModel>/abroadEmployee/Banka}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>BANK_BRANCH}">
                     <f:fields>
-                        <Input value="{Url}" />
+                         <Text text="{abrAccountListModel>/abroadEmployee/Brnch}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>BANK_CITY}">
                     <f:fields>
-                        <Input value="{Url}" />
+                       <Text text="{abrAccountListModel>/abroadEmployee/City}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>ACCOUNT_NUMBER}">
                     <f:fields>
-                        <Input value="{Url}" />
+                        <Text text="{abrAccountListModel>/abroadEmployee/Bankn}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>SWIFT_CODE}">
                     <f:fields>
-                        <Input value="{Url}" />
+                          <Text text="{abrAccountListModel>/abroadEmployee/Swift}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>IBAN}">
                     <f:fields>
-                        <Input value="{Url}" />
+                        <Text text="{abrAccountListModel>/abroadEmployee/Iban00}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>ACC_NO}">
                     <f:fields>
-                        <Input value="{Url}" />
+                        <Text text="{abrAccountListModel>/abroadEmployee/Banka}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>ABA_NO}">
                     <f:fields>
-                        <Input value="{Url}" />
+                        <Text text="{abrAccountListModel>/abroadEmployee/Abano}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>STUDENT_ID}">
                     <f:fields>
-                        <Input value="{Url}" />
+                          <Text text="{abrAccountListModel>/abroadEmployee/Banaka}" />
                     </f:fields>
                 </f:FormElement>
                 <f:FormElement label="{i18n>EXPLANATION}">
                     <f:fields>
-                        <TextArea rows="5" value="{Url}" />
+                       <TextArea enabled="false" rows="3" value="{abrAccountListModel>/abroadEmployee/Descp}" />
                     </f:fields>
                 </f:FormElement>
             </f:formElements>

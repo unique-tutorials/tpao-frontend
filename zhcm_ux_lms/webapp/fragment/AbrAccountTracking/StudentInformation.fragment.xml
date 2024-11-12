@@ -15,12 +15,12 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>STUDENT_NAME}">
                         <f:fields>
-                            <Input value="{abrAccountListModel>/accountEmployee/Vorna}" />
+                            <Text text="{abrAccountListModel>/accountEmployee/Vorna}"  />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>STUDENT_SURNAME}">
                         <f:fields>
-                            <Input value="{abrAccountListModel>/accountEmployee/Nachn}" />
+                            <Text text="{abrAccountListModel>/accountEmployee/Nachn}"  />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TRAINING_DAY}">
@@ -30,22 +30,28 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>COMPULSORY_SERVICE_PERIOD}">
                         <f:fields>
-                            <Input value="{abrAccountListModel>/accountEmployee/Cname}" />
+                            <Text text="{abrAccountListModel>/generalEmployee/Cosey} Yıl {abrAccountListModel>/generalEmployee/Cosem} Ay {abrAccountListModel>/generalEmployee/Cosed} Gün"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DEPARTURE_ABROAD_DATE}">
                         <f:fields>
-                            <DatePicker value="{abrAccountListModel>/accountEmployee/Abrdt}" />
+                            <Text text="{path: 'abrAccountListModel>/generalEmployee/Abrdt', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DATE_TO_START_WORK}">
                         <f:fields>
-                            <DatePicker value="{abrAccountListModel>/accountEmployee/Sjbdt}" />
+                           <Text text="{path: 'abrAccountListModel>/generalEmployee/Sjbdt', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>CASE_START_DATE}">
                         <f:fields>
-                            <DatePicker value="{abrAccountListModel>/accountEmployee/Gname}" />
+                             <Text text="{path: 'abrAccountListModel>/generalEmployee/Cacdt', 
+                                type: 'sap.ui.model.type.Date', 
+                                formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}"/>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -54,12 +60,16 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>COUNTRY_OF_DESTINATION}">
                         <f:fields>
-                            <ComboBox value="{abrAccountListModel>/accountEmployee/Hname}" />
+                             <ComboBox enabled="false" items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{abrAccountListModel>/generalEmployee/Conry}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>SCHOOL_ATTENDED}">
                         <f:fields>
-                            <ComboBox value="{abrAccountListModel>/accountEmployee/Nname}" />
+                            <ComboBox enabled="false" items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Lalsa' } ] }" selectedKey="{abrAccountListModel>/schoolEmployee/Lalsa}">
+                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>SCHOOL_NUMBER}">
@@ -67,29 +77,39 @@
                             <Input value="{abrAccountListModel>/accountEmployee/Pname}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>TAX_NUMBER_NUB}">
+                     <f:FormElement label="{i18n>STUDENT_ACTIVE}">
+                        <f:fields>
+                            <CheckBox enabled="false" selected="{abrAccountListModel>/accountEmployee/Activ}" />
+                        </f:fields>
+                    </f:FormElement>
+                     <f:FormElement label="{i18n>EXECUTOR_DEFENDANT}">
+                        <f:fields>
+                            <CheckBox enabled="false" selected="{abrAccountListModel>/accountEmployee/Exede}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <!-- <f:FormElement label="{i18n>TAX_NUMBER_NUB}">
                         <f:fields>
                             <Input value="{abrAccountListModel>/accountEmployee/Rname}" />
                         </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="{i18n>TAX_OFFICE_PROVINCE}">
+                    </f:FormElement> -->
+                    <!-- <f:FormElement label="{i18n>TAX_OFFICE_PROVINCE}">
                         <f:fields>
                             <Input value="{abrAccountListModel>/accountEmployee/Sname}" />
                             <Input value="{abrAccountListModel>/accountEmployee/Oname}" />
                         </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="{i18n>COST_CENTER}">
+                    </f:FormElement> -->
+                    <!-- <f:FormElement label="{i18n>COST_CENTER}">
                         <f:fields>
                             <Input value="{abrAccountListModel>/accountEmployee/Lname}" showValueHelp="true" />
                             <CheckBox text="{i18n>STUDENT_ACTIVE}" />
                         </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="{i18n>BUDGET_CODE}">
+                    </f:FormElement> -->
+                    <!-- <f:FormElement label="{i18n>BUDGET_CODE}">
                         <f:fields>
                             <Input value="{abrAccountListModel>/accountEmployee/Mname}" showValueHelp="true" />
                             <CheckBox text="{i18n>EXECUTOR_DEFENDANT}" />
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>

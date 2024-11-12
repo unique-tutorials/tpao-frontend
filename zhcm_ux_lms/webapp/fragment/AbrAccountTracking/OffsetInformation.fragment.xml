@@ -1,20 +1,27 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form">
-    <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <Table  items="{abrAccountListModel>/offsetInformationList}" noDataText="{i18n>NO_DATA}"  >
         <headerToolbar>
             <OverflowToolbar>
                 <content>
                     <Title text="{i18n>OFFSET_INFORMATION}" level="H2"/>
+                    <ToolbarSpacer />
+                      <DatePicker change="onDatePickerChange" value="{path: 'abrAccountListModel>/selectedDate',type: 'sap.ui.model.type.Date',
+                                               formatOptions: {
+                                                    source: {
+                                                        pattern: 'yyyyMM'
+                                                    },
+                                                    pattern: 'MM-y'
+                                                }
+                                            }"
+                                            class="sapUiSmallMarginBottom" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
         <columns>
             <Column>
-                <Text text="{i18n>YEAR}"/>
-            </Column>
-            <Column>
-                <Text text="{i18n>MONTH}"/>
+                <Text text="{i18n>PERIOD}"/>
             </Column>
             <Column>
                 <Text text="{i18n>PAYMENT_TYPE}"/>
@@ -31,26 +38,21 @@
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>OFFSET_NO}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>PRINCIPAL_AMOUNT}"/>
-            </Column>
         </columns>
         <items>
             <ColumnListItem type="Navigation" press="onAvailableRequestActions">
                 <cells>
-                    <Text text="{approvalRequestListModel>Reqno}"/>
-                    <Text text="{approvalRequestListModel>Trnam}"/>
-                    <Text text="{approvalRequestListModel>Trtyp}"/>
-                    <Text text="{approvalRequestListModel>Trcnt}"/>
-                    <Text text="{approvalRequestListModel>Trnqp}"/>
-                    <Text text="{approvalRequestListModel>Trnqn}"/>
-                    <Text text="{approvalRequestListModel>Reqno}"/>
-                    <Text text="{approvalRequestListModel>Reqno}"/>
+                    <Text text="{abrAccountListModel>Wagpe}"/>
+                    <Text text="{abrAccountListModel>Paytp}"/>
+                    <Text text="{path:'abrAccountListModel>Dates', type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
+                   <Text text="{abrAccountListModel>Betrg}"/>
+                    <Text text="{abrAccountListModel>Waers}"/>
+                    <Text text="{abrAccountListModel>Offno}"/>
                 </cells>
             </ColumnListItem>
         </items>
     </Table>
-    <f:Form editable="false">
+    <!-- <f:Form editable="false">
         <f:layout>
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
         </f:layout>
@@ -66,5 +68,5 @@
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>
-    </f:Form>
+    </f:Form> -->
 </c:FragmentDefinition>

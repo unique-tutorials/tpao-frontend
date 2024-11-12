@@ -1,7 +1,8 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core">
+    xmlns:core="sap.ui.core"
+    xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
     <f:Form editable="true">
         <f:title>
             <core:Title text="{i18n>MASTERS_SCHOOL}" />
@@ -14,73 +15,73 @@
                 <f:formElements>
                     <f:FormElement label="Partner Seçiniz">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Partner}" />
-                            <Button text="Gönder" press=".onMasterButtonPress" />
+                            <Input  enabled="false" value="{abrAccountListModel>/masterEmployee/Partner}" />
+                            <Button  enabled="false" text="Gönder" press=".onPartnerButtonPress" cd:type="MASTER"/>
                         </f:fields>
                     </f:FormElement>
                     <!-- <f:FormElement label="{i18n>RECIPIENT_NAME}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/NameFirst}" />
+                            <Input value="{abrAccountListModel>/masterEmployee/NameFirst}" />
                         </f:fields>
                     </f:FormElement> -->
                     <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Banka}" />
+                            <Text text="{abrAccountListModel>/masterEmployee/Banka}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_BRANCH}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Brnch}" />
+                            <Text text="{abrAccountListModel>/masterEmployee/Brnch}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Brnch}" />
+                            <Text text="{abrAccountListModel>/masterEmployee/Brnch}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_NUMBER}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Bankn}" />
+                            <Text text="{abrAccountListModel>/masterEmployee/Bankn}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>SWIFT_CODE}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Swift}" />
+                            <Text text="{abrAccountListModel>/masterEmployee/Swift}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>IBAN}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Iban00}" />
+                            <Text text="{abrAccountListModel>/masterEmployee/Iban00}" />
                         </f:fields>
                     </f:FormElement>
                     <!-- <f:FormElement label="{i18n>ACC_NO}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Webad}" />
+                            <Input value="{abrAccountListModel>/masterEmployee/Webad}" />
                         </f:fields>
                     </f:FormElement> -->
                     <f:FormElement label="{i18n>ABA_NO}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Abano}" />
+                            <Text text="{abrAccountListModel>/masterEmployee/Abano}" />
                         </f:fields>
                     </f:FormElement>
                     <!-- <f:FormElement label="{i18n>STUDENT_ID}">
                         <f:fields>
-                            <Input value="{requestListModel>/masterEmployee/Pernr}" />
+                            <Input value="{abrAccountListModel>/masterEmployee/Pernr}" />
                         </f:fields>
                     </f:FormElement> -->
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
-                            <TextArea rows="3" value="{requestListModel>/masterEmployee/Descp}" />
+                            <TextArea enabled="false" rows="3" value="{abrAccountListModel>/masterEmployee/Descp}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="">
+                    <!-- <f:FormElement label="">
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
                                 <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onMasterSavePress" width="150px" />
                             </Toolbar>
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>

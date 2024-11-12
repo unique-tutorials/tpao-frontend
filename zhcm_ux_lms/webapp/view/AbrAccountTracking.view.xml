@@ -19,7 +19,7 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>STUDENT_NUMBER}">
                                 <f:fields>
-                                    <Input id="idAccountInput" value="{ parts: [{path: 'AbrAccountListModel>/newAccountNumberRequest/Pernr'},{path: 'AbrAccountListModel>/newAccountNumberRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowAccountSearchHelp"/>
+                                    <Input id="idAccountInput" value="{ parts: [{path: 'abrAccountListModel>/newAccountNumberRequest/Pernr'},{path: 'abrAccountListModel>/newAccountNumberRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowAccountSearchHelp"/>
                                     <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onAccountSearchButtonPress"/>
                                 </f:fields>
                             </f:FormElement>
@@ -70,12 +70,12 @@
                 </infoToolbar>
             </Panel>
         </VBox>
-        <footer>
+        <!-- <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
                 <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
                 <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://education" press="onNewTrainingRequest" type="Accept" visible="true"/>
             </OverflowToolbar>
-        </footer>
+        </footer> -->
     </Page>
 </mvc:View>

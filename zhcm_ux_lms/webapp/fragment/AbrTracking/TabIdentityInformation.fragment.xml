@@ -14,7 +14,7 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>SERIAL_NUMBER}">
                         <f:fields>
-                            <Input value="{requestListModel>/identityEmployee/Serno}" />
+                            <Input value="{requestListModel>/identityEmployee/Idcno}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ID_NUMBER}">
@@ -56,16 +56,16 @@
                             </ComboBox>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>RELIGIOUS}">
+                    <!-- <f:FormElement label="{i18n>RELIGIOUS}">
                         <f:fields>
                             <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Konfe' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Konfe'}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
                         </f:fields> 
-                    </f:FormElement>
+                    </f:FormElement> -->
                     <f:FormElement label="{i18n>BLOOD_GROUP}">
                         <f:fields>
-                            <Input value="{requestListModel>/identityEmployee/Blood}" />
+                            <Input value="{requestListModel>/identityEmployee/Blotx}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>PROVINCE}">
@@ -77,9 +77,10 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>DISTRICT}">
                         <f:fields>
-                            <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Distr'}">
+                            <!-- <ComboBox items="{ path:'/ValueHelpSet', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{path:'requestListModel>/identityEmployee/Distr'}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
-                            </ComboBox>
+                            </ComboBox> -->
+                            <Input value="{requestListModel>/identityEmployee/Distr}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DATE_OF_ISSUES}">
