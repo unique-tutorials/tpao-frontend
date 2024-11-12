@@ -98,13 +98,6 @@ sap.ui.define([
 
             var aFilters = [];
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
-            // var sPayno = this.getView().getModel("requestListModel").getProperty("/expendInfoList/Payno");
-
-            // if (!sPayno) {
-            //     this._sweetAlert(this.getText("INVOICE_NUMBER_REQUIRED"), "W");
-            //     return;
-            // }
-        
             if (!sPernr) {
                 this._sweetAlert(this.getText("STUDENT_NUMBER_REQUIRED"), "W");
                 return;
