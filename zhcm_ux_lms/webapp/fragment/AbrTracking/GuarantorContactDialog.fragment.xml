@@ -1,12 +1,18 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
-    xmlns:l="sap.ui.layout">
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
     <Dialog title="{i18n>GUARANTOR_CONTACT_INFORMATION}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
         <Table busy="{requestListModel>/tableBusy}" width="auto" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{requestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
             <headerToolbar>
                 <OverflowToolbar>
                     <content>
                         <Title text="{i18n>ADDRESS_INFORMATION}"/>
+                        <ToolbarSpacer />
+                        <Button
+                            icon="sap-icon://edit"
+                            press="onEditPress"
+                        />
                     </content>
                 </OverflowToolbar>
             </headerToolbar>
@@ -36,13 +42,76 @@
             <items>
                 <ColumnListItem >
                     <cells>
-                        <Text text="{requestListModel>/guarantorContactList/Adtyp}"/>
-                        <Text text="{requestListModel>/guarantorContactList/Mernis}"/>
-                        <Text text="{requestListModel>/guarantorContactList/Stras}"/>
-                        <Text text="{requestListModel>/guarantorContactList/Pstlz}"/>
-                        <Text text="{requestListModel>/guarantorContactList/Conry}"/>
-                        <Text text="{requestListModel>/guarantorContactList/Bezei}"/>
-                        <Text text="{requestListModel>/guarantorContactList/Distx}"/>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Adtyp}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Adtyp}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Mernis}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Mernis}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Stras}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Stras}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Pstlz}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Pstlz}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Conry}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Conry}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/guarantorContactList/City}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Bezei}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Distx}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Distx}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
                     </cells>
                 </ColumnListItem>
             </items>
@@ -54,6 +123,11 @@
                         <OverflowToolbar>
                             <content>
                                 <Title text="{i18n>PHONE_INFORMATION}"/>
+                                <ToolbarSpacer />
+                                <Button
+                                    icon="sap-icon://edit"
+                                    press="onEditPress"
+                                />
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -71,8 +145,26 @@
                     <items>
                         <ColumnListItem >
                             <cells>
-                                <Text text="{requestListModel>/guarantorContactList/Photy}"/>
-                                <Text text="{requestListModel>/guarantorContactList/Phonm}"/>
+                                <HBox alignItems="Start">
+                                    <Input
+                                        value="{requestListModel>/guarantorContactList/Photy}"
+                                        visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                                    />
+                                    <Text
+                                        text="{requestListModel>/guarantorContactList/Photy}"
+                                        visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                                    />
+                                </HBox>
+                                <HBox alignItems="Start">
+                                    <Input
+                                        value="{requestListModel>/guarantorContactList/Phonm}"
+                                        visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                                    />
+                                    <Text
+                                        text="{requestListModel>/guarantorContactList/Phonm}"
+                                        visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                                    />
+                                </HBox>
                                 <CheckBox selected="{requestListModel>/guarantorContactList/Pfult}"/>
                             </cells>
                         </ColumnListItem>
@@ -83,6 +175,11 @@
                         <OverflowToolbar>
                             <content>
                                 <Title text="{i18n>E_MAIL_INFORMATION}"/>
+                                <ToolbarSpacer />
+                                <Button
+                                    icon="sap-icon://edit"
+                                    press="onEditPress"
+                                />
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -98,7 +195,16 @@
                     <items>
                         <ColumnListItem >
                             <cells>
-                                <Text text="{requestListModel>/guarantorContactList/Email}"/>
+                                    <HBox alignItems="Start">
+                                        <Input
+                                            value="{requestListModel>/guarantorContactList/Email}"
+                                            visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                                        />
+                                        <Text
+                                            text="{requestListModel>/guarantorContactList/Email}"
+                                            visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                                        />
+                                    </HBox>
                                 <CheckBox selected="{requestListModel>/guarantorContactList/Mfult}"/>
                             </cells>
                         </ColumnListItem>

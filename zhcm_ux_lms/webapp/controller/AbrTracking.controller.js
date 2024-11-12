@@ -51,6 +51,12 @@ sap.ui.define([
                 guarantorContactList:{},
                 guarantorIdentityList:{},
                 documentList:{},
+                suggestionActionData: {
+                    deleteEnabled: false,
+                    displayEnabled: false,
+                    priorityEditable: false,
+                    priorityDisplay: true
+                },
                 newNumberRequest:{
                     Pernr:null,
                     Ename:""                 
@@ -163,6 +169,141 @@ sap.ui.define([
             // Yurtiçi dil okul bilgiler sekmesi seçiliyse
             if (this.byId("TabBarFinancial").getSelectedKey() === "LanguageSchool") {
                 oModel.create("/DomesticLanguageSchoolInformationSet", oFinEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                                });
+                        } else if (oData.Mesty === "E") {
+                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
+            } 
+        },
+        onMasterSavePress:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var oMasterEntry = oViewModel.getProperty('/masterEmployee');
+            if (this.byId("TabBarFinancial").getSelectedKey() === "MasterSchool") {
+                oModel.create("/MasterSchoolInformationSet", oMasterEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                                });
+                        } else if (oData.Mesty === "E") {
+                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
+            } 
+        },
+        onDomesticSavePress:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var oDomesticEntry = oViewModel.getProperty('/domesticAccount');
+            if (this.byId("TabBarFinancial").getSelectedKey() === "ForeignCurrency") {
+                oModel.create("/ForeignCurrencyAccountSet", oDomesticEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                                });
+                        } else if (oData.Mesty === "E") {
+                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
+            } 
+        },
+        onOtherSavePress:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var oOtherEntry = oViewModel.getProperty('/otherAccount');
+            if (this.byId("TabBarFinancial").getSelectedKey() === "ForeignCurrency") {
+                oModel.create("/OtherAccountInformationSet", oOtherEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                                });
+                        } else if (oData.Mesty === "E") {
+                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
+            } 
+        },
+        onStnAccountSavePress:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var oDomesticEntry = oViewModel.getProperty('/domesticEmployee');
+            if (this.byId("TabBarFinancial").getSelectedKey() === "StudentAccountInfo") {
+                oModel.create("/StudentDomesticAccountInformationSet", oDomesticEntry, {
+                    success: function(oData, oResponse) {
+                        debugger;
+                        if (oData.Mesty === "S") {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
+                                showConfirmButton: false,
+                                timer: 1500
+                                });
+                        } else if (oData.Mesty === "E") {
+                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
+                        }
+                    },
+                    error: function() {
+                        debugger;
+                    }
+                });
+            } 
+        },
+        onAbroadOtherSavePress:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var oAbroadOtherEntry = oViewModel.getProperty('/abroadOtherEmployee');
+            if (this.byId("TabBarFinancial").getSelectedKey() === "StudentAccountInfo") {
+                oModel.create("/AbroadOtherAccountInformationSet", oAbroadOtherEntry, {
                     success: function(oData, oResponse) {
                         debugger;
                         if (oData.Mesty === "S") {
@@ -901,6 +1042,28 @@ sap.ui.define([
             }
             this._oGuarantorDialog.open();
          },
+         onSaveGuarantorContact:function(){
+            var oModel = this.getModel(),
+            oViewModel = this.getModel("requestListModel");
+            // sEntitySet = "/GuarantorInformationSet";
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+            var oSchoolRequets = oViewModel.getProperty("/guarantorContactList");
+            oSchoolRequets.Pernr = sPernr,
+            oSchoolRequets.Sirno = "01"
+
+            oModel.create("/GuarantorInformationSet", oSchoolRequets, {
+                success: function (oData, oResponse) {
+                    that._sweetAlert(that.getText("SAVE_SUCCESSFUL"), "S");
+                    // that._oExpendInfoDialog.close();
+                    that.clearFormDialog();
+                    that._closeBusyFragment();
+                },
+                error: function (oError) {
+                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._closeBusyFragment();
+                }.bind(this)
+            }); 
+         },
          _getGuarantorList: function (sPernr) {
             debugger;
             var that = this;
@@ -1005,6 +1168,18 @@ sap.ui.define([
             var oUrlPath = oModel.sServiceUrl + "/PersonnelAttachmentSet(Attid=guid'" + sAttid + "')/$value";
             window.open(oUrlPath);
         },
+        onEditPress: function () {
+            var oViewModel = this.getModel("requestListModel"),
+                sVisible = oViewModel.getProperty("/suggestionActionData/priorityEditable");
+            if (!sVisible) {
+                oViewModel.setProperty("/suggestionActionData/priorityEditable", true);
+                oViewModel.setProperty("/suggestionActionData/priorityDisplay", false);
+            } else {
+                oViewModel.setProperty("/suggestionActionData/priorityEditable", false);
+                oViewModel.setProperty("/suggestionActionData/priorityDisplay", true);
+            }
+        },
+
          _getGuarantorContactList:function(sPernr){
             debugger;
             var that = this;

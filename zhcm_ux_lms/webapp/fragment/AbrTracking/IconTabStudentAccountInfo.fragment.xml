@@ -30,7 +30,9 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{requestListModel>/domesticEmployee/City}" />
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/domesticEmployee/City}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TL_ACCOUNT_NUMBER}">
@@ -52,7 +54,7 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" width="150px" />
+                                <Button icon="sap-icon://save" text="Kaydet" press=".onStnAccountSavePress" type="Accept" width="150px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>
@@ -78,7 +80,9 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{requestListModel>/abroadOtherEmployee/City}" />
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/abroadOtherEmployee/City}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_NUMBER}">
@@ -115,7 +119,7 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" width="150px" />
+                                <Button icon="sap-icon://save" text="Kaydet" press=".onAbroadOtherSavePress" type="Accept" width="150px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>
