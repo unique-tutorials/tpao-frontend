@@ -368,23 +368,23 @@ sap.ui.define([
             readData(sSchoolInfoPath, "/schoolEmployee", "Okul bilgileri alınamadı.");
 
             // Mali / Yurtiçi Dil bilgileri al
-            // var sLanguageSchoolInfoPath = oModel.createKey("/DomesticLanguageSchoolInformationSet", { Pernr: sPernr, Partner:"ASD123"});
-            // readData(sLanguageSchoolInfoPath, "/financialEmployee", "Dil okul bilgileri alınamadı.");
+            var sLanguageSchoolInfoPath = oModel.createKey("/DomesticLanguageSchoolInformationSet", { Pernr: sPernr, Partner:"PARTNER01"});
+            readData(sLanguageSchoolInfoPath, "/financialEmployee", "Dil okul bilgileri alınamadı.");
 
              // Mali / YurtDışı Dil bilgileri al
-            //  var sAbroadInfoPath = oModel.createKey("/LanguageSchoolAbroadSet", { Pernr: sPernr, Partner:"ASD123"});
-            //  readData(sAbroadInfoPath, "/abroadEmployee", "Yurt dışı dil bilgileri alınamadı.");
+             var sAbroadInfoPath = oModel.createKey("/LanguageSchoolAbroadSet", { Pernr: sPernr, Partner:"PARTNER01"});
+             readData(sAbroadInfoPath, "/abroadEmployee", "Yurt dışı dil bilgileri alınamadı.");
 
             // Master Okul bilgileri al
-            // var sMasterInfoPath = oModel.createKey("/MasterSchoolInformationSet", { Pernr: sPernr, Partner:"ASD123"});
-            // readData(sMasterInfoPath, "/masterEmployee", "Master okul bilgileri alınamadı.");
+            var sMasterInfoPath = oModel.createKey("/MasterSchoolInformationSet", { Pernr: sPernr, Partner:"PARTNER01"});
+            readData(sMasterInfoPath, "/masterEmployee", "Master okul bilgileri alınamadı.");
 
             // Öğrenci Yurt içi Döviz Hesap bilgileri al
-            var sDomesticAccountInfoPath = oModel.createKey("/ForeignCurrencyAccountSet", { Pernr: sPernr, Partner:"ASD123"});
+            var sDomesticAccountInfoPath = oModel.createKey("/ForeignCurrencyAccountSet", { Pernr: sPernr, Partner:"PARTNER01"});
             readData(sDomesticAccountInfoPath, "/domesticAccount", "Yurt içi Döviz Hesap bilgileri alınamadı.");
 
             // Diğer Hesap bilgileri al
-            var sotherAccountInfoPath = oModel.createKey("/OtherAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+            var sotherAccountInfoPath = oModel.createKey("/OtherAccountInformationSet", { Pernr: sPernr, Partner:"PARTNER01"});
             readData(sotherAccountInfoPath, "/otherAccount", "Diğer Hesap bilgileri alınamadı.");
 
             // Okul Ücret bilgileri al BAK
@@ -396,11 +396,11 @@ sap.ui.define([
             // readData(sGeneralExpendInfoPath, "/expendInfoList", "Genel Harcama bilgileri alınamadı.");
 
             // Öğrenci Yurt içi Hesap bilgileri al
-            var sDomesticEmployeeInfoPath = oModel.createKey("/StudentDomesticAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+            var sDomesticEmployeeInfoPath = oModel.createKey("/StudentDomesticAccountInformationSet", { Pernr: sPernr, Partner:"PARTNER01"});
             readData(sDomesticEmployeeInfoPath, "/domesticEmployee", "Öğrenci Yurt içi bilgileri alınamadı.");
 
              // Öğrenci Yurt dışı Hesap bilgileri al
-             var sAbroadOtherEmployeeInfoPath = oModel.createKey("/AbroadOtherAccountInformationSet", { Pernr: sPernr, Partner:"ASD123"});
+             var sAbroadOtherEmployeeInfoPath = oModel.createKey("/AbroadOtherAccountInformationSet", { Pernr: sPernr, Partner:"PARTNER01"});
              readData(sAbroadOtherEmployeeInfoPath, "/abroadOtherEmployee", "Öğrenci Yurt dışı bilgileri alınamadı.");
 
             // Kimlik bilgilerini al
@@ -1034,8 +1034,8 @@ sap.ui.define([
             debugger;
             var that = this;
             var oModel = this.getModel();
-            var aFilters = [];
             var oViewModel = this.getModel("requestListModel");
+            var aFilters = [];
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr", sPernr);
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
             aFilters.push(new Filter("Sirno", FilterOperator.EQ, "01"));
