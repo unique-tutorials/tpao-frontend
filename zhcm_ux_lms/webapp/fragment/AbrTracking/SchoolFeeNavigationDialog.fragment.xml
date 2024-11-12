@@ -47,7 +47,7 @@
                         </f:FormElement>
                         <f:FormElement label="Para Birimi">
                             <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/schoolInfoDialogRequest/Waers}">
+                                <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/schoolInfoDialogRequest/Waers}">
                                     <core:ListItem key="{Key}" text="{Value}"/>
                                 </ComboBox>
                             </f:fields>

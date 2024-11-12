@@ -83,7 +83,7 @@
                                     <Input value="{requestListModel>/expendInfoDialogRequest/Payam}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Fatura Toplamı">
+                            <f:FormElement label="Fatura Dokümanı Ekle">
                                 <f:fields>
                                     <u:FileUploader 
                                         id="idAttachmentFileUploaderPayment" 
@@ -98,7 +98,7 @@
                                         fileType="pdf" 
                                         maximumFileSize="5" 
                                         fileSizeExceed="onFileSizeExceed" 
-                                        placeholder="{i18n>LABEL_UPLOAD_PLACEHOLDER}" 
+                                        placeholder="Fatura Dokümanı Ekle" 
                                         sendXHR="true" 
                                         useMultipart="false" />
                                 </f:fields>
