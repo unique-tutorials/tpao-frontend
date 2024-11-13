@@ -2,16 +2,16 @@
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core">
-    <Dialog title="Maaş Oluştur" contentWidth="50%" verticalScrolling="false">
+    <Dialog title="Maaş Oluştur" contentWidth="40%" verticalScrolling="false">
         <f:Form editable="true">
-            <f:title>
+            <!-- <f:title>
                 <core:Title text="Address" />
-            </f:title>
+            </f:title> -->
             <f:layout>
                 <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
             </f:layout>
             <f:formContainers>
-                <f:FormContainer title="Office">
+                <f:FormContainer>
                     <f:formElements>
                         <f:FormElement label="Kısıt Maaş">
                             <f:fields>

@@ -162,7 +162,7 @@ sap.ui.define([
             oModel.create("/StudentSalariesSet", oRequets, {
                 success: function (oData, oResponse) {
                     // that.onAttachmentPaymentUploadPress();
-                    that._sweetAlert(that.getText("SAVE_SUCCESSFUL"), "S");
+                    that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
                     that._oSalariesCreateDialog.close();
                     that.clearFormDialog();
                     that._closeBusyFragment();
