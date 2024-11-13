@@ -33,11 +33,11 @@
 							</f:fields>
 						</f:FormElement>
 
-						<f:FormElement label="{i18n>STUDENT_GENDER}">
+						<!-- <f:FormElement label="{i18n>STUDENT_GENDER}">
 							<f:fields>
 								<Input value="{requestListModel>/guarantorIdentityList/Merni}" />
 							</f:fields>
-						</f:FormElement>
+						</f:FormElement> -->
 						<f:FormElement label="{i18n>SERIAL_NUMBER}">
 							<f:fields>
 								<Input value="{requestListModel>/guarantorIdentityList/Idcno}" />

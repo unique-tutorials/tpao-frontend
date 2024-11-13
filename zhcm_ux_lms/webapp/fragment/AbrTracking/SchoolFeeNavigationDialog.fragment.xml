@@ -18,7 +18,18 @@
                     <f:formElements>
                         <f:FormElement label="Ücret Dönemi">
                             <f:fields>
-                                <Input value="{requestListModel>/schoolInfoDialogRequest/Wagpe}"/>
+                                <DatePicker 
+                                    value="{
+                                        path: 'requestListModel>/schoolInfoDialogRequest/Wagpe',
+                                        type: 'sap.ui.model.type.Date',
+                                        
+                                        formatOptions: {
+                                            source: {
+                                                pattern: 'yyyyMM'
+                                            },
+                                            pattern: 'MM-y'
+                                        }
+                                    }" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="Tarih">
@@ -36,7 +47,9 @@
                         </f:FormElement>
                         <f:FormElement label="Para Birimi">
                             <f:fields>
-                                <Input value="{requestListModel>/schoolInfoDialogRequest/Waers}"/>
+                                <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/schoolInfoDialogRequest/Waers}">
+                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                </ComboBox>
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="Kambiyo Belge No">

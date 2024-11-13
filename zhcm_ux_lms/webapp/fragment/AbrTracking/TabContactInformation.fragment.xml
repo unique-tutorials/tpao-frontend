@@ -49,23 +49,23 @@
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>PROVINCE}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <!-- <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>DISTRICT}"/>
-            </Column>
+            </Column> -->
         </columns>
         <items>
             <ColumnListItem>
                 <cells>
                     <Text text="{requestListModel>/contactEmployee/Adrty}"/>
                     <Text text="{requestListModel>/contactEmployee/Merni}"/>
-                    <Text text="{requestListModel>/contactEmployee/Adres}"/>
+                    <Text text="{requestListModel>/contactEmployee/Stras}"/>
                     <Text text="{requestListModel>/contactEmployee/Pstlz}"/>
                     <Text text="{requestListModel>/contactEmployee/Conry}"/>
-                    <Text text="{requestListModel>/contactEmployee/City}"/>
+                    <Text text="{requestListModel>/contactEmployee/Bezei}"/>
                     <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/contactEmployee/City}">
                         <core:ListItem key="{Key}" text="{Value}"/>
                     </ComboBox> -->
-                    <Text text="{requestListModel>/contactEmployee/Stras}"/>
+                    <!-- <Text text="{requestListModel>/contactEmployee/Stras}"/> -->
                     <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{requestListModel>/contactEmployee/Distr}">
                         <core:ListItem key="{Key}" text="{Value}"/>
                     </ComboBox> -->
