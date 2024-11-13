@@ -8,6 +8,7 @@
 					<Title text="{i18n>GUARANTORS}" level="H2"/>
                     <ToolbarSpacer />
                     <Button text="Kefil Bilgisi Sorgula" press=".onGuarantorButtonPress" type="Neutral" />
+                    <Button text="Kefil Bilgisi Ekle" press=".onAddGuarantor" type="Emphasized" icon="sap-icon://add" />
                  </content>
 			</OverflowToolbar>
 		</headerToolbar>

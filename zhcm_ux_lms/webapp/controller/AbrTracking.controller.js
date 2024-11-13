@@ -1089,6 +1089,16 @@ sap.ui.define([
                 }
             });
         },
+        onAddGuarantor:function(){
+            debugger;
+            if (!this._oAddGuarantorDialog) {
+                this._oAddGuarantorDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.AddGuarantorDialog", this);
+                this.getView().addDependent(this._oAddGuarantorDialog);
+            } else {
+                this._oAddGuarantorDialog.close();
+            }
+            this._oAddGuarantorDialog.open();
+        },
         onAttachmentGuarantorUploadPress: function (oEvent) {
             debugger;
             var oViewModel = this.getModel("requestListModel");

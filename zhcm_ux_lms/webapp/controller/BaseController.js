@@ -13,6 +13,7 @@ sap.ui.define([
 
 	return Controller.extend("zhcm_ux_lms_abr.controller.BaseController", {
 
+		
 		/**
 		 * Convenience method for accessing the router.
 		 * @public
