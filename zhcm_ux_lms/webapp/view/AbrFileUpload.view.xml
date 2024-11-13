@@ -103,11 +103,11 @@
                     </Table>
                 </f:content>
             </f:DynamicPage>
-        <footer>
+        <!-- <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
                 <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Accept"/>
             </OverflowToolbar>
-        </footer>
+        </footer> -->
     </Page>
 </mvc:View>

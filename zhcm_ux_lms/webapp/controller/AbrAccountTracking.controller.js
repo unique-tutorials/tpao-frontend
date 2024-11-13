@@ -141,39 +141,81 @@ sap.ui.define(
                 this._oGuarantorIdentityDialog.close();
             }
          },
-        openGuarantorContactDialog:function(oEvent){
-            var oSource = oEvent.getSource(),
-             oViewModel = this.getModel("abrAccountListModel"),
-             sPernr = oViewModel.getProperty("/newAccountNumberRequest/Pernr"),
-             oObject = oSource.getBindingContext("abrAccountListModel").getObject();
-            this._getGuarantorContactList(sPernr,oObject.Sirno);
-         },
-         _getGuarantorContactList:function(sPernr,sSirno){
-            var that = this;
-            var oModel = this.getModel();
-            var aFilters = [];
-            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
-            aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
-            this._openBusyFragment("READ_DATA");
-            oModel.read("/GuarantorInformationSet", {
-                filters: aFilters,
-                success: (oData, oResponse) => {
-                    that._closeBusyFragment();
-                    that.getModel("abrAccountListModel").setProperty("/guarantorContactList", oData.results);
-                    if (!that._oGuarantorContactDialog) {
-                        that._oGuarantorContactDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorContactDialog", that);
-                        that.getView().addDependent(that._oGuarantorContactDialog);
-                    } else {
-                        that._oGuarantorContactDialog.close();
-                    }
-                    that._oGuarantorContactDialog.open();
-                },
-                error: (oError) => {
-                    that._closeBusyFragment();
-                    that.getModel("abrAccountListModel").setProperty("/busy", false);
-                }
-            });
-         },
+         openGuarantorContactDialog:function(oEvent){
+          debugger;
+          var oSource = oEvent.getSource(),
+          oViewModel = this.getModel("abrAccountListModel"),
+          oObject = oSource.getBindingContext("abrAccountListModel").getObject();
+          this._getGuarantorContactList(oObject);
+       },
+      
+       _getGuarantorContactList:function(oObject){
+          debugger;
+          var that = this;
+          var oModel = this.getModel();
+          var oViewModel = this.getModel("abrAccountListModel");
+          var aFilters = [];
+          var sPath = oModel.createKey("/GuarantorInformationSet", {
+              "Pernr": oObject.Pernr,
+              "Sirno": oObject.Sirno,
+          });
+          // aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
+          // aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
+          this._openBusyFragment("READ_DATA");
+          oModel.read(sPath, {
+              // filters: aFilters,
+              success: (oData, oResponse) => {
+                  that._closeBusyFragment();
+                  // oViewModel.setProperty("/guarantorContactList", oData);
+                  that.getModel("abrAccountListModel").setProperty("/guarantorContactList", oData);
+                  // that.getModel("requestListModel").setProperty("/guarantorContactList", oData);
+                  if (!that._oGuarantorAbrContactDialog) {
+                      that._oGuarantorAbrContactDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorContactDialog", that);
+                      that.getView().addDependent(that._oGuarantorAbrContactDialog);
+                  } else {
+                      that._oGuarantorAbrContactDialog.close();
+                  }
+                  that._oGuarantorAbrContactDialog.open();
+              },
+              error: (oError) => {
+                  that._closeBusyFragment();
+                  that.getModel("abrAccountListModel").setProperty("/busy", false);
+              }
+          });
+       },
+        // openGuarantorContactDialog:function(oEvent){
+        //     var oSource = oEvent.getSource(),
+        //      oViewModel = this.getModel("abrAccountListModel"),
+        //      sPernr = oViewModel.getProperty("/newAccountNumberRequest/Pernr"),
+        //      oObject = oSource.getBindingContext("abrAccountListModel").getObject();
+        //     this._getGuarantorContactList(sPernr,oObject.Sirno);
+        //  },
+        //  _getGuarantorContactList:function(sPernr,sSirno){
+        //     var that = this;
+        //     var oModel = this.getModel();
+        //     var aFilters = [];
+        //     aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
+        //     aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
+        //     this._openBusyFragment("READ_DATA");
+        //     oModel.read("/GuarantorInformationSet", {
+        //         filters: aFilters,
+        //         success: (oData, oResponse) => {
+        //             that._closeBusyFragment();
+        //             that.getModel("abrAccountListModel").setProperty("/guarantorContactList", oData.results);
+        //             if (!that._oGuarantorContactDialog) {
+        //                 that._oGuarantorContactDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorContactDialog", that);
+        //                 that.getView().addDependent(that._oGuarantorContactDialog);
+        //             } else {
+        //                 that._oGuarantorContactDialog.close();
+        //             }
+        //             that._oGuarantorContactDialog.open();
+        //         },
+        //         error: (oError) => {
+        //             that._closeBusyFragment();
+        //             that.getModel("abrAccountListModel").setProperty("/busy", false);
+        //         }
+        //     });
+        //  },
          onCancelGuarantorContact:function(){
             if (this._oGuarantorContactDialog) {
                 this._oGuarantorContactDialog.close();

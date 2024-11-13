@@ -1275,6 +1275,47 @@ sap.ui.define([
             this._openBusyFragment("ATTACHMENT_BEING_UPLOADED");
             oFileUploader.upload();
         },
+        onSchoolFeeNavigationDialog: function (oEvent) {
+            debugger;
+            var oSource = oEvent.getSource(),
+                oViewModel = this.getModel("requestListModel")
+            var schoolInfoList = oSource.getBindingContext("requestListModel").getObject();
+            this._getSchoolList(schoolInfoList);
+        },
+        // _getSchoolList: function (schoolInfoList) {
+        //     debugger;
+        //     var oModel = this.getModel();
+        //     var oViewModel = this.getModel("requestListModel");
+        //     // var sPath = "/GeneralExpenditureInformation(Pernr='" + expendInfoList.Pernr + "',Payno='" + expendInfoList.Payno + "')";
+        //     var sPath = oModel.createKey("/SchoolWageInformationSet", {
+        //         "Pernr": schoolInfoList.Pernr,
+        //         "Wagpe": schoolInfoList.Wagpe,
+        //         "Kamno": schoolInfoList.Kamno,
+        //     });
+        //     this._openBusyFragment();
+
+        //     oModel.read(sPath, {
+        //         // filters: aFilters,
+        //         success: (oData) => {
+        //             debugger;
+        //             oViewModel.setProperty("/schoolInfoDialogRequest", oData);
+        //             this._closeBusyFragment();
+        //             if (!this._oSchoolInfoDialog) {
+        //                 this._oSchoolInfoDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.SchoolFeeNavigationDialog", this);
+        //                 this.getView().addDependent(this._oSchoolInfoDialog);
+        //             } else {
+        //                 this._oSchoolInfoDialog.close();
+        //             }
+        //             this._oSchoolInfoDialog.open();
+
+        //         },
+
+        //         error: (oError) => {
+        //             this._closeBusyFragment();
+        //             sap.m.MessageToast.show("Veri alınırken hata oluştu.");
+        //         }
+        //     });
+        // },
 
         openGuarantorContactDialog:function(oEvent){
             debugger;
@@ -1282,20 +1323,29 @@ sap.ui.define([
             oViewModel = this.getModel("requestListModel"),
             sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
             oObject = oSource.getBindingContext("requestListModel").getObject();
-            this._getGuarantorContactList(sPernr,oObject.Sirno);
+            this._getGuarantorContactList(oObject);
          },
-         _getGuarantorContactList:function(sPernr,sSirno){
+        
+         _getGuarantorContactList:function(oObject){
+            debugger;
             var that = this;
             var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
             var aFilters = [];
-            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
-            aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
+            var sPath = oModel.createKey("/GuarantorInformationSet", {
+                "Pernr": oObject.Pernr,
+                "Sirno": oObject.Sirno,
+            });
+            // aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
+            // aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
             this._openBusyFragment("READ_DATA");
-            oModel.read("/GuarantorInformationSet", {
-                filters: aFilters,
+            oModel.read(sPath, {
+                // filters: aFilters,
                 success: (oData, oResponse) => {
                     that._closeBusyFragment();
-                    that.getModel("requestListModel").setProperty("/guarantorContactList", oData.results);
+                    // oViewModel.setProperty("/guarantorContactList", oData);
+                    that.getModel("requestListModel").setProperty("/guarantorContactList", oData);
+                    // that.getModel("requestListModel").setProperty("/guarantorContactList", oData);
                     if (!that._oGuarantorContactDialog) {
                         that._oGuarantorContactDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorContactDialog", that);
                         that.getView().addDependent(that._oGuarantorContactDialog);
