@@ -220,6 +220,7 @@ sap.ui.define([
         },
         onForeignSavePress: function (oEvent) {
             debugger;
+            var that = this
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var oFinEntry = oViewModel.getProperty('/abroadEmployee');
@@ -229,17 +230,7 @@ sap.ui.define([
                 oModel.create("/LanguageSchoolAbroadSet", oFinEntry, {
                     success: function (oData, oResponse) {
                         debugger;
-                        if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        } else if (oData.Mesty === "E") {
-                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
-                        }
+                        that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
                     },
                     error: function () {
                         debugger;
@@ -249,6 +240,7 @@ sap.ui.define([
         },
         onFinancialSavePress: function (oEvent) {
             debugger;
+            var that = this
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var oFinEntry = oViewModel.getProperty('/financialEmployee');
@@ -258,17 +250,7 @@ sap.ui.define([
                 oModel.create("/DomesticLanguageSchoolInformationSet", oFinEntry, {
                     success: function (oData, oResponse) {
                         debugger;
-                        if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        } else if (oData.Mesty === "E") {
-                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
-                        }
+                        that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
                     },
                     error: function () {
                         debugger;
@@ -278,6 +260,7 @@ sap.ui.define([
         },
         onMasterSavePress: function (oEvent) {
             debugger;
+            var that = this
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var oMasterEntry = oViewModel.getProperty('/masterEmployee');
@@ -285,17 +268,7 @@ sap.ui.define([
                 oModel.create("/MasterSchoolInformationSet", oMasterEntry, {
                     success: function (oData, oResponse) {
                         debugger;
-                        if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        } else if (oData.Mesty === "E") {
-                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
-                        }
+                        that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
                     },
                     error: function () {
                         debugger;
@@ -305,6 +278,7 @@ sap.ui.define([
         },
         onDomesticSavePress: function (oEvent) {
             debugger;
+            var that = this
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var oDomesticEntry = oViewModel.getProperty('/domesticAccount');
@@ -312,17 +286,7 @@ sap.ui.define([
                 oModel.create("/ForeignCurrencyAccountSet", oDomesticEntry, {
                     success: function (oData, oResponse) {
                         debugger;
-                        if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        } else if (oData.Mesty === "E") {
-                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
-                        }
+                        that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
                     },
                     error: function () {
                         debugger;
@@ -332,6 +296,7 @@ sap.ui.define([
         },
         onOtherSavePress: function (oEvent) {
             debugger;
+            var that = this
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var oOtherEntry = oViewModel.getProperty('/otherAccount');
@@ -339,17 +304,7 @@ sap.ui.define([
                 oModel.create("/OtherAccountInformationSet", oOtherEntry, {
                     success: function (oData, oResponse) {
                         debugger;
-                        if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        } else if (oData.Mesty === "E") {
-                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
-                        }
+                        that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
                     },
                     error: function () {
                         debugger;
@@ -359,6 +314,7 @@ sap.ui.define([
         },
         onStnAccountSavePress: function (oEvent) {
             debugger;
+            var that = this
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var oDomesticEntry = oViewModel.getProperty('/domesticEmployee');
@@ -366,17 +322,7 @@ sap.ui.define([
                 oModel.create("/StudentDomesticAccountInformationSet", oDomesticEntry, {
                     success: function (oData, oResponse) {
                         debugger;
-                        if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        } else if (oData.Mesty === "E") {
-                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
-                        }
+                        that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
                     },
                     error: function () {
                         debugger;
@@ -386,6 +332,7 @@ sap.ui.define([
         },
         onAbroadOtherSavePress: function (oEvent) {
             debugger;
+            var that = this
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var oAbroadOtherEntry = oViewModel.getProperty('/abroadOtherEmployee');
@@ -393,17 +340,7 @@ sap.ui.define([
                 oModel.create("/AbroadOtherAccountInformationSet", oAbroadOtherEntry, {
                     success: function (oData, oResponse) {
                         debugger;
-                        if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                        } else if (oData.Mesty === "E") {
-                            MessageToast.show(oData.Messg || "Bir hata oluştu.");
-                        }
+                        that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
                     },
                     error: function () {
                         debugger;
