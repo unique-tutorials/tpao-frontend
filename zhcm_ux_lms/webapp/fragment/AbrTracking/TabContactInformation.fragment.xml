@@ -3,25 +3,6 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core">
-    <!-- <f:Form editable="false" class="sapUiSmallMarginBottom">
-        <f:title>
-            <core:Title text="{i18n>CONTACT_INFORMATION}" />
-        </f:title>
-        <f:layout>
-            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-        </f:layout>
-        <f:formContainers>
-            <f:FormContainer>
-                <f:formElements>
-                    <f:FormElement label="{i18n>WEB_ADDRESS}">
-                        <f:fields>
-                            <Input value="{requestListModel>/contactEmployee/Webad}" />
-                        </f:fields>
-                    </f:FormElement>
-                </f:formElements>
-            </f:FormContainer>
-        </f:formContainers>
-    </f:Form> -->
     <Table width="auto" noDataText="{i18n>NO_DATA}" class="sapUiSmallMarginBottom" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>

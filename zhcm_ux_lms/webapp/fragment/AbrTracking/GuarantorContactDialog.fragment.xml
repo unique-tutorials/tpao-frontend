@@ -1,12 +1,18 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core"
-    xmlns:l="sap.ui.layout">
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core">
     <Dialog title="{i18n>GUARANTOR_CONTACT_INFORMATION}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
-        <Table busy="{contactRequestListModel>/tableBusy}" width="auto" items="{requestListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{contactRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+        <Table busy="{requestListModel>/tableBusy}" width="auto" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{requestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
             <headerToolbar>
                 <OverflowToolbar>
                     <content>
                         <Title text="{i18n>ADDRESS_INFORMATION}"/>
+                        <ToolbarSpacer />
+                        <Button
+                            icon="sap-icon://edit"
+                            press="onEditPress"
+                        />
                     </content>
                 </OverflowToolbar>
             </headerToolbar>
@@ -36,24 +42,92 @@
             <items>
                 <ColumnListItem >
                     <cells>
-                        <Text text="{requestListModel>Adtyp}"/>
-                        <Text text="{requestListModel>Merni}"/>
-                        <Text text="{requestListModel>Stras}"/>
-                        <Text text="{requestListModel>Pstlz}"/>
-                        <Text text="{requestListModel>Conry}"/>
-                        <Text text="{requestListModel>City}"/>
-                        <Text text="{requestListModel>Distr}"/>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Adtyp}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Adtyp}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Mernis}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Mernis}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Stras}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Stras}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Pstlz}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Pstlz}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Conry}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Conry}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/guarantorContactList/City}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Bezei}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
+                        <HBox alignItems="Start">
+                            <Input
+                                value="{requestListModel>/guarantorContactList/Distx}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                            />
+                            <Text
+                                text="{requestListModel>/guarantorContactList/Distx}"
+                                visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                            />
+                        </HBox>
                     </cells>
                 </ColumnListItem>
             </items>
         </Table>
         <l:VerticalLayout width="100%" class="gridWrapper">
             <l:Grid containerQuery="true" class="smod-background" defaultSpan="XL6 L6 M6 S12">
-                <Table busy="{phoneRequestListModel>/tableBusy}" items="{requestListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                <Table busy="{requestListModel>/tableBusy}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{requestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
                                 <Title text="{i18n>PHONE_INFORMATION}"/>
+                                <ToolbarSpacer />
+                                <Button
+                                    icon="sap-icon://edit"
+                                    press="onEditPress"
+                                />
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -71,18 +145,41 @@
                     <items>
                         <ColumnListItem >
                             <cells>
-                                <Text text="{requestListModel>Photy}"/>
-                                <Text text="{requestListModel>Phonm}"/>
-                                <CheckBox selected="{requestListModel>Pfult}"/>
+                                <HBox alignItems="Start">
+                                    <Input
+                                        value="{requestListModel>/guarantorContactList/Photy}"
+                                        visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                                    />
+                                    <Text
+                                        text="{requestListModel>/guarantorContactList/Photy}"
+                                        visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                                    />
+                                </HBox>
+                                <HBox alignItems="Start">
+                                    <Input
+                                        value="{requestListModel>/guarantorContactList/Phonm}"
+                                        visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                                    />
+                                    <Text
+                                        text="{requestListModel>/guarantorContactList/Phonm}"
+                                        visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                                    />
+                                </HBox>
+                                <CheckBox selected="{requestListModel>/guarantorContactList/Pfult}"/>
                             </cells>
                         </ColumnListItem>
                     </items>
                 </Table>
-                <Table busy="{mailRequestListModel>/tableBusy}" items="{requestListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{mailRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                <Table busy="{requestListModel>/tableBusy}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{requestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
                                 <Title text="{i18n>E_MAIL_INFORMATION}"/>
+                                <ToolbarSpacer />
+                                <Button
+                                    icon="sap-icon://edit"
+                                    press="onEditPress"
+                                />
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -98,8 +195,17 @@
                     <items>
                         <ColumnListItem >
                             <cells>
-                                <Text text="{requestListModel>Email}"/>
-                                <CheckBox selected="{requestListModel>Mfult}"/>
+                                    <HBox alignItems="Start">
+                                        <Input
+                                            value="{requestListModel>/guarantorContactList/Email}"
+                                            visible="{= ${requestListModel>/suggestionActionData/priorityEditable} }"
+                                        />
+                                        <Text
+                                            text="{requestListModel>/guarantorContactList/Email}"
+                                            visible="{= ${requestListModel>/suggestionActionData/priorityDisplay} }"
+                                        />
+                                    </HBox>
+                                <CheckBox selected="{requestListModel>/guarantorContactList/Mfult}"/>
                             </cells>
                         </ColumnListItem>
                     </items>
@@ -109,5 +215,8 @@
         <beginButton>
             <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorContact" type="Reject" />
         </beginButton>
+        <endButton>
+            <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://cancel" press=".onSaveGuarantorContact" type="Accept" />
+        </endButton>
     </Dialog>
 </c:FragmentDefinition>

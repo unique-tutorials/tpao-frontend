@@ -1,0 +1,76 @@
+<c:FragmentDefinition xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	xmlns:f="sap.ui.layout.form">
+	<Dialog title="nurgul" contentWidth="80%" contentHeight="80%">
+		<VBox class="sapUiSmallMargin">
+			<f:Form editable="true">
+
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer title="Office">
+						<f:formElements>
+							<f:FormElement label="Name">
+								<f:fields>
+									<Input value="{SupplierName}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Street">
+								<f:fields>
+									<Input value="{Street}" />
+									
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="ZIP Code/City">
+								<f:fields>
+									<Input value="{City}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer title="Online">
+						<f:formElements>
+							<f:FormElement label="Web">
+								<f:fields>
+									<Input value="{Url}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Twitter">
+								<f:fields>
+									<Input value="{Twitter}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+			<f:Form  editable="true">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer title="Contact data">
+						<f:formElements>
+							<f:FormElement label="Email">
+								<f:fields>
+									<Input value="{EMail}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Tel.">
+								<f:fields>
+									<Input value="{Tel}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="SMS">
+								<f:fields>
+									<Input value="{Sms}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</VBox>
+	</Dialog>
+</c:FragmentDefinition>

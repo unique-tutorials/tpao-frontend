@@ -15,6 +15,7 @@
                     <f:FormElement label="Partner Seçiniz">
                         <f:fields>
                             <Input value="{requestListModel>/domesticAccount/Partner}" />
+                            <Button text="Gönder" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_NAME}">
@@ -29,7 +30,9 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{requestListModel>/domesticAccount/City}" />
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/domesticAccount/City}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DOMESTIC_FOREIGN_CURRENCY_ACCOUNT}">
@@ -47,6 +50,14 @@
                             <TextArea rows="3" value="{requestListModel>/domesticAccount/Descp}" />
                         </f:fields>
                     </f:FormElement>
+                    <f:FormElement label="">
+                        <f:fields>
+                            <Toolbar class="toolbar-border-none">
+                                <ToolbarSpacer/>
+                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onDomesticSavePress" width="150px" />
+                            </Toolbar>
+                        </f:fields>
+                    </f:FormElement>
                 </f:formElements>
             </f:FormContainer>
             <f:FormContainer title="{i18n>OTHER_ACCOUNT_INFORMATION}">
@@ -54,6 +65,7 @@
                     <f:FormElement label="Partner Seçiniz">
                         <f:fields>
                             <Input value="{requestListModel>/otherAccount/Partner}" />
+                            <Button text="Gönder" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>RECIPIENT_NAME}">
@@ -73,7 +85,9 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>OTHER_BANK_CITY}">
                         <f:fields>
-                            <Input value="{requestListModel>/otherAccount/City}" />
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/otherAccount/City}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>OTHER_ACCOUNT_NUMBER}">
@@ -94,6 +108,14 @@
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
                             <TextArea rows="3" value="{requestListModel>/otherAccount/Descp}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="">
+                        <f:fields>
+                            <Toolbar class="toolbar-border-none">
+                                <ToolbarSpacer/>
+                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onOtherSavePress" width="150px" />
+                            </Toolbar>
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

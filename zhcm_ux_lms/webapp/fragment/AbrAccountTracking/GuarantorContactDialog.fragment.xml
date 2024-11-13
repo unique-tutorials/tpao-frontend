@@ -1,0 +1,113 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Dialog title="{i18n>GUARANTOR_CONTACT_INFORMATION}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
+        <Table busy="{abrAccountListModel>/tableBusy}" width="auto" items="{abrAccountListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrAccountListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+            <headerToolbar>
+                <OverflowToolbar>
+                    <content>
+                        <Title text="{i18n>ADDRESS_INFORMATION}"/>
+                    </content>
+                </OverflowToolbar>
+            </headerToolbar>
+            <columns>
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>ADDRESS_TYPE}"/>
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>FROM_MERNIS}"/>
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>ADDRESS}"/>
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>POSTAL_CODE}"/>
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>OR_LAND1}"/>
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>PROVINCE}"/>
+                </Column>
+                <Column minScreenWidth="Tablet" demandPopin="true">
+                    <Text text="{i18n>DISTRICT}"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem >
+                    <cells>
+                        <Text text="{abrAccountListModel>Adtyp}"/>
+                        <Text text="{abrAccountListModel>Merni}"/>
+                        <Text text="{abrAccountListModel>Stras}"/>
+                        <Text text="{abrAccountListModel>Pstlz}"/>
+                        <Text text="{abrAccountListModel>Conry}"/>
+                        <Text text="{abrAccountListModel>City}"/>
+                        <Text text="{abrAccountListModel>Distr}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <l:VerticalLayout width="100%" class="gridWrapper">
+            <l:Grid containerQuery="true" class="smod-background" defaultSpan="XL6 L6 M6 S12">
+                <Table busy="{abrAccountListModel>/tableBusy}" items="{abrAccountListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrAccountListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="{i18n>PHONE_INFORMATION}"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="{i18n>PHONE_TYPE}"/>
+                        </Column>
+                        <Column >
+                            <Text text="{i18n>PHONE_NUMBER}"/>
+                        </Column>
+                        <Column >
+                            <Text text="{i18n>DEFAULT}"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem >
+                            <cells>
+                                <Text text="{abrAccountListModel>Photy}"/>
+                                <Text text="{abrAccountListModel>Phonm}"/>
+                                <CheckBox enabled="false" selected="{abrAccountListModel>Pfult}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <Table busy="{abrAccountListModel>/tableBusy}" items="{abrAccountListModel>/guarantorContactList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrAccountListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="{i18n>E_MAIL_INFORMATION}"/>
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="{i18n>EMAIL_ADDRESS}"/>
+                        </Column>
+                        <Column >
+                            <Text text="{i18n>DEFAULT}"/>
+                        </Column>
+
+                    </columns>
+                    <items>
+                        <ColumnListItem >
+                            <cells>
+                                <Text text="{abrAccountListModel>Email}"/>
+                                <CheckBox enabled="false" selected="{abrAccountListModel>Mfult}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </l:Grid>
+        </l:VerticalLayout>
+        <beginButton>
+            <Button text="{i18n>CLOSE_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorContact" type="Back" />
+        </beginButton>
+    </Dialog>
+</c:FragmentDefinition>

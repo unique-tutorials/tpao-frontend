@@ -5,13 +5,15 @@ sap.ui.define([
 	"sap/m/MessageBox",
 	"sap/m/MessageToast",
 	"zhcm_ux_lms_abr/controller/SharedData",
-	"zhcm_ux_lms_abr/utils/FormValidator"
+	"zhcm_ux_lms_abr/utils/FormValidator",
+	"zhcm_ux_lms_abr/utils/sweetalert"
 
-], function (Controller, Dialog, MessageBox, MessageToast, SharedData, FormValidator) {
+], function (Controller, Dialog, MessageBox, MessageToast, SharedData, FormValidator,swalJs) {
 	"use strict";
 
 	return Controller.extend("zhcm_ux_lms_abr.controller.BaseController", {
 
+		
 		/**
 		 * Convenience method for accessing the router.
 		 * @public
@@ -27,12 +29,14 @@ sap.ui.define([
 		 * @param {string} [sName] the model name
 		 * @returns {sap.ui.model.Model} the model instance
 		 */
+
 		getModel: function (sName) {
 			return this.getView().getModel(sName);
 		},
 		_formatPernr: function (sPernr) {
 			return parseInt(sPernr, 10).toString();
 		},
+		
 		alertMessage: function(sType, sTitle, sMessage, aParam) {
 			var sIcon = sap.m.MessageBox.Icon.NONE;
 			switch (sType) {
@@ -58,6 +62,51 @@ sap.ui.define([
 				actions: sap.m.MessageBox.Action.OK // default
 			});
 		},
+		_sweetToast:function(sMessage, sMessageType){
+			var sTitle,sText,sIcon;
+			var sI18n = this.getView().getModel("i18n").getResourceBundle();
+			switch (sMessageType) {
+				case 'S':
+				sTitle = sI18n.getText("SUCCESS_TEXT");
+				sText = sMessage;
+				sIcon = "success";
+				break;
+				case 'W':
+				sTitle = sI18n.getText("WARNING_TEXT");
+				sText = sMessage;
+				sIcon = "warning";
+				break;
+				case 'E':
+				sTitle = sI18n.getText("ERROR");
+				sText = sMessage;
+				sIcon = "error";
+				break;
+				case 'I':
+				sTitle = sI18n.getText("INFO_TEXT");
+				sText = sMessage;
+				sIcon = "info";
+				break;
+				default:
+				sText = sMessage;
+				sIcon = "info";
+			}
+			var Toast = Swal.mixin({
+				toast: true,
+				position: "top-end",
+				showConfirmButton: false,
+				timer: 3000,
+				timerProgressBar: true,
+				didOpen: (toast) => {
+				  toast.onmouseenter = Swal.stopTimer;
+				  toast.onmouseleave = Swal.resumeTimer;
+				}
+			  });
+			  Toast.fire({
+				icon: sIcon,
+				title: sText
+			  });
+		},
+
 		_sweetAlert: function (sMessage, sMessageType) {
 			var sTitle, sText, sIcon;
 			var sI18n = this.getView().getModel("i18n").getResourceBundle();
