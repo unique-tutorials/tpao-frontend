@@ -74,5 +74,6 @@ xmlns:c="sap.ui.core">
                 </cells>
             </ColumnListItem>
         </items>
+        
     </Table>
 </c:FragmentDefinition>

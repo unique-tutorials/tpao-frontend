@@ -33,6 +33,7 @@ sap.ui.define(
             .getRoute("AbrAccountTracking")
             .attachPatternMatched(this._onRequestListMatched, this);
         },
+        
         _onRequestListMatched: function (oEvent) {
           this._getRequestList();
         },
