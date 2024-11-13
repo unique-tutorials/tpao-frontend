@@ -43,15 +43,15 @@
                                 <Input value="{requestStajyerListModel>/SelectedStajyer/Nachn}" />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="{i18n>REGISTRATION_NUMBER}">
+                        <!-- <f:FormElement label="{i18n>REGISTRATION_NUMBER}">
                             <f:fields>
                                 <Input value="{requestStajyerListModel>/SelectedStajyer/Orgehx}" />
                             </f:fields>
-                        </f:FormElement>
+                        </f:FormElement> -->
                         <f:FormElement label="{i18n>UNIT}">
                             <f:fields>
-                                <Input value="{requestStajyerListModel>/SelectedStajyer/Orgeh}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitStajyerSearchHelp" />
-                                <Input value="{requestStajyerListModel>/SelectedStajyer/Orgtx}" />
+                                <Input value="{requestStajyerListModel>/SelectedStajyer/Orgeh}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitStajyerSearchHelp" enabled="false" />
+                                <Input value="{requestStajyerListModel>/SelectedStajyer/Orgtx}" enabled="false" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -61,25 +61,37 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>QUOTA_TYPE}">
                         <f:fields>
-                            <!-- <Input value="{requestStajyerListModel>/SelectedStajyer/Quoty}" /> -->
-                            <Select forceSelection="false" selectedKey="{requestStajyerListModel>/SelectedStajyer/Quoty}" width="100%" items="{  
+                            <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Quotx' } ] }" selectedKey="{requestStajyerListModel>/SelectedStajyer/Quotx}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox> -->
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Quotx}" />
+                            <!-- <Select forceSelection="false" selectedKey="{requestStajyerListModel>/SelectedStajyer/Quotx}" width="100%" items="{  
                         path:'/ValueHelpSet',
                         filters : [
                             { path : 'Id', operator : 'EQ', value1 : 'Quoty'}
                         ]
                     }">
                                 <core:Item key="{Key}" text="{Value}"/>
-                            </Select>
+                            </Select> -->
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ADDRESS}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Orgehx}" />
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Adres}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>STUDENT_GENDER}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Orgehx}" />
+                            <Text class="textClass" text="{
+                                path: 'requestStajyerListModel>/SelectedStajyer/Gesch',
+                                formatter: '.genderFormatter'
+                            }" />
+                                <Input enabled="false" />
+                        </f:fields>
+                    </f:FormElement>
+                     <f:FormElement label="{i18n>STUDENT_PERSK}">
+                        <f:fields>
+                            <Input enabled="false" value="{requestStajyerListModel>/SelectedStajyer/Ptext}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

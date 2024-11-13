@@ -164,6 +164,7 @@ sap.ui.define([
         },
         onReservationSaveButton: function(oEvent) {
             debugger;
+            var that = this
             var oModel = this.getModel();
             var oViewModel = this.getModel("trplsRequestListModel");
             var oReservationEntry = oViewModel.getProperty('/reservationEmployee');
@@ -175,6 +176,7 @@ sap.ui.define([
             oModel.create("/TravelReservationSet", oReservationEntry, {
                 success: function(oData, oResponse) {
                     debugger;
+                    that._sweetToast(that.getText("RESERVATION_CREATE_SUCCESS"), "S");
                     if (oData.Mesty === "S") {
                         Swal.fire({
                             position: "center",

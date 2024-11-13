@@ -39,6 +39,12 @@
 					<content>
 						<Table width="3000px" id="stajyerTable" inset="false" items="{/IntershipStudentSet}">
 							<columns>
+							<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>PERNR}"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="{i18n>PERSK}"/>
+								</Column>
 								<Column minScreenWidth="Tablet" demandPopin="true">
 									<Text text="{i18n>QUOTA_TYPE}"/>
 								</Column>
@@ -104,6 +110,8 @@
 							<items>
 								<ColumnListItem type="Active" press=".onItemStajyerSelected">
 									<cells>
+									<Text text="{Pernr}" />
+									<Text text="{Persk}" />
 										<Text text="{Quotx}" />
 										<ObjectIdentifier title="{Orgeh}" text="{Orgtx}"/>
 										<Text text="{Vorna}" />

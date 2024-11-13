@@ -141,7 +141,7 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
+                <!-- <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/> -->
                 <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onReservationSaveButton" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>

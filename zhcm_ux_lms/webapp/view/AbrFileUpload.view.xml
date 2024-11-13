@@ -64,7 +64,9 @@
                             <Column minScreenWidth="Tablet" demandPopin="true">
                                 <Text text="Gönder"/>
                             </Column>
-                       
+                            <Column minScreenWidth="Tablet" demandPopin="true">
+                                <Text text="İşlemler"/>
+                            </Column>
                         </columns>
     
                         <items>
@@ -73,12 +75,28 @@
                                     <Text text="{Consa}" />
                                     <Text text="{Pernr}" />
                                     <Text text="{Ename}" />
-                                    <Input value="{Salry}" />
+                                    <Text text="{Salry}" />
                                     <Text text="{Stafe}" />
                                     <Text text="{Waers}" />
-                                    <Input value="{Extda}" />
+                                    <Text text="{Extda}" />
                                     <CheckBox selected="{Sent}" />
                                     <Button text="Gönder" press=".onSendSalariesButtonPress" type="Emphasized"/>
+                                    <MenuButton icon="sap-icon://settings"  type="Accept">
+                                        <menu>
+                                            <Menu>
+                                                <MenuItem
+                                                    text="Oluştur"
+                                                    icon="sap-icon://account"
+                                                    press=".onSalariesCreateDialog"
+                                                />
+                                                <!-- <MenuItem
+                                                    text="İletişim Bilgileri"
+                                                    icon="sap-icon://call"
+                                                    press="openGuarantorContactDialog"
+                                                /> -->
+                                            </Menu>
+                                        </menu>
+                                    </MenuButton>   
                                 </cells>
                             </ColumnListItem>
                         </items>

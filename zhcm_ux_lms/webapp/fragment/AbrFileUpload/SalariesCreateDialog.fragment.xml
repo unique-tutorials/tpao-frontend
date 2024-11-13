@@ -1,0 +1,62 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <Dialog title="Maaş Oluştur" contentWidth="50%" verticalScrolling="false">
+        <f:Form editable="true">
+            <f:title>
+                <core:Title text="Address" />
+            </f:title>
+            <f:layout>
+                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+            </f:layout>
+            <f:formContainers>
+                <f:FormContainer title="Office">
+                    <f:formElements>
+                        <f:FormElement label="Kısıt Maaş">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Consa}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Öğrenci No">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Pernr}" enabled="false" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Adı Soyadı">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Ename}" enabled="false" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Maaş">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Salry}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Kırtasiye">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Stafe}" enabled="false" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Para Birimi">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Waers}" enabled="false" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Fazla gün">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Extda}" />
+                            </f:fields>
+                        </f:FormElement>
+                    </f:formElements>
+                </f:FormContainer>
+            </f:formContainers>
+        </f:Form>
+        <beginButton>
+            <Button text="{i18n>CANCEL_ACTION}" type="Reject" press=".onCancelSalaryButtonPress" />
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>SAVE_ACTION}" type="Accept" press=".onSaveSalaryButtonPress" />
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>
