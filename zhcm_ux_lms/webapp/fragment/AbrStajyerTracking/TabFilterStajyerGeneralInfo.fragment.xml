@@ -103,7 +103,7 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>MENTOR}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Intgr}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onMentorValueHelpRequest" />
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Mento}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

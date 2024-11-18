@@ -55,7 +55,7 @@
                             <f:FormElement label="Ödeme Türü">
                                 <f:fields>
                                     <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytp' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Paytp}">
-                                        <core:ListItem key="{Key}" text="{Value}"/>
+                                        <core:ListItem key="{Key}" text="{Key}-{Value}"/>
                                     </ComboBox>
                                 </f:fields>
                             </f:FormElement>

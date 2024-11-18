@@ -14,8 +14,5 @@
         <beginButton>
             <Button text="{i18n>CANCEL_BUTTON}" type="Reject" icon="sap-icon://cancel" press=".onEvaluationCancelButtonPress"/>
         </beginButton>
-        <endButton>
-            <Button text="{i18n>SAVE_BUTTON}" type="Accept" icon="sap-icon://save"/>
-        </endButton>
     </Dialog>
 </c:FragmentDefinition>

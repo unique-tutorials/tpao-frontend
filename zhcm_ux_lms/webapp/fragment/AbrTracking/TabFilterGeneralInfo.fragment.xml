@@ -349,7 +349,7 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>ACCOUNT_RESTRICTION}">
                         <f:fields>
-                            <DatePicker value="{path: 'requestListModel>/generalEmployee/Restr', 
+                            <DatePicker value="{path: 'requestListModel>/generalEmployee/Acred', 
                                 type: 'sap.ui.model.type.Date', 
                                 formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
                             </DatePicker>
@@ -360,7 +360,7 @@
                             <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Payac' } ] }" selectedKey="{requestListModel>/generalEmployee/Payac}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox> -->
-                            <Button text="{i18n>DOCUMENTS}" type="Emphasized"/>
+                            <Button text="{i18n>DOCUMENTS}" press="onShowAtt" type="Emphasized"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>STATUS_AT_THE_END_OF_EDUCATION}">

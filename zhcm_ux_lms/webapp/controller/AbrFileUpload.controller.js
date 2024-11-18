@@ -28,7 +28,8 @@ sap.ui.define([
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {},
-                wageSearchRequest:{}
+                wageSearchRequest:{},
+                salaryCreateList:{}
              
             });
         },
@@ -86,18 +87,18 @@ sap.ui.define([
             var oModel = this.getModel();
             var oSource = oEvent.getSource();
             // oViewModel = this.getModel("requestListModel")
-            var salaryInfoList = oSource.getBindingContext("wageRequestListModel").getObject();
+            var salaryInfoList = oSource.getBindingContext().getObject();
             var oUrlParameters = {
                 "Pernr": salaryInfoList.Pernr,
                 "Wagpe": salaryInfoList.Wagpe
             };
  
-            this._openBusyFragment("TRAINING_PARTICIPANT_SAVE_OPERATION", []);
+            this._openBusyFragment("PLEASE_WAIT", []);
             oModel.callFunction("/SentSalary", {
                 method: "POST",
                 urlParameters: oUrlParameters,
                 success: function (oData, oResponse) {
-                    // that.getModel("requestListModel").setProperty("/expendInfoList");
+                    // that.getModel("wageRequestListModel").setProperty("/expendInfoList");
                     this._sweetAlert(this.getText("SAVE_SUCCESSFUL"), "S");
                     this._closeBusyFragment();
                 }.bind(this),
@@ -105,7 +106,72 @@ sap.ui.define([
                     debugger;
                 }.bind(this)
             }); 
-        }
+        },
+        // onSalariesCreateDialog:function(oEvent){
+        //     var oViewModel = this.getModel("wageRequestListModel"),
+        //     // sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
+        //     oSource = oEvent.getSource(),
+        //     oObject = oSource.getBindingContext("wageRequestListModel").getObject();
+        //     oViewModel.setProperty("/salaryCreateList", oObject);
+        //     debugger;
+        //     if (!this._oSalariesCreateDialog) {
+		// 		this._oSalariesCreateDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrFileUpload.SalariesCreateDialog", this);
+		// 		this.getView().addDependent(this._oSalariesCreateDialog);
+		// 	}
+		// 	this._oSalariesCreateDialog.open();
+        // },
+        onSalariesCreateDialog:function(oEvent){
+            debugger
+            var oViewModel = this.getModel("wageRequestListModel"),
+            oSource = oEvent.getSource(),
+            oObject = oSource.getBindingContext().getObject();
+            oViewModel.setProperty("/salaryCreateList", oObject);
+            if (!this._oSalariesCreateDialog) {
+                this._oSalariesCreateDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrFileUpload.SalariesCreateDialog", this);
+                this.getView().addDependent(this._oSalariesCreateDialog);
+            } else {
+                this._oSalariesCreateDialog.close();
+            }
+            this._oSalariesCreateDialog.open();
+          
+         },
+         onCancelSalaryButtonPress:function(){
+            if (this._oSalariesCreateDialog) {
+                this._oSalariesCreateDialog.close();
+            }
+         },
+         clearFormDialog: function () {
+            var oViewModel = this.getModel("wageRequestListModel");
+            oViewModel.setProperty("/salaryCreateList", {});
+        },
+         onSaveSalaryButtonPress:function(){
+            debugger;
+            var that = this;
+            var oModel = this.getModel(),
+            oViewModel = this.getModel("wageRequestListModel");
+            // var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+            var sPrope = "2";
+            var sWagpe = oViewModel.getProperty("/salaryCreateList/Wagpe")
+            var oRequets = oViewModel.getProperty("/salaryCreateList");
             
+            var sPernr = oViewModel.getProperty("/salaryCreateList/Pernr");
+            oRequets.Pernr = sPernr,
+            oRequets.Prope = "2",
+            oRequets.Wagpe = sWagpe
+
+            oModel.create("/StudentSalariesSet", oRequets, {
+                success: function (oData, oResponse) {
+                    // that.onAttachmentPaymentUploadPress();
+                    that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
+                    that._oSalariesCreateDialog.close();
+                    that.clearFormDialog();
+                    that._closeBusyFragment();
+                },
+                error: function (oError) {
+                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._closeBusyFragment();
+                }.bind(this)
+            });
+         }  
 	});
 });
