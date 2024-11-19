@@ -36,7 +36,7 @@
             </f:Form>
         </VBox>
         <VBox class="sapUiSmallMargin">
-            <f:Form id="FormDisplay354" editable="true">
+            <f:Form editable="true">
                 <f:title>
                     <core:Title text="{i18n>RESERVATION_INFORMATION}" />
                 </f:title>
