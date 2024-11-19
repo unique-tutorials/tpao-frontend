@@ -38,6 +38,10 @@ sap.ui.define([
             this._initiateModel();
             this.getRouter().getRoute("ApprovalRequestList").attachPatternMatched(this._onApprovalRequestListMatched, this);
         },
+        onNavBack: function () {
+          // this.goBack(History);
+          this.getRouter().navTo("appdispatcher", {}, true);
+        },
         _onApprovalRequestListMatched: function (oEvent) {
             this.statusFilters = this.allStatusFilters.Statuses;
             var that = this;
@@ -303,9 +307,9 @@ sap.ui.define([
               success: function (oData, oResponse) {
                 this._closeBusyFragment();
                 if (StatusChange) {
-                  this._sweetAlert(this.getText("FORM_STATUS_CHANGE_SUCCESSFUL"), "S");
+                  this._sweetToast(this.getText("FORM_STATUS_CHANGE_SUCCESSFUL"), "S");
                 } else {
-                  this._sweetAlert(this.getText("FORM_SAVE_SUCCESSFUL"), "S");
+                  this._sweetToast(this.getText("FORM_SAVE_SUCCESSFUL"), "S");
                 }
                 this._oRequestDisplayDialog.close();
               }.bind(this),
@@ -322,9 +326,9 @@ sap.ui.define([
               success: function (oData, oResponse) {
                 this._closeBusyFragment();
                 if (StatusChange) {
-                  this._sweetAlert(this.getText("FORM_STATUS_CHANGE_SUCCESSFUL"), "S");
+                  this._sweetToast(this.getText("FORM_STATUS_CHANGE_SUCCESSFUL"), "S");
                 } else {
-                  this._sweetAlert(this.getText("FORM_SAVE_SUCCESSFUL"), "S");
+                  this._sweetToast(this.getText("FORM_SAVE_SUCCESSFUL"), "S");
                 }
                 this._oRequestDisplayDialog.close();
               }.bind(this),

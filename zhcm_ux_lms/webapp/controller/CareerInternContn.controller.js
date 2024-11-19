@@ -21,6 +21,10 @@ sap.ui.define([
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
+        onNavBack: function () {
+            // this.goBack(History);
+            this.getRouter().navTo("appdispatcher", {}, true);
+        },
         _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("careerContnListModel");
             oViewModel.setData({

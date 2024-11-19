@@ -38,6 +38,10 @@ sap.ui.define([
              
             });
         },
+        onNavBack: function () {
+            // this.goBack(History);
+            this.getRouter().navTo("appdispatcher", {}, true);
+        },
         _getRequestList: function (oEvent) { 
 
         },
@@ -176,15 +180,9 @@ sap.ui.define([
             oModel.create("/TravelReservationSet", oReservationEntry, {
                 success: function(oData, oResponse) {
                     debugger;
-                    that._sweetToast(that.getText("RESERVATION_CREATE_SUCCESS"), "S");
+                   
                     if (oData.Mesty === "S") {
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: that.getText("Rezervasyon Bilgileri Başarılı olarak kaydedildi."),
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
+                        that._sweetToast(that.getText("RESERVATION_CREATE_SUCCESS"), "S");
                     } else if (oData.Mesty === "E") {
                         MessageToast.show(oData.Messg || "Bir hata oluştu.");
                     }

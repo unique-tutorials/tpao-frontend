@@ -33,6 +33,10 @@ sap.ui.define([
              
             });
         },
+        onNavBack: function () {
+            // this.goBack(History);
+            this.getRouter().navTo("appdispatcher", {}, true);
+        },
         _getRequestList: function () { 
 
         },
@@ -99,7 +103,7 @@ sap.ui.define([
                 urlParameters: oUrlParameters,
                 success: function (oData, oResponse) {
                     // that.getModel("wageRequestListModel").setProperty("/expendInfoList");
-                    this._sweetAlert(this.getText("SAVE_SUCCESSFUL"), "S");
+                    this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
                     this._closeBusyFragment();
                 }.bind(this),
                 error: function (oError) {
@@ -168,7 +172,7 @@ sap.ui.define([
                     that._closeBusyFragment();
                 },
                 error: function (oError) {
-                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._sweetToast(this.getText("SAVE_ERROR"), "E");
                     this._closeBusyFragment();
                 }.bind(this)
             });

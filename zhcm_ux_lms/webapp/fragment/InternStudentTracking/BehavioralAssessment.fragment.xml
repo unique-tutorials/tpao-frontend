@@ -55,42 +55,135 @@
         stajerlerinizi değerlendirmek ve Biz Bize Kariyer programını geliştir olup, dolduracağınız anket bizim için
         önem arz etmektedir." type="Information" showIcon="true">
         </MessageStrip>
-        <List headerText="{i18n>INFO_LEVEL_DESC}" headerLevel="H2" items="{internStudentListModel>/ratingScaleList}">
-            <StandardListItem title="{internStudentListModel>titles}" />
-        </List>
     </VBox>
-    <Table inset="false" items="{internStudentListModel>/evaluationQuestionsList}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
-        <headerToolbar>
-            <OverflowToolbar>
-                <content>
-                    <Title text="Products" level="H2"/>
-                    <ToolbarSpacer />
-                    <Button icon="sap-icon://edit" press="onEditPress" type="Accept" />
-                </content>
-            </OverflowToolbar>
-        </headerToolbar>
-        <columns>
-            <Column width="8rem">
-                <Text text="{i18n>Q_ORDER_NUMBER}" />
-            </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>EVALUATION_QUESTIONS}" />
-            </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End" width="12rem">
-                <Text text="{i18n>POINT}" />
-            </Column>
-        </columns>
+    <IconTabBar stretchContentHeight="false" id="TabContainer2">
         <items>
-            <ColumnListItem vAlign="Middle">
-                <cells>
-                    <Text text="{internStudentListModel>numb}"/>
-                    <Text text="{internStudentListModel>Ques}" />
-                    <HBox alignItems="End" justifyContent="End">
-                        <Input value="{internStudentListModel>Point}" visible="{= ${internStudentListModel>/suggestionActionData/priorityEditable} }" />
-                        <Text text="{internStudentListModel>Point}" visible="{= ${internStudentListModel>/suggestionActionData/priorityDisplay} }" />
-                    </HBox>
-                </cells>
-            </ColumnListItem>
+            <IconTabFilter text="Lise">
+                <!-- <List headerText="{i18n>INFO_LEVEL_DESC}" headerLevel="H2" items="{internStudentListModel>/ratingScaleList}">
+                    <StandardListItem title="{internStudentListModel>titles}" />
+                </List> -->
+                <Table id="idProductsTable2" inset="false" items="{/InternEvaluationFormSet}">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="Ölçeklere Göre Puan Skalası" level="H2"/>
+                                <ToolbarSpacer />
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Soru Sıra No" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Kesinlikle Katılıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Katılıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Kısmen Katılıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Kararsızım" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Kısmen Katılmıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Katılmıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Kesinlikle Katılmıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Fikrim Yok" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <Text text="{Quenm}" />
+                                <Text text="{Score1}" />
+                                <Text text="{Score2}" />
+                                <Text text="{Score3}" />
+                                <Text text="{Score4}" />
+                                <Text text="{Score5}" />
+                                <Text text="{Score6}" />
+                                <Text text="{Score7}" />
+                                <Text text="{Score8}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+
+                <Table inset="false" items="{internStudentListModel>/evaluationQuestionsList}" growing="true" growingScrollToLoad="true">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="Lise Öğrencileri İçin Değerlendirme Anketi" level="H2"/>
+                                <ToolbarSpacer />
+                                <Button icon="sap-icon://edit" press="onEditPress" type="Accept" />
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="8rem">
+                            <Text text="{i18n>Q_ORDER_NUMBER}" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true" width="30rem">
+                            <Text text="{i18n>EVALUATION_QUESTIONS}" />
+                        </Column>
+                        <Column>
+                            <Text text="Kesinlikle Katılıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Katılıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Kısmen Katılıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Kararsızım" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Kısmen Katılmıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Katılmıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Kesinlikle Katılmıyorum" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="Fikrim Yok" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <Text text="{internStudentListModel>numb}"/>
+                                <Text text="{internStudentListModel>Ques}" />
+                                <!-- <HBox alignItems="End" justifyContent="End">
+                                    <Input value="{internStudentListModel>Point}" visible="{= ${internStudentListModel>/suggestionActionData/priorityEditable} }" />
+                                    <Text text="{internStudentListModel>Point}" visible="{= ${internStudentListModel>/suggestionActionData/priorityDisplay} }" />
+                                </HBox> -->
+                                <Text text="{internStudentListModel>numb}"/>
+                                <Text text="{internStudentListModel>numb}"/>
+                                <Text text="{internStudentListModel>numb}"/>
+                                <Text text="{internStudentListModel>numb}"/>
+                                <Text text="{internStudentListModel>numb}"/>
+                                <Text text="{internStudentListModel>numb}"/>
+                                <Text text="{internStudentListModel>numb}"/>
+                                <Text text="{internStudentListModel>numb}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </IconTabFilter>
+            <IconTabFilter text="Üniversite">
+            </IconTabFilter>
         </items>
-    </Table>
+    </IconTabBar>
+
 </c:FragmentDefinition>

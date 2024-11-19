@@ -67,7 +67,7 @@ sap.ui.define([
 			return this._oUploadAttachmentDialog;
 		},
         onCloseUploadDialog: function (oEvent) {
-			// this._sweetAlert(this.getText("FILE_UPLOAD_CANCELLED"), "S");
+			// this._sweetToast(this.getText("FILE_UPLOAD_CANCELLED"), "S");
             if (this._oUploadAttachmentDialog) {
                 this._oUploadAttachmentDialog.close();
             }
@@ -96,12 +96,12 @@ sap.ui.define([
             var sPernr = oViewModel.getProperty("/newNumberCareerRequest/Pernr"); 
             var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploader");
             if (!oFileUploader.getValue()) {
-                this._sweetAlert(this.getText("FILE_SELECTION_REQUIRED"), "W");
+                this._sweetToast(this.getText("FILE_SELECTION_REQUIRED"), "W");
                 return;
             }
         
             if (!sPernr) {
-                this._sweetAlert(this.getText("NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("NUMBER_REQUIRED"), "W");
                 return;
             }
         
@@ -150,9 +150,9 @@ sap.ui.define([
 				oModel.remove(sPath, {
 					success: function (oData, oResponse) {
 						if (oResponse["headers"]["message"]) {
-							that._sweetAlert(that.getText("ERROR_WHILE_DELETING_DOCUMENTS"), "E");
+							that._sweetToast(that.getText("ERROR_WHILE_DELETING_DOCUMENTS"), "E");
 						} else {
-							that._sweetAlert(that.getText("DOCUMENTS_WERE_SUCCESSFULLY_DELETED"), "S");
+							that._sweetToast(that.getText("DOCUMENTS_WERE_SUCCESSFULLY_DELETED"), "S");
 							// window.location.reload();
 						}
 						oViewModel.setProperty("/busy", false);
@@ -197,10 +197,10 @@ sap.ui.define([
 			this._closeBusyFragment();
 
 			if (sStatus == "201" || sStatus == "200") {
-				this._sweetAlert(this.getText("FILE_UPLOAD_SUCCESS"), "S");
+				this._sweetToast(this.getText("FILE_UPLOAD_SUCCESS"), "S");
 				this._oUploadAttachmentDialog.close();
 			} else {
-				this._sweetAlert(this.getText("FILE_UPLOAD_ERROR"), "E");
+				this._sweetToast(this.getText("FILE_UPLOAD_ERROR"), "E");
 			}
 			this.getModel().refresh(true);
         },
@@ -278,7 +278,7 @@ sap.ui.define([
             var sPernr = this.getView().getModel("careerInternListModel").getProperty("/newNumberCareerRequest/Pernr");
         
             if (!sPernr) {
-                this._sweetAlert(this.getText("NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("NUMBER_REQUIRED"), "W");
                 return;
             }
             function readData(sPath, sModelProperty, errorMessage) {

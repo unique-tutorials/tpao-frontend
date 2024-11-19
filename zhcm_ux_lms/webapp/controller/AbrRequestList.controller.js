@@ -297,6 +297,9 @@ sap.ui.define([
             this._initiateModel();
             this.getRouter().getRoute("AbrRequestList").attachPatternMatched(this._onRequestListMatched, this);
         },
+        onNavBack:function(oEvent){
+          this.getRouter().navTo("appdispatcher", {}, true);
+        },
         _onRequestListMatched: function (oEvent) {
             this.statusFilters = this.allStatusFilters.MANAGER.Statuses;
             this.callerRole = "RECRUITER";
@@ -475,12 +478,12 @@ sap.ui.define([
                 oModel.update(sPath, oFormData, {
                   success: function (oData, oResponse) {
                     this._closeBusyFragment();
-                    this._sweetAlert(this.getText("SAVE_SUCCESSFUL"), "S");
+                    this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
                     this._oNewRequestDialog.close();
                     this._initiateModel();
                   }.bind(this),
                   error: function (oError) {
-                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._sweetToast(this.getText("SAVE_ERROR"), "E");
                     this._closeBusyFragment();
                     this._oNewRequestDialog.close();
                     this._initiateModel();
@@ -491,12 +494,12 @@ sap.ui.define([
                 oModel.create("/ScholarshipStudentRequestSet", oFormData, {
                   success: function (oData, oResponse) {
                     this._closeBusyFragment();
-                    this._sweetAlert(this.getText("SAVE_SUCCESSFUL"), "S");
+                    this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
                     this._oNewRequestDialog.close();
                     this._initiateModel();
                   }.bind(this),
                   error: function (oError) {
-                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._sweetToast(this.getText("SAVE_ERROR"), "E");
                     this._closeBusyFragment();
                     this._oNewRequestDialog.close();
                     this._initiateModel();
@@ -676,7 +679,7 @@ sap.ui.define([
 			oModel.remove(sPath, {
 				success: function () {
 					this._closeBusyFragment();
-					this._sweetAlert(this.getText("FORM_DELETE_SUCCESSFUL"), "S");
+					this._sweetToast(this.getText("FORM_DELETE_SUCCESSFUL"), "S");
 					oModel.refresh();
 				}.bind(this),
 				error: function () {

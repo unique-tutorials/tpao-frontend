@@ -2,203 +2,210 @@
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core">
-        <f:Form editable="true">
-            <f:title>
-                <core:Title text="{i18n>TAB_SCHOOL_INFORMATION}" />
-            </f:title>
-            <f:layout>
-                <f:ResponsiveGridLayout />
-            </f:layout>
-            <f:formContainers>
-                <f:FormContainer title="{i18n>TAB_SCHOOL_INFORMATION}">
-                    <f:formElements>
-                        <f:FormElement label="{i18n>STUDENT_COUNTRY}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/schoolEmployee/Conry}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>FIELD_OF_STUDY}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Edubr' } ] }" selectedKey="{requestListModel>/schoolEmployee/Edubr}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>PERIOD_OF_SCHOLARSHIP_AWARD}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Scawp' } ] }" selectedKey="{requestListModel>/schoolEmployee/Scawp}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-                <f:FormContainer title="{i18n>LICENSE_INFORMATION}">
-                    <f:formElements>
-                        <f:FormElement label="{i18n>UNIVERSITY}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Unive' } ] }" selectedKey="{requestListModel>/schoolEmployee/Unive}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>SCHOOL}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Dprmt' } ] }" selectedKey="{requestListModel>/schoolEmployee/Dprmt}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-                <f:FormContainer title="{i18n>FOREIGN_LANGUAGE_LEARNING_INFORMATION}">
-                    <f:formElements>
-                        <f:FormElement label="{i18n>SCHOOL}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Lalsa' } ] }" selectedKey="{requestListModel>/schoolEmployee/Lalsa}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>START_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Begdt', 
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="{i18n>TAB_SCHOOL_INFORMATION}" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer title="{i18n>TAB_SCHOOL_INFORMATION}">
+                <f:formElements>
+                    <f:FormElement label="{i18n>STUDENT_COUNTRY}">
+                        <f:fields>
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/schoolEmployee/Conry}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>FIELD_OF_STUDY}">
+                        <f:fields>
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Edubr' } ] }" selectedKey="{requestListModel>/schoolEmployee/Edubr}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>PERIOD_OF_SCHOLARSHIP_AWARD}">
+                        <f:fields>
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Scawp' } ] }" selectedKey="{requestListModel>/schoolEmployee/Scawp}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer title="{i18n>LICENSE_INFORMATION}">
+                <f:formElements>
+                    <f:FormElement label="{i18n>UNIVERSITY}">
+                        <f:fields>
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Unive' } ] }" selectedKey="{requestListModel>/schoolEmployee/Unive}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>SCHOOL}">
+                        <f:fields>
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Dprmt' } ] }" selectedKey="{requestListModel>/schoolEmployee/Dprmt}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer title="{i18n>FOREIGN_LANGUAGE_LEARNING_INFORMATION}">
+                <f:formElements>
+                    <f:FormElement label="{i18n>SCHOOL}">
+                        <f:fields>
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Lalsa' } ] }" selectedKey="{requestListModel>/schoolEmployee/Lalsa}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>START_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Begdt', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>END_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Findt', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>END_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Findt', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-                <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_EXTENSION}">
-                    <f:formElements>
-                        <f:FormElement label="{i18n>START_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Osesd', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_EXTENSION}">
+                <f:formElements>
+                    <f:FormElement label="{i18n>START_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Osesd', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>END_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Osefd', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>END_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Osefd', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-                <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_LEARNING_INFORMATION}">
-                    <f:formElements>
-                        <f:FormElement label="{i18n>SCHOOL}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Dlals' } ] }" selectedKey="{requestListModel>/schoolEmployee/Dlals}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>START_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Dllsd', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_LEARNING_INFORMATION}">
+                <f:formElements>
+                    <f:FormElement label="{i18n>SCHOOL}">
+                        <f:fields>
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Dlals' } ] }" selectedKey="{requestListModel>/schoolEmployee/Dlals}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>START_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Dllsd', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>END_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Dlled', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>END_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Dlled', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-                <f:FormContainer title="{i18n>MAIN_EDUCATION_INFORMATION}">
-                    <f:formElements>
-                        <f:FormElement label="{i18n>SCHOOL}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Muniv' } ] }" selectedKey="{requestListModel>/schoolEmployee/Muniv}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>START_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Sdomu', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+    <f:Form editable="true">
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer title="{i18n>MAIN_EDUCATION_INFORMATION}">
+                <f:formElements>
+                    <f:FormElement label="{i18n>SCHOOL}">
+                        <f:fields>
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Muniv' } ] }" selectedKey="{requestListModel>/schoolEmployee/Muniv}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>START_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Sdomu', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>END_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Edomu', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>END_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Edomu', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>SUBJECT}">
-                            <f:fields>
-                                <TextArea rows="3" value="{requestListModel>/schoolEmployee/Subct}" />
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-                <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_EXTENSION}">
-                    <f:formElements>
-                        <f:FormElement label="{i18n>START_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Msose', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>SUBJECT}">
+                        <f:fields>
+                            <TextArea rows="3" value="{requestListModel>/schoolEmployee/Subct}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_EXTENSION}">
+                <f:formElements>
+                    <f:FormElement label="{i18n>START_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Msose', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>END_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Msoed', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>END_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Msoed', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-                <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_FREE_EXTENSION}">
-                    <f:formElements>
-                        <f:FormElement label="{i18n>START_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Msnsd', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer title="{i18n>OFFICIAL_SCHOLARSHIP_FREE_EXTENSION}">
+                <f:formElements>
+                    <f:FormElement label="{i18n>START_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Msnsd', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>END_DATE}">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolEmployee/Msned', 
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>END_DATE}">
+                        <f:fields>
+                            <DatePicker value="{path: 'requestListModel>/schoolEmployee/Msned', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-            </f:formContainers>
-        </f:Form>
+                            </DatePicker>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
 </c:FragmentDefinition>
