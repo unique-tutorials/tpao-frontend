@@ -58,7 +58,7 @@
                     </f:formElements>
                 </f:FormContainer>
                 <f:FormContainer>
-                    <f:formElements>    
+                    <f:formElements>
                         <f:FormElement label="{i18n>STUDENT_GENDER}">
                             <f:fields>
                                 <Text class="textClass" text="{
@@ -67,7 +67,7 @@
                             }" />
                                 <Input enabled="false" />
                             </f:fields>
-                        </f:FormElement>           
+                        </f:FormElement>
                         <f:FormElement label="{i18n>UNIT_CODE}">
                             <f:fields>
                                 <Input value="{requestListModel>/SelectedEmployee/Orgtx}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitSearchHelp"/>

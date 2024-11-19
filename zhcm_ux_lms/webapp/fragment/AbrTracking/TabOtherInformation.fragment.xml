@@ -3,15 +3,15 @@
 
     <Table busy="{otherRequestListModel>/tableBusy}" width="auto" items="{requestListModel>/guarantorList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{otherRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
-			<OverflowToolbar>
-				<content>
-					<Title text="{i18n>GUARANTORS}" level="H2"/>
+            <OverflowToolbar>
+                <content>
+                    <Title text="{i18n>GUARANTORS}" level="H2"/>
                     <ToolbarSpacer />
                     <Button text="Kefil Bilgisi Sorgula" press=".onGuarantorButtonPress" type="Neutral" />
                     <Button text="Kefil Bilgisi Ekle" press=".onAddGuarantor" type="Emphasized" icon="sap-icon://add" />
-                 </content>
-			</OverflowToolbar>
-		</headerToolbar>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
         <columns>
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>SERIAL_NO}"/>
@@ -32,27 +32,15 @@
                     <Text text="{requestListModel>Sirno}"/>
                     <Text text="{requestListModel>Vorna}"/>
                     <Text text="{requestListModel>Nachn}"/>
-                        <MenuButton icon="sap-icon://settings"  type="Accept">
-                            <menu>
-                                <Menu>
-                                    <MenuItem
-                                        text="Kefil Bilgileri"
-                                        icon="sap-icon://account"
-                                        press="openGuarantorDialog"
-                                    />
-                                    <MenuItem
-                                        text="İletişim Bilgileri"
-                                        icon="sap-icon://call"
-                                        press="openGuarantorContactDialog"
-                                    />
-                                    <MenuItem
-                                        text="Kimlik Bilgileri"
-                                        icon="sap-icon://business-card"
-                                        press="openGuarantorIdentityDialog"
-                                    />
-                                </Menu>
-                            </menu>
-                        </MenuButton>   
+                    <MenuButton icon="sap-icon://settings" type="Accept">
+                        <menu>
+                            <Menu>
+                                <MenuItem text="Kefil Bilgileri" icon="sap-icon://account" press="openGuarantorDialog" />
+                                <MenuItem text="İletişim Bilgileri" icon="sap-icon://call" press="openGuarantorContactDialog" />
+                                <MenuItem text="Kimlik Bilgileri" icon="sap-icon://business-card" press="openGuarantorIdentityDialog" />
+                            </Menu>
+                        </menu>
+                    </MenuButton>
                 </cells>
             </ColumnListItem>
         </items>

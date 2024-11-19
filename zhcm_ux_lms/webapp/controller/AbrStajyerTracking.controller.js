@@ -137,14 +137,14 @@ sap.ui.define([
                 aFilters = [];
                 aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
                 aFilters.push(new Filter("Histo", FilterOperator.BT, sBegda,sEndda));
-        oModel.read("/InternStudentAbsenteeismSet", {
-            filters: aFilters,
-            success: function (oData) {
-                oViewModel.setProperty("/absenceList", oData.results);
-            }.bind(this),
-            error: function () {
-            }.bind(this)
-        });
+                oModel.read("/InternStudentAbsenteeismSet", {
+                    filters: aFilters,
+                    success: function (oData) {
+                        oViewModel.setProperty("/absenceList", oData.results);
+                    }.bind(this),
+                    error: function () {
+                    }.bind(this)
+                });
     },
         onCreateAttachmentButtonPress: function (oEvent) {
             var textPath = oEvent.getSource().data("mdl");
@@ -454,9 +454,12 @@ sap.ui.define([
                     }
                 });
             }
+
+            this._sweetToast(this.getText("STAJYER_READ_SUCCESS"), "S");
             // Stajyer bilgileri al
             var sStajyerPath = oModel.createKey("/IntershipStudentSet", { Pernr: sPernr });
             readData(sStajyerPath, "/SelectedStajyer", "Stajyer bilgisi alınamadı.");
+
         },
         onSavePress: function (oEvent) {
             var oModel = this.getModel();
@@ -467,13 +470,7 @@ sap.ui.define([
                 oModel.create("/IntershipStudentSet", oEntry, {
                     success: function (oData, oResponse) {
                         if (oData.Mesty === "S") {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
+                            that._sweetToast(that.getText("SAVED_SUCCESSFULLY"), "S");
                         }
                     },
                     error: function () {

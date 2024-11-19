@@ -39,7 +39,9 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{requestListModel>/financialEmployee/Bezei}" />
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/financialEmployee/City}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TL_FOREIGN_EXCHANGE_NUMBER}">
@@ -92,7 +94,9 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <Input value="{requestListModel>/abroadEmployee/City}" />
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/abroadEmployee/City}">
+                                <core:ListItem key="{Key}" text="{Value}"/>
+                            </ComboBox>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_NUMBER}">

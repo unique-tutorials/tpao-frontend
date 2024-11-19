@@ -35,7 +35,6 @@ sap.ui.define([
                     Rezno:null,
                     Ename:""                 
                 },
-             
             });
         },
         onNavBack: function () {
@@ -72,7 +71,6 @@ sap.ui.define([
             // });
             
         },
-   
         _getFilters: function (oFilter) {
             var aFilters = [];
             var aKeys = Object.keys(oFilter);
@@ -157,8 +155,8 @@ sap.ui.define([
             oModel.read("/TravelReservationSet", {
                 filters: aFilters,
                 success: function (oData) {
-                    oViewModel.setProperty("/reservationEmployee", oData.results[0]);
-                    sap.m.MessageToast.show("Rezervasyon bilgileri alındı.");
+                    oViewModel.setProperty("/reservationEmployee", oData.results[1]);
+                    that._sweetToast(that.getText("RESERVATION_SUCCESSFULLY"), "S");
                     console.log("Rezervasyon bilgileri dataa:", oData);
                 },
                 error: function () {
@@ -192,7 +190,5 @@ sap.ui.define([
                 }
             });
         }
-        
-        
 	});
 });

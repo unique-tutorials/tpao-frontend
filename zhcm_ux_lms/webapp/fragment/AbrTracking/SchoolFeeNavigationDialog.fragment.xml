@@ -1,25 +1,22 @@
-<c:FragmentDefinition
-	xmlns="sap.m"
-	xmlns:c="sap.ui.core"
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core"
->
-<Dialog title="Genel Harcama Faturası" contentWidth="70%" contentHeight="70%" verticalScrolling="false">
-    <VBox class="sapUiSmallMargin">
-        <f:Form editable="true">
-            <f:title>
-                <core:Title text="Okul Ücret Bilgileri" />
-            </f:title>
-            <f:layout>
-                <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-            </f:layout>
-            <f:formContainers>
-                <f:FormContainer>
-                    <f:formElements>
-                        <f:FormElement label="Ücret Dönemi">
-                            <f:fields>
-                                <DatePicker 
-                                    value="{
+    xmlns:core="sap.ui.core">
+    <Dialog title="Genel Harcama Faturası" contentWidth="70%" contentHeight="70%" verticalScrolling="false">
+        <VBox class="sapUiSmallMargin">
+            <f:Form editable="true">
+                <f:title>
+                    <core:Title text="Okul Ücret Bilgileri" />
+                </f:title>
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Ücret Dönemi">
+                                <f:fields>
+                                    <DatePicker value="{
                                         path: 'requestListModel>/schoolInfoDialogRequest/Wagpe',
                                         type: 'sap.ui.model.type.Date',
                                         
@@ -30,53 +27,53 @@
                                             pattern: 'MM-y'
                                         }
                                     }" />
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="Tarih">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolInfoDialogRequest/Dates', 
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Tarih">
+                                <f:fields>
+                                    <DatePicker value="{path: 'requestListModel>/schoolInfoDialogRequest/Dates', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}">
-                                </DatePicker>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="Okul Ücreti">
-                            <f:fields>
-                                <Input value="{requestListModel>/schoolInfoDialogRequest/Schpy}"/>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="Para Birimi">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/schoolInfoDialogRequest/Waers}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="Kambiyo Belge No">
-                            <f:fields>
-                                <Input value="{requestListModel>/schoolInfoDialogRequest/Kamno}"/>
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="Kambiyo Belge Tarihi">
-                            <f:fields>
-                                <DatePicker value="{path: 'requestListModel>/schoolInfoDialogRequest/Kamdt', 
+                                    </DatePicker>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Okul Ücreti">
+                                <f:fields>
+                                    <Input value="{requestListModel>/schoolInfoDialogRequest/Schpy}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Para Birimi">
+                                <f:fields>
+                                    <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/schoolInfoDialogRequest/Waers}">
+                                        <core:ListItem key="{Key}" text="{Value}"/>
+                                    </ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Kambiyo Belge No">
+                                <f:fields>
+                                    <Input value="{requestListModel>/schoolInfoDialogRequest/Kamno}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Kambiyo Belge Tarihi">
+                                <f:fields>
+                                    <DatePicker value="{path: 'requestListModel>/schoolInfoDialogRequest/Kamdt', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}">
-                                </DatePicker>
-                                <!-- <Input value="{requestListModel>/schoolInfoDialogRequest/Kamdt}"/> -->
-                            </f:fields>
-                        </f:FormElement>
-                    </f:formElements>
-                </f:FormContainer>
-        
-            </f:formContainers>
-        </f:Form>
-    </VBox>
-    <beginButton>
-        <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onSchoolCancelButtonPress" type="Reject" />
-    </beginButton>
-    <endButton>
-        <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveSchoolDialogButtonPress" type="Accept" />
-    </endButton>
-</Dialog>
+                                    </DatePicker>
+                                    <!-- <Input value="{requestListModel>/schoolInfoDialogRequest/Kamdt}"/> -->
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+
+                </f:formContainers>
+            </f:Form>
+        </VBox>
+        <beginButton>
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onSchoolCancelButtonPress" type="Reject" />
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveSchoolDialogButtonPress" type="Accept" />
+        </endButton>
+    </Dialog>
 </c:FragmentDefinition>

@@ -50,12 +50,12 @@
                     <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{requestListModel>/contactEmployee/Distr}">
                         <core:ListItem key="{Key}" text="{Value}"/>
                     </ComboBox> -->
-                       
+
                 </cells>
             </ColumnListItem>
         </items>
     </Table>
-    <l:VerticalLayout width="100%" class="gridWrapper" >
+    <l:VerticalLayout width="100%" class="gridWrapper">
         <l:Grid containerQuery="true" class="smod-background" defaultSpan="XL6 L6 M6 S12">
             <Table busy="{phoneRequestListModel>/tableBusy}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{phoneRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders" class="sapUiSmallMarginBottom">
                 <headerToolbar>

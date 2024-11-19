@@ -6,12 +6,7 @@
     xmlns:l="sap.ui.layout"
     xmlns:u="sap.ui.unified"
     xmlns:tnt="sap.tnt">
-    <Dialog 
-        title="{i18n>UPLOAD_ATTACHMENT_DIALOG}" 
-        showHeader="true" 
-        stretch="{device>/system/phone}" 
-        contentWidth="600px" 
-        afterClose="onUpdloadAttAfterClose">
+    <Dialog title="{i18n>UPLOAD_ATTACHMENT_DIALOG}" showHeader="true" stretch="{device>/system/phone}" contentWidth="600px" afterClose="onUpdloadAttAfterClose">
         <content>
             <f:Form editable="true">
                 <f:layout>
@@ -23,22 +18,7 @@
                             <f:FormElement>
                                 <f:fields>
                                     <HBox justifyContent="Inherit">
-                                        <u:FileUploader 
-                                        id="idAttachmentFileUploader" 
-                                        name="FileUploader" 
-                                        uploadUrl="" 
-                                        width="550px"
-                                        uploadComplete="onAttachmentUploadComplete" 
-                                        change="onAttachmentFileChange" 
-                                        typeMissmatch="onFileTypeMissmatch" 
-                                        style="Emphasized" 
-                                        icon="sap-icon://attachment"
-                                        fileType="pdf" 
-                                        maximumFileSize="5" 
-                                        fileSizeExceed="onFileSizeExceed" 
-                                        placeholder="{i18n>LABEL_UPLOAD_PLACEHOLDER}" 
-                                        sendXHR="true" 
-                                        useMultipart="false" />
+                                        <u:FileUploader id="idAttachmentFileUploader" name="FileUploader" uploadUrl="" width="550px" uploadComplete="onAttachmentUploadComplete" change="onAttachmentFileChange" typeMissmatch="onFileTypeMissmatch" style="Emphasized" icon="sap-icon://attachment" fileType="pdf" maximumFileSize="5" fileSizeExceed="onFileSizeExceed" placeholder="{i18n>LABEL_UPLOAD_PLACEHOLDER}" sendXHR="true" useMultipart="false" />
                                     </HBox>
                                 </f:fields>
                             </f:FormElement>
