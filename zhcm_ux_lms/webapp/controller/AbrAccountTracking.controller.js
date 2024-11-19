@@ -62,6 +62,10 @@ sap.ui.define(
             selectedDate:""
           });
         },
+        onNavBack: function () {
+          // this.goBack(History);
+          this.getRouter().navTo("appdispatcher", {}, true);
+        },
         onDatePickerChange:function(){
             debugger;
             var oViewModel = this.getModel("abrAccountListModel"),

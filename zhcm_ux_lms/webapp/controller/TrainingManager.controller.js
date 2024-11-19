@@ -30,63 +30,6 @@ sap.ui.define([
                 managerList:{},
                 selectedRequest: {},
                 currentRequest: {},
-                RequestList:[
-                    {
-                        "Under": "Bilecik Şeyh Edebali Üniversitesi",
-                        "Maste": "Bilgisayar Mühendisliği",
-                        "Masten": "Computer Engineering",
-                        "Subjet": "Bilgisayar Ağları ve Güvenliği",
-                        "Subjen": "Computer Networks and Security",
-                        "Count": "Almanya",
-                        "Quqta": "23",
-                        "Direc": "Ünite Müdürlüğü",
-                        "Reaso": "Yüksek Lisans"
-                    },
-                    {
-                        "Under": "Düzce Üniversitesi",
-                        "Maste": "Elektronik Mühendisliği",
-                        "Masten": "Electronics Engineering",
-                        "Subjet": "Nesnelerin İnterneti",
-                        "Subjen": "Internet of Things (IoT)",
-                        "Count": "Fransa",
-                        "Quqta": "30",
-                        "Direc": "Ünite Müdürlüğü",
-                        "Reaso": "Yüksek Lisans"
-                    },
-                    {
-                        "Under": "İstanbul Teknik Üniversitesi",
-                        "Maste": "Makine Mühendisliği",
-                        "Masten": "Mechanical Engineering",
-                        "Subjet": "Enerji Sistemleri",
-                        "Subjen": "Energy Systems",
-                        "Count": "İsveç",
-                        "Quqta": "15",
-                        "Direc": "Teknoloji Geliştirme Müdürlüğü",
-                        "Reaso": "Doktora"
-                    },
-                    {
-                        "Under": "Boğaziçi Üniversitesi",
-                        "Maste": "Endüstri Mühendisliği",
-                        "Masten": "Industrial Engineering",
-                        "Subjet": "Operasyonel Araştırmalar",
-                        "Subjen": "Operational Research",
-                        "Count": "İngiltere",
-                        "Quqta": "20",
-                        "Direc": "Araştırma Geliştirme Müdürlüğü",
-                        "Reaso": "Yüksek Lisans"
-                    },
-                    {
-                        "Under": "Orta Doğu Teknik Üniversitesi",
-                        "Maste": "Havacılık ve Uzay Mühendisliği",
-                        "Masten": "Aerospace Engineering",
-                        "Subjet": "Uçak Tasarımı",
-                        "Subjen": "Aircraft Design",
-                        "Count": "ABD",
-                        "Quqta": "10",
-                        "Direc": "Savunma Sanayi Müdürlüğü",
-                        "Reaso": "Doktora"
-                    }
-                ],
                 selectedAbr: null,
                 // abrActionData:{
                 //     displayEnabled: false
@@ -96,19 +39,95 @@ sap.ui.define([
         _getRequestList: function (oEvent) { 
 
         },
-        onSearch: function(oEvent) {
-            debugger;
-            // Get the model to fetch the data
-            var oViewModel = this.getModel('trainingManagerListModel');
-            var oFilter = oViewModel.getProperty('/managerSearchRequest'); 
-            var aFilters = this._getFilters(oFilter);
-        
+        onNavBack: function () {
+            // this.goBack(History);
+            this.getRouter().navTo("appdispatcher", {}, true);
         },
-        
-        _getFilters: function(oFilter) {
-            var aFilters = [];
+		// onSearch: function (oEvent) {
+		// 	debugger;
+		// 	var sQuery = oEvent.getParameter("newValue");
+		// 	var oTable = this.byId("idPendingTable");
+		// 	var oBinding = oTable.getBinding("items");
+			
+		// 	if (!sQuery || sQuery.length === 0) {
+		// 		oBinding.filter([]); // Clear filters
+		// 		var oViewModel = this.getView().getModel("trainingManagerListModel");
+		// 		oViewModel.setProperty("/managerSearchRequest", "");
+		// 		return;
+		// 	}
+		
+		// 	var aFilterProps = [
+		// 		"Ftext",       
+		// 		"Ftext1",      
+		// 		"Ftext2",      
+		// 		"Ylskt",     
+		// 		"Ylski",      
+		// 		"Kntjs",     
+		// 		"Orgex",       
+		// 		"Okugr"       
+		// 	];
+		
+		// 	var aFilters = aFilterProps.map(function(prop) {
+		// 		return new sap.ui.model.Filter(prop, sap.ui.model.FilterOperator.Contains, sQuery);
+		// 	});
+		
+		// 	var oCombinedFilter = new sap.ui.model.Filter({
+		// 		filters: aFilters,
+		// 		and: false 
+		// 	});
+		
+		// 	oBinding.filter(oCombinedFilter, "Application");
+		
+		// 	var oViewModel = this.getView().getModel("trainingManagerListModel");
+		// 	oViewModel.setProperty("/managerSearchRequest", sQuery);
+		// },
+		
+		// onSearch: function () {
+        //     var oFilterBar = this.byId("TrainingFilter");
+        //     var oTable = this.byId("idPendingTable");
+        //     var oBinding = oTable.getBinding("items");
 
-        },
+		// 	var sUndergraduate = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Madef");
+		// 	var sMasterDegreeTr = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Grfst");
+		// 	var sMasterDegreeEn = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Grfsi");
+		// 	var sSubjectTr = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Ylskt");
+		// 	var sSubjectEn = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Ylski");
+		// 	var sNumberOf = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Kntjs");
+		// 	var sUnitReturn = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Orgeh");
+		// 	var sReasonScholarship = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Okugr");
+		
+
+            
+        //     var aFilters = [];
+
+            
+        //     if (sUndergraduate) {
+        //         aFilters.push(new Filter("Undergraduate", FilterOperator.EQ, sUndergraduate));
+        //     }
+        //     if (sMasterDegreeTr) {
+        //         aFilters.push(new Filter("MasterDegreeTr", FilterOperator.EQ, sMasterDegreeTr));
+        //     }
+        //     if (sMasterDegreeEn) {
+        //         aFilters.push(new Filter("MasterDegreeEn", FilterOperator.EQ, sMasterDegreeEn));
+        //     }
+        //     if (sSubjectTr) {
+        //         aFilters.push(new Filter("SubjectTr", FilterOperator.Contains, sSubjectTr));
+        //     }
+        //     if (sSubjectEn) {
+        //         aFilters.push(new Filter("SubjectEn", FilterOperator.Contains, sSubjectEn));
+        //     }
+        //     if (sNumberOf) {
+        //         aFilters.push(new Filter("NumberOf", FilterOperator.EQ, sNumberOf));
+        //     }
+        //     if (sUnitReturn) {
+        //         aFilters.push(new Filter("UnitReturn", FilterOperator.EQ, sUnitReturn));
+        //     }
+        //     if (sReasonScholarship) {
+        //         aFilters.push(new Filter("ReasonScholarship", FilterOperator.Contains, sReasonScholarship));
+        //     }
+
+        //     oBinding.filter(aFilters, FilterType.Application);
+        // },
         
         getRecruiterList: function () {
             debugger;

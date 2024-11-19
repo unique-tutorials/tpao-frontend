@@ -39,63 +39,6 @@ sap.ui.define([
                 SelectedEmployee: {},
                 currentRequest: {},
                 absence: {},
-                RequestList: [
-                    {
-                        "Under": "Bilecik Şeyh Edebali Üniversitesi",
-                        "Maste": "Bilgisayar Mühendisliği",
-                        "Masten": "Computer Engineering",
-                        "Subjet": "Bilgisayar Ağları ve Güvenliği",
-                        "Subjen": "Computer Networks and Security",
-                        "Count": "Almanya",
-                        "Quqta": "23",
-                        "Direc": "Ünite Müdürlüğü",
-                        "Reaso": "Yüksek Lisans"
-                    },
-                    {
-                        "Under": "Düzce Üniversitesi",
-                        "Maste": "Elektronik Mühendisliği",
-                        "Masten": "Electronics Engineering",
-                        "Subjet": "Nesnelerin İnterneti",
-                        "Subjen": "Internet of Things (IoT)",
-                        "Count": "Fransa",
-                        "Quqta": "30",
-                        "Direc": "Ünite Müdürlüğü",
-                        "Reaso": "Yüksek Lisans"
-                    },
-                    {
-                        "Under": "İstanbul Teknik Üniversitesi",
-                        "Maste": "Makine Mühendisliği",
-                        "Masten": "Mechanical Engineering",
-                        "Subjet": "Enerji Sistemleri",
-                        "Subjen": "Energy Systems",
-                        "Count": "İsveç",
-                        "Quqta": "15",
-                        "Direc": "Teknoloji Geliştirme Müdürlüğü",
-                        "Reaso": "Doktora"
-                    },
-                    {
-                        "Under": "Boğaziçi Üniversitesi",
-                        "Maste": "Endüstri Mühendisliği",
-                        "Masten": "Industrial Engineering",
-                        "Subjet": "Operasyonel Araştırmalar",
-                        "Subjen": "Operational Research",
-                        "Count": "İngiltere",
-                        "Quqta": "20",
-                        "Direc": "Araştırma Geliştirme Müdürlüğü",
-                        "Reaso": "Yüksek Lisans"
-                    },
-                    {
-                        "Under": "Orta Doğu Teknik Üniversitesi",
-                        "Maste": "Havacılık ve Uzay Mühendisliği",
-                        "Masten": "Aerospace Engineering",
-                        "Subjet": "Uçak Tasarımı",
-                        "Subjen": "Aircraft Design",
-                        "Count": "ABD",
-                        "Quqta": "10",
-                        "Direc": "Savunma Sanayi Müdürlüğü",
-                        "Reaso": "Doktora"
-                    }
-                ],
                 searchStajyerParameter: {},
                 SelectedStajyer: {},
                 newNumberStajyerRequest: {
@@ -109,6 +52,10 @@ sap.ui.define([
                  },
             });
 
+        },
+        onNavBack: function () {
+            // this.goBack(History);
+            this.getRouter().navTo("appdispatcher", {}, true);
         },
         _getRequestList: function () {
 
@@ -256,10 +203,10 @@ sap.ui.define([
             this._closeBusyFragment();
 
             if (sStatus == "201" || sStatus == "200") {
-                this._sweetAlert(this.getText("FILE_UPLOAD_SUCCESS"), "S");
+                this._sweetToast(this.getText("FILE_UPLOAD_SUCCESS"), "S");
                 this._oUploadAttachmentDialog.close();
             } else {
-                this._sweetAlert(this.getText("FILE_UPLOAD_ERROR"), "E");
+                this._sweetToast(this.getText("FILE_UPLOAD_ERROR"), "E");
             }
             this.getModel().refresh(true);
         },
@@ -333,12 +280,12 @@ sap.ui.define([
             var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploader");
 
             if (!oFileUploader.getValue()) {
-                this._sweetAlert(this.getText("FILE_SELECTION_REQUIRED"), "W");
+                this._sweetToast(this.getText("FILE_SELECTION_REQUIRED"), "W");
                 return;
             }
 
             if (!sPernr) {
-                this._sweetAlert(this.getText("NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("NUMBER_REQUIRED"), "W");
                 return;
             }
 
@@ -402,9 +349,9 @@ sap.ui.define([
                 oModel.remove(sPath, {
                     success: function (oData, oResponse) {
                         if (oResponse["headers"]["message"]) {
-                            that._sweetAlert(that.getText("ERROR_WHILE_DELETING_DOCUMENTS"), "E");
+                            that._sweetToast(that.getText("ERROR_WHILE_DELETING_DOCUMENTS"), "E");
                         } else {
-                            that._sweetAlert(that.getText("DOCUMENTS_WERE_SUCCESSFULLY_DELETED"), "S");
+                            that._sweetToast(that.getText("DOCUMENTS_WERE_SUCCESSFULLY_DELETED"), "S");
                             window.location.reload();
                         }
                         oViewModel.setProperty("/busy", false);
@@ -492,7 +439,7 @@ sap.ui.define([
             var sPernr = this.getView().getModel("requestStajyerListModel").getProperty("/newNumberStajyerRequest/Pernr");
 
             if (!sPernr) {
-                this._sweetAlert(this.getText("NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("NUMBER_REQUIRED"), "W");
                 return;
             }
             function readData(sPath, sModelProperty, errorMessage) {

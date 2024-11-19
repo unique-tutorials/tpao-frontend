@@ -37,7 +37,7 @@
                 <ColumnListItem >
                     <cells>
                         <Text text="{abrAccountListModel>/guarantorContactList/Adtyp}"/>
-                        <Text text="{abrAccountListModel>/guarantorContactList/Merni}"/>
+                        <Text text="{abrAccountListModel>/guarantorContactList/Mernis}"/>
                         <Text text="{abrAccountListModel>/guarantorContactList/Stras}"/>
                         <Text text="{abrAccountListModel>/guarantorContactList/Pstlz}"/>
                         <Text text="{abrAccountListModel>/guarantorContactList/Conry}"/>

@@ -45,6 +45,7 @@ sap.ui.define([
                 contactEmployee: {},
                 expendInfoDialogRequest: {},
                 schoolInfoDialogRequest: {},
+                addGuarantorRequest:{},
                 guarantorList: {},
                 attachmentGuarantorList: [],
                 guarantorListRequest: {},
@@ -63,6 +64,10 @@ sap.ui.define([
                 },
                 attachmentList: []
             });
+        },
+        onNavBack: function () {
+            // this.goBack(History);
+            this.getRouter().navTo("appdispatcher", {}, true);
         },
         onItemSelected: function (oEvent) {
             var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
@@ -136,7 +141,7 @@ sap.ui.define([
             var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploader");
 
             if (!oFileUploader.getValue()) {
-                this._sweetAlert(this.getText("FILE_SELECTION_REQUIRED"), "W");
+                this._sweetToast(this.getText("FILE_SELECTION_REQUIRED"), "W");
                 return;
             }
 
@@ -379,12 +384,12 @@ sap.ui.define([
             var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploaderPayment");
 
             if (!oFileUploader.getValue()) {
-                this._sweetAlert(this.getText("FILE_SELECTION_REQUIRED"), "W");
+                this._sweetToast(this.getText("FILE_SELECTION_REQUIRED"), "W");
                 return;
             }
 
             if (!sPernr) {
-                this._sweetAlert(this.getText("NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("NUMBER_REQUIRED"), "W");
                 return;
             }
 
@@ -499,13 +504,8 @@ sap.ui.define([
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
             // var sPayno = this.getView().getModel("requestListModel").getProperty("/expendInfoList/Payno");
 
-            // if (!sPayno) {
-            //     this._sweetAlert(this.getText("INVOICE_NUMBER_REQUIRED"), "W");
-            //     return;
-            // }
-
             if (!sPernr) {
-                this._sweetAlert(this.getText("STUDENT_NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "W");
                 return;
             }
             function readData(sPath, sModelProperty, errorMessage) {
@@ -625,13 +625,7 @@ sap.ui.define([
                                         success: function (oData, oResponse) {
                                             debugger;
                                             if (oData.Mesty === "S") {
-                                                Swal.fire({
-                                                    position: "center",
-                                                    icon: "success",
-                                                    title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                                    showConfirmButton: false,
-                                                    timer: 1500
-                                                });
+                                                that._sweetToast(that.getText("EDU_TASK_SAVED_SUCCESSFUL"), "S");
                                             } else if (oData.Mesty === "E") {
                                                 MessageToast.show(oData.Messg || "Bir hata oluştu");
                                             }
@@ -657,13 +651,7 @@ sap.ui.define([
                         success: function (oData, oResponse) {
                             debugger;
                             if (oData.Mesty === "S") {
-                                Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
+                                that._sweetToast(that.getText("EDU_TASK_SAVED_SUCCESSFUL"), "S");
                             } else if (oData.Mesty === "E") {
                                 MessageToast.show(oData.Messg || "Bir hata oluştu");
                             }
@@ -709,14 +697,8 @@ sap.ui.define([
                                     oModel.create("/SchoolInformationSet", oShlEntry, {
                                         success: function (oData, oResponse) {
                                             debugger;
-                                            if (oData.Mesty === "S") {
-                                                Swal.fire({
-                                                    position: "center",
-                                                    icon: "success",
-                                                    title: that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"),
-                                                    showConfirmButton: false,
-                                                    timer: 1500
-                                                });
+                                            if (oData.Mesty === "") {
+                                                that._sweetToast(that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"), "S");
                                             } else if (oData.Mesty === "E") {
                                                 MessageToast.show(oData.Messg || "Bir hata oluştu.");
                                             }
@@ -741,14 +723,8 @@ sap.ui.define([
                     oModel.create("/SchoolInformationSet", oShlEntry, {
                         success: function (oData, oResponse) {
                             debugger;
-                            if (oData.Mesty === "S") {
-                                Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"),
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
+                            if (oData.Mesty === "") {
+                                that._sweetToast(that.getText("SCHOOL_INFORMATION_SAVED_SUCCESSFUL"), "S");
                             } else if (oData.Mesty === "E") {
                                 MessageToast.show(oData.Messg || "Bir hata oluştu.");
                             }
@@ -764,7 +740,7 @@ sap.ui.define([
                 oModel.create("/IdentityInformationSet", oIdEntry, {
                     success: function (oData, oResponse) {
                         debugger;
-                        if (oData.Mesty === "S") {
+                        if (oData.Mesty === "S" ) {
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
@@ -852,9 +828,9 @@ sap.ui.define([
                 oModel.remove(sPath, {
                     success: function (oData, oResponse) {
                         if (oResponse["headers"]["message"]) {
-                            that._sweetAlert(that.getText("ERROR_WHILE_DELETING_DOCUMENTS"), "E");
+                            that._sweetToast(that.getText("ERROR_WHILE_DELETING_DOCUMENTS"), "E");
                         } else {
-                            that._sweetAlert(that.getText("DOCUMENTS_WERE_SUCCESSFULLY_DELETED"), "S");
+                            that._sweetToast(that.getText("DOCUMENTS_WERE_SUCCESSFULLY_DELETED"), "S");
                             that._getAttachmentList(sPernr);
                         }
                         that._closeBusyFragment();
@@ -941,7 +917,7 @@ sap.ui.define([
                 urlParameters: oUrlParameters,
                 success: function (oData, oResponse) {
                     // that.getModel("requestListModel").setProperty("/expendInfoList");
-                    this._sweetAlert(this.getText("SAVE_SUCCESSFUL"), "S");
+                    this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
                     this._closeBusyFragment();
                 }.bind(this),
                 error: function (oError) {
@@ -966,7 +942,7 @@ sap.ui.define([
                 urlParameters: oUrlParameters,
                 success: function (oData, oResponse) {
                     // that.getModel("requestListModel").setProperty("/expendInfoList");
-                    this._sweetAlert(this.getText("SAVE_SUCCESSFUL"), "S");
+                    this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
                     this._closeBusyFragment();
                 }.bind(this),
                 error: function (oError) {
@@ -1011,13 +987,13 @@ sap.ui.define([
             oModel.create("/GeneralExpenditureInformationSet", oRequets, {
                 success: function (oData, oResponse) {
                     that.onAttachmentPaymentUploadPress();
-                    that._sweetAlert(that.getText("SAVE_SUCCESSFUL"), "S");
+                    that._sweetToast(that.getText("SAVE_SUCCESSFUL"), "S");
                     that._oExpendInfoDialog.close();
                     that.clearFormDialog();
                     that._closeBusyFragment();
                 },
                 error: function (oError) {
-                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._sweetToast(this.getText("SAVE_ERROR"), "E");
                     this._closeBusyFragment();
                 }.bind(this)
             });
@@ -1032,13 +1008,13 @@ sap.ui.define([
 
             oModel.create("/SchoolWageInformationSet", oSchoolRequets, {
                 success: function (oData, oResponse) {
-                    that._sweetAlert(that.getText("SAVE_SUCCESSFUL"), "S");
+                    that._sweetToast(that.getText("SAVE_SUCCESSFUL"), "S");
                     that._oExpendInfoDialog.close();
                     that.clearFormDialog();
                     that._closeBusyFragment();
                 },
                 error: function (oError) {
-                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._sweetToast(this.getText("SAVE_ERROR"), "E");
                     this._closeBusyFragment();
                 }.bind(this)
             });
@@ -1054,11 +1030,11 @@ sap.ui.define([
             this._closeBusyFragment();
 
             if (sStatus == "201" || sStatus == "200") {
-                this._sweetAlert(this.getText("FILE_UPLOAD_SUCCESS"), "S");
+                this._sweetToast(this.getText("FILE_UPLOAD_SUCCESS"), "S");
                 this._oUploadAttachmentDialog.close();
                 this._getAttachmentList(sPernr);
             } else {
-                this._sweetAlert(this.getText("FILE_UPLOAD_ERROR"), "E");
+                this._sweetToast(this.getText("FILE_UPLOAD_ERROR"), "E");
             }
             this.getModel().refresh(true);
         },
@@ -1113,13 +1089,13 @@ sap.ui.define([
 
             oModel.create("/GuarantorInformationSet", oSchoolRequets, {
                 success: function (oData, oResponse) {
-                    that._sweetAlert(that.getText("SAVE_SUCCESSFUL"), "S");
+                    that._sweetToast(that.getText("SAVE_SUCCESSFUL"), "S");
                     // that._oExpendInfoDialog.close();
                     that.clearFormDialog();
                     that._closeBusyFragment();
                 },
                 error: function (oError) {
-                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._sweetToast(this.getText("SAVE_ERROR"), "E");
                     this._closeBusyFragment();
                 }.bind(this)
             });
@@ -1149,6 +1125,36 @@ sap.ui.define([
                 }
             });
         },
+        onSaveAddGuarantorDialog:function(oEvent){
+            debugger;
+            var that = this;
+            var oModel = this.getModel(),
+            oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+            var sSirno = oViewModel.getProperty("/addGuarantorRequest/Sirno");
+            var oRequets = oViewModel.getProperty("/addGuarantorRequest");
+            oRequets.Pernr = sPernr,
+            oRequets.Sirno = sSirno
+
+            oModel.create("/GuarantorInformationSet", oRequets, {
+                success: function (oData, oResponse) {
+                    // that.onAttachmentPaymentUploadPress();
+                    that._sweetToast(that.getText("SAVE_SUCCESSFUL"), "S");
+                    // that._oExpendInfoDialog.close();
+                    that.clearFormDialog();
+                    that._closeBusyFragment();
+                },
+                error: function (oError) {
+                    this._sweetToast(this.getText("SAVE_ERROR"), "E");
+                    this._closeBusyFragment();
+                }.bind(this)
+            });
+        },
+        onAddGuarantorCancelDialog:function(oEvent){
+            if (this._oAddGuarantorDialog) {
+                this._oAddGuarantorDialog.close();
+            }
+        },
         onAddGuarantor: function () {
             debugger;
             if (!this._oAddGuarantorDialog) {
@@ -1166,12 +1172,12 @@ sap.ui.define([
             var oFileUploader = sap.ui.getCore().byId("idGuarantorFileUploader");
 
             if (!oFileUploader.getValue()) {
-                this._sweetAlert(this.getText("FILE_SELECTION_REQUIRED"), "W");
+                this._sweetToast(this.getText("FILE_SELECTION_REQUIRED"), "W");
                 return;
             }
 
             if (!sPernr) {
-                this._sweetAlert(this.getText("NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("NUMBER_REQUIRED"), "W");
                 return;
             }
 
@@ -1379,13 +1385,13 @@ sap.ui.define([
             oModel.create("/GuarantorInformationSet", oRequets, {
                 success: function (oData, oResponse) {
                     // that.onAttachmentPaymentUploadPress();
-                    that._sweetAlert(that.getText("SAVE_SUCCESSFUL"), "S");
+                    that._sweetToast(that.getText("SAVE_SUCCESSFUL"), "S");
                     that._oExpendInfoDialog.close();
                     that.clearFormDialog();
                     that._closeBusyFragment();
                 },
                 error: function (oError) {
-                    this._sweetAlert(this.getText("SAVE_ERROR"), "E");
+                    this._sweetToast(this.getText("SAVE_ERROR"), "E");
                     this._closeBusyFragment();
                 }.bind(this)
             });

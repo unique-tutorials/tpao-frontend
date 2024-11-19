@@ -37,6 +37,10 @@ sap.ui.define([
         _getRequestList: function (oEvent) {
             
         },
+        onNavBack: function () {
+            // this.goBack(History);
+            this.getRouter().navTo("appdispatcher", {}, true);
+        },
         onShowReservationSearchHelp:function(oEvent){
             if (!this._oReservationSearchHelpDialog) {
                 this._oReservationSearchHelpDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.TrpolApp.ReservationSearchHelp", this);

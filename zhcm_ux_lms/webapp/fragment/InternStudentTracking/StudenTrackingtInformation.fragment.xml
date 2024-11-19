@@ -60,7 +60,7 @@
             <StandardListItem title="{internStudentListModel>title}" />
         </List>
     </VBox>
-    <Table id="idProductsTable" inset="false" items="{/technicalEvaluation}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <Table id="idProductsTable" inset="false" items="{/technicalEvaluation}" growing="true" growingScrollToLoad="true">
         <headerToolbar>
             <OverflowToolbar>
                 <content>

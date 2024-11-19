@@ -22,6 +22,10 @@ sap.ui.define([
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
         },
+		onNavBack: function () {
+            // this.goBack(History);
+            this.getRouter().navTo("appdispatcher", {}, true);
+        },
         _initiateModel: function () {
             var oViewModel = this.getModel("internStudentListModel");
             oViewModel.setData({
@@ -35,23 +39,7 @@ sap.ui.define([
                     priorityEditable: false,
                     priorityDisplay: true
                 },
-				ratingScaleList:[
-					{
-						titles:"1 Puan = Kesinlikle Katılmıyorum / Çok Düşük",
-					},
-					{
-						titles:"2 Puan = Katılmıyorum / Düşük",
-					},
-					{
-						titles:"3 Puan = Kararsızım / Orta",
-					},
-					{
-						titles:"4 Puan = Katılıyorum / Yüksek",
-					},
-					{
-						titles:"5 Puan = Kesinlikle Katılıyorum / Çok Yüksek olarak değerlendirilmiştir.",
-					},
-				],
+				scoreScaleList: {},
 				technicalEvaluation: [
 					{
 						"SupplierName": "08.10.2024 - 14.10.2024",
@@ -80,23 +68,6 @@ sap.ui.define([
 						"BeforeSkillLevel": "Uzman (4)",
 						"AfterSkillLevel": "Yetkin (5)",
 						"Comments": "Optimizasyon tekniklerinde yetkin hale geldi."
-					}
-				],
-				levelDescriptionList:[
-					{
-						title: "Başlangıç (1) : Aday mühendis konu hakkında hiçbir bilgiye sahip değildir."
-					},
-					{
-						title: "Temel (2) : Aday mühendis konu hakkında teorik bilgi sahibidir fakat herhangi bir uygulamada bulunamaz.",
-					},
-					{
-						title: "Uygulama (3) : Aday mühendis konu hakkında bir gözetmen / danışman eşliğinde veya gözetiminde uygulama yapabilir."
-					},
-					{
-						title: "Uzman (4) : Aday mühendis konu hakkında yalnız çalışma yapabilir ve başka bir kişiye bilgisini aktarabilir verebilir.",
-					},
-					{
-						title: "Yetkin (5) : Aday mühendis konu hakkında değerlendirme yapabilir ve proje geliştirebilir.",
 					}
 				],
 				evaluationQuestionsList : [
@@ -140,6 +111,7 @@ sap.ui.define([
 						Point:null
 					}
 				]
+				
             });
         },
         _getRequestList: function () { 

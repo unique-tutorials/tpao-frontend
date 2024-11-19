@@ -83,6 +83,10 @@
 									<Input value="{requestListModel>/addGuarantorRequest/Email}" />
 								</f:fields>
 							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer title="Kimlik Bilgileri">
+						<f:formElements>
 							<f:FormElement label="Tc Kimlik No">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Merni}" />
@@ -96,16 +100,15 @@
 									</DatePicker>
 								</f:fields>
 							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
-					<f:FormContainer title="Kimlik Bilgileri">
-						<f:formElements>
-						
 							<f:FormElement label="Nüfus Cüzdan No">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Idcno}" />
 								</f:fields>
 							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer>
+						<f:formElements >
 							<f:FormElement label="Son Geçerlilik Tarihi">
 								<f:fields>
 									<DatePicker value="{path: 'requestListModel>/addGuarantorRequest/Lavad', 
