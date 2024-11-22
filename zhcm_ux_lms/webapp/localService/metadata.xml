@@ -1,267 +1,760 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
     <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema Namespace="ZHCM_UX_LMS_ABR_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <Schema Namespace="ZHCM_UX_LMS_ABR_SRV" xml:lang="tr" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
             <EntityType Name="ScholarshipStudent" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Pernr"/>
                 </Key>
-                <Property Name="Atext" Type="Edm.String" MaxLength="40" sap:unicode="false"/>
-                <Property Name="Muniv" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Educ/training"/>
-                <Property Name="Orgtx" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Org.Unit Short Text"/>
-                <Property Name="Lalsat" Type="Edm.String" MaxLength="100" sap:unicode="false"/>
-                <Property Name="Landx" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Country/Region"/>
-                <Property Name="Conry" Type="Edm.String" MaxLength="3" sap:unicode="false"/>
-                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Org. Unit"/>
-                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Lalsa" Type="Edm.String" MaxLength="4" sap:unicode="false"/>
-                <Property Name="Activ" Type="Edm.Boolean" sap:unicode="false"/>
-                <Property Name="Vorna" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="First Name"/>
-                <Property Name="Nachn" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Last Name"/>
+                <Property Name="Atext" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Eğitim metni"/>
+                <Property Name="Muniv" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Eğitim"/>
+                <Property Name="Orgtx" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Org.birimi kısa mtn."/>
+                <Property Name="Lalsat" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Yurt Dışı Dil Öğrenim Okulu Metni"/>
+                <Property Name="Landx" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Ülke/bölge"/>
+                <Property Name="Conry" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Ülke"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Org.birimi"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Lalsa" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Yurt Dışı Dil Öğreni"/>
+                <Property Name="Activ" Type="Edm.Boolean" sap:unicode="false" sap:label="Aktif"/>
+                <Property Name="Vorna" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Nachn" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Soyadı"/>
             </EntityType>
             <EntityType Name="ValueHelp" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Id"/>
                     <PropertyRef Name="Key"/>
                 </Key>
-                <Property Name="Id" Type="Edm.String" Nullable="false" sap:unicode="false"/>
-                <Property Name="Key" Type="Edm.String" Nullable="false" sap:unicode="false"/>
-                <Property Name="Value" Type="Edm.String" sap:unicode="false"/>
-                <Property Name="Query" Type="Edm.String" sap:unicode="false"/>
-                <Property Name="Group" Type="Edm.String" sap:unicode="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="ID"/>
+                <Property Name="Key" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="KEY"/>
+                <Property Name="Value" Type="Edm.String" sap:unicode="false" sap:label="VALUE"/>
+                <Property Name="Query" Type="Edm.String" sap:unicode="false" sap:label="QUERY"/>
+                <Property Name="Group" Type="Edm.String" sap:unicode="false" sap:label="GROUP"/>
             </EntityType>
             <EntityType Name="ScholarShipstudentAbroad" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Pernr"/>
                 </Key>
-                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Message Text"/>
-                <Property Name="Orgtx" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Org.Unit Short Text"/>
-                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag"/>
-                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Vorna" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="First Name"/>
-                <Property Name="Nachn" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Last Name"/>
-                <Property Name="Gesch" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Gender"/>
-                <Property Name="Type" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Unicd" Type="Edm.String" MaxLength="20" sap:unicode="false"/>
-                <Property Name="Cstcn" Type="Edm.String" MaxLength="30" sap:unicode="false"/>
-                <Property Name="Bdcde" Type="Edm.String" MaxLength="20" sap:unicode="false"/>
-                <Property Name="Activ" Type="Edm.Boolean" sap:unicode="false"/>
+                <Property Name="Gesch" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Cinsiyet"/>
+                <Property Name="Kostx" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Org.birimi"/>
+                <Property Name="Kostl" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Masraf yeri"/>
+                <Property Name="Orgtx" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Org.birimi kısa mtn."/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Vorna" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Nachn" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Soyadı"/>
+                <Property Name="Bdcde" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Bütçe Kodu"/>
+                <Property Name="Activ" Type="Edm.Boolean" sap:unicode="false" sap:label="Aktif"/>
             </EntityType>
             <EntityType Name="GeneralInformation" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Pernr"/>
                 </Key>
-                <Property Name="Etrst" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Message Text"/>
-                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag"/>
-                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Currency" sap:semantics="currency-code"/>
-                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false"/>
-                <Property Name="Salry" Type="Edm.Decimal" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers"/>
-                <Property Name="Stafe" Type="Edm.Decimal" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers"/>
-                <Property Name="Dodly" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Dodlm" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Dodld" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Dolsy" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Dolsm" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Dolsd" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Dlsay" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Dlsam" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Dlsad" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Oscny" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Oscnm" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Oscnd" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Ofscy" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Ofscm" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Ofscd" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Ofnsy" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Ofnsm" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Ofnsd" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Cosey" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Cosem" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Cosed" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Gradt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Pored" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Abrdt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Redte" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Sjbdt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Cacdt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Taxnm" Type="Edm.String" MaxLength="30" sap:unicode="false"/>
-                <Property Name="Taxof" Type="Edm.String" MaxLength="100" sap:unicode="false"/>
-                <Property Name="Taxop" Type="Edm.String" MaxLength="20" sap:unicode="false"/>
-                <Property Name="Regno" Type="Edm.String" MaxLength="30" sap:unicode="false"/>
-                <Property Name="Payac" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Salpa" Type="Edm.Boolean" sap:unicode="false"/>
-                <Property Name="Stapa" Type="Edm.Boolean" sap:unicode="false"/>
-                <Property Name="Exede" Type="Edm.Boolean" sap:unicode="false"/>
-                <Property Name="Repad" Type="Edm.Boolean" sap:unicode="false"/>
+                <Property Name="Salry" Type="Edm.Decimal" Precision="10" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="Maaş"/>
+                <Property Name="Conin" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Danışman Bilgisi"/>
+                <Property Name="Conry" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Ülke/bölge"/>
+                <Property Name="Consa" Type="Edm.Decimal" Precision="10" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="Kısıt Maaş"/>
+                <Property Name="Descp2" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Opera" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Mecburi Hizmet Süresi Hesapla"/>
+                <Property Name="Regno" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Sicil No"/>
+                <Property Name="Etrst" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Eğitim Sonu Durumu"/>
+                <Property Name="Acred" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Hesap Kısıt Tarihi"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Para birimi" sap:semantics="currency-code"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Stafe" Type="Edm.Decimal" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="Kırtasiye Ücreti"/>
+                <Property Name="Dodly" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Yurtiçi Dil Öğrenim"/>
+                <Property Name="Dodlm" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Yurtiçi Dil Öğrenim"/>
+                <Property Name="Dodld" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Yurtiçi Dil Öğrenim"/>
+                <Property Name="Dolsy" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Yurtdışı Dil Öğrenim"/>
+                <Property Name="Dolsm" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Yurtdışı Dil Öğrenim"/>
+                <Property Name="Dolsd" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Yurtdışı Dil Öğrenim"/>
+                <Property Name="Dlsay" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Yurdışı Dil Öğrenim"/>
+                <Property Name="Dlsam" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Yurdışı Dil Öğrenim"/>
+                <Property Name="Dlsad" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Yurdışı Dil Öğrenim"/>
+                <Property Name="Oscny" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Resmi Burslu Normal"/>
+                <Property Name="Oscnm" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Resmi Burslu Normal"/>
+                <Property Name="Oscnd" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Resmi Burslu Normal"/>
+                <Property Name="Ofscy" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Resmi Burslu Uzatma"/>
+                <Property Name="Ofscm" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Resmi Burslu Uzatma"/>
+                <Property Name="Ofscd" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Resmi Burslu Uzatma"/>
+                <Property Name="Ofnsy" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Resmi Burssuz Uzatma"/>
+                <Property Name="Ofnsm" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Resmi Burssuz Uzatma"/>
+                <Property Name="Ofnsd" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Resmi Burssuz Uzatma"/>
+                <Property Name="Cosey" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Mecburi Hizmet Süres"/>
+                <Property Name="Cosem" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Mecburi Hizmet Süres"/>
+                <Property Name="Cosed" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Mecburi Hizmet Süres"/>
+                <Property Name="Gradt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Mezuniyet Tarihi"/>
+                <Property Name="Pored" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Muhtemel Dönüş Tarih"/>
+                <Property Name="Abrdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Yurtdışı Çıkış Tarih"/>
+                <Property Name="Redte" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Dönüş Tarihi"/>
+                <Property Name="Sjbdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="İşbaşı Tarihi"/>
+                <Property Name="Cacdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Dava Başlangıç Tarih"/>
+                <Property Name="Taxnm" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Vergi Numarası"/>
+                <Property Name="Taxof" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Vergi Dairesi"/>
+                <Property Name="Taxop" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Vergi Dairesi İli"/>
+                <Property Name="Salpa" Type="Edm.Boolean" sap:unicode="false" sap:label="Maaş Ödenir"/>
+                <Property Name="Stapa" Type="Edm.Boolean" sap:unicode="false" sap:label="Kırtasiye Ödenir"/>
+                <Property Name="Exede" Type="Edm.Boolean" sap:unicode="false" sap:label="İcralı / Davalı"/>
+                <Property Name="Repad" Type="Edm.Boolean" sap:unicode="false" sap:label="Geri Ödeme Yapmış"/>
             </EntityType>
             <EntityType Name="IdentityInformation" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Pernr"/>
                 </Key>
-                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Message Text"/>
-                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag"/>
-                <Property Name="Serno" Type="Edm.String" MaxLength="10" sap:unicode="false"/>
-                <Property Name="Merni" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="TR Identity No"/>
-                <Property Name="Fatnm" Type="Edm.String" MaxLength="20" sap:unicode="false"/>
-                <Property Name="Motnm" Type="Edm.String" MaxLength="20" sap:unicode="false"/>
-                <Property Name="Brtpl" Type="Edm.String" MaxLength="30" sap:unicode="false"/>
-                <Property Name="Brtdt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Mrtst" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Rlign" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Bldty" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Region"/>
-                <Property Name="Distr" Type="Edm.String" MaxLength="6" sap:unicode="false"/>
-                <Property Name="Issdt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
+                <Property Name="Idcno" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Nüfus cüzdan no"/>
+                <Property Name="Gbdat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Tarih"/>
+                <Property Name="Ftext" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="Medeni hali"/>
+                <Property Name="Blotx" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Kan Grubu Metni"/>
+                <Property Name="Protx" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="İl metni"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Merni" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="TC Kimlik No"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Fater" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Baba Adı"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="Muter" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Anne Adı"/>
+                <Property Name="Gbort" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Doğum yeri"/>
+                <Property Name="Famst" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Medeni hali"/>
+                <Property Name="Konfe" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Dini"/>
+                <Property Name="Blood" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Kan Grubu"/>
+                <Property Name="Provi" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Şehir"/>
+                <Property Name="Distr" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="İlçe"/>
+                <Property Name="Issdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Geçerlilik Tar."/>
             </EntityType>
             <EntityType Name="ContactInformation" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Pernr"/>
                 </Key>
-                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Webad" Type="Edm.String" MaxLength="225" sap:unicode="false"/>
-                <Property Name="Adtyp" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Adres" Type="Edm.String" MaxLength="100" sap:unicode="false"/>
-                <Property Name="Poscd" Type="Edm.String" MaxLength="10" sap:unicode="false"/>
-                <Property Name="Contr" Type="Edm.String" MaxLength="20" sap:unicode="false"/>
-                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Region"/>
-                <Property Name="Distr" Type="Edm.String" MaxLength="6" sap:unicode="false"/>
-                <Property Name="Photy" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Phonm" Type="Edm.String" MaxLength="11" sap:unicode="false"/>
-                <Property Name="Pfult" Type="Edm.Boolean" sap:unicode="false"/>
-                <Property Name="Email" Type="Edm.String" MaxLength="241" sap:unicode="false"/>
-                <Property Name="Mfult" Type="Edm.Boolean" sap:unicode="false"/>
+                <Property Name="Adrty" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Adres Tipi"/>
+                <Property Name="Phonm" Type="Edm.String" MaxLength="241" sap:unicode="false" sap:label="Uzun tn./no."/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Photy" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Telefon Tipi"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="241" sap:unicode="false" sap:label="Uzun tn./no."/>
+                <Property Name="Conry" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Ülke/bölge"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Stras" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Sokak/konut no."/>
+                <Property Name="Pstlz" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="PKd/İl"/>
+                <Property Name="Pfult" Type="Edm.Boolean" sap:unicode="false" sap:label="Varsayılan"/>
+                <Property Name="Mfult" Type="Edm.Boolean" sap:unicode="false" sap:label="Varsayılan"/>
             </EntityType>
             <EntityType Name="SchoolInformation" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Pernr"/>
                 </Key>
-                <Property Name="Edubr" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Br.of study 1"/>
-                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Conry" Type="Edm.String" MaxLength="3" sap:unicode="false"/>
-                <Property Name="Scawp" Type="Edm.String" MaxLength="3" sap:unicode="false"/>
-                <Property Name="Unive" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Educ/training"/>
-                <Property Name="Dprmt" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Br.of study 1"/>
-                <Property Name="Lalsa" Type="Edm.String" MaxLength="3" sap:unicode="false"/>
-                <Property Name="Begdt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Findt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Osesd" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Osefd" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Dlals" Type="Edm.String" MaxLength="3" sap:unicode="false"/>
-                <Property Name="Dllsd" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Dlled" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Muniv" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Educ/training"/>
-                <Property Name="Sdomu" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Edomu" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Subct" Type="Edm.String" MaxLength="225" sap:unicode="false"/>
-                <Property Name="Msose" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Msoed" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Msnsd" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Msned" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Message Text"/>
-                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Edubr" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Eğitim dalı 1"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Conry" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Ülke"/>
+                <Property Name="Scawp" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Burs Kazandığı Dönem"/>
+                <Property Name="Unive" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Eğitim"/>
+                <Property Name="Dprmt" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Eğitim dalı 1"/>
+                <Property Name="Lalsa" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Yurt Dışı Dil Öğreni"/>
+                <Property Name="Begdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Başlama Tarihi"/>
+                <Property Name="Findt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Bitiş Tarihi"/>
+                <Property Name="Osesd" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Resmi Burslu Uzatma"/>
+                <Property Name="Osefd" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Resmi Burslu Uzatma"/>
+                <Property Name="Dlals" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Yurt İçi Dil Öğrenim"/>
+                <Property Name="Dllsd" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Yurt İçi Dil Öğrenim"/>
+                <Property Name="Dlled" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Yurt İçi Dil Öğrenim"/>
+                <Property Name="Muniv" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Eğitim"/>
+                <Property Name="Sdomu" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Esas Öğrenim Okulu B"/>
+                <Property Name="Edomu" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Esas Öğrenim Okulu B"/>
+                <Property Name="Subct" Type="Edm.String" MaxLength="225" sap:unicode="false" sap:label="Esas Öğrenim Konusu"/>
+                <Property Name="Msose" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Esas Öğrenim Okulu R"/>
+                <Property Name="Msoed" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Esas Öğrenim Okulu R"/>
+                <Property Name="Msnsd" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Esas Öğrenim Okulu R"/>
+                <Property Name="Msned" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Esas Öğrenim Okulu R"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
             </EntityType>
             <EntityType Name="ScholarshipStudentRequest" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Docid"/>
-                    <PropertyRef Name="Appno"/>
+                    <PropertyRef Name="Lmsid"/>
                 </Key>
-                <Property Name="Docid" Type="Edm.String" Nullable="false" MaxLength="70" sap:unicode="false"/>
-                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Message Text"/>
-                <Property Name="Appno" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false"/>
-                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag"/>
-                <Property Name="Pernr" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Xplan" Type="Edm.String" MaxLength="250" sap:unicode="false"/>
-                <Property Name="Reqow" Type="Edm.String" MaxLength="12" sap:unicode="false"/>
-                <Property Name="Reqdt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Reqtm" Type="Edm.Time" Precision="0" sap:unicode="false"/>
-                <Property Name="Aedat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Changed On"/>
-                <Property Name="Aetim" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Changed at"/>
-                <Property Name="Aenam" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Changed By"/>
-                <Property Name="Madef" Type="Edm.String" MaxLength="5" sap:unicode="false"/>
-                <Property Name="Grfst" Type="Edm.String" MaxLength="5" sap:unicode="false"/>
-                <Property Name="Grfsi" Type="Edm.String" MaxLength="5" sap:unicode="false"/>
-                <Property Name="Ylskt" Type="Edm.String" MaxLength="100" sap:unicode="false"/>
-                <Property Name="Ylski" Type="Edm.String" MaxLength="100" sap:unicode="false"/>
-                <Property Name="Counr" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Country/Reg."/>
-                <Property Name="Kntjs" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Org. Unit"/>
-                <Property Name="Okugr" Type="Edm.String" MaxLength="100" sap:unicode="false"/>
-                <Property Name="Reqop" Type="Edm.String" MaxLength="8" sap:unicode="false"/>
-                <Property Name="Reqon" Type="Edm.String" MaxLength="40" sap:unicode="false"/>
-                <Property Name="Rjrsn" Type="Edm.String" MaxLength="255" sap:unicode="false"/>
-                <Property Name="Appst" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Orgex" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Name"/>
-                <Property Name="Ename" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Empl./appl.name"/>
-                <Property Name="Plans" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Position"/>
-                <Property Name="Planx" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Name"/>
+                <Property Name="Ftext1" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Eğitim dalı metni"/>
+                <Property Name="Ftext" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Eğitim dalı metni"/>
+                <Property Name="Conry" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Ülke/bölge"/>
+                <Property Name="Ftext2" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Eğitim dalı metni"/>
+                <Property Name="Crtdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Tarih"/>
+                <Property Name="Lmsid" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Yurtdışı burslu öğre"/>
+                <Property Name="Crttm" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Saat"/>
+                <Property Name="Lmsno" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Form numarası"/>
+                <Property Name="Crtus" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Değiştiren"/>
+                <Property Name="Lmsso" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Süreç sahibi"/>
+                <Property Name="Lmsst" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Eğitim Onay Süreç Du"/>
+                <Property Name="Lmsss" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Eğitim Onay Süreci A"/>
+                <Property Name="Lmspt" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Eğitim Onay Süreci S"/>
+                <Property Name="Bukrs" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Şirket kodu"/>
+                <Property Name="Madef" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Yüksek Lisans Alanla"/>
+                <Property Name="Grfst" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Öğrenim Göreceği Yük"/>
+                <Property Name="Grfsi" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Öğrenim Göreceği Yük"/>
+                <Property Name="Ylskt" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Öğrenim Göreceği Yük"/>
+                <Property Name="Ylski" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Öğrenim Göreceği Yük"/>
+                <Property Name="Kntjs" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Kontenjan Sayısı"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Org.birimi"/>
+                <Property Name="Okugr" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Okutma Gerekçesi"/>
+                <Property Name="Lscdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Tarih"/>
+                <Property Name="Lsctm" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Saat"/>
+                <Property Name="Lscus" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Değiştiren"/>
+                <Property Name="Lmsrr" Type="Edm.String" MaxLength="1000" sap:unicode="false" sap:label="Burslu Öğrenci Form"/>
+                <Property Name="Rqowp" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="HR: Talep Sahibi"/>
+                <Property Name="Actio" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Düğme Kodu"/>
+                <Property Name="Orgex" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Çlşn/bşv.adı"/>
+                <Property Name="Plans" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Pozisyon"/>
+                <Property Name="Planx" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="Lmsap" Type="Edm.String" sap:unicode="false" sap:label="Kaynak Uygulama"/>
+                <Property Name="Lmssf" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Eğitim Onay Süreci D"/>
+                <Property Name="Lmssx" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Eğitim Onay Süreç Me"/>
+                <Property Name="Lmssy" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Eğitim Onay Süreci A"/>
+                <Property Name="Lmspx" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Eğitim Onay Süreci S"/>
+                <Property Name="LmsstN" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Eğitim Onay Süreç Du"/>
+                <Property Name="LmsssN" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Eğitim Onay Süreci A"/>
+                <Property Name="Fronp" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Form kimde (Personel"/>
+                <Property Name="Frone" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Form kimde (Ad soyad"/>
+                <Property Name="Appst" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="İşlem durumu"/>
+                <Property Name="Stcnt" Type="Edm.String" MaxLength="1000" sap:unicode="false" sap:label="Durum değişikliği no"/>
             </EntityType>
             <EntityType Name="IntershipStudent" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Pernr"/>
                 </Key>
-                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Message Text"/>
-                <Property Name="Atext" Type="Edm.String" MaxLength="40" sap:unicode="false"/>
-                <Property Name="Begdt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Pbtxt" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="PA text"/>
-                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag"/>
-                <Property Name="Ftext" Type="Edm.String" MaxLength="40" sap:unicode="false"/>
-                <Property Name="Findt" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Personnel area"/>
-                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Org. Unit"/>
-                <Property Name="Quoty" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Tarih" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Date"/>
-                <Property Name="Vorna" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="First Name"/>
-                <Property Name="Nachn" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Last Name"/>
-                <Property Name="Orgtx" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Org.Unit Short Text"/>
+                <Property Name="Adres" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="100 karakter"/>
+                <Property Name="Atext" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Eğitim metni"/>
+                <Property Name="Mento" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Mentör"/>
+                <Property Name="Persk" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Çlşn.alt gr."/>
+                <Property Name="Phonm" Type="Edm.String" MaxLength="241" sap:unicode="false" sap:label="Uzun tn./no."/>
+                <Property Name="Begdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Başlama Tarihi"/>
+                <Property Name="Ptext" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Çlşn.alt gr.tnm"/>
+                <Property Name="Gesch" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Cinsiyet"/>
+                <Property Name="Intyx" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Staj Türü Metni"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Pbtxt" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Pers.aln.metni"/>
+                <Property Name="Quotx" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="Kontenjan Tipi Metni"/>
+                <Property Name="Findt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Bitiş Tarihi"/>
+                <Property Name="Ftext" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Eğitim dalı metni"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Pers.alanı"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Org.birimi"/>
+                <Property Name="Quoty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Kontenjan Tipi"/>
+                <Property Name="Tarih" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Tarih"/>
+                <Property Name="Vorna" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Nachn" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Soyadı"/>
+                <Property Name="Orgtx" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Org.birimi kısa mtn."/>
                 <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
-                <Property Name="Unive" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Educ/training"/>
-                <Property Name="Dprmt" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Br.of study 1"/>
-                <Property Name="Intyp" Type="Edm.String" MaxLength="1" sap:unicode="false"/>
-                <Property Name="Nowap" Type="Edm.Boolean" sap:unicode="false"/>
-                <Property Name="Class" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Nuoda" Type="Edm.String" MaxLength="3" sap:unicode="false"/>
-                <Property Name="Calda" Type="Edm.String" MaxLength="3" sap:unicode="false"/>
-                <Property Name="Intgr" Type="Edm.String" MaxLength="3" sap:unicode="false"/>
-                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false"/>
-                <Property Name="Daobr" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Cardn" Type="Edm.String" MaxLength="30" sap:unicode="false"/>
-                <Property Name="Phonm" Type="Edm.String" MaxLength="11" sap:unicode="false"/>
-                <Property Name="Conem" Type="Edm.String" MaxLength="50" sap:unicode="false"/>
+                <Property Name="Unive" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Eğitim"/>
+                <Property Name="Dprmt" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Eğitim dalı 1"/>
+                <Property Name="Intyp" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Staj Türü"/>
+                <Property Name="Nowap" Type="Edm.Boolean" sap:unicode="false" sap:label="Ücret Ödenmeyecek"/>
+                <Property Name="Nuoda" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Gün Sayısı"/>
+                <Property Name="Intgr" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Staj Notu"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Daobr" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Doğum Tarihi"/>
+                <Property Name="Cardn" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Kart Numarası"/>
+                <Property Name="Conem" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Acil Durumda Ulaşıla"/>
             </EntityType>
             <EntityType Name="PersonnelAttachment" m:HasStream="true" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="Attid"/>
                 </Key>
-                <Property Name="Attid" Type="Edm.Guid" Nullable="false" sap:unicode="false"/>
-                <Property Name="Pernr" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Attty" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Crdat" Type="Edm.DateTime" Precision="7" sap:unicode="false"/>
-                <Property Name="Crtim" Type="Edm.Time" Precision="0" sap:unicode="false"/>
-                <Property Name="Uname" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="User"/>
-                <Property Name="Id" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="Document ID"/>
-                <Property Name="Name" Type="Edm.String" MaxLength="250" sap:unicode="false" sap:label="Error text:pstg"/>
-                <Property Name="Type" Type="Edm.String" MaxLength="250" sap:unicode="false" sap:label="Error text:pstg"/>
-                <Property Name="MimeType" Type="Edm.String" sap:unicode="false"/>
-                <Property Name="Ptype" Type="Edm.String" MaxLength="10" sap:unicode="false"/>
-                <Property Name="Qlftx" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Name"/>
+                <Property Name="Attid" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="Dosya numarası"/>
+                <Property Name="Docnm" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Evrak ismi"/>
+                <Property Name="Dotyp" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Front-Endden Gelen Döküman Tipi"/>
+                <Property Name="Payno" Type="Edm.String" MaxLength="64" sap:unicode="false" sap:label="Fatura No"/>
+                <Property Name="Sirno" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Sıra No"/>
+                <Property Name="Doctp" Type="Edm.String" MaxLength="1" sap:unicode="true" sap:label="Döküman Tipi"/>
+                <Property Name="Pernr" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Attty" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Ek türü"/>
+                <Property Name="Firdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="İlk Kullanım Tarihi"/>
+                <Property Name="Crdat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Onay gön. tarihi"/>
+                <Property Name="Lasdt" Type="Edm.DateTime" Precision="7" sap:unicode="true" sap:label="Son Geçerlilik Tarih"/>
+                <Property Name="Crtim" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Onaya gönderilme saa"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="true" sap:label="Açıklama"/>
+                <Property Name="Uname" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Kullanıcı"/>
+                <Property Name="Id" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="Doküman tn."/>
+                <Property Name="Name" Type="Edm.String" MaxLength="250" sap:unicode="false" sap:label="Kyt.hata metni"/>
+                <Property Name="Type" Type="Edm.String" MaxLength="250" sap:unicode="false" sap:label="Kyt.hata metni"/>
+                <Property Name="MimeType" Type="Edm.String" sap:unicode="false" sap:label="MIME_TYPE"/>
+                <Property Name="Ptype" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Uygulama türü"/>
+                <Property Name="Qlftx" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Tanım"/>
             </EntityType>
             <EntityType Name="PersonnelAttachmentOperation" sap:content-version="1">
                 <Key>
+                    <PropertyRef Name="Dotyp"/>
                     <PropertyRef Name="Pernr"/>
                     <PropertyRef Name="Ptype"/>
                 </Key>
-                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personnel No."/>
-                <Property Name="Attty" Type="Edm.String" MaxLength="2" sap:unicode="false"/>
-                <Property Name="Ptype" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false"/>
+                <Property Name="Dotyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Front-Endden Gelen Döküman Tipi"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Attty" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Ek türü"/>
+                <Property Name="Ptype" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Uygulama türü"/>
                 <NavigationProperty Name="PersonnelAttachmentSet" Relationship="ZHCM_UX_LMS_ABR_SRV.PersonnelToAttachment" FromRole="FromRole_PersonnelToAttachment" ToRole="ToRole_PersonnelToAttachment"/>
             </EntityType>
+            <EntityType Name="CareerIntership" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Werks" Type="Edm.String" MaxLength="4" sap:unicode="false" sap:label="Pers.alanı"/>
+                <Property Name="Orgeh" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Org.birimi"/>
+                <Property Name="Tarih" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Tarih"/>
+                <Property Name="Quoty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Kontenjan Tipi"/>
+                <Property Name="Vorna" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Nachn" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Soyadı"/>
+                <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
+                <Property Name="Unive" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="Eğitim"/>
+                <Property Name="Dprmt" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Eğitim dalı 1"/>
+                <Property Name="Intyp" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Staj Türü"/>
+                <Property Name="Nowap" Type="Edm.Boolean" sap:unicode="false" sap:label="Ücret Ödenmeyecek"/>
+                <Property Name="Class" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Sınıfı"/>
+                <Property Name="Nuoda" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Gün Sayısı"/>
+                <Property Name="Calda" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Takvim Günü"/>
+                <Property Name="Intgr" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Staj Notu"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Daobr" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Doğum Tarihi"/>
+                <Property Name="Cardn" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Kart Numarası"/>
+                <Property Name="Phonm" Type="Edm.String" MaxLength="11" sap:unicode="false" sap:label="Telefon No"/>
+                <Property Name="Conem" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Acil Durumda Ulaşıla"/>
+                <Property Name="Begdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Başlama Tarihi"/>
+                <Property Name="Findt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Bitiş Tarihi"/>
+                <Property Name="Orgtx" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Org.birimi kısa mtn."/>
+                <Property Name="Pbtxt" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="Pers.aln.metni"/>
+                <Property Name="Atext" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Eğitim metni"/>
+                <Property Name="Ftext" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Eğitim dalı metni"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+            </EntityType>
+            <EntityType Name="FormActions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Lmsid"/>
+                    <PropertyRef Name="Lmsbt"/>
+                </Key>
+                <Property Name="Lmsid" Type="Edm.String" Nullable="false" MaxLength="32" sap:unicode="false" sap:label="Yurtdışı burslu öğre"/>
+                <Property Name="Lmsbt" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Düğme Kodu"/>
+                <Property Name="Lmsbx" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Düğme Metni"/>
+                <Property Name="LmsstN" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Eğitim Onay Süreç Du"/>
+                <Property Name="LmssxN" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Eğitim Onay Süreç Me"/>
+                <Property Name="LmsssN" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Eğitim Onay Süreci A"/>
+                <Property Name="LmssyN" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Eğitim Onay Süreci A"/>
+                <Property Name="Lmsbi" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Düğme İkonu"/>
+                <Property Name="Lmsbs" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Düğme Özelliği"/>
+                <Property Name="Noact" Type="Edm.Boolean" sap:unicode="false" sap:label="Süreç sahibi yok"/>
+            </EntityType>
+            <EntityType Name="EvaluationCriteria" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Evacr"/>
+                </Key>
+                <Property Name="Evacr" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Değerlendirme Kriter"/>
+                <Property Name="Evact" Type="Edm.String" MaxLength="250" sap:unicode="false" sap:label="EVACT"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+            </EntityType>
+            <EntityType Name="TravelReservation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Rezno"/>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Citys" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Conry" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Ülke/bölge"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Rezno" Type="Edm.Guid" Nullable="false" sap:unicode="false" sap:label="Rezervasyon No"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Vorna" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Nachn" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Soyadı"/>
+                <Property Name="Depda" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Gidiş Tarihi"/>
+                <Property Name="Retda" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Dönüş Tarihi"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Rered" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Talep Kayıt Tarihi"/>
+                <Property Name="Resma" Type="Edm.Boolean" sap:unicode="false" sap:label="Rezervasyon Yapıldı"/>
+            </EntityType>
+            <EntityType Name="GeneralExpenditureInformation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Payno"/>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="ArcDocId" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Doc. ID"/>
+                <Property Name="Attid" Type="Edm.Guid" sap:unicode="false" sap:label="Dosya numarası"/>
+                <Property Name="Descp2" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="FileName" Type="Edm.String" sap:unicode="false" sap:label="Dosya Adı"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Payno" Type="Edm.String" Nullable="false" MaxLength="64" sap:unicode="false" sap:label="Fatura No"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Paytp" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Ödeme Türü(Harcama K"/>
+                <Property Name="Paydt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Fatura Tarihi"/>
+                <Property Name="Payam" Type="Edm.Decimal" Precision="10" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="Fatura Tutar"/>
+                <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Para birimi" sap:semantics="currency-code"/>
+                <Property Name="Sent" Type="Edm.Boolean" sap:unicode="false" sap:label="DOĞRU"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Payde" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Son Ödeme Tarihi"/>
+                <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
+                <Property Name="Whiac" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Hangi Hesaba"/>
+                <Property Name="Invsu" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Faturanın Konusu"/>
+            </EntityType>
+            <EntityType Name="SchoolWageInformation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Wagpe"/>
+                    <PropertyRef Name="Kamno"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Wagpe" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Hspl.dönem"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="Dates" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Tarih"/>
+                <Property Name="Kamno" Type="Edm.String" Nullable="false" MaxLength="64" sap:unicode="false" sap:label="Kambiyo Belge No"/>
+                <Property Name="Schpy" Type="Edm.Decimal" Precision="10" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="Okul Ücreti"/>
+                <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Para birimi" sap:semantics="currency-code"/>
+                <Property Name="Kamdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Kambiyo Belge Tarihi"/>
+                <Property Name="Sent" Type="Edm.Boolean" sap:unicode="false" sap:label="DOĞRU"/>
+            </EntityType>
+            <EntityType Name="DomesticLanguageSchoolInformation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Partner"/>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Muhatap"/>
+                <Property Name="Descp2" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="NameFirst" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Banka" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Banka"/>
+                <Property Name="Brnch" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Şube"/>
+                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Bankn" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Banka hesabı"/>
+                <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+            </EntityType>
+            <EntityType Name="LanguageSchoolAbroad" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Partner"/>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Muhatap"/>
+                <Property Name="Descp2" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="NameFirst" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Banka" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Banka"/>
+                <Property Name="Brnch" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Şube"/>
+                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Bankn" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Banka hesabı"/>
+                <Property Name="Swift" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Swift Kodu"/>
+                <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
+                <Property Name="Abano" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="ABA No"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+            </EntityType>
+            <EntityType Name="MasterSchoolInformation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Partner"/>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Muhatap"/>
+                <Property Name="Descp2" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="NameFirst" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Banka" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Banka"/>
+                <Property Name="Brnch" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Şube"/>
+                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Bankn" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Banka hesabı"/>
+                <Property Name="Swift" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Swift Kodu"/>
+                <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
+                <Property Name="Abano" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="ABA No"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+            </EntityType>
+            <EntityType Name="ForeignCurrencyAccount" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Partner"/>
+                </Key>
+                <Property Name="Descp2" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="NameFirst" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Muhatap"/>
+                <Property Name="Banka" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Banka"/>
+                <Property Name="Brnch" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Şube"/>
+                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Bankn" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Banka hesabı"/>
+                <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+            </EntityType>
+            <EntityType Name="OtherAccountInformation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Partner"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Descp2" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Muhatap"/>
+                <Property Name="NameFirst" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Banka" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Banka"/>
+                <Property Name="Brnch" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Şube"/>
+                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Bankn" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Banka hesabı"/>
+                <Property Name="Swift" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Swift Kodu"/>
+                <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+            </EntityType>
+            <EntityType Name="StudentDomesticAccountInformation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Partner"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Descp2" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Muhatap"/>
+                <Property Name="NameFirst" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Banka" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Banka"/>
+                <Property Name="Brnch" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Şube"/>
+                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Bankn" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Banka hesabı"/>
+                <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+            </EntityType>
+            <EntityType Name="AbroadOtherAccountInformation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Partner"/>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Partner" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Muhatap"/>
+                <Property Name="Descp2" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="NameFirst" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Banka" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Banka"/>
+                <Property Name="Brnch" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Şube"/>
+                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Bankn" Type="Edm.String" MaxLength="18" sap:unicode="false" sap:label="Banka hesabı"/>
+                <Property Name="Swift" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="Swift Kodu"/>
+                <Property Name="Iban00" Type="Edm.String" MaxLength="42" sap:unicode="false" sap:label="IBAN"/>
+                <Property Name="Abano" Type="Edm.String" MaxLength="9" sap:unicode="false" sap:label="ABA No"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+            </EntityType>
+            <EntityType Name="Return" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Type"/>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Type" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="İleti tipi"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="20" sap:unicode="false" sap:label="İleti sınıfı"/>
+                <Property Name="Number" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İleti numarası"/>
+                <Property Name="Message" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="LogNo" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Günlük no."/>
+                <Property Name="LogMsgNo" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="İleti numarası"/>
+            </EntityType>
+            <EntityType Name="GuarantorAdditional" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Sirno"/>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="ObjectId"/>
+                    <PropertyRef Name="ArcDocId"/>
+                </Key>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Attid" Type="Edm.Guid" sap:unicode="false" sap:label="Dosya numarası"/>
+                <Property Name="Sirno" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Sıra No"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+                <Property Name="ObjectId" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Object ID"/>
+                <Property Name="ArcDocId" Type="Edm.String" Nullable="false" MaxLength="40" sap:unicode="false" sap:label="Doc. ID"/>
+                <Property Name="Docnm" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Evrak ismi"/>
+                <Property Name="Doctp" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Döküman Tipi"/>
+                <Property Name="Firdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="İlk Kullanım Tarihi"/>
+                <Property Name="Lasdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Son Geçerlilik Tarih"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Dotyp" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Front-Endden Gelen Döküman Tipi"/>
+            </EntityType>
+            <EntityType Name="GuarantorInformation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Sirno"/>
+                </Key>
+                <Property Name="Adtyp" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="20 karakter"/>
+                <Property Name="Bezei" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="Tanım"/>
+                <Property Name="Photy" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="20 karakter"/>
+                <Property Name="Distx" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="İlçe Adı"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Vorna" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Adı"/>
+                <Property Name="Nachn" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Soyadı"/>
+                <Property Name="Sirno" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Sıra No"/>
+                <Property Name="Stras" Type="Edm.String" MaxLength="60" sap:unicode="false" sap:label="Sokak/konut no."/>
+                <Property Name="Pstlz" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="PKd/İl"/>
+                <Property Name="Conry" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Ülke/bölge"/>
+                <Property Name="City" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="İl"/>
+                <Property Name="Distr" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="İlçe Kodu"/>
+                <Property Name="Phonm" Type="Edm.String" MaxLength="241" sap:unicode="false" sap:label="Uzun tn./no."/>
+                <Property Name="Pfult" Type="Edm.Boolean" sap:unicode="false" sap:label="Varsayılan"/>
+                <Property Name="Email" Type="Edm.String" MaxLength="241" sap:unicode="false" sap:label="Uzun tn./no."/>
+                <Property Name="Mfult" Type="Edm.Boolean" sap:unicode="false" sap:label="Varsayılan"/>
+                <Property Name="Merni" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="TC Kimlik No"/>
+                <Property Name="Brtdt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Doğum Tarihi"/>
+                <Property Name="Idcno" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Nüfus cüzdan no"/>
+                <Property Name="Konfe" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Dini"/>
+                <Property Name="Lavad" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Son Geçerlilik Tarih"/>
+                <Property Name="Fater" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Baba Adı"/>
+                <Property Name="Muter" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Anne Adı"/>
+                <Property Name="Grana" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="Veren Makam"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+            </EntityType>
+            <EntityType Name="StudentSalaries" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Wagpe"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Salry" Type="Edm.Decimal" Precision="10" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="Maaş"/>
+                <Property Name="Paydt" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Fatura Tarihi"/>
+                <Property Name="Prope" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Sorgula ve Oluştur farkı"/>
+                <Property Name="Sent" Type="Edm.Boolean" sap:unicode="false" sap:label="DOĞRU"/>
+                <Property Name="Wagpe" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="Hspl.dönem"/>
+                <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Para birimi" sap:semantics="currency-code"/>
+                <Property Name="Consa" Type="Edm.Decimal" Precision="10" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="Kısıt Maaş"/>
+                <Property Name="Ename" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="Çlşn/bşv.adı"/>
+                <Property Name="Stafe" Type="Edm.Decimal" Precision="16" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="Kırtasiye Ücreti"/>
+                <Property Name="Extda" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="Fazla Gün"/>
+            </EntityType>
+            <EntityType Name="GuarantorAttachmentOperation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Firdt"/>
+                    <PropertyRef Name="Sirno"/>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Dotyp"/>
+                    <PropertyRef Name="Lasdt"/>
+                    <PropertyRef Name="Ptype"/>
+                    <PropertyRef Name="Docnm"/>
+                    <PropertyRef Name="Doctp"/>
+                    <PropertyRef Name="Descp"/>
+                </Key>
+                <Property Name="Firdt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="İlk Kullanım Tarihi"/>
+                <Property Name="Sirno" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Sıra No"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Dotyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Front-Endden Gelen Döküman Tipi"/>
+                <Property Name="Lasdt" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Son Geçerlilik Tarih"/>
+                <Property Name="Ptype" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Uygulama türü"/>
+                <Property Name="Docnm" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Evrak ismi"/>
+                <Property Name="Doctp" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Döküman Tipi"/>
+                <Property Name="Descp" Type="Edm.String" Nullable="false" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="ObjectId" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="OBJECT_ID"/>
+                <Property Name="ArcDocId" Type="Edm.String" MaxLength="40" sap:unicode="false" sap:label="ARC_DOC_ID"/>
+                <Property Name="Attty" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="Ek türü"/>
+                <NavigationProperty Name="PersonnelAttachmentSet" Relationship="ZHCM_UX_LMS_ABR_SRV.GuarantorToAttachment" FromRole="FromRole_GuarantorToAttachment" ToRole="ToRole_GuarantorToAttachment"/>
+            </EntityType>
+            <EntityType Name="InternStudentAbsenteeism" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Infty"/>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Subty"/>
+                    <PropertyRef Name="Histo"/>
+                </Key>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <Property Name="Subtx" Type="Edm.String" MaxLength="25" sap:unicode="false" sap:label="Alt Türü Metni"/>
+                <Property Name="Infty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Bilgi tipi"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Subty" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Alt tip"/>
+                <Property Name="Histo" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="Tarih"/>
+                <Property Name="Crnam" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Yaratan"/>
+                <Property Name="Aedat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Dğşk.tarihi"/>
+                <Property Name="Exrea" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Gelmeme Nedeni Açıkl"/>
+                <Property Name="Messg" Type="Edm.String" MaxLength="220" sap:unicode="false" sap:label="İleti metni"/>
+                <Property Name="Mesty" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Karakter 1"/>
+            </EntityType>
+            <EntityType Name="OffsetInformation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Offno" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="Karakter alanı uzunluğu 10"/>
+                <Property Name="Wagpe" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="Hspl.dönem"/>
+                <Property Name="Paytp" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="Ödeme Türü"/>
+                <Property Name="Betrg" Type="Edm.Decimal" Precision="10" Scale="3" sap:unicode="false" sap:unit="Waers" sap:label="Tutar"/>
+                <Property Name="Waers" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Para birimi" sap:semantics="currency-code"/>
+                <Property Name="Dates" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Tarih"/>
+                <Property Name="Paid" Type="Edm.Boolean" sap:unicode="false" sap:label="DOĞRU"/>
+            </EntityType>
+            <EntityType Name="GeneralExpenditureAttachment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Payno"/>
+                    <PropertyRef Name="Dotyp"/>
+                    <PropertyRef Name="Ptype"/>
+                </Key>
+                <Property Name="ArcDocId" Type="Edm.Guid" sap:unicode="false" sap:label="Doc. ID"/>
+                <Property Name="Attid" Type="Edm.Guid" sap:unicode="false" sap:label="Dosya numarası"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Payno" Type="Edm.String" Nullable="false" MaxLength="64" sap:unicode="false" sap:label="Fatura No"/>
+                <Property Name="Dotyp" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Front-Endden Gelen Döküman Tipi"/>
+                <Property Name="Ptype" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Uygulama türü"/>
+                <Property Name="FileName" Type="Edm.String" sap:unicode="false" sap:label="Dosya Adı"/>
+                <NavigationProperty Name="PersonnelAttachmentSet" Relationship="ZHCM_UX_LMS_ABR_SRV.ExpenditureToAttachmentSet" FromRole="FromRole_ExpenditureToAttachmentSet" ToRole="ToRole_ExpenditureToAttachmentSet"/>
+            </EntityType>
+            <EntityType Name="InternEvaluationForm" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Quenm"/>
+                </Key>
+                <Property Name="Quenm" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Soru Numarası"/>
+                <Property Name="Quetx" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Soru Metni"/>
+                <Property Name="Score1" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Puan"/>
+                <Property Name="Score2" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Puan"/>
+                <Property Name="Score3" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Puan"/>
+                <Property Name="Score4" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Puan"/>
+                <Property Name="Score5" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Puan"/>
+                <Property Name="Score6" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Puan"/>
+                <Property Name="Score7" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Puan"/>
+                <Property Name="Score8" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Puan"/>
+            </EntityType>
+            <EntityType Name="EvaluationAnswers" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Mento"/>
+                    <PropertyRef Name="Pernr"/>
+                    <PropertyRef Name="Quenm"/>
+                </Key>
+                <Property Name="Mento" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Mentör"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Quenm" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Soru Numarası"/>
+                <Property Name="Quetx" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Soru Metni"/>
+                <Property Name="Answe" Type="Edm.String" MaxLength="1" sap:unicode="false" sap:label="Cevap"/>
+            </EntityType>
+            <EntityType Name="IntershipEvaluation" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Mento"/>
+                    <PropertyRef Name="Pernr"/>
+                </Key>
+                <Property Name="Mento" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Mentör"/>
+                <Property Name="Pernr" Type="Edm.String" Nullable="false" MaxLength="8" sap:unicode="false" sap:label="Personel no."/>
+                <Property Name="Tosoc" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:label="Puan"/>
+                <Property Name="Crnam" Type="Edm.String" MaxLength="12" sap:unicode="false" sap:label="Yaratan"/>
+                <Property Name="Aedat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Dğşk.tarihi"/>
+                <Property Name="Descp" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="Açıklama"/>
+                <NavigationProperty Name="EvaluationAnswersSet" Relationship="ZHCM_UX_LMS_ABR_SRV.IntershipEvaluationToEvaluationAnswer" FromRole="FromRole_IntershipEvaluationToEvaluationAnswer" ToRole="ToRole_IntershipEvaluationToEvaluationAnswer"/>
+            </EntityType>
+            <Association Name="IntershipEvaluationToEvaluationAnswer" sap:content-version="1">
+                <End Type="ZHCM_UX_LMS_ABR_SRV.IntershipEvaluation" Multiplicity="1" Role="FromRole_IntershipEvaluationToEvaluationAnswer"/>
+                <End Type="ZHCM_UX_LMS_ABR_SRV.EvaluationAnswers" Multiplicity="*" Role="ToRole_IntershipEvaluationToEvaluationAnswer"/>
+            </Association>
             <Association Name="PersonnelToAttachment" sap:content-version="1">
                 <End Type="ZHCM_UX_LMS_ABR_SRV.PersonnelAttachmentOperation" Multiplicity="1" Role="FromRole_PersonnelToAttachment"/>
                 <End Type="ZHCM_UX_LMS_ABR_SRV.PersonnelAttachment" Multiplicity="*" Role="ToRole_PersonnelToAttachment"/>
+            </Association>
+            <Association Name="ExpenditureToAttachmentSet" sap:content-version="1">
+                <End Type="ZHCM_UX_LMS_ABR_SRV.GeneralExpenditureAttachment" Multiplicity="1" Role="FromRole_ExpenditureToAttachmentSet"/>
+                <End Type="ZHCM_UX_LMS_ABR_SRV.PersonnelAttachment" Multiplicity="*" Role="ToRole_ExpenditureToAttachmentSet"/>
+            </Association>
+            <Association Name="GuarantorToAttachment" sap:content-version="1">
+                <End Type="ZHCM_UX_LMS_ABR_SRV.GuarantorAttachmentOperation" Multiplicity="1" Role="FromRole_GuarantorToAttachment"/>
+                <End Type="ZHCM_UX_LMS_ABR_SRV.PersonnelAttachment" Multiplicity="*" Role="ToRole_GuarantorToAttachment"/>
             </Association>
             <EntityContainer Name="ZHCM_UX_LMS_ABR_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="ScholarshipStudentSet" EntityType="ZHCM_UX_LMS_ABR_SRV.ScholarshipStudent" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
@@ -275,10 +768,59 @@
                 <EntitySet Name="IntershipStudentSet" EntityType="ZHCM_UX_LMS_ABR_SRV.IntershipStudent" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="PersonnelAttachmentSet" EntityType="ZHCM_UX_LMS_ABR_SRV.PersonnelAttachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <EntitySet Name="PersonnelAttachmentOperationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.PersonnelAttachmentOperation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CareerIntershipSet" EntityType="ZHCM_UX_LMS_ABR_SRV.CareerIntership" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="FormActionsSet" EntityType="ZHCM_UX_LMS_ABR_SRV.FormActions" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EvaluationCriteriaSet" EntityType="ZHCM_UX_LMS_ABR_SRV.EvaluationCriteria" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="TravelReservationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.TravelReservation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="GeneralExpenditureInformationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.GeneralExpenditureInformation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="SchoolWageInformationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.SchoolWageInformation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="DomesticLanguageSchoolInformationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.DomesticLanguageSchoolInformation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="LanguageSchoolAbroadSet" EntityType="ZHCM_UX_LMS_ABR_SRV.LanguageSchoolAbroad" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MasterSchoolInformationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.MasterSchoolInformation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ForeignCurrencyAccountSet" EntityType="ZHCM_UX_LMS_ABR_SRV.ForeignCurrencyAccount" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="OtherAccountInformationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.OtherAccountInformation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="StudentDomesticAccountInformationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.StudentDomesticAccountInformation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="AbroadOtherAccountInformationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.AbroadOtherAccountInformation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ReturnSet" EntityType="ZHCM_UX_LMS_ABR_SRV.Return" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="GuarantorAdditionalSet" EntityType="ZHCM_UX_LMS_ABR_SRV.GuarantorAdditional" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="GuarantorInformationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.GuarantorInformation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="StudentSalariesSet" EntityType="ZHCM_UX_LMS_ABR_SRV.StudentSalaries" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="GuarantorAttachmentOperationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.GuarantorAttachmentOperation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="InternStudentAbsenteeismSet" EntityType="ZHCM_UX_LMS_ABR_SRV.InternStudentAbsenteeism" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="OffsetInformationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.OffsetInformation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="GeneralExpenditureAttachmentSet" EntityType="ZHCM_UX_LMS_ABR_SRV.GeneralExpenditureAttachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="InternEvaluationFormSet" EntityType="ZHCM_UX_LMS_ABR_SRV.InternEvaluationForm" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EvaluationAnswersSet" EntityType="ZHCM_UX_LMS_ABR_SRV.EvaluationAnswers" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="IntershipEvaluationSet" EntityType="ZHCM_UX_LMS_ABR_SRV.IntershipEvaluation" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
                 <AssociationSet Name="PersonnelToAttachmentSet" Association="ZHCM_UX_LMS_ABR_SRV.PersonnelToAttachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="PersonnelAttachmentOperationSet" Role="FromRole_PersonnelToAttachment"/>
                     <End EntitySet="PersonnelAttachmentSet" Role="ToRole_PersonnelToAttachment"/>
                 </AssociationSet>
+                <AssociationSet Name="ExpenditureToAttachmentSetSet" Association="ZHCM_UX_LMS_ABR_SRV.ExpenditureToAttachmentSet" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="GeneralExpenditureAttachmentSet" Role="FromRole_ExpenditureToAttachmentSet"/>
+                    <End EntitySet="PersonnelAttachmentSet" Role="ToRole_ExpenditureToAttachmentSet"/>
+                </AssociationSet>
+                <AssociationSet Name="IntershipEvaluationToEvaluationAnswerSet" Association="ZHCM_UX_LMS_ABR_SRV.IntershipEvaluationToEvaluationAnswer" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="IntershipEvaluationSet" Role="FromRole_IntershipEvaluationToEvaluationAnswer"/>
+                    <End EntitySet="EvaluationAnswersSet" Role="ToRole_IntershipEvaluationToEvaluationAnswer"/>
+                </AssociationSet>
+                <AssociationSet Name="GuarantorToAttachmentSet" Association="ZHCM_UX_LMS_ABR_SRV.GuarantorToAttachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="GuarantorAttachmentOperationSet" Role="FromRole_GuarantorToAttachment"/>
+                    <End EntitySet="PersonnelAttachmentSet" Role="ToRole_GuarantorToAttachment"/>
+                </AssociationSet>
+                <FunctionImport Name="SetApproved" ReturnType="ZHCM_UX_LMS_ABR_SRV.Return" EntitySet="ReturnSet" m:HttpMethod="POST">
+                    <Parameter Name="Pernr" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Payno" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="SentPayEducation" ReturnType="ZHCM_UX_LMS_ABR_SRV.Return" EntitySet="ReturnSet" m:HttpMethod="POST">
+                    <Parameter Name="Kamno" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Wagpe" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Pernr" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="SentSalary" ReturnType="ZHCM_UX_LMS_ABR_SRV.Return" EntitySet="ReturnSet" m:HttpMethod="POST">
+                    <Parameter Name="Pernr" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Wagpe" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
             </EntityContainer>
             <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
             <atom:link rel="self" href="http://s06sds4a01.tpao.gov.tr:8000/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>

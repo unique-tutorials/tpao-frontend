@@ -40,78 +40,11 @@ sap.ui.define([
                     priorityDisplay: true
                 },
 				scoreScaleList: {},
-				technicalEvaluation: [
-					{
-						"SupplierName": "08.10.2024 - 14.10.2024",
-						"WorkDescription": "Veritabanı tasarımı ve ilişkiler oluşturma",
-						"BeforeSkillLevel": "Başlangıç (1)",
-						"AfterSkillLevel": "Temel (2)",
-						"Comments": "İlk kez veritabanı tasarımı yaptı."
-					},
-					{
-						"SupplierName": "15.10.2024 - 21.10.2024",
-						"WorkDescription": "UI geliştirme ve kullanıcı testleri",
-						"BeforeSkillLevel": "Temel (2)",
-						"AfterSkillLevel": "Uygulama (3)",
-						"Comments": "UI bileşenlerinde çok gelişme gösterdi."
-					},
-					{
-						"SupplierName": "22.10.2024 - 28.10.2024",
-						"WorkDescription": "API entegrasyonu ve hata yönetimi",
-						"BeforeSkillLevel": "Uygulama (3)",
-						"AfterSkillLevel": "Uzman (4)",
-						"Comments": "API entegrasyonlarında iyi ilerleme kaydetti."
-					},
-					{
-						"SupplierName": "29.10.2024 - 04.11.2024",
-						"WorkDescription": "Performans optimizasyonu",
-						"BeforeSkillLevel": "Uzman (4)",
-						"AfterSkillLevel": "Yetkin (5)",
-						"Comments": "Optimizasyon tekniklerinde yetkin hale geldi."
-					}
-				],
-				evaluationQuestionsList : [
-					{
-						numb:"1",
-						Ques:"Öğrenci işi öğrenmek için heveslidir, mesleki konulara karşı sorgular",
-						Point:"0"
-					},
-					{
-						numb:"2",
-						Ques:"Öğrenci önceden belirttiği zaman planında şirkete düzenli olarak gelir.",
-						Point:"0"
-					},
-					{
-						numb:"3",
-						Ques:"Öğrenci yerine getirmesi gereken yükümlülükleri, zamanında ve eksiklik olarak yapar.",
-						Point:"0"
-					},{
-						numb:"4",
-						Ques:"Öğrenci öğrendiklerinin kalıcı olmasını sağlamaya çalışır.(Notlar alır, uygulama ve/veya pratik yapmayı dener.)",
-						Point:"0"
-					},{
-						numb:"5",
-						Ques:"Öğrenci iş ilişkisinde bulunduğu her seviyedeki kişilerle yapıcı ilişkiler kurar, yöneticilerine ve çalışma arkadaşlarına karşı saygılı davranır.",
-						Point:"0"
-					},{
-						numb:"6",
-						Ques:"Öğrenci görüş ve düşüncelerini açık ve net olarak ifade eder.",
-						Point:"0"
-					},{
-						numb:"7",
-						Ques:"Öğrenci işle ilgili detayları doğru bir şekilde ele alır, bütüne bakarken detayları gözden kaçırmaz ve sorumluluk gösterir.",
-						Point:"0"
-					},{
-						numb:"8",
-						Ques:"Öğrenci yaptığı çalışmalarda durum ve olayların neden-sonuç ilişkilerini dikkate alarak değerlendirir.",
-						Point:"0"
-					},{
-						numb:"9",
-						Ques:"Görüş ve Öneriler",
-						Point:null
-					}
-				]
-				
+				evaluationQuestionsList : {},
+				newInternNumberRequest: {
+                    Pernr: null,
+                    Ename: ""
+                },
             });
         },
         _getRequestList: function () { 
@@ -151,6 +84,71 @@ sap.ui.define([
 			if (this._oNewStudentTrackingSearchHelpDialog) {
 				this._oNewStudentTrackingSearchHelpDialog.close();
 			}
+		},
+		onSearch:function(oEvent){
+			debugger;
+			var oViewModel = this.getModel('internStudentListModel');
+            var oFilter = oViewModel.getProperty('/searchTrackingParameter');
+            var aFilters = this._getFilters(oFilter);
+
+            var oTable = this.getView().byId('studentTrackingTable') || sap.ui.getCore().byId('studentTrackingTable');
+            oTable.getBinding('items').filter(aFilters, "Application");
+		},
+		_getFilters: function (oFilter) {
+            var aFilters = [];
+            var aKeys = Object.keys(oFilter);
+            for (var i = 0; i < aKeys.length; i++) {
+                var sVal = oFilter[aKeys[i]].toString();
+                if (sVal) {
+                    var oFilterElement = new Filter(aKeys[i], FilterOperator.EQ, sVal);
+                    aFilters.push(oFilterElement);
+                }
+            }
+            return aFilters;
+        },
+		onItemSelected: function (oEvent) {
+			debugger;
+			var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
+            console.log("data:" , oSelectedItem);
+            var oViewModel = this.getModel('internStudentListModel');
+            oViewModel.setProperty("/newInternNumberRequest/Pernr", oSelectedItem.Pernr); 
+            oViewModel.setProperty("/newInternNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
+        
+            if (this._oNewStudentTrackingSearchHelpDialog) {
+                this._oNewStudentTrackingSearchHelpDialog.close();
+            }
+        },
+		onSearchTrackingPress:function(oEvent){
+			debugger;
+			var that = this;
+			var oModel = this.getModel();
+			var sPernr = this.getView().getModel("internStudentListModel").getProperty("/newInternNumberRequest/Pernr");
+
+			var aFilters = [];
+			aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
+
+			if (!sPernr) {
+				this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "W");
+				return;
+			}
+			function readData(sPath, sModelProperty, errorMessage) {
+				oModel.read(sPath, {
+					filters: aFilters,
+					success: function (oData) {
+						var oViewModel = that.getModel("internStudentListModel");
+						oViewModel.setProperty(sModelProperty, oData);
+						console.log(oData);
+					},
+					error: function () {
+						sap.m.MessageToast.show(errorMessage);
+					}
+				});
+			}
+			// Öğrenci bilgileri al
+			var sScholarshipPath = oModel.createKey("/IntershipStudentSet", { Pernr: sPernr });
+			readData(sScholarshipPath, "/SelectedInternEmployee", "Stajyer Öğrenci bilgisi alınamadı.");
+	
 		}
+
 	});
 });

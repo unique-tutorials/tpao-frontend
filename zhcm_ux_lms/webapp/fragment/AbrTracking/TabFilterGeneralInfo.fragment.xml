@@ -375,11 +375,11 @@
                             <TextArea rows="10" value="{requestListModel>/generalEmployee/Descp}"/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>MADE_A_REFUND}">
+                    <!-- <f:FormElement label="{i18n>MADE_A_REFUND}">
                         <f:fields>
                             <CheckBox selected="{requestListModel>/generalEmployee/Repad}"/>
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>

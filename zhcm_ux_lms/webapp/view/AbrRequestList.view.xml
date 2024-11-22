@@ -23,8 +23,8 @@
                 <headerToolbar>
                     <Toolbar>
                         <ToolbarSpacer/>
-                        <SearchField id="searchField" placeholder="{i18n>REQUEST_SEARCH_TOOLTIP}" search="onSearch"
-                            width="{= ${device>/system/phone} ? '100%' : '50%' }"></SearchField>
+                        <!-- <SearchField id="searchField" placeholder="{i18n>REQUEST_SEARCH_TOOLTIP}" search="onSearch"
+                            width="{= ${device>/system/phone} ? '100%' : '50%' }"></SearchField> -->
                     </Toolbar>
                 </headerToolbar>   
                 <infoToolbar>

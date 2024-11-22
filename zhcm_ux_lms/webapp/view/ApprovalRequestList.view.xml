@@ -47,12 +47,12 @@
                 <headerToolbar>
                     <Toolbar>
                         <ToolbarSpacer />
-                        <SearchField
+                        <!-- <SearchField
                             id="searchField"
                             tooltip="{i18n>REQUEST_SEARCH_TOOLTIP}"
                             search="onSearch"
                             width="{= ${device>/system/phone} ? '100%' : '50%' }"
-                        />
+                        /> -->
                     </Toolbar>
                 </headerToolbar>
                 <infoToolbar>
