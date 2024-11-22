@@ -439,7 +439,7 @@ sap.ui.define([
             var sPernr = this.getView().getModel("requestStajyerListModel").getProperty("/newNumberStajyerRequest/Pernr");
 
             if (!sPernr) {
-                this._sweetToast(this.getText("NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("NUMBER_REQUIRED"), "E");
                 return;
             }
             function readData(sPath, sModelProperty, errorMessage) {

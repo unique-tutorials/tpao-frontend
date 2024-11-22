@@ -727,7 +727,7 @@ sap.ui.define([
             this._openBusyFragment("READ_EXPEND_INFO", []);
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             if (!sPernr) {
-                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "E");
             }
 
             var aFilters = [];
@@ -755,7 +755,7 @@ sap.ui.define([
             this._openBusyFragment("READ_SCHOOL_FEE", []);
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             if (!sPernr) {
-                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "W");
+                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "E");
             }
             var aFilters = [];
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
@@ -782,7 +782,7 @@ sap.ui.define([
             this._openBusyFragment("READ_GUARANTOR_FEE", []);
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             if (!sPernr) {
-                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED", ), "W");
+                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED", ), "E");
             }
             var aFilters = [];
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))

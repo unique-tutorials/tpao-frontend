@@ -25,7 +25,7 @@ sap.ui.define([
             var oViewModel = this.getModel("trainingManagerListModel");
             oViewModel.setData({
                 requestListTableTitle: "",
-                managerSearchRequest:{},
+                searchValue:{},
                 requestList: [],
                 managerList:{},
                 selectedRequest: {},
@@ -43,92 +43,58 @@ sap.ui.define([
             // this.goBack(History);
             this.getRouter().navTo("appdispatcher", {}, true);
         },
-		// onSearch: function (oEvent) {
-		// 	debugger;
-		// 	var sQuery = oEvent.getParameter("newValue");
-		// 	var oTable = this.byId("idPendingTable");
-		// 	var oBinding = oTable.getBinding("items");
-			
-		// 	if (!sQuery || sQuery.length === 0) {
-		// 		oBinding.filter([]); // Clear filters
-		// 		var oViewModel = this.getView().getModel("trainingManagerListModel");
-		// 		oViewModel.setProperty("/managerSearchRequest", "");
-		// 		return;
-		// 	}
 		
-		// 	var aFilterProps = [
-		// 		"Ftext",       
-		// 		"Ftext1",      
-		// 		"Ftext2",      
-		// 		"Ylskt",     
-		// 		"Ylski",      
-		// 		"Kntjs",     
-		// 		"Orgex",       
-		// 		"Okugr"       
-		// 	];
+		onSearch: function () {
+			debugger;
+			var oFilterBar = this.byId("TrainingFilter");
+			var aFilterGroupItems = oFilterBar.getFilterGroupItems();
+			var oModel = this.getView().getModel("trainingManagerListModel");
+			var aOriginalData = oModel.getProperty("/managerList"); 
 		
-		// 	var aFilters = aFilterProps.map(function(prop) {
-		// 		return new sap.ui.model.Filter(prop, sap.ui.model.FilterOperator.Contains, sQuery);
-		// 	});
+			var aFilters = [];
 		
-		// 	var oCombinedFilter = new sap.ui.model.Filter({
-		// 		filters: aFilters,
-		// 		and: false 
-		// 	});
+			aFilterGroupItems.forEach(function (oGroupItem) {
+				var oControl = oGroupItem.getControl();
+				var sValue = "";
+				var sPath = "";
 		
-		// 	oBinding.filter(oCombinedFilter, "Application");
+				if (oControl instanceof sap.m.ComboBox) {
+					sValue = oControl.getSelectedKey();
+					sPath = oControl.getBindingInfo("selectedKey").parts[0].path.replace("searchValue/", "").replace("/", "");
+				} else if (oControl instanceof sap.m.Input) {
+					sValue = oControl.getValue();
+					sPath = oControl.getBindingInfo("value").parts[0].path.replace("searchValue/", "").replace("/", "");
+				}
 		
-		// 	var oViewModel = this.getView().getModel("trainingManagerListModel");
-		// 	oViewModel.setProperty("/managerSearchRequest", sQuery);
-		// },
-		
-		// onSearch: function () {
-        //     var oFilterBar = this.byId("TrainingFilter");
-        //     var oTable = this.byId("idPendingTable");
-        //     var oBinding = oTable.getBinding("items");
+				if (sValue && sPath) {
+					aFilters.push({
+						path: sPath,
+						value: sValue
+					});
+				}
 
-		// 	var sUndergraduate = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Madef");
-		// 	var sMasterDegreeTr = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Grfst");
-		// 	var sMasterDegreeEn = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Grfsi");
-		// 	var sSubjectTr = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Ylskt");
-		// 	var sSubjectEn = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Ylski");
-		// 	var sNumberOf = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Kntjs");
-		// 	var sUnitReturn = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Orgeh");
-		// 	var sReasonScholarship = this.getView().getModel("trainingManagerListModel").getProperty("/managerSearchRequest/Okugr");
+				// if (sValue && sPath) {
+				
+				// 	aFilters.push(new Filter(sPath, FilterOperator.Contains, sValue));
+				// }
+
+			});
 		
-
-            
-        //     var aFilters = [];
-
-            
-        //     if (sUndergraduate) {
-        //         aFilters.push(new Filter("Undergraduate", FilterOperator.EQ, sUndergraduate));
-        //     }
-        //     if (sMasterDegreeTr) {
-        //         aFilters.push(new Filter("MasterDegreeTr", FilterOperator.EQ, sMasterDegreeTr));
-        //     }
-        //     if (sMasterDegreeEn) {
-        //         aFilters.push(new Filter("MasterDegreeEn", FilterOperator.EQ, sMasterDegreeEn));
-        //     }
-        //     if (sSubjectTr) {
-        //         aFilters.push(new Filter("SubjectTr", FilterOperator.Contains, sSubjectTr));
-        //     }
-        //     if (sSubjectEn) {
-        //         aFilters.push(new Filter("SubjectEn", FilterOperator.Contains, sSubjectEn));
-        //     }
-        //     if (sNumberOf) {
-        //         aFilters.push(new Filter("NumberOf", FilterOperator.EQ, sNumberOf));
-        //     }
-        //     if (sUnitReturn) {
-        //         aFilters.push(new Filter("UnitReturn", FilterOperator.EQ, sUnitReturn));
-        //     }
-        //     if (sReasonScholarship) {
-        //         aFilters.push(new Filter("ReasonScholarship", FilterOperator.Contains, sReasonScholarship));
-        //     }
-
-        //     oBinding.filter(aFilters, FilterType.Application);
-        // },
-        
+			var aFilteredData = aOriginalData.filter(function (oItem) {
+				return aFilters.every(function (oFilter) {
+					return oItem[oFilter.path] && oItem[oFilter.path].toString() === oFilter.value;
+				});
+			});
+		
+			oModel.setProperty("/managerList", aFilteredData);
+		
+			var oTable = this.byId("idPendingTable") || sap.ui.getCore().byId('idPendingTable');
+			oTable.getBinding("items").refresh();
+		
+			console.log("Applied Filters:", aFilters);
+			console.log("Filtered Data:", aFilteredData);
+		},
+		
         getRecruiterList: function () {
             debugger;
 			var oModel = this.getModel();

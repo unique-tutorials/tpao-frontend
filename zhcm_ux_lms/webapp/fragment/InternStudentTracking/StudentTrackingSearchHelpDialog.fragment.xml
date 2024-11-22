@@ -4,7 +4,7 @@
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar">
     <Dialog title="Stajyer Öğrenci Takibi Arama" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
-        <f:DynamicPage headerExpanded="{/headerExpanded}">
+        <f:DynamicPage headerExpanded="{internStudentListModel/headerExpanded}">
             <f:header>
                 <f:DynamicPageHeader>
                     <f:content>
@@ -12,67 +12,64 @@
                             <fb:filterGroupItems>
                                 <fb:FilterGroupItem name="EName" label="{i18n>INTERN_NUMBER}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Ename' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/Ename}">
-											<core:ListItem key="{Key}" text="{Value}"/>
-										</ComboBox>
+                                        <Input value="{internStudentListModel>/searchTrackingParameter/Pernr}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="Unit" label="{i18n>UNIT}" groupName="Group2" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input valueHelpOnly="true" showValueHelp="true" />
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/Orgeh}">
+											<core:ListItem key="{Key}" text="{Value}"/>
+										</ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="QUnit" label="{i18n>Q_UNIT}" groupName="Group3" visibleInFilterBar="true">
                                     <fb:control>
-                                        <Input valueHelpOnly="true" showValueHelp="true"  />
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgtx' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/Orgtx}">
+											<core:ListItem key="{Key}" text="{Value}"/>
+										</ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="TecEn" label="{i18n>TECHNICAL_ENAME}" groupName="Group4" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'TEname' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/TEname}">
+                                        <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Mento' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/Mento}">
 											<core:ListItem key="{Key}" text="{Value}"/>
-										</ComboBox>
+										</ComboBox> -->
+                                        <Input value="{internStudentListModel>/searchTrackingParameter/Mento}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="RegNu" label="{i18n>REGISTRATION_NUMBER}" groupName="Group5" visibleInFilterBar="true">
-                                    <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'RegNo' } ] }" selectedKey="{internStudentListModel>/searchTrackingParameter/RegNo}">
-											<core:ListItem key="{Key}" text="{Value}"/>
-										</ComboBox>
-                                    </fb:control>
-                                </fb:FilterGroupItem>
+
                             </fb:filterGroupItems>
                         </fb:FilterBar>
                     </f:content>
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="StudentTrackingTable" inset="false" items="{internStudentListModel>/ProductCollection}">
+                <Table id="studentTrackingTable" inset="false" items="{/IntershipStudentSet}">
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>STUDENT_ENAME}"/>
+                            <Text text="Stajyer No"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>UNIT}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>Q_UNIT}"/>
+                            <Text text="Adı"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{TECHNICAL_ENAME}"/>
+                            <Text text="Soyadı"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>REGISTRATION_NUMBER}"/>
+                            <Text text="{i18n>TECHNICAL_ENAME}"/>
                         </Column>
                     </columns>
                     <items>
-                        <ColumnListItem vAlign="Middle">
+                        <ColumnListItem type="Active" vAlign="Middle" press=".onItemSelected">
                             <cells>
-                                <ObjectIdentifier title="{internStudentListModel>Name}" text="{internStudentListModel>ProductId}" />
-                                <Text text="{internStudentListModel>Category}" />
-                                <Text text="{internStudentListModel>SupplierName}" />
-                                <Text text="{internStudentListModel>Category}" />
-                                <Text text="{internStudentListModel>SupplierName}" />
+                                <Text text="{Pernr}" />
+                                <ObjectIdentifier title="{Orgeh}" text="{Orgtx}"/>
+                                <Text text="{Vorna}" />
+                                <Text text="{Nachn}" />
+                                <Text text="{Mento}" />
                             </cells>
                         </ColumnListItem>
                     </items>
