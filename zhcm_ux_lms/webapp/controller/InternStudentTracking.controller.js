@@ -49,6 +49,23 @@ sap.ui.define([
                     Pernr: null,
                     Ename: ""
                 },
+                levelDescriptionList:[
+                    {
+                        title: "Başlangıç (1): Aday mühendis konu hakkında hiçbir bilgiye sahip değildir."
+                    },
+                    {
+                        title: "Temel (2): Aday mühendis konu hakkında teorik bilgi sahibidir fakat herhangi bir uygulamada bulunamaz."
+                    },
+                    {
+                        title: "Uygulama (3): Aday mühendis konu hakkında bir gözetmen/danışman eşliğinde veya gözetiminde uygulama yapabilir."
+                    },
+                    {
+                        title: "Uzman (4): Aday mühendis konu hakkında yanlız çalışma yapabilir ve başka bir kişiye bilgisini aktarabilir verebilir."
+                    },
+                    {
+                        title: "Yetkin (5): Aday mühendis konu hakkında değerlendirme yapabilir ve proje geliştirebilir."
+                    },
+                ]
             });
         },
         _getRequestList: function () { 
