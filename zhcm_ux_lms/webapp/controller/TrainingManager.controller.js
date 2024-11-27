@@ -77,7 +77,7 @@ sap.ui.define([
 				
 				// 	aFilters.push(new Filter(sPath, FilterOperator.Contains, sValue));
 				// }
-
+		
 			});
 		
 			var aFilteredData = aOriginalData.filter(function (oItem) {
@@ -124,6 +124,7 @@ sap.ui.define([
             debugger;
             var sCurrentLocale = sap.ui.getCore().getConfiguration().getLanguage();
             var sHeader = 'YLSY - İHTİYAÇ BİLDİRME FORMU';
+
             // if (sCurrentLocale === 'en' || sCurrentLocale === 'EN') {
             //     sHeader = 'YLSY - REQUIREMENT FORM';
             // }
@@ -177,22 +178,11 @@ sap.ui.define([
             var aRows = [];
             var sInstitutionName = 'Adına Öğrenim Görülecek Kurum';
             var sUnitDirectorate = '*Adına Öğrenim Görülecek Birim/Genel Müdürlük';
-
-            // var sUndergraduateField = '**Yurt Dışında Öğrenim Görülecek Alan';
-            // var sMasterFieldTr = 'Alan Bazlı Kontenjan Sayısı';
-            // var sMasterFieldEn = '***Başvurabilecek Lisans Mezuniyet Programları';
-            // var sSubjectTr = '****Tamamlanması İstenilen Öğrenim Seviyesi';
-            // var sSubjectEn = '*****Öğrenimi Tamamlandıktan Sonra Öğrencilerin Atanacağı Kadrolar';
-            // var sPreferredCountry = '*****Öğrenim Görülebilecek Ülkeler';
-            // var sQuota = '******1.Öğrenim Görülebilecek Ülke ve Bu Ülkedeki Üniversiteler';
-            // var sUnit = '*******2.Öğrenim Görülebilecek Ülke ve Bu Ülkedeki Üniversiteler';
-
             var sUndergraduateField = 'Li̇sans Mezuni̇yet Alanı / Alanları';
             var sMasterFieldTr = 'Öğreni̇m Göreceği̇ Yüksek Li̇sans Alanı (Türkçe)';
             var sMasterFieldEn = 'Öğreni̇m Göreceği̇ Yüksek Li̇sans Alanı (İngi̇li̇zce)';
             var sSubjectTr = 'Öğreni̇m Göreceği̇ Yüksek Li̇sans Konusu (Türkçe)';
             var sSubjectEn = 'Öğreni̇m Göreceği̇ Yüksek Li̇sans Konusu (İngi̇li̇zce)';
-
             var sQuota = 'Kontenjan Sayısı';
             var sUnit = 'Öğrenci̇ni̇n Dönüşte İsti̇hdam Edi̇leceği̇ Üni̇te Ve Müdürlük';
             var sJustification = 'Bu Alanda Yurt Dışında Burslu Öğrenci̇ Okutma Gerekçesi̇';
@@ -218,8 +208,8 @@ sap.ui.define([
             var aBodyRows = []; 
             for (var i = 0; i < aPlanningData.length; i++) {
                 var aColumns = [
-                    "Tpao",
-                    "Tpao Genel Müdürlük",
+                    "Türkiye Petrolleri Anonim Ortaklığı",
+                    "Bilişim Teknolojileri Daire Başkanlığı",
                     aPlanningData[i].Ftext,
                     aPlanningData[i].Ftext1,
                     aPlanningData[i].Ftext2,
@@ -280,6 +270,7 @@ sap.ui.define([
 
 			return oBodyObj;
 		},
+		
         _getHeaderColumn: function(sColumnName) {
 			var oHeaderObj = {
 				v: sColumnName,

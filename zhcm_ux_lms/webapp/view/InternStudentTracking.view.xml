@@ -65,6 +65,11 @@
 									<Input value="{internStudentListModel>/SelectedInternEmployee/Orgtx}" />
 								</f:fields>
 							</f:FormElement>
+							<f:FormElement label="Çalışan alt grubu">
+								<f:fields>
+									<Input value="{internStudentListModel>/SelectedInternEmployee/Ptext}" />
+								</f:fields>
+							</f:FormElement>
 						</f:formElements>
 					</f:FormContainer>
 				</f:formContainers>
@@ -94,7 +99,7 @@
                 <!-- <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/> -->
                 <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/>
                 <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/> -->
-                <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSavePress" type="Accept"/>
+                <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveFormButtonPress" type="Accept"/>
             </OverflowToolbar>
         </footer>
 	</Page>

@@ -1814,8 +1814,6 @@ sap.ui.define([
             }
         }
 
-
-
         // getValueHelpList: function () {
         //     var that = this;
         //     var oModel = this.getModel();

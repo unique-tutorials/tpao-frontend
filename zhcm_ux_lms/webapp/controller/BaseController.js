@@ -36,6 +36,10 @@ sap.ui.define([
 		_formatPernr: function (sPernr) {
 			return parseInt(sPernr, 10).toString();
 		},
+		_closeBusyFragment: function () {
+			var oDialog = this._getBusyFragment();
+			oDialog.close();
+		},
 		
 		alertMessage: function(sType, sTitle, sMessage, aParam) {
 			var sIcon = sap.m.MessageBox.Icon.NONE;

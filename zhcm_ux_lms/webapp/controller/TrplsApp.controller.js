@@ -89,6 +89,7 @@ sap.ui.define([
         
             var oViewModel = this.getModel('trplsRequestListModel');
             oViewModel.setProperty("/newNumberReserRequest/Rezno", oSelectedItem.Rezno); 
+            oViewModel.setProperty("/newNumberReserRequest/Pernr", oSelectedItem.Pernr); 
             oViewModel.setProperty("/newNumberReserRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
         
             if (this._oReserSearchHelpDialog) {
@@ -147,15 +148,17 @@ sap.ui.define([
             var oModel = this.getModel();
             var oViewModel = this.getView().getModel("trplsRequestListModel");
             var sRezno = oViewModel.getProperty("/newNumberReserRequest/Rezno");
+            var sPernr = oViewModel.getProperty("/newNumberReserRequest/Pernr")
 
-            var aFilters = [];
-            aFilters.push(new Filter("Rezno", FilterOperator.EQ, sRezno))
+            // var aFilters = [];
+            // aFilters.push(new Filter("Rezno", FilterOperator.EQ, sRezno))
+            var sTravelInfoPath = oModel.createKey("/TravelReservationSet", { Rezno: sRezno, Pernr: sPernr });
         
             // $filter parametresi ile sRezno'yu istek URL'sine ekleyin
-            oModel.read("/TravelReservationSet", {
-                filters: aFilters,
+            oModel.read( sTravelInfoPath, {
+                // filters: aFilters,
                 success: function (oData) {
-                    oViewModel.setProperty("/reservationEmployee", oData.results[1]);
+                    oViewModel.setProperty("/reservationEmployee", oData);
                     that._sweetToast(that.getText("RESERVATION_SUCCESSFULLY"), "S");
                     console.log("Rezervasyon bilgileri dataa:", oData);
                 },

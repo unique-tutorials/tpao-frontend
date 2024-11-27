@@ -66,16 +66,14 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="idPendingTable" busy="{trainingManagerListModel>/tableBusy}" items="{trainingManagerListModel>/managerList}" width="auto" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{trainingManagerListModel>/tableBusyDelay}" growing="true" >
-                    <headerToolbar>
-                        <OverflowToolbar>
-                            <content>
-                                <Title text="Onaylanan Talepler" level="H2"/>
-                                <ToolbarSpacer />
-                                <Button text="Filtrele" press=".getRecruiterList" type="Emphasized" icon="sap-icon://filter" />
-                            </content>
-                        </OverflowToolbar>
-                    </headerToolbar>
+                <Table id="idPendingTable" busy="{trainingManagerListModel>/tableBusy}" items="{trainingManagerListModel>/managerList}" width="auto" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{trainingManagerListModel>/tableBusyDelay}"  growingScrollToLoad="true" updateFinished="onUpdateFinished" growing="true" class="lmsTable">
+                    <infoToolbar>
+                        <Toolbar>
+                            <Title text="Onaylanan Talepler" level="H2"/>
+                            <ToolbarSpacer />
+                            <Button text="Filtrele" press=".getRecruiterList" type="Emphasized" icon="sap-icon://filter" />
+                        </Toolbar>
+                    </infoToolbar>
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>

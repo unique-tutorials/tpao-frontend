@@ -17,28 +17,38 @@
                             <Input value="{requestStajyerListModel>/SelectedStajyer/Iban00}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>UNIVERSITY}">
+                    <f:FormElement label="{i18n>UNIVERSITY}"
+                         
+                        visible="{= ${requestStajyerListModel>/SelectedStajyer/Ptext} !== 'Lise Stajyeri' }">
                         <f:fields>
                             <Input value="{requestStajyerListModel>/SelectedStajyer/Atext}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>INTERNSHIP_BRANCH}">
+                    <f:FormElement label="{i18n>INTERNSHIP_BRANCH}" 
+                                    visible="{= ${requestStajyerListModel>/SelectedStajyer/Ptext} !== 'Lise Stajyeri' }">
                         <f:fields>
                             <Input value="{requestStajyerListModel>/SelectedStajyer/Ftext}" />
                         </f:fields>
                     </f:FormElement>
-
+                    <f:FormElement label="Lise" 
+                                    visible="{= ${requestStajyerListModel>/SelectedStajyer/Ptext} === 'Lise Stajyeri' }">
+                        <f:fields>
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Insti}" />
+                        </f:fields>
+                    </f:FormElement>
+         
                     <f:FormElement label="{i18n>INTERNSHIP_TYPE}">
                         <f:fields>
                             <!-- <Select selectedKey="{requestStajyerListModel>/SelectedStajyer/Intyp}" /> -->
-                            <Select forceSelection="false" selectedKey="{requestStajyerListModel>/SelectedStajyer/Intyp}" width="100%" items="{  
+                            <!-- <Select forceSelection="false" selectedKey="{requestStajyerListModel>/SelectedStajyer/Intyp}" width="100%" items="{  
                             path:'/ValueHelpSet',
                             filters : [
                                 { path : 'Id', operator : 'EQ', value1 : 'Intyp'}
                             ]
                         }">
                                 <core:Item key="{Key}" text="{Value}"/>
-                            </Select>
+                            </Select> -->
+                            <Input value="{requestStajyerListModel>/SelectedStajyer/Intyp}" /> 
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>START_DATE}">

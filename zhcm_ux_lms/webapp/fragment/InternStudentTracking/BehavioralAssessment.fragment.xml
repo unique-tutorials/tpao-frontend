@@ -1,20 +1,18 @@
 <c:FragmentDefinition xmlns="sap.m"
-    xmlns:c="sap.ui.core">
- 
+    xmlns:c="sap.ui.core"  xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
     <VBox class="sapUiSmallMarginTopBottom">
         <MessageStrip class="sapUiSmallMarginBottom" text="Dolduracağınız bu anketin amacı Biz Bize Kariyer Programı Kapsamında gelişimine destek verdiğiniz
         stajerlerinizi değerlendirmek ve Biz Bize Kariyer programını geliştir olup, dolduracağınız anket bizim için
         önem arz etmektedir." type="Information" showIcon="true">
         </MessageStrip>
     </VBox>
-    <IconTabBar stretchContentHeight="false" id="TabContainer2">
-        <items>
-            <IconTabFilter text="Lise">
-                <Table id="idProductsTable2" inset="false" items="{/InternEvaluationFormSet}">
+            <VBox>
+                <Table id="idProductsTable2" items="{/InternEvaluationFormSet}" inset="false" visible="{= ${internStudentListModel>/SelectedInternEmployee/Ptext} === 'Lise Stajyeri' }">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
-                                <Title text="Ölçeklere Göre Puan Skalası" level="H2"/>
+                                <Title text="Ölçeklere Göre Puan Skalası (Lise)" level="H2"/>
                                 <ToolbarSpacer />
                             </content>
                         </OverflowToolbar>
@@ -68,21 +66,76 @@
                         </ColumnListItem>
                     </items>
                 </Table>
-
-                <Table inset="false" items="{/EvaluationAnswersSet}" growing="true" growingScrollToLoad="true">
+                <Table id="idProductsTable3" items="{/UnivIntrnShipEvlationFormSet}" inset="false"  visible="{= ${internStudentListModel>/SelectedInternEmployee/Ptext} === 'Üniversite Stajyeri' }">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
-                                <Title text="Lise Öğrencileri İçin Değerlendirme Anketi" level="H2"/>
-                                <!-- <ToolbarSpacer />
-                                <Button icon="sap-icon://edit" press="onEditPress" type="Accept" /> -->
+                                <Title text="Ölçeklere Göre Puan Skalası (Üniversite)" level="H2"/>
+                                <ToolbarSpacer />
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
                     <columns>
-                        <Column width="8rem">
-                            <Text text="{i18n>STUDENT_NUMBER}" />
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>Q_ORDER_NUMBER}" />
                         </Column>
+                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="sorular" />
+                        </Column> -->
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>I_FINALLY_AGREE}" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="{i18n>I_AGREE}" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="{i18n>PARTIALLY_AGREE}" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="{i18n>I_M_UNDECIDED}" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="{i18n>SOMEWHAT_DISAGREE}" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="{i18n>I_DISAGREE}" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="{i18n>I_STRONGLY_DISAGREE}" />
+                        </Column>
+                        <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Text text="{i18n>NO_IDEA}" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <Text text="{Quenm}" />
+                                <!-- <Text text="{Quetx}" /> -->
+                                <Text text="{Score1}" />
+                                <Text text="{Score2}" />
+                                <Text text="{Score3}" />
+                                <Text text="{Score4}" />
+                                <Text text="{Score5}" />
+                                <Text text="{Score6}" />
+                                <Text text="{Score7}" />
+                                <Text text="{Score8}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+              
+                <Table inset="false" items="{internStudentListModel>/evaluationHighList/evaluationData}" growing="true" growingScrollToLoad="true">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="Değerlendirme Anketi" level="H2"/>
+                                <ToolbarSpacer />
+                                <Button text="Sorgula" icon="" press=".onIntershipButtonPress" type="Emphasized" />
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
                         <Column width="8rem">
                             <Text text="{i18n>Q_ORDER_NUMBER}" />
                         </Column>
@@ -117,25 +170,63 @@
                     <items>
                         <ColumnListItem vAlign="Middle">
                             <cells>
-                                <Text text="{Pernr}"/>
-                                <Text text="{Quenm}"/>
-                                <Text text="{Quetx}"/>
-                                <Text text="{Answe}"/>
-                                <Text text="{Answe}"/>
-                                <Text text="{Answe}"/>
-                                <Text text="{Answe}"/>
-                                <Text text="{Answe}"/>
-                                <Text text="{Answe}"/>
-                                <Text text="{Answe}"/>
-                                <Text text="{Answe}"/>
+                                <Text text="{internStudentListModel>Quenm}"/>
+                                <Text text="{internStudentListModel>Quetx}"/>
+                                <CheckBox selected="{= ${internStudentListModel>Answe} === '1'}" select="onCheckBoxSelect" cd:value="1"/>
+                                <CheckBox selected="{= ${internStudentListModel>Answe} === '2'}" select="onCheckBoxSelect" cd:value="2"/>
+                                <CheckBox selected="{= ${internStudentListModel>Answe} === '3'}" select="onCheckBoxSelect" cd:value="3"/>
+                                <CheckBox selected="{= ${internStudentListModel>Answe} === '4'}" select="onCheckBoxSelect" cd:value="4"/>
+                                <CheckBox selected="{= ${internStudentListModel>Answe} === '5'}" select="onCheckBoxSelect" cd:value="5"/>
+                                <CheckBox selected="{= ${internStudentListModel>Answe} === '6'}" select="onCheckBoxSelect" cd:value="6"/>
+                                <CheckBox selected="{= ${internStudentListModel>Answe} === '7'}" select="onCheckBoxSelect" cd:value="7"/>
+                                <CheckBox selected="{= ${internStudentListModel>Answe} === '8'}" select="onCheckBoxSelect" cd:value="8"/>
                             </cells>
                         </ColumnListItem>
                     </items>
                 </Table>
-            </IconTabFilter>
-            <IconTabFilter text="Üniversite">
-            </IconTabFilter>
-        </items>
-    </IconTabBar>
-
+                <!-- <Button text="Kaydet" icon="sap-icon://save" type="Accept" press=".onSaveFormButtonPress" /> -->
+                  <Table inset="false" >
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="Puan Tablosu" level="H2"/>
+                                <ToolbarSpacer />
+                                <Button text="Sorgula" press=".onPointsButtonPress" type="Emphasized" />
+                                <Button
+                                icon="sap-icon://edit"
+                                press="onEditScoresPress"
+                            />
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column width="30em">
+                            <Text text="Öğrenci hakkında yorumlarınız" />
+                        </Column>
+                        <Column>
+                            <Text text="Puan" />
+                        </Column>
+                       
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <!-- <Text text="{internStudentListModel>/evaluationPointsList/Descp}" /> -->
+                                <HBox alignItems="Start">
+                                    <Input
+                                        value="{internStudentListModel>/evaluationPointsList/Descp}"
+                                        visible="{= ${internStudentListModel>/suggestionActionData/priorityEditable} }"
+                                    />
+                                    <Text
+                                        text="{internStudentListModel>/evaluationPointsList/Descp}"
+                                        visible="{= ${internStudentListModel>/suggestionActionData/priorityDisplay} }"
+                                    />
+                                </HBox>
+                                <Text text="{internStudentListModel>/evaluationPointsList/Tosoc}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <Button text="Kaydet" icon="sap-icon://save" press=".onDescButtonPress" />
+            </VBox>
 </c:FragmentDefinition>
