@@ -143,7 +143,7 @@
                 <Text text="{i18n>INTEREST_RATE}" />
             </Column>
             <Column>
-                <Text text="{i18n>INTEREST_AMOUNT }" />
+                <Text text="{i18n>INTEREST_AMOUNT}" />
             </Column>
         </columns>
         <items>

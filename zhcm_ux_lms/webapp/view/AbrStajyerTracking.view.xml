@@ -27,24 +27,6 @@
                         <IconTabFilter text="{i18n>UPLOAD_INTERN_INFORMATION}" key="uploadExcel">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.UploadExcelInternInformation" type="XML" />
                         </IconTabFilter>
-                        <!-- <IconTabFilter text="İletişim Bilgileri" key="people">
-                            <Text text="People content goes here ..." />
-                        </IconTabFilter>
-                        <IconTabFilter text="Adres Bilgileri" key="people">
-                            <Text text="People content goes here ..." />
-                        </IconTabFilter>
-                        <IconTabFilter text="Eğitimler" key="people">
-                            <Text text="People content goes here ..." />
-                        </IconTabFilter>
-                        <IconTabFilter text="Faliyetler" key="people">
-                            <Text text="People content goes here ..." />
-                        </IconTabFilter>
-                        <IconTabFilter text="Ödevlendirmeler" key="people">
-                            <Text text="People content goes here ..." />
-                        </IconTabFilter>
-                        <IconTabFilter text="Görevlendirmeler" key="people">
-                            <Text text="People content goes here ..." />
-                        </IconTabFilter> -->
                     </items>
                 </IconTabBar>
             </Panel>
