@@ -59,22 +59,22 @@
             </f:formContainers>
             <f:FormContainer>
                 <f:formElements>
-                    <f:FormElement label="{i18n>QUOTA_TYPE}">
+                    <!-- <f:FormElement label="{i18n>QUOTA_TYPE}">
                         <f:fields>
-                            <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Quotx' } ] }" selectedKey="{requestStajyerListModel>/SelectedStajyer/Quotx}">
+                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Quotx' } ] }" selectedKey="{requestStajyerListModel>/SelectedStajyer/Quotx}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
-                            </ComboBox> -->
+                            </ComboBox>
                             <Input value="{requestStajyerListModel>/SelectedStajyer/Quotx}" />
-                            <!-- <Select forceSelection="false" selectedKey="{requestStajyerListModel>/SelectedStajyer/Quotx}" width="100%" items="{  
+                            <Select forceSelection="false" selectedKey="{requestStajyerListModel>/SelectedStajyer/Quotx}" width="100%" items="{  
                         path:'/ValueHelpSet',
                         filters : [
                             { path : 'Id', operator : 'EQ', value1 : 'Quoty'}
                         ]
                     }">
                                 <core:Item key="{Key}" text="{Value}"/>
-                            </Select> -->
+                            </Select>
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                     <f:FormElement label="{i18n>ADDRESS}">
                         <f:fields>
                             <Input value="{requestStajyerListModel>/SelectedStajyer/Adres}" />

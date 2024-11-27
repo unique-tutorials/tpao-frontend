@@ -434,6 +434,7 @@ sap.ui.define([
             }
         },
         onSearchStajyerPress: function (oEvent) {
+            debugger;
             var that = this;
             var oModel = this.getModel();
             var sPernr = this.getView().getModel("requestStajyerListModel").getProperty("/newNumberStajyerRequest/Pernr");
