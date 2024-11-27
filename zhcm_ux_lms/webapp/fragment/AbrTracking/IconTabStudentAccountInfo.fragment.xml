@@ -12,10 +12,10 @@
         <f:formContainers>
             <f:FormContainer title="{i18n>DOMESTIC}">
                 <f:formElements>
-                    <f:FormElement label="Partner Seçiniz">
+                    <f:FormElement label="{i18n>SELECT_PARTNER}">
                         <f:fields>
                             <Input value="{requestListModel>/domesticEmployee/Partner}" />
-                            <Button text="Gönder" />
+                            <Button text="{i18n>SEND}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_NAME}">
@@ -65,7 +65,7 @@
                     <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Input value="{requestListModel>/abroadOtherEmployee/Partner}" />
-                            <Button text="Gönder" />
+                            <Button text="{i18n>SEND}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_NAME}">

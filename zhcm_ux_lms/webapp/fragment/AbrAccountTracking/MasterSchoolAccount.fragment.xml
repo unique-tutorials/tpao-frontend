@@ -13,10 +13,10 @@
         <f:formContainers>
             <f:FormContainer title="{i18n>OVERSEAS_MASTER_SCHOOL}">
                 <f:formElements>
-                    <f:FormElement label="Partner Seçiniz">
+                    <f:FormElement label="{i18n>SELECT_PARTNER}">
                         <f:fields>
                             <Input  enabled="false" value="{abrAccountListModel>/masterEmployee/Partner}" />
-                            <Button  enabled="false" text="Gönder" press=".onPartnerButtonPress" cd:type="MASTER"/>
+                            <Button  enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress" cd:type="MASTER"/>
                         </f:fields>
                     </f:FormElement>
                     <!-- <f:FormElement label="{i18n>RECIPIENT_NAME}">

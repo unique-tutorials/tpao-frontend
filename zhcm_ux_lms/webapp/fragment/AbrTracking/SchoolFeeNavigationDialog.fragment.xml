@@ -6,7 +6,7 @@
         <VBox class="sapUiSmallMargin">
             <f:Form editable="true">
                 <f:title>
-                    <core:Title text="Okul Ücret Bilgileri" />
+                    <core:Title text="{i18n>SCHOOL_FEE_INFORMATION}" />
                 </f:title>
                 <f:layout>
                     <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -14,7 +14,7 @@
                 <f:formContainers>
                     <f:FormContainer>
                         <f:formElements>
-                            <f:FormElement label="Ücret Dönemi">
+                            <f:FormElement label="{i18n>FEE_PERIOD}">
                                 <f:fields>
                                     <DatePicker value="{
                                         path: 'requestListModel>/schoolInfoDialogRequest/Wagpe',
@@ -29,7 +29,7 @@
                                     }" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Tarih">
+                            <f:FormElement label="{i18n>DATE}">
                                 <f:fields>
                                     <DatePicker value="{path: 'requestListModel>/schoolInfoDialogRequest/Dates', 
                                     type: 'sap.ui.model.type.Date', 
@@ -37,24 +37,24 @@
                                     </DatePicker>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Okul Ücreti">
+                            <f:FormElement label="{i18n>SCHOOL_FEE}">
                                 <f:fields>
                                     <Input value="{requestListModel>/schoolInfoDialogRequest/Schpy}"/>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Para Birimi">
+                            <f:FormElement label="{i18n>CURRENCY}">
                                 <f:fields>
                                     <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/schoolInfoDialogRequest/Waers}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
                                     </ComboBox>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Kambiyo Belge No">
+                            <f:FormElement label="{i18n>EXCHANGE_DOCUMENT_NUMBER}">
                                 <f:fields>
                                     <Input value="{requestListModel>/schoolInfoDialogRequest/Kamno}"/>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Kambiyo Belge Tarihi">
+                            <f:FormElement label="{i18n>FX_DOC_DATE}">
                                 <f:fields>
                                     <DatePicker value="{path: 'requestListModel>/schoolInfoDialogRequest/Kamdt', 
                                     type: 'sap.ui.model.type.Date', 

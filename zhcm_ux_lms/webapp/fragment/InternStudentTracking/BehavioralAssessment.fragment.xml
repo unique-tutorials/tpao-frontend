@@ -12,7 +12,7 @@
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
-                                <Title text="Ölçeklere Göre Puan Skalası (Lise)" level="H2"/>
+                                <Title text="{i18n>SCR_SCL_HS}" level="H2"/>
                                 <ToolbarSpacer />
                             </content>
                         </OverflowToolbar>
@@ -70,7 +70,7 @@
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
-                                <Title text="Ölçeklere Göre Puan Skalası (Üniversite)" level="H2"/>
+                                <Title text="{i18n>SCR_SCL_UN}" level="H2"/>
                                 <ToolbarSpacer />
                             </content>
                         </OverflowToolbar>
@@ -129,9 +129,9 @@
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
-                                <Title text="Değerlendirme Anketi" level="H2"/>
+                                <Title text="{i18n>EVALUATION_SURVEY}" level="H2"/>
                                 <ToolbarSpacer />
-                                <Button text="Sorgula" icon="" press=".onIntershipButtonPress" type="Emphasized" />
+                                <Button text="{i18n>QUESTION_BUTTON}" icon="" press=".onIntershipButtonPress" type="Emphasized" />
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -189,9 +189,9 @@
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
-                                <Title text="Puan Tablosu" level="H2"/>
+                                <Title text="{i18n>SCOREBOARD}" level="H2"/>
                                 <ToolbarSpacer />
-                                <Button text="Sorgula" press=".onPointsButtonPress" type="Emphasized" />
+                                <Button text="{i18n>QUESTION_BUTTON}" press=".onPointsButtonPress" type="Emphasized" />
                                 <Button
                                 icon="sap-icon://edit"
                                 press="onEditScoresPress"
@@ -201,10 +201,10 @@
                     </headerToolbar>
                     <columns>
                         <Column width="30em">
-                            <Text text="Öğrenci hakkında yorumlarınız" />
+                            <Text text="{i18n>STD_CMT_ABT}" />
                         </Column>
                         <Column>
-                            <Text text="Puan" />
+                            <Text text="{i18n>POINT}" />
                         </Column>
                        
                     </columns>
@@ -227,6 +227,6 @@
                         </ColumnListItem>
                     </items>
                 </Table>
-                <Button text="Kaydet" icon="sap-icon://save" press=".onDescButtonPress" />
+                <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onDescButtonPress" />
             </VBox>
 </c:FragmentDefinition>

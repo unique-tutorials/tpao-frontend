@@ -5,7 +5,7 @@
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar">
 
-    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Yurt Dışı Burslu Öğrenci Talepleri">
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>INTL_SCHRQ}">
         <IconTabBar id="idIconTabBar" select="onIconFilterSelect" stretchContentHeight="true" selectedKey="{abrRequestListModel>/selectedKey}">
             <items>
                 <IconTabFilter icon="sap-icon://save" iconColor="Neutral" count="{abrRequestListModel>/searchResults/DRF}" text="{i18n>DRAFT_REQUESTS}" key="DRF" />
@@ -34,7 +34,7 @@
                     </infoToolbar>
                     <columns>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Talep Numarası"/>
+                            <Text text="{i18n>REQNO}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>

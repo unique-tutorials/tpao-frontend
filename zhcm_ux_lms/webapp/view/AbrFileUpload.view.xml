@@ -56,16 +56,16 @@
                                 <Text text="{i18n>CURRENCY}"/>
                             </Column>
                             <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Fazla gün"/>
+                                <Text text="{i18n>EXTRA_DAYS}"/>
                             </Column>
                             <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Gönderildi"/>
+                                <Text text="{i18n>TO_SENT}"/>
                             </Column>
                             <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="Gönder"/>
+                                <Text text="{i18n>SEND}"/>
                             </Column>
                             <Column minScreenWidth="Tablet" demandPopin="true">
-                                <Text text="İşlemler"/>
+                                <Text text="{i18n>ACTION_LIST}"/>
                             </Column>
                         </columns>
     
@@ -80,12 +80,12 @@
                                     <Text text="{Waers}" />
                                     <Text text="{Extda}" />
                                     <CheckBox selected="{Sent}" />
-                                    <Button text="Gönder" press=".onSendSalariesButtonPress" type="Emphasized"/>
+                                    <Button text="{i18n>SEND}" press=".onSendSalariesButtonPress" type="Emphasized"/>
                                     <MenuButton icon="sap-icon://settings"  type="Accept">
                                         <menu>
                                             <Menu>
                                                 <MenuItem
-                                                    text="Oluştur"
+                                                    text="{i18n>CREATE}"
                                                     icon="sap-icon://account"
                                                     press=".onSalariesCreateDialog"
                                                 />

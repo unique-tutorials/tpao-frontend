@@ -4,10 +4,10 @@
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Genel Harcama Bilgileri" level="H2"/>
+                    <Title text="{i18n>GENERAL_EXPENDITURE_INFORMATION}" level="H2"/>
                     <ToolbarSpacer />
-                    <Button text="Genel Harcama Bilgisi Sorgula" press=".onPaynoButtonPress" type="Neutral" />
-                    <Button text="Yeni Fatura Ekle" press=".onExpendInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
+                    <Button text="{i18n>GEN_EXP_INF}" press=".onPaynoButtonPress" type="Neutral" />
+                    <Button text="{i18n>ADD_NEW_INVOICE}" press=".onExpendInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -34,7 +34,7 @@
                 <Text text="{i18n>SEND}"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Fatura Evrakı"/>
+                <Text text="{i18n>INVOICE_DOCUMENT}"/>
             </Column>
         </columns>
         <items>
@@ -53,7 +53,7 @@
                     <Text text="{requestListModel>Payam}"/>
                     <Text text="{requestListModel>Descp}"/>
                     <CheckBox selected="{requestListModel>Sent}"/>
-                    <Button text="Gönder" press=".onSendExpendButtonPress" type="Emphasized"/>
+                    <Button text="{i18n>SEND}" press=".onSendExpendButtonPress" type="Emphasized"/>
                     <Link press=".onAttachDownload" text="{requestListModel>FileName}" />
                 </cells>
             </ColumnListItem>

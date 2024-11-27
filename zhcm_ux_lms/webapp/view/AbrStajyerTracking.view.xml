@@ -4,7 +4,7 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core" displayBlock="true" height="100%" busyIndicatorDelay="0">
 
-    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Stajyer Takibi">
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>INTERN_TRACKING}">
         <VBox class="sapUiSmallMargin">
             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.StajyerInformation" type="XML" />
         </VBox>

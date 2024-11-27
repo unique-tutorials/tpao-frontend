@@ -4,14 +4,14 @@
     xmlns:u="sap.ui.unified"
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar">
-    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Personel Seyahat Rezervasyon Talebi Sorgu">
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>STAFF_TRQ}">
         <f:DynamicPage headerExpanded="{trplsRequestListModel>/isHeaderExpanded}">
             <f:header>
                 <f:DynamicPageHeader>
                     <f:content>
                         <fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onReservationSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
                             <fb:filterGroupItems>
-                                <fb:FilterGroupItem name="StudentNumber" label="Öğrenci No" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="StudentNumber" label="{i18n>STUDENT_NUMBER}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <Input value="{trpolRequestListModel>/reserSearchParameter/Pernr}"/>
                                     </fb:control>
@@ -26,13 +26,11 @@
                                         <Input value="{trpolRequestListModel>/reserSearchParameter/Nachn}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}" groupName="Group4" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE}" groupName="Group4" visibleInFilterBar="true">
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
-
-                                            <DatePicker placeholder="Başlangıç" value="{path:'trpolRequestListModel>/reserSearchParameter/Rered', 
+                                            <DatePicker value="{path:'trpolRequestListModel>/reserSearchParameter/Rered', 
                                             type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
-
                                         </FlexBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
@@ -62,9 +60,6 @@
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>STATE}"/>
                         </Column>
-                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>CITY}"/>
-                        </Column> -->
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>ENTRY_DATE}"/>
                         </Column>
@@ -75,11 +70,8 @@
                             <Text text="{i18n>EXPLANATION}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Talep Kayıt Tarihi"/>
+                            <Text text="{i18n>REQUEST_REGISTRATION_DAT}"/>
                         </Column>
-                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>STUDENT_ACTIVE}"/>
-                        </Column> -->
                     </columns>
                     <items>
                         <ColumnListItem type="Active" press=".onItemSelected">

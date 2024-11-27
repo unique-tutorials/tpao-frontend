@@ -13,22 +13,17 @@
                     <f:formElements>
                         <f:FormElement label="{i18n>QNAME}">
                             <f:fields>
-                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trnqq}">
-
-                                </Input>
+                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trnqq}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>QPNAME}">
                             <f:fields>
-                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trnqp}">
-                                </Input>
+                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trnqp}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>TRAINING_NAME}">
                             <f:fields>
-                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trnam}">
-
-                                </Input>
+                                <Input editable="true" textFormatMode="KeyValue" showSuggestion="true" value="{approvalRequestListModel>/currentRequest/Trnam}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>TRAINING_DATE}">

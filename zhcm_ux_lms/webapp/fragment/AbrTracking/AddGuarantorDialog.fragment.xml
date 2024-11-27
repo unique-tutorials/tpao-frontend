@@ -5,46 +5,45 @@
 	<Dialog title="Kefil Bilgileri Ekle" contentWidth="70%" contentHeight="70%" verticalScrolling="false">
 			<f:Form  editable="true">
 				<f:title>
-					<core:Title text="Kefil Bilgileri" />
+					<core:Title text="{i18n>GUARANTOR_INFORMATION}" />
 				</f:title>
 				<f:layout>
 					<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
 				</f:layout>
 				<f:formContainers>
-					<f:FormContainer title="İletişim">
+					<f:FormContainer title="{ii18n>CONTACT}">
 						<f:formElements>
-							<f:FormElement label="Sıra No">
+							<f:FormElement label="{i18n>ORDER_NUMBER}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Sirno}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Adı">
+							<f:FormElement label="{i18n>OR_VORNA}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Vorna}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Soyadı">
+							<f:FormElement label="{i18n>OR_NACHN}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Nachn}" />
 								</f:fields>
 							</f:FormElement>
-							
-							<f:FormElement label="Adres Tipi">
+							<f:FormElement label="{i18n>ADDRESS_TYPE}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Adtyp}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Adres">
+							<f:FormElement label="{i18n>ADDRESS}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Stras}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Posta Kodu">
+							<f:FormElement label="{i18n>POSTAL_CODE}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Pstlz}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Ülke">
+							<f:FormElement label="{i18n>OR_LAND1}">
 								<f:fields>
 									<ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/addGuarantorRequest/Conry}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
@@ -54,45 +53,45 @@
 							
 						</f:formElements>
 					</f:FormContainer>
-					<f:FormContainer title="Telefon ve Mail Bilgileri">
+					<f:FormContainer title="{i18n>PHN_EM_INF}">
 						<f:formElements>
-							<f:FormElement label="İl">
+							<f:FormElement label="{i18n>PROVINCE}">
 								<f:fields>
 									<ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/addGuarantorRequest/City}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
                                     </ComboBox>
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="İlçe">
+							<f:FormElement label="{i18n>DISTRICT}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Distx}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Telefon Tipi">
+							<f:FormElement label="{i18n>PHONE_TYPE}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Photy}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Telefon No">
+							<f:FormElement label="{i18n>PHONE_NUMBER}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Phonm}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="E-Posta Adresi">
+							<f:FormElement label="{i18n>EMAIL_ADDRESS}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Email}" />
 								</f:fields>
 							</f:FormElement>
 						</f:formElements>
 					</f:FormContainer>
-					<f:FormContainer title="Kimlik Bilgileri">
+					<f:FormContainer title="{i18n>IDENTITY_INFORMATION}">
 						<f:formElements>
-							<f:FormElement label="Tc Kimlik No">
+							<f:FormElement label="{i18n>ID_NUMBER}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Merni}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Doğum Tarihi">
+							<f:FormElement label="{i18n>DATE_OF_BIRTH}">
 								<f:fields>
 									<DatePicker value="{path: 'requestListModel>/addGuarantorRequest/Brtdt', 
 										type: 'sap.ui.model.type.Date', 
@@ -100,7 +99,7 @@
 									</DatePicker>
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Nüfus Cüzdan No">
+							<f:FormElement label="{i18n>IDENTITY_CARD_NUMBER}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Idcno}" />
 								</f:fields>
@@ -109,7 +108,7 @@
 					</f:FormContainer>
 					<f:FormContainer>
 						<f:formElements >
-							<f:FormElement label="Son Geçerlilik Tarihi">
+							<f:FormElement label="{i18n>EXPIRY_DATE}">
 								<f:fields>
 									<DatePicker value="{path: 'requestListModel>/addGuarantorRequest/Lavad', 
 										type: 'sap.ui.model.type.Date', 
@@ -117,17 +116,17 @@
 									</DatePicker>
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Baba Adı">
+							<f:FormElement label="{i18n>FATHER_NAME}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Fater}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Anne Adı">
+							<f:FormElement label="{i18n>MOTHER_NAME}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Muter}" />
 								</f:fields>
 							</f:FormElement>
-							<f:FormElement label="Veren Makam">
+							<f:FormElement label="{i18n>ISSUING_AUTHORITY}">
 								<f:fields>
 									<Input value="{requestListModel>/addGuarantorRequest/Grana}" />
 								</f:fields>
