@@ -40,7 +40,65 @@ sap.ui.define(
         _initiateModel: function (oEvent) {
           var oViewModel = this.getModel("abrAccountListModel");
           oViewModel.setData({
-            requestList: [],
+            paymentPlanList: [
+              {
+                Pytrm: "1. YIL 2021-2022",
+                Paydt: "30 Eylul 2021",
+                Payam: "$8,000.00",
+                Payat: "",
+                Perc$: "",
+                Endyr:"",
+              },
+              {
+                Pytrm: "1. YIL 2021-2022",
+                Paydt: "30 Aralik 2021",
+                Payam: "$8,000.00",
+                Payat: "",
+                Perc$: "",
+                Endyr:"",
+              },
+              {
+                Pytrm: "1. YIL 2021-2022",
+                Paydt: "30 Mart 2022",
+                Payam: "$5,000.00",
+                Payat: "",
+                Perc$: "",
+                Endyr:"",
+              },
+              {
+                Pytrm: "1. YIL 2021-2022",
+                Paydt: "30 Haziran 2022",
+                Payam: "$5,038.08",
+                Payat: "",
+                Perc$: "",
+                Endyr:"",
+              },
+              {
+                Pytrm: "1. YIL 2021-2022",
+                Paydt: "",
+                Payam: "$23,038.08",
+                Payat: "",
+                Perc$: "21.32%",
+                Endyr:"",
+              },
+              {
+                Pytrm: "2. YIL 2022-2023",
+                Paydt: "30 Eylul 2022",
+                Payam: "$4,000.00",
+                Payat: "",
+                Perc$: "",
+                Endyr:"",
+              },
+              {
+                Pytrm: "2. YIL 2022-2023",
+                Paydt: "30 Aralik 2022",
+                Payam: "$4,000.00",
+                Payat: "",
+                Perc$: "",
+                Endyr:"",
+              },
+
+            ],
             selectedRequest: {},
             currentRequest: {},
             searchAccountParameter: {},
@@ -345,7 +403,7 @@ sap.ui.define(
             that._openBusyFragment("READ_DATA");
             oModel.read(sPath, {
               filters: aFilters,
-              success: function (oData) {
+              success: function (oData, oResponse) {
                 var oViewModel = that.getModel("abrAccountListModel");
                 oViewModel.setProperty(sModelProperty, oData);
                 console.log(oData);
