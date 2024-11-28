@@ -15,18 +15,18 @@
                         <IconTabFilter text="{i18n>TAB_GENERAL_INFORMATION}" key="stajyerInfo">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.TabFilterStajyerGeneralInfo" type="XML" />
                         </IconTabFilter>
-                        <IconTabFilter text="{i18n>WUCICONTIN}" key="internship">
+                        <!-- <IconTabFilter text="{i18n>WUCICONTIN}" key="internship">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.InternContinuations" type="XML" />
-                        </IconTabFilter>
+                        </IconTabFilter> -->
                         <IconTabFilter text="{i18n>ABSENCE_ENTRIES}">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.AbsenceEntries" type="XML" />
                         </IconTabFilter>
                         <IconTabFilter text="{i18n>INTERNSHIP_DOCUMENTS}" key="internshipDoc">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.StajyerInternshipDoc" type="XML" />
                         </IconTabFilter>
-                        <IconTabFilter text="{i18n>UPLOAD_INTERN_INFORMATION}" key="uploadExcel">
+                        <!-- <IconTabFilter text="{i18n>UPLOAD_INTERN_INFORMATION}" key="uploadExcel">
                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrStajyerTracking.UploadExcelInternInformation" type="XML" />
-                        </IconTabFilter>
+                        </IconTabFilter> -->
                     </items>
                 </IconTabBar>
             </Panel>

@@ -1,6 +1,6 @@
 <c:FragmentDefinition xmlns="sap.m"
-xmlns:c="sap.ui.core">
-    <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    xmlns:c="sap.ui.core">
+    <Table alternateRowColors="true" busy="{abrAccountListModel>/tableBusy}" width="auto" items="{abrAccountListModel>/paymentPlanList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrAccountListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
@@ -10,21 +10,33 @@ xmlns:c="sap.ui.core">
         </headerToolbar>
         <columns>
             <Column>
+                <Text text="{i18n>PAYMENT_PERIOD}" />
+            </Column>
+            <Column>
                 <Text text="{i18n>PAYMENT_DATE}" />
             </Column>
             <Column>
-                <Text text="{i18n>CURRENCY}" />
+                <Text text="{i18n>PAYMENT_AMOUNT_USD}" />
             </Column>
             <Column>
-                <Text text="{i18n>AMOUNT}" />
+                <Text text="{i18n>PAYMENT_AMOUNT_TR}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>PERCENTEQL}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>END_OF_YEAR}" />
             </Column>
         </columns>
         <items>
             <ColumnListItem vAlign="Middle">
                 <cells>
-                    <Text text="{approvalRequestListModel>Reqno}"/>
-                    <Text text="{approvalRequestListModel>Trnam}"/>
-                    <Text text="{approvalRequestListModel>Trtyp}"/>
+                    <Text text="{abrAccountListModel>Pytrm}"/>
+                    <Text text="{abrAccountListModel>Paydt}"/>
+                    <Text text="{abrAccountListModel>Payam}"/>
+                    <Text text="{abrAccountListModel>Payat}"/>
+                    <Text text="{abrAccountListModel>Perc$}"/>
+                    <Text text="{abrAccountListModel>Endyr}"/>
                 </cells>
             </ColumnListItem>
         </items>
@@ -33,7 +45,57 @@ xmlns:c="sap.ui.core">
         <ToolbarSpacer />
         <Button type="Emphasized" text="{i18n>TOTAL_SHOW}"/>
     </VBox>
-    <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <Table id="idProductsTable" inset="false" items="{
+        path: '/ProductCollection',
+        sorter: {
+            path: 'Name'
+        }
+    }">
+        <headerToolbar>
+            <OverflowToolbar>
+                <content>
+                    <Title text="Talep edilen ödeme planı" level="H2"/>
+                </content>
+            </OverflowToolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="{i18n>PAYMENT_PERIOD}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>PAYMENT_DATE}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>PAYMENT_AMOUNT_USD}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>PAYMENT_AMOUNT_TR}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>PERCENTEQL}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>END_OF_YEAR}" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem vAlign="Middle">
+                <cells>
+                    <Text text="{SupplierName}" />
+                    <Text text="{Width}" />
+                    <Text text="{Depth}" />
+                    <Text text="{Height}" />
+                    <Text text="{DimUnit}" />
+                    <Text text="{Name}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    <VBox class="sapUiSmallMargin">
+     <ToolbarSpacer />
+     <Button type="Emphasized" text="{i18n>TOTAL_SHOW}" />
+    </VBox>
+    <!-- <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
@@ -74,5 +136,5 @@ xmlns:c="sap.ui.core">
                 </cells>
             </ColumnListItem>
         </items>
-    </Table>
+    </Table> -->
 </c:FragmentDefinition>

@@ -15,7 +15,7 @@
 				<f:formElements>
 					<f:FormElement label="{i18n>SELECT_FILE}">
 						<f:fields>
-							<u:FileUploader id="fileUploader" fileType='xls,xlsx'  uploadUrl="upload/"/>
+							<u:FileUploader id="fileUploader" fileType='xls,xlsx' uploadUrl="upload/"/>
 							<Button type="Emphasized" text="{i18n>LOAD_FROM_EXCEL}" press=".handleDataUploadComplete" />
 							<Button type="Emphasized" text="{i18n>EXPORT_EXCEL_FORMAT}" press=".onDataExportToExcel"/>
 						</f:fields>

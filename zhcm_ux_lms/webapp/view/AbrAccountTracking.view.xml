@@ -33,7 +33,7 @@
                 <content>
                     <IconTabBar stretchContentHeight="false">
                         <items>
-                            <IconTabFilter text="{i18n>STUDENT_INFORMATION}" key="info">
+                            <IconTabFilter text="{i18n>STUDENT_INFORMATION}" key="AbrStudentInfo">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.StudentInformation" type="XML" />
                                 <IconTabBar>
                                     <items>
@@ -49,16 +49,16 @@
                                     </items>
                                 </IconTabBar>
                             </IconTabFilter>
-                            <IconTabFilter text="{i18n>GUARANTOR_INFORMATION}" key="attachments">
+                            <IconTabFilter text="{i18n>GUARANTOR_INFORMATION}" key="AbrGuarantorInfo">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorInformation" type="XML" />
                             </IconTabFilter>
-                            <IconTabFilter text="{i18n>OFFSET_INFORMATION}" key="notes">
+                            <IconTabFilter text="{i18n>OFFSET_INFORMATION}" key="AbrOffsetInfo">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.OffsetInformation" type="XML" />
                             </IconTabFilter>
-                            <IconTabFilter text="{i18n>INTEREST_TABLE}" key="people">
+                            <IconTabFilter text="{i18n>INTEREST_TABLE}" key="AbrCompInfo">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.InterestTable" type="XML" />
                             </IconTabFilter>
-                            <IconTabFilter text="{i18n>REFUND_INFORMATION}" key="people2">
+                            <IconTabFilter text="{i18n>REFUND_INFORMATION}" key="AbrRefundInfo">
                                 <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrAccountTracking.RefundInformation" type="XML" />
                             </IconTabFilter>
                         </items>

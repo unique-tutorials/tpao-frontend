@@ -533,6 +533,7 @@ sap.ui.define([
             }
         },
         onDataExportToExcel: function (oEvent) {
+            debugger;
             var oControlModel = this.getModel("requestStajyerListModel");
             var aPlanningData = oControlModel.getProperty("/RequestList");
 
