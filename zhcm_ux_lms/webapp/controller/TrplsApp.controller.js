@@ -154,7 +154,6 @@ sap.ui.define([
             // aFilters.push(new Filter("Rezno", FilterOperator.EQ, sRezno))
             var sTravelInfoPath = oModel.createKey("/TravelReservationSet", { Rezno: sRezno, Pernr: sPernr });
         
-            // $filter parametresi ile sRezno'yu istek URL'sine ekleyin
             oModel.read( sTravelInfoPath, {
                 // filters: aFilters,
                 success: function (oData) {

@@ -1354,19 +1354,13 @@ sap.ui.define([
         },
         openGuarantorDialog: function (oEvent) {
             debugger;
-            // var oSource = oEvent.getSource(),
-            var oModel = this.getModel();
-            var oViewModel = this.getModel("requestListModel");
-            var sPernr = this.getView().getModel("requestListModel").getProperty("/newNumberRequest/Pernr");
+            var oSource = oEvent.getSource(),
+            oObject = oSource.getBindingContext("requestListModel").getObject();
+            var oViewModel = this.getModel("requestListModel"),
+            sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             // var eGuarantorInfoList = oSource.getBindingContext("requestListModel").getObject();
-            this._getGuarantorList(sPernr);
-            if (!this._oGuarantorDialog) {
-                this._oGuarantorDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorDocumentDialog", this);
-                this.getView().addDependent(this._oGuarantorDialog);
-            } else {
-                this._oGuarantorDialog.close();
-            }
-            this._oGuarantorDialog.open();
+            this._getGuarantorList(sPernr,oObject.Sirno);
+           
         },
         onSaveGuarantorContact: function () {
             var oModel = this.getModel(),
@@ -1390,7 +1384,7 @@ sap.ui.define([
                 }.bind(this)
             });
         },
-        _getGuarantorList: function (sPernr) {
+        _getGuarantorList: function (sPernr,sSirno) {
             debugger;
             var that = this;
             var sServiceUrl = "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/";
@@ -1402,13 +1396,20 @@ sap.ui.define([
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
             aFilters.push(new Filter("Ptype", FilterOperator.EQ, 'LMSABR'));
             aFilters.push(new Filter("Dotyp", FilterOperator.EQ, '1'));
-            aFilters.push(new Filter("Sirno", FilterOperator.EQ, '01'));
+            aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
 
             oModel.read("/PersonnelAttachmentSet", {
                 filters: aFilters,
                 success: (oData, oResponse) => {
                     debugger;
                     that.getModel("requestListModel").setProperty("/attachmentGuarantorList", oData.results);
+                    if (!that._oGuarantorDialog) {
+                        that._oGuarantorDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorDocumentDialog", that);
+                        that.getView().addDependent(that._oGuarantorDialog);
+                    } else {
+                        that._oGuarantorDialog.close();
+                    }
+                    that._oGuarantorDialog.open();
                 },
                 error: (oError) => {
                     that.getModel("requestListModel").setProperty("/busy", false);
