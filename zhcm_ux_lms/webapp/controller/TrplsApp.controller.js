@@ -182,7 +182,7 @@ sap.ui.define([
                 success: function(oData, oResponse) {
                     debugger;
                    
-                    if (oData.Mesty === "S") {
+                    if (oData.Mesty === "") {
                         that._sweetToast(that.getText("RESERVATION_CREATE_SUCCESS"), "S");
                     } else if (oData.Mesty === "E") {
                         MessageToast.show(oData.Messg || "Bir hata oluştu.");

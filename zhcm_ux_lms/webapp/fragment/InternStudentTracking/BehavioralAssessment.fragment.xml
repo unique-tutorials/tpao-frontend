@@ -131,7 +131,7 @@
                             <content>
                                 <Title text="{i18n>EVALUATION_SURVEY}" level="H2"/>
                                 <ToolbarSpacer />
-                                <Button text="{i18n>QUESTION_BUTTON}" icon="" press=".onIntershipButtonPress" type="Emphasized" />
+                                <!-- <Button text="{i18n>QUESTION_BUTTON}" icon="" press=".onIntershipButtonPress" type="Emphasized" /> -->
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -191,7 +191,7 @@
                             <content>
                                 <Title text="{i18n>SCOREBOARD}" level="H2"/>
                                 <ToolbarSpacer />
-                                <Button text="{i18n>QUESTION_BUTTON}" press=".onPointsButtonPress" type="Emphasized" />
+                                <!-- <Button text="{i18n>QUESTION_BUTTON}" press=".onPointsButtonPress" type="Emphasized" /> -->
                                 <Button
                                 icon="sap-icon://edit"
                                 press="onEditScoresPress"
