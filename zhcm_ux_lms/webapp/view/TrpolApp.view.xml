@@ -70,7 +70,7 @@
                             <Text text="{i18n>EXPLANATION}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>REQUEST_REGISTRATION_DAT}"/>
+                            <Text text="{i18n>REQUEST_REGISTRATION_DATE}"/>
                         </Column>
                     </columns>
                     <items>
