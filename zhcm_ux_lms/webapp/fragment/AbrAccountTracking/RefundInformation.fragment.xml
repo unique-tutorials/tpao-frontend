@@ -24,9 +24,6 @@
             <Column>
                 <Text text="{i18n>PERCENTEQL}" />
             </Column>
-            <Column>
-                <Text text="{i18n>END_OF_YEAR}" />
-            </Column>
         </columns>
         <items>
             <ColumnListItem vAlign="Middle">
@@ -36,7 +33,6 @@
                     <Text text="{abrAccountListModel>Payam}"/>
                     <Text text="{abrAccountListModel>Payat}"/>
                     <Text text="{abrAccountListModel>Perc$}"/>
-                    <Text text="{abrAccountListModel>Endyr}"/>
                 </cells>
             </ColumnListItem>
         </items>
@@ -45,16 +41,11 @@
         <ToolbarSpacer />
         <Button type="Emphasized" text="{i18n>TOTAL_SHOW}"/>
     </VBox>
-    <Table id="idProductsTable" inset="false" items="{
-        path: '/ProductCollection',
-        sorter: {
-            path: 'Name'
-        }
-    }">
+    <Table alternateRowColors="true" id="idProductsTable" inset="false" items="{abrAccountListModel>/paymentPlanRequested}" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Talep edilen ödeme planı" level="H2"/>
+                    <Title text="Talep Edilen Ödeme Planı" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -74,19 +65,15 @@
             <Column>
                 <Text text="{i18n>PERCENTEQL}" />
             </Column>
-            <Column>
-                <Text text="{i18n>END_OF_YEAR}" />
-            </Column>
         </columns>
         <items>
             <ColumnListItem vAlign="Middle">
                 <cells>
-                    <Text text="{SupplierName}" />
-                    <Text text="{Width}" />
-                    <Text text="{Depth}" />
-                    <Text text="{Height}" />
-                    <Text text="{DimUnit}" />
-                    <Text text="{Name}" />
+                    <Text text="{abrAccountListModel>Pytrm}"/>
+                    <Text text="{abrAccountListModel>Paydt}"/>
+                    <Text text="{abrAccountListModel>Payam}"/>
+                    <Text text="{abrAccountListModel>Payat}"/>
+                    <Text text="{abrAccountListModel>Perc$}"/>
                 </cells>
             </ColumnListItem>
         </items>
