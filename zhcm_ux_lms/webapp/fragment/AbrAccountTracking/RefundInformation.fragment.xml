@@ -46,7 +46,7 @@ xmlns:c="sap.ui.core">
                 <Text text="{i18n>PAYMENT_DATE}" />
             </Column>
             <Column>
-                <Text text="{i18n>CURRENCY }" />
+                <Text text="{i18n>CURRENCY}" />
             </Column>
             <Column>
                 <Text text="{i18n>AMOUNT}" />
@@ -74,6 +74,5 @@ xmlns:c="sap.ui.core">
                 </cells>
             </ColumnListItem>
         </items>
-        
     </Table>
 </c:FragmentDefinition>

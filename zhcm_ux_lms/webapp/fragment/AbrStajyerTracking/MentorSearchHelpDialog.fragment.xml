@@ -7,7 +7,7 @@
         <headerToolbar>
             <Toolbar >
               <ToolbarSpacer/>
-              <SearchField placeholder="Arama" width="{= ${device>/system/phone} ? '200px' : '70%' }" value="{listViewModel>/queryString}" search=".onSearchProject" />
+              <SearchField placeholder="{i18n>SEARCH_HELP_INPUT}" width="{= ${device>/system/phone} ? '200px' : '70%' }" value="{listViewModel>/queryString}" search=".onSearchProject" />
             </Toolbar>
           </headerToolbar>
         <columns>

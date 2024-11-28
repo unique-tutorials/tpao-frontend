@@ -43,7 +43,7 @@
                             <Text text="{i18n>STUDENT_NUMBER}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>STUDENT_TYPE}"/>
+                            <Text text="{i18n>STUDENT_ACTIVE}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>STUDENT_NAME}"/>
@@ -56,7 +56,7 @@
                         <ColumnListItem type="Active" press=".onItemSelected">
                             <cells>
                                 <Text text="{Pernr}"/>
-                                <Text text="{Activ}"/>
+                                <CheckBox selected="{Activ}"/>
                                 <Text text="{Vorna}"/>
                                 <Text text="{Nachn}"/>
                             </cells>

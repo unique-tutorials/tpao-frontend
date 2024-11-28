@@ -7,7 +7,7 @@
         <VBox class="sapUiSmallMargin">
             <f:Form editable="true">
                 <f:title>
-                    <core:Title text="Fatura Bilgileri" />
+                    <core:Title text="{i18n>BILLING_INF}" />
                 </f:title>
                 <f:layout>
                     <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -15,12 +15,12 @@
                 <f:formContainers>
                     <f:FormContainer>
                         <f:formElements>
-                            <f:FormElement label="Fatura No">
+                            <f:FormElement label="{i18n>INVOICE_NUMBER}">
                                 <f:fields>
                                     <Input value="{requestListModel>/expendInfoDialogRequest/Payno}"/>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Tarih">
+                            <f:FormElement label="{i18n>ABCENCE_DATE}">
                                 <f:fields>
                                     <DatePicker value="{path: 'requestListModel>/expendInfoDialogRequest/Paydt', 
                                         type: 'sap.ui.model.type.Date', 
@@ -28,7 +28,7 @@
                                     </DatePicker>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Son Ödeme Tarihi">
+                            <f:FormElement label="{i18n>PAY_DUE_DATE}">
                                 <f:fields>
                                     <DatePicker value="{path: 'requestListModel>/expendInfoDialogRequest/Payde', 
                                         type: 'sap.ui.model.type.Date', 
@@ -41,7 +41,7 @@
                                     <Input value="{requestListModel>/expendInfoDialogRequest/Paynoa}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onShowUnitExpendSearchHelp"/>
                                 </f:fields>
                             </f:FormElement> -->
-                            <f:FormElement label="Faturanın Konusu">
+                            <f:FormElement label="{i18n>SUBJ_INV}">
                                 <f:fields>
                                     <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Invsu' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Invsu}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
@@ -52,38 +52,38 @@
                     </f:FormContainer>
                     <f:FormContainer>
                         <f:formElements>
-                            <f:FormElement label="Ödeme Türü">
+                            <f:FormElement label="{i18n>PAYMENT_TYPE}">
                                 <f:fields>
                                     <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytp' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Paytp}">
                                         <core:ListItem key="{Key}" text="{Key}-{Value}"/>
                                     </ComboBox>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Para birimi">
+                            <f:FormElement label="{i18n>CURRENCY}">
                                 <f:fields>
                                     <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Waers}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
                                     </ComboBox>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Hangi Hesaba">
+                            <f:FormElement label="{i18n>TO_WHICH_ACCOUNT}">
                                 <f:fields>
                                     <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Whiac' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Whiac}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
                                     </ComboBox>
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Açıklama">
+                            <f:FormElement label="{i18n>EXPLANATION}">
                                 <f:fields>
                                     <Input value="{requestListModel>/expendInfoDialogRequest/Descp}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Fatura Toplamı">
+                            <f:FormElement label="{i18n>INVOICE_TOTAL}">
                                 <f:fields>
                                     <Input value="{requestListModel>/expendInfoDialogRequest/Payam}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="Fatura Dokümanı Ekle">
+                            <f:FormElement label="{i18n>ADD_INV_DOC}">
                                 <f:fields>
                                     <u:FileUploader 
                                         id="idAttachmentFileUploaderPayment" 

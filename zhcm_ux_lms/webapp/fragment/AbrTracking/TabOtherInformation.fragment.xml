@@ -7,8 +7,8 @@
                 <content>
                     <Title text="{i18n>GUARANTORS}" level="H2"/>
                     <ToolbarSpacer />
-                    <Button text="Kefil Bilgisi Sorgula" press=".onGuarantorButtonPress" type="Neutral" />
-                    <Button text="Kefil Bilgisi Ekle" press=".onAddGuarantor" type="Emphasized" icon="sap-icon://add" />
+                    <Button text="{i18n>GUAR_INFO}" press=".onGuarantorButtonPress" type="Neutral" />
+                    <Button text="{i18n>ADD_GUAR_INF}" press=".onAddGuarantor" type="Emphasized" icon="sap-icon://add" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -35,9 +35,9 @@
                     <MenuButton icon="sap-icon://settings" type="Accept">
                         <menu>
                             <Menu>
-                                <MenuItem text="Kefil Bilgileri" icon="sap-icon://account" press="openGuarantorDialog" />
-                                <MenuItem text="İletişim Bilgileri" icon="sap-icon://call" press="openGuarantorContactDialog" />
-                                <MenuItem text="Kimlik Bilgileri" icon="sap-icon://business-card" press="openGuarantorIdentityDialog" />
+                                <MenuItem text="{i18n>GUARANTOR_INFORMATION}" icon="sap-icon://account" press="openGuarantorDialog" />
+                                <MenuItem text="{i18n>CONTACT_INFORMATION}" icon="sap-icon://call" press="openGuarantorContactDialog" />
+                                <MenuItem text="{i18n>IDENTITY_INFORMATION}" icon="sap-icon://business-card" press="openGuarantorIdentityDialog" />
                             </Menu>
                         </menu>
                     </MenuButton>

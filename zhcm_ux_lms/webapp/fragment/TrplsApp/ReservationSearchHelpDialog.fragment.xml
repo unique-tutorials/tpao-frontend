@@ -10,7 +10,7 @@
                     <f:content>
                         <fb:FilterBar persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
                             <fb:filterGroupItems>
-                                <fb:FilterGroupItem name="StudentNumber" label="Öğrenci No" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="StudentNumber" label="{i18n>STUDENT_NUMBER}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <Input value="{trplsRequestListModel>/reserSearchParameter/Pernr}"/>
                                     </fb:control>
@@ -25,11 +25,11 @@
                                         <Input value="{trplsRequestListModel>/reserSearchParameter/Nachn}" />
                                     </fb:control>
                                 </fb:FilterGroupItem>
-                                <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}" groupName="Group1" visibleInFilterBar="true">
+                                <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
 
-                                            <DatePicker placeholder="Başlangıç" value="{path:'trplsRequestListModel>/reserSearchParameter/Rered', 
+                                            <DatePicker value="{path:'trplsRequestListModel>/reserSearchParameter/Rered', 
                                             type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
 
                                         </FlexBox>
@@ -74,7 +74,7 @@
                             <Text text="{i18n>EXPLANATION}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="Talep Kayıt Tarihi"/>
+                            <Text text="{i18n>REQUEST_REGISTRATION_DATE}"/>
                         </Column>
                         <!-- <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>STUDENT_ACTIVE}"/>

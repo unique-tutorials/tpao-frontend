@@ -7,12 +7,12 @@
 <columns>
     <Column>
         <header>
-            <Text text="Kodu"/>
+            <Text text="{i18n>CODE}"/>
         </header>
     </Column>
     <Column>
         <header>
-            <Text text="Lisans Mezuniyet Alanı"/>
+            <Text text="{i18n>UND_GRADAR}"/>
         </header>
     </Column>
 </columns>

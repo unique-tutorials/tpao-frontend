@@ -4,7 +4,7 @@
     xmlns:core="sap.ui.core">
     <f:Form editable="true">
         <f:title>
-            <core:Title text="Tarih Aralığı Arama" />
+            <core:Title text="{i18n>DATE_RANGE}" />
         </f:title>
         <f:layout>
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -12,7 +12,7 @@
         <f:formContainers>
             <f:FormContainer>
                 <f:formElements>
-                    <f:FormElement label="Tarih Aralığı">
+                    <f:FormElement label="{i18n>DATE_RANGE}">
                         <f:fields>
                             <Input id="DateInputForm" value="{'requestListModel>/newNumberRequest/Pernr'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowDateSearchHelp"/>
                             <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress" width="100px"/>
@@ -24,7 +24,7 @@
     </f:Form>
     <f:Form editable="true">
         <f:title>
-            <core:Title text="Devamsızlık Bilgileri"/>
+            <core:Title text="{i18n>ABSENCE_INFORMATION}"/>
         </f:title>
         <f:layout>
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -32,12 +32,12 @@
         <f:formContainers>
             <f:FormContainer>
                 <f:formElements>
-                    <f:FormElement label="Tarih">
+                    <f:FormElement label="{i18n>ABCENCE_DATE}">
                         <f:fields>
                             <DatePicker value="{careerInternListModel>/SelectedCareer/Date}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Gelmeme Nedeni Açıklama">
+                    <f:FormElement label="{i18n>NON_COMING_EXPLANATION}">
                         <f:fields>
                             <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
                         </f:fields>
@@ -46,12 +46,12 @@
             </f:FormContainer>
             <f:FormContainer>
                 <f:formElements>
-                    <f:FormElement label="Mazeretli">
+                    <f:FormElement label="{i18n>Q_EXCUSED}">
                         <f:fields>
                             <CheckBox selected="{careerInternListModel>/SelectedCareer/Descs}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="Raporlu">
+                    <f:FormElement label="{i18n>WITH_REPORT}">
                         <f:fields>
                             <CheckBox selected="{careerInternListModel>/SelectedCareer/Descd}" />
                         </f:fields>

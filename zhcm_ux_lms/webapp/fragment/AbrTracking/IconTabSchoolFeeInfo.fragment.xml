@@ -4,10 +4,10 @@
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Okul Ücret Bilgileri" level="H2"/>
+                    <Title text="{i18n>SCHOOL_FEE_INFORMATION}" level="H2"/>
                     <ToolbarSpacer />
-                    <Button text="Okul Ücret Bilgisi Sorgula" press=".onSchoolFeeButtonPress" type="Neutral" />
-                    <Button text="Yeni Okul Ücreti Ekle" press=".onSchollInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
+                    <Button text="{i18n>SCH_FEE_INF}" press=".onSchoolFeeButtonPress" type="Neutral" />
+                    <Button text="{i18n>ADD_NEW_SCHOOL_FEE}" press=".onSchollInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -28,7 +28,7 @@
                 <Text text="{i18n>EXCHANGE_DOCUMENT_NUMBER}"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="Kambiyo Belge Tarihi"/>
+                <Text text="{i18n>FX_DOC_DATE}"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>TO_SENT}"/>
@@ -36,7 +36,6 @@
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>SEND}"/>
             </Column>
-
         </columns>
         <items>
             <ColumnListItem type="Navigation" press=".onSchoolFeeNavigationDialog">
@@ -62,7 +61,7 @@
                         }
                     }"/>
                     <CheckBox selected="{requestListModel>Sent}"/>
-                    <Button text="Gönder" type="Emphasized" press=".onSendSchoolFeeButtonPress"/>
+                    <Button text="{i18n>SEND}" type="Emphasized" press=".onSendSchoolFeeButtonPress"/>
                 </cells>
             </ColumnListItem>
         </items>

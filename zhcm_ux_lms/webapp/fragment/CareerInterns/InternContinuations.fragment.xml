@@ -12,7 +12,7 @@
         <f:formContainers>
             <f:FormContainer>
                 <f:formElements>
-                    <f:FormElement label="Tarih Aralığı">
+                    <f:FormElement label="{i18n>DATE_RANGE}">
                         <f:fields>
                             <Input id="DateInput" value="{'requestListModel>/newNumberRequest/Pernr'}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowDateSearchHelp"/>
                             <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress" width="100px"/>
@@ -24,7 +24,7 @@
     </f:Form>
     <f:Form editable="true">
         <f:title>
-            <core:Title text="Devamsızlık Bilgileri"/>
+            <core:Title text="{i18n>ABSENCE_INFORMATION}"/>
         </f:title>
         <f:layout>
             <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
@@ -45,12 +45,12 @@
                 </f:formElements>
             </f:FormContainer>
             <f:FormContainer>
-                <f:FormElement label="Tam Gün">
+                <f:FormElement label="{i18n>FULL_DAY}">
                     <f:fields>
                         <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
                     </f:fields>
                 </f:FormElement>
-                <f:FormElement label="Yarım Gün">
+                <f:FormElement label="{i18n>HALF_DAY}">
                     <f:fields>
                         <Input value="{careerInternListModel>/SelectedCareer/Desc}" />
                     </f:fields>

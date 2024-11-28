@@ -28,36 +28,17 @@
                     <Text text="{abrAccountListModel>Sirno}"/>
                     <Text text="{abrAccountListModel>Vorna}"/>
                     <Text text="{abrAccountListModel>Nachn}"/>
-                      <MenuButton icon="sap-icon://settings"  type="Accept">
-                            <menu>
-                                <Menu>
-                                    <MenuItem
-                                        text="Kefil Bilgileri"
-                                        icon="sap-icon://account"
-                                        press="openGuarantorDialog"
-                                    />
-                                    <MenuItem
-                                        text="İletişim Bilgileri"
-                                        icon="sap-icon://call"
-                                        press="openGuarantorContactDialog"
-                                    />
-                                    <MenuItem
-                                        text="Kimlik Bilgileri"
-                                        icon="sap-icon://business-card"
-                                        press="openGuarantorIdentityDialog"
-                                    />
-                                </Menu>
-                            </menu>
-                        </MenuButton>   
+                    <MenuButton icon="sap-icon://settings" type="Accept">
+                        <menu>
+                            <Menu>
+                                <MenuItem text="{i18n>GUARANTOR_INFORMATION}" icon="sap-icon://account" press="openGuarantorDialog" />
+                                <MenuItem text="{i18n>CONTACT_INFORMATION}" icon="sap-icon://call" press="openGuarantorContactDialog" />
+                                <MenuItem text="{i18n>IDENTITY_INFORMATION}" icon="sap-icon://business-card" press="openGuarantorIdentityDialog" />
+                            </Menu>
+                        </menu>
+                    </MenuButton>
                 </cells>
             </ColumnListItem>
         </items>
     </Table>
-    <!-- <FlexBox alignItems="Start" justifyContent="SpaceBetween" class="sapUiSmallMarginTopBottom">
-        <Button text="{i18n>DOC_OF_THE_GUARANTOR}" type="Emphasized" icon="sap-icon://insurance-life" press=".openGuarantorDialog" />
-        <HBox>
-            <Button text="{i18n>CONTACT}" type="Neutral" class="sapUiSmallMarginEnd" icon="sap-icon://call" press=".openGuarantorContactDialog" />
-            <Button text="{i18n>IDENTITY}" type="Neutral" icon="sap-icon://biometric-thumb" press=".openGuarantorIdentityDialog" />
-        </HBox>
-    </FlexBox> -->
 </c:FragmentDefinition>
