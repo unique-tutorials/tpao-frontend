@@ -718,88 +718,33 @@ sap.ui.define([
             sap.m.MessageToast.show("Başarılı");
             this._closeBusyFragment("ATTACHMENT_UPLOADED");
         },
-        // burada sadece pernr
-        onPaynoButtonPress: function () {
-            debugger;
-            var that = this;
-            var oModel = this.getModel();
-            var oViewModel = this.getView().getModel("requestListModel");
-            this._openBusyFragment("READ_EXPEND_INFO", []);
-            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-            if (!sPernr) {
-                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "E");
-            }
 
-            var aFilters = [];
-            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
-
-
-            oModel.read("/GeneralExpenditureInformationSet", {
-                filters: aFilters,
-                success: function (oData) {
-                    oViewModel.setProperty("/expendInfoList", oData.results);
-
-                    console.log("genel harcama bilgileri dataa:", oData);
-                    that._closeBusyFragment();
-                },
-                error: function () {
-                    sap.m.MessageToast.show("Genel harcama bilgileri alınamadı.");
-                }
-            });
-        },
-        onSchoolFeeButtonPress: function (oEvent) {
-            debugger;
-            var that = this;
-            var oModel = this.getModel();
-            var oViewModel = this.getView().getModel("requestListModel");
-            this._openBusyFragment("READ_SCHOOL_FEE", []);
-            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-            if (!sPernr) {
-                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "E");
-            }
-            var aFilters = [];
-            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
+        // onGuarantorButtonPress: function (oEvent) {
+        //     debugger;
+        //     var that = this;
+        //     var oModel = this.getModel();
+        //     var oViewModel = this.getView().getModel("requestListModel");
+        //     this._openBusyFragment("READ_GUARANTOR_FEE", []);
+        //     var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        //     if (!sPernr) {
+        //         this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED", ), "E");
+        //     }
+        //     var aFilters = [];
+        //     aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
 
 
-            oModel.read("/SchoolWageInformationSet", {
-                filters: aFilters,
-                success: function (oData) {
-                    oViewModel.setProperty("/schoolFeeList", oData.results);
-                    that._closeBusyFragment();
-                    console.log("okul ücret bilgileri dataa:", oData);
-                },
-                error: function () {
-                    sap.m.MessageToast.show("Okul ücret bilgileri alınamadı.");
-                }
-            });
-        },
-
-        onGuarantorButtonPress: function (oEvent) {
-            debugger;
-            var that = this;
-            var oModel = this.getModel();
-            var oViewModel = this.getView().getModel("requestListModel");
-            this._openBusyFragment("READ_GUARANTOR_FEE", []);
-            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-            if (!sPernr) {
-                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED", ), "E");
-            }
-            var aFilters = [];
-            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
-
-
-            oModel.read("/GuarantorInformationSet", {
-                filters: aFilters,
-                success: function (oData) {
-                    oViewModel.setProperty("/guarantorList", oData.results);
-                    that._closeBusyFragment();
-                    console.log("Kefil bilgileri dataa:", oData);
-                },
-                error: function () {
-                    sap.m.MessageToast.show("Diğer bilgiler de Kefil bilgileri alınamadı.");
-                }
-            });
-        },
+        //     oModel.read("/GuarantorInformationSet", {
+        //         filters: aFilters,
+        //         success: function (oData) {
+        //             oViewModel.setProperty("/guarantorList", oData.results);
+        //             that._closeBusyFragment();
+        //             console.log("Kefil bilgileri dataa:", oData);
+        //         },
+        //         error: function () {
+        //             sap.m.MessageToast.show("Diğer bilgiler de Kefil bilgileri alınamadı.");
+        //         }
+        //     });
+        // },
 
         onSearchStudentPress: function (oEvent) {
             debugger;
@@ -828,6 +773,43 @@ sap.ui.define([
                     }
                 });
             }
+            function readDataList(sPath, sModelProperty, errorMessage) {
+                that._openBusyFragment("READ_DATA");
+                oModel.read(sPath, {
+                  filters: aFilters,
+                  success: function (oData) {
+                    var oViewModel = that.getModel("requestListModel");
+                    oViewModel.setProperty(sModelProperty, oData.results);
+                    console.log(oData);
+                    that._closeBusyFragment();
+                  },
+                  error: function () {
+                    sap.m.MessageToast.show(errorMessage);
+                    that._closeBusyFragment();
+                  },
+                });
+            }
+            // Kefil bilgileri al
+            var sGuarantorPath = "/GuarantorInformationSet";
+            readDataList(
+                sGuarantorPath,
+                "/guarantorList",
+                "Kefil bilgisi alınamadı"
+            );
+            // Okul ücret bilgileri al
+            var sSchoolWagePath = "/SchoolWageInformationSet";
+            readDataList(
+                sSchoolWagePath,
+                "/schoolFeeList",
+                "Okul ücret bilgileri alınamadı"
+            )
+            // Genel harcama bilgileri al
+            var sGeneralExpenditurePath = "/GeneralExpenditureInformationSet";
+            readDataList(
+                sGeneralExpenditurePath,
+                "/expendInfoList",
+                "Genel harcama bilgileri alınamadı"
+            )
             // Öğrenci bilgileri al
             var sScholarshipPath = oModel.createKey("/ScholarShipstudentAbroadSet", { Pernr: sPernr });
             readData(sScholarshipPath, "/SelectedEmployee", "Öğrenci bilgisi alınamadı.");

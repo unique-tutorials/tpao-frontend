@@ -7,14 +7,14 @@
                 <content>
                     <Title text="{i18n>GUARANTORS}" level="H2"/>
                     <ToolbarSpacer />
-                    <Button text="{i18n>GUAR_INFO}" press=".onGuarantorButtonPress" type="Neutral" />
+                    <!-- <Button text="{i18n>GUAR_INFO}" press=".onGuarantorButtonPress" type="Neutral" /> -->
                     <Button text="{i18n>ADD_GUAR_INF}" press=".onAddGuarantor" type="Emphasized" icon="sap-icon://add" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
         <columns>
             <Column minScreenWidth="Tablet" demandPopin="true">
-                <Text text="{i18n>SERIAL_NO}"/>
+                <Text text="{i18n>SEQ_NO}"/>
             </Column>
             <Column minScreenWidth="Tablet" demandPopin="true">
                 <Text text="{i18n>OR_VORNA}"/>
