@@ -45,7 +45,7 @@
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="Talep Edilen Ödeme Planı" level="H2"/>
+                    <Title text="{i18n>REQUESTED_PAYMENT_PLAN}" level="H2"/>
                 </content>
             </OverflowToolbar>
         </headerToolbar>
@@ -82,46 +82,4 @@
      <ToolbarSpacer />
      <Button type="Emphasized" text="{i18n>TOTAL_SHOW}" />
     </VBox>
-    <!-- <Table mode="MultiSelect" busy="{approvalRequestListModel>/tableBusy}" width="auto" items="{approvalRequestListModel>/requestList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
-        <headerToolbar>
-            <OverflowToolbar>
-                <content>
-                    <Title text="{i18n>OFFSET_REPAYMENTS}" level="H2"/>
-                </content>
-            </OverflowToolbar>
-        </headerToolbar>
-        <columns>
-            <Column>
-                <Text text="{i18n>PAYMENT_DATE}" />
-            </Column>
-            <Column>
-                <Text text="{i18n>CURRENCY}" />
-            </Column>
-            <Column>
-                <Text text="{i18n>AMOUNT}" />
-            </Column>
-            <Column>
-                <Text text="{i18n>OFFSET_AMOUNT}" />
-            </Column>
-            <Column>
-                <Text text="{i18n>OFFSET_NO}" />
-            </Column>
-            <Column>
-                <Text text="{i18n>OFFSET_DATE}" />
-            </Column>
-        </columns>
-        <items>
-            <ColumnListItem vAlign="Middle">
-                <cells>
-                    <Text text="{approvalRequestListModel>Reqno}"/>
-                    <Text text="{approvalRequestListModel>Trnam}"/>
-                    <Text text="{approvalRequestListModel>Trtyp}"/>
-                    <Text text="{approvalRequestListModel>Trcnt}"/>
-                    <Text text="{approvalRequestListModel>Trnqp}"/>
-                    <Text text="{approvalRequestListModel>Trnqn}"/>
-                    <Text text="{approvalRequestListModel>Reqno}"/>
-                </cells>
-            </ColumnListItem>
-        </items>
-    </Table> -->
 </c:FragmentDefinition>

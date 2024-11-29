@@ -12,28 +12,28 @@
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>EXPENDITURE_ITEM}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>INVOICE_NUMBER}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>INVOICE_DATE}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>INVOICE_AMOUNT}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>EXPLANATION} "/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>TO_SENT}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>SEND}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>INVOICE_DOCUMENT}"/>
             </Column>
         </columns>

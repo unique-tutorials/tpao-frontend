@@ -1,97 +1,25 @@
-<c:FragmentDefinition
-    xmlns="sap.m"
-    xmlns:c="sap.ui.core"
-    xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core"
->
-    <!-- <f:Form editable="true">
-        <f:title>
-            <core:Title text="{i18n>DATE_RANGE_INQUIRY}" />
-        </f:title>
-        <f:layout>
-            <f:ResponsiveGridLayout
-                labelSpanXL="4"
-                labelSpanL="4"
-                labelSpanM="12"
-                labelSpanS="12"
-                adjustLabelSpan="false"
-                emptySpanXL="0"
-                emptySpanL="0"
-                emptySpanM="0"
-                emptySpanS="0"
-                columnsXL="2"
-                columnsL="2"
-                columnsM="1"
-                singleContainerFullSize="false"
-            />
-        </f:layout>
-        <f:formContainers>
-            <f:FormContainer>
-                <f:formElements>
-                    <f:FormElement>
-                        <f:fields>
-                            <FlexBox alignItems="Start" justifyContent="SpaceBetween">
-                                <VBox class="sapUiTinyMargin">
-                                    <DatePicker />
-                                </VBox>
-                                <VBox class="sapUiTinyMargin">
-                                    <DatePicker />
-                                </VBox>
-                            </FlexBox>
-                            <VBox class="sapUiTinyMargin">
-                                <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress" width="100px"/>
-                            </VBox>
-                        </f:fields>
-                    </f:FormElement>
-                </f:formElements>
-            </f:FormContainer>
-        </f:formContainers>
-    </f:Form> -->
-    <HBox >
-    <ToolbarSpacer />
-    </HBox>
-    <Table
-        inset="false"
-        items="{requestStajyerListModel>/absenceList}"
-        class="sapUiSmallMarginTopBottom"
-        growing="true"
-        growingScrollToLoad="true"
-        sticky="HeaderToolbar,InfoToolbar,ColumnHeaders"
-    >
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <Table inset="false" items="{requestStajyerListModel>/absenceList}" class="sapUiSmallMarginTopBottom" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <DateRangeSelection
-                        dateValue="{requestStajyerListModel>/absenceFilter/begda}"
-                        secondDateValue="{requestStajyerListModel>/absenceFilter/endda}"
-                        width="13rem"
-                        class="DRS1"
-                        change="handleChange"
-                    />
+                    <DateRangeSelection dateValue="{requestStajyerListModel>/absenceFilter/begda}" secondDateValue="{requestStajyerListModel>/absenceFilter/endda}" width="13rem" class="DRS1" change="handleChange" />
                     <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress" />
                     <ToolbarSpacer />
-                     <Button text="{i18n>CREATE_ABSENCE}" icon="sap-icon://create" type="Accept" press=".onCreateLeaveRequest" />
+                    <Button text="{i18n>CREATE_ABSENCE}" icon="sap-icon://create" type="Accept" press=".onCreateLeaveRequest" />
                     <!-- <Title text="{i18n>ABSENCE_LOGIN_INFORMATION}" level="H2"/> -->
                 </content>
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-        <Column
-                minScreenWidth="Tablet"
-                demandPopin="true"
-            >
+            <Column>
                 <Text text="{i18n>ABSENCE_TYPE}" />
             </Column>
-            <Column
-                minScreenWidth="Tablet"
-                demandPopin="true"
-            >
+            <Column>
                 <Text text="{i18n>DATE}" />
             </Column>
-            <Column
-                minScreenWidth="Tablet"
-                demandPopin="true"
-            >
+            <Column>
                 <Text text="{i18n>NON_COMING_EXPLANATION}" />
             </Column>
         </columns>

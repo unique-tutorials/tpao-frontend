@@ -14,19 +14,19 @@
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>ACTUAL_WEEK}" />
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>DESC_OF_WORK_PERFORMED}" />
             </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true">
+            <Column>
                 <Text text="{i18n>PRE_WORK_COMPETENCE_LEVEL}" />
             </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true">
+            <Column>
                 <Text text="{i18n>POST_STUDY_COMPETENCY_LEVEL}" />
             </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+            <Column hAlign="End">
                 <Text text="{i18n>COMMENTS}" />
             </Column>
         </columns>

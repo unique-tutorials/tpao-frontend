@@ -3,10 +3,10 @@
     <Dialog title="Öğrenci Birimi" state="None" type="Standard" contentWidth="40%" contentHeight="60%" verticalScrolling="false" resizable="true" draggable="true">
         <Table inset="false" items="{/ScholarshipStudentSet}">
             <columns>
-                <Column minScreenWidth="Tablet" demandPopin="true">
+                <Column>
                     <Text text="{i18n>UNIT_CODE}" />
                 </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true">
+                <Column>
                     <Text text="{i18n>OR_ORGTX}" />
                 </Column>
             </columns>

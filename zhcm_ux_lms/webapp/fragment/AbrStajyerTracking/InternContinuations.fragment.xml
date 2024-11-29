@@ -41,16 +41,16 @@
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>DATE}" />
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>EXPLANATION}" />
             </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true">
+            <Column>
                 <Text text="{i18n>FULL_DAY}" />
             </Column>
-            <Column minScreenWidth="Desktop" demandPopin="true">
+            <Column>
                 <Text text="{i18n>HALF_DAY}" />
             </Column>
         </columns>

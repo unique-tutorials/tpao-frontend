@@ -11,10 +11,10 @@
             </Toolbar>
           </headerToolbar>
         <columns>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>PERSONNEL_CODE}" />
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>PERSONNEL_NAME}" />
             </Column>
         </columns>

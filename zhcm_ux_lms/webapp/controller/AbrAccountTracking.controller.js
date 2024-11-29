@@ -375,7 +375,6 @@ sap.ui.define(
              oViewModel = this.getModel("abrAccountListModel"),
              sPernr = oViewModel.getProperty("/newAccountNumberRequest/Pernr");
             this._getGuarantorList(sPernr,oObject.Sirno);
-          
          },
          onCancelGuarantorDialog:function(){
             if(this._oGuarantorDialog) {

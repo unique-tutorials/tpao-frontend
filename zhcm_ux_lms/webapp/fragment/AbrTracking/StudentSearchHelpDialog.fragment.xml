@@ -65,28 +65,28 @@
             <f:content>
                 <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom"  items="{/ScholarshipStudentSet}" itemPress="onEmployeeSelect">
                     <columns>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>STUDENT_NUMBER}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>STUDENT_ACTIVE}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>STUDENT_NAME}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>STUDENT_SURNAME}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>UNIT}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>STUDENT_COUNTRY}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>PRINCIPAL_SCHOOL}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>LANGUAGE_SCHOOL}"/>
                         </Column>
                     </columns>
