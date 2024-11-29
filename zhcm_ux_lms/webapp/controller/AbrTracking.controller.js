@@ -1628,40 +1628,8 @@ sap.ui.define([
             }
             this._oGuarantorIdentityDialog.open();
           
-         },
-        // openGuarantorIdentityDialog: function (oEvent) {
-        //     var sPernr = this.getView().getModel("requestListModel").getProperty("/newNumberRequest/Pernr");
-        //     this._getGuarantorIdentityList(sPernr);
-        //     if (!this._oGuarantorIdentityDialog) {
-        //         this._oGuarantorIdentityDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorIdentityDialog", this);
-        //         this.getView().addDependent(this._oGuarantorIdentityDialog);
-        //     } else {
-        //         this._oGuarantorIdentityDialog.close();
-        //     }
-        //     this._oGuarantorIdentityDialog.open();
-        // },
-        // _getGuarantorIdentityList: function (sPernr) {
-        //     debugger;
-        //     var that = this;
-        //     var oModel = this.getModel();
-        //     var oViewModel = this.getModel("requestListModel");
-        //     var aFilters = [];
-        //     var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr", sPernr);
-        //     var sPath = oModel.createKey("/GuarantorInformationSet", {
-        //         Pernr: sPernr,
-        //         Sirno: '01'
-        //     });
-
-        //     oModel.read(sPath, {
-        //         success: (oData, oResponse) => {
-        //             debugger;
-        //             that.getModel("requestListModel").setProperty("/guarantorIdentityList", oData);
-        //         },
-        //         error: (oError) => {
-        //             that.getModel("requestListModel").setProperty("/busy", false);
-        //         }
-        //     });
-        // },
+        },
+        
         onSaveGuarantorIdentity: function (oEvent) {
             debugger;
             var that = this;
@@ -1768,9 +1736,7 @@ sap.ui.define([
             var oViewModel = this.getModel("requestListModel");
             var oEntry = oViewModel.getProperty('/generalEmployee');
 
-
             var Opera = "1";
-
 
             oEntry.Opera = Opera;
 

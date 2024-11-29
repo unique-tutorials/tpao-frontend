@@ -12,7 +12,7 @@
                 <Column minScreenWidth="Tablet" demandPopin="true">
                     <Text text="{i18n>TRAINER_ID}"/>
                 </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true">
+                <Column minScreenWidth="Tablet" demandPopin="true" >
                     <Text text="{i18n>TRAINER_NAME}"/>
                 </Column>
                 <Column minScreenWidth="Tablet" demandPopin="true">

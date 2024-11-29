@@ -4,62 +4,26 @@
     xmlns:semantic="sap.f.semantic"
     xmlns:footerbar="sap.ushell.ui.footerbar" busy="{approvalListView>/busy}" busyIndicatorDelay="100"
     xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-    <Page 
-        showFooter="true" 
-        showHeader="true" 
-        floatingFooter="true"
-        showNavButton="true" 
-        navButtonPress="onNavBack" 
-        title="{i18n>APPROVE_TRAINING_REQUEST_FORM}">
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>APPROVE_TRAINING_REQUEST_FORM}">
 
-        <IconTabBar 
-        id="idIconTabBar" 
-        select="onIconFilterSelect" 
-        stretchContentHeight="true" 
-        selectedKey="{requestListModel>/selectedKey}">
+        <IconTabBar id="idIconTabBar" select="onIconFilterSelect" stretchContentHeight="true" selectedKey="{requestListModel>/selectedKey}">
             <items>
-                <IconTabFilter 
-                icon="sap-icon://pending" 
-                iconColor="Neutral" 
-                count="{approvalRequestListModel>/searchResults/PND}" 
-                text="{i18n>PENDING_REQUEST}" 
-                key="ALL"/>
-                <IconTabFilter 
-                icon="sap-icon://approvals" 
-                iconColor="Critical" 
-                count="{approvalRequestListModel>/searchResults/APP}" 
-                text="{i18n>APPROVED_REQUEST}" 
-                key="APP"/>
+                <IconTabFilter icon="sap-icon://pending" iconColor="Neutral" count="{approvalRequestListModel>/searchResults/PND}" text="{i18n>PENDING_REQUEST}" key="ALL"/>
+                <IconTabFilter icon="sap-icon://approvals" iconColor="Critical" count="{approvalRequestListModel>/searchResults/APP}" text="{i18n>APPROVED_REQUEST}" key="APP"/>
             </items>
             <content>
-                <Table 
-                id="idApprovalRequestTable"
-                items="{ path: '/ScholarshipStudentRequestSet',filters : [ { path : 'Lmsap', operator : 'EQ', value1 : 'REQUESTS_ON_ME'}, { path : 'Lmssf', operator : 'EQ', value1 : 'ALL'} ] }"
-                noDataText="{approvalRequestListModel>/tableNoDataText}"
-                busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}"
-                growing="true"
-                growingScrollToLoad="true"
-                updateFinished="onUpdateFinished"
-                updateStarted="onUpdateStarted"
-                class="lmsTable"
-                mode="MultiSelect"
-                >
-                <headerToolbar>
-                    <Toolbar>
-                        <ToolbarSpacer />
-                        <!-- <SearchField
-                            id="searchField"
-                            tooltip="{i18n>REQUEST_SEARCH_TOOLTIP}"
-                            search="onSearch"
-                            width="{= ${device>/system/phone} ? '100%' : '50%' }"
-                        /> -->
-                    </Toolbar>
-                </headerToolbar>
-                <infoToolbar>
-                    <Toolbar>
-                       <Title  text="{approvalRequestListModel>/requestListTableTitle}"/>
-                    </Toolbar>
-                </infoToolbar>
+                <Table id="idApprovalRequestTable" items="{ path: '/ScholarshipStudentRequestSet',filters : [ { path : 'Lmsap', operator : 'EQ', value1 : 'REQUESTS_ON_ME'}, { path : 'Lmssf', operator : 'EQ', value1 : 'ALL'} ] }" noDataText="{approvalRequestListModel>/tableNoDataText}" busyIndicatorDelay="{approvalRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" updateFinished="onUpdateFinished" updateStarted="onUpdateStarted" class="lmsTable" mode="MultiSelect">
+                    <headerToolbar>
+                        <Toolbar>
+                            <ToolbarSpacer />
+                            <!-- <SearchField id="searchField" tooltip="{i18n>REQUEST_SEARCH_TOOLTIP}" search="onSearch" width="{= ${device>/system/phone} ? '100%' : '50%' }" /> -->
+                        </Toolbar>
+                    </headerToolbar>
+                    <infoToolbar>
+                        <Toolbar>
+                            <Title text="{approvalRequestListModel>/requestListTableTitle}"/>
+                        </Toolbar>
+                    </infoToolbar>
                     <columns>
                         <Column>
                             <Text text="{i18n>REQNO}"/>
@@ -107,20 +71,20 @@
                                 <Text text="{Kntjs}"/>
                                 <Text text="{Orgex}" />
                                 <Text text="{Okugr}"/>
-                                <Button icon="sap-icon://menu"  type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button>
+                                <Button icon="sap-icon://menu" type="Accept" press="onAvailableRequestActions" tooltip="{i18n>ACTION_LIST}" class="erfActionButton"></Button>
                             </cells>
                         </ColumnListItem>
                     </items>
                 </Table>
             </content>
         </IconTabBar>
-          <footer>
+        <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
                 <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onDisplayRequestDetail"/> -->
                 <Button text="{i18n>EVALUATION_CRITERIA}" type="Attention" icon="sap-icon://activate" press=".onEvaluationDialogButton" />
                 <!-- <Button enabled="{approvalRequestListModel>/aplicationSetting/approveEnabled}" text="{i18n>REJECT_ACTION}" type="Reject" icon="sap-icon://employee-rejections" press="onCancelCreatePage"/>
-                <Button enabled="{approvalRequestListModel>/aplicationSetting/approveEnabled}" text="{i18n>APPROVE_ACTION}" icon="sap-icon://approvals"  visible='{approvalRequestListModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Success"/> -->
+                <Button enabled="{approvalRequestListModel>/aplicationSetting/approveEnabled}" text="{i18n>APPROVE_ACTION}" icon="sap-icon://approvals" visible='{approvalRequestListModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Success"/> -->
             </OverflowToolbar>
         </footer>
     </Page>
