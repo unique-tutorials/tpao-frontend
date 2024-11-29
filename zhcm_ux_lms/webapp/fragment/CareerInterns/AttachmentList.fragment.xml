@@ -4,22 +4,22 @@
     <Dialog afterClose="onDialogAfterClose" >
         <Table busyIndicatorDelay="0" inset="true" items="{path:'careerInternListModel>/attachmentList'}" showNoData="false">
             <columns>
-                <Column minScreenWidth="Tablet" demandPopin="true" width="30rem">
+                <Column width="30rem">
                     <Text text="{i18n>ATTACHMENT_FILE_NAME}"/>
                 </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true">
+                <Column>
                     <Text text="{i18n>ATTACHMENT_FILE_NAME}" visible="false"/>
                 </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true">
+                <Column>
                     <Text text="{i18n>ATTACHMENT_FILE_TYPE}"/>
                 </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                <Column>
                     <Text text="{i18n>CREATION_DATE}"/>
                 </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                <Column>
                     <Text text="{i18n>CREATED_BY}"/>
                 </Column>
-                <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                <Column>
                     <Text text="{i18n>ACTION_LIST}"/>
                 </Column>
             </columns>

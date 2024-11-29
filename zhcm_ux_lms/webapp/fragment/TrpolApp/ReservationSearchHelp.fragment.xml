@@ -43,43 +43,43 @@
                 path: '/ProductCollection'
             }">
                     <columns>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>RESERVATION_MADE}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>REQUEST_NUMBER}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>STUDENT_NUMBER}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>OR_ENAME}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>OR_LAND1}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>STATE}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>CITY}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>ENTRY_DATE}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>RETURN_DATE}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>EXPLANATION}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>COST_CENTER_CODE}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>BUDGET_CODE}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>REQUEST_REGISTRATION_DATE_RANGE}"/>
                         </Column>
                     </columns>

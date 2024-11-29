@@ -40,22 +40,22 @@
 				<Table id="CareerContnTable" inset="false" items="{/IntershipCareerContnSet}">
 			
 					<columns>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>OR_ENAME}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>DATE}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>REASON_FOR_NOT_COMING}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>EXCUSED}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+						<Column hAlign="Center">
 							<Text text="{i18n>WITH_REPORT}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Column hAlign="End">
 							<Text text="{i18n>FLOW_DETAIL}"/>
 						</Column>
 					</columns>

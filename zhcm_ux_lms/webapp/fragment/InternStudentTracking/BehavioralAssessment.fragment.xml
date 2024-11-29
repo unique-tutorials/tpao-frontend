@@ -18,16 +18,16 @@
                         </OverflowToolbar>
                     </headerToolbar>
                     <columns>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>Q_ORDER_NUMBER}" />
                         </Column>
-                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                        <!-- <Column>
                             <Text text="sorular" />
                         </Column> -->
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>I_FINALLY_AGREE}" />
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>I_AGREE}" />
                         </Column>
                         <Column minScreenWidth="Desktop" demandPopin="true">
@@ -76,16 +76,16 @@
                         </OverflowToolbar>
                     </headerToolbar>
                     <columns>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>Q_ORDER_NUMBER}" />
                         </Column>
-                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                        <!-- <Column>
                             <Text text="sorular" />
                         </Column> -->
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>I_FINALLY_AGREE}" />
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>I_AGREE}" />
                         </Column>
                         <Column minScreenWidth="Desktop" demandPopin="true">
@@ -131,7 +131,7 @@
                             <content>
                                 <Title text="{i18n>EVALUATION_SURVEY}" level="H2"/>
                                 <ToolbarSpacer />
-                                <Button text="{i18n>QUESTION_BUTTON}" icon="" press=".onIntershipButtonPress" type="Emphasized" />
+                                <!-- <Button text="{i18n>QUESTION_BUTTON}" icon="" press=".onIntershipButtonPress" type="Emphasized" /> -->
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -139,31 +139,31 @@
                         <Column width="8rem">
                             <Text text="{i18n>Q_ORDER_NUMBER}" />
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true" width="25rem">
+                        <Column width="25rem">
                             <Text text="{i18n>EVALUATION_QUESTIONS}" />
                         </Column>
                         <Column>
                             <Text text="{i18n>I_FINALLY_AGREE}" />
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>I_AGREE}" />
                         </Column>
-                        <Column minScreenWidth="Desktop" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>PARTIALLY_AGREE}" />
                         </Column>
-                        <Column minScreenWidth="Desktop" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>I_M_UNDECIDED}" />
                         </Column>
-                        <Column minScreenWidth="Desktop" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>SOMEWHAT_DISAGREE}" />
                         </Column>
-                        <Column minScreenWidth="Desktop" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>I_DISAGREE}" />
                         </Column>
-                        <Column minScreenWidth="Desktop" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>I_STRONGLY_DISAGREE}" />
                         </Column>
-                        <Column minScreenWidth="Desktop" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>NO_IDEA}" />
                         </Column>
                     </columns>
@@ -191,7 +191,7 @@
                             <content>
                                 <Title text="{i18n>SCOREBOARD}" level="H2"/>
                                 <ToolbarSpacer />
-                                <Button text="{i18n>QUESTION_BUTTON}" press=".onPointsButtonPress" type="Emphasized" />
+                                <!-- <Button text="{i18n>QUESTION_BUTTON}" press=".onPointsButtonPress" type="Emphasized" /> -->
                                 <Button
                                 icon="sap-icon://edit"
                                 press="onEditScoresPress"

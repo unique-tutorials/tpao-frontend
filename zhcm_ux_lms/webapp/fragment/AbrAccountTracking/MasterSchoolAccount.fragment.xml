@@ -15,15 +15,10 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>SELECT_PARTNER}">
                         <f:fields>
-                            <Input  enabled="false" value="{abrAccountListModel>/masterEmployee/Partner}" />
-                            <Button  enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress" cd:type="MASTER"/>
+                            <Input enabled="false" value="{abrAccountListModel>/masterEmployee/Partner}" />
+                            <Button enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress" cd:type="MASTER"/>
                         </f:fields>
                     </f:FormElement>
-                    <!-- <f:FormElement label="{i18n>RECIPIENT_NAME}">
-                        <f:fields>
-                            <Input value="{abrAccountListModel>/masterEmployee/NameFirst}" />
-                        </f:fields>
-                    </f:FormElement> -->
                     <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/masterEmployee/Banka}" />

@@ -37,67 +37,67 @@
 			<f:content>
 				<Table id="careerTable" inset="false" items="{/CareerIntershipSet}" popinLayout="GridSmall" autoPopinMode="true">
 					<columns>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>QUOTA_TYPE}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>UNIT}"/>
 						</Column>
-						<!-- <Column minScreenWidth="Tablet" demandPopin="true">
+						<!-- <Column>
 							<Text text="{i18n>REGISTRATION_NUMBER}"/>
 						</Column> -->
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>OR_VORNA}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>OR_NACHN}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>IBAN_NO}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>UNIVERSITY}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>INTERNSHIP_BRANCH}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>INTERNSHIP_TYPE}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>NO_PAID}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>CLASS}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>START_DATE}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>END_DATE}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>NUMBER_OF_DAYS}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>CALENDAR_DAY}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>INTERNSHIP_NOTE}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>EXPLANATION}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+						<Column>
 							<Text text="{i18n>DATE_OF_BIRTH}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>CARD_NUMBER}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>MOBILE_PHONE}"/>
 						</Column>
-						<Column minScreenWidth="Tablet" demandPopin="true">
+						<Column>
 							<Text text="{i18n>EMERGENCY_CONTACT}"/>
 						</Column>
 					</columns>

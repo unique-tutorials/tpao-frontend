@@ -133,6 +133,7 @@ sap.ui.define([
             console.log("data:" , oSelectedItem);
             var oViewModel = this.getModel('internStudentListModel');
             oViewModel.setProperty("/newInternNumberRequest/Pernr", oSelectedItem.Pernr); 
+            oViewModel.setProperty("/newInternNumberRequest/Mento", oSelectedItem.Mento);
             oViewModel.setProperty("/newInternNumberRequest/Ename", oSelectedItem.Vorna +' '+ oSelectedItem.Nachn ); 
             oViewModel.setProperty("/evaluationHighList/evaluationData",[]);
             if (this._oNewStudentTrackingSearchHelpDialog) {
@@ -143,8 +144,9 @@ sap.ui.define([
 			debugger;
 			var that = this;
 			var oModel = this.getModel();
-			var sPernr = this.getView().getModel("internStudentListModel").getProperty("/newInternNumberRequest/Pernr");
-
+            var oViewModel = this.getModel("internStudentListModel");
+			var sPernr= oViewModel.getProperty("/newInternNumberRequest/Pernr");
+            var sMento = oViewModel.getProperty("/newInternNumberRequest/Mento");
 			var aFilters = [];
 			aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
 
@@ -152,10 +154,11 @@ sap.ui.define([
 				this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "W");
 				return;
 			}
+        
 			function readData(sPath, sModelProperty, errorMessage) {
 				oModel.read(sPath, {
 					filters: aFilters,
-					success: function (oData) {
+					success: function (oData,oResponse) {
 						var oViewModel = that.getModel("internStudentListModel");
 						oViewModel.setProperty(sModelProperty, oData);
 						console.log(oData);
@@ -165,9 +168,45 @@ sap.ui.define([
 					}
 				});
 			}
-			// Öğrenci bilgileri al
+            var sExpand = "EvaluationAnswersSet"
+            function readDataList(sPath, sModelProperty, errorMessage) {
+                oModel.read(sPath, {
+                    urlParameters: {
+                        "$expand": sExpand
+                    },
+                    success: function (oData, oResponse) {
+                        oViewModel.setProperty(sModelProperty, _.cloneDeep(oData.EvaluationAnswersSet.results));
+                    }.bind(this),
+                    error: function (oError) {
+                        sap.m.MessageToast.show(errorMessage);
+                    }.bind(this)
+                });
+            }
+            function readDataScores(sPath, sModelProperty, errorMessage) {
+                oModel.read(sPath, {
+                    urlParameters: {
+                        "$expand": sExpand
+                    },
+                    success: function (oData, oResponse) {
+                        oViewModel.setProperty(sModelProperty, oData);
+                    }.bind(this),
+                    error: function (oError) {
+                        sap.m.MessageToast.show(errorMessage);
+                    }.bind(this)
+                });
+            }
+
+            // Öğrenci bilgileri al
 			var sScholarshipPath = oModel.createKey("/IntershipStudentSet", { Pernr: sPernr });
 			readData(sScholarshipPath, "/SelectedInternEmployee", "Stajyer Öğrenci bilgisi alınamadı.");
+            
+            // Değerlendirme Anket bilgilerini al
+            var sEvaluationInfoPath = oModel.createKey("/IntershipEvaluationSet", { Pernr: sPernr, Mento: sMento });
+            readDataList(sEvaluationInfoPath, "/evaluationHighList/evaluationData", "Form bilgileri alınamadı.");
+
+            //Puan bilgilerini al
+            var sEvaluationScoresInfoPath = oModel.createKey("/IntershipEvaluationSet", { Pernr: sPernr, Mento: sMento });
+            readDataScores(sEvaluationScoresInfoPath, "/evaluationPointsList", "Puan bilgileri alınamadı.");
 	
 		},
 
@@ -185,57 +224,64 @@ sap.ui.define([
                 }
         },
 
-        onIntershipButtonPress:function(oEvent){
-            debugger;
-            var oModel = this.getModel();
-            var oViewModel = this.getModel("internStudentListModel");
-            var oPernr = oViewModel.getProperty("/newInternNumberRequest/Pernr");
-            var sMento = oViewModel.getProperty("/SelectedInternEmployee/Mento");
-            var sPath = oModel.createKey("/IntershipEvaluationSet", {
-                "Pernr": oPernr,
-                "Mento": sMento,
-            });
-            var sExpand = "EvaluationAnswersSet";
-            this._openBusyFragment();
-            oModel.read(sPath, {
-                urlParameters: {
-                    "$expand": sExpand
-                },
-                success: function (oData, oResponse) {
-                    oViewModel.setProperty("/evaluationHighList/evaluationData", _.cloneDeep(oData.EvaluationAnswersSet.results));
-                    this._sweetToast(this.getText("SUCCESS_SURVEY_INFORMATION"), "S");
-                    this._closeBusyFragment();
-                }.bind(this),
-                error: function (oError) {
-                    this._sweetToast(this.getText("FAIL_SURVEY_INFORMATION"), "E");
-                }.bind(this)
-            });
-        },
-        onPointsButtonPress:function(oEvent){
-            debugger;
-            var oModel = this.getModel();
-            var oViewModel = this.getModel("internStudentListModel");
-            var oPernr = oViewModel.getProperty("/newInternNumberRequest/Pernr");
-            var sMento = oViewModel.getProperty("/SelectedInternEmployee/Mento");
-            var sPath = oModel.createKey("/IntershipEvaluationSet", {
-                "Pernr": oPernr,
-                "Mento": sMento,
-            });
-            var sExpand = "EvaluationAnswersSet";
-            oModel.read(sPath, {
-                urlParameters: {
-                    "$expand": sExpand
-                },
-                success: function (oData, oResponse) {
-                    oViewModel.setProperty("/evaluationPointsList", oData);
-                    this._sweetToast(this.getText("SCORES_READ_SUCCESS"), "S");
-                    this._closeBusyFragment();
-                }.bind(this),
-                error: function (oError) {
-                    this._sweetToast(this.getText("SCORES_READ_FAIL"), "E");
-                }.bind(this)
-            });
-        },
+        // onIntershipButtonPress:function(oEvent){
+        //     debugger;
+          
+        //     var oModel = this.getModel();
+        //     var oViewModel = this.getModel("internStudentListModel");
+        //     var oPernr = oViewModel.getProperty("/newInternNumberRequest/Pernr");
+        //     var sMento = oViewModel.getProperty("/SelectedInternEmployee/Mento");
+        //     var sPath = oModel.createKey("/IntershipEvaluationSet", {
+        //         "Pernr": oPernr,
+        //         "Mento": sMento,
+        //    });
+        //     var sExpand = "EvaluationAnswersSet";
+        //     function readData(sPath, sModelProperty, errorMessage) {
+
+        //     oModel.read(sPath, {
+        //         urlParameters: {
+        //             "$expand": sExpand
+        //         },
+        //         success: function (oData, oResponse) {
+        //             oViewModel.setProperty(sModelProperty, _.cloneDeep(oData.EvaluationAnswersSet.results));
+        //             this._sweetToast(this.getText("SUCCESS_SURVEY_INFORMATION"), "S");
+        //             this._closeBusyFragment();
+        //         }.bind(this),
+        //         error: function (oError) {
+        //             sap.m.MessageToast.show(errorMessage);
+        //             this._sweetToast(this.getText("FAIL_SURVEY_INFORMATION"), "E");
+        //         }.bind(this)
+        //     });
+        // }
+        //     var sEvaluationInfoPath = oModel.createKey("/IntershipEvaluationSet", { Pernr: oPernr, Mento: sMento });
+        //     readData(sEvaluationInfoPath, "/evaluationHighList/evaluationData", "Form bilgileri alınamadı.");
+        // },
+
+        // onPointsButtonPress:function(oEvent){
+        //     debugger;
+        //     var oModel = this.getModel();
+        //     var oViewModel = this.getModel("internStudentListModel");
+        //     var oPernr = oViewModel.getProperty("/newInternNumberRequest/Pernr");
+        //     var sMento = oViewModel.getProperty("/SelectedInternEmployee/Mento");
+        //     var sPath = oModel.createKey("/IntershipEvaluationSet", {
+        //         "Pernr": oPernr,
+        //         "Mento": sMento,
+        //     });
+        //     var sExpand = "EvaluationAnswersSet";
+        //     oModel.read(sPath, {
+        //         urlParameters: {
+        //             "$expand": sExpand
+        //         },
+        //         success: function (oData, oResponse) {
+        //             oViewModel.setProperty("/evaluationPointsList", oData);
+        //             this._sweetToast(this.getText("SCORES_READ_SUCCESS"), "S");
+        //             this._closeBusyFragment();
+        //         }.bind(this),
+        //         error: function (oError) {
+        //             this._sweetToast(this.getText("SCORES_READ_FAIL"), "E");
+        //         }.bind(this)
+        //     });
+        // },
         onEditScoresPress:function(oEvent){
             var oViewModel = this.getModel("internStudentListModel"),
             sVisible = oViewModel.getProperty("/suggestionActionData/priorityEditable");

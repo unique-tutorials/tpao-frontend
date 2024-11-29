@@ -34,16 +34,16 @@
             <f:content>
                 <Table id="DateSearchHelp" inset="false" items="{requestStajyerListModel>/ProductCollection}">
                     <columns>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>DATE}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true" width="16rem">
+                        <Column width="16rem">
                             <Text text="{i18n>EXPLANATION}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                        <Column hAlign="Center">
                             <Text text="{i18n>FULL_DAY}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+                        <Column hAlign="End">
                             <Text text="{i18n>HALF_DAY}"/>
                         </Column>
                     </columns>

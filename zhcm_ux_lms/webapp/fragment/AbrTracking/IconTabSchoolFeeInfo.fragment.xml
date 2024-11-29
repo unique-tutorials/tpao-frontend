@@ -6,34 +6,34 @@
                 <content>
                     <Title text="{i18n>SCHOOL_FEE_INFORMATION}" level="H2"/>
                     <ToolbarSpacer />
-                    <Button text="{i18n>SCH_FEE_INF}" press=".onSchoolFeeButtonPress" type="Neutral" />
+                    <!-- <Button text="{i18n>SCH_FEE_INF}" press=".onSchoolFeeButtonPress" type="Neutral" /> -->
                     <Button text="{i18n>ADD_NEW_SCHOOL_FEE}" press=".onSchollInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>FEE_PERIOD}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>DATE}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>SCHOOL_FEE}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>CURRENCY}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>EXCHANGE_DOCUMENT_NUMBER}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>FX_DOC_DATE}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>TO_SENT}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>SEND}"/>
             </Column>
         </columns>

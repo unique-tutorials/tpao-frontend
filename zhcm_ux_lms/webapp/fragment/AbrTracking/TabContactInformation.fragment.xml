@@ -12,22 +12,22 @@
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>ADDRESS_TYPE}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>FROM_MERNIS}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>ADDRESS}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>POSTAL_CODE}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>OR_LAND1}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>PROVINCE}"/>
             </Column>
             <!-- <Column minScreenWidth="Tablet" demandPopin="true">

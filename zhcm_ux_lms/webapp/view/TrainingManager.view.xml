@@ -75,28 +75,28 @@
                         </Toolbar>
                     </infoToolbar>
                     <columns>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>NUMBER_OF_QUOTAS}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
                         </Column>
                     </columns>

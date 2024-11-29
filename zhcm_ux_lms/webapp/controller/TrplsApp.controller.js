@@ -154,7 +154,6 @@ sap.ui.define([
             // aFilters.push(new Filter("Rezno", FilterOperator.EQ, sRezno))
             var sTravelInfoPath = oModel.createKey("/TravelReservationSet", { Rezno: sRezno, Pernr: sPernr });
         
-            // $filter parametresi ile sRezno'yu istek URL'sine ekleyin
             oModel.read( sTravelInfoPath, {
                 // filters: aFilters,
                 success: function (oData) {
@@ -169,7 +168,6 @@ sap.ui.define([
         },
         onReservationSaveButton: function(oEvent) {
             debugger;
-            var that = this
             var oModel = this.getModel();
             var oViewModel = this.getModel("trplsRequestListModel");
             var oReservationEntry = oViewModel.getProperty('/reservationEmployee');
@@ -181,13 +179,8 @@ sap.ui.define([
             oModel.create("/TravelReservationSet", oReservationEntry, {
                 success: function(oData, oResponse) {
                     debugger;
-                   
-                    if (oData.Mesty === "S") {
-                        that._sweetToast(that.getText("RESERVATION_CREATE_SUCCESS"), "S");
-                    } else if (oData.Mesty === "E") {
-                        MessageToast.show(oData.Messg || "Bir hata oluştu.");
-                    }
-                },
+                    this._sweetToast(this.getText("RESERVATION_CREATE_SUCCESS"), "S");
+                }.bind(this),
                 error: function() {
                     debugger;
                 }

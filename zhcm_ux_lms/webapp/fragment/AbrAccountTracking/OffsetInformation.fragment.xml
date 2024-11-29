@@ -34,7 +34,7 @@
             <Column>
                 <Text text="{i18n>CURRENCY}"/>
             </Column>
-            <Column minScreenWidth="Tablet" demandPopin="true">
+            <Column>
                 <Text text="{i18n>OFFSET_NO}"/>
             </Column>
         </columns>

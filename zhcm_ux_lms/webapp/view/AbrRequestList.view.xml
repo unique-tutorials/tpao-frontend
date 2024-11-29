@@ -33,37 +33,37 @@
                         </Toolbar>
                     </infoToolbar>
                     <columns>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>REQNO}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>UNDERGRADUATE_GRADUATION_AREA}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>MASTER_DEGREE_FIELD_TR}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>MASTER_DEGREE_FIELD_EN}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>MASTER_DEGREE_SUBJECT_TR}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>MASTER_DEGREE_SUBJECT_EN}"/>
                         </Column>
-                        <!-- <Column minScreenWidth="Tablet" demandPopin="true">
+                        <!-- <Column>
                             <Text text="{i18n>PREFERRED_COUNTRY_COUNTRIES_TO_STUDY_PRI}"/>
                         </Column> -->
-                        <Column minScreenWidth="Tablet" demandPopin="true" width="6rem">
+                        <Column width="6rem">
                             <Text text="{i18n>NUMBER_OF_QUOTAS}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Column>
                             <Text text="{i18n>UNIT_AND_DIRECTORATE_ON_RETURN}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true" width="12rem">
+                        <Column width="12rem">
                             <Text text="{i18n>REASON_FOR_SCHOLARSHIP}"/>
                         </Column>
-                        <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End" width="5rem">
+                        <Column hAlign="End" width="5rem">
                             <Text text="{i18n>ACTION_LIST}"/>
                         </Column>
                     </columns>
