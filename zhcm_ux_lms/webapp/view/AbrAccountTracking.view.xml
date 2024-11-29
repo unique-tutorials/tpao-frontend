@@ -5,7 +5,7 @@
     xmlns:l="sap.ui.layout"
     xmlns:core="sap.ui.core">
 
-    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Burslu Öğrenci Takibi (Muhasebe)">
+    <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>SCHOLARSHIP_STUDENT_TRACKING_ACCOUNTING}">
         <VBox class="sapUiSmallMargin">
             <f:Form editable="true">
                 <f:title>
@@ -70,12 +70,5 @@
                 </infoToolbar>
             </Panel>
         </VBox>
-        <!-- <footer>
-            <OverflowToolbar>
-                <ToolbarSpacer/>
-                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://education" press="onNewTrainingRequest" type="Accept" visible="true"/>
-            </OverflowToolbar>
-        </footer> -->
     </Page>
 </mvc:View>
