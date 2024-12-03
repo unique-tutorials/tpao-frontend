@@ -2,8 +2,8 @@
     xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core">
-    <Dialog title="Genel Harcama Faturası" contentWidth="70%" contentHeight="70%" verticalScrolling="false">
-        <VBox class="sapUiSmallMargin">
+    <Dialog title="Genel Harcama Faturası" contentWidth="40%" verticalScrolling="false">
+        <VBox>
             <f:Form editable="true">
                 <f:title>
                     <core:Title text="{i18n>SCHOOL_FEE_INFORMATION}" />
