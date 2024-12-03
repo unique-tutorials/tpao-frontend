@@ -373,7 +373,7 @@ sap.ui.define([
             }
 
             const wsSecond = XLSX.utils.aoa_to_sheet(aDownloadSecond);
-            wsSecond['!cols'] = this._setColumnSizes(); // Aynı boyutları kullanabilir veya özelleştirebilirsiniz.
+            wsSecond['!cols'] = this._setColumnSizes();
             XLSX.utils.book_append_sheet(wb, wsSecond, "Puan");
         
             XLSX.writeFile(wb, sHeader + ".xlsx");
@@ -513,7 +513,7 @@ sap.ui.define([
 		},
         _addBodyColumnsSecondTable: function() {
             var oControlModel = this.getModel("internStudentListModel");
-            var aSecondTableData = oControlModel.getProperty("/evaluationPointsList"); // Yeni tabloya ait veri modeli
+            var aSecondTableData = oControlModel.getProperty("/evaluationPointsList");
         
             var aBodyRows = [];
             for (var i = 0; i < aSecondTableData.length; i++) {
