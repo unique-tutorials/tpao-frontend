@@ -63,7 +63,7 @@ sap.ui.define([
                 {
                     "appName": "AbrStajyerTracking",
                     "visible": true,
-                    "title": 'Staj/Beceri Eğitimi',
+                    "title": 'Stajyer/Beceri Gelişim Programları ',
                     "icon": "sap-icon://group"
                 },
                 {

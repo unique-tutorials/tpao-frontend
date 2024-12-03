@@ -343,7 +343,196 @@ sap.ui.define([
                     this._sweetToast(this.getText("FORM_SAVE_FAIL"), "E");
                 }.bind(this)
             });
-        }
+        },
+        onEvaluationExportButton:function(oEvent){
+            debugger;
+            var sCurrentLocale = sap.ui.getCore().getConfiguration().getLanguage();
+            var sHeader = 'DEĞERLENDİRME FORMU';
+            const wb = XLSX.utils.book_new();
+            var aHeaderColumns = this._addHeaderColumns();
+            var aContent = this._addBodyColums();
+            var aDownload = [];
+            aDownload.push(aHeaderColumns);
+            for (var i = 0; i < aContent.length; i++) {
+                aDownload.push(aContent[i]);
+            }
+        
+            const ws = XLSX.utils.aoa_to_sheet(aDownload);
+            ws['!cols'] = this._setColumnSizes();
+            ws['!rows'] = [{ 'hpt': 50 }];
+        
+            XLSX.utils.book_append_sheet(wb, ws, sHeader.substring(0, 31));
 
+             // İkinci tablo
+            var aHeaderColumnsSecond = this._addHeaderColumnsSecondTable();
+            var aContentSecond = this._addBodyColumnsSecondTable();
+            var aDownloadSecond = [];
+            aDownloadSecond.push(aHeaderColumnsSecond);
+            for (var i = 0; i < aContentSecond.length; i++) {
+                aDownloadSecond.push(aContentSecond[i]);
+            }
+
+            const wsSecond = XLSX.utils.aoa_to_sheet(aDownloadSecond);
+            wsSecond['!cols'] = this._setColumnSizes(); // Aynı boyutları kullanabilir veya özelleştirebilirsiniz.
+            XLSX.utils.book_append_sheet(wb, wsSecond, "Puan");
+        
+            XLSX.writeFile(wb, sHeader + ".xlsx");
+        },
+        _addBodyColums: function() {
+            var oControlModel = this.getModel("internStudentListModel");
+            var aEvaluationData = oControlModel.getProperty("/evaluationHighList/evaluationData");
+        
+            var aBodyRows = []; 
+            for (var i = 0; i < aEvaluationData.length; i++) {
+                var aColumns = [
+                    aEvaluationData[i].Quenm,
+                    aEvaluationData[i].Quetx,
+                    aEvaluationData[i].Answe === '1',
+                    aEvaluationData[i].Answe === '2',
+                    aEvaluationData[i].Answe === '3',
+                    aEvaluationData[i].Answe === '4',
+                    aEvaluationData[i].Answe === '5',
+                    aEvaluationData[i].Answe === '6',
+                    aEvaluationData[i].Answe === '7',
+                    aEvaluationData[i].Answe === '8'
+                ];
+                aBodyRows.push(aColumns);
+            }
+        
+            return aBodyRows;
+        },
+        _setColumnSizes: function(ws) {
+			var aWscols = [{
+				wch: 10
+			}, {
+				wch: 100
+			}, {
+				wch: 20
+			}, {
+				wch: 20
+			}, {
+				wch: 20
+			}, {
+				wch: 20
+			}, {
+				wch: 20
+			}, {
+				wch: 20
+			}, {
+				wch: 20
+			}, {
+				wch: 20
+			}];
+
+			return aWscols;
+		},
+
+        _addHeaderColumns: function() {
+            var aRows = [];
+            var sOrderNumber = 'Soru Sıra No';
+            var sEvaluationQuestions = 'Değerlendirme Soruları';
+            var sIFinallyAgree = 'Kesinlikle Katılıyorum';
+            var sIAgree = 'Katılıyorum';
+            var sPartiallyAgree = 'Kısmen Katılıyorum';
+            var sIMUndecided = 'Kararsızım';
+            var sSomewhatDisagree = 'Kısmen Katılmıyorum';
+            var sIDisagree = 'Katılmıyorum';
+            var sStronglyDiagree = 'Kesinlikle Katılmıyorum';
+            var sNoIdea = 'Fikrim Yok';
+        
+            aRows.push(this._getHeaderColumn(sOrderNumber));
+            aRows.push(this._getHeaderColumn(sEvaluationQuestions));
+            aRows.push(this._getHeaderColumn(sIFinallyAgree));
+            aRows.push(this._getHeaderColumn(sIAgree));
+            aRows.push(this._getHeaderColumn(sPartiallyAgree));
+            aRows.push(this._getHeaderColumn(sIMUndecided));
+            aRows.push(this._getHeaderColumn(sSomewhatDisagree));
+            aRows.push(this._getHeaderColumn(sIDisagree));
+            aRows.push(this._getHeaderColumn(sStronglyDiagree));
+            aRows.push(this._getHeaderColumn(sNoIdea));
+        
+            return aRows;
+        },
+
+        _getHeaderColumn: function(sColumnName) {
+			var oHeaderObj = {
+				v: sColumnName,
+				t: "s",
+				s: {
+					alignment: {
+						vertical: "center",
+						horizontal: "center",
+						wrapText: true
+					},
+					border: {
+						top: {
+							sytle: "solid",
+							color: {
+								rgb: "ff0000"
+							}
+						},
+						right: {
+							sytle: "solid",
+							color: {
+								rgb: "ff0000"
+							}
+						},
+						left: {
+							sytle: "solid",
+							color: {
+								rgb: "ff0000"
+							}
+						},
+						bottom: {
+							sytle: "solid",
+							color: {
+								rgb: "ff0000"
+							}
+						}
+
+					},
+					font: {
+						sz: 9,
+						bold: true,
+						color: {
+							rgb: "ff0000"
+						}
+					},
+					fill: {
+						fgColor: {
+							rgb: "ffffff"
+						}
+					},
+					width: {
+
+					}
+				}
+			};
+
+			return oHeaderObj;
+		},
+        _addBodyColumnsSecondTable: function() {
+            var oControlModel = this.getModel("internStudentListModel");
+            var aSecondTableData = oControlModel.getProperty("/evaluationPointsList"); // Yeni tabloya ait veri modeli
+        
+            var aBodyRows = [];
+            for (var i = 0; i < aSecondTableData.length; i++) {
+                var aColumns = [
+                    aSecondTableData[i].Descp,
+                    aSecondTableData[i].Tosoc
+                ];
+                aBodyRows.push(aColumns);
+            }
+            return aBodyRows;
+        }, 
+
+        _addHeaderColumnsSecondTable: function() {
+            var aRows = [];
+            var sStdCmtAbt = 'Öğrenci hakkında yorumlarınız';
+            var sPoint = 'Puan';
+            aRows.push(this._getHeaderColumn(sStdCmtAbt));
+            aRows.push(this._getHeaderColumn(sPoint));
+            return aRows;
+        },
 	});
 });

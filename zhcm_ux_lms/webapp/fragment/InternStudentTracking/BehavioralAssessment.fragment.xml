@@ -185,7 +185,7 @@
                     </items>
                 </Table>
                 <!-- <Button text="Kaydet" icon="sap-icon://save" type="Accept" press=".onSaveFormButtonPress" /> -->
-                  <Table inset="false" >
+                  <Table inset="false">
                     <headerToolbar>
                         <OverflowToolbar>
                             <content>
@@ -211,7 +211,6 @@
                     <items>
                         <ColumnListItem vAlign="Middle">
                             <cells>
-                                <!-- <Text text="{internStudentListModel>/evaluationPointsList/Descp}" /> -->
                                 <HBox alignItems="Start">
                                     <Input
                                         value="{internStudentListModel>/evaluationPointsList/Descp}"
