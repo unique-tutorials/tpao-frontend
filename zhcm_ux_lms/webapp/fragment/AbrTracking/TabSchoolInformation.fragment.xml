@@ -44,7 +44,7 @@
                             </ComboBox>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>SCHOOL}">
+                    <f:FormElement label="{i18n>SECTION}">
                         <f:fields>
                             <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Dprmt' } ] }" selectedKey="{requestListModel>/schoolEmployee/Dprmt}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
