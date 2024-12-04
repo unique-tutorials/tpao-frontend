@@ -31,7 +31,7 @@ sap.ui.define([
                 selectedRequest: {},
                 currentRequest: {},
                 searchParameter: {},
-                SelectedEmployee: {},
+                selectedEmployee: {},
                 generalEmployee: {},
                 schoolEmployee: {},
                 financialEmployee: {},
@@ -66,7 +66,29 @@ sap.ui.define([
             });
         },
         onNavBack: function () {
-            // this.goBack(History);
+            var oModel = this.getView().getModel("requestListModel");
+            var aPaths = [
+                "/newNumberRequest",
+                "/selectedEmployee",
+                "/generalEmployee",
+                "/schoolEmployee",
+                "/financialEmployee",
+                "/abroadEmployee",
+                "/masterEmployee",
+                "/domesticAccount",
+                "/otherAccount",
+                "/schoolFeeList",
+                "/expendInfoList",
+                "/domesticEmployee",
+                "/abroadOtherEmployee",
+                "/guarantorList",
+                "/contactEmployee",
+                "/identityEmployee"
+            ];
+            aPaths.forEach(function (sPath) {
+                oModel.setProperty(sPath, {});
+            });
+        
             this.getRouter().navTo("appdispatcher", {}, true);
         },
         onItemSelected: function (oEvent) {
@@ -812,7 +834,7 @@ sap.ui.define([
             )
             // Öğrenci bilgileri al
             var sScholarshipPath = oModel.createKey("/ScholarShipstudentAbroadSet", { Pernr: sPernr });
-            readData(sScholarshipPath, "/SelectedEmployee", "Öğrenci bilgisi alınamadı.");
+            readData(sScholarshipPath, "/selectedEmployee", "Öğrenci bilgisi alınamadı.");
 
             // Genel bilgileri al
             var sGeneralInfoPath = oModel.createKey("/GeneralInformationSet", { Pernr: sPernr });
@@ -1256,6 +1278,8 @@ sap.ui.define([
             this._oExpendInfoDialog.open();
         },
         onSchollInfoAddDialog: function () {
+            var oViewModel = this.getModel("requestListModel");
+            oViewModel.setProperty("/schoolInfoDialogRequest", {});
             if (!this._oSchoolInfoDialog) {
                 this._oSchoolInfoDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.SchoolFeeNavigationDialog", this);
                 this.getView().addDependent(this._oSchoolInfoDialog);
@@ -1718,8 +1742,8 @@ sap.ui.define([
             var oSelectedUnitItem = oEvent.getSource().getBindingContext().getObject();
 
             var oViewModel = this.getModel('requestListModel');
-            oViewModel.setProperty("/SelectedEmployee/Unicd", oSelectedUnitItem.Orgeh);
-            oViewModel.setProperty("/SelectedEmployee/Orgtx", oSelectedUnitItem.Orgtx);
+            oViewModel.setProperty("/selectedEmployee/Unicd", oSelectedUnitItem.Orgeh);
+            oViewModel.setProperty("/selectedEmployee/Orgtx", oSelectedUnitItem.Orgtx);
 
             if (this._oUnitSearchHelpDialog) {
                 this._oUnitSearchHelpDialog.close();

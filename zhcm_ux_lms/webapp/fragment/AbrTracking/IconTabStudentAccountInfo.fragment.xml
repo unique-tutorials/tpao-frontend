@@ -62,7 +62,7 @@
             </f:FormContainer>
             <f:FormContainer title="{i18n>ABROAD}">
                 <f:formElements>
-                    <f:FormElement label="{i18n>BANK_NAME}">
+                    <f:FormElement label="{i18n>SELECT_PARTNER}">
                         <f:fields>
                             <Input value="{requestListModel>/abroadOtherEmployee/Partner}" />
                             <Button text="{i18n>SEND}" />

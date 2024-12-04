@@ -1,83 +1,15 @@
 <mvc:View controllerName="zhcm_ux_lms_abr.controller.InternStudentTracking"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns="sap.m"
-	xmlns:f="sap.ui.layout.form"
 	xmlns:core="sap.ui.core" displayBlock="true" height="100%" busyIndicatorDelay="0">
 	<Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>INT_ST_TRK}">
 		<VBox class="sapUiSmallMargin">
-			<f:Form editable="true">
-				<f:title>
-					<core:Title text="{i18n>INTERN_SEARCH}" />
-				</f:title>
-				<f:layout>
-					<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-				</f:layout>
-				<f:formContainers>
-					<f:FormContainer>
-						<f:formElements>
-							<f:FormElement label="{i18n>INTERN_NUMBER}">
-								<f:fields>
-									<Input id="idStudentTrackingInput" value="{ parts: [{path: 'internStudentListModel>/newInternNumberRequest/Pernr'},{path: 'internStudentListModel>/newInternNumberRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onShowStudentTrackingSearchHelp"/>
-									<Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchTrackingPress"/>
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
-				</f:formContainers>
-			</f:Form>
-			<f:Form editable="true">
-				<f:title>
-					<core:Title text="{i18n>TECHNICAL_EVALUATION}" />
-				</f:title>
-				<f:layout>
-					<f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-				</f:layout>
-				<f:formContainers>
-					<f:FormContainer>
-						<f:formElements>
-							<f:FormElement label="{i18n>OR_VORNA}">
-								<f:fields>
-									<Input value="{internStudentListModel>/SelectedInternEmployee/Vorna}" />
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>OR_NACHN}">
-								<f:fields>
-									<Input value="{internStudentListModel>/SelectedInternEmployee/Nachn}" />
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>MENTOR}">
-								<f:fields>
-									<Input value="{internStudentListModel>/SelectedInternEmployee/Mento}" />
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
-					<f:FormContainer>
-						<f:formElements>
-							<f:FormElement label="{i18n>Q_UNIT}">
-								<f:fields>
-									<Input value="{internStudentListModel>/SelectedInternEmployee/Orgeh}" />
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>UNIT}">
-								<f:fields>
-									<Input value="{internStudentListModel>/SelectedInternEmployee/Orgtx}" />
-								</f:fields>
-							</f:FormElement>
-							<f:FormElement label="{i18n>PERSK}">
-								<f:fields>
-									<Input value="{internStudentListModel>/SelectedInternEmployee/Ptext}" />
-								</f:fields>
-							</f:FormElement>
-						</f:formElements>
-					</f:FormContainer>
-				</f:formContainers>
-			</f:Form>
+			<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.TechnicalInformation" type="XML" />
 		</VBox>
 		<VBox class="sapUiSmallMargin">
 			<Panel accessibleRole="Form" backgroundDesign="Transparent" expandAnimation="true" expandable="false" expanded="true">
 				<content>
-					<IconTabBar stretchContentHeight="false" id="TabContainer" >
+					<IconTabBar stretchContentHeight="false" id="TabContainer">
 						<items>
 							<IconTabFilter text="{i18n>TECHNICAL_EVALUATION}" key="General">
 								<core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.StudenTrackingtInformation" type="XML" />
@@ -90,16 +22,15 @@
 				</content>
 			</Panel>
 		</VBox>
-
 		<footer>
-            <OverflowToolbar>
-                <ToolbarSpacer/>
-                <!-- <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/> -->
-                <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<!-- <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/> -->
+				<!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/>
                 <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/> -->
 				<Button text="{i18n>EXPORT_EXCEL}" icon="sap-icon://excel-attachment" type="Emphasized" press=".onEvaluationExportButton" />
-                <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveFormButtonPress" type="Accept"/>
-            </OverflowToolbar>
-        </footer>
+				<Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveFormButtonPress" type="Accept"/>
+			</OverflowToolbar>
+		</footer>
 	</Page>
 </mvc:View>

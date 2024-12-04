@@ -207,6 +207,24 @@ sap.ui.define(
           });
         },
         onNavBack: function () {
+          var oModel = this.getView().getModel("abrAccountListModel");
+          var aPaths = [
+            "/newAccountNumberRequest",
+            "/searchAccountParameter",
+            "/domesticEmployee",
+            "/accountEmployee",
+            "/generalEmployee",
+            "/schoolEmployee",
+            "/abroadOtherEmployee",
+            "/financialEmployee",
+            "/abroadEmployee",
+            "/masterEmployee",
+            "/guarantorList",
+            "/offsetInformationList"
+          ];
+          aPaths.forEach(function (sPath){
+            oModel.setProperty(sPath, {});
+          });
           // this.goBack(History);
           this.getRouter().navTo("appdispatcher", {}, true);
         },
@@ -526,7 +544,7 @@ sap.ui.define(
           
           readDataList(
             sGuarantorPath,
-            "/GuarantorList",
+            "/guarantorList",
             "Kefil bilgisi alınamadı"
           );
 

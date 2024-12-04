@@ -38,7 +38,15 @@ sap.ui.define([
             });
         },
         onNavBack: function () {
-            // this.goBack(History);
+            var oModel = this.getView().getModel("trplsRequestListModel");
+            var aPaths = [
+                "/newNumberReserRequest",
+                "/reservationEmployee"
+            ];
+            aPaths.forEach(function (sPath){
+                oModel.setProperty(sPath, {});
+            });
+      
             this.getRouter().navTo("appdispatcher", {}, true);
         },
         _getRequestList: function (oEvent) { 

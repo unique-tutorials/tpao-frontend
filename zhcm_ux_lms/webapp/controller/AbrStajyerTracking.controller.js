@@ -40,7 +40,7 @@ sap.ui.define([
                 currentRequest: {},
                 absence: {},
                 searchStajyerParameter: {},
-                SelectedStajyer: {},
+                selectedStajyer: {},
                 newNumberStajyerRequest: {
                     Pernr: null,
                     Ename: ""
@@ -54,7 +54,16 @@ sap.ui.define([
 
         },
         onNavBack: function () {
-            // this.goBack(History);
+            var oModel = this.getView().getModel("requestStajyerListModel");
+            var aPaths = [
+                "/newNumberStajyerRequest",
+                "/selectedStajyer",
+                "/absenceList",
+                "/attachmentList"
+            ];
+            aPaths.forEach(function (sPath){
+                oModel.setProperty(sPath, {});
+            });
             this.getRouter().navTo("appdispatcher", {}, true);
         },
         _getRequestList: function () {
@@ -459,13 +468,13 @@ sap.ui.define([
             this._sweetToast(this.getText("STAJYER_READ_SUCCESS"), "S");
             // Stajyer bilgileri al
             var sStajyerPath = oModel.createKey("/IntershipStudentSet", { Pernr: sPernr });
-            readData(sStajyerPath, "/SelectedStajyer", "Stajyer bilgisi alınamadı.");
+            readData(sStajyerPath, "/selectedStajyer", "Stajyer bilgisi alınamadı.");
 
         },
         onSavePress: function (oEvent) {
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestStajyerListModel");
-            var oEntry = oViewModel.getProperty('/SelectedStajyer');
+            var oEntry = oViewModel.getProperty('/selectedStajyer');
             var that = this;
             if (this.byId("TabContainerStajyer").getSelectedKey() === "stajyerInfo") {
                 oModel.create("/IntershipStudentSet", oEntry, {

@@ -38,6 +38,8 @@ sap.ui.define([
             
         },
         onNavBack: function () {
+            var oModel = this.getView().getModel("trpolRequestListModel");
+            oModel.setProperty("/reserSearchParameter", {});
             // this.goBack(History);
             this.getRouter().navTo("appdispatcher", {}, true);
         },
