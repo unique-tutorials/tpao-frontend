@@ -133,7 +133,7 @@ html.sap-phone .lmsDisplayOnlyCheckBox {
 
 .lmsTable .sapMTB-Info-CTX.sapMTB {
     background-color: #f1f8ff;
-    color: #fff !important;
+    color: #000 !important;
     border-left: 5px solid #0064d9;
 }
 /* .sapMSticky>.sapMListHdrText, .sapMSticky>.sapMListHdrTBar.sapMTB-Transparent-CTX {

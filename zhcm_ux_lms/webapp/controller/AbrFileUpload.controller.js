@@ -34,7 +34,11 @@ sap.ui.define([
             });
         },
         onNavBack: function () {
-            // this.goBack(History);
+            var oModel = this.getView().getModel("wageRequestListModel");
+            var aPaths = [];
+            aPaths.forEach(function (sPath){
+                oModel.setProperty(sPath, {});
+            });
             this.getRouter().navTo("appdispatcher", {}, true);
         },
         _getRequestList: function () { 

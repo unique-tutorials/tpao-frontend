@@ -1,0 +1,73 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="{i18n>INTERN_SEARCH}" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>INTERN_NUMBER}">
+                        <f:fields>
+                            <Input id="idStudentTrackingInput" value="{ parts: [{path: 'internStudentListModel>/newInternNumberRequest/Pernr'},{path: 'internStudentListModel>/newInternNumberRequest/Ename'}] , formatter: '.formatter.convertZeroObjectNumber'}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onShowStudentTrackingSearchHelp"/>
+                            <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchTrackingPress"/>
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+    <f:Form editable="true">
+        <f:title>
+            <core:Title text="{i18n>TECHNICAL_EVALUATION}" />
+        </f:title>
+        <f:layout>
+            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>OR_VORNA}">
+                        <f:fields>
+                            <Input value="{internStudentListModel>/selectedInternEmployee/Vorna}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>OR_NACHN}">
+                        <f:fields>
+                            <Input value="{internStudentListModel>/selectedInternEmployee/Nachn}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>MENTOR}">
+                        <f:fields>
+                            <Input value="{internStudentListModel>/selectedInternEmployee/Mento}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+            <f:FormContainer>
+                <f:formElements>
+                    <f:FormElement label="{i18n>Q_UNIT}">
+                        <f:fields>
+                            <Input value="{internStudentListModel>/selectedInternEmployee/Orgeh}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>UNIT}">
+                        <f:fields>
+                            <Input value="{internStudentListModel>/selectedInternEmployee/Orgtx}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>PERSK}">
+                        <f:fields>
+                            <Input value="{internStudentListModel>/selectedInternEmployee/Ptext}" />
+                        </f:fields>
+                    </f:FormElement>
+                </f:formElements>
+            </f:FormContainer>
+        </f:formContainers>
+    </f:Form>
+</c:FragmentDefinition>

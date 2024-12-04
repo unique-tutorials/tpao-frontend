@@ -35,24 +35,24 @@
                     <f:formElements>
                         <f:FormElement label="{i18n>STUDENT_NUMBER}">
                             <f:fields>
-                                <Input value="{requestListModel>/SelectedEmployee/Pernr}" />
+                                <Input value="{requestListModel>/selectedEmployee/Pernr}" />
                             </f:fields>
                         </f:FormElement>
                         <!-- <f:FormElement label="{i18n>STUDENT_TYPE}">
                             <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Type' } ] }" selectedKey="{requestListModel>/SelectedEmployee/Type}">
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Type' } ] }" selectedKey="{requestListModel>/selectedEmployee/Type}">
                                     <core:ListItem key="{Key}" text="{Value}"/>
                                 </ComboBox>
                             </f:fields>
                         </f:FormElement> -->
                         <f:FormElement label="{i18n>STUDENT_NAME}">
                             <f:fields>
-                                <Input value="{requestListModel>/SelectedEmployee/Vorna}" />
+                                <Input value="{requestListModel>/selectedEmployee/Vorna}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_SURNAME}">
                             <f:fields>
-                                <Input value="{requestListModel>/SelectedEmployee/Nachn}" />
+                                <Input value="{requestListModel>/selectedEmployee/Nachn}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -62,7 +62,7 @@
                         <f:FormElement label="{i18n>STUDENT_GENDER}">
                             <f:fields>
                                 <Text class="textClass" text="{
-                                path: 'requestListModel>/SelectedEmployee/Gesch',
+                                path: 'requestListModel>/selectedEmployee/Gesch',
                                 formatter: '.genderFormatter'
                             }" />
                                 <Input enabled="false" />
@@ -70,25 +70,25 @@
                         </f:FormElement>
                         <f:FormElement label="{i18n>UNIT_CODE}">
                             <f:fields>
-                                <Input value="{requestListModel>/SelectedEmployee/Orgtx}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitSearchHelp"/>
+                                <Input value="{requestListModel>/selectedEmployee/Orgtx}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitSearchHelp"/>
                                 <Input enabled="false"/>
                             </f:fields>
                         </f:FormElement>
                         <!-- <f:FormElement label="{i18n>COST_CENTER}">
                             <f:fields>
-                                <Input valueHelpOnly="true" value="{requestListModel>/SelectedEmployee/Cstcn}" showValueHelp="true" />
+                                <Input valueHelpOnly="true" value="{requestListModel>/selectedEmployee/Cstcn}" showValueHelp="true" />
                                 <Input enabled="false" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>BUDGET_CODE}">
                             <f:fields>
-                                <Input valueHelpOnly="true" value="{requestListModel>/SelectedEmployee/Bdcde}" showValueHelp="true" />
+                                <Input valueHelpOnly="true" value="{requestListModel>/selectedEmployee/Bdcde}" showValueHelp="true" />
                                 <Input enabled="false"/>
                             </f:fields>
                         </f:FormElement> -->
                         <f:FormElement label="{i18n>STUDENT_ACTIVE}">
                             <f:fields>
-                                <CheckBox selected="{requestListModel>/SelectedEmployee/Activ}" />
+                                <CheckBox selected="{requestListModel>/selectedEmployee/Activ}" />
                                 <ToolbarSpacer/>
                             </f:fields>
                         </f:FormElement>

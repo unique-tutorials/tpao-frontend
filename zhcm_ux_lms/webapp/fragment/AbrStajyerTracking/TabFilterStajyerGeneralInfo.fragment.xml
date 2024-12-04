@@ -14,33 +14,33 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>IBAN_NO}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Iban00}" />
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Iban00}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>UNIVERSITY}"
                          
-                        visible="{= ${requestStajyerListModel>/SelectedStajyer/Ptext} !== 'Lise Stajyeri' }">
+                        visible="{= ${requestStajyerListModel>/selectedStajyer/Ptext} !== 'Lise Stajyeri' }">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Atext}" />
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Atext}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>INTERNSHIP_BRANCH}" 
-                                    visible="{= ${requestStajyerListModel>/SelectedStajyer/Ptext} !== 'Lise Stajyeri' }">
+                                    visible="{= ${requestStajyerListModel>/selectedStajyer/Ptext} !== 'Lise Stajyeri' }">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Ftext}" />
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Ftext}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="Lise" 
-                                    visible="{= ${requestStajyerListModel>/SelectedStajyer/Ptext} === 'Lise Stajyeri' }">
+                                    visible="{= ${requestStajyerListModel>/selectedStajyer/Ptext} === 'Lise Stajyeri' }">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Insti}" />
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Insti}" />
                         </f:fields>
                     </f:FormElement>
          
                     <f:FormElement label="{i18n>INTERNSHIP_TYPE}">
                         <f:fields>
-                            <!-- <Select selectedKey="{requestStajyerListModel>/SelectedStajyer/Intyp}" /> -->
-                            <!-- <Select forceSelection="false" selectedKey="{requestStajyerListModel>/SelectedStajyer/Intyp}" width="100%" items="{  
+                            <!-- <Select selectedKey="{requestStajyerListModel>/selectedStajyer/Intyp}" /> -->
+                            <!-- <Select forceSelection="false" selectedKey="{requestStajyerListModel>/selectedStajyer/Intyp}" width="100%" items="{  
                             path:'/ValueHelpSet',
                             filters : [
                                 { path : 'Id', operator : 'EQ', value1 : 'Intyp'}
@@ -48,27 +48,27 @@
                         }">
                                 <core:Item key="{Key}" text="{Value}"/>
                             </Select> -->
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Intyp}" /> 
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Intyp}" /> 
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>START_DATE}">
                         <f:fields>
-                            <DatePicker value="{path: 'requestStajyerListModel>/SelectedStajyer/Begdt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                            <DatePicker value="{path: 'requestStajyerListModel>/selectedStajyer/Begdt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>END_DATE}">
                         <f:fields>
-                            <DatePicker value="{path: 'requestStajyerListModel>/SelectedStajyer/Findt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                            <DatePicker value="{path: 'requestStajyerListModel>/selectedStajyer/Findt', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>NUMBER_OF_DAYS}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Nuoda}"/>
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Nuoda}"/>
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>INTERNSHIP_NOTE}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Intgr}" />
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Intgr}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -77,43 +77,43 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>NO_PAID}">
                         <f:fields>
-                            <CheckBox selected="{requestStajyerListModel>/SelectedStajyer/Nowap}" />
+                            <CheckBox selected="{requestStajyerListModel>/selectedStajyer/Nowap}" />
                         </f:fields>
                     </f:FormElement>
                     <!-- <f:FormElement label="{i18n>CALENDAR_DAY}">
                         <f:fields>
-                            <CheckBox selected="{requestStajyerListModel>/SelectedStajyer/Calda}" />
+                            <CheckBox selected="{requestStajyerListModel>/selectedStajyer/Calda}" />
                         </f:fields>
                     </f:FormElement> -->
 
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
-                            <TextArea value="{requestStajyerListModel>/SelectedStajyer/Descp}" />
+                            <TextArea value="{requestStajyerListModel>/selectedStajyer/Descp}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DATE_OF_BIRTH}">
                         <f:fields>
-                            <DatePicker value="{path: 'requestStajyerListModel>/SelectedStajyer/Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                            <DatePicker value="{path: 'requestStajyerListModel>/selectedStajyer/Daobr', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>CARD_NUMBER}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Cardn}" />
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Cardn}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>MOBILE_PHONE}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Phonm}" />
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Phonm}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>EMERGENCY_CONTACT}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Conem}" />
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Conem}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>MENTOR}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/SelectedStajyer/Mento}" />
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Mento}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

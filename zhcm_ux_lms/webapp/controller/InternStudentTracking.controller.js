@@ -23,7 +23,17 @@ sap.ui.define([
             this._getRequestList();
         },
 		onNavBack: function () {
-            // this.goBack(History);
+            var oModel = this.getView().getModel("internStudentListModel");
+            var aPaths = [
+                "/newInternNumberRequest",
+                "/selectedInternEmployee",
+                "/evaluationHighList/evaluationData",
+                "/evaluationPointsList"
+            ];
+            aPaths.forEach(function (sPath){
+                oModel.setProperty(sPath, {});
+            });
+
             this.getRouter().navTo("appdispatcher", {}, true);
         },
         _initiateModel: function () {
@@ -33,6 +43,7 @@ sap.ui.define([
                 selectedRequest: {},
                 currentRequest: {},
 				searchTrackingParameter:{},
+                selectedInternEmployee:{},
                 evaluationHighList:{
                     evaluationData:[]
                 },
@@ -198,7 +209,7 @@ sap.ui.define([
 
             // Öğrenci bilgileri al
 			var sScholarshipPath = oModel.createKey("/IntershipStudentSet", { Pernr: sPernr });
-			readData(sScholarshipPath, "/SelectedInternEmployee", "Stajyer Öğrenci bilgisi alınamadı.");
+			readData(sScholarshipPath, "/selectedInternEmployee", "Stajyer Öğrenci bilgisi alınamadı.");
             
             // Değerlendirme Anket bilgilerini al
             var sEvaluationInfoPath = oModel.createKey("/IntershipEvaluationSet", { Pernr: sPernr, Mento: sMento });
@@ -230,7 +241,7 @@ sap.ui.define([
         //     var oModel = this.getModel();
         //     var oViewModel = this.getModel("internStudentListModel");
         //     var oPernr = oViewModel.getProperty("/newInternNumberRequest/Pernr");
-        //     var sMento = oViewModel.getProperty("/SelectedInternEmployee/Mento");
+        //     var sMento = oViewModel.getProperty("/selectedInternEmployee/Mento");
         //     var sPath = oModel.createKey("/IntershipEvaluationSet", {
         //         "Pernr": oPernr,
         //         "Mento": sMento,
@@ -262,7 +273,7 @@ sap.ui.define([
         //     var oModel = this.getModel();
         //     var oViewModel = this.getModel("internStudentListModel");
         //     var oPernr = oViewModel.getProperty("/newInternNumberRequest/Pernr");
-        //     var sMento = oViewModel.getProperty("/SelectedInternEmployee/Mento");
+        //     var sMento = oViewModel.getProperty("/selectedInternEmployee/Mento");
         //     var sPath = oModel.createKey("/IntershipEvaluationSet", {
         //         "Pernr": oPernr,
         //         "Mento": sMento,
@@ -298,7 +309,7 @@ sap.ui.define([
             var oModel = this.getModel();
             var oViewModel = this.getModel("internStudentListModel");
             var sPernr = oViewModel.getProperty("/newInternNumberRequest/Pernr");
-            var sMento = oViewModel.getProperty("/SelectedInternEmployee/Mento");
+            var sMento = oViewModel.getProperty("/selectedInternEmployee/Mento");
             var aEvaluationDescSet = oViewModel.getProperty("/evaluationPointsList");
             var sDescp = aEvaluationDescSet.Descp;
             var oUrlParameters = {
@@ -327,7 +338,7 @@ sap.ui.define([
             var oModel = this.getModel();
             var oViewModel = this.getModel("internStudentListModel");
             var sPernr = oViewModel.getProperty("/newInternNumberRequest/Pernr");
-            var sMento = oViewModel.getProperty("/SelectedInternEmployee/Mento");
+            var sMento = oViewModel.getProperty("/selectedInternEmployee/Mento");
             var aEvaluationAnswersSet = oViewModel.getProperty("/evaluationHighList/evaluationData");
             var sDescp = oViewModel.getProperty("/evaluationPointsList/Descp");
             var oEvaluationRequest = {};
