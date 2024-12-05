@@ -1,6 +1,6 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core">
-    <Table id="idPointUniversityTable" items="{/UnivIntrnShipEvlationFormSet}" inset="false" visible="{= ${internStudentListModel>/selectedInternEmployee/Ptext} === 'Üniversite Stajyeri' }">
+    <Table id="idPointUniversityTable" items="{/UnivIntrnShipEvlationFormSet}" inset="false" visible="{= ${internStudentListModel>/selectedInternEmployee/Ptext} === 'Üniversite Stajyeri' || ${internStudentListModel>/selectedInternEmployee/Ptext} === 'Biz Bize' }">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
