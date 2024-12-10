@@ -54,7 +54,7 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://paper-plane" text="Gönder" type="Emphasized" press=".onDomesticSendPress" width="100px" />
+                                <Button icon="sap-icon://email" text="Gönder" type="Emphasized" press=".onDomesticSendPress" width="100px" />
                                 <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onDomesticSavePress" width="100px" />
                             </Toolbar>
                         </f:fields>
@@ -115,7 +115,7 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://paper-plane" text="Gönder" type="Emphasized" press=".onOtherSendPress" width="100px" />
+                                <Button icon="sap-icon://email" text="Gönder" type="Emphasized" press=".onOtherSendPress" width="100px" />
                                 <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onOtherSavePress" width="100px" />
                             </Toolbar>
                         </f:fields>
