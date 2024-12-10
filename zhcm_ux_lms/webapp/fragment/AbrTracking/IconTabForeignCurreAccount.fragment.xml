@@ -54,7 +54,8 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onDomesticSavePress" width="150px" />
+                                <Button icon="sap-icon://paper-plane" text="Gönder" type="Emphasized" press=".onDomesticSendPress" width="100px" />
+                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onDomesticSavePress" width="100px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>
@@ -95,11 +96,11 @@
                             <Input value="{requestListModel>/otherAccount/Bankn}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>SWIFT_CODE}">
+                    <!-- <f:FormElement label="{i18n>SWIFT_CODE}">
                         <f:fields>
                             <Input value="{requestListModel>/otherAccount/Swift}" />
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                     <f:FormElement label="{i18n>OTHER_IBAN}">
                         <f:fields>
                             <Input value="{requestListModel>/otherAccount/Iban00}" />
@@ -114,7 +115,8 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onOtherSavePress" width="150px" />
+                                <Button icon="sap-icon://paper-plane" text="Gönder" type="Emphasized" press=".onOtherSendPress" width="100px" />
+                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onOtherSavePress" width="100px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>

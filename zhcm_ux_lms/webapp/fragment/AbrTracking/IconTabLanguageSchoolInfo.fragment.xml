@@ -63,7 +63,8 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onFinancialSavePress" width="150px" />
+                                <Button icon="sap-icon://paper-plane" text="{i18n>SEND}" type="Emphasized" press=".onFinancialSendPress" width="100px" />
+                                <Button icon="sap-icon://save" text="{i18n>SAVE_ACTION}" type="Accept" press=".onFinancialSavePress" width="100px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>
@@ -89,7 +90,7 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_BRANCH}">
                         <f:fields>
-                            <Input value="{requestListModel>/abroadEmployee/Banka}" />
+                            <Input value="{requestListModel>/abroadEmployee/Brnch}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
@@ -138,7 +139,8 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://save" text="Kaydet" type="Accept" press=".onForeignSavePress" width="150px" />
+                                <Button icon="sap-icon://paper-plane" text="{i18n>SEND}" type="Emphasized" press=".onForeignSendPress" width="100px" />
+                                <Button icon="sap-icon://save" text="{i18n>SAVE_ACTION}" type="Accept" press=".onForeignSavePress" width="100px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>

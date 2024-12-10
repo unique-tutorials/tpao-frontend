@@ -54,7 +54,8 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://save" text="Kaydet" press=".onStnAccountSavePress" type="Accept" width="150px" />
+                                <Button icon="sap-icon://paper-plane" text="Gönder" type="Emphasized" press=".onStnAccountSendPress" width="100px" />
+                                <Button icon="sap-icon://save" text="Kaydet" press=".onStnAccountSavePress" type="Accept" width="100px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>
@@ -119,7 +120,8 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://save" text="Kaydet" press=".onAbroadOtherSavePress" type="Accept" width="150px" />
+                                <Button icon="sap-icon://paper-plane" text="Gönder" type="Emphasized" press=".onAbroadOtherSendPress" width="100px" />
+                                <Button icon="sap-icon://save" text="Kaydet" press=".onAbroadOtherSavePress" type="Accept" width="100px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>
