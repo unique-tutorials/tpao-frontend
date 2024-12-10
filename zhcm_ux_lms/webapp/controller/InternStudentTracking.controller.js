@@ -450,7 +450,7 @@ sap.ui.define([
             var sIDisagree = 'Katılmıyorum';
             var sStronglyDiagree = 'Kesinlikle Katılmıyorum';
             var sNoIdea = 'Fikrim Yok';
-        
+
             aRows.push(this._getHeaderColumn(sOrderNumber));
             aRows.push(this._getHeaderColumn(sEvaluationQuestions));
             aRows.push(this._getHeaderColumn(sIFinallyAgree));

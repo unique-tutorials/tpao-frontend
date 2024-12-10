@@ -1764,23 +1764,17 @@ sap.ui.define([
 
             oEntry.Opera = Opera;
 
-            var that = this;
             if (Opera === "1") {
                 if (this.byId("TabContainer").getSelectedKey() === "General") {
                     oModel.create("/GeneralInformationSet", oEntry, {
                         success: function (oData, oResponse) {
                             debugger;
                             if (oData.Mesty === "S") {
-                                Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
+                                this._sweetToast(this.getText("DATA_SUCCESSFULLY"), "S");
                             }
-                        },
-                        error: function () {
+                        }.bind(this),
+                        error: function (oError) {
+                            debugger;
                         }
                     });
                 }
