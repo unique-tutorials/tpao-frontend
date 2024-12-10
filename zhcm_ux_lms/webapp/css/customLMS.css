@@ -320,16 +320,15 @@ html.sap-phone .lmsDisplayOnlyCheckBox {
 }
 
 .lmsMainPage .sapMPageEnableScrolling::after {
-    /* background: url(../images/Study.webp) center/cover;
-    background-repeat: no-repeat!important; */
     content: "";
-    opacity: .3!important;
+    background: url(../images/scholarship.jpg) center/cover no-repeat !important;
+    position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1
+    width: 100vw;
+    height: 100%; 
+    z-index: -1; 
+   opacity: 0.6;
 }
 
 .lmsStatusText {

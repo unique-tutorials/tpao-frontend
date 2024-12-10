@@ -30,8 +30,6 @@ sap.ui.define([
                 currentRequest: {},
                 reserSearchParameter:{},
                 searchParameter:{}
-                
-             
             });
         },
         _getRequestList: function (oEvent) {

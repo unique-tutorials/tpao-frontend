@@ -1267,15 +1267,39 @@ sap.ui.define([
             oViewModel.setProperty("/expendInfoDialogRequest", {});
         },
         onExpendInfoAddDialog: function () {
-
-            this.clearFormDialog();
-            if (!this._oExpendInfoDialog) {
-                this._oExpendInfoDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.ExpendInfoNavigationDialog", this);
-                this.getView().addDependent(this._oExpendInfoDialog);
-            } else {
-                this._oExpendInfoDialog.close();
+            var oViewModel = this.getModel("requestListModel"),
+            sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+            this._getExpendTypeList(sPernr);
+        },
+        _getExpendTypeList:function(sPernr){
+            if (!sPernr) {
+                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "E");
+                return;
             }
-            this._oExpendInfoDialog.open();
+            var oModel = this.getModel(),
+                oViewModel = this.getModel("requestListModel"),
+                aFilters = [];
+            // oViewModel.setProperty("/absence", {});
+            aFilters.push(new Filter("Id", FilterOperator.EQ, "Bvtyp"));
+            aFilters.push(new Filter("Key", FilterOperator.EQ, sPernr));
+
+            oModel.read("/ValueHelpSet", {
+                filters: aFilters,
+                success: function (oData) {
+                    oViewModel.setProperty("/expendInfoDialogRequest", oData.results);
+                    this._closeBusyFragment();
+                    if (!this._oExpendInfoDialog) {
+                        this._oExpendInfoDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.ExpendInfoNavigationDialog", this);
+                        this.getView().addDependent(this._oExpendInfoDialog);
+                    } else {
+                        this._oExpendInfoDialog.close();
+                    }
+                    this._oExpendInfoDialog.open();
+                }.bind(this),
+                error: function () {
+                    this._closeBusyFragment();
+                }.bind(this),
+            });
         },
         onSchollInfoAddDialog: function () {
             var oViewModel = this.getModel("requestListModel");
@@ -1764,42 +1788,290 @@ sap.ui.define([
 
             oEntry.Opera = Opera;
 
-            var that = this;
             if (Opera === "1") {
                 if (this.byId("TabContainer").getSelectedKey() === "General") {
                     oModel.create("/GeneralInformationSet", oEntry, {
                         success: function (oData, oResponse) {
                             debugger;
                             if (oData.Mesty === "S") {
-                                Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: that.getText("EDU_TASK_SAVED_SUCCESSFUL"),
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
+                                this._sweetToast(this.getText("DATA_SUCCESSFULLY"), "S");
                             }
-                        },
-                        error: function () {
+                        }.bind(this),
+                        error: function (oError) {
+                            debugger;
                         }
                     });
                 }
             }
-        }
+        },
+        onFinancialSendPress: function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
+            sNameFirst = oViewModel.getProperty("/financialEmployee/NameFirst"),
+            sBanka = oViewModel.getProperty("/financialEmployee/Banka"),
+            sBrnch = oViewModel.getProperty("/financialEmployee/Brnch"),
+            sCity = oViewModel.getProperty("/financialEmployee/City"),
+            sBankn = oViewModel.getProperty("/financialEmployee/Bankn"),
+            sIban00 = oViewModel.getProperty("/financialEmployee/Iban00");
+           
+            var oUrlParameters = {
+                "Pernr": sPernr,
+                "Name_First": sNameFirst,
+                "Which": '1',
+                "Banka": sBanka,
+                "Brnch": sBrnch,
+                "City" : sCity,
+                "Bankn": sBankn,
+                "Iban00": sIban00,   
+                "Abano": "",
+                "Swift": ""
+            };
+ 
+            this._openBusyFragment("PLEASE_WAIT", []);
+            oModel.callFunction("/SendAccount", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    this._sweetToast(this.getText("ACC_SENT_BY_E_MAIL"), "S");
+                    this._closeBusyFragment();
+                }.bind(this),
+                error: function (oError) {
+                    debugger;
+                }.bind(this)
+            }); 
+        },
+        onForeignSendPress: function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
+            sNameFirst = oViewModel.getProperty("/abroadEmployee/NameFirst"),
+            sBanka = oViewModel.getProperty("/abroadEmployee/Banka"),
+            sBrnch = oViewModel.getProperty("/abroadEmployee/Brnch"),
+            sCity = oViewModel.getProperty("/abroadEmployee/City"),
+            sBankn = oViewModel.getProperty("/abroadEmployee/Bankn"),
+            sIban00 = oViewModel.getProperty("/abroadEmployee/Iban00"),
+            sAbano = oViewModel.getProperty("/abroadEmployee/Abano"),
+            sSwift = oViewModel.getProperty("/abroadEmployee/Swift")
+            var oUrlParameters = {
+                "Pernr": sPernr,
+                "Name_First": sNameFirst,
+                "Which": '2',
+                "Banka": sBanka,
+                "Brnch": sBrnch,
+                "City" : sCity,
+                "Bankn": sBankn,
+                "Iban00": sIban00,   
+                "Abano": sAbano,
+                "Swift": sSwift
+            };
+ 
+            this._openBusyFragment("PLEASE_WAIT", []);
+            oModel.callFunction("/SendAccount", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    this._sweetToast(this.getText("ACC_SENT_BY_E_MAIL"), "S");
+                    this._closeBusyFragment();
+                }.bind(this),
+                error: function (oError) {
+                    debugger;
+                }.bind(this)
+            }); 
+        },
+        onMasterSendPress:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
+            sNameFirst = oViewModel.getProperty("/masterEmployee/NameFirst"),
+            sBanka = oViewModel.getProperty("/masterEmployee/Banka"),
+            sBrnch = oViewModel.getProperty("/masterEmployee/Brnch"),
+            sCity = oViewModel.getProperty("/masterEmployee/City"),
+            sBankn = oViewModel.getProperty("/masterEmployee/Bankn"),
+            sIban00 = oViewModel.getProperty("/masterEmployee/Iban00"),
+            sAbano = oViewModel.getProperty("/masterEmployee/Abano"),
+            sSwift = oViewModel.getProperty("/masterEmployee/Swift")
+            var oUrlParameters = {
+                "Pernr": sPernr,
+                "Name_First": sNameFirst,
+                "Which": '3',
+                "Banka": sBanka,
+                "Brnch": sBrnch,
+                "City" : sCity,
+                "Bankn": sBankn,
+                "Iban00": sIban00,   
+                "Abano": sAbano,
+                "Swift": sSwift
+            };
+ 
+            this._openBusyFragment("PLEASE_WAIT", []);
+            oModel.callFunction("/SendAccount", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    this._sweetToast(this.getText("ACC_SENT_BY_E_MAIL"), "S");
+                    this._closeBusyFragment();
+                }.bind(this),
+                error: function (oError) {
+                    debugger;
+                }.bind(this)
+            });
+        },
+        onDomesticSendPress:function(){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
+            sNameFirst = oViewModel.getProperty("/domesticAccount/NameFirst"),
+            sBanka = oViewModel.getProperty("/domesticAccount/Banka"),
+            sBrnch = oViewModel.getProperty("/domesticAccount/Brnch"),
+            sCity = oViewModel.getProperty("/domesticAccount/City"),
+            sBankn = oViewModel.getProperty("/domesticAccount/Bankn"),
+            sIban00 = oViewModel.getProperty("/domesticAccount/Iban00")
+            var oUrlParameters = {
+                "Pernr": sPernr,
+                "Name_First": sNameFirst,
+                "Which": '4',
+                "Banka": sBanka,
+                "Brnch": sBrnch,
+                "City" : sCity,
+                "Bankn": sBankn,
+                "Iban00": sIban00,   
+                "Abano": "",
+                "Swift": ""
+            };
+ 
+            this._openBusyFragment("PLEASE_WAIT", []);
+            oModel.callFunction("/SendAccount", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    this._sweetToast(this.getText("ACC_SENT_BY_E_MAIL"), "S");
+                    this._closeBusyFragment();
+                }.bind(this),
+                error: function (oError) {
+                    debugger;
+                }.bind(this)
+            });
+        },
+        onOtherSendPress:function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
+            sNameFirst = oViewModel.getProperty("/otherAccount/NameFirst"),
+            sBanka = oViewModel.getProperty("/otherAccount/Banka"),
+            sBrnch = oViewModel.getProperty("/otherAccount/Brnch"),
+            sCity = oViewModel.getProperty("/otherAccount/City"),
+            sBankn = oViewModel.getProperty("/otherAccount/Bankn"),
+            sIban00 = oViewModel.getProperty("/otherAccount/Iban00")
 
-        // getValueHelpList: function () {
-        //     var that = this;
-        //     var oModel = this.getModel();
-        //     var aFilters = [new Filter("Id", FilterOperator.EQ, "Waers")];
-        //     oModel.read("/ValueHelpSet", {
-        //         filters: aFilters,
-        //         success: function (oData, oResponse) {
-        //             that.getModel("requestListModel").setProperty("/benefitList", oData.results);
-        //         },
-        //         error: function (oError) {
-        //             sap.m.MessageToast.show(oError.toString());
-        //         }
-        //     });
-        // },
+            var oUrlParameters = {
+                "Pernr": sPernr,
+                "Name_First": sNameFirst,
+                "Which": '5',
+                "Banka": sBanka,
+                "Brnch": sBrnch,
+                "City" : sCity,
+                "Bankn": sBankn,
+                "Iban00": sIban00,   
+                "Abano": "",
+                "Swift": ""
+            };
+ 
+            this._openBusyFragment("PLEASE_WAIT", []);
+            oModel.callFunction("/SendAccount", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    this._sweetToast(this.getText("ACC_SENT_BY_E_MAIL"), "S");
+                    this._closeBusyFragment();
+                }.bind(this),
+                error: function (oError) {
+                    debugger;
+                }.bind(this)
+            });
+        },
+        onStnAccountSendPress: function(){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
+            sNameFirst = oViewModel.getProperty("/domesticEmployee/NameFirst"),
+            sBanka = oViewModel.getProperty("/domesticEmployee/Banka"),
+            sBrnch = oViewModel.getProperty("/domesticEmployee/Brnch"),
+            sCity = oViewModel.getProperty("/domesticEmployee/City"),
+            sBankn = oViewModel.getProperty("/domesticEmployee/Bankn"),
+            sIban00 = oViewModel.getProperty("/domesticEmployee/Iban00")
+
+            var oUrlParameters = {
+                "Pernr": sPernr,
+                "Name_First": sNameFirst,
+                "Which": '6',
+                "Banka": sBanka,
+                "Brnch": sBrnch,
+                "City" : sCity,
+                "Bankn": sBankn,
+                "Iban00": sIban00,   
+                "Abano": "",
+                "Swift": ""
+            };
+ 
+            this._openBusyFragment("PLEASE_WAIT", []);
+            oModel.callFunction("/SendAccount", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    this._sweetToast(this.getText("ACC_SENT_BY_E_MAIL"), "S");
+                    this._closeBusyFragment();
+                }.bind(this),
+                error: function (oError) {
+                    debugger;
+                }.bind(this)
+            });
+        },
+        onAbroadOtherSendPress: function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
+            sNameFirst = oViewModel.getProperty("/abroadOtherEmployee/NameFirst"),
+            sBanka = oViewModel.getProperty("/abroadOtherEmployee/Banka"),
+            sBrnch = oViewModel.getProperty("/abroadOtherEmployee/Brnch"),
+            sCity = oViewModel.getProperty("/abroadOtherEmployee/City"),
+            sBankn = oViewModel.getProperty("/abroadOtherEmployee/Bankn"),
+            sIban00 = oViewModel.getProperty("/abroadOtherEmployee/Iban00"),
+            sAbano = oViewModel.getProperty("/abroadOtherEmployee/Abano"),
+            sSwift = oViewModel.getProperty("/abroadOtherEmployee/Swift")
+
+            var oUrlParameters = {
+                "Pernr": sPernr,
+                "Name_First": sNameFirst,
+                "Which": '7',
+                "Banka": sBanka,
+                "Brnch": sBrnch,
+                "City" : sCity,
+                "Bankn": sBankn,
+                "Iban00": sIban00,   
+                "Abano": sAbano,
+                "Swift": sSwift
+            };
+ 
+            this._openBusyFragment("PLEASE_WAIT", []);
+            oModel.callFunction("/SendAccount", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    this._sweetToast(this.getText("ACC_SENT_BY_E_MAIL"), "S");
+                    this._closeBusyFragment();
+                }.bind(this),
+                error: function (oError) {
+                    debugger;
+                }.bind(this)
+            });
+        }
     });
 });
