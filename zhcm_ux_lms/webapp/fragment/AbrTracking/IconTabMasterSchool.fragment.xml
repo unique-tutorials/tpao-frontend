@@ -75,7 +75,7 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://email" text="Gönder" type="Emphasized" press=".onMasterSendPress" width="100px" />
+                                <Button icon="sap-icon://email" text="{i18n>SEND}" type="Emphasized" press=".onMasterSendPress" width="100px" />
                                 <Button icon="sap-icon://save" text="{i18n>SAVE_ACTION}" type="Accept" press=".onMasterSavePress" width="100px" />
                             </Toolbar>
                         </f:fields>

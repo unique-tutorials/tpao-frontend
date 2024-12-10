@@ -1925,7 +1925,7 @@ sap.ui.define([
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
-            // sNameFirst = oViewModel.getProperty("/domesticAccount/NameFirst"),
+            sNameFirst = oViewModel.getProperty("/domesticAccount/NameFirst"),
             sBanka = oViewModel.getProperty("/domesticAccount/Banka"),
             sBrnch = oViewModel.getProperty("/domesticAccount/Brnch"),
             sCity = oViewModel.getProperty("/domesticAccount/City"),
@@ -1933,7 +1933,7 @@ sap.ui.define([
             sIban00 = oViewModel.getProperty("/domesticAccount/Iban00")
             var oUrlParameters = {
                 "Pernr": sPernr,
-                "Name_First": "",
+                "Name_First": sNameFirst,
                 "Which": '4',
                 "Banka": sBanka,
                 "Brnch": sBrnch,

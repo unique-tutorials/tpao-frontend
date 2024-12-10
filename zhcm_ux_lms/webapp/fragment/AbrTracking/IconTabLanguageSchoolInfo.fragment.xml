@@ -1,11 +1,8 @@
-<c:FragmentDefinition
-	xmlns="sap.m"
-	xmlns:c="sap.ui.core"
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
-    xmlns:core="sap.ui.core"
->
-    <f:Form 
-        editable="true">
+    xmlns:core="sap.ui.core">
+    <f:Form editable="true">
         <f:title>
             <core:Title text="{i18n>LANGUAGE_SCHOOL_INFORMATION}" />
         </f:title>
@@ -56,7 +53,7 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
-                            <TextArea rows="3" value="{requestListModel>/financialEmployee/Descp}"  />
+                            <TextArea rows="3" value="{requestListModel>/financialEmployee/Descp}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="">

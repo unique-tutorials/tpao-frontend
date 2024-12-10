@@ -18,6 +18,11 @@
                             <Button text="{i18n>SEND}" />
                         </f:fields>
                     </f:FormElement>
+                    <f:FormElement label="{i18n>RECIPIENT_NAME}">
+                        <f:fields>
+                            <Input value="{requestListModel>/domesticEmployee/NameFirst}" />
+                        </f:fields>
+                    </f:FormElement>
                     <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Input value="{requestListModel>/domesticEmployee/Banka}" />
@@ -54,8 +59,8 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://email" text="Gönder" type="Emphasized" press=".onStnAccountSendPress" width="100px" />
-                                <Button icon="sap-icon://save" text="Kaydet" press=".onStnAccountSavePress" type="Accept" width="100px" />
+                                <Button icon="sap-icon://email" text="{i18n>SEND}" type="Emphasized" press=".onStnAccountSendPress" width="100px" />
+                                <Button icon="sap-icon://save" text="{i18n>SAVE_ACTION}" press=".onStnAccountSavePress" type="Accept" width="100px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>
@@ -67,6 +72,11 @@
                         <f:fields>
                             <Input value="{requestListModel>/abroadOtherEmployee/Partner}" />
                             <Button text="{i18n>SEND}" />
+                        </f:fields>
+                    </f:FormElement>
+                    <f:FormElement label="{i18n>RECIPIENT_NAME}">
+                        <f:fields>
+                            <Input value="{requestListModel>/abroadOtherEmployee/NameFirst}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_NAME}">
@@ -120,8 +130,8 @@
                         <f:fields>
                             <Toolbar class="toolbar-border-none">
                                 <ToolbarSpacer/>
-                                <Button icon="sap-icon://email" text="Gönder" type="Emphasized" press=".onAbroadOtherSendPress" width="100px" />
-                                <Button icon="sap-icon://save" text="Kaydet" press=".onAbroadOtherSavePress" type="Accept" width="100px" />
+                                <Button icon="sap-icon://email" text="{i18n>SEND}" type="Emphasized" press=".onAbroadOtherSendPress" width="100px" />
+                                <Button icon="sap-icon://save" text="{i18n>SAVE_ACTION}" press=".onAbroadOtherSavePress" type="Accept" width="100px" />
                             </Toolbar>
                         </f:fields>
                     </f:FormElement>
