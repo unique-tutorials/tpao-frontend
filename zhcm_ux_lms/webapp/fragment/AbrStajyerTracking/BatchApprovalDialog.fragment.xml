@@ -1,0 +1,38 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:grid="sap.ui.layout.cssgrid"
+>
+<Dialog title="{i18n>APPROVER_SELECTION_SCREEN}" state="None" type="Standard" contentWidth="20%" contentHeight="40%" verticalScrolling="false">
+    <grid:CSSGrid>
+        <VBox height="400px">
+            <f:Form editable="true">
+                <f:layout>
+                    <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="{i18n>APPROVER_SELECTION}">
+                                <f:fields>
+                                    <ComboBox required="true" items="{ path:'requestStajyerListModel>/batchApprovalRequest'}" selectedKey="{path:'requestStajyerListModel>/batch/Appro'}">
+										<core:ListItem key="{requestStajyerListModel>Key}" text="{requestStajyerListModel>Value}"/>
+									</ComboBox>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </VBox>
+    </grid:CSSGrid>
+    <beginButton>
+        <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelBatchButton" type="Reject" />
+    </beginButton>
+    <endButton>
+        <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSendBatchButton" type="Accept" />
+    </endButton>
+</Dialog>
+</c:FragmentDefinition>

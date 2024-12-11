@@ -1,71 +1,138 @@
 <mvc:View controllerName="zhcm_ux_lms_abr.controller.CareerInternContn"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m"
-    xmlns:core="sap.ui.core"
-    xmlns:f="sap.ui.layout.form" displayBlock="true" height="100%" busyIndicatorDelay="0">
+    xmlns="sap.m" displayBlock="true" height="100%" busyIndicatorDelay="0">
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>INT_ABS_CNF}">
-        <!-- <VBox class="sapUiSmallMargin">
-            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.CareerInternsContn.CareerContnInformation" type="XML" />
-        </VBox> -->
-        <IconTabBar id="idIconTabBar" select="onIconFilterSelect" stretchContentHeight="true" selectedKey="{careerContnListModel>/selectedKey}">
+
+        <IconTabBar id="idIconTabBarAbsence" select="onIconFilterSelect" stretchContentHeight="true" selectedKey="{careerContnListModel>/selectedKey}">
             <items>
-                <IconTabFilter icon="sap-icon://pending" iconColor="Neutral" count="{careerContnListModel>/searchResults/PND}" text="{i18n>PENDING_REQUEST}" key="DRF"/>
-                <IconTabFilter icon="sap-icon://approvals" iconColor="Critical" count="{careerContnListModel>/searchResults/APP}" text="{i18n>APPROVED_REQUEST}" key="PND"/>
+                <IconTabFilter icon="sap-icon://pending" iconColor="Neutral" count="{careerContnListModel>/searchResults/PND}" text="{i18n>PENDING_REQUEST}" key="DRF" > 
+                    <content>
+                        <Table mode="MultiSelect" busy="{careerContnListModel>/tableBusy}" width="auto" items="{careerContnListModel>/inApprovalList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{careerContnListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <content>
+                                        <DateRangeSelection dateValue="{careerContnListModel>/absenceFilter/begda}" secondDateValue="{careerContnListModel>/absenceFilter/endda}" width="13rem" class="DRS1" change="handleChange" />
+                                        <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress" />
+                                            
+                                        <ToolbarSpacer />
+                                    </content>
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="{i18n>STUDENT_NUMBER}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>INTERN_NUMBER}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>OR_ENAME}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>ABSENCE_TYPE}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>DATE}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>REASON_FOR_NOT_COMING}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>APPROVED_REQUESTS}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>REJECTED_REQUESTS}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>REASON_FOR_REJECTION}"/>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+                                    <cells>
+                                        <Text text="{careerContnListModel>Pernr}" />
+                                        <Text text="{careerContnListModel>Inper}"/>
+                                        <Text text="{careerContnListModel>Ename}"/>
+                                        <Text text="{careerContnListModel>Subtx}"/>
+                                        <Text text="{path: 'careerContnListModel>Histo', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                                        <Text text="{careerContnListModel>Exrea}"/>
+                                        <Text text="{careerContnListModel>Aprvd}"/>
+                                        <Text text="{careerContnListModel>Rejec}"/>
+                                        <Text text="{careerContnListModel>Rejre}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </IconTabFilter>
+                <IconTabFilter icon="sap-icon://approvals" iconColor="Critical" count="{careerContnListModel>/searchResults/APP}" text="{i18n>APPROVED_REQUEST}" key="PND">
+                    <content>
+                        <Table mode="MultiSelect" busy="{careerContnListModel>/tableBusy}" width="auto" items="{careerContnListModel>/inApprovalList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{careerContnListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <content>
+                                        <DateRangeSelection dateValue="{careerContnListModel>/absenceFilter/begda}" secondDateValue="{careerContnListModel>/absenceFilter/endda}" width="13rem" class="DRS1" change="handleChange" />
+                                        <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress" />
+                                            
+                                        <ToolbarSpacer />
+                                    </content>
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column>
+                                    <Text text="{i18n>STUDENT_NUMBER}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>INTERN_NUMBER}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>OR_ENAME}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>ABSENCE_TYPE}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>DATE}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>REASON_FOR_NOT_COMING}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>APPROVED_REQUESTS}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>REJECTED_REQUESTS}"/>
+                                </Column>
+                                <Column>
+                                    <Text text="{i18n>REASON_FOR_REJECTION}"/>
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem type="Navigation" press="onAvailableRequestActions">
+                                    <cells>
+                                        <Text text="{careerContnListModel>Pernr}" />
+                                        <Text text="{careerContnListModel>Inper}"/>
+                                        <Text text="{careerContnListModel>Ename}"/>
+                                        <Text text="{careerContnListModel>Subtx}"/>
+                                        <Text text="{path: 'careerContnListModel>Histo', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
+                                        <Text text="{careerContnListModel>Exrea}"/>
+                                        <Text text="{careerContnListModel>Aprvd}"/>
+                                        <Text text="{careerContnListModel>Rejec}"/>
+                                        <Text text="{careerContnListModel>Rejre}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </content>
+                </IconTabFilter>
             </items>
-            <content>
-                <Table mode="MultiSelect" busy="{careerContnListModel>/tableBusy}" width="auto" items="{careerContnListModel>/inApprovalList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{careerContnListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
-                    <columns>
-                        <Column>
-                            <Text text="{i18n>OR_ENAME}"/>
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>DATE}"/>
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>UNIT}"/>
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>YEAR}"/>
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>PERIOD}"/>
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>REASON_FOR_NOT_COMING}"/>
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>EXCUSED}"/>
-                        </Column>
-                        <Column>
-                            <Text text="{i18n>WITH_REPORT}"/>
-                        </Column>
-                    </columns>
-                    <items>
-                        <ColumnListItem type="Navigation" press="onAvailableRequestActions">
-                            <cells>
-                                <Text text="{careerContnListModel>Reqne}"/>
-                                <Text text="{careerContnListModel>Trnam}"/>
-                                <Text text="{careerContnListModel>Trtyp}"/>
-                                <Text text="{careerContnListModel>Trcnt}"/>
-                                <Text text="{careerContnListModel>Trnqp}"/>
-                                <Text text="{careerContnListModel>Trnqn}"/>
-                                <Text text="{careerContnListModel>Reqno}"/>
-                                <Text text="{careerContnListModel>Reqnw}"/>
-                            </cells>
-                        </ColumnListItem>
-                    </items>
-                </Table>
-            </content>
+        
         </IconTabBar>
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <!-- <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
-                <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/> -->
-                <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
-                <Button text="{i18n>REJECT_ACTION}" type="Reject" icon="sap-icon://employee-rejections" press="onCancelCreatePage"/>
-                <Button text="{i18n>APPROVE_ACTION}" icon="sap-icon://approvals"  visible='{approvalRequestListModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Success"/>
-                <!-- <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveCtn" type="Accept" visible="true"/> -->
+                <Button text="{i18n>REJECT_ACTION}" type="Reject" icon="sap-icon://employee-rejections" press=".onAbsenceRejectDialog" enabled="{careerContnListModel>/aplicationSetting/enabled}"/>
+                <Button text="{i18n>APPROVE_ACTION}" icon="sap-icon://approvals"  enabled="{careerContnListModel>/aplicationSetting/enabled}" press=".onAbsenceConfirmButton" type="Success"/>
             </OverflowToolbar>
         </footer>
     </Page>

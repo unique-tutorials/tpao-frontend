@@ -1,0 +1,15 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core">
+    <Dialog title="Stajyer Devamsızlık Reddetme Gerekçesi" state="None" type="Standard" contentWidth="20%" contentHeight="20%" verticalScrolling="false">
+        <VBox class="sapUiSmallMargin">
+            <TextArea value="{path:'careerContnListModel>/rejectStatement/Rejre'}" rows="5" placeholder="Reddetme Gerekçesini Giriniz..." width="100%" />
+        </VBox>
+        <footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="{i18n>CANCEL_BUTTON}" type="Reject" icon="sap-icon://cancel" press=".onRejectDialogButtonPress" />
+                <Button text="{i18n>SEND}" type="Accept" icon="sap-icon://paper-plane" press=".onRejectSendButtonPress"/>
+            </OverflowToolbar>
+        </footer>
+    </Dialog>
+</c:FragmentDefinition>
