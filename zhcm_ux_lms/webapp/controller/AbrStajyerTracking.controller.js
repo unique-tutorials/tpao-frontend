@@ -39,6 +39,7 @@ sap.ui.define([
                 SelectedEmployee: {},
                 currentRequest: {},
                 absence: {},
+                batch:{},
                 searchStajyerParameter: {},
                 selectedStajyer: {},
                 newNumberStajyerRequest: {
@@ -50,6 +51,7 @@ sap.ui.define([
                     begda: new Date(today.getFullYear(), today.getMonth(), 1),
                     endda: new Date(today.getFullYear(), today.getMonth() + 1, 0)
                  },
+                batchApprovalRequest:{},
             });
 
         },
@@ -660,5 +662,77 @@ sap.ui.define([
                 return "";
             }
         },
+        onBatchApprovalDialog: function(oEvent){
+            debugger;
+            var oViewModel = this.getModel("requestStajyerListModel"),
+            sPernr = oViewModel.getProperty("/newNumberStajyerRequest/Pernr");
+            this._getBatchApproval(sPernr);
+
+        },
+        _getBatchApproval:function(sPernr){
+            debugger;
+            if (!sPernr) {
+                this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "E");
+                return;
+            }
+            var oModel = this.getModel(),
+                oViewModel = this.getModel("requestStajyerListModel"),
+                aFilters = [];
+            oViewModel.setProperty("/batch", {});
+            aFilters.push(new Filter("Id", FilterOperator.EQ, "Appro"));
+            aFilters.push(new Filter("Key", FilterOperator.EQ, sPernr));
+
+            oModel.read("/ValueHelpSet", {
+                filters: aFilters,
+                success: function (oData) {
+                    oViewModel.setProperty("/batchApprovalRequest", oData.results);
+                    this._closeBusyFragment();
+                    if (!this._oBatchApprovalInfoDialog) {
+                        this._oBatchApprovalInfoDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrStajyerTracking.BatchApprovalDialog", this);
+                        this.getView().addDependent(this._oBatchApprovalInfoDialog);
+                    } else {
+                        this._oBatchApprovalInfoDialog.close();
+                    }
+                    this._oBatchApprovalInfoDialog.open();
+                }.bind(this),
+                error: function () {
+                    this._closeBusyFragment();
+                }.bind(this),
+            });
+        },
+        onCancelBatchButton: function(oEvent){
+            if (this._oBatchApprovalInfoDialog) {
+                this._oBatchApprovalInfoDialog.close();
+            }
+        },
+        onSendBatchButton: function(oEvent){
+            debugger;
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("requestStajyerListModel");
+            var sPernr = oViewModel.getProperty("/newNumberStajyerRequest/Pernr"),
+            sAppro = oViewModel.getProperty("/batch/Appro"),
+            sBegda = oViewModel.getProperty("/absenceFilter/begda"),
+            sEndda = oViewModel.getProperty("/absenceFilter/endda")
+            var oUrlParameters = {
+                "Pernr": sPernr,
+                "Appro": sAppro,
+                "Begda": sBegda,
+                "Endda": sEndda
+            };
+
+            this._openBusyFragment("PLEASE_WAIT", []);
+            oModel.callFunction("/SendAbsenteeism", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    debugger;
+                    this._sweetToast(this.getText("ACC_SENT_BY_E_MAIL"), "S");
+                    this._closeBusyFragment();
+                }.bind(this),
+                error: function (oError) {
+                    debugger;
+                }.bind(this)
+            });
+        }
     });
 });
