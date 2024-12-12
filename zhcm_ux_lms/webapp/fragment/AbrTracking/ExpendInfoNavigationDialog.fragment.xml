@@ -81,12 +81,18 @@
                                         </ComboBox>
                                     </f:fields>
                                 </f:FormElement> -->
-                                <f:FormElement label="Satıcı numarası">
+                                <!-- <f:FormElement label="Satıcı numarası">
                                     <f:fields>
                                         <Input 
                                         value="{requestListModel>/expendInfoDialogRequest/Parno}" 
                                         change=".onVendorNumberChange"
                                         maxLength="10" />
+                                    </f:fields>
+                                </f:FormElement> -->
+                                <f:FormElement label="Satıcı numarası">
+                                    <f:fields>
+                                        <Input 
+                                        value="{requestListModel>/expendInfoDialogRequest/Parno}" />
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>EXPLANATION}">

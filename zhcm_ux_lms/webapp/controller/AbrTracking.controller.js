@@ -1394,16 +1394,14 @@ sap.ui.define([
                 return "";
             }
         },
-        onVendorNumberChange: function (oEvent) {
-            var sValue = oEvent.getParameter("value"); // Kullanıcı girdisini al
-        
-            // Eğer uzunluk 10 karakterden azsa sıfırlarla tamamla
-            if (sValue.length < 10) {
-                sValue = sValue.padStart(10, "0");
-                oEvent.getSource().setValue(sValue); // Değeri güncelle
-            }
-        },
-        
+        // onVendorNumberChange: function (oEvent) {
+        //     var sValue = oEvent.getParameter("value");
+    
+        //     if (sValue.length < 10) {
+        //         sValue = sValue.padStart(10, "0");
+        //         oEvent.getSource().setValue(sValue); 
+        //     }
+        // },
         
         openGuarantorDialog: function (oEvent) {
             debugger;
