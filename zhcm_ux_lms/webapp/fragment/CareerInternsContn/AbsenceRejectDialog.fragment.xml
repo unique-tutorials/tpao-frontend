@@ -1,6 +1,6 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core">
-    <Dialog title="Stajyer Devamsızlık Reddetme Gerekçesi" state="None" type="Standard" contentWidth="20%" contentHeight="20%" verticalScrolling="false">
+    <Dialog title="Reddetme Gerekçesi" state="None" type="Standard" contentWidth="20%" contentHeight="20%" verticalScrolling="false">
         <VBox class="sapUiSmallMargin">
             <TextArea value="{path:'careerContnListModel>/rejectStatement/Rejre'}" rows="5" placeholder="Reddetme Gerekçesini Giriniz..." width="100%" />
         </VBox>

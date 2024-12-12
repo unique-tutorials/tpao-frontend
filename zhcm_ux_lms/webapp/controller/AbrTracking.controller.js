@@ -1214,13 +1214,21 @@ sap.ui.define([
         //     table.removeSelections();
         // },
         onSendExpendButtonPress: function (oEvent) {
+            debugger;
             var oModel = this.getModel();
             var oSource = oEvent.getSource();
             // oViewModel = this.getModel("requestListModel")
             var expendInfoList = oSource.getBindingContext("requestListModel").getObject();
             var oUrlParameters = {
                 "Pernr": expendInfoList.Pernr,
-                "Payno": expendInfoList.Payno
+                "Payno": expendInfoList.Payno,
+                "Paydt": expendInfoList.Paydt,
+                "Paytp": expendInfoList.Paytp,
+                "Waers": expendInfoList.Waers,
+                "Mwskz": expendInfoList.Mwskz,
+                "Parno": expendInfoList.Parno,
+                "Descp": expendInfoList.Descp,
+                "Payam": expendInfoList.Payam
             };
 
             this._openBusyFragment("TRAINING_PARTICIPANT_SAVE_OPERATION", []);
@@ -1271,36 +1279,22 @@ sap.ui.define([
             sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             this._getExpendTypeList(sPernr);
         },
-        _getExpendTypeList:function(sPernr){
+        _getExpendTypeList: function (sPernr) {
             if (!sPernr) {
                 this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "E");
                 return;
             }
-            var oModel = this.getModel(),
-                oViewModel = this.getModel("requestListModel"),
-                aFilters = [];
-            // oViewModel.setProperty("/absence", {});
-            aFilters.push(new Filter("Id", FilterOperator.EQ, "Bvtyp"));
-            aFilters.push(new Filter("Key", FilterOperator.EQ, sPernr));
-
-            oModel.read("/ValueHelpSet", {
-                filters: aFilters,
-                success: function (oData) {
-                    oViewModel.setProperty("/expendInfoDialogRequest", oData.results);
-                    this._closeBusyFragment();
-                    if (!this._oExpendInfoDialog) {
-                        this._oExpendInfoDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.ExpendInfoNavigationDialog", this);
-                        this.getView().addDependent(this._oExpendInfoDialog);
-                    } else {
-                        this._oExpendInfoDialog.close();
-                    }
-                    this._oExpendInfoDialog.open();
-                }.bind(this),
-                error: function () {
-                    this._closeBusyFragment();
-                }.bind(this),
-            });
+        
+            if (!this._oExpendInfoDialog) {
+                this._oExpendInfoDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.ExpendInfoNavigationDialog", this);
+                this.getView().addDependent(this._oExpendInfoDialog);
+            }
+        
+            if (!this._oExpendInfoDialog.isOpen()) {
+                this._oExpendInfoDialog.open();
+            }
         },
+        
         onSchollInfoAddDialog: function () {
             var oViewModel = this.getModel("requestListModel");
             oViewModel.setProperty("/schoolInfoDialogRequest", {});
@@ -1400,6 +1394,17 @@ sap.ui.define([
                 return "";
             }
         },
+        onVendorNumberChange: function (oEvent) {
+            var sValue = oEvent.getParameter("value"); // Kullanıcı girdisini al
+        
+            // Eğer uzunluk 10 karakterden azsa sıfırlarla tamamla
+            if (sValue.length < 10) {
+                sValue = sValue.padStart(10, "0");
+                oEvent.getSource().setValue(sValue); // Değeri güncelle
+            }
+        },
+        
+        
         openGuarantorDialog: function (oEvent) {
             debugger;
             var oSource = oEvent.getSource(),

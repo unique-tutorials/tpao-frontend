@@ -105,7 +105,7 @@ sap.ui.define([
             var sInper = oSelectedItem.Inper;
             var sAprvd = oSelectedItem.Aprvd;
             var sRejre = oSelectedItem.Rejre;
-            var sRejec = oSelectedItem.Rejec;
+            var sRejec = "";
             var sBegda = oAbsenceFilter.begda;
             var sEndda = oAbsenceFilter.endda;
         
@@ -168,7 +168,7 @@ sap.ui.define([
             var oSelectedItem = oInApprovalList[0] || {};
             var sPernr = oSelectedItem.Pernr;
             var sInper = oSelectedItem.Inper;
-            var sAprvd = oSelectedItem.Aprvd;
+            var sAprvd = "";
             var sRejre = DRejre;
             var sRejec = oSelectedItem.Rejec;
             var sBegda = oAbsenceFilter.begda;

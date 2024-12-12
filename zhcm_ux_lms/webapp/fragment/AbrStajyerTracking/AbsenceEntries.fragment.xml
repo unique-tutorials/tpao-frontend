@@ -23,6 +23,12 @@
             <Column>
                 <Text text="{i18n>NON_COMING_EXPLANATION}" />
             </Column>
+            <Column>
+                <Text text="Durumunu" />
+            </Column>
+            <Column>
+                <Text text="Red Gerekçesi" />
+            </Column>
         </columns>
         <items>
             <ColumnListItem vAlign="Middle">
@@ -30,6 +36,8 @@
                     <Text text="{requestStajyerListModel>Subtx}" />
                     <Text text="{path: 'requestStajyerListModel>Histo', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                     <Text text="{requestStajyerListModel>Exrea}" />
+                    <Text text="{requestStajyerListModel>Situx}" />
+                        <Text text="{requestStajyerListModel>Rejre}" />
                 </cells>
             </ColumnListItem>
         </items>
