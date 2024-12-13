@@ -19,6 +19,13 @@
 									</ComboBox>
 								</f:fields>
 							</f:FormElement>
+							<f:FormElement label="İzin Günü" visible="{= ${requestStajyerListModel>/selectedStajyer/Ptext} === 'Biz Bize' }">
+								<f:fields>
+									<ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Daynm' } ] }" selectedKey="{requestStajyerListModel>/selectedStajyer/Daynm}">
+										<core:ListItem key="{Key}" text="{Value}"/>
+									</ComboBox>
+								</f:fields>
+							</f:FormElement>
 							<f:FormElement label="{i18n>ABCENCE_DATE}">
 								<f:fields>
 									<DatePicker required="true" value="{path:'requestStajyerListModel>/absence/Histo', 

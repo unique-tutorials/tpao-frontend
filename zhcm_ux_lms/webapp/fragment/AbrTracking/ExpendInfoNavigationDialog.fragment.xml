@@ -62,7 +62,7 @@
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>CURRENCY}">
                                     <f:fields>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Waers}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , length: '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Waers}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </f:fields>

@@ -26,9 +26,13 @@
             <Column>
                 <Text text="Durumunu" />
             </Column>
+            <!-- <Column>
+                <Text text="Durumunu no" />
+            </Column> -->
             <Column>
-                <Text text="Red Gerekçesi" />
+                <Text text="Redetme Gerekçesi" />
             </Column>
+            
         </columns>
         <items>
             <ColumnListItem vAlign="Middle">
@@ -37,7 +41,8 @@
                     <Text text="{path: 'requestStajyerListModel>Histo', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                     <Text text="{requestStajyerListModel>Exrea}" />
                     <Text text="{requestStajyerListModel>Situx}" />
-                        <Text text="{requestStajyerListModel>Rejre}" />
+                        <!-- <Text text="{requestStajyerListModel>Situa}" /> -->
+                        <Text text="{requestStajyerListModel>Rejre}" visible="{!= ${requestStajyerListModel>Situa} === 4}" />
                 </cells>
             </ColumnListItem>
         </items>

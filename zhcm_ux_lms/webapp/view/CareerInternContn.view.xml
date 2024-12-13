@@ -37,15 +37,6 @@
                                 <Column>
                                     <Text text="{i18n>REASON_FOR_NOT_COMING}"/>
                                 </Column>
-                                <Column>
-                                    <Text text="{i18n>APPROVED_REQUESTS}"/>
-                                </Column>
-                                <Column>
-                                    <Text text="{i18n>REJECTED_REQUESTS}"/>
-                                </Column>
-                                <Column>
-                                    <Text text="{i18n>REASON_FOR_REJECTION}"/>
-                                </Column>
                             </columns>
                             <items>
                                 <ColumnListItem type="Navigation" press="onAvailableRequestActions">
@@ -56,9 +47,6 @@
                                         <Text text="{careerContnListModel>Subtx}"/>
                                         <Text text="{path: 'careerContnListModel>Histo', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                                         <Text text="{careerContnListModel>Exrea}"/>
-                                        <Text text="{careerContnListModel>Aprvd}"/>
-                                        <Text text="{careerContnListModel>Rejec}"/>
-                                        <Text text="{careerContnListModel>Rejre}"/>
                                     </cells>
                                 </ColumnListItem>
                             </items>
@@ -97,15 +85,6 @@
                                 <Column>
                                     <Text text="{i18n>REASON_FOR_NOT_COMING}"/>
                                 </Column>
-                                <Column>
-                                    <Text text="{i18n>APPROVED_REQUESTS}"/>
-                                </Column>
-                                <Column>
-                                    <Text text="{i18n>REJECTED_REQUESTS}"/>
-                                </Column>
-                                <Column>
-                                    <Text text="{i18n>REASON_FOR_REJECTION}"/>
-                                </Column>
                             </columns>
                             <items>
                                 <ColumnListItem type="Navigation" press="onAvailableRequestActions">
@@ -116,9 +95,6 @@
                                         <Text text="{careerContnListModel>Subtx}"/>
                                         <Text text="{path: 'careerContnListModel>Histo', type: 'sap.ui.model.type.Date' , formatOptions: {UTC:true, pattern: 'dd.MM.yyyy'}}" />
                                         <Text text="{careerContnListModel>Exrea}"/>
-                                        <CheckBox selected="{careerContnListModel>Aprvd}"/>
-                                        <CheckBox selected="{careerContnListModel>Rejec}"/>
-                                        <Text text="{careerContnListModel>Rejre}"/>
                                     </cells>
                                 </ColumnListItem>
                             </items>
