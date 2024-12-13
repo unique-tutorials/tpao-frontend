@@ -62,7 +62,7 @@
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>CURRENCY}">
                                     <f:fields>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Waers}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , length: '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Waers}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </f:fields>
@@ -74,11 +74,25 @@
                                         </ComboBox>
                                     </f:fields>
                                 </f:FormElement>
-                                <f:FormElement label="{i18n>TO_WHICH_ACCOUNT}">
+                                <!-- <f:FormElement label="{i18n>TO_WHICH_ACCOUNT}">
                                     <f:fields>
                                         <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Bvtyp' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Bvtyp}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
+                                    </f:fields>
+                                </f:FormElement> -->
+                                <!-- <f:FormElement label="Satıcı numarası">
+                                    <f:fields>
+                                        <Input 
+                                        value="{requestListModel>/expendInfoDialogRequest/Parno}" 
+                                        change=".onVendorNumberChange"
+                                        maxLength="10" />
+                                    </f:fields>
+                                </f:FormElement> -->
+                                <f:FormElement label="Satıcı numarası">
+                                    <f:fields>
+                                        <Input 
+                                        value="{requestListModel>/expendInfoDialogRequest/Parno}" />
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>EXPLANATION}">

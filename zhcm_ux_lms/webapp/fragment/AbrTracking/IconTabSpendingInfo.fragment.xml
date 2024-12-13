@@ -36,6 +36,21 @@
             <Column>
                 <Text text="{i18n>INVOICE_DOCUMENT}"/>
             </Column>
+            <Column>
+                <Text text="Para Birimi"/>
+            </Column>
+            <Column>
+                <Text text="Kdv Oranı"/>
+            </Column>
+            <Column>
+                <Text text="Satıcı No"/>
+            </Column>
+            <Column>
+                <Text text="Açıklama"/>
+            </Column>
+            <Column>
+                <Text text="Fatura Toplam"/>
+            </Column>
         </columns>
         <items>
             <ColumnListItem type="Navigation" press=".onExpendInfoNavigationDialog">
@@ -55,6 +70,11 @@
                     <CheckBox selected="{requestListModel>Sent}"/>
                     <Button text="{i18n>SEND}" press=".onSendExpendButtonPress" type="Emphasized"/>
                     <Link press=".onAttachDownload" text="{requestListModel>FileName}" />
+                    <Text text="{requestListModel>Waers}"/>
+                    <Text text="{requestListModel>Mwskz}"/>
+                    <Text text="{requestListModel>Parno}"/>
+                    <Text text="{requestListModel>Descp}"/>
+                    <Text text="{requestListModel>Payam}"/>
                 </cells>
             </ColumnListItem>
         </items>
