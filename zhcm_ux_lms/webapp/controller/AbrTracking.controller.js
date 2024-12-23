@@ -62,7 +62,10 @@ sap.ui.define([
                     Pernr: null,
                     Ename: ""
                 },
-                attachmentList: []
+                attachmentList: [],
+                isAccountVisible: true,
+                isSellerVisible: true
+
             });
         },
         onNavBack: function () {
@@ -118,6 +121,25 @@ sap.ui.define([
             }
             this._oAttachmentDialog.open();
         },
+        onPaymentTypeChange: function(oEvent) {
+            var oComboBox = oEvent.getSource(); 
+            var sSelectedKey = oComboBox.getSelectedKey(); 
+            var oModel = this.getView().getModel("requestListModel");
+            var sQuery = oComboBox.getSelectedItem().getProperty("additionalText");
+            
+            if (sQuery === "2") {
+                oModel.setProperty("/isAccountVisible", false);
+                oModel.setProperty("/expendInfoDialogRequest/Whiac", "2");
+                oModel.setProperty("/expendInfoDialogRequest/Wacst", "");
+
+            }
+            
+            if (sQuery === "1") {
+                oModel.setProperty("/isSellerVisible", false);
+                oModel.setProperty("/expendInfoDialogRequest/Whiac", "1");
+            }
+        },
+    
         onCloseDialog:function(){
             if (this._oAttachmentDialog) this._oAttachmentDialog.close();
         },
@@ -1228,7 +1250,9 @@ sap.ui.define([
                 "Mwskz": expendInfoList.Mwskz,
                 "Parno": expendInfoList.Parno,
                 "Descp": expendInfoList.Descp,
-                "Payam": expendInfoList.Payam
+                "Payam": expendInfoList.Payam,
+                "Whiac": expendInfoList.Whiac,
+                "Wacst": expendInfoList.Wacst,
             };
 
             this._openBusyFragment("TRAINING_PARTICIPANT_SAVE_OPERATION", []);
@@ -1352,6 +1376,7 @@ sap.ui.define([
             });
         },
         onAttachmentUploadComplete: function (oEvent) {
+            debugger;
             var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploader");
             oFileUploader.destroyHeaderParameters();
             oFileUploader.clear();

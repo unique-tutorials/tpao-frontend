@@ -34,9 +34,12 @@
                 <Text text="{i18n>SEND}"/>
             </Column>
             <Column>
-                <Text text="{i18n>INVOICE_DOCUMENT}"/>
+                <Text text="Ödendi"/>
             </Column>
             <Column>
+                <Text text="{i18n>INVOICE_DOCUMENT}"/>
+            </Column>
+            <!-- <Column>
                 <Text text="Para Birimi"/>
             </Column>
             <Column>
@@ -50,7 +53,7 @@
             </Column>
             <Column>
                 <Text text="Fatura Toplam"/>
-            </Column>
+            </Column> -->
         </columns>
         <items>
             <ColumnListItem type="Navigation" press=".onExpendInfoNavigationDialog">
@@ -69,12 +72,13 @@
                     <Text text="{requestListModel>Descp}"/>
                     <CheckBox selected="{requestListModel>Sent}"/>
                     <Button text="{i18n>SEND}" press=".onSendExpendButtonPress" type="Emphasized"/>
+                    <CheckBox selected="{requestListModel>Paid}" />
                     <Link press=".onAttachDownload" text="{requestListModel>FileName}" />
-                    <Text text="{requestListModel>Waers}"/>
+                    <!-- <Text text="{requestListModel>Waers}"/>
                     <Text text="{requestListModel>Mwskz}"/>
                     <Text text="{requestListModel>Parno}"/>
                     <Text text="{requestListModel>Descp}"/>
-                    <Text text="{requestListModel>Payam}"/>
+                    <Text text="{requestListModel>Payam}"/> -->
                 </cells>
             </ColumnListItem>
         </items>

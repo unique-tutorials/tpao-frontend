@@ -101,7 +101,7 @@ sap.ui.define([
             }
         
             var oSelectedItem = oInApprovalList[0] || {};
-            var sPernr = oSelectedItem.Pernr;
+            // var sPernr = oSelectedItem.Pernr;
             var sInper = oSelectedItem.Inper;
             var sAprvd = oSelectedItem.Aprvd;
             var sRejre = oSelectedItem.Rejre;
@@ -109,13 +109,13 @@ sap.ui.define([
             var sBegda = oAbsenceFilter.begda;
             var sEndda = oAbsenceFilter.endda;
         
-            if (!sPernr || !sBegda || !sEndda) {
+            if (!sBegda || !sEndda) {
                 this._sweetToast(this.getText("INVALID_DATA"), "E");
                 return;
             }
         
             var oUrlParameters = {
-                "Pernr": sPernr,
+                // "Pernr": sPernr,
                 "Inper": sInper,
                 "Begda": sBegda,
                 "Endda": sEndda,
@@ -166,7 +166,7 @@ sap.ui.define([
             }
         
             var oSelectedItem = oInApprovalList[0] || {};
-            var sPernr = oSelectedItem.Pernr;
+            // var sPernr = oSelectedItem.Pernr;
             var sInper = oSelectedItem.Inper;
             var sAprvd = "";
             var sRejre = DRejre;
@@ -174,13 +174,13 @@ sap.ui.define([
             var sBegda = oAbsenceFilter.begda;
             var sEndda = oAbsenceFilter.endda;
         
-            if (!sPernr || !sBegda || !sEndda) {
+            if (!sBegda || !sEndda) {
                 this._sweetToast(this.getText("INVALID_DATA"), "E");
                 return;
             }
         
             var oUrlParameters = {
-                "Pernr": sPernr,
+                // "Pernr": sPernr,
                 "Inper": sInper,
                 "Begda": sBegda,
                 "Endda": sEndda,

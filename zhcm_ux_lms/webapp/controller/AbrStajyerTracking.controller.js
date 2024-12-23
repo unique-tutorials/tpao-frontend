@@ -710,12 +710,12 @@ sap.ui.define([
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestStajyerListModel");
             var sPernr = oViewModel.getProperty("/newNumberStajyerRequest/Pernr"),
-            sAppro = oViewModel.getProperty("/batch/Appro"),
+            // sAppro = oViewModel.getProperty("/batch/Appro"),
             sBegda = oViewModel.getProperty("/absenceFilter/begda"),
             sEndda = oViewModel.getProperty("/absenceFilter/endda")
             var oUrlParameters = {
                 "Pernr": sPernr,
-                "Appro": sAppro,
+                // "Appro": sAppro,
                 "Begda": sBegda,
                 "Endda": sEndda
             };
