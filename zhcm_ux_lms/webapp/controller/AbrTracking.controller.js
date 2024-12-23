@@ -181,7 +181,6 @@ sap.ui.define([
             this._oUploadAttachmentDialog.close();
         },
         onAttachmentUploadPress: function () {
-            //TODO
             var oViewModel = this.getModel("requestListModel");
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploader");
@@ -1222,7 +1221,6 @@ sap.ui.define([
                         this._oExpendInfoDialog.close();
                     }
                     this._oExpendInfoDialog.open();
-
                 },
 
                 error: (oError) => {

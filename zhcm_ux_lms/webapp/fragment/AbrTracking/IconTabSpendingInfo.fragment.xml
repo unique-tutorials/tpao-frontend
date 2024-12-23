@@ -19,7 +19,7 @@
                 <Text text="{i18n>INVOICE_NUMBER}"/>
             </Column>
             <Column>
-                <Text text="Satıcı No"/>
+                <Text text="{i18n>SELLER_NUMBER}"/>
             </Column>
             <Column>
                 <Text text="{i18n>INVOICE_DATE}"/>
@@ -37,7 +37,7 @@
                 <Text text="{i18n>SEND}"/>
             </Column>
             <Column>
-                <Text text="Ödendi"/>
+                <Text text="{i18n>PAID}"/>
             </Column>
             <Column>
                 <Text text="{i18n>INVOICE_DOCUMENT}"/>
