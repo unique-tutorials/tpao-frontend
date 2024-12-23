@@ -111,6 +111,11 @@
                             <Input value="{requestStajyerListModel>/selectedStajyer/Conem}" />
                         </f:fields>
                     </f:FormElement>
+                    <f:FormElement label="{i18n>EMERGENCY_CONTACT_TEL}">
+                        <f:fields>
+                            <Input value="{requestStajyerListModel>/selectedStajyer/Contl}" />
+                        </f:fields>
+                    </f:FormElement>
                     <f:FormElement label="{i18n>MENTOR}">
                         <f:fields>
                             <Input value="{requestStajyerListModel>/selectedStajyer/Mento}" />

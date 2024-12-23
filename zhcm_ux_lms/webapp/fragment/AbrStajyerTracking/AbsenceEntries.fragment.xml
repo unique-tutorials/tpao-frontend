@@ -8,7 +8,7 @@
                     <Button text="{i18n>QUESTION_BUTTON}" type="Emphasized" press=".onSearchDateStudentPress" />
                     <ToolbarSpacer />
                     <Button text="{i18n>CREATE_ABSENCE}" icon="sap-icon://create" type="Accept" press=".onCreateLeaveRequest" />
-                    <Button text="Onay" type="Attention" icon="sap-icon://paper-plane" press=".onBatchApprovalDialog"/>
+                    <Button text="Onay" type="Attention" icon="sap-icon://paper-plane" press=".onSendBatchButton"/>
                     <!-- <Title text="{i18n>ABSENCE_LOGIN_INFORMATION}" level="H2"/> -->
                 </content>
             </OverflowToolbar>

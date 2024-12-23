@@ -29,14 +29,15 @@
                                         </DatePicker>
                                     </f:fields>
                                 </f:FormElement>
-                                <f:FormElement label="{i18n>PAY_DUE_DATE}">
+                                <!-- <f:FormElement label="{i18n>PAY_DUE_DATE}">
                                     <f:fields>
                                         <DatePicker value="{path: 'requestListModel>/expendInfoDialogRequest/Payde', 
                                         type: 'sap.ui.model.type.Date', 
                                         formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}">
                                         </DatePicker>
                                     </f:fields>
-                                </f:FormElement>
+                                </f:FormElement> -->
+
                                 <!-- <f:FormElement label="Bütçe Kodu">
                                 <f:fields>
                                     <Input value="{requestListModel>/expendInfoDialogRequest/Paynoa}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onShowUnitExpendSearchHelp"/>
@@ -55,14 +56,40 @@
                             <f:formElements>
                                 <f:FormElement label="{i18n>PAYMENT_TYPE}">
                                     <f:fields>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytp' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Paytp}">
-                                            <core:ListItem key="{Key}" text="{Key}-{Value}"/>
+                                        <ComboBox 
+                                            items="{ path:'/ValueHelpSet', filters:[{path: 'Id', operator: 'EQ', value1: 'Paytp'}] }" 
+                                            selectedKey="{requestListModel>/expendInfoDialogRequest/Paytp}" 
+                                            change=".onPaymentTypeChange">
+                                            <core:ListItem additionalText="{Query}" key="{Key}" text="{Key}-{Value}" />
                                         </ComboBox>
                                     </f:fields>
                                 </f:FormElement>
+                                <f:FormElement label="{i18n>TO_WHICH_ACCOUNT}" 
+                                               visible="{requestListModel>/isAccountVisible}">
+                                    <f:fields>
+                                        <ComboBox 
+                                            items="{ path:'/ValueHelpSet', filters:[{path: 'Id', operator: 'EQ', value1: 'Wacst'}] }" 
+                                            selectedKey="{requestListModel>/expendInfoDialogRequest/Wacst}">
+                                            <core:ListItem key="{Key}" text="{Value}" />
+                                        </ComboBox>
+                                    </f:fields>
+                                </f:FormElement>
+
+                                <f:FormElement label="Satıcı numarası" visible="{requestListModel>/isSellerVisible}">
+                                    <f:fields>
+                                        <Input 
+                                        value="{requestListModel>/expendInfoDialogRequest/Parno}" />
+                                    </f:fields>
+                                </f:FormElement>
+                                <!-- <f:FormElement label="Hangi Hesaba">
+                                    <f:fields>
+                                        <Input 
+                                        value="{requestListModel>/expendInfoDialogRequest/Whiac}" />
+                                    </f:fields>
+                                </f:FormElement> -->
                                 <f:FormElement label="{i18n>CURRENCY}">
                                     <f:fields>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , length: '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Waers}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , length: '1000', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Waers}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </f:fields>
@@ -74,13 +101,7 @@
                                         </ComboBox>
                                     </f:fields>
                                 </f:FormElement>
-                                <!-- <f:FormElement label="{i18n>TO_WHICH_ACCOUNT}">
-                                    <f:fields>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Bvtyp' } ] }" selectedKey="{requestListModel>/expendInfoDialogRequest/Bvtyp}">
-                                            <core:ListItem key="{Key}" text="{Value}"/>
-                                        </ComboBox>
-                                    </f:fields>
-                                </f:FormElement> -->
+ 
                                 <!-- <f:FormElement label="Satıcı numarası">
                                     <f:fields>
                                         <Input 
@@ -89,12 +110,8 @@
                                         maxLength="10" />
                                     </f:fields>
                                 </f:FormElement> -->
-                                <f:FormElement label="Satıcı numarası">
-                                    <f:fields>
-                                        <Input 
-                                        value="{requestListModel>/expendInfoDialogRequest/Parno}" />
-                                    </f:fields>
-                                </f:FormElement>
+
+
                                 <f:FormElement label="{i18n>EXPLANATION}">
                                     <f:fields>
                                         <Input value="{requestListModel>/expendInfoDialogRequest/Descp}" />
