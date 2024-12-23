@@ -63,8 +63,8 @@ sap.ui.define([
                     Ename: ""
                 },
                 attachmentList: [],
-                isAccountVisible: true,
-                isSellerVisible: true
+                isAccountVisible: false,
+                isSellerVisible: false
 
             });
         },
@@ -129,6 +129,7 @@ sap.ui.define([
             
             if (sQuery === "2") {
                 oModel.setProperty("/isAccountVisible", false);
+                oModel.setProperty("/isSellerVisible", true);
                 oModel.setProperty("/expendInfoDialogRequest/Whiac", "2");
                 oModel.setProperty("/expendInfoDialogRequest/Wacst", "");
 
@@ -136,6 +137,7 @@ sap.ui.define([
             
             if (sQuery === "1") {
                 oModel.setProperty("/isSellerVisible", false);
+                oModel.setProperty("/isAccountVisible", true);
                 oModel.setProperty("/expendInfoDialogRequest/Whiac", "1");
             }
         },

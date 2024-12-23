@@ -19,6 +19,9 @@
                 <Text text="{i18n>INVOICE_NUMBER}"/>
             </Column>
             <Column>
+                <Text text="Satıcı No"/>
+            </Column>
+            <Column>
                 <Text text="{i18n>INVOICE_DATE}"/>
             </Column>
             <Column>
@@ -45,9 +48,7 @@
             <Column>
                 <Text text="Kdv Oranı"/>
             </Column>
-            <Column>
-                <Text text="Satıcı No"/>
-            </Column>
+      
             <Column>
                 <Text text="Açıklama"/>
             </Column>
@@ -60,6 +61,7 @@
                 <cells>
                     <Text text="{requestListModel>Paytp}"/>
                     <Text text="{requestListModel>Payno}"/>
+                    <Text text="{requestListModel>Parno}"/>
                     <Text text="{
                         path: 'requestListModel>Paydt', 
                         type: 'sap.ui.model.type.Date', 
@@ -76,7 +78,6 @@
                     <Link press=".onAttachDownload" text="{requestListModel>FileName}" />
                     <!-- <Text text="{requestListModel>Waers}"/>
                     <Text text="{requestListModel>Mwskz}"/>
-                    <Text text="{requestListModel>Parno}"/>
                     <Text text="{requestListModel>Descp}"/>
                     <Text text="{requestListModel>Payam}"/> -->
                 </cells>
