@@ -19,96 +19,111 @@ sap.ui.define([
                 busy: false,
                 requestCounts: {},
                 appList: [{
-                    "appName": "AbrRequestList",
-                    "visible": true,
+                    "appName": "Inscr",
+                    "visible": false,
                     "title": 'Yurt Dışı Burslu Öğrenci Talep',
+                    "entitySet": "ScholarshipStudentRequestSet",
+                    "filters": [
+                        new Filter("Lmsap", FilterOperator.EQ, "MY_REQUESTS"),
+                        new Filter("Lmssf", FilterOperator.EQ, "DRF")
+                    ],
+                    "pressed": "onAbrRequestListModelPage",
+                    "count": 0,
                     "icon": "sap-icon://request"
                 },
                 {
-                    "appName": "ApprovalRequestList",
-                    "visible": true,
+                    "appName": "Insra",
+                    "visible": false,
                     "title": 'Yurt Dışı Burslu Öğrenci Talepleri Onay',
+                    "pressed": "onApprovalRequestListPage",
+                    "count": 0,
                     "icon": "sap-icon://hr-approval"
                 },
                 {
-                    "appName": "AbrTracking",
-                    "visible": true,
+                    "appName": "Instr",
+                    "visible": false,
                     "title": 'Burslu Öğrenci Takibi',
+                    "pressed": "onAbrTrackingPage",
+                    "count": 0,
                     "icon": "sap-icon://time-account"
                 },
                 {
-                    "appName": "TrplsApp",
-                    "visible": true,
-                    "title": 'Burslu Öğrenci Seyahat ',
+                    "appName": "Instc",
+                    "visible": false,
+                    "title": 'Burslu Öğrenci Seyahat',
+                    "pressed": "onTrplsAppPage",
+                    "count": 0,
                     "icon": "sap-icon://suitcase"
                 },
                 {
-                    "appName": "TrpolApp",
-                    "visible": true,
+                    "appName": "Insti",
+                    "visible": false,
                     "title": 'Personel Seyahat Rezervasyon Talebi (Sorgu)',
+                    "pressed": "onTrpolAppPage",
+                    "count": 0,
                     "icon": "sap-icon://travel-request"
                 },
                 {
-                    "appName": "AbrAccountTracking",
-                    "visible": true,
+                    "appName": "Insfi",
+                    "visible": false,
                     "title": 'Burslu Öğrenci Takibi (Muhasebe)',
+                    "pressed": "onAbrAccountTrackingPage",
+                    "count": 0,
                     "icon": "sap-icon://collections-management"
                 },
                 {
-                    "appName": "AbrFileUpload",
-                    "visible": true,
+                    "appName": "Inssl",
+                    "visible": false,
                     "title": 'Yurt Dışı eğitim – Burslu Öğrenci Maaşları',
+                    "pressed": "onAbrFileUploadPage",
+                    "count": 0,
                     "icon": "sap-icon://customer-financial-fact-sheet"
                 },
                 {
-                    "appName": "AbrStajyerTracking",
-                    "visible": true,
+                    "appName": "Intra",
+                    "visible": false,
                     "title": 'Stajyer/Beceri',
+                    "pressed": "onAbrStajyerTrackingPage",
+                    "count": 0,
                     "icon": "sap-icon://group"
                 },
                 {
-                    "appName": "TrpolApp",
+                    "appName": "Insba",
                     "visible": false,
-                    "title": 'Staj Eğitimi',
-                    "icon": "sap-icon://group"
-                },
-                {
-                    "appName": "TrpolApp",
-                    "visible": false,
-                    "title": 'Beceri Eğitimi',
-                    "icon": "sap-icon://group"
-                },
-                {
-                    "appName": "CareerInterns",
-                    "visible": false,
-                    "title": 'Biz Bize Kariyer Stajyerler',
-                    "icon": "sap-icon://group"
-                },
-                {
-                    "appName": "CareerInternContn",
-                    "visible": true,
                     "title": 'Stajyer Öğrenci Devamsızlık Onayı',
+                    "pressed": "onCareerInternContnPage",
+                    "count": 0,
                     "icon": "sap-icon://approvals"
                 },
                 {
-                    "appName": "TrainingManager",
-                    "visible": true,
+                    "appName": "Edumn",
+                    "visible": false,
                     "title": 'Eğitim Yöneticisi',
+                    "pressed": "onTrainingManagerPage",
+                    "count": 0,
                     "icon": "sap-icon://employee"
                 },
                 {
-                    "appName": "InternStudentTracking",
-                    "visible": true,
+                    "appName": "Trast",
+                    "visible": false,
                     "title": 'Stajyer Öğrenci Takibi',
+                    "pressed": "onInternStudentTrackingPage",
+                    "count": 0,
                     "icon": "sap-icon://employee"
                 }
             ],
                 appAuthorization: {
-                    ReqcrApp: false,
-                    ReqapApp: false,
-                    TrplnApp: false,
-                    TrplsApp: false,
-                    TrpolApp: false
+                    Inscr: false,
+                    Insra: false,
+                    Instr: false,
+                    Instc: false,
+                    Insti: false,
+                    Insfi: false,
+                    Inssl: false,
+                    Intra: false,
+                    Insba: false,
+                    Edumn: false,
+                    Trast: false
                 }
             });
             this.setModel(oViewModel, "appDispatcherView");
@@ -132,46 +147,90 @@ sap.ui.define([
             var aAppList = oViewModel.getProperty("/appList");
             var oThis = this;
             var oPage = this.byId("idAppDispatcherPage");
-
+        
             oPage.removeContent();
             oViewModel.setProperty("/busy", true);
             SharedData.setApplicationAuth(null);
-
-            oThis._addTiles();
-
-
+        
             oModel.metadataLoaded().then(function () {
                 SharedData.setCurrentUser({});
                 oModel.read("/UserSet('ME')", {
                     success: function (oData, oResponse) {
                         SharedData.setCurrentUser(oData);
                     },
-                    error: function (oError) { }
+                    error: function (oError) {}
                 });
-
-                var sPath = oModel.createKey("/ApplicationAuthorizationSet", {
-                    Uname: "ME"
-                });
-
+        
+                var sPath = oModel.createKey("/AuthorizationSet", { Uname: "ME" });
+        
                 oModel.read(sPath, {
                     success: function (oData) {
                         SharedData.setApplicationAuth(oData);
+        
+       
                         $.each(aAppList, function (sIndex, oApp) {
-                            oApp.visible = oData.hasOwnProperty(oApp.appName) ? oData[oApp.appName] : false;
+                            if (oApp.appName === "ExpayApp") {
+                                oApp.visible = true;
+                            } else {
+                                oApp.visible = oData.hasOwnProperty(oApp.appName) ? oData[oApp.appName] : false;
+                            }
                         });
-
+        
                         oViewModel.setProperty("/appList", aAppList);
-
-                        //Get authorization for new request
-                        // oThis.onRefreshRequestCounts(); açılacak
-
-                        oThis._addTiles();
+        
+                        // Get authorization for new request
+                        oThis.onRefreshRequestCounts();
+        
+                        // Tile şablonu
+                        var oTileTemplate = new sap.m.GenericTile({
+                            header: "{appDispatcherView>title}",
+                            press: oThis.onAppClickHandler.bind(oThis),
+                            tileContent: [
+                                new sap.m.TileContent({
+                                    content: new sap.m.NumericContent({
+                                        value: "{appDispatcherView>count}",
+                                        icon: "{appDispatcherView>icon}"
+                                    })
+                                })
+                            ],
+                            visible: "{appDispatcherView>visible}"
+                        }).addStyleClass("sapUiSmallMargin myTile");
+        
+                        var oDataTemplate = new sap.ui.core.CustomData({ key: "targetApp" });
+                        oDataTemplate.bindProperty("value", "appDispatcherView>appName");
+                        oTileTemplate.addCustomData(oDataTemplate);
+        
+                        oPage.bindAggregation("content", {
+                            path: "appDispatcherView>/appList",
+                            template: oTileTemplate
+                        });
+        
+                        oViewModel.setProperty("/busy", false);
                     },
-                    error: function () {
-
-                    }
+                    error: function () {}
                 });
-
+            });
+        },
+        onRefreshRequestCounts: function () {
+            var oModel = this.getModel();
+            var oViewModel = this.getModel("appDispatcherView");
+            var aAppList = oViewModel.getProperty("/appList");
+            $.each(aAppList, function (sIndex, oApp) {
+                if (oApp.visible) {
+                    oModel.read("/" + oApp.entitySet + "/$count", {
+                        filters: oApp.filters,
+                        success: function (oData, oResponse) {
+                            oApp.count = oResponse.body;
+                            oViewModel.setProperty("/appList/" + sIndex, oApp);
+                        },
+                        error: function (oError) {
+                            oApp.count = 0;
+                            oViewModel.setProperty("/appList/" + sIndex, oApp);
+                        }
+                    });
+                } else {
+                    oApp.count = 0;
+                }
             });
         },
         // onRefreshRequestCounts: function () {
@@ -236,9 +295,8 @@ sap.ui.define([
 					var aAppList = oViewModel.getProperty("/appList");
 					var aTargetApp = _.filter(aAppList, ['appName', sApp]);
 					if (aTargetApp[0]) {
-                        oThis.onNavtoTile(aTargetApp[0]);
-						//var oFunc = jQuery.proxy(oThis, aTargetApp[0].pressed);
-						//oFunc.call(aTargetApp[0]);
+						var oFunc = jQuery.proxy(oThis, aTargetApp[0].pressed);
+						oFunc.call();
 					}
 				}
 			} catch (oEx) {
@@ -249,18 +307,39 @@ sap.ui.define([
             this.getRouter().navTo(oTarget.appName);
             debugger;
         },
-        onTrainerPoolPage: function (oTarget) {
-			this.getRouter().navTo("trainerpool");
-		},
-        onMyTrainingRequestPage: function (oTarget) {
+        onAbrRequestListModelPage: function (oTarget) {
             debugger;
-			this.getRouter().navTo("trainingRequestList");
+			this.getRouter().navTo("AbrRequestList");
 		},
-        onApproveTrainingRequestPage: function (oTarget) {
-			this.getRouter().navTo("approvalRequestList");
+        onApprovalRequestListPage: function (oTarget) {
+			this.getRouter().navTo("ApprovalRequestList");
 		},
-        onCollectivePlanningPage: function (oTarget) {
-			this.getRouter().navTo("collectivePlanning");
+        onAbrTrackingPage: function (oTarget) {
+			this.getRouter().navTo("AbrTracking");
+		},
+        onTrplsAppPage: function (oTarget) {
+			this.getRouter().navTo("TrplsApp");
+		},
+        onTrpolAppPage: function (oTarget) {
+			this.getRouter().navTo("TrpolApp");
+		},
+        onAbrAccountTrackingPage: function (oTarget) {
+			this.getRouter().navTo("AbrAccountTracking");
+		},
+        onAbrFileUploadPage: function (oTarget) {
+			this.getRouter().navTo("AbrFileUpload");
+		},
+        onAbrStajyerTrackingPage: function (oTarget) {
+			this.getRouter().navTo("AbrStajyerTracking");
+		},
+        onCareerInternContnPage: function (oTarget) {
+			this.getRouter().navTo("CareerInternContn");
+		},
+        onTrainingManagerPage: function (oTarget) {
+			this.getRouter().navTo("TrainingManager");
+		},
+        onInternStudentTrackingPage: function (oTarget) {
+			this.getRouter().navTo("InternStudentTracking");
 		},
     });
 });

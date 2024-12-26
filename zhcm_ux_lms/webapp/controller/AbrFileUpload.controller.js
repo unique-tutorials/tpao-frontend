@@ -70,7 +70,7 @@ sap.ui.define([
             //     oFilter.Wagpe = sFormattedDate;
             // }
         
-            oFilter.Prope = "";
+            oFilter.Prope = "1";
         
             var aFilters = this._getFilters(oFilter);
         

@@ -22,7 +22,7 @@ sap.ui.define([
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "requestStajyerListModel");
             this._initiateModel();
-            this.getRouter().getRoute("AbrTracking").attachPatternMatched(this._onRequestListMatched, this);
+            this.getRouter().getRoute("AbrStajyerTracking").attachPatternMatched(this._onRequestListMatched, this);
 
         },
         _onRequestListMatched: function (oEvent) {

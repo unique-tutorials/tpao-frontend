@@ -49,7 +49,7 @@ sap.ui.define([
 			var oFilterBar = this.byId("TrainingFilter");
 			var aFilterGroupItems = oFilterBar.getFilterGroupItems();
 			var oModel = this.getView().getModel("trainingManagerListModel");
-			var aOriginalData = oModel.getProperty("/managerList"); 
+			var aOriginalData = oModel.getProperty("/managerList");
 		
 			var aFilters = [];
 		
@@ -72,17 +72,16 @@ sap.ui.define([
 						value: sValue
 					});
 				}
-
-				// if (sValue && sPath) {
-				
-				// 	aFilters.push(new Filter(sPath, FilterOperator.Contains, sValue));
-				// }
-		
 			});
-		
+
+			if (aFilters.length === 0) {
+				this.getRecruiterList();
+				return;
+			}
+
 			var aFilteredData = aOriginalData.filter(function (oItem) {
 				return aFilters.every(function (oFilter) {
-					return oItem[oFilter.path] && oItem[oFilter.path].toString() === oFilter.value;
+					return oItem[oFilter.path] && oItem[oFilter.path].toString().toLowerCase().includes(oFilter.value.toLowerCase());
 				});
 			});
 		
@@ -205,7 +204,7 @@ sap.ui.define([
             var oControlModel = this.getModel("trainingManagerListModel");
             var aPlanningData = oControlModel.getProperty("/managerList");
         
-            var aBodyRows = []; 
+            var aBodyRows = [];
             for (var i = 0; i < aPlanningData.length; i++) {
                 var aColumns = [
                     "Türkiye Petrolleri Anonim Ortaklığı",

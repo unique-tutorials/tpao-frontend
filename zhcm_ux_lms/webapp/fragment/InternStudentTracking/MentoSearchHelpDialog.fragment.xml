@@ -1,0 +1,25 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core">
+    <Dialog title="Mentör" state="None" type="Standard" contentWidth="40%" contentHeight="60%" verticalScrolling="true" resizable="true" draggable="true">
+        <Table inset="false" items="{internStudentListModel>/mentoTypeList}">
+            <columns>
+                <Column>
+                    <Text text="Kodu" />
+                </Column>
+                <Column>
+                    <Text text="Mentör Adı" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem vAlign="Middle" type="Active" press=".onUnitSelected">
+                    <cells>
+                        <Text text="{internStudentListModel>Key}" />
+                        <Text text="{internStudentListModel>Value}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        <endButton>
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" type="Reject" press=".onCancelUnitButtonPress" />
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>

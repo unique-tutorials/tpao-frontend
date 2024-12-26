@@ -1,21 +1,27 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core">
     <VBox class="sapUiSmallMarginTopBottom">
-        <List headerText="{i18n>INFO_LEVEL_DESC}" headerLevel="H2" items="{internStudentListModel>/levelDescriptionList}">
-            <StandardListItem title="{internStudentListModel>title}" />
+        <List headerText="{i18n>INFO_LEVEL_DESC}" headerLevel="H2" items="{/InternCompetencyLevelsSet}">
+            <StandardListItem title="{Icoml} - {Inclot}" />
         </List>
     </VBox>
-    <Table id="idProductsTable" inset="false" items="{/technicalEvaluation}" growing="true" growingScrollToLoad="true">
+    <Table id="idProductsTable" inset="false" items="{internStudentListModel>/internTechnicalRequest}" growing="true" growingScrollToLoad="true">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
                     <Title text="{i18n>INFO}" level="H2"/>
+                    <ToolbarSpacer />
+                    <Button text="Sorgula" press=".getTechnicalList" />
+                    <Button text="Ekle" press=".onAddTechnicalDialog" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
         <columns>
             <Column>
-                <Text text="{i18n>ACTUAL_WEEK}" />
+                <Text text="{i18n>START_DATE}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>END_DATE}" />
             </Column>
             <Column>
                 <Text text="{i18n>DESC_OF_WORK_PERFORMED}" />
@@ -33,11 +39,27 @@
         <items>
             <ColumnListItem vAlign="Middle">
                 <cells>
-                    <Text text="{SupplierName}" />
-                    <Text text="{WorkDescription}" />
-                    <Text text="{BeforeSkillLevel}" />
-                    <Text text="{AfterSkillLevel}" />
-                    <Text text="{Comments}" />
+                    <Text text="{
+                        path: 'internStudentListModel>Begdt', 
+                        type: 'sap.ui.model.type.Date', 
+                        formatOptions: { 
+                            pattern: 'dd.MM.yyyy', 
+                            UTC: true 
+                        }
+                    }"/>
+                    <Text text="{
+                        path: 'internStudentListModel>Findt', 
+                        type: 'sap.ui.model.type.Date', 
+                        formatOptions: { 
+                            pattern: 'dd.MM.yyyy', 
+                            UTC: true 
+                        }
+                    }"/>
+                    <Text text="{internStudentListModel>Acwod}" />
+                    <Text text="{internStudentListModel>Prscl}" />
+                    <Text text="{internStudentListModel>Pstcl}" />
+                    <Text text="{internStudentListModel>Commt}" />
+
                 </cells>
             </ColumnListItem>
         </items>

@@ -44,7 +44,7 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>MENTOR}">
                         <f:fields>
-                            <Input value="{internStudentListModel>/selectedInternEmployee/Mento}" />
+                            <Input value="{internStudentListModel>/selectedInternEmployee/Mento}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowMentoSearchHelp" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

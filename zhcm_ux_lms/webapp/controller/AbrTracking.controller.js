@@ -64,7 +64,8 @@ sap.ui.define([
                 },
                 attachmentList: [],
                 isAccountVisible: false,
-                isSellerVisible: false
+                isSellerVisible: false,
+                paidVisible: false
 
             });
         },
@@ -811,7 +812,7 @@ sap.ui.define([
                     success: function (oData) {
                         var oViewModel = that.getModel("requestListModel");
                         oViewModel.setProperty(sModelProperty, oData);
-                        console.log(oData);
+                        console.log("data:", oData);
                     },
                     error: function () {
                         sap.m.MessageToast.show(errorMessage);
