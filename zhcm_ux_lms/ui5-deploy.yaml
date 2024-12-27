@@ -14,7 +14,7 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          url: http://s06sds4a01.tpao.gov.tr:8470
+          url: http://s06sds4a01.tpao.gov.tr:8000
           client: "100"
         app:
           name: ZHCM_UX_LMS_ABR
