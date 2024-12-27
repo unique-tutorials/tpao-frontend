@@ -98,7 +98,12 @@ sap.ui.define([
             var salaryInfoList = oSource.getBindingContext().getObject();
             var oUrlParameters = {
                 "Pernr": salaryInfoList.Pernr,
-                "Wagpe": salaryInfoList.Wagpe
+                "Wagpe": salaryInfoList.Wagpe,
+                "Totwg": salaryInfoList.Totwg,
+                "Waers": salaryInfoList.Waers,
+                "Wacst": salaryInfoList.Wacst,
+                "Paytt": salaryInfoList.Paytt,
+                // "Consa": salaryInfoList.Consa,
             };
  
             this._openBusyFragment("PLEASE_WAIT", []);

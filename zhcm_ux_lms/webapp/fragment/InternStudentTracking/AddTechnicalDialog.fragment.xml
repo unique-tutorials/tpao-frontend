@@ -17,7 +17,7 @@
                                     <f:fields>
                                         <DatePicker value="{path: 'internStudentListModel>/addTechnicalRequest/Begdt', 
                                         type: 'sap.ui.model.type.Date', 
-                                        formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}">
+                                        formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}" enabled="{internStudentListModel>/aplicationSetting/enabled}">
                                         </DatePicker>
                                     </f:fields>
                                 </f:FormElement>
@@ -25,28 +25,28 @@
                                     <f:fields>
                                         <DatePicker value="{path: 'internStudentListModel>/addTechnicalRequest/Findt', 
                                         type: 'sap.ui.model.type.Date', 
-                                        formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}">
+                                        formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}" enabled="{internStudentListModel>/aplicationSetting/enabled}">
                                         </DatePicker>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>DESC_OF_WORK_PERFORMED}">
                                     <f:fields>
-                                        <Input value="{internStudentListModel>/addTechnicalRequest/Acwod}"/>
+                                        <Input value="{internStudentListModel>/addTechnicalRequest/Acwod}" enabled="{internStudentListModel>/aplicationSetting/enabled}"/>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>PRE_WORK_COMPETENCE_LEVEL}">
                                     <f:fields>
-                                        <Input value="{internStudentListModel>/addTechnicalRequest/Prscl}"/>
+                                        <Input value="{internStudentListModel>/addTechnicalRequest/Prscl}" enabled="{internStudentListModel>/aplicationSetting/enabled}"/>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>POST_STUDY_COMPETENCY_LEVEL}">
                                     <f:fields>
-                                        <Input value="{internStudentListModel>/addTechnicalRequest/Pstcl}"/>
+                                        <Input value="{internStudentListModel>/addTechnicalRequest/Pstcl}" enabled="{internStudentListModel>/aplicationSetting/enabled}"/>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>COMMENTS}">
                                     <f:fields>
-                                        <TextArea rows="4" value="{internStudentListModel>/addTechnicalRequest/Commt}"/>
+                                        <TextArea rows="4" value="{internStudentListModel>/addTechnicalRequest/Commt}" enabled="{internStudentListModel>/aplicationSetting/enabled}"/>
                                     </f:fields>
                                 </f:FormElement>
                             </f:formElements>

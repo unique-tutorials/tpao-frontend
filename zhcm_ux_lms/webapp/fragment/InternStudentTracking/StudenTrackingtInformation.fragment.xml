@@ -32,8 +32,11 @@
             <Column>
                 <Text text="{i18n>POST_STUDY_COMPETENCY_LEVEL}" />
             </Column>
-            <Column hAlign="End">
+            <Column>
                 <Text text="{i18n>COMMENTS}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>ACTION_LIST}" />
             </Column>
         </columns>
         <items>
@@ -59,7 +62,7 @@
                     <Text text="{internStudentListModel>Prscl}" />
                     <Text text="{internStudentListModel>Pstcl}" />
                     <Text text="{internStudentListModel>Commt}" />
-
+                        <Button icon="sap-icon://menu" type="Accept" press=".onInternActions" />
                 </cells>
             </ColumnListItem>
         </items>

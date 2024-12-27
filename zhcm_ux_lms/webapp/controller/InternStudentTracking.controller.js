@@ -74,30 +74,14 @@ sap.ui.define(
               Pernr: null,
               Ename: "",
             },
-            levelDescriptionList: [
-              {
-                title:
-                  "Başlangıç (1): Stajyer konu hakkında hiçbir bilgiye sahip değildir.",
-              },
-              {
-                title:
-                  "Temel (2):  Stajyer konu hakkında teorik bilgi sahibidir fakat herhangi bir uygulamada bulunamaz.",
-              },
-              {
-                title:
-                  "Uygulama (3): Stajyer konu hakkında bir gözetmen/danışman eşliğinde veya gözetiminde uygulama yapabilir.",
-              },
-              {
-                title:
-                  "Uzman (4): Stajyer konu hakkında yanlız çalışma yapabilir ve başka bir kişiye bilgisini aktarabilir verebilir.",
-              },
-              {
-                title:
-                  "Yetkin (5): Stajyer konu hakkında değerlendirme yapabilir ve proje geliştirebilir.",
-              },
-            ],
+            aplicationSetting: {
+              enabled: true,
+            },
             internTechnicalRequest: {},
             addTechnicalRequest: {},
+            request: {
+              isSent: false,
+            },
           });
         },
         _getRequestList: function () {},
@@ -326,6 +310,9 @@ sap.ui.define(
           });
         },
         onAddTechnicalDialog: function (oEvent) {
+          var oViewModel = this.getModel("internStudentListModel");
+          oViewModel.setProperty("/aplicationSetting/enabled", true);
+          oViewModel.setProperty("/addTechnicalRequest", {});
           if (!this._oAddTechnicalDialog) {
             this._oAddTechnicalDialog = new sap.ui.xmlfragment(
               "zhcm_ux_lms_abr.fragment.InternStudentTracking.AddTechnicalDialog",
@@ -359,7 +346,7 @@ sap.ui.define(
             }.bind(this),
           });
         },
-        onCancelTechnicalButtonPress:function(oEvent){
+        onCancelTechnicalButtonPress: function (oEvent) {
           if (this._oAddTechnicalDialog) {
             this._oAddTechnicalDialog.close();
           }
@@ -722,6 +709,64 @@ sap.ui.define(
           aRows.push(this._getHeaderColumn(sStdCmtAbt));
           aRows.push(this._getHeaderColumn(sPoint));
           return aRows;
+        },
+        onInternActions: function (oEvent) {
+          debugger;
+          var oViewModel = this.getModel("internStudentListModel");
+          var oSource = oEvent.getSource();
+          var oData = oSource
+            .getBindingContext("internStudentListModel")
+            .getObject();
+
+          if (!this._oInternActionDialog) {
+            this._oInternActionDialog = new sap.ui.xmlfragment(
+              "zhcm_ux_lms_abr.fragment.InternStudentTracking.InternActions",
+              this
+            );
+            this.getView().addDependent(this._oInternActionDialog);
+          }
+          this._oInternActionDialog.data("formData", oData);
+          this._oInternActionDialog.openBy(oSource);
+        },
+        onActionSelected: function (oEvent) {
+          debugger;
+          var oModel = this.getModel(),
+            oViewModel = this.getModel("internStudentListModel"),
+            oSource = oEvent.getSource(),
+            sAction = oSource.data("actionId"),
+            oFormData = oSource.getParent().data("formData");
+          switch (sAction) {
+            default:
+              this._getObject(oFormData, sAction);
+              break;
+          }
+        },
+        _getObject: function (oFormData, sAction) {
+          debugger;
+          return new Promise(
+            function (resolve, reject) {
+              var oModel = this.getModel();
+              var oViewModel = this.getModel("internStudentListModel");
+              var sTitle = this.getText("NEW_PAYMENT_REQUEST");
+              switch (sAction) {
+                case "Display":
+                  this.onAddTechnicalDialog();
+                  oViewModel.setProperty("/aplicationSetting/enabled", false);
+                  oViewModel.setProperty("/addTechnicalRequest", oFormData);
+                  oViewModel.setProperty("/busy", true);
+                  break;
+
+                case "Edit":
+                  this.onAddTechnicalDialog();
+                  oViewModel.setProperty("/aplicationSetting/enabled", true);
+                  oViewModel.setProperty("/addTechnicalRequest", oFormData);
+                  oViewModel.setProperty("/busy", true);
+                  break;
+                default:
+              }
+              resolve();
+            }.bind(this)
+          );
         },
       }
     );
