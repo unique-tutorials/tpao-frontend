@@ -14,12 +14,12 @@ builder:
       afterTask: generateCachebusterInfo
       configuration:
         target:
-          url: http://s06sds4a01.tpao.gov.tr:8000
+          url: http://s06sds4a01.tpao.gov.tr:8470
           client: "100"
         app:
           name: ZHCM_UX_LMS_ABR
           description: Yurdışı Burslu Personel Eğitimi
           package: ZHR_LMS_ABR
-          transport: S4DK905285
+          transport: S4DK906787
         exclude:
           - /test/

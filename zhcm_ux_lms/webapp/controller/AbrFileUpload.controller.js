@@ -158,13 +158,13 @@ sap.ui.define([
             var oModel = this.getModel(),
             oViewModel = this.getModel("wageRequestListModel");
             // var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-            var sPrope = "2";
+            // var sPrope = "2";
             var sWagpe = oViewModel.getProperty("/salaryCreateList/Wagpe")
             var oRequets = oViewModel.getProperty("/salaryCreateList");
             
             var sPernr = oViewModel.getProperty("/salaryCreateList/Pernr");
             oRequets.Pernr = sPernr,
-            oRequets.Prope = "2",
+            // oRequets.Prope = "2",
             oRequets.Wagpe = sWagpe
 
             oModel.create("/StudentSalariesSet", oRequets, {
@@ -180,6 +180,26 @@ sap.ui.define([
                     this._closeBusyFragment();
                 }.bind(this)
             });
-         }  
+         },
+         onSearchSalariesButton: function(oEvent){
+            debugger;
+            var oViewModel = this.getModel('wageRequestListModel');
+            var oFilter = oViewModel.getProperty('/wageSearchRequest');
+
+            // var sDateValue = oFilter.Wagpe;
+            // if (sDateValue) {
+
+            //     var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "MM-y" }).parse(sDateValue);
+            //     var sFormattedDate = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyymm" }).format(dateFormat);
+            //     oFilter.Wagpe = sFormattedDate;
+            // }
+        
+            oFilter.Prope = "";
+        
+            var aFilters = this._getFilters(oFilter);
+        
+            var oTable = this.getView().byId('idSalariesSetTable') || sap.ui.getCore().byId('idSalariesSetTable');
+            oTable.getBinding('items').filter(aFilters, "Application");
+         }
 	});
 });

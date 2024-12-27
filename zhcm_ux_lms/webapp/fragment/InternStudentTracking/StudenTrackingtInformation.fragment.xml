@@ -5,14 +5,14 @@
             <StandardListItem title="{Icoml} - {Inclot}" />
         </List>
     </VBox>
-    <Table id="idProductsTable" inset="false" items="{internStudentListModel>/internTechnicalRequest}" growing="true" growingScrollToLoad="true">
+    <Table id="idProductsTable" inset="false" items="{internStudentListModel>/internTechnicalRequest}" growing="true" growingScrollToLoad="true" class="sapUiSmallMarginTopBottom" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>
-                    <Title text="{i18n>INFO}" level="H2"/>
+                    <Title text="Teknik Değerlendirme Bilgileri" level="H2"/>
                     <ToolbarSpacer />
                     <Button text="Sorgula" press=".getTechnicalList" />
-                    <Button text="Ekle" press=".onAddTechnicalDialog" />
+                    <Button text="Ekle" icon="sap-icon://create" type="Accept" press=".onAddTechnicalDialog" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>

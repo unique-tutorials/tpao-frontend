@@ -34,17 +34,17 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>OR_VORNA}">
                         <f:fields>
-                            <Input value="{internStudentListModel>/selectedInternEmployee/Vorna}" />
+                            <Text text="{internStudentListModel>/selectedInternEmployee/Vorna}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>OR_NACHN}">
                         <f:fields>
-                            <Input value="{internStudentListModel>/selectedInternEmployee/Nachn}" />
+                            <Text text="{internStudentListModel>/selectedInternEmployee/Nachn}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>MENTOR}">
                         <f:fields>
-                            <Input value="{internStudentListModel>/selectedInternEmployee/Mento}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowMentoSearchHelp" />
+                            <Text text="{internStudentListModel>/selectedInternEmployee/Mento}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
@@ -53,17 +53,17 @@
                 <f:formElements>
                     <f:FormElement label="{i18n>Q_UNIT}">
                         <f:fields>
-                            <Input value="{internStudentListModel>/selectedInternEmployee/Orgeh}" />
+                            <Text text="{internStudentListModel>/selectedInternEmployee/Orgeh}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>UNIT}">
                         <f:fields>
-                            <Input value="{internStudentListModel>/selectedInternEmployee/Orgtx}" />
+                            <Text text="{internStudentListModel>/selectedInternEmployee/Orgtx}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>PERSK}">
                         <f:fields>
-                            <Input value="{internStudentListModel>/selectedInternEmployee/Ptext}" />
+                            <Text text="{internStudentListModel>/selectedInternEmployee/Ptext}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>

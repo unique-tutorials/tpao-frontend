@@ -42,7 +42,7 @@
                                 <content>
                                     <Title level="H2"/>
                                     <ToolbarSpacer />
-                                    <Button text="Oluştur" />
+                                    <Button text="Sorgula" press=".onSearchSalariesButton" />
                                 </content>
                             </OverflowToolbar>
                         </headerToolbar>
@@ -73,6 +73,12 @@
                                 <Text text="{i18n>EXTRA_DAYS}"/>
                             </Column>
                             <Column>
+                                <Text text="Hangi Hesaba"/>
+                            </Column>
+                            <Column>
+                                <Text text="Ödeme Türü"/>
+                            </Column>
+                            <Column>
                                 <Text text="{i18n>TO_SENT}"/>
                             </Column>
                             <Column>
@@ -97,6 +103,8 @@
                                     <Text text="{Totwg}" />
                                     <Text text="{Waers}" />
                                     <Text text="{Extda}" />
+                                    <Text text="{Wacstx}" />
+                                    <Text text="{Payttx}" />
                                     <CheckBox selected="{Sent}" />
                                     <CheckBox selected="{Paid}" />
                                     <Button text="{i18n>SEND}" press=".onSendSalariesButtonPress" type="Emphasized"/>
@@ -104,8 +112,8 @@
                                         <menu>
                                             <Menu>
                                                 <MenuItem
-                                                    text="{i18n>CREATE}"
-                                                    icon="sap-icon://account"
+                                                    text="{i18n>EDIT}"
+                                                    icon="sap-icon://edit"
                                                     press=".onSalariesCreateDialog"
                                                 />
                                                 <!-- <MenuItem

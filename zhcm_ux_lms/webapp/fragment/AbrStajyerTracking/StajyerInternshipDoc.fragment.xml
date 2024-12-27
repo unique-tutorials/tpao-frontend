@@ -9,8 +9,8 @@
             <Button
                 text="{i18n>ADD_ATTACHMENT}"
                 cd:mdl ="attachmentButton"
-                icon="sap-icon://attachment"
-                type="Emphasized"
+                icon="sap-icon://create"
+                type="Accept"
                 press="onCreateAttachmentButtonPress"
                 ariaDescribedBy="acceptButtonDescription genericButtonDescription"
                 enabled="{= ${requestStajyerListModel>/status} ? false : true}"

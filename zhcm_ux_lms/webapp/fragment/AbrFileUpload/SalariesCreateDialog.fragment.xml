@@ -13,7 +13,25 @@
             <f:formContainers>
                 <f:FormContainer>
                     <f:formElements>
-                      
+                        <f:FormElement label="{i18n>EXTRA_DAYS}">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Extda}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Ödeme Türü">
+                            <f:fields>
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytt' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Paytt}">
+                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                </ComboBox>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Öğrencinin Hangi Hesabına">
+                            <f:fields>
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Wacst' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Wacst}">
+                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                </ComboBox>
+                            </f:fields>
+                        </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_NUMBER}">
                             <f:fields>
                                 <Input value="{wageRequestListModel>/salaryCreateList/Pernr}" enabled="false" />
@@ -47,11 +65,6 @@
                         <f:FormElement label="{i18n>CURRENCY}">
                             <f:fields>
                                 <Input value="{wageRequestListModel>/salaryCreateList/Waers}" enabled="false" />
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>EXTRA_DAYS}">
-                            <f:fields>
-                                <Input value="{wageRequestListModel>/salaryCreateList/Extda}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
