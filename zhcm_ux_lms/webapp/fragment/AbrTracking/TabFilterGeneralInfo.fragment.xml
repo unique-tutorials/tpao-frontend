@@ -267,7 +267,7 @@
                             <CheckBox selected="{requestListModel>/generalEmployee/Salpa}"/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>STATIONERY_IS_PAID}">
+                    <f:FormElement label="{i18n>STATIONERY_IS_PAID}" visible="{requestListModel>/paidVisible}" >
                         <f:fields>
                             <CheckBox selected="{requestListModel>/generalEmployee/Stapa}" />
                         </f:fields>

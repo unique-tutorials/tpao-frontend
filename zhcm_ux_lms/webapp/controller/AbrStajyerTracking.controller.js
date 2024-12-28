@@ -22,7 +22,7 @@ sap.ui.define([
             var oViewModel = new JSONModel();
             this.setModel(oViewModel, "requestStajyerListModel");
             this._initiateModel();
-            this.getRouter().getRoute("AbrTracking").attachPatternMatched(this._onRequestListMatched, this);
+            this.getRouter().getRoute("AbrStajyerTracking").attachPatternMatched(this._onRequestListMatched, this);
 
         },
         _onRequestListMatched: function (oEvent) {
@@ -52,6 +52,7 @@ sap.ui.define([
                     endda: new Date(today.getFullYear(), today.getMonth() + 1, 0)
                  },
                 batchApprovalRequest:{},
+                mentoTypeList:{}
             });
 
         },
@@ -732,6 +733,44 @@ sap.ui.define([
                 error: function (oError) {
                     debugger;
                 }.bind(this)
+            });
+        },
+        onShowMentoSearchHelp: function () {
+            var oViewModel = this.getModel("requestStajyerListModel"),
+              sPernr = oViewModel.getProperty("/newNumberStajyerRequest/Pernr");
+            this._getMentoTypeList(sPernr);
+          },
+          _getMentoTypeList: function (sPernr) {
+            debugger;
+            if (!sPernr) {
+              this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED"), "E");
+              return;
+            }
+            var oModel = this.getModel(),
+              oViewModel = this.getModel("requestStajyerListModel"),
+              aFilters = [];
+            // oViewModel.setProperty("/absence", {});
+            this._openBusyFragment("READ_DATA");
+            aFilters.push(new Filter("Id", FilterOperator.EQ, "Mento"));
+            aFilters.push(new Filter("Key", FilterOperator.EQ, sPernr));
+            oModel.read("/ValueHelpSet", {
+              filters: aFilters,
+              success: function (oData) {
+                oViewModel.setProperty("/mentoTypeList", oData.results);
+                console.log("Data loaded successfully", oData);
+                this._closeBusyFragment();
+                if (!this._oMentoSearchHelpDialog) {
+                  this._oMentoSearchHelpDialog = sap.ui.xmlfragment(
+                    "zhcm_ux_lms_abr.fragment.AbrStajyerTracking.MentoSearchHelpDialog",
+                    this
+                  );
+                  this.getView().addDependent(this._oMentoSearchHelpDialog);
+                }
+                this._oMentoSearchHelpDialog.open();
+              }.bind(this),
+              error: function () {
+                this._closeBusyFragment();
+              }.bind(this),
             });
         }
     });

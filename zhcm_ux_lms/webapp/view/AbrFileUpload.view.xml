@@ -29,6 +29,7 @@
                                             class="sapUiSmallMarginBottom" />
                                         </fb:control>
                                     </fb:FilterGroupItem>
+                                 
                                 </fb:filterGroupItems>
                             </fb:FilterBar>
                         </f:content>
@@ -36,10 +37,17 @@
                 </f:header>
                 <f:content>
                     <Table id="idSalariesSetTable" inset="false" items="{/StudentSalariesSet}">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                    <Title level="H2"/>
+                                    <ToolbarSpacer />
+                                    <Button text="Sorgula" press=".onSearchSalariesButton" />
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
                         <columns>
-                            <Column>
-                                <Text text="{i18n>RESTRICTED_SALARY}"/>
-                            </Column>
+                       
                             <Column>
                                 <Text text="{i18n>STUDENT_NUMBER}"/>
                             </Column>
@@ -47,10 +55,16 @@
                                 <Text text="{i18n>OR_ENAME}"/>
                             </Column>
                             <Column>
+                                <Text text="{i18n>STATIONARY}"/>
+                            </Column>
+                            <Column>
                                 <Text text="{i18n>WAGE}"/>
                             </Column>
                             <Column>
-                                <Text text="{i18n>STATIONARY}"/>
+                                <Text text="{i18n>RESTRICTED_SALARY}"/>
+                            </Column>
+                            <Column>
+                                <Text text="Toplam Maaş"/>
                             </Column>
                             <Column>
                                 <Text text="{i18n>CURRENCY}"/>
@@ -59,7 +73,16 @@
                                 <Text text="{i18n>EXTRA_DAYS}"/>
                             </Column>
                             <Column>
+                                <Text text="Hangi Hesaba"/>
+                            </Column>
+                            <Column>
+                                <Text text="Ödeme Türü"/>
+                            </Column>
+                            <Column>
                                 <Text text="{i18n>TO_SENT}"/>
+                            </Column>
+                            <Column>
+                                <Text text="Ödendi"/>
                             </Column>
                             <Column>
                                 <Text text="{i18n>SEND}"/>
@@ -72,21 +95,25 @@
                         <items>
                             <ColumnListItem vAlign="Middle" type="Navigation" >
                                 <cells>
-                                    <Text text="{Consa}" />
                                     <Text text="{Pernr}" />
                                     <Text text="{Ename}" />
-                                    <Text text="{Salry}" />
                                     <Text text="{Stafe}" />
+                                    <Text text="{Salry}" />
+                                    <Text text="{Consa}" />
+                                    <Text text="{Totwg}" />
                                     <Text text="{Waers}" />
                                     <Text text="{Extda}" />
+                                    <Text text="{Wacstx}" />
+                                    <Text text="{Payttx}" />
                                     <CheckBox selected="{Sent}" />
+                                    <CheckBox selected="{Paid}" />
                                     <Button text="{i18n>SEND}" press=".onSendSalariesButtonPress" type="Emphasized"/>
                                     <MenuButton icon="sap-icon://settings"  type="Accept">
                                         <menu>
                                             <Menu>
                                                 <MenuItem
-                                                    text="{i18n>CREATE}"
-                                                    icon="sap-icon://account"
+                                                    text="{i18n>EDIT}"
+                                                    icon="sap-icon://edit"
                                                     press=".onSalariesCreateDialog"
                                                 />
                                                 <!-- <MenuItem

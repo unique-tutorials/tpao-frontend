@@ -3,15 +3,13 @@
     xmlns:core="sap.ui.core"
     xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 
-    <VBox class="sapUiSmallMarginTopBottom">
-        <MessageStrip class="sapUiSmallMarginBottom" text="Dolduracağınız bu anketin amacı Biz Bize Kariyer Programı Kapsamında gelişimine destek verdiğiniz
+    <MessageStrip class="sapUiSmallMarginBottom" text="Dolduracağınız bu anketin amacı Biz Bize Kariyer Programı Kapsamında gelişimine destek verdiğiniz
         stajerlerinizi değerlendirmek ve Biz Bize Kariyer programını geliştir olup, dolduracağınız anket bizim için
         önem arz etmektedir." type="Information" showIcon="true">
-        </MessageStrip>
-    </VBox>
+    </MessageStrip>
     <VBox>
-        <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.HighSchoolScoreScaleTable" type="XML" />
-        <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.UniversityScoreScaleTable" type="XML" />
+        <!-- <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.HighSchoolScoreScaleTable" type="XML" />
+        <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.InternStudentTracking.UniversityScoreScaleTable" type="XML" /> -->
         <Table inset="false" items="{internStudentListModel>/evaluationHighList/evaluationData}" growing="true" growingScrollToLoad="true">
             <headerToolbar>
                 <OverflowToolbar>

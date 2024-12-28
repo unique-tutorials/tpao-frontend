@@ -4,18 +4,29 @@
     xmlns:core="sap.ui.core">
     <Dialog title="Maaş Oluştur" contentWidth="40%" verticalScrolling="false">
         <f:Form editable="true">
-            <!-- <f:title>
-                <core:Title text="Address" />
-            </f:title> -->
             <f:layout>
                 <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
             </f:layout>
             <f:formContainers>
                 <f:FormContainer>
                     <f:formElements>
-                        <f:FormElement label="{i18n>RESTRICTED_SALARY}">
+                        <f:FormElement label="{i18n>EXTRA_DAYS}">
                             <f:fields>
-                                <Input value="{wageRequestListModel>/salaryCreateList/Consa}" />
+                                <Input value="{wageRequestListModel>/salaryCreateList/Extda}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Ödeme Türü">
+                            <f:fields>
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytt' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Paytt}">
+                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                </ComboBox>
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Öğrencinin Hangi Hesabına">
+                            <f:fields>
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Wacst' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Wacst}">
+                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                </ComboBox>
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_NUMBER}">
@@ -28,24 +39,29 @@
                                 <Input value="{wageRequestListModel>/salaryCreateList/Ename}" enabled="false" />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="{i18n>WAGE}">
-                            <f:fields>
-                                <Input value="{wageRequestListModel>/salaryCreateList/Salry}" />
-                            </f:fields>
-                        </f:FormElement>
                         <f:FormElement label="{i18n>STATIONARY}">
                             <f:fields>
                                 <Input value="{wageRequestListModel>/salaryCreateList/Stafe}" enabled="false" />
                             </f:fields>
                         </f:FormElement>
+                        <f:FormElement label="{i18n>WAGE}">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Salry}" enabled="false" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>RESTRICTED_SALARY}">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Consa}" enabled="false" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="Toplam Maaş">
+                            <f:fields>
+                                <Input value="{wageRequestListModel>/salaryCreateList/Totwg}" enabled="false" />
+                            </f:fields>
+                        </f:FormElement>
                         <f:FormElement label="{i18n>CURRENCY}">
                             <f:fields>
                                 <Input value="{wageRequestListModel>/salaryCreateList/Waers}" enabled="false" />
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>EXTRA_DAYS}">
-                            <f:fields>
-                                <Input value="{wageRequestListModel>/salaryCreateList/Extda}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>

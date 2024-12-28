@@ -35,12 +35,12 @@
                     <f:formElements>
                         <f:FormElement label="{i18n>OR_VORNA}">
                             <f:fields>
-                                <Input value="{requestStajyerListModel>/selectedStajyer/Vorna}" />
+                                <Text text="{requestStajyerListModel>/selectedStajyer/Vorna}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>OR_NACHN}">
                             <f:fields>
-                                <Input value="{requestStajyerListModel>/selectedStajyer/Nachn}" />
+                                <Text text="{requestStajyerListModel>/selectedStajyer/Nachn}" />
                             </f:fields>
                         </f:FormElement>
                         <!-- <f:FormElement label="{i18n>REGISTRATION_NUMBER}">
@@ -59,39 +59,22 @@
             </f:formContainers>
             <f:FormContainer>
                 <f:formElements>
-                    <!-- <f:FormElement label="{i18n>QUOTA_TYPE}">
-                        <f:fields>
-                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Quotx' } ] }" selectedKey="{requestStajyerListModel>/selectedStajyer/Quotx}">
-                                <core:ListItem key="{Key}" text="{Value}"/>
-                            </ComboBox>
-                            <Input value="{requestStajyerListModel>/selectedStajyer/Quotx}" />
-                            <Select forceSelection="false" selectedKey="{requestStajyerListModel>/selectedStajyer/Quotx}" width="100%" items="{  
-                        path:'/ValueHelpSet',
-                        filters : [
-                            { path : 'Id', operator : 'EQ', value1 : 'Quoty'}
-                        ]
-                    }">
-                                <core:Item key="{Key}" text="{Value}"/>
-                            </Select>
-                        </f:fields>
-                    </f:FormElement> -->
                     <f:FormElement label="{i18n>ADDRESS}">
                         <f:fields>
-                            <Input value="{requestStajyerListModel>/selectedStajyer/Adres}" />
+                            <Text text="{requestStajyerListModel>/selectedStajyer/Adres}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>STUDENT_GENDER}">
                         <f:fields>
-                            <Text class="textClass" text="{
+                            <Text text="{
                                 path: 'requestStajyerListModel>/selectedStajyer/Gesch',
                                 formatter: '.genderFormatter'
                             }" />
-                                <Input enabled="false" />
                         </f:fields>
                     </f:FormElement>
                      <f:FormElement label="{i18n>STUDENT_PERSK}">
                         <f:fields>
-                            <Input enabled="false" value="{requestStajyerListModel>/selectedStajyer/Ptext}" />
+                            <Text text="{requestStajyerListModel>/selectedStajyer/Ptext}" />
                         </f:fields>
                     </f:FormElement>
                 </f:formElements>
