@@ -84,9 +84,9 @@
                             <Column>
                                 <Text text="Ödendi"/>
                             </Column>
-                            <Column>
+                            <!-- <Column>
                                 <Text text="{i18n>SEND}"/>
-                            </Column>
+                            </Column> -->
                             <Column>
                                 <Text text="{i18n>ACTION_LIST}"/>
                             </Column>
@@ -107,23 +107,7 @@
                                     <Text text="{Payttx}" />
                                     <CheckBox selected="{Sent}" />
                                     <CheckBox selected="{Paid}" />
-                                    <Button text="{i18n>SEND}" press=".onSendSalariesButtonPress" type="Emphasized"/>
-                                    <MenuButton icon="sap-icon://settings"  type="Accept">
-                                        <menu>
-                                            <Menu>
-                                                <MenuItem
-                                                    text="{i18n>EDIT}"
-                                                    icon="sap-icon://edit"
-                                                    press=".onSalariesCreateDialog"
-                                                />
-                                                <!-- <MenuItem
-                                                    text="İletişim Bilgileri"
-                                                    icon="sap-icon://call"
-                                                    press="openGuarantorContactDialog"
-                                                /> -->
-                                            </Menu>
-                                        </menu>
-                                    </MenuButton>   
+                                    <Button icon="sap-icon://menu" type="Accept" press=".onSalariesActions" />
                                 </cells>
                             </ColumnListItem>
                         </items>

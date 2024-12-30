@@ -180,7 +180,7 @@ sap.ui.define([
         },
         onCloseUploadDialog: function () {
             this._oUploadAttachmentDialog.close();
-        },
+        }, 
         onAttachmentUploadPress: function () {
             var oViewModel = this.getModel("requestListModel");
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
@@ -228,12 +228,12 @@ sap.ui.define([
             var oModel = this.getModel();
             var oViewModel = this.getView().getModel("requestListModel");
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-            var sPartner = oViewModel.getProperty("/financialEmployee/Partner");
-            if (!sPartner) {
-                sap.m.MessageToast.show("Lütfen bir Partner No giriniz.");
-                return;
-            }
-            var sDomesticLanguageInfoPath = oModel.createKey("/DomesticLanguageSchoolInformationSet", { Pernr: sPernr, Partner: sPartner });
+            // var sPartner = oViewModel.getProperty("/financialEmployee/Partner");
+            // if (!sPartner) {
+            //     sap.m.MessageToast.show("Lütfen bir Partner No giriniz.");
+            //     return;
+            // }
+            var sDomesticLanguageInfoPath = oModel.createKey("/DomesticLanguageSchoolInformationSet", { Pernr: sPernr});
 
             oModel.read(sDomesticLanguageInfoPath, {
                 success: function (oData) {
@@ -251,12 +251,12 @@ sap.ui.define([
             var oModel = this.getModel();
             var oViewModel = this.getView().getModel("requestListModel");
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-            var sPartner = oViewModel.getProperty("/abroadEmployee/Partner");
-            if (!sPartner) {
-                sap.m.MessageToast.show("Lütfen bir Partner No giriniz.");
-                return;
-            }
-            var sForeignInfoPath = oModel.createKey("/LanguageSchoolAbroadSet", { Pernr: sPernr, Partner: sPartner });
+            // var sPartner = oViewModel.getProperty("/abroadEmployee/Partner");
+            // if (!sPartner) {
+            //     sap.m.MessageToast.show("Lütfen bir Partner No giriniz.");
+            //     return;
+            // }
+            var sForeignInfoPath = oModel.createKey("/LanguageSchoolAbroadSet", { Pernr: sPernr});
 
             oModel.read(sForeignInfoPath, {
                 success: function (oData) {
@@ -705,11 +705,11 @@ sap.ui.define([
             var oModel = this.getModel();
             var oViewModel = this.getView().getModel("requestListModel");
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-            var sPartner = oViewModel.getProperty("/masterEmployee/Partner");
-            if (!sPartner) {
-                sap.m.MessageToast.show("Lütfen bir Partner No giriniz.");
-                return;
-            }
+            // var sPartner = oViewModel.getProperty("/masterEmployee/Partner");
+            // if (!sPartner) {
+            //     sap.m.MessageToast.show("Lütfen bir Partner No giriniz.");
+            //     return;
+            // }
             var sForeignInfoPath = oModel.createKey("/MasterSchoolInformationSet", { Pernr: sPernr, Partner: sPartner });
 
             oModel.read(sForeignInfoPath, {
@@ -869,23 +869,23 @@ sap.ui.define([
             readData(sSchoolInfoPath, "/schoolEmployee", "Okul bilgileri alınamadı.");
 
             // Mali / Yurtiçi Dil bilgileri al
-            var sLanguageSchoolInfoPath = oModel.createKey("/DomesticLanguageSchoolInformationSet", { Pernr: sPernr, Partner: "PARTNER01" });
+            var sLanguageSchoolInfoPath = oModel.createKey("/DomesticLanguageSchoolInformationSet", { Pernr: sPernr });
             readData(sLanguageSchoolInfoPath, "/financialEmployee", "Dil okul bilgileri alınamadı.");
 
             // Mali / YurtDışı Dil bilgileri al
-            var sAbroadInfoPath = oModel.createKey("/LanguageSchoolAbroadSet", { Pernr: sPernr, Partner: "PARTNER01" });
+            var sAbroadInfoPath = oModel.createKey("/LanguageSchoolAbroadSet", { Pernr: sPernr });
             readData(sAbroadInfoPath, "/abroadEmployee", "Yurt dışı dil bilgileri alınamadı.");
 
             // Master Okul bilgileri al
-            var sMasterInfoPath = oModel.createKey("/MasterSchoolInformationSet", { Pernr: sPernr, Partner: "PARTNER01" });
+            var sMasterInfoPath = oModel.createKey("/MasterSchoolInformationSet", { Pernr: sPernr });
             readData(sMasterInfoPath, "/masterEmployee", "Master okul bilgileri alınamadı.");
 
             // Öğrenci Yurt içi Döviz Hesap bilgileri al
-            var sDomesticAccountInfoPath = oModel.createKey("/ForeignCurrencyAccountSet", { Pernr: sPernr, Partner: "PARTNER01" });
+            var sDomesticAccountInfoPath = oModel.createKey("/ForeignCurrencyAccountSet", { Pernr: sPernr });
             readData(sDomesticAccountInfoPath, "/domesticAccount", "Yurt içi Döviz Hesap bilgileri alınamadı.");
 
             // Diğer Hesap bilgileri al
-            var sotherAccountInfoPath = oModel.createKey("/OtherAccountInformationSet", { Pernr: sPernr, Partner: "PARTNER01" });
+            var sotherAccountInfoPath = oModel.createKey("/OtherAccountInformationSet", { Pernr: sPernr });
             readData(sotherAccountInfoPath, "/otherAccount", "Diğer Hesap bilgileri alınamadı.");
 
             // Okul Ücret bilgileri al BAK
@@ -897,11 +897,11 @@ sap.ui.define([
             // readData(sGeneralExpendInfoPath, "/expendInfoList", "Genel Harcama bilgileri alınamadı.");
 
             // Öğrenci Yurt içi Hesap bilgileri al
-            var sDomesticEmployeeInfoPath = oModel.createKey("/StudentDomesticAccountInformationSet", { Pernr: sPernr, Partner: "PARTNER01" });
+            var sDomesticEmployeeInfoPath = oModel.createKey("/StudentDomesticAccountInformationSet", { Pernr: sPernr });
             readData(sDomesticEmployeeInfoPath, "/domesticEmployee", "Öğrenci Yurt içi bilgileri alınamadı.");
 
             // Öğrenci Yurt dışı Hesap bilgileri al
-            var sAbroadOtherEmployeeInfoPath = oModel.createKey("/AbroadOtherAccountInformationSet", { Pernr: sPernr, Partner: "PARTNER01" });
+            var sAbroadOtherEmployeeInfoPath = oModel.createKey("/AbroadOtherAccountInformationSet", { Pernr: sPernr });
             readData(sAbroadOtherEmployeeInfoPath, "/abroadOtherEmployee", "Öğrenci Yurt dışı bilgileri alınamadı.");
 
             // Kimlik bilgilerini al
