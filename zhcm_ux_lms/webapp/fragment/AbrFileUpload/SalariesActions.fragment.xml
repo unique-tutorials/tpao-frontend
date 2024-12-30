@@ -1,0 +1,10 @@
+<c:FragmentDefinition xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<ActionSheet title="{i18n>ACTION_LIST}" showCancelButton="false" placement="Auto">
+		<Button icon="sap-icon://paper-plane" cd:actionId="Send" text="{i18n>FI_SEND}" press=".onActionSelected" type="Send" visible="{= !${wageRequestListModel>/request/isSent} }" />
+		<Button icon="sap-icon://display" cd:actionId="Display" text="{i18n>DISPLAY_ACTION}" press=".onActionSelected" type="Default" />
+		<Button icon="sap-icon://edit" cd:actionId="Edit" text="{i18n>EDIT_ACTION}" press="onActionSelected" type="Critical" />
+		<!-- <Button icon="sap-icon://delete" cd:actionId="Delete" text="{i18n>DELETE_ACTION}" press="onActionSelected" type="Reject"  visible="{= !${expensePaymentListModel>/request/isSent} }" /> -->
+	</ActionSheet>
+</c:FragmentDefinition>

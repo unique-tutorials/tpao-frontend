@@ -12,19 +12,19 @@
                     <f:formElements>
                         <f:FormElement label="{i18n>EXTRA_DAYS}">
                             <f:fields>
-                                <Input value="{wageRequestListModel>/salaryCreateList/Extda}" />
+                                <Input value="{wageRequestListModel>/salaryCreateList/Extda}" enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="Ödeme Türü">
                             <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytt' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Paytt}">
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytt' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Paytt}" enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}">
                                     <core:ListItem key="{Key}" text="{Value}"/>
                                 </ComboBox>
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="Öğrencinin Hangi Hesabına">
                             <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Wacst' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Wacst}">
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Wacst' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Wacst}" enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}">
                                     <core:ListItem key="{Key}" text="{Value}"/>
                                 </ComboBox>
                             </f:fields>
