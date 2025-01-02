@@ -1248,10 +1248,8 @@ sap.ui.define([
         // },
 
         onSendExpendButtonPress: function (oEvent) {
-            debugger;
             var oModel = this.getModel();
             var oSource = oEvent.getSource();
-            // oViewModel = this.getModel("requestListModel")
             var expendInfoList = oSource.getBindingContext("requestListModel").getObject();
             var oUrlParameters = {
                 "Pernr": expendInfoList.Pernr,
@@ -1266,45 +1264,75 @@ sap.ui.define([
                 "Whiac": expendInfoList.Whiac,
                 "Wacst": expendInfoList.Wacst,
             };
-
-            this._openBusyFragment("TRAINING_PARTICIPANT_SAVE_OPERATION", []);
-            oModel.callFunction("/SetApproved", {
-                method: "POST",
-                urlParameters: oUrlParameters,
-                success: function (oData, oResponse) {
-                    // that.getModel("requestListModel").setProperty("/expendInfoList");
-                    this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
-                    this._closeBusyFragment();
-                }.bind(this),
-                error: function (oError) {
-                    debugger;
-                }.bind(this)
+      
+            Swal.fire({
+                title: this.getText("ARE_YOU_SURE"),
+                text: this.getText("DO_YOU_CONFIRM_THIS_ACTION"),
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: this.getText("YES"),
+                cancelButtonText: this.getText("NO"),
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this._openBusyFragment("TRAINING_PARTICIPANT_SAVE_OPERATION", []);
+                    oModel.callFunction("/SetApproved", {
+                        method: "POST",
+                        urlParameters: oUrlParameters,
+                        success: function (oData, oResponse) {
+                            this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
+                            this._closeBusyFragment();
+                        }.bind(this),
+                        error: function (oError) {
+                            console.error("Error:", oError);
+                            this._closeBusyFragment();
+                        }.bind(this)
+                    });
+                } else {
+                    this._sweetToast(this.getText("ACTION_CANCELLED"), "I");
+                }
             });
         },
 
         onSendSchoolFeeButtonPress: function (oEvent) {
             var oModel = this.getModel();
             var oSource = oEvent.getSource();
-            // oViewModel = this.getModel("requestListModel")
-            var expendInfoList = oSource.getBindingContext("requestListModel").getObject();
+            var schoolInfoList = oSource.getBindingContext("requestListModel").getObject();
+        
             var oUrlParameters = {
-                "Pernr": expendInfoList.Pernr,
-                "Kamno": expendInfoList.Kamno,
-                "Wagpe": expendInfoList.Wagpe
+                "Pernr": schoolInfoList.Pernr,
+                "Kamno": schoolInfoList.Kamno,
+                "Wagpe": schoolInfoList.Wagpe
             };
-
-            this._openBusyFragment("TRAINING_PARTICIPANT_SAVE_OPERATION", []);
-            oModel.callFunction("/SentPayEducation", {
-                method: "POST",
-                urlParameters: oUrlParameters,
-                success: function (oData, oResponse) {
-                    // that.getModel("requestListModel").setProperty("/expendInfoList");
-                    this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
-                    this._closeBusyFragment();
-                }.bind(this),
-                error: function (oError) {
-                    debugger;
-                }.bind(this)
+        
+            Swal.fire({
+                title: this.getText("ARE_YOU_SURE"),
+                text: this.getText("DO_YOU_CONFIRM_THIS_ACTION"),
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: this.getText("YES"),
+                cancelButtonText: this.getText("NO")
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this._openBusyFragment("TRAINING_PARTICIPANT_SAVE_OPERATION", []);
+                    oModel.callFunction("/SentPayEducation", {
+                        method: "POST",
+                        urlParameters: oUrlParameters,
+                        success: function (oData, oResponse) {
+                            this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
+                            this._closeBusyFragment();
+                        }.bind(this),
+                        error: function (oError) {
+                            debugger;
+                            this._closeBusyFragment(); 
+                        }.bind(this)
+                    });
+                } else {
+                    this._sweetToast(this.getText("ACTION_CANCELLED"), "I");
+                }
             });
         },
         clearFormDialog: function () {
