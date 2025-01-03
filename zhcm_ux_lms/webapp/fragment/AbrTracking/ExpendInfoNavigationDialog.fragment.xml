@@ -6,7 +6,7 @@
     <Dialog title="Genel Harcama Faturası" contentWidth="40%" verticalScrolling="false">
         <ScrollContainer height="100%" width="100%" vertical="true" focusable="true">
             <VBox height="400px">
-                <f:Form editable="true">
+                <f:Form editable="true" id="idExpendForm">
                     <f:layout>
                         <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
                     </f:layout>
@@ -15,18 +15,17 @@
                             <f:formElements>
                                 <f:FormElement label="{i18n>INVOICE_NUMBER}">
                                     <f:fields>
-                                        <Input value="{requestListModel>/expendInfoDialogRequest/Payno}" enabled="{requestListModel>/aplicationSetting/enabled}"/>
+                                        <Input value="{requestListModel>/expendInfoDialogRequest/Payno}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true"/>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>ABCENCE_DATE}">
                                     <f:fields>
                                         <DatePicker value="{path: 'requestListModel>/expendInfoDialogRequest/Paydt', 
                                         type: 'sap.ui.model.type.Date', 
-                                        formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}" enabled="{requestListModel>/aplicationSetting/enabled}">
+                                        formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true">
                                         </DatePicker>
                                     </f:fields>
                                 </f:FormElement>
-                             
                             </f:formElements>
                         </f:FormContainer>
                         <f:FormContainer>
@@ -37,7 +36,8 @@
                                             items="{ path:'/ValueHelpSet', filters:[{path: 'Id', operator: 'EQ', value1: 'Paytp'}] }" 
                                             selectedKey="{requestListModel>/expendInfoDialogRequest/Paytp}" 
                                             enabled="{requestListModel>/aplicationSetting/enabled}"
-                                            change=".onPaymentTypeChange">
+                                            change=".onPaymentTypeChange"
+                                            required="true">
                                             <core:ListItem additionalText="{Query}" key="{Key}" text="{Key}-{Value}" />
                                         </ComboBox>
                                     </f:fields>
@@ -47,7 +47,7 @@
                                     <f:fields>
                                         <ComboBox 
                                             items="{ path:'/ValueHelpSet', filters:[{path: 'Id', operator: 'EQ', value1: 'Wacst'}] }" 
-                                            selectedKey="{requestListModel>/expendInfoDialogRequest/Wacst}" enabled="{requestListModel>/aplicationSetting/enabled}">
+                                            selectedKey="{requestListModel>/expendInfoDialogRequest/Wacst}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true">
                                             <core:ListItem key="{Key}" text="{Value}" />
                                         </ComboBox>
                                     </f:fields>
@@ -56,7 +56,7 @@
                                 <f:FormElement label="{i18n>SELLER_NUMBER}" visible="{requestListModel>/isSellerVisible}">
                                     <f:fields>
                                         <Input 
-                                        value="{requestListModel>/expendInfoDialogRequest/Parno}" enabled="{requestListModel>/aplicationSetting/enabled}" />
+                                        value="{requestListModel>/expendInfoDialogRequest/Parno}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true" />
                                     </f:fields>
                                 </f:FormElement>
                                 <!-- <f:FormElement label="Hangi Hesaba">
@@ -69,7 +69,7 @@
                                     <f:fields>
                                         <ComboBox items="{ path:'/ValueHelpSet' , length: '1000', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" 
                                         selectedKey="{requestListModel>/expendInfoDialogRequest/Waers}"
-                                        enabled="{requestListModel>/aplicationSetting/enabled}">
+                                        enabled="{requestListModel>/aplicationSetting/enabled}" required="true">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </f:fields>
@@ -78,19 +78,19 @@
                                     <f:fields>
                                         <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Mwskz' } ] }" 
                                         selectedKey="{requestListModel>/expendInfoDialogRequest/Mwskz}"
-                                        enabled="{requestListModel>/aplicationSetting/enabled}">
+                                        enabled="{requestListModel>/aplicationSetting/enabled}" required="true">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>EXPLANATION}">
                                     <f:fields>
-                                        <Input value="{requestListModel>/expendInfoDialogRequest/Descp}" enabled="{requestListModel>/aplicationSetting/enabled}" />
+                                        <Input value="{requestListModel>/expendInfoDialogRequest/Descp}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true" />
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>INVOICE_TOTAL}">
                                     <f:fields>
-                                        <Input value="{requestListModel>/expendInfoDialogRequest/Payam}" enabled="{requestListModel>/aplicationSetting/enabled}" />
+                                        <Input value="{requestListModel>/expendInfoDialogRequest/Payam}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true" />
                                     </f:fields>
                                 </f:FormElement>
                                 <f:FormElement label="{i18n>ADD_INV_DOC}">

@@ -4,7 +4,7 @@
     xmlns:core="sap.ui.core">
     <Dialog title="{i18n>SCHOOL_FEE_INFORMATION}" contentWidth="40%" verticalScrolling="false">
         <VBox>
-            <f:Form editable="true">
+            <f:Form editable="true" id="idSchoolForm">
                 <f:layout>
                     <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
                 </f:layout>
@@ -23,39 +23,39 @@
                                             },
                                             pattern: 'MM-y'
                                         }
-                                    }" enabled="{requestListModel>/aplicationSetting/enabled}" />
+                                    }" enabled="{requestListModel>/aplicationSetting/enabled}" required="true" />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>DATE}">
                                 <f:fields>
                                     <DatePicker value="{path: 'requestListModel>/schoolInfoDialogRequest/Dates', 
                                     type: 'sap.ui.model.type.Date', 
-                                    formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}" enabled="{requestListModel>/aplicationSetting/enabled}">
+                                    formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true">
                                     </DatePicker>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>SCHOOL_FEE}">
                                 <f:fields>
-                                    <Input value="{requestListModel>/schoolInfoDialogRequest/Schpy}" enabled="{requestListModel>/aplicationSetting/enabled}"/>
+                                    <Input value="{requestListModel>/schoolInfoDialogRequest/Schpy}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true"/>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>CURRENCY}">
                                 <f:fields>
-                                    <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/schoolInfoDialogRequest/Waers}" enabled="{requestListModel>/aplicationSetting/enabled}">
+                                    <ComboBox items="{ path:'/ValueHelpSet' , length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{requestListModel>/schoolInfoDialogRequest/Waers}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true">
                                         <core:ListItem key="{Key}" text="{Value}"/>
                                     </ComboBox>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>EXCHANGE_DOCUMENT_NUMBER}">
                                 <f:fields>
-                                    <Input value="{requestListModel>/schoolInfoDialogRequest/Kamno}" enabled="{requestListModel>/aplicationSetting/enabled}"/>
+                                    <Input value="{requestListModel>/schoolInfoDialogRequest/Kamno}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true"/>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>FX_DOC_DATE}">
                                 <f:fields>
                                     <DatePicker value="{path: 'requestListModel>/schoolInfoDialogRequest/Kamdt', 
                                     type: 'sap.ui.model.type.Date', 
-                                    formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}" enabled="{requestListModel>/aplicationSetting/enabled}">
+                                    formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}" enabled="{requestListModel>/aplicationSetting/enabled}" required="true">
                                     </DatePicker>
                                     <!-- <Input value="{requestListModel>/schoolInfoDialogRequest/Kamdt}"/> -->
                                 </f:fields>

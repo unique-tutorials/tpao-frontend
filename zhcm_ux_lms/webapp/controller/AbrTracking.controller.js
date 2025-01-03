@@ -1382,7 +1382,15 @@ sap.ui.define([
             var oRequets = oViewModel.getProperty("/expendInfoDialogRequest");
             oRequets.Pernr = sPernr
             delete oRequets.Kostl
-
+            var oFormToValidate =
+                sap.ui.getCore().byId("idExpendForm") ||
+                this.byId("idExpendForm"),
+                oViewModel = this.getModel("requestListModel"),
+                oModel = this.getModel();
+            if (!this._validateForm(oFormToValidate)) {
+                this._sweetToast(this.getText("FILL_IN_ALL_REQUIRED_FIELDS"), "W");
+                return;
+            }
             oModel.create("/GeneralExpenditureInformationSet", oRequets, {
                 success: function (oData, oResponse) {
                     this.onAttachmentPaymentUploadPress();
@@ -1408,6 +1416,15 @@ sap.ui.define([
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             var oSchoolRequets = oViewModel.getProperty("/schoolInfoDialogRequest");
             oSchoolRequets.Pernr = sPernr
+            var oFormToValidate =
+            sap.ui.getCore().byId("idSchoolForm") ||
+            this.byId("idExpendForm"),
+            oViewModel = this.getModel("requestListModel"),
+            oModel = this.getModel();
+            if (!this._validateForm(oFormToValidate)) {
+                this._sweetToast(this.getText("FILL_IN_ALL_REQUIRED_FIELDS"), "W");
+                return;
+            }
 
             oModel.create("/SchoolWageInformationSet", oSchoolRequets, {
                 success: function (oData, oResponse) {
@@ -1428,7 +1445,7 @@ sap.ui.define([
         },
         onAttachmentUploadComplete: function (oEvent) {
             debugger;
-            var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploader");
+            var oFileUploader = sap.ui.getCore().byId("idAttachmentFileUploaderPayment");
             oFileUploader.destroyHeaderParameters();
             oFileUploader.clear();
             var oViewModel = this.getModel("requestListModel"),
@@ -1479,39 +1496,39 @@ sap.ui.define([
         //     }
         // },
         
-        openGuarantorDialog: function (oEvent) {
+        openGuarantorDialog: function (oGuarandorFormData) {
             debugger;
-            var oSource = oEvent.getSource(),
-            oObject = oSource.getBindingContext("requestListModel").getObject();
             var oViewModel = this.getModel("requestListModel"),
             sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             // var eGuarantorInfoList = oSource.getBindingContext("requestListModel").getObject();
-            this._getGuarantorList(sPernr,oObject.Sirno);
+            this._getGuarantorList(sPernr,oGuarandorFormData.Sirno);
            
         },
-        onSaveGuarantorContact: function () {
+        onSaveGuarantorContact: function (oEvent) {
+            debugger;
             var oModel = this.getModel(),
                 oViewModel = this.getModel("requestListModel");
             // sEntitySet = "/GuarantorInformationSet";
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+            var sSirno = oViewModel.getProperty("/guarantorContactList/Sirno")
             var oSchoolRequets = oViewModel.getProperty("/guarantorContactList");
             oSchoolRequets.Pernr = sPernr,
-                oSchoolRequets.Sirno = "01"
+                oSchoolRequets.Sirno = sSirno
 
             oModel.create("/GuarantorInformationSet", oSchoolRequets, {
                 success: function (oData, oResponse) {
-                    that._sweetToast(that.getText("SAVE_SUCCESSFUL"), "S");
+                    this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
                     // that._oExpendInfoDialog.close();
-                    that.clearFormDialog();
-                    that._closeBusyFragment();
-                },
+                    this.clearFormDialog();
+                    this._closeBusyFragment();
+                }.bind(this),
                 error: function (oError) {
                     this._sweetToast(this.getText("SAVE_ERROR"), "E");
                     this._closeBusyFragment();
                 }.bind(this)
             });
         },
-        _getGuarantorList: function (sPernr,sSirno) {
+        _getGuarantorList: function (sPernr,Sirno) {
             debugger;
             var that = this;
             var sServiceUrl = "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/";
@@ -1523,7 +1540,7 @@ sap.ui.define([
             aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
             aFilters.push(new Filter("Ptype", FilterOperator.EQ, 'LMSABR'));
             aFilters.push(new Filter("Dotyp", FilterOperator.EQ, '1'));
-            aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
+            aFilters.push(new Filter("Sirno", FilterOperator.EQ, Sirno));
 
             oModel.read("/PersonnelAttachmentSet", {
                 filters: aFilters,
@@ -1682,24 +1699,22 @@ sap.ui.define([
         //     });
         // },
 
-        openGuarantorContactDialog:function(oEvent){
+        openGuarantorContactDialog:function(oGuarandorFormData){
             debugger;
-            var oSource = oEvent.getSource(),
-            oViewModel = this.getModel("requestListModel"),
-            sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
-            oObject = oSource.getBindingContext("requestListModel").getObject();
-            this._getGuarantorContactList(oObject);
+            var oViewModel = this.getModel("requestListModel");
+            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+            this._getGuarantorContactList(oGuarandorFormData);
          },
         
-         _getGuarantorContactList:function(oObject){
+         _getGuarantorContactList:function(oGuarandorFormData){
             debugger;
             var that = this;
             var oModel = this.getModel();
             var oViewModel = this.getModel("requestListModel");
             var aFilters = [];
             var sPath = oModel.createKey("/GuarantorInformationSet", {
-                "Pernr": oObject.Pernr,
-                "Sirno": oObject.Sirno,
+                "Pernr": oGuarandorFormData.Pernr,
+                "Sirno": oGuarandorFormData.Sirno,
             });
             // aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
             // aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
@@ -1744,12 +1759,10 @@ sap.ui.define([
             }
         },
 
-        openGuarantorIdentityDialog:function(oEvent){
+        openGuarantorIdentityDialog:function(oGuarandorFormData){
             var oViewModel = this.getModel("requestListModel"),
-                 sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
-                 oSource = oEvent.getSource(),
-                 oObject = oSource.getBindingContext("requestListModel").getObject();
-                 oViewModel.setProperty("/guarantorIdentityList", oObject);
+                 sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+                 oViewModel.setProperty("/guarantorIdentityList", oGuarandorFormData);
             // this._getGuarantorIdentityList(sPernr,oObject.Sirno);
             if (!this._oGuarantorIdentityDialog) {
                 this._oGuarantorIdentityDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrTracking.GuarantorIdentityDialog", this);
@@ -1768,8 +1781,9 @@ sap.ui.define([
                 oViewModel = this.getModel("requestListModel");
             var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
             var oRequets = oViewModel.getProperty("/guarantorIdentityList");
-            oRequets.Pernr = sPernr
-            oRequets.Sirno = "01"
+            var sSirno = oViewModel.getProperty("/guarantorIdentityList/Sirno");
+            oRequets.Pernr = sPernr,
+            oRequets.Sirno = sSirno
             // delete oRequets.Kostl
 
             oModel.create("/GuarantorInformationSet", oRequets, {
@@ -2174,6 +2188,70 @@ sap.ui.define([
             }
             this._oExpendActionDialog.data("formData", oData);
             this._oExpendActionDialog.openBy(oSource);
+        },
+        onGuarantorActions: function (oEvent){
+            debugger;
+            var oViewModel = this.getModel("requestListModel");
+            var oSource = oEvent.getSource();
+            var oData = oSource
+              .getBindingContext("requestListModel")
+              .getObject();
+
+            if (!this._oGuarandorActionDialog) {
+              this._oGuarandorActionDialog = new sap.ui.xmlfragment(
+                "zhcm_ux_lms_abr.fragment.AbrTracking.GuarandorActions",
+                this
+              );
+              this.getView().addDependent(this._oGuarandorActionDialog);
+            }
+            this._oGuarandorActionDialog.data("formData", oData);
+            this._oGuarandorActionDialog.openBy(oSource);
+        },
+        onGuarandorActionSelected: function(oEvent){
+            debugger;
+            var oModel = this.getModel(),
+              oViewModel = this.getModel("requestListModel"),
+              oSource = oEvent.getSource(),
+              sGuarandorAction = oSource.data("actionId"),
+              oGuarandorFormData = oSource.getParent().data("formData");
+            switch (sGuarandorAction) {
+              default:
+                this._getGuarandorObject(oGuarandorFormData, sGuarandorAction);
+                break;
+            }
+        },
+        _getGuarandorObject: function(oGuarandorFormData, sGuarandorAction){
+            debugger;
+            return new Promise(
+              function (resolve, reject) {
+                var oModel = this.getModel();
+                var oViewModel = this.getModel("requestListModel");
+                switch (sGuarandorAction) {
+                  case "Guarandor":
+                    this.openGuarantorDialog(oGuarandorFormData);
+                    // oViewModel.setProperty("/aplicationSetting/enabled", false);
+                    // oViewModel.setProperty("/schoolInfoDialogRequest", oGuarandorFormData);
+                    // this.onAttachmentGuarantorUploadPress(oGuarandorFormData);
+                    oViewModel.setProperty("/busy", true);
+                    break;
+                  case "Contact":
+                    this.openGuarantorContactDialog(oGuarandorFormData);
+                    // oViewModel.setProperty("/aplicationSetting/enabled", false);
+                    // oViewModel.setProperty("/schoolInfoDialogRequest", oGuarandorFormData);
+                    oViewModel.setProperty("/busy", true);
+                    break;
+    
+                  case "Identity":
+                    this.openGuarantorIdentityDialog(oGuarandorFormData);
+                    // oViewModel.setProperty("/aplicationSetting/enabled", true);
+                    // oViewModel.setProperty("/schoolInfoDialogRequest", oGuarandorFormData);
+                    oViewModel.setProperty("/busy", true);
+                    break;
+                  default:
+                }
+                resolve();
+              }.bind(this)
+            );
         },
         onSchoolActions: function (oEvent) {
             debugger;

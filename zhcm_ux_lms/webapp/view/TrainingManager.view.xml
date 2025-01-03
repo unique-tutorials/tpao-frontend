@@ -14,21 +14,21 @@
                             <fb:filterGroupItems>
                                 <fb:FilterGroupItem name="Undergraduate" label="{i18n>UNDERGRADUATE_GRADUATION_AREA}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Madef' } ] }" selectedKey="{trainingManagerListModel>/searchValue/Madef}"  enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Madef' } ] }" selectedKey="{trainingManagerListModel>/searchValue/Madef}" enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="MasterDegreeTr" label="{i18n>MASTER_DEGREE_FIELD_TR}" groupName="Group2" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfst' } ] }" selectedKey="{trainingManagerListModel>/searchValue/Grfst}"  enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfst' } ] }" selectedKey="{trainingManagerListModel>/searchValue/Grfst}" enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="MasterDegreeEn" label="{i18n>MASTER_DEGREE_FIELD_EN}" groupName="Group3" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfsi' } ] }" selectedKey="{trainingManagerListModel>/searchValue/Grfsi}"  enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfsi' } ] }" selectedKey="{trainingManagerListModel>/searchValue/Grfsi}" enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
@@ -50,7 +50,7 @@
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="UnitReturn" label="{i18n>UNIT_ON_RETURN}" groupName="Group8" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{trainingManagerListModel>/searchValue/Orgeh}"  enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{trainingManagerListModel>/searchValue/Orgeh}" enabled="{trainingManagerListModel>/aplicationSetting/enabled}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
@@ -66,7 +66,7 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="idPendingTable" busy="{trainingManagerListModel>/tableBusy}" items="{trainingManagerListModel>/managerList}" width="auto" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{trainingManagerListModel>/tableBusyDelay}"  growingScrollToLoad="true" updateFinished="onUpdateFinished" growing="true" class="lmsTable">
+                <Table id="idPendingTable" busy="{trainingManagerListModel>/tableBusy}" items="{trainingManagerListModel>/managerList}" width="auto" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{trainingManagerListModel>/tableBusyDelay}" growingScrollToLoad="true" updateFinished="onUpdateFinished" growing="true" class="lmsTable">
                     <infoToolbar>
                         <Toolbar>
                             <Title text="{i18n>APPROVED_REQUESTS_HEADER}" level="H2"/>
