@@ -2,7 +2,7 @@
 	xmlns:c="sap.ui.core"
 	xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<ActionSheet title="{i18n>ACTION_LIST}" showCancelButton="false" placement="Auto">
-		<!-- <Button icon="sap-icon://paper-plane" cd:actionId="SendExpend" text="{i18n>FI_SEND}" press=".onActionExpendSelected" type="Send" visible="{= !${requestListModel>/request/isSent} }" /> -->
+		<Button icon="sap-icon://paper-plane" cd:actionId="SendExpend" text="{i18n>FI_SEND}" press=".onActionExpendSelected" type="Send" visible="{= !${requestListModel>/request/isSent} }" />
 		<Button icon="sap-icon://display" cd:actionId="DisplayExpend" text="{i18n>DISPLAY_ACTION}" press=".onActionExpendSelected" type="Default" />
 		<Button icon="sap-icon://edit" cd:actionId="EditExpend" text="{i18n>EDIT_ACTION}" press=".onActionExpendSelected" type="Critical" />
 		<!-- <Button icon="sap-icon://delete" cd:actionId="DeleteExpend" text="{i18n>DELETE_ACTION}" press=".onActionExpendSelected" type="Reject"  visible="{= !${expensePaymentListModel>/request/isSent} }" /> -->
