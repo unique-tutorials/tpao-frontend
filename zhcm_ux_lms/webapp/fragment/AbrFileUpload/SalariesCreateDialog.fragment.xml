@@ -10,15 +10,18 @@
             <f:formContainers>
                 <f:FormContainer>
                     <f:formElements>
-                        <f:FormElement label="{i18n>EXTRA_DAYS}">
+                        <f:FormElement label="{i18n>EXTRA_DAYS}" visible="{wageRequestListModel>/isAccountVisible}">
                             <f:fields>
                                 <Input value="{wageRequestListModel>/salaryCreateList/Extda}" enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="Ödeme Türü">
                             <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytt' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Paytt}" enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytt' } ] }"
+                                 selectedKey="{wageRequestListModel>/salaryCreateList/Paytt}" 
+                                 enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}"
+                                 change=".onWageTypeChange">
+                                    <core:ListItem additionalText="{Group}" key="{Key}" text="{Value}"/>
                                 </ComboBox>
                             </f:fields>
                         </f:FormElement>
@@ -39,29 +42,37 @@
                                 <Input value="{wageRequestListModel>/salaryCreateList/Ename}" enabled="false" />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="{i18n>STATIONARY}">
+                        <f:FormElement label="{i18n>STATIONARY}" visible="{wageRequestListModel>/isAccountVisible}">
                             <f:fields>
                                 <Input value="{wageRequestListModel>/salaryCreateList/Stafe}" enabled="false" />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="{i18n>WAGE}">
+                        <f:FormElement label="{i18n>WAGE}" visible="{wageRequestListModel>/isAccountVisible}">
                             <f:fields>
                                 <Input value="{wageRequestListModel>/salaryCreateList/Salry}" enabled="false" />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="{i18n>RESTRICTED_SALARY}">
+                        <f:FormElement label="Kira" visible="{wageRequestListModel>/isSellerVisible}" >
                             <f:fields>
-                                <Input value="{wageRequestListModel>/salaryCreateList/Consa}" enabled="false" />
+                                <Input value="{wageRequestListModel>/salaryCreateList/Salry}" />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="Toplam Maaş">
+                        <f:FormElement label="{i18n>RESTRICTED_SALARY}" visible="{wageRequestListModel>/isAccountVisible}">
                             <f:fields>
-                                <Input value="{wageRequestListModel>/salaryCreateList/Totwg}" enabled="false" />
+                                <Input value="{wageRequestListModel>/salaryCreateList/Consa}" enabled="{wageRequestListModel>/isAccountVisibless}"  />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="{i18n>CURRENCY}">
+                        <f:FormElement label="Toplam Maaş" visible="{wageRequestListModel>/isAccountVisible}">
                             <f:fields>
-                                <Input value="{wageRequestListModel>/salaryCreateList/Waers}" enabled="false" />
+                                <Input value="{wageRequestListModel>/salaryCreateList/Totwg}" enabled="{wageRequestListModel>/isAccountVisibless}" />
+                            </f:fields>
+                        </f:FormElement>
+                        <f:FormElement label="{i18n>CURRENCY}" >
+                            <f:fields>
+                                <!-- <ComboBox value="{wageRequestListModel>/salaryCreateList/Waers}" enabled="{wageRequestListModel>/isAccountVisibless}" /> -->
+                                <ComboBox items="{ path:'/ValueHelpSet' , length: 1000, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Waers}" enabled="{wageRequestListModel>/isAccountVisibless}">
+                                    <core:ListItem key="{Key}" text="{Value}"/>
+                                </ComboBox>
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
