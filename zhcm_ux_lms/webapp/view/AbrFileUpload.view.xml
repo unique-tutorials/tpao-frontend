@@ -79,6 +79,9 @@
                                 <Text text="Ödeme Türü"/>
                             </Column>
                             <Column>
+                                <Text text="Onay Durumu"/>
+                            </Column>
+                            <Column>
                                 <Text text="{i18n>TO_SENT}"/>
                             </Column>
                             <Column>
@@ -93,7 +96,7 @@
                         </columns>
     
                         <items>
-                            <ColumnListItem vAlign="Middle" type="Navigation" >
+                            <ColumnListItem vAlign="Middle">
                                 <cells>
                                     <Text text="{Pernr}" />
                                     <Text text="{Ename}" />
@@ -104,7 +107,8 @@
                                     <Text text="{Waers}" />
                                     <Text text="{Extda}" />
                                     <Text text="{Wacstx}" />
-                                    <Text text="{Payttx}" />
+                                    <Text text="{Paytpt}" />
+                                    <Text text="{Appstx}" />
                                     <CheckBox selected="{Sent}" />
                                     <CheckBox selected="{Paid}" />
                                     <Button icon="sap-icon://menu" type="Accept" press=".onSalariesActions" />

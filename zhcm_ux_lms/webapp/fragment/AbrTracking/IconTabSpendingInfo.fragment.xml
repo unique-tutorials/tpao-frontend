@@ -13,7 +13,10 @@
         </headerToolbar>
         <columns>
             <Column>
-                <Text text="{i18n>EXPENDITURE_ITEM}"/>
+                <Text text="Ödeme Türü"/>
+            </Column>  
+            <Column>
+                <Text text="Onay Durumu"/>
             </Column>
             <Column>
                 <Text text="{i18n>INVOICE_NUMBER}"/>
@@ -39,9 +42,9 @@
             <Column>
                 <Text text="{i18n>INVOICE_DOCUMENT}"/>
             </Column>
-            <Column>
+            <!-- <Column>
                 <Text text="{i18n>SEND}"/>
-            </Column>
+            </Column> -->
             <Column>
                 <Text text="{i18n>ACTION_LIST}"/>
             </Column>
@@ -49,7 +52,8 @@
         <items>
             <ColumnListItem>
                 <cells>
-                    <Text text="{requestListModel>Paytp}"/>
+                    <Text text="{requestListModel>Paytpt}"/>
+                    <Text text="{requestListModel>Appstx}"/>
                     <Text text="{requestListModel>Payno}"/>
                     <Text text="{requestListModel>Parno}"/>
                     <Text text="{
@@ -66,11 +70,11 @@
                
                     <CheckBox selected="{requestListModel>Paid}" />
                     <Link press=".onAttachDownload" text="{requestListModel>FileName}" />
-                    <Button 
+                    <!-- <Button 
                     icon="sap-icon://paper-plane" 
                     type="Emphasized"
-                    press=".onSendExpendButtonPress"
-                    enabled="{= !${requestListModel>Sent} }" />
+                    press=".expendApprovalDialog"
+                    enabled="{= !${requestListModel>Sent} }" /> -->
                     <Button icon="sap-icon://menu" type="Accept" press=".onExpendActions" />
                     <!-- <Text text="{requestListModel>Waers}"/>
                     <Text text="{requestListModel>Mwskz}"/>

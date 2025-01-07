@@ -42,6 +42,7 @@ sap.ui.define(
           currentRequest: {},
           wageSearchRequest: {},
           salaryCreateList: {},
+          approvalList: {},
           request: {
             isSent: false,
           },
@@ -115,10 +116,7 @@ sap.ui.define(
       },
       onSendSalariesButtonPress: function (oFormData) {
         debugger;
-        var oModel = this.getModel(),
-          oViewModel = this.getModel("wageRequestListModel");
-        // oViewModel = this.getModel("requestListModel")
-        // var salaryInfoList = oSource.getBindingContext().getObject();
+        var oModel = this.getModel();
         var oUrlParameters = {
           Pernr: oFormData.Pernr,
           Wagpe: oFormData.Wagpe,
@@ -126,15 +124,14 @@ sap.ui.define(
           Waers: oFormData.Waers,
           Wacst: oFormData.Wacst,
           Paytt: oFormData.Paytt,
-          // "Consa": salaryInfoList.Consa,
+          Whoap: oFormData.Whoap,
         };
 
         this._openBusyFragment("PLEASE_WAIT", []);
         oModel.callFunction("/SentSalary", {
           method: "POST",
           urlParameters: oUrlParameters,
-          success: function (oData, oResponse) {
-            // that.getModel("wageRequestListModel").setProperty("/expendInfoList");
+          success: function () {
             this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
             this._closeBusyFragment();
           }.bind(this),
@@ -143,6 +140,7 @@ sap.ui.define(
           }.bind(this),
         });
       },
+
       // onSalariesCreateDialog:function(oEvent){
       //     var oViewModel = this.getModel("wageRequestListModel"),
       //     // sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
@@ -236,9 +234,7 @@ sap.ui.define(
         debugger;
         var oViewModel = this.getModel("wageRequestListModel");
         var oSource = oEvent.getSource();
-        var oData = oSource
-          .getBindingContext()
-          .getObject();
+        var oData = oSource.getBindingContext().getObject();
 
         oViewModel.setProperty("/request/isSent", oData.Sent ? true : false);
         if (!this._oSalariesActionDialog) {
@@ -272,21 +268,22 @@ sap.ui.define(
             var oViewModel = this.getModel("wageRequestListModel");
             switch (sAction) {
               case "Send":
-                debugger;
-                Swal.fire({
-                  title: this.getText("ARE_YOU_SURE"),
-                  text: this.getText("YOU_WONT_BE_ABLE_TO_REVERT_THIS"),
-                  icon: "warning",
-                  showCancelButton: true,
-                  confirmButtonColor: "#3085d6",
-                  cancelButtonColor: "#d33",
-                  confirmButtonText: this.getText("YES"),
-                  cancelButtonText: this.getText("NO"),
-                }).then((result) => {
-                  if (result.isConfirmed) {
-                    this.onSendSalariesButtonPress(oFormData);
-                  }
-                });
+                this.generateApprovalDialog(oFormData);
+                // debugger;
+                // Swal.fire({
+                //   title: this.getText("ARE_YOU_SURE"),
+                //   text: this.getText("YOU_WONT_BE_ABLE_TO_REVERT_THIS"),
+                //   icon: "warning",
+                //   showCancelButton: true,
+                //   confirmButtonColor: "#3085d6",
+                //   cancelButtonColor: "#d33",
+                //   confirmButtonText: this.getText("YES"),
+                //   cancelButtonText: this.getText("NO"),
+                // }).then((result) => {
+                //   if (result.isConfirmed) {
+                //     this.onSendSalariesButtonPress(oFormData);
+                //   }
+                // });
                 break;
               case "Display":
                 this.onSalariesCreateDialog();
@@ -308,19 +305,47 @@ sap.ui.define(
           }.bind(this)
         );
       },
-      onWageTypeChange: function(oEvent){
+      generateApprovalDialog: function (oFormData) {
         debugger;
-        var oComboBox = oEvent.getSource(); 
-        var sSelectedKey = oComboBox.getSelectedKey(); 
+        this._oFormData = oFormData; // oFormData'yı saklayın
+
+        if (!this._oGenerateApprovalDialog) {
+          this._oGenerateApprovalDialog = sap.ui.xmlfragment(
+            "zhcm_ux_lms_abr.fragment.AbrFileUpload.GenerateApprovalDialog",
+            this
+          );
+          this.getView().addDependent(this._oGenerateApprovalDialog);
+        }
+        this._oGenerateApprovalDialog.open();
+      },
+
+      onApprovalSaveButtonPress: function () {
+        var oViewModel = this.getModel("wageRequestListModel");
+        var sSelectedApprover = oViewModel.getProperty("/approvalList/Whoap");
+
+        // onSendSalariesButtonPress fonksiyonuna seçimle birlikte formData gönderin
+        this.onSendSalariesButtonPress({
+          ...this._oFormData, // Mevcut formData
+          Whoap: sSelectedApprover, // Seçilen onaycı
+        });
+
+        // Dialog'u kapat
+        this._oGenerateApprovalDialog.close();
+      },
+
+      onWageTypeChange: function (oEvent) {
+        debugger;
+        var oComboBox = oEvent.getSource();
+        var sSelectedKey = oComboBox.getSelectedKey();
         var oModel = this.getView().getModel("wageRequestListModel");
         var sQuery = oComboBox.getSelectedItem().getProperty("additionalText");
-        
+
         if (sQuery === "X") {
-            oModel.setProperty("/isAccountVisible", false);
-            oModel.setProperty("/isSellerVisible", true);
-            oModel.setProperty("/isAccountVisibless", true);
-            oModel.setProperty("/expendInfoDialogRequest/Whiac", "2");
-            oModel.setProperty("/expendInfoDialogRequest/Wacst", "");
+          oModel.setProperty("/isAccountVisible", false);
+          oModel.setProperty("/isSellerVisible", true);
+          oModel.setProperty("/isAccountVisibless", true);
+          oModel.setProperty("/expendInfoDialogRequest/Whiac", "2");
+          oModel.setProperty("/expendInfoDialogRequest/Wacst", "");
         }
         if (sQuery === "") {
           oModel.setProperty("/isAccountVisible", true);
@@ -328,8 +353,13 @@ sap.ui.define(
           oModel.setProperty("/isAccountVisibless", false);
           oModel.setProperty("/expendInfoDialogRequest/Whiac", "2");
           oModel.setProperty("/expendInfoDialogRequest/Wacst", "");
-      }
-      }
+        }
+      },
+      onApprovalCancelButtonPress: function (oEvent) {
+        if (this._oGenerateApprovalDialog) {
+          this._oGenerateApprovalDialog.close();
+        }
+      },
     });
   }
 );
