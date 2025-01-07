@@ -36,9 +36,12 @@
             <Column>
                 <Text text="{i18n>SEND}"/>
             </Column>
+            <Column>
+                <Text text="{i18n>ACTION_LIST}"/>
+            </Column>
         </columns>
         <items>
-            <ColumnListItem type="Navigation" press=".onSchoolFeeNavigationDialog">
+            <ColumnListItem>
                 <cells>
                     <Text text="{requestListModel>Wagpe}"/>
                     <Text text="{
@@ -61,7 +64,12 @@
                         }
                     }"/>
                     <CheckBox selected="{requestListModel>Sent}"/>
-                    <Button text="{i18n>SEND}" type="Emphasized" press=".onSendSchoolFeeButtonPress"/>
+                        <Button 
+                        icon="sap-icon://paper-plane" 
+                        type="Emphasized" 
+                        press=".onSendSchoolFeeButtonPress" 
+                        enabled="{= !${requestListModel>Sent} }" />
+                    <Button icon="sap-icon://menu" type="Accept" press=".onSchoolActions" />
                 </cells>
             </ColumnListItem>
         </items>

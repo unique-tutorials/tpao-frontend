@@ -126,6 +126,7 @@ sap.ui.define([
                     Trast: false
                 }
             });
+            
             this.setModel(oViewModel, "appDispatcherView");
 
             this.addHistoryEntry({

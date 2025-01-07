@@ -7,7 +7,7 @@
             <headerToolbar>
                 <OverflowToolbar>
                     <content>
-                        <Title text="{i18n>ADDRESS_INFORMATION}"/>
+                        <Title text="{i18n>GUARANTOR_CONTACT_INFORMATION}"/>
                         <ToolbarSpacer />
                         <Button
                             icon="sap-icon://edit"
@@ -124,10 +124,10 @@
                             <content>
                                 <Title text="{i18n>PHONE_INFORMATION}"/>
                                 <ToolbarSpacer />
-                                <Button
+                                <!-- <Button
                                     icon="sap-icon://edit"
                                     press="onEditPress"
-                                />
+                                /> -->
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -176,10 +176,10 @@
                             <content>
                                 <Title text="{i18n>E_MAIL_INFORMATION}"/>
                                 <ToolbarSpacer />
-                                <Button
+                                <!-- <Button
                                     icon="sap-icon://edit"
                                     press="onEditPress"
-                                />
+                                /> -->
                             </content>
                         </OverflowToolbar>
                     </headerToolbar>
@@ -216,7 +216,7 @@
             <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorContact" type="Reject" />
         </beginButton>
         <endButton>
-            <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://cancel" press=".onSaveGuarantorContact" type="Accept" />
+            <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveGuarantorContact" type="Accept" />
         </endButton>
     </Dialog>
 </c:FragmentDefinition>

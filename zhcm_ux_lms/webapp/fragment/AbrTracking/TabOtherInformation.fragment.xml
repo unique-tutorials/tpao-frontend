@@ -32,7 +32,7 @@
                     <Text text="{requestListModel>Sirno}"/>
                     <Text text="{requestListModel>Vorna}"/>
                     <Text text="{requestListModel>Nachn}"/>
-                    <MenuButton icon="sap-icon://settings" type="Accept">
+                    <!-- <MenuButton icon="sap-icon://settings" type="Accept">
                         <menu>
                             <Menu>
                                 <MenuItem text="{i18n>GUARANTOR_INFORMATION}" icon="sap-icon://account" press="openGuarantorDialog" />
@@ -40,7 +40,8 @@
                                 <MenuItem text="{i18n>IDENTITY_INFORMATION}" icon="sap-icon://business-card" press="openGuarantorIdentityDialog" />
                             </Menu>
                         </menu>
-                    </MenuButton>
+                    </MenuButton> -->
+                    <Button icon="sap-icon://menu" type="Accept" press=".onGuarantorActions" />
                 </cells>
             </ColumnListItem>
         </items>

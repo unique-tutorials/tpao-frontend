@@ -36,9 +36,6 @@
                                         <IconTabFilter text="{i18n>GENERAL_EXPENDITURE_INFORMATION}" key="GeneralExInfo">
                                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.IconTabSpendingInfo" type="XML" />
                                         </IconTabFilter>
-                                        <!-- <IconTabFilter text="{i18n>REGULAR_PAYMENT_INFORMATION}" key="RegularInfo">
-                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.IconTabRegularPaymentInfo" type="XML" />
-                                        </IconTabFilter> -->
                                         <IconTabFilter text="{i18n>STUDENT_ACCOUNT_INFORMATION}" key="StudentAccountInfo">
                                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.IconTabStudentAccountInfo" type="XML" />
                                         </IconTabFilter>

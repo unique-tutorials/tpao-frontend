@@ -46,8 +46,11 @@ sap.ui.define(
             isSent: false,
           },
           aplicationSetting: {
-            enabled: true,
+            enabled: false,
           },
+          isAccountVisibless: false,
+          isAccountVisible: true,
+          isSellerVisible: false,
         });
       },
       onNavBack: function () {
@@ -294,7 +297,7 @@ sap.ui.define(
 
               case "Edit":
                 this.onSalariesCreateDialog();
-                oViewModel.setProperty("/aplicationSetting/enabled", true);
+                // oViewModel.setProperty("/aplicationSetting/enabled", true);
 
                 oViewModel.setProperty("/salaryCreateList", oFormData);
                 oViewModel.setProperty("/busy", true);
@@ -305,6 +308,28 @@ sap.ui.define(
           }.bind(this)
         );
       },
+      onWageTypeChange: function(oEvent){
+        debugger;
+        var oComboBox = oEvent.getSource(); 
+        var sSelectedKey = oComboBox.getSelectedKey(); 
+        var oModel = this.getView().getModel("wageRequestListModel");
+        var sQuery = oComboBox.getSelectedItem().getProperty("additionalText");
+        
+        if (sQuery === "X") {
+            oModel.setProperty("/isAccountVisible", false);
+            oModel.setProperty("/isSellerVisible", true);
+            oModel.setProperty("/isAccountVisibless", true);
+            oModel.setProperty("/expendInfoDialogRequest/Whiac", "2");
+            oModel.setProperty("/expendInfoDialogRequest/Wacst", "");
+        }
+        if (sQuery === "") {
+          oModel.setProperty("/isAccountVisible", true);
+          oModel.setProperty("/isSellerVisible", false);
+          oModel.setProperty("/isAccountVisibless", false);
+          oModel.setProperty("/expendInfoDialogRequest/Whiac", "2");
+          oModel.setProperty("/expendInfoDialogRequest/Wacst", "");
+      }
+      }
     });
   }
 );

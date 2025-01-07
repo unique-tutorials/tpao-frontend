@@ -26,6 +26,11 @@
                             </ComboBox>
                         </f:fields>
                     </f:FormElement>
+                    <f:FormElement label="{i18n>FIELD_OF_STUDY_EN}">
+                        <f:fields>
+                            <Input value="{requestListModel>/schoolEmployee/Edubi}" enabled="false" />
+                        </f:fields>
+                    </f:FormElement>
                     <f:FormElement label="{i18n>PERIOD_OF_SCHOLARSHIP_AWARD}">
                         <f:fields>
                             <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Scawp' } ] }" selectedKey="{requestListModel>/schoolEmployee/Scawp}">
