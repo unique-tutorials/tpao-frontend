@@ -12,17 +12,14 @@
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-            <Column width="15rem">
-                <Text text="Ödeme Türü"/>
-            </Column>  
-            <Column>
-                <Text text="Onay Durumu"/>
-            </Column>
             <Column>
                 <Text text="{i18n>INVOICE_NUMBER}"/>
             </Column>
             <Column>
                 <Text text="{i18n>SELLER_NUMBER}"/>
+            </Column>
+            <Column width="15rem">
+                <Text text="Ödeme Türü"/>
             </Column>
             <Column>
                 <Text text="{i18n>INVOICE_DATE}"/>
@@ -33,11 +30,9 @@
             <Column>
                 <Text text="{i18n>EXPLANATION} "/>
             </Column>
+          
             <Column>
-                <Text text="{i18n>TO_SENT}"/>
-            </Column>
-            <Column>
-                <Text text="{i18n>PAID}"/>
+                <Text text="Onay Durumu"/>
             </Column>
             <Column>
                 <Text text="{i18n>INVOICE_DOCUMENT}"/>
@@ -46,16 +41,21 @@
                 <Text text="{i18n>SEND}"/>
             </Column> -->
             <Column>
+                <Text text="{i18n>TO_SENT}"/>
+            </Column>
+            <Column>
+                <Text text="{i18n>PAID}"/>
+            </Column>
+            <Column>
                 <Text text="{i18n>ACTION_LIST}"/>
             </Column>
         </columns>
         <items>
             <ColumnListItem>
                 <cells>
-                    <Text text="{requestListModel>Paytpt}"/>
-                    <Text text="{requestListModel>Appstx}"/>
                     <Text text="{requestListModel>Payno}"/>
                     <Text text="{requestListModel>Parno}"/>
+                    <Text text="{requestListModel>Paytpt}"/>
                     <Text text="{
                         path: 'requestListModel>Paydt', 
                         type: 'sap.ui.model.type.Date', 
@@ -66,10 +66,11 @@
                     }"/>
                     <Text text="{requestListModel>Payam}"/>
                     <Text text="{requestListModel>Descp}"/>
-                    <CheckBox selected="{requestListModel>Sent}"/>
-               
-                    <CheckBox selected="{requestListModel>Paid}" />
+         
+                        <Text text="{requestListModel>Appstx}"/>
                     <Link press=".onAttachDownload" text="{requestListModel>FileName}" />
+                    <CheckBox selected="{requestListModel>Sent}"/>
+                    <CheckBox selected="{requestListModel>Paid}" />
                     <!-- <Button 
                     icon="sap-icon://paper-plane" 
                     type="Emphasized"
