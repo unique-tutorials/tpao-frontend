@@ -33,7 +33,7 @@ sap.ui.define(
             .getRoute("AbrAccountTracking")
             .attachPatternMatched(this._onRequestListMatched, this);
         },
-        
+
         _onRequestListMatched: function (oEvent) {
           this._getRequestList();
         },
@@ -111,7 +111,6 @@ sap.ui.define(
                 Payat: "23.418,54 TL",
                 Perc$: "17.42%",
               },
-
             ],
             paymentPlanRequested: [
               {
@@ -189,21 +188,21 @@ sap.ui.define(
             currentRequest: {},
             searchAccountParameter: {},
             domesticEmployee: {},
-            financialEmployee:{},
-            abroadEmployee:{},
+            financialEmployee: {},
+            abroadEmployee: {},
             abroadOtherEmployee: {},
-            masterEmployee:{},
+            masterEmployee: {},
             accountEmployee: {},
             domesticAccountEmployee: {},
             newAccountNumberRequest: {
               Pernr: null,
               Ename: "",
             },
-            selectedGuarantor:{},
-            guarantorList:[],
-            attachmentGuarantorList:[],
-            offsetInformationList:[],
-            selectedDate:""
+            selectedGuarantor: {},
+            guarantorList: [],
+            attachmentGuarantorList: [],
+            offsetInformationList: [],
+            selectedDate: "",
           });
         },
         onNavBack: function () {
@@ -220,135 +219,167 @@ sap.ui.define(
             "/abroadEmployee",
             "/masterEmployee",
             "/guarantorList",
-            "/offsetInformationList"
+            "/offsetInformationList",
           ];
-          aPaths.forEach(function (sPath){
+          aPaths.forEach(function (sPath) {
             oModel.setProperty(sPath, {});
           });
           // this.goBack(History);
           this.getRouter().navTo("appdispatcher", {}, true);
         },
-        onDatePickerChange:function(){
-            debugger;
-            var oViewModel = this.getModel("abrAccountListModel"),
-                 sSelectedDate = oViewModel.getProperty("/selectedDate");
-            this._getOffsetInformationList(sSelectedDate);
+        onDatePickerChange: function () {
+          debugger;
+          var oViewModel = this.getModel("abrAccountListModel"),
+            sSelectedDate = oViewModel.getProperty("/selectedDate");
+          this._getOffsetInformationList(sSelectedDate);
         },
-        _getOffsetInformationList:function(sSelectedDate){
-            var oViewModel = this.getModel("abrAccountListModel"),
+        _getOffsetInformationList: function (sSelectedDate) {
+          var oViewModel = this.getModel("abrAccountListModel"),
             sPernr = oViewModel.getProperty("/newAccountNumberRequest/Pernr");
-            var oModel = this.getModel();
-            var aFilters = [];
-            var that = this;
-            var oViewModel = this.getModel("abrAccountListModel");
-            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
-            aFilters.push(new Filter("Wagpe", FilterOperator.EQ, sSelectedDate));
-            this._openBusyFragment("READ_DATA");
-            oModel.read("/OffsetInformationSet", {
-                filters: aFilters,
-                success: (oData, oResponse) => {
-                    that._closeBusyFragment();
-                    oViewModel.setProperty("/offsetInformationList", oData.results);
-                },
-                error: (oError) => {
-                    that._closeBusyFragment();
-                    oViewModel.setProperty("/busy", false);
-                }
-            });
+          var oModel = this.getModel();
+          var aFilters = [];
+          var that = this;
+          var oViewModel = this.getModel("abrAccountListModel");
+          aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
+          aFilters.push(new Filter("Wagpe", FilterOperator.EQ, sSelectedDate));
+          this._openBusyFragment("READ_DATA");
+          oModel.read("/OffsetInformationSet", {
+            filters: aFilters,
+            success: (oData, oResponse) => {
+              that._closeBusyFragment();
+              oViewModel.setProperty("/offsetInformationList", oData.results);
+            },
+            error: (oError) => {
+              that._closeBusyFragment();
+              oViewModel.setProperty("/busy", false);
+            },
+          });
         },
         _getRequestList: function (oEvent) {},
-        openGuarantorIdentityDialog:function(oEvent){
-            var oViewModel = this.getModel("abrAccountListModel"),
-                 sPernr = oViewModel.getProperty("/newAccountNumberRequest/Pernr"),
-                 oSource = oEvent.getSource(),
-                 oObject = oSource.getBindingContext("abrAccountListModel").getObject();
-                 oViewModel.setProperty("/selectedGuarantor", oObject);
-            // this._getGuarantorIdentityList(sPernr,oObject.Sirno);
-            if (!this._oGuarantorIdentityDialog) {
-                this._oGuarantorIdentityDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorIdentityDialog", this);
-                this.getView().addDependent(this._oGuarantorIdentityDialog);
-            } else {
-                this._oGuarantorIdentityDialog.close();
-            }
-            this._oGuarantorIdentityDialog.open();
-          
-         },
-         _getGuarantorIdentityList:function(sPernr,sSirno){
-            debugger;
-            var that = this;
-            var oModel = this.getModel();
-            var aFilters = [];
-            var oViewModel = this.getModel("abrAccountListModel");
-            var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr", sPernr);
-            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
-            aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
-            this._openBusyFragment("READ_DATA");
-            oModel.read("/GuarantorInformationSet", {
-                filters: aFilters,
-                success: (oData, oResponse) => {
-                    that._closeBusyFragment();
-                    that.getModel("abrAccountListModel").setProperty("/guarantorIdentityList", oData.results);
-                    if (!that._oGuarantorIdentityDialog) {
-                        that._oGuarantorIdentityDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorIdentityDialog", that);
-                        that.getView().addDependent(that._oGuarantorIdentityDialog);
-                    } else {
-                        that._oGuarantorIdentityDialog.close();
-                    }
-                    that._oGuarantorIdentityDialog.open();
-                },
-                error: (oError) => {
-                    that._closeBusyFragment();
-                    that.getModel("abrAccountListModel").setProperty("/busy", false);
-                }
-            });
-         },
-         onCancelGuarantorIdentity:function(){
-            if (this._oGuarantorIdentityDialog) {
-                this._oGuarantorIdentityDialog.close();
-            }
-         },
-         openGuarantorContactDialog:function(oEvent){
+        openGuarantorIdentityDialog: function (oEvent) {
+          var oViewModel = this.getModel("abrAccountListModel"),
+            sPernr = oViewModel.getProperty("/newAccountNumberRequest/Pernr"),
+            oSource = oEvent.getSource(),
+            oObject = oSource
+              .getBindingContext("abrAccountListModel")
+              .getObject();
+          oViewModel.setProperty("/selectedGuarantor", oObject);
+          // this._getGuarantorIdentityList(sPernr,oObject.Sirno);
+          if (!this._oGuarantorIdentityDialog) {
+            this._oGuarantorIdentityDialog = sap.ui.xmlfragment(
+              "zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorIdentityDialog",
+              this
+            );
+            this.getView().addDependent(this._oGuarantorIdentityDialog);
+          } else {
+            this._oGuarantorIdentityDialog.close();
+          }
+          this._oGuarantorIdentityDialog.open();
+        },
+        _getGuarantorIdentityList: function (sPernr, sSirno) {
+          debugger;
+          var that = this;
+          var oModel = this.getModel();
+          var aFilters = [];
+          var oViewModel = this.getModel("abrAccountListModel");
+          var sPernr = oViewModel.getProperty(
+            "/newNumberRequest/Pernr",
+            sPernr
+          );
+          aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
+          aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
+          this._openBusyFragment("READ_DATA");
+          oModel.read("/GuarantorInformationSet", {
+            filters: aFilters,
+            success: (oData, oResponse) => {
+              that._closeBusyFragment();
+              that
+                .getModel("abrAccountListModel")
+                .setProperty("/guarantorIdentityList", oData.results);
+              if (!that._oGuarantorIdentityDialog) {
+                that._oGuarantorIdentityDialog = sap.ui.xmlfragment(
+                  "zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorIdentityDialog",
+                  that
+                );
+                that.getView().addDependent(that._oGuarantorIdentityDialog);
+              } else {
+                that._oGuarantorIdentityDialog.close();
+              }
+              that._oGuarantorIdentityDialog.open();
+            },
+            error: (oError) => {
+              that._closeBusyFragment();
+              that.getModel("abrAccountListModel").setProperty("/busy", false);
+            },
+          });
+        },
+        onCancelGuarantorIdentity: function () {
+          if (this._oGuarantorIdentityDialog) {
+            this._oGuarantorIdentityDialog.close();
+          }
+        },
+        openGuarantorContactDialog: function (oEvent) {
           debugger;
           var oSource = oEvent.getSource(),
-          oViewModel = this.getModel("abrAccountListModel"),
-          oObject = oSource.getBindingContext("abrAccountListModel").getObject();
+            oViewModel = this.getModel("abrAccountListModel"),
+            oObject = oSource
+              .getBindingContext("abrAccountListModel")
+              .getObject();
           this._getGuarantorContactList(oObject);
-       },
-      
-       _getGuarantorContactList:function(oObject){
+        },
+
+        _getGuarantorContactList: function (oObject) {
           debugger;
           var that = this;
           var oModel = this.getModel();
           var oViewModel = this.getModel("abrAccountListModel");
           var aFilters = [];
           var sPath = oModel.createKey("/GuarantorInformationSet", {
-              "Pernr": oObject.Pernr,
-              "Sirno": oObject.Sirno,
+            Pernr: oObject.Pernr,
+            Sirno: oObject.Sirno,
           });
           // aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
           // aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
           this._openBusyFragment("READ_DATA");
           oModel.read(sPath, {
-              // filters: aFilters,
-              success: (oData, oResponse) => {
-                  that._closeBusyFragment();
-                  // oViewModel.setProperty("/guarantorContactList", oData);
-                  that.getModel("abrAccountListModel").setProperty("/guarantorContactList", oData);
-                  // that.getModel("requestListModel").setProperty("/guarantorContactList", oData);
-                  if (!that._oGuarantorAbrContactDialog) {
-                      that._oGuarantorAbrContactDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorContactDialog", that);
-                      that.getView().addDependent(that._oGuarantorAbrContactDialog);
-                  } else {
-                      that._oGuarantorAbrContactDialog.close();
-                  }
-                  that._oGuarantorAbrContactDialog.open();
-              },
-              error: (oError) => {
-                  that._closeBusyFragment();
-                  that.getModel("abrAccountListModel").setProperty("/busy", false);
+            // filters: aFilters,
+            success: (oData, oResponse) => {
+              that._closeBusyFragment();
+              // oViewModel.setProperty("/guarantorContactList", oData);
+              that
+                .getModel("abrAccountListModel")
+                .setProperty("/guarantorContactList", oData);
+              // that.getModel("requestListModel").setProperty("/guarantorContactList", oData);
+              if (!that._oGuarantorAbrContactDialog) {
+                that._oGuarantorAbrContactDialog = sap.ui.xmlfragment(
+                  "zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorContactDialog",
+                  that
+                );
+                that.getView().addDependent(that._oGuarantorAbrContactDialog);
+              } else {
+                that._oGuarantorAbrContactDialog.close();
               }
+              that._oGuarantorAbrContactDialog.open();
+            },
+            error: (oError) => {
+              that._closeBusyFragment();
+              that.getModel("abrAccountListModel").setProperty("/busy", false);
+            },
           });
-       },
+        },
+        onAttachDownload: function (oEvent) {
+          var sAttid = oEvent
+            .getSource()
+            .getBindingContext("abrAccountListModel")
+            .getObject("Attid");
+          var oModel = this.getModel();
+          var oUrlPath =
+            oModel.sServiceUrl +
+            "/PersonnelAttachmentSet(Attid=guid'" +
+            sAttid +
+            "')/$value";
+          window.open(oUrlPath);
+        },
         // openGuarantorContactDialog:function(oEvent){
         //     var oSource = oEvent.getSource(),
         //      oViewModel = this.getModel("abrAccountListModel"),
@@ -382,52 +413,57 @@ sap.ui.define(
         //         }
         //     });
         //  },
-         onCancelGuarantorContact:function(){
-            if (this._oGuarantorContactDialog) {
-                this._oGuarantorContactDialog.close();
-            }
-         },
-        openGuarantorDialog:function(oEvent){
-            var oSource = oEvent.getSource(),
-            oObject = oSource.getBindingContext("abrAccountListModel").getObject(),
-             oViewModel = this.getModel("abrAccountListModel"),
-             sPernr = oViewModel.getProperty("/newAccountNumberRequest/Pernr");
-            this._getGuarantorList(sPernr,oObject.Sirno);
-         },
-         onCancelGuarantorDialog:function(){
-            if(this._oGuarantorDialog) {
-                this._oGuarantorDialog.close();
-            }
-         },
-         _getGuarantorList: function (sPernr,sSirno) {
-            var that = this;
-            var oModel = this.getModel();
-            var aFilters = [];
-            var oModel = this.getModel();
-            var oViewModel = this.getModel("abrAccountListModel");
-            aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
-            aFilters.push(new Filter("Ptype", FilterOperator.EQ, 'LMSABR'));
-            aFilters.push(new Filter("Dotyp", FilterOperator.EQ, '1'));
-            aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
-            this._openBusyFragment("READ_DATA");
-            oModel.read("/PersonnelAttachmentSet", {
-                filters: aFilters,
-                success: (oData, oResponse) => {
-                    that._closeBusyFragment();
-                    oViewModel.setProperty("/attachmentGuarantorList", oData.results);
-                    if (!that._oGuarantorDialog) {
-                        that._oGuarantorDialog = sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorDocumentDialog", that);
-                        this.getView().addDependent(that._oGuarantorDialog);
-                    } else {
-                        that._oGuarantorDialog.close();
-                    }
-                    that._oGuarantorDialog.open();
-                },
-                error: (oError) => {
-                    that._closeBusyFragment();
-                    that.getModel("requestListModel").setProperty("/busy", false);
-                }
-            });
+        onCancelGuarantorContact: function () {
+          if (this._oGuarantorAbrContactDialog) {
+            this._oGuarantorAbrContactDialog.close();
+          }
+        },
+        openGuarantorDialog: function (oEvent) {
+          var oSource = oEvent.getSource(),
+            oObject = oSource
+              .getBindingContext("abrAccountListModel")
+              .getObject(),
+            oViewModel = this.getModel("abrAccountListModel"),
+            sPernr = oViewModel.getProperty("/newAccountNumberRequest/Pernr");
+          this._getGuarantorList(sPernr, oObject.Sirno);
+        },
+        onCancelGuarantorDialog: function () {
+          if (this._oGuarantorDialog) {
+            this._oGuarantorDialog.close();
+          }
+        },
+        _getGuarantorList: function (sPernr, sSirno) {
+          var that = this;
+          var oModel = this.getModel();
+          var aFilters = [];
+          var oModel = this.getModel();
+          var oViewModel = this.getModel("abrAccountListModel");
+          aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr));
+          aFilters.push(new Filter("Ptype", FilterOperator.EQ, "LMSABR"));
+          aFilters.push(new Filter("Dotyp", FilterOperator.EQ, "1"));
+          aFilters.push(new Filter("Sirno", FilterOperator.EQ, sSirno));
+          this._openBusyFragment("READ_DATA");
+          oModel.read("/PersonnelAttachmentSet", {
+            filters: aFilters,
+            success: (oData, oResponse) => {
+              that._closeBusyFragment();
+              oViewModel.setProperty("/attachmentGuarantorList", oData.results);
+              if (!that._oGuarantorDialog) {
+                that._oGuarantorDialog = sap.ui.xmlfragment(
+                  "zhcm_ux_lms_abr.fragment.AbrAccountTracking.GuarantorDocumentDialog",
+                  that
+                );
+                this.getView().addDependent(that._oGuarantorDialog);
+              } else {
+                that._oGuarantorDialog.close();
+              }
+              that._oGuarantorDialog.open();
+            },
+            error: (oError) => {
+              that._closeBusyFragment();
+              that.getModel("requestListModel").setProperty("/busy", false);
+            },
+          });
         },
         onShowAccountSearchHelp: function (oEvent) {
           if (!this._oAccountSearchHelp) {
@@ -538,23 +574,22 @@ sap.ui.define(
 
           this._sweetToast(this.getText("EMPLOYEE_READ_SUCCESS"), "S");
 
-
           // Kefil bilgileri al
           var sGuarantorPath = "/GuarantorInformationSet";
-          
+
           readDataList(
             sGuarantorPath,
             "/guarantorList",
             "Kefil bilgisi alınamadı"
           );
 
-        //   // Mahsup Bilgileri
-        //   var sOffsetPath = "/OffsetInformationSet";
-        //   readDataList(
-        //     sOffsetPath,
-        //     "/offsetInformationList",
-        //     "Mahsup bilgisi alınamadı"
-        //   );
+          //   // Mahsup Bilgileri
+          //   var sOffsetPath = "/OffsetInformationSet";
+          //   readDataList(
+          //     sOffsetPath,
+          //     "/offsetInformationList",
+          //     "Mahsup bilgisi alınamadı"
+          //   );
 
           // Okul bilgilerini al
           var sSchoolInfoPath = oModel.createKey("/SchoolInformationSet", {
@@ -657,25 +692,25 @@ sap.ui.define(
                 case "DOMESTIC":
                   oViewModel.setProperty("/domesticEmployee", oData);
                   break;
-                 case "ABROAD":
-                    oViewModel.setProperty("/abroadOtherEmployee", oData);
-                    break;
-                    case "ABROADEMPLOYEE":
+                case "ABROAD":
+                  oViewModel.setProperty("/abroadOtherEmployee", oData);
+                  break;
+                case "ABROADEMPLOYEE":
                   oViewModel.setProperty("/abroadEmployee", oData);
                   break;
-                 case "FINANCE":
-                    oViewModel.setProperty("/financialEmployee", oData);
-                    break;
-                    case "MASTER":
-                    oViewModel.setProperty("/masterEmployee", oData);
-                    break;
+                case "FINANCE":
+                  oViewModel.setProperty("/financialEmployee", oData);
+                  break;
+                case "MASTER":
+                  oViewModel.setProperty("/masterEmployee", oData);
+                  break;
                 default:
                   break;
               }
               this._sweetToast(this.getText("READ_SECCSESS"), "S");
             }.bind(this),
             error: function () {
-                this._sweetToast(this.getText("ERROR"), "E");
+              this._sweetToast(this.getText("ERROR"), "E");
             }.bind(this),
           });
         },
@@ -708,44 +743,44 @@ sap.ui.define(
                 this._sweetToast(this.getText("WHITE_PARTNER"), "E");
                 return;
               }
+              sPath = oModel.createKey("/AbroadOtherAccountInformationSet", {
+                Pernr: sPernr,
+                Partner: sPartner,
+              });
+              break;
+            case "ABROADEMPLOYEE":
+              sPartner = oViewModel.getProperty("/abroadEmployee/Partner");
+              if (!sPartner) {
+                this._sweetToast(this.getText("WHITE_PARTNER"), "E");
+                return;
+              }
+              sPath = oModel.createKey("/LanguageSchoolAbroadSet", {
+                Pernr: sPernr,
+                Partner: sPartner,
+              });
+              break;
+            case "FINANCE":
+              sPartner = oViewModel.getProperty("/financialEmployee/Partner");
+              if (!sPartner) {
+                this._sweetToast(this.getText("WHITE_PARTNER"), "E");
+                return;
+              }
               sPath = oModel.createKey(
-                "/AbroadOtherAccountInformationSet",
+                "/StudentDomesticAccountInformationSet",
                 { Pernr: sPernr, Partner: sPartner }
               );
               break;
-             case"ABROADEMPLOYEE":
-             sPartner = oViewModel.getProperty("/abroadEmployee/Partner");
-             if (!sPartner) {
-               this._sweetToast(this.getText("WHITE_PARTNER"), "E");
-               return;
-             }
-             sPath = oModel.createKey(
-               "/LanguageSchoolAbroadSet",
-               { Pernr: sPernr, Partner: sPartner }
-             );
-             break;
-             case "FINANCE":
-                sPartner = oViewModel.getProperty("/financialEmployee/Partner");
-                if (!sPartner) {
-                  this._sweetToast(this.getText("WHITE_PARTNER"), "E");
-                  return;
-                }
-                sPath = oModel.createKey(
-                  "/StudentDomesticAccountInformationSet",
-                  { Pernr: sPernr, Partner: sPartner }
-                );
-                break;   
-                case "MASTER":
-                    sPartner = oViewModel.getProperty("/masterEmployee/Partner");
-                    if (!sPartner) {
-                      this._sweetToast(this.getText("WHITE_PARTNER"), "E");
-                      return;
-                    }
-                    sPath = oModel.createKey(
-                      "/MasterSchoolInformationSet",
-                      { Pernr: sPernr, Partner: sPartner }
-                    );
-                    break; 
+            case "MASTER":
+              sPartner = oViewModel.getProperty("/masterEmployee/Partner");
+              if (!sPartner) {
+                this._sweetToast(this.getText("WHITE_PARTNER"), "E");
+                return;
+              }
+              sPath = oModel.createKey("/MasterSchoolInformationSet", {
+                Pernr: sPernr,
+                Partner: sPartner,
+              });
+              break;
             default:
               break;
           }

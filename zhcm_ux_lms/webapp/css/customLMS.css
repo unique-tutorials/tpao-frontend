@@ -328,7 +328,7 @@ html.sap-phone .lmsDisplayOnlyCheckBox {
     width: 100vw;
     height: 100%; 
     z-index: -1; 
-   opacity: 0.6;
+   opacity: 0.8;
 }
 
 .lmsStatusText {

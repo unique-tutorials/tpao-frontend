@@ -121,12 +121,12 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>CANCEL_ACTION}" type="Reject" icon="sap-icon://cancel" press="onCancelCreatePage"/>
+                <Button text="{i18n>CANCEL_BUTTON}" type="Reject" icon="sap-icon://cancel" press="onCancelCreatePage"/>
 
                 <Button
                     enabled="{abrRequestListModel>/aplicationSetting/enabled}"
                     text="{i18n>SAVE_ACTION}"
-                    type="Success"
+                    type="Accept"
                     icon="sap-icon://save"
                     visible="{abrRequestListModel>/aplicationSetting/enabled}"
                     cd:actionType="SAVE"

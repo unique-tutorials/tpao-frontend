@@ -1,6 +1,6 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core">
-    <Table mode="MultiSelect" busy="{abrAccountListModel>/tableBusy}" width="auto" items="{abrAccountListModel>/guarantorList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrAccountListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <Table busy="{abrAccountListModel>/tableBusy}" width="auto" items="{abrAccountListModel>/guarantorList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{abrAccountListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>

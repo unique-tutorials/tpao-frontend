@@ -33,21 +33,21 @@
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="Country" label="{i18n>STUDENT_COUNTRY}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/searchParameter/Conry}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , length: 1000, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/searchParameter/Conry}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="MainSchool" label="{i18n>PRINCIPAL_SCHOOL}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Muniv' } ] }" selectedKey="{requestListModel>/searchParameter/Unive}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , length: 500, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Muniv' } ] }" selectedKey="{requestListModel>/searchParameter/Unive}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="LanguageSchool" label="{i18n>LANGUAGE_SCHOOL}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Lalsa' } ] }" selectedKey="{requestListModel>/searchParameter/Lalsa}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , length: 500, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Lalsa' } ] }" selectedKey="{requestListModel>/searchParameter/Lalsa}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
@@ -99,7 +99,7 @@
                                 <Text text="{Nachn}"/>
                                 <ObjectIdentifier title="{Orgeh}" text="{Orgtx}"/>
                                 <Text text="{Landx}"/>
-                                <Text text="{Atext}"/>
+                                <Text text="{Munivt}"/>
                                 <Text text="{Lalsat}"/>
                             </cells>
                         </ColumnListItem>

@@ -27,7 +27,7 @@
             </Column>
         </columns>
         <items>
-            <ColumnListItem type="Navigation">
+            <ColumnListItem>
                 <cells>
                     <Text text="{requestListModel>Sirno}"/>
                     <Text text="{requestListModel>Vorna}"/>

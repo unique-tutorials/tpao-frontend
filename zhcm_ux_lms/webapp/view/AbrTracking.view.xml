@@ -30,14 +30,14 @@
                                         <IconTabFilter text="{i18n>FOREIGN_CURRENCY_ACCOUNT}" key="ForeignCurrency">
                                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.IconTabForeignCurreAccount" type="XML" />
                                         </IconTabFilter>
+                                        <IconTabFilter text="{i18n>STUDENT_ACCOUNT_INFORMATION}" key="StudentAccountInfo">
+                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.IconTabStudentAccountInfo" type="XML" />
+                                        </IconTabFilter>
                                         <IconTabFilter text="{i18n>SCHOOL_FEE_INFORMATION}" key="SchoolFee">
                                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.IconTabSchoolFeeInfo" type="XML" />
                                         </IconTabFilter>
                                         <IconTabFilter text="{i18n>GENERAL_EXPENDITURE_INFORMATION}" key="GeneralExInfo">
                                             <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.IconTabSpendingInfo" type="XML" />
-                                        </IconTabFilter>
-                                        <IconTabFilter text="{i18n>STUDENT_ACCOUNT_INFORMATION}" key="StudentAccountInfo">
-                                            <core:Fragment fragmentName="zhcm_ux_lms_abr.fragment.AbrTracking.IconTabStudentAccountInfo" type="XML" />
                                         </IconTabFilter>
                                     </items>
                                 </IconTabBar>
@@ -66,7 +66,6 @@
                 <!-- <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
                 <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/> -->
                 <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
-                <!-- <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/> -->
                 <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onSave" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>
