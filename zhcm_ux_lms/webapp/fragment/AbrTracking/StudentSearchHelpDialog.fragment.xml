@@ -99,7 +99,7 @@
                                 <Text text="{Nachn}"/>
                                 <ObjectIdentifier title="{Orgeh}" text="{Orgtx}"/>
                                 <Text text="{Landx}"/>
-                                <Text text="{Atext}"/>
+                                <Text text="{Munivt}"/>
                                 <Text text="{Lalsat}"/>
                             </cells>
                         </ColumnListItem>

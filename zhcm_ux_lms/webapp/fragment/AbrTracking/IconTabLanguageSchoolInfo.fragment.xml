@@ -24,7 +24,7 @@
                             <Input value="{requestListModel>/financialEmployee/NameFirst}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>BANK_NAME}">
+                    <!-- <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Input value="{requestListModel>/financialEmployee/Banka}" />
                         </f:fields>
@@ -39,6 +39,11 @@
                             <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/financialEmployee/City}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
+                        </f:fields>
+                    </f:FormElement> -->
+                    <f:FormElement label="{i18n>BANK_KEY}">
+                        <f:fields>
+                            <Input value="{requestListModel>/financialEmployee/Bankl}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TL_FOREIGN_EXCHANGE_NUMBER}">
@@ -80,7 +85,7 @@
                             <Input value="{requestListModel>/abroadEmployee/NameFirst}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>BANK_NAME}">
+                    <!-- <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Input value="{requestListModel>/abroadEmployee/Banka}" />
                         </f:fields>
@@ -95,6 +100,11 @@
                             <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/abroadEmployee/City}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
+                        </f:fields>
+                    </f:FormElement> -->
+                    <f:FormElement label="{i18n>BANK_KEY}">
+                        <f:fields>
+                            <Input value="{requestListModel>/abroadEmployee/Bankl}" /> 
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_NUMBER}">

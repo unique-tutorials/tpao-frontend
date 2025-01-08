@@ -23,7 +23,7 @@
                             <Input value="{requestListModel>/masterEmployee/NameFirst}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>BANK_NAME}">
+                    <!-- <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Input value="{requestListModel>/masterEmployee/Banka}" />
                         </f:fields>
@@ -35,10 +35,14 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
-                            <!-- <Input value="{requestListModel>/masterEmployee/Bezei}" /> -->
                             <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/masterEmployee/City}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
+                        </f:fields>
+                    </f:FormElement> -->
+                    <f:FormElement label="{i18n>BANK_KEY}">
+                        <f:fields>
+                            <Input value="{requestListModel>/masterEmployee/Bankl}" /> 
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_NUMBER}">

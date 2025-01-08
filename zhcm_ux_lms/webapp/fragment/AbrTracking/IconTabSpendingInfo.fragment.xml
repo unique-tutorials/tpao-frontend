@@ -12,7 +12,7 @@
             </OverflowToolbar>
         </headerToolbar>
         <columns>
-            <Column>
+            <Column width="15rem">
                 <Text text="Ödeme Türü"/>
             </Column>  
             <Column>

@@ -321,20 +321,22 @@ sap.ui.define(
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
         var oFinEntry = oViewModel.getProperty("/financialEmployee");
+        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oFinEntry.Pernr = sPernr;
 
         if (
           this.byId("TabBarFinancial").getSelectedKey() === "LanguageSchool"
         ) {
           if (!oFinEntry.Descp2 || oFinEntry.Descp2.trim() === "") {
-            if (!this._oDescDialog) {
-              this._oDescDialog = new sap.m.Dialog({
+            if (!this._oDescFinEntryDialog) {
+              this._oDescFinEntryDialog = new sap.m.Dialog({
                 title: "Dil Okul Bilgisi İçin Açıklama Girin",
                 contentWidth: "40%",
                 content: [
                   new sap.m.VBox({
                     items: [
                       new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                      new sap.m.TextArea("desc2TextArea", {
+                      new sap.m.TextArea("finEntryTextArea", {
                         width: "100%",
                         placeholder: "Açıklama giriniz...",
                         liveChange: function (oEvent) {
@@ -354,7 +356,7 @@ sap.ui.define(
                   icon: "sap-icon://save",
                   type: "Accept",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescFinEntryDialog.close();
                     oModel.create(
                       "/DomesticLanguageSchoolInformationSet",
                       oFinEntry,
@@ -376,13 +378,13 @@ sap.ui.define(
                 endButton: new sap.m.Button({
                   text: "İptal",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescFinEntryDialog.close();
                   },
                 }),
               });
             }
 
-            this._oDescDialog.open();
+            this._oDescFinEntryDialog.open();
           }
         }
       },
@@ -392,21 +394,23 @@ sap.ui.define(
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
         var oForeignEntry = oViewModel.getProperty("/abroadEmployee");
+        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oForeignEntry.Pernr = sPernr
         // Genel bilgiler sekmesi seçiliyse
         // Yurtiçi dil okul bilgiler sekmesi seçiliyse
         if (
           this.byId("TabBarFinancial").getSelectedKey() === "LanguageSchool"
         ) {
           if (!oForeignEntry.Descp2 || oForeignEntry.Descp2.trim() === "") {
-            if (!this._oDescDialog) {
-              this._oDescDialog = new sap.m.Dialog({
+            if (!this._oDescForeignEntryDialog) {
+              this._oDescForeignEntryDialog = new sap.m.Dialog({
                 title: "Yurt Dışı Dil Okulu İçin Açıklama Girin",
                 contentWidth: "40%",
                 content: [
                   new sap.m.VBox({
                     items: [
                       new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                      new sap.m.TextArea("desc2TextArea", {
+                      new sap.m.TextArea("descForeignEntryTextArea", {
                         width: "100%",
                         placeholder: "Açıklama giriniz...",
                         liveChange: function (oEvent) {
@@ -426,7 +430,7 @@ sap.ui.define(
                   icon: "sap-icon://save",
                   type: "Accept",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescForeignEntryDialog.close();
                     oModel.create("/LanguageSchoolAbroadSet", oForeignEntry, {
                       success: function (oData, oResponse) {
                         debugger;
@@ -444,13 +448,13 @@ sap.ui.define(
                 endButton: new sap.m.Button({
                   text: "İptal",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescForeignEntryDialog.close();
                   },
                 }),
               });
             }
 
-            this._oDescDialog.open();
+            this._oDescForeignEntryDialog.open();
           }
         }
       },
@@ -460,17 +464,19 @@ sap.ui.define(
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
         var oMasterEntry = oViewModel.getProperty("/masterEmployee");
+        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oMasterEntry.Pernr = sPernr;
         if (this.byId("TabBarFinancial").getSelectedKey() === "MasterSchool") {
           if (!oMasterEntry.Descp2 || oMasterEntry.Descp2.trim() === "") {
-            if (!this._oDescDialog) {
-              this._oDescDialog = new sap.m.Dialog({
+            if (!this._oDescMasterDialog) {
+              this._oDescMasterDialog = new sap.m.Dialog({
                 title: "Master Okulu İçin Açıklama Girin",
                 contentWidth: "40%",
                 content: [
                   new sap.m.VBox({
                     items: [
                       new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                      new sap.m.TextArea("desc2TextArea", {
+                      new sap.m.TextArea("descMasterTextArea", {
                         width: "100%",
                         placeholder: "Açıklama giriniz...",
                         liveChange: function (oEvent) {
@@ -490,7 +496,7 @@ sap.ui.define(
                   icon: "sap-icon://save",
                   type: "Accept",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescMasterDialog.close();
                     oModel.create("/MasterSchoolInformationSet", oMasterEntry, {
                       success: function (oData, oResponse) {
                         debugger;
@@ -508,13 +514,13 @@ sap.ui.define(
                 endButton: new sap.m.Button({
                   text: "İptal",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescMasterDialog.close();
                   },
                 }),
               });
             }
 
-            this._oDescDialog.open();
+            this._oDescMasterDialog.open();
           }
         }
       },
@@ -524,19 +530,21 @@ sap.ui.define(
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
         var oDomesticEntry = oViewModel.getProperty("/domesticAccount");
+        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oDomesticEntry.Pernr = sPernr;
         if (
           this.byId("TabBarFinancial").getSelectedKey() === "ForeignCurrency"
         ) {
           if (!oDomesticEntry.Descp2 || oDomesticEntry.Descp2.trim() === "") {
-            if (!this._oDescDialog) {
-              this._oDescDialog = new sap.m.Dialog({
+            if (!this._oDescDomesticDialog) {
+              this._oDescDomesticDialog = new sap.m.Dialog({
                 title: "Öğrenci Yurt içi Döviz Hesabı İçin Açıklama Girin",
                 contentWidth: "40%",
                 content: [
                   new sap.m.VBox({
                     items: [
                       new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                      new sap.m.TextArea("desc2TextArea", {
+                      new sap.m.TextArea("descDomesticTextArea", {
                         width: "100%",
                         placeholder: "Açıklama giriniz...",
                         liveChange: function (oEvent) {
@@ -556,7 +564,7 @@ sap.ui.define(
                   icon: "sap-icon://save",
                   type: "Accept",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescDomesticDialog.close();
                     oModel.create(
                       "/ForeignCurrencyAccountSet",
                       oDomesticEntry,
@@ -578,13 +586,13 @@ sap.ui.define(
                 endButton: new sap.m.Button({
                   text: "İptal",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescDomesticDialog.close();
                   },
                 }),
               });
             }
 
-            this._oDescDialog.open();
+            this._oDescDomesticDialog.open();
           }
         }
       },
@@ -594,19 +602,21 @@ sap.ui.define(
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
         var oOtherEntry = oViewModel.getProperty("/otherAccount");
+        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oOtherEntry.Pernr = sPernr;
         if (
           this.byId("TabBarFinancial").getSelectedKey() === "ForeignCurrency"
         ) {
           if (!oOtherEntry.Descp2 || oOtherEntry.Descp2.trim() === "") {
-            if (!this._oDescDialog) {
-              this._oDescDialog = new sap.m.Dialog({
+            if (!this._oDescOtherDialog) {
+              this._oDescOtherDialog = new sap.m.Dialog({
                 title: "Diğer Hesap Bilgileri İçin Açıklama Girin",
                 contentWidth: "40%",
                 content: [
                   new sap.m.VBox({
                     items: [
                       new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                      new sap.m.TextArea("desc2TextArea", {
+                      new sap.m.TextArea("descOtherTextArea", {
                         width: "100%",
                         placeholder: "Açıklama giriniz...",
                         liveChange: function (oEvent) {
@@ -626,7 +636,7 @@ sap.ui.define(
                   icon: "sap-icon://save",
                   type: "Accept",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescOtherDialog.close();
                     oModel.create("/OtherAccountInformationSet", oOtherEntry, {
                       success: function (oData, oResponse) {
                         debugger;
@@ -644,13 +654,13 @@ sap.ui.define(
                 endButton: new sap.m.Button({
                   text: "İptal",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescOtherDialog.close();
                   },
                 }),
               });
             }
 
-            this._oDescDialog.open();
+            this._oDescOtherDialog.open();
           }
         }
       },
@@ -660,19 +670,21 @@ sap.ui.define(
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
         var oDomesticEntry = oViewModel.getProperty("/domesticEmployee");
+        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oDomesticEntry.Pernr = sPernr;
         if (
           this.byId("TabBarFinancial").getSelectedKey() === "StudentAccountInfo"
         ) {
           if (!oDomesticEntry.Descp2 || oDomesticEntry.Descp2.trim() === "") {
-            if (!this._oDescDialog) {
-              this._oDescDialog = new sap.m.Dialog({
+            if (!this._oDescAccountDialog) {
+              this._oDescAccountDialog = new sap.m.Dialog({
                 title: "Öğrenci Yurt içi Hesap İçin Açıklama Girin",
                 contentWidth: "40%",
                 content: [
                   new sap.m.VBox({
                     items: [
                       new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                      new sap.m.TextArea("desc2TextArea", {
+                      new sap.m.TextArea("descAccountTextArea", {
                         width: "100%",
                         placeholder: "Açıklama giriniz...",
                         liveChange: function (oEvent) {
@@ -692,7 +704,7 @@ sap.ui.define(
                   icon: "sap-icon://save",
                   type: "Accept",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescAccountDialog.close();
                     oModel.create(
                       "/StudentDomesticAccountInformationSet",
                       oDomesticEntry,
@@ -714,13 +726,13 @@ sap.ui.define(
                 endButton: new sap.m.Button({
                   text: "İptal",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescAccountDialog.close();
                   },
                 }),
               });
             }
 
-            this._oDescDialog.open();
+            this._oDescAccountDialog.open();
           }
         }
       },
@@ -730,6 +742,8 @@ sap.ui.define(
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
         var oAbroadOtherEntry = oViewModel.getProperty("/abroadOtherEmployee");
+        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oAbroadOtherEntry.Pernr = sPernr;
         if (
           this.byId("TabBarFinancial").getSelectedKey() === "StudentAccountInfo"
         ) {
@@ -737,15 +751,15 @@ sap.ui.define(
             !oAbroadOtherEntry.Descp2 ||
             oAbroadOtherEntry.Descp2.trim() === ""
           ) {
-            if (!this._oDescDialog) {
-              this._oDescDialog = new sap.m.Dialog({
+            if (!this._oDescAbroadOtherDialog) {
+              this._oDescAbroadOtherDialog = new sap.m.Dialog({
                 title: "Öğrenci Yurt Dışı Hesap İçin Açıklama Girin",
                 contentWidth: "40%",
                 content: [
                   new sap.m.VBox({
                     items: [
                       new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                      new sap.m.TextArea("desc2TextArea", {
+                      new sap.m.TextArea("descAbroadTextArea", {
                         width: "100%",
                         placeholder: "Açıklama giriniz...",
                         liveChange: function (oEvent) {
@@ -765,7 +779,7 @@ sap.ui.define(
                   icon: "sap-icon://save",
                   type: "Accept",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescAbroadOtherDialog.close();
                     oModel.create(
                       "/AbroadOtherAccountInformationSet",
                       oAbroadOtherEntry,
@@ -787,13 +801,13 @@ sap.ui.define(
                 endButton: new sap.m.Button({
                   text: "İptal",
                   press: function () {
-                    that._oDescDialog.close();
+                    that._oDescAbroadOtherDialog.close();
                   },
                 }),
               });
             }
 
-            this._oDescDialog.open();
+            this._oDescAbroadOtherDialog.open();
           }
         }
       },
@@ -2196,15 +2210,17 @@ sap.ui.define(
           }
         }
       },
+      
       onFinancialSendPress: function (oEvent) {
         debugger;
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/financialEmployee/NameFirst"),
-          sBanka = oViewModel.getProperty("/financialEmployee/Banka"),
-          sBrnch = oViewModel.getProperty("/financialEmployee/Brnch"),
-          sCity = oViewModel.getProperty("/financialEmployee/City"),
+        //   sBanka = oViewModel.getProperty("/financialEmployee/Banka"),
+        //   sBrnch = oViewModel.getProperty("/financialEmployee/Brnch"),
+        //   sCity = oViewModel.getProperty("/financialEmployee/City"),
+          sBankl = oViewModel.getProperty("/financialEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/financialEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/financialEmployee/Iban00");
 
@@ -2212,10 +2228,11 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "1",
-          Banka: sBanka,
-          Brnch: sBrnch,
-          City: sCity,
+        //   Banka: sBanka,
+        //   Brnch: sBrnch,
+        //   City: sCity,
           Bankn: sBankn,
+          Bankl : sBankl,
           Iban00: sIban00,
           Abano: "",
           Swift: "",
@@ -2240,9 +2257,10 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/abroadEmployee/NameFirst"),
-          sBanka = oViewModel.getProperty("/abroadEmployee/Banka"),
-          sBrnch = oViewModel.getProperty("/abroadEmployee/Brnch"),
-          sCity = oViewModel.getProperty("/abroadEmployee/City"),
+        //   sBanka = oViewModel.getProperty("/abroadEmployee/Banka"),
+        //   sBrnch = oViewModel.getProperty("/abroadEmployee/Brnch"),
+        //   sCity = oViewModel.getProperty("/abroadEmployee/City"),
+          sBankl = oViewModel.getProperty("/abroadEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/abroadEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/abroadEmployee/Iban00"),
           sAbano = oViewModel.getProperty("/abroadEmployee/Abano"),
@@ -2251,9 +2269,10 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "2",
-          Banka: sBanka,
-          Brnch: sBrnch,
-          City: sCity,
+        //   Banka: sBanka,
+        //   Brnch: sBrnch,
+        //   City: sCity,
+          Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
           Abano: sAbano,
@@ -2279,9 +2298,10 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/masterEmployee/NameFirst"),
-          sBanka = oViewModel.getProperty("/masterEmployee/Banka"),
-          sBrnch = oViewModel.getProperty("/masterEmployee/Brnch"),
-          sCity = oViewModel.getProperty("/masterEmployee/City"),
+        //   sBanka = oViewModel.getProperty("/masterEmployee/Banka"),
+        //   sBrnch = oViewModel.getProperty("/masterEmployee/Brnch"),
+        //   sCity = oViewModel.getProperty("/masterEmployee/City"),
+          sBankl = oViewModel.getProperty("/masterEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/masterEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/masterEmployee/Iban00"),
           sAbano = oViewModel.getProperty("/masterEmployee/Abano"),
@@ -2290,9 +2310,10 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "3",
-          Banka: sBanka,
-          Brnch: sBrnch,
-          City: sCity,
+        //   Banka: sBanka,
+        //   Brnch: sBrnch,
+        //   City: sCity,
+          Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
           Abano: sAbano,
@@ -2318,9 +2339,10 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/domesticAccount/NameFirst"),
-          sBanka = oViewModel.getProperty("/domesticAccount/Banka"),
-          sBrnch = oViewModel.getProperty("/domesticAccount/Brnch"),
-          sCity = oViewModel.getProperty("/domesticAccount/City"),
+        //   sBanka = oViewModel.getProperty("/domesticAccount/Banka"),
+        //   sBrnch = oViewModel.getProperty("/domesticAccount/Brnch"),
+        //   sCity = oViewModel.getProperty("/domesticAccount/City"),
+          sBankl = oViewModel.getProperty("/domesticAccount/Bankl"),
           sBankn = oViewModel.getProperty("/domesticAccount/Bankn"),
           sIban00 = oViewModel.getProperty("/domesticAccount/Iban00");
         var oUrlParameters = {
@@ -2330,6 +2352,7 @@ sap.ui.define(
           Banka: sBanka,
           Brnch: sBrnch,
           City: sCity,
+          Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
           Abano: "",
@@ -2355,9 +2378,10 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/otherAccount/NameFirst"),
-          sBanka = oViewModel.getProperty("/otherAccount/Banka"),
-          sBrnch = oViewModel.getProperty("/otherAccount/Brnch"),
-          sCity = oViewModel.getProperty("/otherAccount/City"),
+        //   sBanka = oViewModel.getProperty("/otherAccount/Banka"),
+        //   sBrnch = oViewModel.getProperty("/otherAccount/Brnch"),
+        //   sCity = oViewModel.getProperty("/otherAccount/City"),
+          sBankl = oViewModel.getProperty("/otherAccount/Bankl"),
           sBankn = oViewModel.getProperty("/otherAccount/Bankn"),
           sIban00 = oViewModel.getProperty("/otherAccount/Iban00");
 
@@ -2365,9 +2389,10 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "5",
-          Banka: sBanka,
-          Brnch: sBrnch,
-          City: sCity,
+        //   Banka: sBanka,
+        //   Brnch: sBrnch,
+        //   City: sCity,
+          Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
           Abano: "",
@@ -2393,9 +2418,10 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/domesticEmployee/NameFirst"),
-          sBanka = oViewModel.getProperty("/domesticEmployee/Banka"),
-          sBrnch = oViewModel.getProperty("/domesticEmployee/Brnch"),
-          sCity = oViewModel.getProperty("/domesticEmployee/City"),
+        //   sBanka = oViewModel.getProperty("/domesticEmployee/Banka"),
+        //   sBrnch = oViewModel.getProperty("/domesticEmployee/Brnch"),
+        //   sCity = oViewModel.getProperty("/domesticEmployee/City"),
+          sBankl = oViewModel.getProperty("/domesticEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/domesticEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/domesticEmployee/Iban00");
 
@@ -2403,9 +2429,10 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "6",
-          Banka: sBanka,
-          Brnch: sBrnch,
-          City: sCity,
+        //   Banka: sBanka,
+        //   Brnch: sBrnch,
+        //   City: sCity,
+          Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
           Abano: "",
@@ -2431,9 +2458,10 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/abroadOtherEmployee/NameFirst"),
-          sBanka = oViewModel.getProperty("/abroadOtherEmployee/Banka"),
-          sBrnch = oViewModel.getProperty("/abroadOtherEmployee/Brnch"),
-          sCity = oViewModel.getProperty("/abroadOtherEmployee/City"),
+        //   sBanka = oViewModel.getProperty("/abroadOtherEmployee/Banka"),
+        //   sBrnch = oViewModel.getProperty("/abroadOtherEmployee/Brnch"),
+        //   sCity = oViewModel.getProperty("/abroadOtherEmployee/City"),
+          sBankl = oViewModel.getProperty("/abroadOtherEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/abroadOtherEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/abroadOtherEmployee/Iban00"),
           sAbano = oViewModel.getProperty("/abroadOtherEmployee/Abano"),
@@ -2443,9 +2471,10 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "7",
-          Banka: sBanka,
-          Brnch: sBrnch,
-          City: sCity,
+        //   Banka: sBanka,
+        //   Brnch: sBrnch,
+        //   City: sCity,
+          Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
           Abano: sAbano,
