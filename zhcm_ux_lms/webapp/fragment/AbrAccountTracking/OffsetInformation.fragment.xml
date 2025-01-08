@@ -35,38 +35,28 @@
                 <Text text="{i18n>CURRENCY}"/>
             </Column>
             <Column>
-                <Text text="{i18n>OFFSET_NO}"/>
+                <Text text="{i18n>DOC_NO}"/>
+            </Column>
+            <Column>
+                <Text text="{i18n>SENT_TO_FINANCIAL}"/>
+            </Column>
+            <Column>
+                <Text text="{i18n>FINANCIAL_PAID}"/>
             </Column>
         </columns>
         <items>
             <ColumnListItem type="Navigation" press="onAvailableRequestActions">
                 <cells>
                     <Text text="{abrAccountListModel>Wagpe}"/>
-                    <Text text="{abrAccountListModel>Paytp}"/>
+                    <Text text="{abrAccountListModel>Paytpt}"/>
                     <Text text="{path:'abrAccountListModel>Dates', type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
                     <Text text="{abrAccountListModel>Betrg}"/>
                     <Text text="{abrAccountListModel>Waers}"/>
-                    <Text text="{abrAccountListModel>Offno}"/>
+                    <Text text="{abrAccountListModel>Belnr}"/>
+                    <CheckBox selected="{abrAccountListModel>Sent}" />
+                    <CheckBox selected="{abrAccountListModel>Paid}" />
                 </cells>
             </ColumnListItem>
         </items>
     </Table>
-
-    <!-- <f:Form editable="false">
-        <f:layout>
-            <f:ResponsiveGridLayout labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="1" singleContainerFullSize="false" />
-        </f:layout>
-        <f:formContainers>
-            <f:FormContainer>
-                <f:formElements>
-                    <f:FormElement label="{i18n>PRINCIPAL_TOTAL}">
-                        <f:fields>
-                            <Input value="{requestListModel>/newNRequest/Pernr}" />
-                            <Button text="{i18n>SHOW_TOTAL}" type="Emphasized" />
-                        </f:fields>
-                    </f:FormElement>
-                </f:formElements>
-            </f:FormContainer>
-        </f:formContainers>
-    </f:Form> -->
 </c:FragmentDefinition>

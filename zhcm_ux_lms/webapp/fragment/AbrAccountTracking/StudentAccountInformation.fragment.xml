@@ -21,7 +21,7 @@
                               <Button enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress" cd:type="DOMESTIC"/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>BANK_NAME}">
+                    <!-- <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/domesticEmployee/Banka}" />
                         </f:fields>
@@ -34,6 +34,11 @@
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/domesticEmployee/City}" />
+                        </f:fields>
+                    </f:FormElement> -->
+                    <f:FormElement label="{i18n>BANK_KEY}">
+                        <f:fields>
+                            <Text text="{abrAccountListModel>/domesticEmployee/Bankl}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TL_ACCOUNT_NUMBER}">
@@ -61,7 +66,7 @@
                         </f:fields>
                     </f:FormElement>
                 <f:formElements>
-                    <f:FormElement label="{i18n>BANK_NAME}">
+                    <!-- <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/abroadOtherEmployee/Banka}" />
                         </f:fields>
@@ -74,6 +79,11 @@
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/abroadOtherEmployee/City}" />
+                        </f:fields>
+                    </f:FormElement> -->
+                    <f:FormElement label="{i18n>BANK_KEY}">
+                        <f:fields>
+                            <Text text="{abrAccountListModel>/abroadOtherEmployee/Bankl}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_NUMBER}">

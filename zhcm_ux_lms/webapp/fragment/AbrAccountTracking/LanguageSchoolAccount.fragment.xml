@@ -19,7 +19,7 @@
                     </f:fields>
                 </f:FormElement>
                 <f:formElements>
-                    <f:FormElement label="{i18n>BANK_NAME}">
+                    <!-- <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/financialEmployee/Banka}" />
                         </f:fields>
@@ -32,6 +32,11 @@
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/financialEmployee/City}" />
+                        </f:fields>
+                    </f:FormElement> -->
+                    <f:FormElement label="{i18n>BANK_KEY}">
+                        <f:fields>
+                            <Text text="{abrAccountListModel>/financialEmployee/Bankl}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>TL_FOREIGN_EXCHANGE_NUMBER}">
@@ -59,7 +64,7 @@
                             <Button enabled="false" text="Gönder" press=".onPartnerButtonPress" cd:type="ABROADEMPLOYEE"/>
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>BANK_NAME}">
+                    <!-- <f:FormElement label="{i18n>BANK_NAME}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/abroadEmployee/Banka}" />
                         </f:fields>
@@ -72,6 +77,11 @@
                     <f:FormElement label="{i18n>BANK_CITY}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/abroadEmployee/City}" />
+                        </f:fields>
+                    </f:FormElement> -->
+                    <f:FormElement label="{i18n>BANK_KEY}">
+                        <f:fields>
+                            <Text text="{abrAccountListModel>/abroadEmployee/Bankl}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>ACCOUNT_NUMBER}">
@@ -89,21 +99,21 @@
                             <Text text="{abrAccountListModel>/abroadEmployee/Iban00}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>ACC_NO}">
+                    <!-- <f:FormElement label="{i18n>ACC_NO}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/abroadEmployee/Banka}" />
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                     <f:FormElement label="{i18n>ABA_NO}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/abroadEmployee/Abano}" />
                         </f:fields>
                     </f:FormElement>
-                    <f:FormElement label="{i18n>STUDENT_ID}">
+                    <!-- <f:FormElement label="{i18n>STUDENT_ID}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/abroadEmployee/Banaka}" />
                         </f:fields>
-                    </f:FormElement>
+                    </f:FormElement> -->
                     <f:FormElement label="{i18n>EXPLANATION}">
                         <f:fields>
                             <TextArea enabled="false" rows="3" value="{abrAccountListModel>/abroadEmployee/Descp}" />
