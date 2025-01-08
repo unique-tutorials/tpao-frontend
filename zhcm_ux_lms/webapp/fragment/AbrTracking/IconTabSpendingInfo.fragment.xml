@@ -6,7 +6,6 @@
                 <content>
                     <Title text="{i18n>GENERAL_EXPENDITURE_INFORMATION}" level="H2"/>
                     <ToolbarSpacer />
-                    <!-- <Button text="{i18n>GEN_EXP_INF}" press=".onPaynoButtonPress" type="Neutral" /> -->
                     <Button text="{i18n>ADD_NEW_INVOICE}" press=".onExpendInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
                 </content>
             </OverflowToolbar>
@@ -40,9 +39,6 @@
             <Column>
                 <Text text="{i18n>INVOICE_DOCUMENT}"/>
             </Column>
-            <!-- <Column>
-                <Text text="{i18n>SEND}"/>
-            </Column> -->
             <Column>
                 <Text text="{i18n>TO_SENT}"/>
             </Column>
@@ -77,21 +73,11 @@
                     }"/>
                     <Text text="{requestListModel>Payam}"/>
                     <Text text="{requestListModel>Descp}"/>
-         
-                        <Text text="{requestListModel>Appstx}"/>
+                    <Text text="{requestListModel>Appstx}"/>
                     <Link press=".onAttachDownload" text="{requestListModel>FileName}" />
                     <CheckBox selected="{requestListModel>Sent}"/>
                     <CheckBox selected="{requestListModel>Paid}" />
-                    <!-- <Button 
-                    icon="sap-icon://paper-plane" 
-                    type="Emphasized"
-                    press=".expendApprovalDialog"
-                    enabled="{= !${requestListModel>Sent} }" /> -->
                     <Button icon="sap-icon://menu" type="Accept" press=".onExpendActions" />
-                    <!-- <Text text="{requestListModel>Waers}"/>
-                    <Text text="{requestListModel>Mwskz}"/>
-                    <Text text="{requestListModel>Descp}"/>
-                    <Text text="{requestListModel>Payam}"/> -->
                 </cells>
             </ColumnListItem>
         </items>

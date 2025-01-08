@@ -79,22 +79,6 @@ sap.ui.define([
                     "count": 0,
                     "icon": "sap-icon://customer-financial-fact-sheet"
                 },
-                // {
-                //     "appName": "Intra",
-                //     "visible": false,
-                //     "title": 'Stajyer/Beceri',
-                //     "pressed": "onAbrStajyerTrackingPage",
-                //     "count": 0,
-                //     "icon": "sap-icon://group"
-                // },
-                // {
-                //     "appName": "Insba",
-                //     "visible": false,
-                //     "title": 'Stajyer Öğrenci Devamsızlık Onayı',
-                //     "pressed": "onCareerInternContnPage",
-                //     "count": 0,
-                //     "icon": "sap-icon://approvals"
-                // },
                 {
                     "appName": "Edumn",
                     "visible": false,
@@ -103,14 +87,6 @@ sap.ui.define([
                     "count": 0,
                     "icon": "sap-icon://employee"
                 }
-                // {
-                //     "appName": "Trast",
-                //     "visible": false,
-                //     "title": 'Stajyer Öğrenci Takibi',
-                //     "pressed": "onInternStudentTrackingPage",
-                //     "count": 0,
-                //     "icon": "sap-icon://employee"
-                // }
             ],
                 appAuthorization: {
                     Inscr: false,
@@ -120,10 +96,7 @@ sap.ui.define([
                     Insti: false,
                     Insfi: false,
                     Inssl: false,
-                    Intra: false,
-                    Insba: false,
-                    Edumn: false,
-                    Trast: false
+                    Edumn: false
                 }
             });
             

@@ -3,7 +3,7 @@
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar">
     <Dialog title="{i18n>SCHOLARSHIP_STUDENT_INQUIRY}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
-        <f:DynamicPage headerExpanded="{requestListModel>/isHeaderExpanded}">
+        <f:DynamicPage>
             <f:header>
                 <f:DynamicPageHeader>
                     <f:content>

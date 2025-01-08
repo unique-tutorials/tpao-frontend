@@ -6,7 +6,6 @@
                 <content>
                     <Title text="{i18n>SCHOOL_FEE_INFORMATION}" level="H2"/>
                     <ToolbarSpacer />
-                    <!-- <Button text="{i18n>SCH_FEE_INF}" press=".onSchoolFeeButtonPress" type="Neutral" /> -->
                     <Button text="{i18n>ADD_NEW_SCHOOL_FEE}" press=".onSchollInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
                 </content>
             </OverflowToolbar>
@@ -64,11 +63,7 @@
                         }
                     }"/>
                     <CheckBox selected="{requestListModel>Sent}"/>
-                        <Button 
-                        icon="sap-icon://paper-plane" 
-                        type="Emphasized" 
-                        press=".onSendSchoolFeeButtonPress" 
-                        enabled="{= !${requestListModel>Sent} }" />
+                    <Button icon="sap-icon://paper-plane" type="Emphasized" press=".onSendSchoolFeeButtonPress" enabled="{= !${requestListModel>Sent} }" />
                     <Button icon="sap-icon://menu" type="Accept" press=".onSchoolActions" />
                 </cells>
             </ColumnListItem>
