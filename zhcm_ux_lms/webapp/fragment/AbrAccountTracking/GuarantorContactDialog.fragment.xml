@@ -96,7 +96,7 @@
 
                     </columns>
                     <items>
-                        <ColumnListItem >
+                        <ColumnListItem>
                             <cells>
                                 <Text text="{abrAccountListModel>/guarantorContactList/Email}"/>
                                 <CheckBox enabled="false" selected="{abrAccountListModel>/guarantorContactList/Mfult}"/>
@@ -107,7 +107,7 @@
             </l:Grid>
         </l:VerticalLayout>
         <beginButton>
-            <Button text="{i18n>CLOSE_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorContact" type="Back" />
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorContact" type="Reject" />
         </beginButton>
     </Dialog>
 </c:FragmentDefinition>

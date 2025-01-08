@@ -77,7 +77,7 @@
 			</f:Form>
 		</grid:CSSGrid>
 		<beginButton>
-			<Button text="{i18n>CLOSE_BUTTON}" icon="sap-icon://close" press=".onCancelGuarantorIdentity" type="Back" />
+			<Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorIdentity" type="Reject" />
 		</beginButton>
 	</Dialog>
 </c:FragmentDefinition>

@@ -21,21 +21,6 @@
                               <Button enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress" cd:type="DOMESTIC"/>
                         </f:fields>
                     </f:FormElement>
-                    <!-- <f:FormElement label="{i18n>BANK_NAME}">
-                        <f:fields>
-                            <Text text="{abrAccountListModel>/domesticEmployee/Banka}" />
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="{i18n>BANK_BRANCH}">
-                        <f:fields>
-                            <Text text="{abrAccountListModel>/domesticEmployee/Brnch}" />
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="{i18n>BANK_CITY}">
-                        <f:fields>
-                            <Text text="{abrAccountListModel>/domesticEmployee/City}" />
-                        </f:fields>
-                    </f:FormElement> -->
                     <f:FormElement label="{i18n>BANK_KEY}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/domesticEmployee/Bankl}" />
@@ -66,21 +51,6 @@
                         </f:fields>
                     </f:FormElement>
                 <f:formElements>
-                    <!-- <f:FormElement label="{i18n>BANK_NAME}">
-                        <f:fields>
-                            <Text text="{abrAccountListModel>/abroadOtherEmployee/Banka}" />
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="{i18n>BANK_BRANCH}">
-                        <f:fields>
-                            <Text text="{abrAccountListModel>/abroadOtherEmployee/Brnch}" />
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="{i18n>BANK_CITY}">
-                        <f:fields>
-                            <Text text="{abrAccountListModel>/abroadOtherEmployee/City}" />
-                        </f:fields>
-                    </f:FormElement> -->
                     <f:FormElement label="{i18n>BANK_KEY}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/abroadOtherEmployee/Bankl}" />
@@ -101,11 +71,6 @@
                             <Text text="{abrAccountListModel>/abroadOtherEmployee/Iban00}" />
                         </f:fields>
                     </f:FormElement>
-                    <!-- <f:FormElement label="{i18n>ACC_NO}">
-                        <f:fields>
-                            <Input value="{abrAccountListModel>/abroadOtherEmployee/Banka}" />
-                        </f:fields>
-                    </f:FormElement> -->
                     <f:FormElement label="{i18n>ABA_NO}">
                         <f:fields>
                             <Text text="{abrAccountListModel>/abroadOtherEmployee/Abano}" />

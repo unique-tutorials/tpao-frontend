@@ -69,7 +69,7 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer />
-                <Button text="{i18n>CANCEL_ACTION}" type="Neutral" icon="sap-icon://cancel" press="onCancel" />
+                <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press="onCancel" type="Reject" />
                 <Button id="idFormActionsButton" visible="{= ${approvalRequestListModel>/currentRequest/Lmssf} === 'ALL' ? true : false}" busyIndicatorDelay="0" icon="sap-icon://menu2" type="Emphasized" tooltip="{i18n>ACTION_LIST}" press="onOpenFormActions" text="{i18n>ACTION_LIST}" />
 
             </OverflowToolbar>

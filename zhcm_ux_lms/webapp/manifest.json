@@ -146,13 +146,6 @@
 					]
 				},
 				{
-					"pattern": "trainerpool",
-					"name": "trainerpool",
-					"target": [
-						"trainerpool"
-					]
-				},
-				{
 					"pattern": "AbrRequestList",
 					"name": "AbrRequestList",
 					"target": [
@@ -192,13 +185,6 @@
 					"name": "ApprovalRequestList",
 					"target": [
 						"ApprovalRequestList"
-					]
-				},
-				{
-					"pattern": "collectivePlanning",
-					"name": "collectivePlanning",
-					"target": [
-						"collectivePlanning"
 					]
 				},
 				{
@@ -251,12 +237,6 @@
 					"viewLevel": 1,
 					"title": "{i18n>LMS_APPLICATIONS}"
 				},
-				"trainerpool": {
-					"viewName": "TrainerPool",
-					"viewId": "trainerpool",
-					"viewLevel": 1,
-					"title": "{i18n>TRAINER_POOL}"
-				},
 				"AbrFileUpload": {
 					"viewName": "AbrFileUpload",
 					"viewId": "AbrFileUpload",
@@ -292,12 +272,6 @@
 					"viewId": "ApprovalRequestList",
 					"viewLevel": 2,
 					"title": "{i18n>APPROVE_TRAINING_REQUEST_FORM}"
-				},
-				"collectivePlanning": {
-					"viewName": "CollectivePlanning",
-					"viewId": "CollectivePlanning",
-					"viewLevel": 2,
-					"title": "{i18n>COLLECTIVE_TRAINING_PLANNING}"
 				},
 				"TrplsApp": {
 					"viewName": "TrplsApp",

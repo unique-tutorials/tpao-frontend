@@ -20,13 +20,6 @@
                 items="{ path: '/ScholarshipStudentRequestSet',filters : [ { path : 'Lmsap', operator : 'EQ', value1 : 'MY_REQUESTS'}, { path : 'Lmssf', operator : 'EQ', value1 : 'DRF'} ] }"
                 noDataText="{abrRequestListModel>/tableNoDataText}" busyIndicatorDelay="{abrRequestListModel>/tableBusyDelay}" growing="true"
                 growingScrollToLoad="true" updateFinished="onUpdateFinished" updateStarted="onUpdateStarted" class="lmsTable">
-                <headerToolbar>
-                    <Toolbar>
-                        <ToolbarSpacer/>
-                        <!-- <SearchField id="searchField" placeholder="{i18n>REQUEST_SEARCH_TOOLTIP}" search="onSearch"
-                            width="{= ${device>/system/phone} ? '100%' : '50%' }"></SearchField> -->
-                    </Toolbar>
-                </headerToolbar>   
                 <infoToolbar>
                         <Toolbar>
                             <Title id="tableHeader" text="{abrRequestListModel>/requestListTableTitle}"/>
@@ -90,11 +83,6 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <!-- <Button text="{i18n>EDIT_ACTION}" type="Attention" icon="sap-icon://edit" press="onCancelCreatePage"/> -->
-                <!-- <Button text="{i18n>DISPLAY_ACTION}" type="Neutral" icon="sap-icon://display" press="onCancelCreatePage"/> -->
-                <!-- <Button text="{i18n>DELETE_ACTION}" type="Reject" icon="sap-icon://delete" press="onCancelCreatePage"/>
-                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" type="Success" visible="true"/> -->
                 <Button text="{i18n>CREATE_NEW_REQUEST}" icon="sap-icon://education" press=".onNewTrainingRequest" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>

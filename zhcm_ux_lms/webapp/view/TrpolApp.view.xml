@@ -5,7 +5,7 @@
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar">
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="{i18n>STAFF_TRQ}">
-        <f:DynamicPage headerExpanded="{trplsRequestListModel>/isHeaderExpanded}">
+        <f:DynamicPage>
             <f:header>
                 <f:DynamicPageHeader>
                     <f:content>
@@ -115,12 +115,5 @@
                 </Table>
             </f:content>
         </f:DynamicPage>
-        <!-- <footer>
-            <OverflowToolbar>
-                <ToolbarSpacer/>
-                <Button text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Emphasized"/>
-                <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onSaveButton" type="Accept" visible="true"/>
-            </OverflowToolbar>
-        </footer> -->
     </Page>
 </mvc:View>

@@ -1493,13 +1493,11 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sSelectedApprover = oViewModel.getProperty("/approvalExpendList/Whoap");
 
-        // onSendSalariesButtonPress fonksiyonuna seçimle birlikte formData gönderin
         this.onSendSalariesButtonPress({
-          ...this._oFormData, // Mevcut formData
-          Whoap: sSelectedApprover, // Seçilen onaycı
+          ...this._oFormData,
+          Whoap: sSelectedApprover,
         });
 
-        // Dialog'u kapat
         this._oExpendApprovalDialog.close();
       },
 
@@ -1530,7 +1528,6 @@ sap.ui.define(
           Whoap: oFormData.Whoap,
         };
 
-        // Kullanıcı onayı olmadan işlemi doğrudan gerçekleştir
         this._openBusyFragment("TRAINING_PARTICIPANT_SAVE_OPERATION", []);
         oModel.callFunction("/SetApproved", {
           method: "POST",

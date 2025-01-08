@@ -18,11 +18,14 @@
             <Column>
                 <Text text="{i18n>SELLER_NUMBER}"/>
             </Column>
-            <Column width="15rem">
-                <Text text="Ödeme Türü"/>
+            <Column width="12rem">
+                <Text text="{i18n>PAYMENT_TYPE}"/>
             </Column>
             <Column>
                 <Text text="{i18n>INVOICE_DATE}"/>
+            </Column>
+            <Column>
+                <Text text="{i18n>PAY_DATE}"/>
             </Column>
             <Column>
                 <Text text="{i18n>INVOICE_AMOUNT}"/>
@@ -32,7 +35,7 @@
             </Column>
           
             <Column>
-                <Text text="Onay Durumu"/>
+                <Text text="{i18n>APPRO_STATUS}"/>
             </Column>
             <Column>
                 <Text text="{i18n>INVOICE_DOCUMENT}"/>
@@ -58,6 +61,14 @@
                     <Text text="{requestListModel>Paytpt}"/>
                     <Text text="{
                         path: 'requestListModel>Paydt', 
+                        type: 'sap.ui.model.type.Date', 
+                        formatOptions: { 
+                            pattern: 'dd.MM.yyyy', 
+                            UTC: true 
+                        }
+                    }"/>
+                    <Text text="{
+                        path: 'requestListModel>Augdt', 
                         type: 'sap.ui.model.type.Date', 
                         formatOptions: { 
                             pattern: 'dd.MM.yyyy', 

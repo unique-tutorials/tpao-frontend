@@ -1,6 +1,0 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-	<ActionSheet showCancelButton="true" placement="Auto" buttons="{trainerPoolModel>/trainerActionSet}">
-		<Button text="{ path: 'trainerPoolModel>Text', formatter: '.onGetText' }" icon="{trainerPoolModel>Icon}" press="onTrainerActionSelected"
-			cd:actionId="{trainerPoolModel>Action}" type="{trainerPoolModel>Type}"/>
-	</ActionSheet>
-</core:FragmentDefinition>

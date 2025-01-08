@@ -88,29 +88,6 @@
                             <CheckBox enabled="false" selected="{abrAccountListModel>/accountEmployee/Exede}" />
                         </f:fields>
                     </f:FormElement>
-                    <!-- <f:FormElement label="{i18n>TAX_NUMBER_NUB}">
-                        <f:fields>
-                            <Input value="{abrAccountListModel>/accountEmployee/Rname}" />
-                        </f:fields>
-                    </f:FormElement> -->
-                    <!-- <f:FormElement label="{i18n>TAX_OFFICE_PROVINCE}">
-                        <f:fields>
-                            <Input value="{abrAccountListModel>/accountEmployee/Sname}" />
-                            <Input value="{abrAccountListModel>/accountEmployee/Oname}" />
-                        </f:fields>
-                    </f:FormElement> -->
-                    <!-- <f:FormElement label="{i18n>COST_CENTER}">
-                        <f:fields>
-                            <Input value="{abrAccountListModel>/accountEmployee/Lname}" showValueHelp="true" />
-                            <CheckBox text="{i18n>STUDENT_ACTIVE}" />
-                        </f:fields>
-                    </f:FormElement> -->
-                    <!-- <f:FormElement label="{i18n>BUDGET_CODE}">
-                        <f:fields>
-                            <Input value="{abrAccountListModel>/accountEmployee/Mname}" showValueHelp="true" />
-                            <CheckBox text="{i18n>EXECUTOR_DEFENDANT}" />
-                        </f:fields>
-                    </f:FormElement> -->
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>

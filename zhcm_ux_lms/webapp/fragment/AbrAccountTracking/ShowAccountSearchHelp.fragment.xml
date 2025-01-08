@@ -2,8 +2,8 @@
     xmlns="sap.m"
     xmlns:f="sap.f"
     xmlns:fb="sap.ui.comp.filterbar">
-    <Dialog title="Burslu Öğrenci Takibi (Muhasebe)" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
-        <f:DynamicPage headerExpanded="{abrAccountListModel>/isHeaderExpanded}">
+    <Dialog title="{i18n>SCHOLARSHIP_STUDENT_TRACKING_ACCOUNTING}" state="None" type="Standard" contentWidth="80%" contentHeight="80%" verticalScrolling="false">
+        <f:DynamicPage>
             <f:header>
                 <f:DynamicPageHeader>
                     <f:content>
@@ -37,7 +37,7 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="studentTableAccount" inset="false" class="sapUiSmallMarginBottom"  items="{/ScholarshipStudentSet}" itemPress="onEmployeeSelect">
+                <Table id="studentTableAccount" inset="false" class="sapUiSmallMarginBottom" items="{/ScholarshipStudentSet}" itemPress="onEmployeeSelect">
                     <columns>
                         <Column>
                             <Text text="{i18n>STUDENT_NUMBER}"/>

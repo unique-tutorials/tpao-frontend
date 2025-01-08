@@ -6,16 +6,15 @@
     xmlns:fb="sap.ui.comp.filterbar">
 
     <Page showFooter="true" showHeader="true" floatingFooter="true" showNavButton="true" navButtonPress="onNavBack" title="Burslu Öğrenci Maaşları">
-            <f:DynamicPage headerExpanded="{/headerExpanded}">
-                <f:header>
-                    <f:DynamicPageHeader>
-                        <f:content>
-                            <fb:FilterBar id="filterBarWage" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
-                                <fb:filterGroupItems>
-                                    <fb:FilterGroupItem name="Name" label="{i18n>YEAR_MONTH}" groupName="Group1" visibleInFilterBar="true">
-                                        <fb:control>
-                                            <DatePicker 
-                                            value="{
+        <f:DynamicPage>
+            <f:header>
+                <f:DynamicPageHeader>
+                    <f:content>
+                        <fb:FilterBar id="filterBarWage" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                            <fb:filterGroupItems>
+                                <fb:FilterGroupItem name="Name" label="{i18n>YEAR_MONTH}" groupName="Group1" visibleInFilterBar="true">
+                                    <fb:control>
+                                        <DatePicker value="{
                                                 path: 'wageRequestListModel>/wageSearchRequest/Wagpe',
                                                 type: 'sap.ui.model.type.Date',
                                                
@@ -25,104 +24,97 @@
                                                     },
                                                     pattern: 'MM-y'
                                                 }
-                                            }"
-                                            class="sapUiSmallMarginBottom" />
-                                        </fb:control>
-                                    </fb:FilterGroupItem>
-                                 
-                                </fb:filterGroupItems>
-                            </fb:FilterBar>
-                        </f:content>
-                    </f:DynamicPageHeader>
-                </f:header>
-                <f:content>
-                    <Table id="idSalariesSetTable" inset="false" items="{/StudentSalariesSet}">
-                        <headerToolbar>
-                            <OverflowToolbar>
-                                <content>
-                                    <Title level="H2"/>
-                                    <ToolbarSpacer />
-                                    <Button text="Sorgula" press=".onSearchSalariesButton" />
-                                </content>
-                            </OverflowToolbar>
-                        </headerToolbar>
-                        <columns>
-                       
-                            <Column>
-                                <Text text="{i18n>STUDENT_NUMBER}"/>
-                            </Column>
-                            <Column>
-                                <Text text="{i18n>OR_ENAME}"/>
-                            </Column>
-                            <Column>
-                                <Text text="{i18n>STATIONARY}"/>
-                            </Column>
-                            <Column>
-                                <Text text="{i18n>WAGE}"/>
-                            </Column>
-                            <Column>
-                                <Text text="{i18n>RESTRICTED_SALARY}"/>
-                            </Column>
-                            <Column>
-                                <Text text="Toplam Maaş"/>
-                            </Column>
-                            <Column>
-                                <Text text="{i18n>CURRENCY}"/>
-                            </Column>
-                            <Column>
-                                <Text text="{i18n>EXTRA_DAYS}"/>
-                            </Column>
-                            <Column>
-                                <Text text="Hangi Hesaba"/>
-                            </Column>
-                            <Column>
-                                <Text text="Ödeme Türü"/>
-                            </Column>
-                            <Column>
-                                <Text text="Onay Durumu"/>
-                            </Column>
-                            <Column>
-                                <Text text="{i18n>TO_SENT}"/>
-                            </Column>
-                            <Column>
-                                <Text text="Ödendi"/>
-                            </Column>
-                            <!-- <Column>
-                                <Text text="{i18n>SEND}"/>
-                            </Column> -->
-                            <Column>
-                                <Text text="{i18n>ACTION_LIST}"/>
-                            </Column>
-                        </columns>
-    
-                        <items>
-                            <ColumnListItem vAlign="Middle">
-                                <cells>
-                                    <Text text="{Pernr}" />
-                                    <Text text="{Ename}" />
-                                    <Text text="{Stafe}" />
-                                    <Text text="{Salry}" />
-                                    <Text text="{Consa}" />
-                                    <Text text="{Totwg}" />
-                                    <Text text="{Waers}" />
-                                    <Text text="{Extda}" />
-                                    <Text text="{Wacstx}" />
-                                    <Text text="{Paytpt}" />
-                                    <Text text="{Appstx}" />
-                                    <CheckBox selected="{Sent}" />
-                                    <CheckBox selected="{Paid}" />
-                                    <Button icon="sap-icon://menu" type="Accept" press=".onSalariesActions" />
-                                </cells>
-                            </ColumnListItem>
-                        </items>
-                    </Table>
-                </f:content>
-            </f:DynamicPage>
-        <!-- <footer>
-            <OverflowToolbar>
-                <ToolbarSpacer/>
-                <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" visible='{globalOverTimeRequestModel>/overTimeRequestActionData/changeVisible}' press="onSaveSendEmploymentRequest" type="Accept"/>
-            </OverflowToolbar>
-        </footer> -->
+                                            }" class="sapUiSmallMarginBottom" />
+                                    </fb:control>
+                                </fb:FilterGroupItem>
+
+                            </fb:filterGroupItems>
+                        </fb:FilterBar>
+                    </f:content>
+                </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+                <Table id="idSalariesSetTable" inset="false" items="{/StudentSalariesSet}">
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title level="H2"/>
+                                <ToolbarSpacer />
+                                <Button text="{i18n>QUESTION_BUTTON}" press=".onSearchSalariesButton" />
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="{i18n>STUDENT_NUMBER}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>OR_ENAME}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>STATIONARY}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>WAGE}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>RESTRICTED_SALARY}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>TOTAL_NUMBER}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>CURRENCY}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>EXTRA_DAYS}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>TO_WHICH_ACCOUNT}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>PAYMENT_TYPE}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>PAY_DATE}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>APPRO_STATUS}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>TO_SENT}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>PAID}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>ACTION_LIST}"/>
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <Text text="{Pernr}" />
+                                <Text text="{Ename}" />
+                                <Text text="{Stafe}" />
+                                <Text text="{Salry}" />
+                                <Text text="{Consa}" />
+                                <Text text="{Totwg}" />
+                                <Text text="{Waers}" />
+                                <Text text="{Extda}" />
+                                <Text text="{Wacstx}" />
+                                <Text text="{Paytpt}" />
+                                <Text text="{Augdt}" />
+                                <Text text="{Appstx}" />
+                                <CheckBox selected="{Sent}" />
+                                <CheckBox selected="{Paid}" />
+                                <Button icon="sap-icon://menu" type="Accept" press=".onSalariesActions" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </f:content>
+        </f:DynamicPage>
     </Page>
 </mvc:View>

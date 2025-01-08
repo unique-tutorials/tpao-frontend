@@ -307,7 +307,7 @@ sap.ui.define(
       },
       generateApprovalDialog: function (oFormData) {
         debugger;
-        this._oFormData = oFormData; // oFormData'yı saklayın
+        this._oFormData = oFormData;
 
         if (!this._oGenerateApprovalDialog) {
           this._oGenerateApprovalDialog = sap.ui.xmlfragment(
@@ -322,14 +322,20 @@ sap.ui.define(
       onApprovalSaveButtonPress: function () {
         var oViewModel = this.getModel("wageRequestListModel");
         var sSelectedApprover = oViewModel.getProperty("/approvalList/Whoap");
+        var oFormToValidate =
+            sap.ui.getCore().byId("idStudentSalaryApproverForm") || this.byId("idStudentSalaryApproverForm"),
+          oViewModel = this.getModel("wageRequestListModel"),
+          oModel = this.getModel();
+        if (!this._validateForm(oFormToValidate)) {
+          this._sweetToast(this.getText("FILL_IN_ALL_REQUIRED_FIELDS"), "W");
+          return;
+        }
 
-        // onSendSalariesButtonPress fonksiyonuna seçimle birlikte formData gönderin
         this.onSendSalariesButtonPress({
-          ...this._oFormData, // Mevcut formData
-          Whoap: sSelectedApprover, // Seçilen onaycı
+          ...this._oFormData,
+          Whoap: sSelectedApprover,
         });
 
-        // Dialog'u kapat
         this._oGenerateApprovalDialog.close();
       },
 

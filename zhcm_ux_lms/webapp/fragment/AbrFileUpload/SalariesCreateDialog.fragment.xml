@@ -15,17 +15,14 @@
                                 <Input value="{wageRequestListModel>/salaryCreateList/Extda}" enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}" />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="Ödeme Türü">
+                        <f:FormElement label="{i18n>PAYMENT_TYPE}">
                             <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytt' } ] }"
-                                 selectedKey="{wageRequestListModel>/salaryCreateList/Paytt}" 
-                                 enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}"
-                                 change=".onWageTypeChange">
+                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Paytt' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Paytt}" enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}" change=".onWageTypeChange">
                                     <core:ListItem additionalText="{Group}" key="{Key}" text="{Value}"/>
                                 </ComboBox>
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="Öğrencinin Hangi Hesabına">
+                        <f:FormElement label="{i18n>STUDENT_ACCT}">
                             <f:fields>
                                 <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Wacst' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Wacst}" enabled="{wageRequestListModel>/aplicationSetting/paynoEnabled}">
                                     <core:ListItem key="{Key}" text="{Value}"/>
@@ -52,14 +49,14 @@
                                 <Input value="{wageRequestListModel>/salaryCreateList/Salry}" enabled="false" />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="Kira" visible="{wageRequestListModel>/isSellerVisible}" >
+                        <f:FormElement label="Kira" visible="{wageRequestListModel>/isSellerVisible}">
                             <f:fields>
                                 <Input value="{wageRequestListModel>/salaryCreateList/Salry}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>RESTRICTED_SALARY}" visible="{wageRequestListModel>/isAccountVisible}">
                             <f:fields>
-                                <Input value="{wageRequestListModel>/salaryCreateList/Consa}" enabled="{wageRequestListModel>/isAccountVisibless}"  />
+                                <Input value="{wageRequestListModel>/salaryCreateList/Consa}" enabled="{wageRequestListModel>/isAccountVisibless}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="Toplam Maaş" visible="{wageRequestListModel>/isAccountVisible}">
@@ -67,9 +64,8 @@
                                 <Input value="{wageRequestListModel>/salaryCreateList/Totwg}" enabled="{wageRequestListModel>/isAccountVisibless}" />
                             </f:fields>
                         </f:FormElement>
-                        <f:FormElement label="{i18n>CURRENCY}" >
+                        <f:FormElement label="{i18n>CURRENCY}">
                             <f:fields>
-                                <!-- <ComboBox value="{wageRequestListModel>/salaryCreateList/Waers}" enabled="{wageRequestListModel>/isAccountVisibless}" /> -->
                                 <ComboBox items="{ path:'/ValueHelpSet' , length: 1000, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{wageRequestListModel>/salaryCreateList/Waers}" enabled="{wageRequestListModel>/isAccountVisibless}">
                                     <core:ListItem key="{Key}" text="{Value}"/>
                                 </ComboBox>
@@ -80,10 +76,10 @@
             </f:formContainers>
         </f:Form>
         <beginButton>
-            <Button text="{i18n>CANCEL_ACTION}" type="Reject" press=".onCancelSalaryButtonPress" />
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelSalaryButtonPress" type="Reject" />
         </beginButton>
         <endButton>
-            <Button text="{i18n>SAVE_ACTION}" type="Accept" press=".onSaveSalaryButtonPress" />
+            <Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveSalaryButtonPress" type="Accept" />
         </endButton>
     </Dialog>
 </c:FragmentDefinition>

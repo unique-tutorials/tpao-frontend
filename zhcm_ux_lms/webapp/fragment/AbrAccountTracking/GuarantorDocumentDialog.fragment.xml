@@ -34,10 +34,10 @@
                             <items>
                                 <ColumnListItem vAlign="Inherit">
                                     <cells>
-                                        <Text text="{abrAccountListModel>Id}"/>
+                                        <Link press=".onAttachDownload" text="{abrAccountListModel>Name}"/>
                                         <Text text="{abrAccountListModel>MimeType}"/>
                                         <Text text="{path:'abrAccountListModel>Firdt', type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
-                                        <Text text="{abrAccountListModel>Name}"/>
+                                        <Text text="{abrAccountListModel>Docnm}"/>
                                         <Text text="{abrAccountListModel>Descp}"/>
                                         <Text text="{path:'abrAccountListModel>Lasdt', type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
                                     </cells>
@@ -50,10 +50,7 @@
             </IconTabBar>
         </content>
         <beginButton>
-            <Button text="{i18n>CLOSE_BUTTON}" icon="sap-icon://close" press=".onCancelGuarantorDialog" type="Back" />
+            <Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorDialog" type="Reject" />
         </beginButton>
-        <endButton>
-            <!-- <Button text="{i18n>SAVE_BUTTON}" type="Emphasized" icon="sap-icon://save" press=".onAttachmentGuarantorUploadPress" /> -->
-        </endButton>
     </Dialog>
 </c:FragmentDefinition>
