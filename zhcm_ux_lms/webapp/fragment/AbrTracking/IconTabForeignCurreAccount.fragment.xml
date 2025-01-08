@@ -42,7 +42,7 @@
                     </f:FormElement> -->
                     <f:FormElement label="{i18n>BANK_KEY}">
                         <f:fields>
-                            <Input value="{requestListModel>/domesticAccount/Bankl}" /> 
+                            <Input value="{requestListModel>/domesticAccount/Bankl}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>DOMESTIC_FOREIGN_CURRENCY_ACCOUNT}">
@@ -103,7 +103,7 @@
                     </f:FormElement> -->
                     <f:FormElement label="{i18n>OTHER_BANK_KEY}">
                         <f:fields>
-                            <Input value="{requestListModel>/otherAccount/Bankl}" /> 
+                            <Input value="{requestListModel>/otherAccount/Bankl}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>OTHER_ACCOUNT_NUMBER}">

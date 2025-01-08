@@ -38,13 +38,6 @@
                                 <Input value="{requestListModel>/selectedEmployee/Pernr}" />
                             </f:fields>
                         </f:FormElement>
-                        <!-- <f:FormElement label="{i18n>STUDENT_TYPE}">
-                            <f:fields>
-                                <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Type' } ] }" selectedKey="{requestListModel>/selectedEmployee/Type}">
-                                    <core:ListItem key="{Key}" text="{Value}"/>
-                                </ComboBox>
-                            </f:fields>
-                        </f:FormElement> -->
                         <f:FormElement label="{i18n>STUDENT_NAME}">
                             <f:fields>
                                 <Input value="{requestListModel>/selectedEmployee/Vorna}" />

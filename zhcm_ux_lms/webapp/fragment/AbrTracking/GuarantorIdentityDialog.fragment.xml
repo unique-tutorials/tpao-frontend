@@ -5,89 +5,78 @@
 	xmlns:grid="sap.ui.layout.cssgrid">
 	<Dialog title="{i18n>GUARANTOR_IDENTITY_INFORMATION}" state="None" type="Standard" contentWidth="40%" contentHeight="80%" verticalScrolling="false">
 		<grid:CSSGrid id="grid5" gridTemplateColumns="1fr 0fr" gridTemplateRows="50px 200px 50px" gridGap="1rem">
-		<f:Form  class="sapUiSmallMarginBottom" editable="true">
-		<f:layout>
-			<f:ResponsiveGridLayout labelSpanXL="12" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false" />
-		</f:layout>
-			<f:formContainers>
-				<f:FormContainer >
-					<f:formElements>
-						<f:FormElement label="{i18n>ID_NUMBER}">
-							<f:fields>
-								<Input value="{requestListModel>/guarantorIdentityList/Merni}" />
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="{i18n>STUDENT_NAME}">
-							<f:fields>
-								<Input value="{requestListModel>/guarantorIdentityList/Vorna}" />
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="{i18n>STUDENT_SURNAME}">
-							<f:fields>
-								<Input value="{requestListModel>/guarantorIdentityList/Nachn}" />
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="{i18n>DATE_OF_BIRTH}">
-							<f:fields>
-								<DatePicker value="{path: 'requestListModel>/guarantorIdentityList/Brtdt', 
+			<f:Form class="sapUiSmallMarginBottom" editable="true">
+				<f:layout>
+					<f:ResponsiveGridLayout labelSpanXL="12" labelSpanL="4" labelSpanM="4" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1" singleContainerFullSize="false" />
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer >
+						<f:formElements>
+							<f:FormElement label="{i18n>ID_NUMBER}">
+								<f:fields>
+									<Input value="{requestListModel>/guarantorIdentityList/Merni}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>STUDENT_NAME}">
+								<f:fields>
+									<Input value="{requestListModel>/guarantorIdentityList/Vorna}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>STUDENT_SURNAME}">
+								<f:fields>
+									<Input value="{requestListModel>/guarantorIdentityList/Nachn}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>DATE_OF_BIRTH}">
+								<f:fields>
+									<DatePicker value="{path: 'requestListModel>/guarantorIdentityList/Brtdt', 
 									type: 'sap.ui.model.type.Date', 
 									formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}">
-								</DatePicker>
-							</f:fields>
-						</f:FormElement>
-
-						<!-- <f:FormElement label="{i18n>STUDENT_GENDER}">
-							<f:fields>
-								<Input value="{requestListModel>/guarantorIdentityList/Merni}" />
-							</f:fields>
-						</f:FormElement> -->
-						<f:FormElement label="{i18n>SERIAL_NUMBER}">
-							<f:fields>
-								<Input value="{requestListModel>/guarantorIdentityList/Idcno}" />
-							</f:fields>
-						</f:FormElement>
-					</f:formElements>
-				</f:FormContainer>
-				<f:FormContainer >
-					<f:formElements>
-						<!-- <f:FormElement label="{i18n>NATIONALITY}">
-							<f:fields>
-								<Input value="{requestListModel>/guarantorIdentityList/Konfe}" />
-							</f:fields>
-						</f:FormElement> -->
-						<f:FormElement label="{i18n>EXPIRY}">
-							<f:fields>
-								<DatePicker value="{path: 'requestListModel>/guarantorIdentityList/Lavad', 
+									</DatePicker>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>SERIAL_NUMBER}">
+								<f:fields>
+									<Input value="{requestListModel>/guarantorIdentityList/Idcno}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer >
+						<f:formElements>
+							<f:FormElement label="{i18n>EXPIRY}">
+								<f:fields>
+									<DatePicker value="{path: 'requestListModel>/guarantorIdentityList/Lavad', 
 									type: 'sap.ui.model.type.Date', 
 									formatOptions: {UTC:true , pattern: 'dd/MM/yyyy'}}">
-								</DatePicker>
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="{i18n>MOTHER_NAME}">
-							<f:fields>
-								<Input value="{requestListModel>/guarantorIdentityList/Muter}" />
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="{i18n>FATHER_NAME}">
-							<f:fields>
-								<Input value="{requestListModel>/guarantorIdentityList/Fater}" />
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="{i18n>ISSUING_AUTHORITY}">
-							<f:fields>
-								<Input value="{requestListModel>/guarantorIdentityList/Grana}" />
-							</f:fields>
-						</f:FormElement>
-					</f:formElements>
-				</f:FormContainer>
-			</f:formContainers>
-		</f:Form>
-	</grid:CSSGrid>
-	<beginButton>
-		<Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorIdentity" type="Reject" />
-	</beginButton>
-	<endButton>
-		<Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveGuarantorIdentity" type="Accept" />
-	</endButton>
+									</DatePicker>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>MOTHER_NAME}">
+								<f:fields>
+									<Input value="{requestListModel>/guarantorIdentityList/Muter}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>FATHER_NAME}">
+								<f:fields>
+									<Input value="{requestListModel>/guarantorIdentityList/Fater}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="{i18n>ISSUING_AUTHORITY}">
+								<f:fields>
+									<Input value="{requestListModel>/guarantorIdentityList/Grana}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</grid:CSSGrid>
+		<beginButton>
+			<Button text="{i18n>CANCEL_BUTTON}" icon="sap-icon://cancel" press=".onCancelGuarantorIdentity" type="Reject" />
+		</beginButton>
+		<endButton>
+			<Button text="{i18n>SAVE_ACTION}" icon="sap-icon://save" press=".onSaveGuarantorIdentity" type="Accept" />
+		</endButton>
 	</Dialog>
 </c:FragmentDefinition>

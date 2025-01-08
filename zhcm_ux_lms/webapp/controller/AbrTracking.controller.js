@@ -395,7 +395,7 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var oForeignEntry = oViewModel.getProperty("/abroadEmployee");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-        oForeignEntry.Pernr = sPernr
+        oForeignEntry.Pernr = sPernr;
         // Genel bilgiler sekmesi seçiliyse
         // Yurtiçi dil okul bilgiler sekmesi seçiliyse
         if (
@@ -1491,7 +1491,18 @@ sap.ui.define(
       },
       onApprovalSaveButtonPress: function () {
         var oViewModel = this.getModel("requestListModel");
-        var sSelectedApprover = oViewModel.getProperty("/approvalExpendList/Whoap");
+        var sSelectedApprover = oViewModel.getProperty(
+          "/approvalExpendList/Whoap"
+        );
+        var oFormToValidate =
+            sap.ui.getCore().byId("idExpendApproverForm") ||
+            this.byId("idExpendApproverForm"),
+          oViewModel = this.getModel("requestListModel"),
+          oModel = this.getModel();
+        if (!this._validateForm(oFormToValidate)) {
+          this._sweetToast(this.getText("FILL_IN_ALL_REQUIRED_FIELDS"), "W");
+          return;
+        }
 
         this.onSendSalariesButtonPress({
           ...this._oFormData,
@@ -1500,7 +1511,6 @@ sap.ui.define(
 
         this._oExpendApprovalDialog.close();
       },
-
 
       onSendSalariesButtonPress: function (oFormData) {
         debugger;
@@ -1673,7 +1683,7 @@ sap.ui.define(
         var oSchoolRequets = oViewModel.getProperty("/schoolInfoDialogRequest");
         oSchoolRequets.Pernr = sPernr;
         var oFormToValidate =
-            sap.ui.getCore().byId("idSchoolForm") || this.byId("idExpendForm"),
+            sap.ui.getCore().byId("idSchoolForm") || this.byId("idSchoolForm"),
           oViewModel = this.getModel("requestListModel"),
           oModel = this.getModel();
         if (!this._validateForm(oFormToValidate)) {
@@ -2207,16 +2217,16 @@ sap.ui.define(
           }
         }
       },
-      
+
       onFinancialSendPress: function (oEvent) {
         debugger;
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/financialEmployee/NameFirst"),
-        //   sBanka = oViewModel.getProperty("/financialEmployee/Banka"),
-        //   sBrnch = oViewModel.getProperty("/financialEmployee/Brnch"),
-        //   sCity = oViewModel.getProperty("/financialEmployee/City"),
+          //   sBanka = oViewModel.getProperty("/financialEmployee/Banka"),
+          //   sBrnch = oViewModel.getProperty("/financialEmployee/Brnch"),
+          //   sCity = oViewModel.getProperty("/financialEmployee/City"),
           sBankl = oViewModel.getProperty("/financialEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/financialEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/financialEmployee/Iban00");
@@ -2225,11 +2235,11 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "1",
-        //   Banka: sBanka,
-        //   Brnch: sBrnch,
-        //   City: sCity,
+          //   Banka: sBanka,
+          //   Brnch: sBrnch,
+          //   City: sCity,
           Bankn: sBankn,
-          Bankl : sBankl,
+          Bankl: sBankl,
           Iban00: sIban00,
           Abano: "",
           Swift: "",
@@ -2254,9 +2264,9 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/abroadEmployee/NameFirst"),
-        //   sBanka = oViewModel.getProperty("/abroadEmployee/Banka"),
-        //   sBrnch = oViewModel.getProperty("/abroadEmployee/Brnch"),
-        //   sCity = oViewModel.getProperty("/abroadEmployee/City"),
+          //   sBanka = oViewModel.getProperty("/abroadEmployee/Banka"),
+          //   sBrnch = oViewModel.getProperty("/abroadEmployee/Brnch"),
+          //   sCity = oViewModel.getProperty("/abroadEmployee/City"),
           sBankl = oViewModel.getProperty("/abroadEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/abroadEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/abroadEmployee/Iban00"),
@@ -2266,9 +2276,9 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "2",
-        //   Banka: sBanka,
-        //   Brnch: sBrnch,
-        //   City: sCity,
+          //   Banka: sBanka,
+          //   Brnch: sBrnch,
+          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2295,9 +2305,9 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/masterEmployee/NameFirst"),
-        //   sBanka = oViewModel.getProperty("/masterEmployee/Banka"),
-        //   sBrnch = oViewModel.getProperty("/masterEmployee/Brnch"),
-        //   sCity = oViewModel.getProperty("/masterEmployee/City"),
+          //   sBanka = oViewModel.getProperty("/masterEmployee/Banka"),
+          //   sBrnch = oViewModel.getProperty("/masterEmployee/Brnch"),
+          //   sCity = oViewModel.getProperty("/masterEmployee/City"),
           sBankl = oViewModel.getProperty("/masterEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/masterEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/masterEmployee/Iban00"),
@@ -2307,9 +2317,9 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "3",
-        //   Banka: sBanka,
-        //   Brnch: sBrnch,
-        //   City: sCity,
+          //   Banka: sBanka,
+          //   Brnch: sBrnch,
+          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2336,9 +2346,9 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/domesticAccount/NameFirst"),
-        //   sBanka = oViewModel.getProperty("/domesticAccount/Banka"),
-        //   sBrnch = oViewModel.getProperty("/domesticAccount/Brnch"),
-        //   sCity = oViewModel.getProperty("/domesticAccount/City"),
+          //   sBanka = oViewModel.getProperty("/domesticAccount/Banka"),
+          //   sBrnch = oViewModel.getProperty("/domesticAccount/Brnch"),
+          //   sCity = oViewModel.getProperty("/domesticAccount/City"),
           sBankl = oViewModel.getProperty("/domesticAccount/Bankl"),
           sBankn = oViewModel.getProperty("/domesticAccount/Bankn"),
           sIban00 = oViewModel.getProperty("/domesticAccount/Iban00");
@@ -2375,9 +2385,9 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/otherAccount/NameFirst"),
-        //   sBanka = oViewModel.getProperty("/otherAccount/Banka"),
-        //   sBrnch = oViewModel.getProperty("/otherAccount/Brnch"),
-        //   sCity = oViewModel.getProperty("/otherAccount/City"),
+          //   sBanka = oViewModel.getProperty("/otherAccount/Banka"),
+          //   sBrnch = oViewModel.getProperty("/otherAccount/Brnch"),
+          //   sCity = oViewModel.getProperty("/otherAccount/City"),
           sBankl = oViewModel.getProperty("/otherAccount/Bankl"),
           sBankn = oViewModel.getProperty("/otherAccount/Bankn"),
           sIban00 = oViewModel.getProperty("/otherAccount/Iban00");
@@ -2386,9 +2396,9 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "5",
-        //   Banka: sBanka,
-        //   Brnch: sBrnch,
-        //   City: sCity,
+          //   Banka: sBanka,
+          //   Brnch: sBrnch,
+          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2415,9 +2425,9 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/domesticEmployee/NameFirst"),
-        //   sBanka = oViewModel.getProperty("/domesticEmployee/Banka"),
-        //   sBrnch = oViewModel.getProperty("/domesticEmployee/Brnch"),
-        //   sCity = oViewModel.getProperty("/domesticEmployee/City"),
+          //   sBanka = oViewModel.getProperty("/domesticEmployee/Banka"),
+          //   sBrnch = oViewModel.getProperty("/domesticEmployee/Brnch"),
+          //   sCity = oViewModel.getProperty("/domesticEmployee/City"),
           sBankl = oViewModel.getProperty("/domesticEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/domesticEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/domesticEmployee/Iban00");
@@ -2426,9 +2436,9 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "6",
-        //   Banka: sBanka,
-        //   Brnch: sBrnch,
-        //   City: sCity,
+          //   Banka: sBanka,
+          //   Brnch: sBrnch,
+          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2455,9 +2465,9 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/abroadOtherEmployee/NameFirst"),
-        //   sBanka = oViewModel.getProperty("/abroadOtherEmployee/Banka"),
-        //   sBrnch = oViewModel.getProperty("/abroadOtherEmployee/Brnch"),
-        //   sCity = oViewModel.getProperty("/abroadOtherEmployee/City"),
+          //   sBanka = oViewModel.getProperty("/abroadOtherEmployee/Banka"),
+          //   sBrnch = oViewModel.getProperty("/abroadOtherEmployee/Brnch"),
+          //   sCity = oViewModel.getProperty("/abroadOtherEmployee/City"),
           sBankl = oViewModel.getProperty("/abroadOtherEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/abroadOtherEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/abroadOtherEmployee/Iban00"),
@@ -2468,9 +2478,9 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "7",
-        //   Banka: sBanka,
-        //   Brnch: sBrnch,
-        //   City: sCity,
+          //   Banka: sBanka,
+          //   Brnch: sBrnch,
+          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,

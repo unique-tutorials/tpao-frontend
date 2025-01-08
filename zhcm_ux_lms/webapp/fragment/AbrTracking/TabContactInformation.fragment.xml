@@ -43,14 +43,6 @@
                     <Text text="{requestListModel>/contactEmployee/Pstlz}"/>
                     <Text text="{requestListModel>/contactEmployee/Conry}"/>
                     <Text text="{requestListModel>/contactEmployee/Bezei}"/>
-                    <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'City' } ] }" selectedKey="{requestListModel>/contactEmployee/City}">
-                        <core:ListItem key="{Key}" text="{Value}"/>
-                    </ComboBox> -->
-                    <!-- <Text text="{requestListModel>/contactEmployee/Stras}"/> -->
-                    <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Distr' } ] }" selectedKey="{requestListModel>/contactEmployee/Distr}">
-                        <core:ListItem key="{Key}" text="{Value}"/>
-                    </ComboBox> -->
-
                 </cells>
             </ColumnListItem>
         </items>
