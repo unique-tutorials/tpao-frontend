@@ -35,6 +35,14 @@ sap.ui.define(
       _initiateModel: function (oEvent) {
         var oViewModel = this.getModel("trplsRequestListModel");
         var today = new Date();
+        this.getModel("trplsRequestListModel")
+          .bindProperty("/reservationEmployee/Conry")
+          .attachChange(
+            function (oEvent) {
+              var sConry = oEvent.getSource().getValue();
+              this._handleConryChange(sConry);
+            }.bind(this)
+          );
         oViewModel.setData({
           requestList: [],
           selectedRequest: {},
@@ -80,6 +88,16 @@ sap.ui.define(
           oBinding.filter(aFilters);
         }
       },
+      _handleConryChange: function (sConry) {
+        var oCityComboBox = this.byId("idCityComboBox");
+
+        if (sConry && oCityComboBox) {
+          var aFilters = [new Filter("Group", FilterOperator.EQ, sConry)];
+
+          var oBinding = oCityComboBox.getBinding("items");
+          oBinding.filter(aFilters);
+        }
+      },
       onSearch: function () {
         debugger;
         var oModel = this.getModel(),
@@ -107,7 +125,6 @@ sap.ui.define(
             oViewModel.setProperty("/reservationList", oData.results);
           }.bind(this),
           error: function () {
-            // Hata durumunda işlem
           }.bind(this),
         });
       },
@@ -244,7 +261,12 @@ sap.ui.define(
         //   Rezno: sRezno,
         //   Pernr: sPernr,
         // });
-        var sTravelInfoPath = "/TravelReservationSet(Rezno='" + sRezno + "',Pernr='" + sPernr + "')";
+        var sTravelInfoPath =
+          "/TravelReservationSet(Rezno='" +
+          sRezno +
+          "',Pernr='" +
+          sPernr +
+          "')";
         oModel.read(sTravelInfoPath, {
           // filters: aFilters,
           success: function (oData) {

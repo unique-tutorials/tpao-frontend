@@ -93,8 +93,8 @@
                                 <Text text="{trplsRequestListModel>Rezno}"/>
                                 <Text text="{trplsRequestListModel>Pernr}"/>
                                 <ObjectIdentifier title="{trplsRequestListModel>Vorna}" text="{trplsRequestListModel>Nachn}" />
-                                <Text text="{trplsRequestListModel>Conry}"/>
-                                <Text text="{trplsRequestListModel>Citys}"/>
+                                <Text text="{trplsRequestListModel>Landx}"/>
+                                <Text text="{trplsRequestListModel>Bezei}"/>
                                 <Text text="{
                                     path: 'trplsRequestListModel>Depda', 
                                     type: 'sap.ui.model.type.Date', 

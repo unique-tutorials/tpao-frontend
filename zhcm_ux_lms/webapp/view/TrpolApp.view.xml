@@ -64,7 +64,7 @@
                             <Text text="{i18n>OR_LAND1}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
-                            <Text text="{i18n>STATE}"/>
+                            <Text text="{i18n>CITY}"/>
                         </Column>
                         <Column minScreenWidth="Tablet" demandPopin="true">
                             <Text text="{i18n>ENTRY_DATE}"/>
@@ -86,10 +86,8 @@
                                 <Text text="{trpolRequestListModel>Rezno}"/>
                                 <Text text="{trpolRequestListModel>Pernr}"/>
                                 <ObjectIdentifier title="{trpolRequestListModel>Vorna}" text="{trpolRequestListModel>Nachn}" />
-                                <!-- <Text text=""/>
-                                <Text text=""/> -->
-                                <Text text="{trpolRequestListModel>Conry}"/>
-                                <Text text="{trpolRequestListModel>Citys}"/>
+                                <Text text="{trpolRequestListModel>Landx}"/>
+                                <Text text="{trpolRequestListModel>Bezei}"/>
                                 <Text text="{
                                     path: 'trpolRequestListModel>Depda', 
                                     type: 'sap.ui.model.type.Date', 
