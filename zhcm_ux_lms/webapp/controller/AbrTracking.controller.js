@@ -149,6 +149,7 @@ sap.ui.define(
         this._oAttachmentDialog.open();
       },
       onPaymentTypeChange: function (oEvent) {
+        debugger;
         var oComboBox = oEvent.getSource();
         var sSelectedKey = oComboBox.getSelectedKey();
         var oModel = this.getView().getModel("requestListModel");

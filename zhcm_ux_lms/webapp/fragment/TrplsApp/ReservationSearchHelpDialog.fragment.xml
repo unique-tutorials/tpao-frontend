@@ -29,8 +29,14 @@
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
 
-                                            <DatePicker value="{path:'trplsRequestListModel>/reserSearchParameter/Rered', 
-                                            type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/>
+                                            <!-- <DatePicker value="{path:'trplsRequestListModel>/reserSearchParameter/Rered', 
+                                            type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/> -->
+                                            <DateRangeSelection 
+                                            dateValue="{trplsRequestListModel>/absenceFilter/begda}" 
+                                            secondDateValue="{trplsRequestListModel>/absenceFilter/endda}" 
+                                            width="13rem" 
+                                            class="DRS1" 
+                                            change="handleChange" />
 
                                         </FlexBox>
                                     </fb:control>
@@ -41,7 +47,7 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="reservationTable" inset="false" class="sapUiSmallMarginBottom" items="{/TravelReservationSet}" itemPress="onEmployeeSelect">
+                <Table id="reservationTable" inset="false" class="sapUiSmallMarginBottom" items="{trplsRequestListModel>/reservationList}" itemPress="onEmployeeSelect">
                     <columns>
                         <Column>
                             <Text text="{i18n>RESERVATION_MADE}"/>
@@ -83,16 +89,14 @@
                     <items>
                         <ColumnListItem type="Active" press=".onItemSelected">
                             <cells>
-                                <CheckBox selected="{Resma}"/>
-                                <Text text="{Rezno}"/>
-                                <Text text="{Pernr}"/>
-                                <ObjectIdentifier text="{Vorna}" title="{Nachn}" />
-                                <!-- <Text text=""/>
-                                <Text text=""/> -->
-                                <Text text="{Conry}"/>
-                                <Text text="{Citys}"/>
+                                <CheckBox selected="{trplsRequestListModel>Resma}"/>
+                                <Text text="{trplsRequestListModel>Rezno}"/>
+                                <Text text="{trplsRequestListModel>Pernr}"/>
+                                <ObjectIdentifier title="{trplsRequestListModel>Vorna}" text="{trplsRequestListModel>Nachn}" />
+                                <Text text="{trplsRequestListModel>Conry}"/>
+                                <Text text="{trplsRequestListModel>Citys}"/>
                                 <Text text="{
-                                    path: 'Depda', 
+                                    path: 'trplsRequestListModel>Depda', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: { 
                                         pattern: 'dd.MM.yyyy', 
@@ -100,16 +104,16 @@
                                     }
                                 }"/>
                                 <Text text="{
-                                    path: 'Retda', 
+                                    path: 'trplsRequestListModel>Retda', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: { 
                                         pattern: 'dd.MM.yyyy', 
                                         UTC: true 
                                     }
                                 }"/>
-                                <Text text="{Descp}"/>
+                                <Text text="{trplsRequestListModel>Descp}"/>
                                 <Text text="{
-                                    path: 'Rered', 
+                                    path: 'trplsRequestListModel>Rered', 
                                     type: 'sap.ui.model.type.Date', 
                                     formatOptions: { 
                                         pattern: 'dd.MM.yyyy', 

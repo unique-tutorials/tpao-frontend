@@ -24,6 +24,7 @@ sap.ui.define([
         },
         _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("trplsRequestListModel");
+            var today = new Date();
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},
@@ -34,6 +35,14 @@ sap.ui.define([
                 newNumberReserRequest:{
                     Rezno:null,
                     Ename:""                 
+                },
+                absenceFilter : { 
+                    begda: new Date(today.getFullYear(), today.getMonth(), 1),
+                    endda: new Date(today.getFullYear(), today.getMonth() + 1, 0)
+                },
+                reservationList:{},
+                aplicationSetting: {
+                    enabled: true,
                 },
             });
         },
@@ -52,7 +61,46 @@ sap.ui.define([
         _getRequestList: function (oEvent) { 
 
         },
-        onSearch:function(oEvent){
+        onTypeChange:function(oEvent){
+            debugger;
+            var oComboBox = oEvent.getSource();
+            var sSelectedKey = oComboBox.getSelectedKey();
+            var oCityComboBox = this.byId("idCityComboBox");
+
+            if (oCityComboBox) {
+                var aFilters = [];
+                aFilters.push(new Filter("Group", FilterOperator.EQ, sSelectedKey));
+        
+                var oBinding = oCityComboBox.getBinding("items");
+                oBinding.filter(aFilters);
+            }
+        },
+        onSearch:function(){
+            debugger;
+            var oModel = this.getModel(),
+            oViewModel = this.getModel("trplsRequestListModel"),
+            sBegda = oViewModel.getProperty("/absenceFilter/begda"),
+            sEndda =  oViewModel.getProperty("/absenceFilter/endda"),
+            oFilter = oViewModel.getProperty('/reserSearchParameter'),
+            aFilters = [];
+            if(oFilter.Pernr) aFilters.push(new Filter("Pernr", FilterOperator.EQ, oFilter.Pernr));
+           
+             aFilters.push(new Filter("Vorna", FilterOperator.EQ, oFilter.Vorna));
+             aFilters.push(new Filter("Nachn", FilterOperator.EQ, oFilter.Nachn));
+            aFilters.push(new Filter("Rered", FilterOperator.BT, sBegda,sEndda));
+
+            oModel.read("/TravelReservationSet", {
+                filters: aFilters,
+                success: function (oData) {
+                    this._sweetToast(this.getText("ABSENCE_CONFIRMATION"), "S");
+                    oViewModel.setProperty("/reservationList", oData.results);
+                }.bind(this),
+                error: function () {
+                }.bind(this)
+            });
+        },
+
+        onSearchs:function(oEvent){
             debugger;
             var oModel = this.getModel();
             var oViewModel = this.getModel("trplsRequestListModel");
@@ -93,7 +141,7 @@ sap.ui.define([
         },
         onItemSelected: function(oEvent) {
             debugger;
-            var oSelectedItem = oEvent.getSource().getBindingContext().getObject();
+            var oSelectedItem = oEvent.getSource().getBindingContext('trplsRequestListModel').getObject();
         
             var oViewModel = this.getModel('trplsRequestListModel');
             oViewModel.setProperty("/newNumberReserRequest/Rezno", oSelectedItem.Rezno); 
@@ -166,6 +214,12 @@ sap.ui.define([
                 // filters: aFilters,
                 success: function (oData) {
                     oViewModel.setProperty("/reservationEmployee", oData);
+
+                    if (oData.Resma === true) {
+                        oViewModel.setProperty("/aplicationSetting/enabled", false);
+                    } else {
+                        oViewModel.setProperty("/aplicationSetting/enabled", true);
+                    }
                     that._sweetToast(that.getText("RESERVATION_SUCCESSFULLY"), "S");
                     console.log("Rezervasyon bilgileri dataa:", oData);
                 },
@@ -193,6 +247,46 @@ sap.ui.define([
                     debugger;
                 }
             });
+        },
+        onReservationSendMailButton:function(oEvent){
+        debugger;
+        var oModel = this.getModel();
+        var oViewModel = this.getModel("trplsRequestListModel");
+        var sPernr = oViewModel.getProperty("/reservationEmployee/Pernr"),
+            sCity = oViewModel.getProperty("/reservationEmployee/Citys"),
+            sConry = oViewModel.getProperty("/reservationEmployee/Conry"),
+            sDepda = oViewModel.getProperty("/reservationEmployee/Depda"),
+            sNachn = oViewModel.getProperty("/reservationEmployee/Nachn"),
+            sRetda = oViewModel.getProperty("/reservationEmployee/Retda"),
+            sRezno = oViewModel.getProperty("/newNumberReserRequest/Rezno"),
+            sVorna = oViewModel.getProperty("/reservationEmployee/Vorna"),
+            sRered = oViewModel.getProperty("/reservationEmployee/Rered")
+            
+
+        var oUrlParameters = {
+            Pernr: sPernr,
+            City: sCity,
+            Conry: sConry,
+            Depda: sDepda,
+            Nachn: sNachn,
+            Retda: sRetda,
+            Rezno: sRezno,
+            Vorna: sVorna,
+            Rered: sRered,
+            };
+
+            this._openBusyFragment("PLEASE_WAIT", []);
+            oModel.callFunction("/SendTravel", {
+                method: "POST",
+                urlParameters: oUrlParameters,
+                success: function (oData, oResponse) {
+                    this._sweetToast(this.getText("RESERVATION_INFO_EMAIL"), "S");
+                    this._closeBusyFragment();
+                  }.bind(this),
+                  error: function (oError) {
+                    debugger;
+                  }.bind(this),
+                });
         }
 	});
 });

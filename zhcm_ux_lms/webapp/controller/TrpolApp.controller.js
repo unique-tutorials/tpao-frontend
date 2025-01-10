@@ -24,17 +24,24 @@ sap.ui.define([
         },
         _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("trpolRequestListModel");
+            var today = new Date();
             oViewModel.setData({
                 requestList: [],
                 selectedRequest: {},
                 currentRequest: {},
-                reserSearchParameter:{},
-                searchParameter:{}
+                reserSearchParameter:[],
+                searchParameter:{},
+                absenceFilter : { 
+                    begda: new Date(today.getFullYear(), today.getMonth(), 1),
+                    endda: new Date(today.getFullYear(), today.getMonth() + 1, 0)
+                },
+                travelRequestList:{}
             });
         },
         _getRequestList: function (oEvent) {
             
         },
+       
         onNavBack: function () {
             var oModel = this.getView().getModel("trpolRequestListModel");
             oModel.setProperty("/reserSearchParameter", {});
@@ -55,29 +62,69 @@ sap.ui.define([
                 this._oReservationSearchHelpDialog.close();
             }
         },
-        onReservationSearch:function(oEvent){
+        onReservationSearch:function(){
+            debugger;
+            var oModel = this.getModel(),
+            oViewModel = this.getModel("trpolRequestListModel"),
+            sBegda = oViewModel.getProperty("/absenceFilter/begda"),
+            sEndda =  oViewModel.getProperty("/absenceFilter/endda"),
+            oFilter = oViewModel.getProperty('/reserSearchParameter'),
+            aFilters = [];
+            
+            // aFilters.push(new Filter("Pernr", FilterOperator.EQ, oFilter.Pernr));
+            // aFilters.push(new Filter("Vorna", FilterOperator.EQ, oFilter.Vorna));
+            // aFilters.push(new Filter("Nachn", FilterOperator.EQ, oFilter.Nachn));
+            aFilters.push(new Filter("Rered", FilterOperator.BT, sBegda,sEndda));
+
+            oModel.read("/TravelReservationSet", {
+                filters: aFilters,
+                success: function (oData) {
+                    this._sweetToast(this.getText("ABSENCE_CONFIRMATION"), "S");
+                    oViewModel.setProperty("/travelRequestList", oData.results);
+                }.bind(this),
+                error: function () {
+                }.bind(this)
+            });
+        },
+        onReservationSearchs: function (oEvent) {
             debugger;
             var oViewModel = this.getModel('trpolRequestListModel');
-       
             var oFilter = oViewModel.getProperty('/reserSearchParameter');
+            
+            // Tarih aralığını oFilter'a ekle
+            var sBegda = oViewModel.getProperty("/absenceFilter/begda");
+            var sEndda = oViewModel.getProperty("/absenceFilter/endda");
+            oFilter.begda = sBegda;
+            oFilter.endda = sEndda;
+            
+            // Rered filtresini oluştur
             var aFilters = this._getFilters(oFilter);
-            console.log(oFilter);
-
+            aFilters.push(new Filter("Rered", FilterOperator.BT, sBegda, sEndda));
+            
+            // Tabloyu al ve filtre uygula
             var oTable = this.getView().byId('reservationTable') || sap.ui.getCore().byId('reservationTable');
-            oTable.getBinding('items').filter(aFilters,"Application");
+            oTable.getBinding('items').filter(aFilters, "Application");
         },
+        
         _getFilters: function (oFilter) {
             debugger;
             var aFilters = [];
+            
+            // oFilter'daki tüm anahtarlar üzerinden geç
             var aKeys = Object.keys(oFilter);
             for (var i = 0; i < aKeys.length; i++) {
-                var sVal = oFilter[aKeys[i]].toString();
-                if(sVal){
-                    var oFilterElement = new Filter(aKeys[i],FilterOperator.EQ , sVal);
+                var sKey = aKeys[i];
+                var sVal = oFilter[sKey];
+                
+                // Filtreye eklenebilir değer varsa, filtre oluştur
+                if (sVal && sVal !== "") {
+                    var oFilterElement = new Filter(sKey, FilterOperator.EQ, sVal);
                     aFilters.push(oFilterElement);
                 }
             }
+            
             return aFilters;
-        },
+        }
+        
 	});
 });
