@@ -83,10 +83,10 @@ sap.ui.define([
             sEndda =  oViewModel.getProperty("/absenceFilter/endda"),
             oFilter = oViewModel.getProperty('/reserSearchParameter'),
             aFilters = [];
-            if(oFilter.Pernr) aFilters.push(new Filter("Pernr", FilterOperator.EQ, oFilter.Pernr));
+            // if(oFilter.Pernr) aFilters.push(new Filter("Pernr", FilterOperator.EQ, oFilter.Pernr));
            
-             aFilters.push(new Filter("Vorna", FilterOperator.EQ, oFilter.Vorna));
-             aFilters.push(new Filter("Nachn", FilterOperator.EQ, oFilter.Nachn));
+            //  aFilters.push(new Filter("Vorna", FilterOperator.EQ, oFilter.Vorna));
+            //  aFilters.push(new Filter("Nachn", FilterOperator.EQ, oFilter.Nachn));
             aFilters.push(new Filter("Rered", FilterOperator.BT, sBegda,sEndda));
 
             oModel.read("/TravelReservationSet", {
