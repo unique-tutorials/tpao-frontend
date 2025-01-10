@@ -238,11 +238,13 @@ sap.ui.define(
 
         // var aFilters = [];
         // aFilters.push(new Filter("Rezno", FilterOperator.EQ, sRezno))
-        var sTravelInfoPath = oModel.createKey("/TravelReservationSet", {
-          Rezno: sRezno,
-          Pernr: sPernr,
-        });
 
+        // Sonrasında string birleştirme işlemini sill !
+        // var sTravelInfoPath = oModel.createKey("/TravelReservationSet", {
+        //   Rezno: sRezno,
+        //   Pernr: sPernr,
+        // });
+        var sTravelInfoPath = "/TravelReservationSet(Rezno='" + sRezno + "',Pernr='" + sPernr + "')";
         oModel.read(sTravelInfoPath, {
           // filters: aFilters,
           success: function (oData) {
