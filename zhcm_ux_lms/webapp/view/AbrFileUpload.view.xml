@@ -107,8 +107,8 @@
                                 <Text text="{Paytpt}" />
                                 <Text text="{Augdt}" />
                                 <Text text="{Appstx}" />
-                                <CheckBox selected="{Sent}" />
-                                <CheckBox selected="{Paid}" />
+                                <CheckBox selected="{Sent}" enabled="false" />
+                                <CheckBox selected="{Paid}" enabled="false" />
                                 <Button icon="sap-icon://menu" type="Accept" press=".onSalariesActions" />
                             </cells>
                         </ColumnListItem>

@@ -75,8 +75,8 @@
                     <Text text="{requestListModel>Descp}"/>
                     <Text text="{requestListModel>Appstx}"/>
                     <Link press=".onAttachDownload" text="{requestListModel>FileName}" />
-                    <CheckBox selected="{requestListModel>Sent}"/>
-                    <CheckBox selected="{requestListModel>Paid}" />
+                    <CheckBox selected="{requestListModel>Sent}" enabled="false"/>
+                    <CheckBox selected="{requestListModel>Paid}" enabled="false" />
                     <Button icon="sap-icon://menu" type="Accept" press=".onExpendActions" />
                 </cells>
             </ColumnListItem>
