@@ -120,7 +120,7 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>SEND}" icon="sap-icon://paper-plane" press=".onReservationSendMailButton" type="Emphasized" visible="true"/>
+                <Button text="{i18n>SEND}" icon="sap-icon://paper-plane" press=".onReservationSendMailButton" type="Emphasized" visible="true" enabled="{= ${trplsRequestListModel>/reservationEmployee/Sent} === false }" />
                 <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onReservationSaveButton" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>

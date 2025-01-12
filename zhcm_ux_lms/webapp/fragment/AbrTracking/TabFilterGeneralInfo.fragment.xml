@@ -238,21 +238,6 @@
                             </DatePicker>
                         </f:fields>
                     </f:FormElement>
-                    <!-- <f:FormElement label="{i18n>TAX_NUMBER_NUB}">
-                        <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Taxnm}"/>
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="{i18n>TAX_OFFICE}">
-                        <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Taxof}"/>
-                        </f:fields>
-                    </f:FormElement>
-                    <f:FormElement label="{i18n>TAX_OFFICE_PROVINCE}">
-                        <f:fields>
-                            <Input value="{requestListModel>/generalEmployee/Taxop}"/>
-                        </f:fields>
-                    </f:FormElement> -->
                 </f:formElements>
             </f:FormContainer>
             <f:FormContainer>

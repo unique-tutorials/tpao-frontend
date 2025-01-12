@@ -12,10 +12,10 @@
         <f:formContainers>
             <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_SCHOOL}">
                 <f:formElements>
-                    <f:FormElement label="{i18n>SELECT_PARTNER}">
+                    <f:FormElement label="{i18n>PARTNER_NO}">
                         <f:fields>
                             <Input value="{requestListModel>/financialEmployee/Partner}" />
-                            <Button text="{i18n>SEND}" press=".onPartnerButtonPress" />
+                            <!-- <Button text="{i18n>SEND}" press=".onPartnerButtonPress" /> -->
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>RECIPIENT_NAME}">
@@ -56,10 +56,10 @@
             </f:FormContainer>
             <f:FormContainer title="{i18n>FOREIGN_LANGUAGE_SCHOOL}">
                 <f:formElements>
-                    <f:FormElement label="{i18n>SELECT_PARTNER}">
+                    <f:FormElement label="{i18n>PARTNER_NO}">
                         <f:fields>
                             <Input value="{requestListModel>/abroadEmployee/Partner}" />
-                            <Button text="{i18n>SEND}" press=".onForeignButtonPress" />
+                            <!-- <Button text="{i18n>SEND}" press=".onForeignButtonPress" /> -->
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>RECIPIENT_NAME}">

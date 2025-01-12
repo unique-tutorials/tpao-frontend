@@ -1,7 +1,7 @@
 <c:FragmentDefinition xmlns="sap.m"
     xmlns:c="sap.ui.core">
 
-    <Table busy="{otherRequestListModel>/tableBusy}" width="auto" items="{requestListModel>/guarantorList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{otherRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
+    <Table mode="SingleSelect" busy="{otherRequestListModel>/tableBusy}" width="auto" items="{requestListModel>/guarantorList}" noDataText="{i18n>NO_DATA}" busyIndicatorDelay="{otherRequestListModel>/tableBusyDelay}" growing="true" growingScrollToLoad="true" selectionChange=".onTableSelectionChange" sticky="HeaderToolbar,InfoToolbar,ColumnHeaders">
         <headerToolbar>
             <OverflowToolbar>
                 <content>

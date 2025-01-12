@@ -124,8 +124,7 @@ sap.ui.define(
             this._sweetToast(this.getText("ABSENCE_CONFIRMATION"), "S");
             oViewModel.setProperty("/reservationList", oData.results);
           }.bind(this),
-          error: function () {
-          }.bind(this),
+          error: function () {}.bind(this),
         });
       },
 
@@ -332,15 +331,21 @@ sap.ui.define(
         };
 
         this._openBusyFragment("PLEASE_WAIT", []);
+        
         oModel.callFunction("/SendTravel", {
           method: "POST",
           urlParameters: oUrlParameters,
           success: function (oData, oResponse) {
+            // Backend yanıtı başarıyla geldiyse
             this._sweetToast(this.getText("RESERVATION_INFO_EMAIL"), "S");
+
+            oViewModel.setProperty("/reservationEmployee/Sent", true);
+
             this._closeBusyFragment();
           }.bind(this),
           error: function (oError) {
             debugger;
+            this._closeBusyFragment();
           }.bind(this),
         });
       },
