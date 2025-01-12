@@ -1854,8 +1854,10 @@ sap.ui.define(
           "/PersonnelAttachmentSet";
 
         oFileUploader.setUploadUrl(sPath);
-
-        this._openBusyFragment("ATTACHMENT_BEING_UPLOADED");
+        this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
+        
+        // this._openBusyFragment("ATTACHMENT_BEING_UPLOADED");
+        oViewModel.setProperty("/documentList", {});
         oFileUploader.upload();
       },
       // onSchoolFeeNavigationDialog: function (oEvent) {

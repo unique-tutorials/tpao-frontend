@@ -45,12 +45,11 @@
 						</f:FormElement>
 						<f:FormElement label="{i18n>OR_LAND1}">
 							<f:fields>
-								<ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/addGuarantorRequest/Conry}">
+								<ComboBox items="{ path:'/ValueHelpSet' , length: 1000, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/addGuarantorRequest/Conry}">
 									<core:ListItem key="{Key}" text="{Value}"/>
 								</ComboBox>
 							</f:fields>
 						</f:FormElement>
-
 					</f:formElements>
 				</f:FormContainer>
 				<f:FormContainer title="{i18n>PHN_EM_INF}">
