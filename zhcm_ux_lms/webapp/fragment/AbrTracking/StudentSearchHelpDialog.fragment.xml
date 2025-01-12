@@ -16,7 +16,7 @@
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="EmploymentUnit" label="{i18n>UNIT_OF_EMPLOYMENT}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{requestListModel>/searchParameter/Orgeh}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , length: 1000, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{requestListModel>/searchParameter/Orgeh}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
@@ -40,7 +40,7 @@
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="MainSchool" label="{i18n>PRINCIPAL_SCHOOL}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , length: 500, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Muniv' } ] }" selectedKey="{requestListModel>/searchParameter/Unive}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , length: 1000, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Muniv' } ] }" selectedKey="{requestListModel>/searchParameter/Unive}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>

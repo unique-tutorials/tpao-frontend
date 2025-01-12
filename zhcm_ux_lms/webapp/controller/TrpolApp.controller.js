@@ -96,7 +96,7 @@ sap.ui.define(
         oModel.read("/TravelReservationSet", {
           filters: aFilters,
           success: function (oData) {
-            this._sweetToast(this.getText("ABSENCE_CONFIRMATION"), "S");
+            this._sweetToast(this.getText("RESERVATION_SUCCESSFULLY"), "S");
             oViewModel.setProperty("/travelRequestList", oData.results);
           }.bind(this),
           error: function () {}.bind(this),

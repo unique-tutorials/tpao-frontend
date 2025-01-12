@@ -12,10 +12,9 @@
         <f:formContainers>
             <f:FormContainer title="{i18n>DOMESTIC}">
                 <f:formElements>
-                    <f:FormElement label="{i18n>SELECT_PARTNER}">
+                    <f:FormElement label="{i18n>PARTNER_NO}">
                         <f:fields>
                             <Input value="{requestListModel>/domesticEmployee/Partner}" />
-                            <Button text="{i18n>SEND}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>RECIPIENT_NAME}">
@@ -56,10 +55,9 @@
             </f:FormContainer>
             <f:FormContainer title="{i18n>ABROAD}">
                 <f:formElements>
-                    <f:FormElement label="{i18n>SELECT_PARTNER}">
+                    <f:FormElement label="{i18n>PARTNER_NO}">
                         <f:fields>
                             <Input value="{requestListModel>/abroadOtherEmployee/Partner}" />
-                            <Button text="{i18n>SEND}" />
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>RECIPIENT_NAME}">

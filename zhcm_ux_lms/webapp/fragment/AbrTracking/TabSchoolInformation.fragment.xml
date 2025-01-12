@@ -51,7 +51,7 @@
                     </f:FormElement>
                     <f:FormElement label="{i18n>SECTION}">
                         <f:fields>
-                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Dprmt' } ] }" selectedKey="{requestListModel>/schoolEmployee/Dprmt}">
+                            <ComboBox items="{ path:'/ValueHelpSet' , length: 1000, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Dprmt' } ] }" selectedKey="{requestListModel>/schoolEmployee/Dprmt}">
                                 <core:ListItem key="{Key}" text="{Value}"/>
                             </ComboBox>
                         </f:fields>

@@ -104,12 +104,12 @@
                             </f:FormElement>
                             <f:FormElement label="{i18n>EMAIL_SENT}">
                                 <f:fields>
-                                    <CheckBox selected="{trplsRequestListModel>/reservationEmployee/Sent}" enabled="{trplsRequestListModel>/aplicationSetting/enabled}" />
+                                    <CheckBox selected="{trplsRequestListModel>/reservationEmployee/Sent}" enabled="false"  />
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>RES_MADE}">
                                 <f:fields>
-                                    <CheckBox selected="{trplsRequestListModel>/reservationEmployee/Resma}" enabled="{trplsRequestListModel>/aplicationSetting/enabled}" />
+                                    <CheckBox selected="{trplsRequestListModel>/reservationEmployee/Resma}" enabled="false" />
                                 </f:fields>
                             </f:FormElement>
                         </f:formElements>
@@ -120,7 +120,7 @@
         <footer>
             <OverflowToolbar>
                 <ToolbarSpacer/>
-                <Button text="{i18n>SEND}" icon="sap-icon://paper-plane" press=".onReservationSendMailButton" type="Emphasized" visible="true"/>
+                <Button text="{i18n>SEND}" icon="sap-icon://paper-plane" press=".onReservationSendMailButton" type="Emphasized" visible="true" enabled="{= ${trplsRequestListModel>/reservationEmployee/Sent} === false }" />
                 <Button text="{i18n>SAVE_BUTTON}" icon="sap-icon://save" press=".onReservationSaveButton" type="Accept" visible="true"/>
             </OverflowToolbar>
         </footer>

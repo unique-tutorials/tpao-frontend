@@ -2,7 +2,7 @@
 	xmlns:c="sap.ui.core"
 	xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
 	<ActionSheet title="{i18n>ACTION_LIST}" showCancelButton="false" placement="Auto">
-		<Button icon="sap-icon://account" cd:actionId="Guarandor" text="{i18n>GUARANTOR_INFORMATION}" press=".onGuarandorActionSelected" type="Send"  />
+		<Button icon="sap-icon://account" cd:actionId="Guarandor" text="{i18n>GUARANTOR_INFORMATION}" press=".onGuarandorActionSelected" type="Send" enabled="{requestListModel>/isGuarantorActive}" />
 		<Button icon="sap-icon://call" cd:actionId="Contact" text="{i18n>CONTACT_INFORMATION}" press=".onGuarandorActionSelected" type="Default" />
 		<Button icon="sap-icon://business-card" cd:actionId="Identity" text="{i18n>IDENTITY_INFORMATION}" press=".onGuarandorActionSelected" type="Critical" />
 	</ActionSheet>

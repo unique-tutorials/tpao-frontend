@@ -86,7 +86,8 @@ sap.ui.define(
           attachmentList: [],
           isAccountVisible: false,
           isSellerVisible: false,
-          paidVisible: false,
+          paidVisible: true,
+          isGuarantorActive: false,
         });
       },
       onNavBack: function () {
@@ -264,58 +265,28 @@ sap.ui.define(
           sap.ui.getCore().byId("studentTable");
         oTable.getBinding("items").filter(aFilters, "Application");
       },
-      onPartnerButtonPress: function () {
-        debugger;
-        var that = this;
-        var oModel = this.getModel();
-        var oViewModel = this.getView().getModel("requestListModel");
-        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-        // var sPartner = oViewModel.getProperty("/financialEmployee/Partner");
-        // if (!sPartner) {
-        //     sap.m.MessageToast.show("Lütfen bir Partner No giriniz.");
-        //     return;
-        // }
-        var sDomesticLanguageInfoPath = oModel.createKey(
-          "/DomesticLanguageSchoolInformationSet",
-          { Pernr: sPernr }
-        );
+      // onPartnerButtonPress: function () {
+      //   debugger;
+      //   var that = this;
+      //   var oModel = this.getModel();
+      //   var oViewModel = this.getView().getModel("requestListModel");
+      //   var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+      //   var sDomesticLanguageInfoPath = oModel.createKey(
+      //     "/DomesticLanguageSchoolInformationSet",
+      //     { Pernr: sPernr }
+      //   );
 
-        oModel.read(sDomesticLanguageInfoPath, {
-          success: function (oData) {
-            // Veriyi modele yazın
-            oViewModel.setProperty("/financialEmployee", oData);
-            sap.m.MessageToast.show("Veri başarıyla alındı.");
-          },
-          error: function () {
-            sap.m.MessageToast.show("Genel harcama bilgileri alınamadı.");
-          },
-        });
-      },
-      onForeignButtonPress: function (oEvent) {
-        var that = this;
-        var oModel = this.getModel();
-        var oViewModel = this.getView().getModel("requestListModel");
-        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-        // var sPartner = oViewModel.getProperty("/abroadEmployee/Partner");
-        // if (!sPartner) {
-        //     sap.m.MessageToast.show("Lütfen bir Partner No giriniz.");
-        //     return;
-        // }
-        var sForeignInfoPath = oModel.createKey("/LanguageSchoolAbroadSet", {
-          Pernr: sPernr,
-        });
-
-        oModel.read(sForeignInfoPath, {
-          success: function (oData) {
-            // Veriyi modele yazın
-            oViewModel.setProperty("/abroadEmployee", oData);
-            sap.m.MessageToast.show("Veri başarıyla alındı.");
-          },
-          error: function () {
-            sap.m.MessageToast.show("Yurt dışı dil okul bilgileri alınamadı.");
-          },
-        });
-      },
+      //   oModel.read(sDomesticLanguageInfoPath, {
+      //     success: function (oData) {
+      //       // Veriyi modele yazın
+      //       oViewModel.setProperty("/financialEmployee", oData);
+      //       sap.m.MessageToast.show("Veri başarıyla alındı.");
+      //     },
+      //     error: function () {
+      //       sap.m.MessageToast.show("Genel harcama bilgileri alınamadı.");
+      //     },
+      //   });
+      // },
       onFinancialSavePress: function (oEvent) {
         debugger;
         var that = this;
@@ -812,33 +783,6 @@ sap.ui.define(
           }
         }
       },
-      onMasterButtonPress: function () {
-        debugger;
-        var that = this;
-        var oModel = this.getModel();
-        var oViewModel = this.getView().getModel("requestListModel");
-        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-        // var sPartner = oViewModel.getProperty("/masterEmployee/Partner");
-        // if (!sPartner) {
-        //     sap.m.MessageToast.show("Lütfen bir Partner No giriniz.");
-        //     return;
-        // }
-        var sForeignInfoPath = oModel.createKey("/MasterSchoolInformationSet", {
-          Pernr: sPernr,
-          Partner: sPartner,
-        });
-
-        oModel.read(sForeignInfoPath, {
-          success: function (oData) {
-            // Veriyi modele yazın
-            oViewModel.setProperty("/masterEmployee", oData);
-            sap.m.MessageToast.show("Veri başarıyla alındı.");
-          },
-          error: function () {
-            sap.m.MessageToast.show("Yurt dışı dil okul bilgileri alınamadı.");
-          },
-        });
-      },
       onAttachmentPaymentUploadPress: function (oEvent) {
         debugger;
         var oViewModel = this.getModel("requestListModel");
@@ -892,33 +836,6 @@ sap.ui.define(
         sap.m.MessageToast.show("Başarılı");
         this._closeBusyFragment("ATTACHMENT_UPLOADED");
       },
-
-      // onGuarantorButtonPress: function (oEvent) {
-      //     debugger;
-      //     var that = this;
-      //     var oModel = this.getModel();
-      //     var oViewModel = this.getView().getModel("requestListModel");
-      //     this._openBusyFragment("READ_GUARANTOR_FEE", []);
-      //     var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-      //     if (!sPernr) {
-      //         this._sweetToast(this.getText("STUDENT_NUMBER_REQUIRED", ), "E");
-      //     }
-      //     var aFilters = [];
-      //     aFilters.push(new Filter("Pernr", FilterOperator.EQ, sPernr))
-
-      //     oModel.read("/GuarantorInformationSet", {
-      //         filters: aFilters,
-      //         success: function (oData) {
-      //             oViewModel.setProperty("/guarantorList", oData.results);
-      //             that._closeBusyFragment();
-      //             console.log("Kefil bilgileri dataa:", oData);
-      //         },
-      //         error: function () {
-      //             sap.m.MessageToast.show("Diğer bilgiler de Kefil bilgileri alınamadı.");
-      //         }
-      //     });
-      // },
-
       onSearchStudentPress: function () {
         debugger;
         var that = this;
@@ -939,9 +856,20 @@ sap.ui.define(
           oModel.read(sPath, {
             filters: aFilters,
             success: function (oData) {
+              debugger;
               var oViewModel = that.getModel("requestListModel");
               oViewModel.setProperty(sModelProperty, oData);
-              console.log("data:", oData);
+              if (
+                sModelProperty === "/generalEmployee" &&
+                oData.Prope === "2"
+              ) {
+                oViewModel.setProperty("/paidVisible", false);
+              } else if (
+                sModelProperty === "/generalEmployee" &&
+                oData.Prope === "1"
+              ) {
+                oViewModel.setProperty("/paidVisible", true);
+              }
             },
             error: function () {
               sap.m.MessageToast.show(errorMessage);
@@ -953,7 +881,6 @@ sap.ui.define(
           oModel.read(sPath, {
             filters: aFilters,
             success: function (oData) {
-              debugger;
               var oViewModel = that.getModel("requestListModel");
               oViewModel.setProperty(sModelProperty, oData.results);
               console.log(oData);
@@ -1069,14 +996,6 @@ sap.ui.define(
           "/otherAccount",
           "Diğer Hesap bilgileri alınamadı."
         );
-
-        // Okul Ücret bilgileri al BAK
-        // var sSchoolWageInfoPath = oModel.createKey("/SchoolWageInformationSet", { Pernr: sPernr});
-        // readData(sSchoolWageInfoPath, "/schoolFeeList", "Okul ücret bilgileri alınamadı.");
-
-        // Genel Harcama bilgilerini al
-        // var sGeneralExpendInfoPath = oModel.createKey("/GeneralExpenditureInformationSet", { Pernr: sPernr });
-        // readData(sGeneralExpendInfoPath, "/expendInfoList", "Genel Harcama bilgileri alınamadı.");
 
         // Öğrenci Yurt içi Hesap bilgileri al
         var sDomesticEmployeeInfoPath = oModel.createKey(
@@ -1659,6 +1578,7 @@ sap.ui.define(
         }
         oModel.create("/GeneralExpenditureInformationSet", oRequets, {
           success: function (oData, oResponse) {
+            debugger;
             this.onAttachmentPaymentUploadPress();
             this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
             this._closeBusyFragment();
@@ -1915,10 +1835,11 @@ sap.ui.define(
         );
 
         var oCurrentDocParams = oViewModel.getProperty("/documentList");
+        var sSirno = this._selectedSirno;
         var sEntty = oModel.createKey("/GuarantorAttachmentOperationSet", {
           Pernr: sPernr,
           Firdt: oCurrentDocParams.Firdt,
-          Sirno: "01", //Sıra no tablodaki sıra no alanından alınmalı
+          Sirno: sSirno, //Sıra no tablodaki sıra no alanından alınmalı
           Ptype: "LMSABR",
           Dotyp: "1",
           Docnm: oCurrentDocParams.Docnm,
@@ -1931,7 +1852,6 @@ sap.ui.define(
           "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV" +
           sEntty +
           "/PersonnelAttachmentSet";
-        //var sPath = "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/GuarantorAttachmentOperationSet(Pernr='"+sPernr+"',Sirno='01',Ptype='LMSABR',Dotyp='1',Docnm='"+oCurrentDocParams.Docnm+"',Doctp='"+oCurrentDocParams.Doctp+"',Descp='"+oCurrentDocParams.Descp+"',Firdt=datetime'2024-11-11T08%3A37%3A34.221',Lasdt=datetime'2024-11-11T08%3A37%3A34.221')/PersonnelAttachmentSet";
 
         oFileUploader.setUploadUrl(sPath);
 
@@ -2061,6 +1981,17 @@ sap.ui.define(
           );
           oViewModel.setProperty("/suggestionActionData/priorityDisplay", true);
         }
+      },
+      onTableSelectionChange: function (oEvent) {
+        var oSelectedItem = oEvent.getParameter("listItem");
+        var oBindingContext =
+          oSelectedItem.getBindingContext("requestListModel");
+
+        var sSirno = oBindingContext.getProperty("Sirno");
+        this._selectedSirno = sSirno; 
+        var oViewModel = this.getModel("requestListModel");
+        var bIsGuarantorActive = !!sSirno;
+        oViewModel.setProperty("/isGuarantorActive", bIsGuarantorActive);
       },
 
       openGuarantorIdentityDialog: function (oGuarandorFormData) {
@@ -2225,9 +2156,6 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/financialEmployee/NameFirst"),
-          //   sBanka = oViewModel.getProperty("/financialEmployee/Banka"),
-          //   sBrnch = oViewModel.getProperty("/financialEmployee/Brnch"),
-          //   sCity = oViewModel.getProperty("/financialEmployee/City"),
           sBankl = oViewModel.getProperty("/financialEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/financialEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/financialEmployee/Iban00");
@@ -2236,9 +2164,6 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "1",
-          //   Banka: sBanka,
-          //   Brnch: sBrnch,
-          //   City: sCity,
           Bankn: sBankn,
           Bankl: sBankl,
           Iban00: sIban00,
@@ -2265,9 +2190,6 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/abroadEmployee/NameFirst"),
-          //   sBanka = oViewModel.getProperty("/abroadEmployee/Banka"),
-          //   sBrnch = oViewModel.getProperty("/abroadEmployee/Brnch"),
-          //   sCity = oViewModel.getProperty("/abroadEmployee/City"),
           sBankl = oViewModel.getProperty("/abroadEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/abroadEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/abroadEmployee/Iban00"),
@@ -2277,9 +2199,6 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "2",
-          //   Banka: sBanka,
-          //   Brnch: sBrnch,
-          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2306,9 +2225,6 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/masterEmployee/NameFirst"),
-          //   sBanka = oViewModel.getProperty("/masterEmployee/Banka"),
-          //   sBrnch = oViewModel.getProperty("/masterEmployee/Brnch"),
-          //   sCity = oViewModel.getProperty("/masterEmployee/City"),
           sBankl = oViewModel.getProperty("/masterEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/masterEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/masterEmployee/Iban00"),
@@ -2318,9 +2234,6 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "3",
-          //   Banka: sBanka,
-          //   Brnch: sBrnch,
-          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2347,9 +2260,6 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/domesticAccount/NameFirst"),
-          //   sBanka = oViewModel.getProperty("/domesticAccount/Banka"),
-          //   sBrnch = oViewModel.getProperty("/domesticAccount/Brnch"),
-          //   sCity = oViewModel.getProperty("/domesticAccount/City"),
           sBankl = oViewModel.getProperty("/domesticAccount/Bankl"),
           sBankn = oViewModel.getProperty("/domesticAccount/Bankn"),
           sIban00 = oViewModel.getProperty("/domesticAccount/Iban00");
@@ -2357,9 +2267,6 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "4",
-          // Banka: sBanka,
-          // Brnch: sBrnch,
-          // City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2386,9 +2293,6 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/otherAccount/NameFirst"),
-          //   sBanka = oViewModel.getProperty("/otherAccount/Banka"),
-          //   sBrnch = oViewModel.getProperty("/otherAccount/Brnch"),
-          //   sCity = oViewModel.getProperty("/otherAccount/City"),
           sBankl = oViewModel.getProperty("/otherAccount/Bankl"),
           sBankn = oViewModel.getProperty("/otherAccount/Bankn"),
           sIban00 = oViewModel.getProperty("/otherAccount/Iban00");
@@ -2397,9 +2301,6 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "5",
-          //   Banka: sBanka,
-          //   Brnch: sBrnch,
-          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2426,9 +2327,6 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/domesticEmployee/NameFirst"),
-          //   sBanka = oViewModel.getProperty("/domesticEmployee/Banka"),
-          //   sBrnch = oViewModel.getProperty("/domesticEmployee/Brnch"),
-          //   sCity = oViewModel.getProperty("/domesticEmployee/City"),
           sBankl = oViewModel.getProperty("/domesticEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/domesticEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/domesticEmployee/Iban00");
@@ -2437,9 +2335,6 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "6",
-          //   Banka: sBanka,
-          //   Brnch: sBrnch,
-          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2466,9 +2361,6 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
           sNameFirst = oViewModel.getProperty("/abroadOtherEmployee/NameFirst"),
-          //   sBanka = oViewModel.getProperty("/abroadOtherEmployee/Banka"),
-          //   sBrnch = oViewModel.getProperty("/abroadOtherEmployee/Brnch"),
-          //   sCity = oViewModel.getProperty("/abroadOtherEmployee/City"),
           sBankl = oViewModel.getProperty("/abroadOtherEmployee/Bankl"),
           sBankn = oViewModel.getProperty("/abroadOtherEmployee/Bankn"),
           sIban00 = oViewModel.getProperty("/abroadOtherEmployee/Iban00"),
@@ -2479,9 +2371,6 @@ sap.ui.define(
           Pernr: sPernr,
           Name_First: sNameFirst,
           Which: "7",
-          //   Banka: sBanka,
-          //   Brnch: sBrnch,
-          //   City: sCity,
           Bankl: sBankl,
           Bankn: sBankn,
           Iban00: sIban00,
@@ -2557,22 +2446,15 @@ sap.ui.define(
             switch (sGuarandorAction) {
               case "Guarandor":
                 this.openGuarantorDialog(oGuarandorFormData);
-                // oViewModel.setProperty("/aplicationSetting/enabled", false);
-                // oViewModel.setProperty("/schoolInfoDialogRequest", oGuarandorFormData);
-                // this.onAttachmentGuarantorUploadPress(oGuarandorFormData);
                 oViewModel.setProperty("/busy", true);
                 break;
               case "Contact":
                 this.openGuarantorContactDialog(oGuarandorFormData);
-                // oViewModel.setProperty("/aplicationSetting/enabled", false);
-                // oViewModel.setProperty("/schoolInfoDialogRequest", oGuarandorFormData);
                 oViewModel.setProperty("/busy", true);
                 break;
 
               case "Identity":
                 this.openGuarantorIdentityDialog(oGuarandorFormData);
-                // oViewModel.setProperty("/aplicationSetting/enabled", true);
-                // oViewModel.setProperty("/schoolInfoDialogRequest", oGuarandorFormData);
                 oViewModel.setProperty("/busy", true);
                 break;
               default:

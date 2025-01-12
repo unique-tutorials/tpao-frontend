@@ -35,6 +35,14 @@ sap.ui.define(
       _initiateModel: function (oEvent) {
         var oViewModel = this.getModel("trplsRequestListModel");
         var today = new Date();
+        this.getModel("trplsRequestListModel")
+          .bindProperty("/reservationEmployee/Conry")
+          .attachChange(
+            function (oEvent) {
+              var sConry = oEvent.getSource().getValue();
+              this._handleConryChange(sConry);
+            }.bind(this)
+          );
         oViewModel.setData({
           requestList: [],
           selectedRequest: {},
@@ -80,6 +88,16 @@ sap.ui.define(
           oBinding.filter(aFilters);
         }
       },
+      _handleConryChange: function (sConry) {
+        var oCityComboBox = this.byId("idCityComboBox");
+
+        if (sConry && oCityComboBox) {
+          var aFilters = [new Filter("Group", FilterOperator.EQ, sConry)];
+
+          var oBinding = oCityComboBox.getBinding("items");
+          oBinding.filter(aFilters);
+        }
+      },
       onSearch: function () {
         debugger;
         var oModel = this.getModel(),
@@ -106,9 +124,7 @@ sap.ui.define(
             this._sweetToast(this.getText("ABSENCE_CONFIRMATION"), "S");
             oViewModel.setProperty("/reservationList", oData.results);
           }.bind(this),
-          error: function () {
-            // Hata durumunda işlem
-          }.bind(this),
+          error: function () {}.bind(this),
         });
       },
 
@@ -238,11 +254,18 @@ sap.ui.define(
 
         // var aFilters = [];
         // aFilters.push(new Filter("Rezno", FilterOperator.EQ, sRezno))
-        var sTravelInfoPath = oModel.createKey("/TravelReservationSet", {
-          Rezno: sRezno,
-          Pernr: sPernr,
-        });
 
+        // Sonrasında string birleştirme işlemini sill !
+        // var sTravelInfoPath = oModel.createKey("/TravelReservationSet", {
+        //   Rezno: sRezno,
+        //   Pernr: sPernr,
+        // });
+        var sTravelInfoPath =
+          "/TravelReservationSet(Rezno='" +
+          sRezno +
+          "',Pernr='" +
+          sPernr +
+          "')";
         oModel.read(sTravelInfoPath, {
           // filters: aFilters,
           success: function (oData) {
@@ -308,15 +331,21 @@ sap.ui.define(
         };
 
         this._openBusyFragment("PLEASE_WAIT", []);
+        
         oModel.callFunction("/SendTravel", {
           method: "POST",
           urlParameters: oUrlParameters,
           success: function (oData, oResponse) {
+            // Backend yanıtı başarıyla geldiyse
             this._sweetToast(this.getText("RESERVATION_INFO_EMAIL"), "S");
+
+            oViewModel.setProperty("/reservationEmployee/Sent", true);
+
             this._closeBusyFragment();
           }.bind(this),
           error: function (oError) {
             debugger;
+            this._closeBusyFragment();
           }.bind(this),
         });
       },
