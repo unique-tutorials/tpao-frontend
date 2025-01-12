@@ -20,6 +20,6 @@ builder:
           name: ZHCM_UX_LMS_ABR
           description: Yurdışı Burslu Personel Eğitimi
           package: ZHR_LMS_ABR
-          transport: S4DK908253
+          transport: S4DK908286
         exclude:
           - /test/
