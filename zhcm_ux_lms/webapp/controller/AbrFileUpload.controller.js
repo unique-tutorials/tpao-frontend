@@ -52,6 +52,7 @@ sap.ui.define(
           isAccountVisibless: false,
           isAccountVisible: true,
           isSellerVisible: false,
+          cerateSalaryVisible: false,
         });
       },
       onNavBack: function () {
@@ -93,7 +94,12 @@ sap.ui.define(
         // }
 
         oFilter.Prope = "1";
-
+        console.log("Prope değeri:", oFilter.Prope);
+        if (oFilter.Prope === "1") {
+          oViewModel.setProperty("/cerateSalaryVisible", false);
+        } else {
+          oViewModel.setProperty("/cerateSalaryVisible", true);
+        }
         var aFilters = this._getFilters(oFilter);
 
         var oTable =
@@ -222,6 +228,11 @@ sap.ui.define(
         // }
 
         oFilter.Prope = "";
+        if (oFilter.Prope === "") {
+          oViewModel.setProperty("/cerateSalaryVisible", true);
+        } else {
+          oViewModel.setProperty("/cerateSalaryVisible", false);
+        }
 
         var aFilters = this._getFilters(oFilter);
 
@@ -323,7 +334,8 @@ sap.ui.define(
         var oViewModel = this.getModel("wageRequestListModel");
         var sSelectedApprover = oViewModel.getProperty("/approvalList/Whoap");
         var oFormToValidate =
-            sap.ui.getCore().byId("idStudentSalaryApproverForm") || this.byId("idStudentSalaryApproverForm"),
+            sap.ui.getCore().byId("idStudentSalaryApproverForm") ||
+            this.byId("idStudentSalaryApproverForm"),
           oViewModel = this.getModel("wageRequestListModel"),
           oModel = this.getModel();
         if (!this._validateForm(oFormToValidate)) {

@@ -29,8 +29,6 @@
                                 <fb:FilterGroupItem name="Date" label="{i18n>REQUEST_REGISTRATION_DATE_RANGE}" groupName="Group4" visibleInFilterBar="true">
                                     <fb:control>
                                         <FlexBox alignItems="Start" justifyContent="SpaceBetween">
-                                            <!-- <DatePicker value="{path:'trpolRequestListModel>/reserSearchParameter/Rered', 
-                                            type: 'sap.ui.model.type.Date', formatOptions:{ UTC: true, pattern: 'dd.MM.yyyy'}}"/> -->
                                             <DateRangeSelection 
                                             dateValue="{trpolRequestListModel>/absenceFilter/begda}" 
                                             secondDateValue="{trpolRequestListModel>/absenceFilter/endda}" 

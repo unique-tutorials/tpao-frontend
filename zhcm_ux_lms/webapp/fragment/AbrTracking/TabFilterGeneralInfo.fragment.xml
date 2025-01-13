@@ -29,9 +29,6 @@
                             <ComboBox items="{ path:'/ValueHelpSet', length : '500', filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Waers' } ] }" selectedKey="{path:'requestListModel>/generalEmployee/Waers'}" enabled="false">
                                 <core:ListItem key="{Key}" text="{Value}" />
                             </ComboBox>
-                            <!-- <ComboBox width="auto" selectionChange="getValueHelpList" items="{requestListModel>/benefitList}" selectedKey="{requestListModel>/generalEmployee/Waers}">
-                                    <core:Item key="{benefitsModel>Key}" text="{benefitsModel>Value}" />
-                                </ComboBox> -->
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>STATIONERY_FEE}">
@@ -342,9 +339,6 @@
                     </f:FormElement>
                     <f:FormElement label="">
                         <f:fields>
-                            <!-- <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Payac' } ] }" selectedKey="{requestListModel>/generalEmployee/Payac}">
-                                <core:ListItem key="{Key}" text="{Value}"/>
-                            </ComboBox> -->
                             <Button text="{i18n>DOCUMENTS}" press="onShowAtt" type="Emphasized"/>
                         </f:fields>
                     </f:FormElement>
@@ -360,11 +354,6 @@
                             <TextArea rows="10" value="{requestListModel>/generalEmployee/Descp}"/>
                         </f:fields>
                     </f:FormElement>
-                    <!-- <f:FormElement label="{i18n>MADE_A_REFUND}">
-                        <f:fields>
-                            <CheckBox selected="{requestListModel>/generalEmployee/Repad}"/>
-                        </f:fields>
-                    </f:FormElement> -->
                 </f:formElements>
             </f:FormContainer>
         </f:formContainers>

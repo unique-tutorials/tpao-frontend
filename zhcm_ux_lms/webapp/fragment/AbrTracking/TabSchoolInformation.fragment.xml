@@ -12,13 +12,6 @@
         <f:formContainers>
             <f:FormContainer title="{i18n>TAB_SCHOOL_INFORMATION}">
                 <f:formElements>
-                    <!-- <f:FormElement label="{i18n>STUDENT_COUNTRY}">
-                        <f:fields>
-                            <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Conry' } ] }" selectedKey="{requestListModel>/schoolEmployee/Conry}">
-                                <core:ListItem key="{Key}" text="{Value}"/>
-                            </ComboBox>
-                        </f:fields>
-                    </f:FormElement> -->
                     <f:FormElement label="{i18n>FIELD_OF_STUDY}">
                         <f:fields>
                             <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Edubr' } ] }" selectedKey="{requestListModel>/schoolEmployee/Edubr}">

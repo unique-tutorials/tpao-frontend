@@ -15,7 +15,6 @@
                     <f:FormElement label="{i18n>PARTNER_NO}">
                         <f:fields>
                             <Input value="{requestListModel>/financialEmployee/Partner}" />
-                            <!-- <Button text="{i18n>SEND}" press=".onPartnerButtonPress" /> -->
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>RECIPIENT_NAME}">

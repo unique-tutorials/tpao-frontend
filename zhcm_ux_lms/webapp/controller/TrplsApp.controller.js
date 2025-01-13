@@ -336,7 +336,6 @@ sap.ui.define(
           method: "POST",
           urlParameters: oUrlParameters,
           success: function (oData, oResponse) {
-            // Backend yanıtı başarıyla geldiyse
             this._sweetToast(this.getText("RESERVATION_INFO_EMAIL"), "S");
 
             oViewModel.setProperty("/reservationEmployee/Sent", true);
