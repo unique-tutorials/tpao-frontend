@@ -69,7 +69,6 @@
                                 <Text text="{Ftext2}"/>
                                 <Text text="{Ylskt}"/>
                                 <Text text="{Ylski}"/>
-                                <!-- <Text text="{Counr}"/> -->
                                 <Text text="{Kntjs}"/>
                                 <Text text="{Orgex}" />
                                 <Text text="{Okugr}"/>
