@@ -858,6 +858,7 @@ sap.ui.define(
             success: function (oData) {
               debugger;
               var oViewModel = that.getModel("requestListModel");
+              oViewModel.setProperty(sModelProperty, {});
               oViewModel.setProperty(sModelProperty, oData);
               if (
                 sModelProperty === "/generalEmployee" &&
@@ -882,6 +883,7 @@ sap.ui.define(
             filters: aFilters,
             success: function (oData) {
               var oViewModel = that.getModel("requestListModel");
+              oViewModel.setProperty(sModelProperty, {});
               oViewModel.setProperty(sModelProperty, oData.results);
               console.log(oData);
               that._closeBusyFragment();
@@ -1839,7 +1841,7 @@ sap.ui.define(
         var sEntty = oModel.createKey("/GuarantorAttachmentOperationSet", {
           Pernr: sPernr,
           Firdt: oCurrentDocParams.Firdt,
-          Sirno: sSirno, //Sıra no tablodaki sıra no alanından alınmalı
+          Sirno: sSirno,
           Ptype: "LMSABR",
           Dotyp: "1",
           Docnm: oCurrentDocParams.Docnm,
@@ -1848,16 +1850,36 @@ sap.ui.define(
           Firdt: oCurrentDocParams.Firdt,
           Lasdt: oCurrentDocParams.Lasdt,
         });
+
         var sPath =
           "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV" +
           sEntty +
           "/PersonnelAttachmentSet";
-
         oFileUploader.setUploadUrl(sPath);
 
-        this._openBusyFragment("ATTACHMENT_BEING_UPLOADED");
         oFileUploader.upload();
+
+        oFileUploader.attachUploadComplete(
+          function () {
+            this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
+
+            // oViewModel.setProperty("/documentList", {
+            //   Doctp: "",
+            //   Docnm: "",
+            //   Firdt: "",
+            //   Lasdt: "",
+            //   Descp: "",
+            // });
+            Object.keys(oViewModel.getProperty("/documentList")).forEach(
+              function (key) {
+                oViewModel.setProperty(`/documentList/${key}`, "");
+              }
+            );
+            oFileUploader.setValue("");
+          }.bind(this)
+        );
       },
+
       // onSchoolFeeNavigationDialog: function (oEvent) {
       //     debugger;
       //     var oSource = oEvent.getSource(),
@@ -1988,7 +2010,7 @@ sap.ui.define(
           oSelectedItem.getBindingContext("requestListModel");
 
         var sSirno = oBindingContext.getProperty("Sirno");
-        this._selectedSirno = sSirno; 
+        this._selectedSirno = sSirno;
         var oViewModel = this.getModel("requestListModel");
         var bIsGuarantorActive = !!sSirno;
         oViewModel.setProperty("/isGuarantorActive", bIsGuarantorActive);

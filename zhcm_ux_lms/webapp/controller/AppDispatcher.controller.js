@@ -306,14 +306,14 @@ sap.ui.define([
         onAbrStajyerTrackingPage: function (oTarget) {
 			this.getRouter().navTo("AbrStajyerTracking");
 		},
-        onCareerInternContnPage: function (oTarget) {
-			this.getRouter().navTo("CareerInternContn");
-		},
         onTrainingManagerPage: function (oTarget) {
 			this.getRouter().navTo("TrainingManager");
 		},
         onInternStudentTrackingPage: function (oTarget) {
 			this.getRouter().navTo("InternStudentTracking");
+		},
+        onCareerInternContnPage: function (oTarget) {
+			this.getRouter().navTo("CareerInternContn");
 		},
     });
 });

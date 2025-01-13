@@ -160,13 +160,6 @@
 					]
 				},
 				{
-					"pattern": "AbrStajyerTracking",
-					"name": "AbrStajyerTracking",
-					"target": [
-						"AbrStajyerTracking"
-					]
-				},
-				{
 					"pattern": "AbrAccountTracking",
 					"name": "AbrAccountTracking",
 					"target": [
@@ -209,24 +202,10 @@
 					]
 				},
 				{
-					"pattern": "CareerInternContn",
-					"name": "CareerInternContn",
-					"target": [
-						"CareerInternContn"
-					]
-				},
-				{
 					"pattern": "TrainingManager",
 					"name": "TrainingManager",
 					"target": [
 						"TrainingManager"
-					]
-				},
-				{
-					"pattern": "InternStudentTracking",
-					"name": "InternStudentTracking",
-					"target": [
-						"InternStudentTracking"
 					]
 				}
 			],
@@ -242,12 +221,6 @@
 					"viewId": "AbrFileUpload",
 					"viewLevel": 2,
 					"title": "Burslu Öğrenci Belgelerin Sisteme Yüklenmesi"
-				},
-				"AbrStajyerTracking": {
-					"viewName": "AbrStajyerTracking",
-					"viewId": "AbrStajyerTracking",
-					"viewLevel": 2,
-					"title": "Stajyer Takibi"
 				},
 				"AbrAccountTracking": {
 					"viewName": "AbrAccountTracking",
@@ -291,23 +264,11 @@
 					"viewLevel": 2,
 					"title": "Biz Bize Kariyer Stajyerler"
 				},
-				"CareerInternContn": {
-					"viewName": "CareerInternContn",
-					"viewId": "CareerInternContn",
-					"viewLevel": 2,
-					"title": "Stajyer Öğrenci Devamsızlık Onayı"
-				},
 				"TrainingManager": {
 					"viewName": "TrainingManager",
 					"viewId": "TrainingManager",
 					"viewLevel": 2,
 					"title": "Eğitim Yöneticisi"
-				},
-				"InternStudentTracking": {
-					"viewName": "InternStudentTracking",
-					"viewId": "InternStudentTracking",
-					"viewLevel": 2,
-					"title": "Stajyer Öğrenci Takibi"
 				}
 			}
 		},
