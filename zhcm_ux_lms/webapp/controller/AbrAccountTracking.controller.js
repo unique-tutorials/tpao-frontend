@@ -206,25 +206,7 @@ sap.ui.define(
           });
         },
         onNavBack: function () {
-          var oModel = this.getView().getModel("abrAccountListModel");
-          var aPaths = [
-            "/newAccountNumberRequest",
-            "/searchAccountParameter",
-            "/domesticEmployee",
-            "/accountEmployee",
-            "/generalEmployee",
-            "/schoolEmployee",
-            "/abroadOtherEmployee",
-            "/financialEmployee",
-            "/abroadEmployee",
-            "/masterEmployee",
-            "/guarantorList",
-            "/offsetInformationList",
-          ];
-          aPaths.forEach(function (sPath) {
-            oModel.setProperty(sPath, {});
-          });
-          // this.goBack(History);
+          this._initiateModel();
           this.getRouter().navTo("appdispatcher", {}, true);
         },
         onDatePickerChange: function () {
