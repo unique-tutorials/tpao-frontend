@@ -12,10 +12,10 @@
         </f:layout>
         <f:formContainers>
             <f:FormContainer title="{i18n>DOMESTIC_LANGUAGE_SCHOOL}">
-                <f:FormElement label="Partner Seçiniz">
+                <f:FormElement label="{i18n>PARTNER_NO}">
                     <f:fields>
                         <Input enabled="false" value="{abrAccountListModel>/financialEmployee/Partner}" />
-                        <Button enabled="false" text="Gönder" press=".onPartnerButtonPress" cd:type="FINANCE"/>
+                        <!-- <Button enabled="false" text="Gönder" press=".onPartnerButtonPress" cd:type="FINANCE"/> -->
                     </f:fields>
                 </f:FormElement>
                 <f:formElements>
@@ -61,7 +61,7 @@
                     <f:FormElement label="Partner Seçiniz">
                         <f:fields>
                             <Input enabled="false" value="{abrAccountListModel>/abroadEmployee/Partner}" />
-                            <Button enabled="false" text="Gönder" press=".onPartnerButtonPress" cd:type="ABROADEMPLOYEE"/>
+                            <!-- <Button enabled="false" text="Gönder" press=".onPartnerButtonPress" cd:type="ABROADEMPLOYEE"/> -->
                         </f:fields>
                     </f:FormElement>
                     <!-- <f:FormElement label="{i18n>BANK_NAME}">

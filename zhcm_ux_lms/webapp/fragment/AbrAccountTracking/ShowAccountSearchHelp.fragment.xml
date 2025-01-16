@@ -16,7 +16,7 @@
                                 </fb:FilterGroupItem>
                                 <fb:FilterGroupItem name="EmploymentUnit" label="{i18n>UNIT_OF_EMPLOYMENT}" groupName="Group1" visibleInFilterBar="true">
                                     <fb:control>
-                                        <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{abrAccountListModel>/searchAccountParameter/Orgeh}">
+                                        <ComboBox items="{ path:'/ValueHelpSet' , length: 1000, filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{abrAccountListModel>/searchAccountParameter/Orgeh}">
                                             <core:ListItem key="{Key}" text="{Value}"/>
                                         </ComboBox>
                                     </fb:control>
@@ -56,7 +56,7 @@
                         <ColumnListItem type="Active" press=".onItemSelected">
                             <cells>
                                 <Text text="{Pernr}"/>
-                                <CheckBox selected="{Activ}"/>
+                                <CheckBox selected="{Activ}" enabled="false"/>
                                 <Text text="{Vorna}"/>
                                 <Text text="{Nachn}"/>
                             </cells>

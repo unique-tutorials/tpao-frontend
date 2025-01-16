@@ -55,9 +55,17 @@
                                     <Input value="{trplsRequestListModel>/reservationEmployee/Nachn}" enabled="{trplsRequestListModel>/aplicationSetting/enabled}" />
                                 </f:fields>
                             </f:FormElement>
-                            <f:FormElement label="{i18n>DEPARTURE_DATE}">
+                            <f:FormElement label="{i18n>DEPARTURE_START_DATE}">
                                 <f:fields>
                                     <DatePicker value="{path:'trplsRequestListModel>/reservationEmployee/Depda', 
+                                        type: 'sap.ui.model.type.Date', 
+                                        formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}" enabled="{trplsRequestListModel>/aplicationSetting/enabled}">
+                                    </DatePicker>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="{i18n>DEPARTURE_END_DATE}">
+                                <f:fields>
+                                    <DatePicker value="{path:'trplsRequestListModel>/reservationEmployee/Enoda', 
                                         type: 'sap.ui.model.type.Date', 
                                         formatOptions: {UTC:true , pattern: 'dd.MM.yyyy'}}" enabled="{trplsRequestListModel>/aplicationSetting/enabled}">
                                     </DatePicker>

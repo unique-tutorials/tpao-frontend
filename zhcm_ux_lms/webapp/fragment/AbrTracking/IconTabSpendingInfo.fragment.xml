@@ -6,7 +6,7 @@
                 <content>
                     <Title text="{i18n>GENERAL_EXPENDITURE_INFORMATION}" level="H2"/>
                     <ToolbarSpacer />
-                    <Button text="{i18n>ADD_NEW_INVOICE}" press=".onExpendInfoAddDialog" type="Emphasized" icon="sap-icon://add" />
+                    <Button text="{i18n>ADD_ACTION}" press=".onExpendInfoAddDialog" type="Accept" icon="sap-icon://create" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>

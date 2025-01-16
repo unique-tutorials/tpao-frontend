@@ -15,10 +15,10 @@
         <f:formContainers>
             <f:FormContainer title="{i18n>DOMESTIC}">
                 <f:formElements>
-                    <f:FormElement label="{i18n>SELECT_PARTNER}">
+                    <f:FormElement label="{i18n>PARTNER_NO}">
                         <f:fields>
                             <Input  enabled="false" value="{abrAccountListModel>/domesticEmployee/Partner}" />
-                              <Button enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress" cd:type="DOMESTIC"/>
+                            <!-- <Button enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress" cd:type="DOMESTIC"/> -->
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_KEY}">
@@ -44,10 +44,10 @@
                 </f:formElements>
             </f:FormContainer>
             <f:FormContainer title="{i18n>ABROAD}">
-                <f:FormElement label="{i18n>SELECT_PARTNER}">
+                <f:FormElement label="{i18n>PARTNER_NO}">
                         <f:fields>
                             <Input  enabled="false" value="{abrAccountListModel>/abroadOtherEmployee/Partner}"  />
-                              <Button  enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress"  cd:type="ABROAD"/>
+                              <!-- <Button  enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress"  cd:type="ABROAD"/> -->
                         </f:fields>
                     </f:FormElement>
                 <f:formElements>

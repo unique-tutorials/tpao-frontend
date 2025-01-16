@@ -71,7 +71,7 @@
                         <Toolbar>
                             <Title text="{i18n>APPROVED_REQUESTS_HEADER}" level="H2"/>
                             <ToolbarSpacer />
-                            <Button text="{i18n>FILTER}" press=".getRecruiterList" type="Emphasized" icon="sap-icon://filter" />
+                            <!-- <Button text="{i18n>FILTER}" press=".getRecruiterList" type="Emphasized" icon="sap-icon://filter" /> -->
                         </Toolbar>
                     </infoToolbar>
                     <columns>

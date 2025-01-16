@@ -59,39 +59,16 @@ sap.ui.define(
         var oModel = this.getView().getModel("wageRequestListModel");
         var aPaths = [];
         aPaths.forEach(function (sPath) {
-          oModel.setProperty(sPath, {});
+          oModel.setProperty("/", {});
         });
         this.getRouter().navTo("appdispatcher", {}, true);
       },
       _getRequestList: function () {},
-      onShowWageSearchHelp: function (oEvent) {
-        if (!this._oNewWageSearchHelpDialog) {
-          this._oNewWageSearchHelpDialog = new sap.ui.xmlfragment(
-            "zhcm_ux_lms_abr.fragment.AbrFileUpload.WageSearchHelpDialog",
-            this
-          );
-          this.getView().addDependent(this._oNewWageSearchHelpDialog);
-        }
-        this._oNewWageSearchHelpDialog.open();
-      },
-      onCancelWageButtonPress: function (oEvent) {
-        if (this._oNewWageSearchHelpDialog) {
-          this._oNewWageSearchHelpDialog.close();
-        }
-      },
 
       onSearch: function (oEvent) {
         debugger;
         var oViewModel = this.getModel("wageRequestListModel");
         var oFilter = oViewModel.getProperty("/wageSearchRequest");
-
-        // var sDateValue = oFilter.Wagpe;
-        // if (sDateValue) {
-
-        //     var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "MM-y" }).parse(sDateValue);
-        //     var sFormattedDate = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyymm" }).format(dateFormat);
-        //     oFilter.Wagpe = sFormattedDate;
-        // }
 
         oFilter.Prope = "1";
         console.log("Prope değeri:", oFilter.Prope);
@@ -146,20 +123,6 @@ sap.ui.define(
           }.bind(this),
         });
       },
-
-      // onSalariesCreateDialog:function(oEvent){
-      //     var oViewModel = this.getModel("wageRequestListModel"),
-      //     // sPernr = oViewModel.getProperty("/newNumberRequest/Pernr"),
-      //     oSource = oEvent.getSource(),
-      //     oObject = oSource.getBindingContext("wageRequestListModel").getObject();
-      //     oViewModel.setProperty("/salaryCreateList", oObject);
-      //     debugger;
-      //     if (!this._oSalariesCreateDialog) {
-      // 		this._oSalariesCreateDialog = new sap.ui.xmlfragment("zhcm_ux_lms_abr.fragment.AbrFileUpload.SalariesCreateDialog", this);
-      // 		this.getView().addDependent(this._oSalariesCreateDialog);
-      // 	}
-      // 	this._oSalariesCreateDialog.open();
-      // },
       onSalariesCreateDialog: function (oEvent) {
         debugger;
         var oViewModel = this.getModel("wageRequestListModel");
@@ -218,14 +181,6 @@ sap.ui.define(
         debugger;
         var oViewModel = this.getModel("wageRequestListModel");
         var oFilter = oViewModel.getProperty("/wageSearchRequest");
-
-        // var sDateValue = oFilter.Wagpe;
-        // if (sDateValue) {
-
-        //     var dateFormat = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "MM-y" }).parse(sDateValue);
-        //     var sFormattedDate = sap.ui.core.format.DateFormat.getDateInstance({ pattern: "yyyymm" }).format(dateFormat);
-        //     oFilter.Wagpe = sFormattedDate;
-        // }
 
         oFilter.Prope = "";
         if (oFilter.Prope === "") {
@@ -305,8 +260,6 @@ sap.ui.define(
 
               case "Edit":
                 this.onSalariesCreateDialog();
-                // oViewModel.setProperty("/aplicationSetting/enabled", true);
-
                 oViewModel.setProperty("/salaryCreateList", oFormData);
                 oViewModel.setProperty("/busy", true);
                 break;

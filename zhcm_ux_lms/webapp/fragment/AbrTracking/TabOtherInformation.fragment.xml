@@ -7,7 +7,7 @@
                 <content>
                     <Title text="{i18n>GUARANTORS}" level="H2"/>
                     <ToolbarSpacer />
-                    <Button text="{i18n>ADD_GUAR_INF}" press=".onAddGuarantor" type="Emphasized" icon="sap-icon://add" />
+                    <Button text="{i18n>ADD_ACTION}" press=".onAddGuarantor" type="Accept" icon="sap-icon://create" />
                 </content>
             </OverflowToolbar>
         </headerToolbar>
