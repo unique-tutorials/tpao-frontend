@@ -640,7 +640,9 @@ sap.ui.define(
           if (!this._oSchoolDescDialog) {
             this._oSchoolDescDialog = this._createSchoolDescDialog();
           }
-          var oSchoolTextArea = this._oSchoolDescDialog.getContent()[0].getItems()[1];
+          var oSchoolTextArea = this._oSchoolDescDialog
+            .getContent()[0]
+            .getItems()[1];
           oSchoolTextArea.setValue("");
           this._oSchoolDescDialog.open();
         } else {
@@ -790,7 +792,9 @@ sap.ui.define(
           if (!this._oFinancialDescDialog) {
             this._oFinancialDescDialog = this._createFinancialDescDialog();
           }
-          var oFinancialTextArea = this._oFinancialDescDialog.getContent()[0].getItems()[1];
+          var oFinancialTextArea = this._oFinancialDescDialog
+            .getContent()[0]
+            .getItems()[1];
           oFinancialTextArea.setValue("");
           this._oFinancialDescDialog.open();
         } else {
@@ -809,7 +813,9 @@ sap.ui.define(
           if (!this._oForeignDescDialog) {
             this._oForeignDescDialog = this._createForeignDescDialog();
           }
-          var oForeignTextArea = this._oForeignDescDialog.getContent()[0].getItems()[1];
+          var oForeignTextArea = this._oForeignDescDialog
+            .getContent()[0]
+            .getItems()[1];
           oForeignTextArea.setValue("");
           this._oForeignDescDialog.open();
         } else {
@@ -828,7 +834,9 @@ sap.ui.define(
           if (!this._oMasterDescDialog) {
             this._oMasterDescDialog = this._createMasterDescDialog();
           }
-          var oMasterTextArea = this._oMasterDescDialog.getContent()[0].getItems()[1];
+          var oMasterTextArea = this._oMasterDescDialog
+            .getContent()[0]
+            .getItems()[1];
           oMasterTextArea.setValue("");
           this._oMasterDescDialog.open();
         } else {
@@ -849,7 +857,9 @@ sap.ui.define(
           if (!this._oDomesticDescDialog) {
             this._oDomesticDescDialog = this._createDomesticDescDialog();
           }
-          var oDomesticTextArea = this._oDomesticDescDialog.getContent()[0].getItems()[1];
+          var oDomesticTextArea = this._oDomesticDescDialog
+            .getContent()[0]
+            .getItems()[1];
           oDomesticTextArea.setValue("");
           this._oDomesticDescDialog.open();
         } else {
@@ -868,7 +878,9 @@ sap.ui.define(
           if (!this._oOtherDescDialog) {
             this._oOtherDescDialog = this._createOtherDescDialog();
           }
-          var oOtherTextArea = this._oOtherDescDialog.getContent()[0].getItems()[1];
+          var oOtherTextArea = this._oOtherDescDialog
+            .getContent()[0]
+            .getItems()[1];
           oOtherTextArea.setValue("");
           this._oOtherDescDialog.open();
         } else {
@@ -885,11 +897,17 @@ sap.ui.define(
         );
         oDomesticAccountEntry.Descp2 = "";
 
-        if (!oDomesticAccountEntry.Descp2 || oDomesticAccountEntry.Descp2.trim() === "") {
+        if (
+          !oDomesticAccountEntry.Descp2 ||
+          oDomesticAccountEntry.Descp2.trim() === ""
+        ) {
           if (!this._oDomesticAccountDescDialog) {
-            this._oDomesticAccountDescDialog = this._createDomesticAccountDescDialog();
+            this._oDomesticAccountDescDialog =
+              this._createDomesticAccountDescDialog();
           }
-          var oStnAccountTextArea = this._oDomesticAccountDescDialog.getContent()[0].getItems()[1];
+          var oStnAccountTextArea = this._oDomesticAccountDescDialog
+            .getContent()[0]
+            .getItems()[1];
           oStnAccountTextArea.setValue("");
           this._oDomesticAccountDescDialog.open();
         } else {
@@ -912,7 +930,9 @@ sap.ui.define(
           if (!this._oAbroadOtherDescDialog) {
             this._oAbroadOtherDescDialog = this._createAbroadOtherDescDialog();
           }
-          var oAbroadOtherTextArea = this._oAbroadOtherDescDialog.getContent()[0].getItems()[1];
+          var oAbroadOtherTextArea = this._oAbroadOtherDescDialog
+            .getContent()[0]
+            .getItems()[1];
           oAbroadOtherTextArea.setValue("");
           this._oAbroadOtherDescDialog.open();
         } else {
@@ -1011,15 +1031,22 @@ sap.ui.define(
         var oViewModel = this.getModel("requestListModel");
         var oDomesticAccountEntry = oViewModel.getProperty("/domesticEmployee");
 
-        oModel.create("/StudentDomesticAccountInformationSet", oDomesticAccountEntry, {
-          success: function (oData) {
-            this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
-            oViewModel.setProperty("/domesticEmployee", oDomesticAccountEntry);
-          }.bind(this),
-          error: function () {
-            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
-          },
-        });
+        oModel.create(
+          "/StudentDomesticAccountInformationSet",
+          oDomesticAccountEntry,
+          {
+            success: function (oData) {
+              this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
+              oViewModel.setProperty(
+                "/domesticEmployee",
+                oDomesticAccountEntry
+              );
+            }.bind(this),
+            error: function () {
+              this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
+            },
+          }
+        );
       },
 
       // Yurt Dışı Hesap Bilgileri
@@ -1272,8 +1299,11 @@ sap.ui.define(
                     var oViewModel = that.getModel("requestListModel");
                     var oDomesticAccountEntry =
                       oViewModel.getProperty("/domesticEmployee");
-                      oDomesticAccountEntry.Descp2 = sValue;
-                    oViewModel.setProperty("/domesticEmployee", oDomesticAccountEntry);
+                    oDomesticAccountEntry.Descp2 = sValue;
+                    oViewModel.setProperty(
+                      "/domesticEmployee",
+                      oDomesticAccountEntry
+                    );
                   },
                 }).addStyleClass("sapUiTinyMarginTop"),
               ],
