@@ -32,16 +32,13 @@ sap.ui.define([
                 selectedRequest: {},
                 currentRequest: {},
                 selectedAbr: null,
-                // abrActionData:{
-                //     displayEnabled: false
-                // }
             });
         },
         _getRequestList: function (oEvent) { 
 
         },
         onNavBack: function () {
-            // this.goBack(History);
+			this._initiateModel();
             this.getRouter().navTo("appdispatcher", {}, true);
         },
 		

@@ -91,29 +91,7 @@ sap.ui.define(
         });
       },
       onNavBack: function () {
-        var oModel = this.getView().getModel("requestListModel");
-        var aPaths = [
-          "/newNumberRequest",
-          "/selectedEmployee",
-          "/generalEmployee",
-          "/schoolEmployee",
-          "/financialEmployee",
-          "/abroadEmployee",
-          "/masterEmployee",
-          "/domesticAccount",
-          "/otherAccount",
-          "/schoolFeeList",
-          "/expendInfoList",
-          "/domesticEmployee",
-          "/abroadOtherEmployee",
-          "/guarantorList",
-          "/contactEmployee",
-          "/identityEmployee",
-        ];
-        aPaths.forEach(function (sPath) {
-          oModel.setProperty(sPath, {});
-        });
-
+        this._initiateModel();
         this.getRouter().navTo("appdispatcher", {}, true);
       },
       onItemSelected: function (oEvent) {
@@ -260,6 +238,60 @@ sap.ui.define(
         oFileUploader.upload();
       },
 
+      onAttachmentPaymentUploadPress: function (oEvent) {
+        debugger;
+        var oViewModel = this.getModel("requestListModel");
+        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        var oFileUploader = sap.ui
+          .getCore()
+          .byId("idAttachmentFileUploaderPayment");
+
+        if (!oFileUploader.getValue()) {
+          this._sweetToast(this.getText("FILE_SELECTION_REQUIRED"), "W");
+          return;
+        }
+
+        if (!sPernr) {
+          this._sweetToast(this.getText("NUMBER_REQUIRED"), "W");
+          return;
+        }
+
+        var oModel = this.getModel();
+        oFileUploader.destroyHeaderParameters();
+        oModel.refreshSecurityToken();
+        oFileUploader.addHeaderParameter(
+          new sap.ui.unified.FileUploaderParameter({
+            name: "x-csrf-token",
+            value: oModel.getSecurityToken(),
+          })
+        );
+
+        var sFileName = oFileUploader.getValue();
+        sFileName = encodeURIComponent(sFileName);
+        oFileUploader.addHeaderParameter(
+          new sap.ui.unified.FileUploaderParameter({
+            name: "content-disposition",
+            value: "inline; filename='" + sFileName + "'",
+          })
+        );
+
+        var oCurrentDocParams = oViewModel.getProperty(
+          "/expendInfoDialogRequest"
+        );
+        var sPath =
+          "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/GeneralExpenditureAttachmentSet(Pernr='" +
+          sPernr +
+          "',Payno='" +
+          oCurrentDocParams.Payno +
+          "',Ptype='LMSABR',Dotyp='3')/PersonnelAttachmentSet";
+        oFileUploader.setUploadUrl(sPath);
+
+        this._openBusyFragment("ATTACHMENT_BEING_UPLOADED");
+        oFileUploader.upload();
+        sap.m.MessageToast.show("Başarılı");
+        this._closeBusyFragment("ATTACHMENT_UPLOADED");
+      },
+
       onSearch: function (oEvent) {
         debugger;
         var oViewModel = this.getModel("requestListModel");
@@ -270,557 +302,6 @@ sap.ui.define(
           this.getView().byId("studentTable") ||
           sap.ui.getCore().byId("studentTable");
         oTable.getBinding("items").filter(aFilters, "Application");
-      },
-
-      // Yurtiçi Dil Okulu
-      onFinancialSavePress: function () {
-        var oViewModel = this.getModel("requestListModel");
-        var oFinEntry = oViewModel.getProperty("/financialEmployee");
-        oFinEntry.Pernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-        oFinEntry.Descp2 = "";
-
-        if (!oFinEntry.Descp2 || oFinEntry.Descp2.trim() === "") {
-          if (!this._oFinancialDescDialog) {
-            this._oFinancialDescDialog = this._createFinancialDescDialog();
-          }
-          this._oFinancialDescDialog.open();
-        } else {
-          this._saveFinancialInfo();
-        }
-      },
-
-      // Yurtdışı Dil Okulu
-      onForeignSavePress: function () {
-        var oViewModel = this.getModel("requestListModel");
-        var oForeignEntry = oViewModel.getProperty("/abroadEmployee");
-        oForeignEntry.Pernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-        oForeignEntry.Descp2 = "";
-
-        if (!oForeignEntry.Descp2 || oForeignEntry.Descp2.trim() === "") {
-          if (!this._oForeignDescDialog) {
-            this._oForeignDescDialog = this._createForeignDescDialog();
-          }
-          this._oForeignDescDialog.open();
-        } else {
-          this._saveForeignInfo();
-        }
-      },
-
-      // Yurtdışı Master Okulu
-      onMasterSavePress: function () {
-        var oViewModel = this.getModel("requestListModel");
-        var oMasterEntry = oViewModel.getProperty("/masterEmployee");
-        oMasterEntry.Pernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-        oMasterEntry.Descp2 = "";
-
-        if (!oMasterEntry.Descp2 || oMasterEntry.Descp2.trim() === "") {
-          if (!this._oMasterDescDialog) {
-            this._oMasterDescDialog = this._createMasterDescDialog();
-          }
-          this._oMasterDescDialog.open();
-        } else {
-          this._saveMasterInfo();
-        }
-      },
-
-      // Öğrenci Yurtiçi Döviz Hesabı
-      onDomesticSavePress: function () {
-        var oViewModel = this.getModel("requestListModel");
-        var oDomesticEntry = oViewModel.getProperty("/domesticAccount");
-        oDomesticEntry.Pernr = oViewModel.getProperty(
-          "/newNumberRequest/Pernr"
-        );
-        oDomesticEntry.Descp2 = ""; 
-
-        if (!oDomesticEntry.Descp2 || oDomesticEntry.Descp2.trim() === "") {
-          if (!this._oDomesticDescDialog) {
-            this._oDomesticDescDialog = this._createDomesticDescDialog();
-          }
-          this._oDomesticDescDialog.open();
-        } else {
-          this._saveDomesticInfo();
-        }
-      },
-
-      // Diğer Hesap Bilgileri
-      onOtherSavePress: function () {
-        var oViewModel = this.getModel("requestListModel");
-        var oOtherEntry = oViewModel.getProperty("/otherAccount");
-        oOtherEntry.Pernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-        oOtherEntry.Descp2 = ""; 
-
-        if (!oOtherEntry.Descp2 || oOtherEntry.Descp2.trim() === "") {
-          if (!this._oOtherDescDialog) {
-            this._oOtherDescDialog = this._createOtherDescDialog();
-          }
-          this._oOtherDescDialog.open();
-        } else {
-          this._saveOtherInfo();
-        }
-      },
-
-      // Yurt İçi Hesap bilgileri
-      onStnAccountSavePress: function () {
-        var oViewModel = this.getModel("requestListModel");
-        var oDomesticEntry = oViewModel.getProperty("/domesticEmployee");
-        oDomesticEntry.Pernr = oViewModel.getProperty(
-          "/newNumberRequest/Pernr"
-        );
-        oDomesticEntry.Descp2 = "";
-
-        if (!oDomesticEntry.Descp2 || oDomesticEntry.Descp2.trim() === "") {
-          if (!this._oDomesticDescDialog) {
-            this._oDomesticDescDialog = this._createDomesticDescDialog();
-          }
-          this._oDomesticDescDialog.open();
-        } else {
-          this._saveDomesticInfo();
-        }
-      },
-
-      // Yurt Dışı Hesap Bilgileri
-      onAbroadOtherSavePress: function () {
-        var oViewModel = this.getModel("requestListModel");
-        var oAbroadOtherEntry = oViewModel.getProperty("/abroadOtherEmployee");
-        oAbroadOtherEntry.Pernr = oViewModel.getProperty(
-          "/newNumberRequest/Pernr"
-        );
-        oAbroadOtherEntry.Descp2 = "";
-        if (
-          !oAbroadOtherEntry.Descp2 ||
-          oAbroadOtherEntry.Descp2.trim() === ""
-        ) {
-          if (!this._oAbroadOtherDescDialog) {
-            this._oAbroadOtherDescDialog = this._createAbroadOtherDescDialog();
-          }
-          this._oAbroadOtherDescDialog.open();
-        } else {
-          this._saveAbroadOtherInfo();
-        }
-      },
-
-      // Yurt İçi Dil Okulu
-      _saveFinancialInfo: function () {
-        var oModel = this.getModel();
-        var oViewModel = this.getModel("requestListModel");
-        var oFinEntry = oViewModel.getProperty("/financialEmployee");
-
-        oModel.create("/DomesticLanguageSchoolInformationSet", oFinEntry, {
-          success: function (oData) {
-            this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
-            oViewModel.setProperty("/financialEmployee", oFinEntry);
-          }.bind(this),
-          error: function () {
-            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
-          },
-        });
-      },
-
-      // Yurtdışı Dil Okulu
-      _saveForeignInfo: function () {
-        var oModel = this.getModel();
-        var oViewModel = this.getModel("requestListModel");
-        var oForeignEntry = oViewModel.getProperty("/abroadEmployee");
-
-        oModel.create("/LanguageSchoolAbroadSet", oForeignEntry, {
-          success: function (oData) {
-              this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
-              oViewModel.setProperty("/abroadEmployee", oForeignEntry);
-          }.bind(this),
-          error: function () {
-            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
-          },
-        });
-      },
-
-      // Yurtdışı Master Okulu
-      _saveMasterInfo: function () {
-        var oModel = this.getModel();
-        var oViewModel = this.getModel("requestListModel");
-        var oMasterEntry = oViewModel.getProperty("/masterEmployee");
-
-        oModel.create("/MasterSchoolInformationSet", oMasterEntry, {
-          success: function (oData) {
-              this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
-              oViewModel.setProperty("/masterEmployee", oMasterEntry);
-          }.bind(this),
-          error: function () {
-            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
-          },
-        });
-      },
-
-      // Öğrenci Yurtiçi Döviz Hesabı
-      _saveDomesticInfo: function () {
-        var oModel = this.getModel();
-        var oViewModel = this.getModel("requestListModel");
-        var oDomesticEntry = oViewModel.getProperty("/domesticAccount");
-
-        oModel.create("/ForeignCurrencyAccountSet", oDomesticEntry, {
-          success: function (oData) {
-              this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
-              oViewModel.setProperty("/domesticAccount", oDomesticEntry);
-          }.bind(this),
-          error: function () {
-            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
-          },
-        });
-      },
-
-      // Diğer Hesap Bilgileri
-      _saveOtherInfo: function () {
-        var oModel = this.getModel();
-        var oViewModel = this.getModel("requestListModel");
-        var oOtherEntry = oViewModel.getProperty("/otherAccount");
-
-        oModel.create("/OtherAccountInformationSet", oOtherEntry, {
-          success: function (oData) {
-              this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
-              oViewModel.setProperty("/otherAccount", oOtherEntry);
-          }.bind(this),
-          error: function () {
-            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
-          },
-        });
-      },
-
-      // Öğrenci Hesap Yurt İçi
-      _saveDomesticInfo: function () {
-        var oModel = this.getModel();
-        var oViewModel = this.getModel("requestListModel");
-        var oDomesticEntry = oViewModel.getProperty("/domesticEmployee");
-
-        oModel.create("/StudentDomesticAccountInformationSet", oDomesticEntry, {
-          success: function (oData) {
-              this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
-              oViewModel.setProperty("/domesticEmployee", oDomesticEntry);
-          }.bind(this),
-          error: function () {
-            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
-          },
-        });
-      },
-
-      // Yurt Dışı Hesap Bilgileri
-      _saveAbroadOtherInfo: function () {
-        var oModel = this.getModel();
-        var oViewModel = this.getModel("requestListModel");
-        var oAbroadOtherEntry = oViewModel.getProperty("/abroadOtherEmployee");
-
-        oModel.create("/AbroadOtherAccountInformationSet", oAbroadOtherEntry, {
-          success: function (oData) {
-              this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
-              oViewModel.setProperty("/abroadOtherEmployee", oAbroadOtherEntry);
-          }.bind(this),
-          error: function () {
-            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
-          },
-        });
-      },
-
-      // Yurt İçi Dil Okulu
-      _createFinancialDescDialog: function () {
-        var that = this;
-        return new sap.m.Dialog({
-          title: "Yurt İçi Dil Okulu İçin Açıklama Girin",
-          contentWidth: "40%",
-          content: [
-            new sap.m.VBox({
-              items: [
-                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                new sap.m.TextArea("financialDescTextArea", {
-                  width: "100%",
-                  placeholder: "Açıklama giriniz...",
-                  liveChange: function (oEvent) {
-                    var sValue = oEvent.getParameter("value");
-                    var oViewModel = that.getModel("requestListModel");
-                    var oFinEntry =
-                      oViewModel.getProperty("/financialEmployee");
-                    oFinEntry.Descp2 = sValue;
-                    oViewModel.setProperty("/financialEmployee", oFinEntry);
-                  },
-                }).addStyleClass("sapUiTinyMarginTop"),
-              ],
-            }).addStyleClass("sapUiSmallMargin"),
-          ],
-          beginButton: new sap.m.Button({
-            text: "Kaydet",
-            icon: "sap-icon://save",
-            type: "Accept",
-            press: function () {
-              that._oFinancialDescDialog.close();
-              that._saveFinancialInfo();
-            },
-          }),
-          endButton: new sap.m.Button({
-            text: "İptal",
-            press: function () {
-              that._oFinancialDescDialog.close();
-            },
-          }),
-        });
-      },
-
-      // Yurtdışı Dil Okulu
-      _createForeignDescDialog: function () {
-        var that = this;
-        return new sap.m.Dialog({
-          title: "Yurt Dışı Dil Okulu İçin Açıklama Girin",
-          contentWidth: "40%",
-          content: [
-            new sap.m.VBox({
-              items: [
-                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                new sap.m.TextArea("foreignDescTextArea", {
-                  width: "100%",
-                  placeholder: "Açıklama giriniz...",
-                  liveChange: function (oEvent) {
-                    var sValue = oEvent.getParameter("value");
-                    var oViewModel = that.getModel("requestListModel");
-                    var oForeignEntry =
-                      oViewModel.getProperty("/abroadEmployee");
-                    oForeignEntry.Descp2 = sValue;
-                    oViewModel.setProperty("/abroadEmployee", oForeignEntry);
-                  },
-                }).addStyleClass("sapUiTinyMarginTop"),
-              ],
-            }).addStyleClass("sapUiSmallMargin"),
-          ],
-          beginButton: new sap.m.Button({
-            text: "Kaydet",
-            icon: "sap-icon://save",
-            type: "Accept",
-            press: function () {
-              that._oForeignDescDialog.close();
-              that._saveForeignInfo();
-            },
-          }),
-          endButton: new sap.m.Button({
-            text: "İptal",
-            press: function () {
-              that._oForeignDescDialog.close();
-            },
-          }),
-        });
-      },
-
-      // Yurtdışı Master Okulu
-      _createMasterDescDialog: function () {
-        var that = this;
-        return new sap.m.Dialog({
-          title: "Master Okulu Açıklama Girin",
-          contentWidth: "40%",
-          content: [
-            new sap.m.VBox({
-              items: [
-                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                new sap.m.TextArea("masterDescTextArea", {
-                  width: "100%",
-                  placeholder: "Açıklama giriniz...",
-                  liveChange: function (oEvent) {
-                    var sValue = oEvent.getParameter("value");
-                    var oViewModel = that.getModel("requestListModel");
-                    var oMasterEntry =
-                      oViewModel.getProperty("/masterEmployee");
-                    oMasterEntry.Descp2 = sValue;
-                    oViewModel.setProperty("/masterEmployee", oMasterEntry);
-                  },
-                }).addStyleClass("sapUiTinyMarginTop"),
-              ],
-            }).addStyleClass("sapUiSmallMargin"),
-          ],
-          beginButton: new sap.m.Button({
-            text: "Kaydet",
-            icon: "sap-icon://save",
-            type: "Accept",
-            press: function () {
-              that._oMasterDescDialog.close();
-              that._saveMasterInfo();
-            },
-          }),
-          endButton: new sap.m.Button({
-            text: "İptal",
-            press: function () {
-              that._oMasterDescDialog.close();
-            },
-          }),
-        });
-      },
-
-      // Öğrenci Yurtiçi Döviz Hesabı
-      _createDomesticDescDialog: function () {
-        var that = this;
-        return new sap.m.Dialog({
-          title: "Öğrenci Yurt içi Döviz Hesabı İçin Açıklama Girin",
-          contentWidth: "40%",
-          content: [
-            new sap.m.VBox({
-              items: [
-                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                new sap.m.TextArea("domesticDescTextArea", {
-                  width: "100%",
-                  placeholder: "Açıklama giriniz...",
-                  liveChange: function (oEvent) {
-                    var sValue = oEvent.getParameter("value");
-                    var oViewModel = that.getModel("requestListModel");
-                    var oDomesticEntry =
-                      oViewModel.getProperty("/domesticAccount");
-                    oDomesticEntry.Descp2 = sValue;
-                    oViewModel.setProperty("/domesticAccount", oDomesticEntry);
-                  },
-                }).addStyleClass("sapUiTinyMarginTop"),
-              ],
-            }).addStyleClass("sapUiSmallMargin"),
-          ],
-          beginButton: new sap.m.Button({
-            text: "Kaydet",
-            icon: "sap-icon://save",
-            type: "Accept",
-            press: function () {
-              that._oDomesticDescDialog.close();
-              that._saveDomesticInfo();
-            },
-          }),
-          endButton: new sap.m.Button({
-            text: "İptal",
-            press: function () {
-              that._oDomesticDescDialog.close();
-            },
-          }),
-        });
-      },
-
-      // Diğer Hesap Bilgileri
-      _createOtherDescDialog: function () {
-        debugger;
-        var that = this;
-        return new sap.m.Dialog({
-          title: "Diğer Hesap Bilgileri İçin Açıklama Girin",
-          contentWidth: "40%",
-          content: [
-            new sap.m.VBox({
-              items: [
-                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                new sap.m.TextArea("otherEntryDescTextArea", {
-                  width: "100%",
-                  placeholder: "Açıklama giriniz...",
-                  liveChange: function (oEvent) {
-                    var sValue = oEvent.getParameter("value");
-                    var oViewModel = that.getModel("requestListModel");
-                    var oOtherEntry = oViewModel.getProperty("/otherAccount");
-                    oOtherEntry.Descp2 = sValue;
-                    oViewModel.setProperty("/otherAccount", oOtherEntry);
-                  },
-                }).addStyleClass("sapUiTinyMarginTop"),
-              ],
-            }).addStyleClass("sapUiSmallMargin"),
-          ],
-          beginButton: new sap.m.Button({
-            text: "Kaydet",
-            icon: "sap-icon://save",
-            type: "Accept",
-            press: function () {
-              that._oOtherDescDialog.close();
-              that._saveOtherInfo();
-            },
-          }),
-          endButton: new sap.m.Button({
-            text: "İptal",
-            press: function () {
-              that._oOtherDescDialog.close();
-            },
-          }),
-        });
-      },
-
-      // Yurt İçi Hesap Bilgileri
-      _createDomesticDescDialog: function () {
-        var that = this;
-        return new sap.m.Dialog({
-          title: "Yurt İçi Hesap Bilgileri İçin Açıklama Girin",
-          contentWidth: "40%",
-          content: [
-            new sap.m.VBox({
-              items: [
-                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                new sap.m.TextArea("domesticDescTextArea", {
-                  width: "100%",
-                  placeholder: "Açıklama giriniz...",
-                  liveChange: function (oEvent) {
-                    var sValue = oEvent.getParameter("value");
-                    var oViewModel = that.getModel("requestListModel");
-                    var oDomesticEntry =
-                      oViewModel.getProperty("/domesticEmployee");
-                    oDomesticEntry.Descp2 = sValue;
-                    oViewModel.setProperty("/domesticEmployee", oDomesticEntry);
-                  },
-                }).addStyleClass("sapUiTinyMarginTop"),
-              ],
-            }).addStyleClass("sapUiSmallMargin"),
-          ],
-          beginButton: new sap.m.Button({
-            text: "Kaydet",
-            icon: "sap-icon://save",
-            type: "Accept",
-            press: function () {
-              that._oDomesticDescDialog.close();
-              that._saveDomesticInfo();
-            },
-          }),
-          endButton: new sap.m.Button({
-            text: "İptal",
-            press: function () {
-              that._oDomesticDescDialog.close();
-            },
-          }),
-        });
-      },
-
-      // Yurt Dışı Hesap Bilgileri
-      _createAbroadOtherDescDialog: function () {
-        var that = this;
-        return new sap.m.Dialog({
-          title: "Yurt Dışı Hesap Bilgileri İçin Açıklama Girin",
-          contentWidth: "40%",
-          content: [
-            new sap.m.VBox({
-              items: [
-                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
-                new sap.m.TextArea("abroadOtherDescTextArea", {
-                  width: "100%",
-                  placeholder: "Açıklama giriniz...",
-                  liveChange: function (oEvent) {
-                    var sValue = oEvent.getParameter("value");
-                    var oViewModel = that.getModel("requestListModel");
-                    var oAbroadOtherEntry = oViewModel.getProperty(
-                      "/abroadOtherEmployee"
-                    );
-                    oAbroadOtherEntry.Descp2 = sValue;
-                    oViewModel.setProperty(
-                      "/abroadOtherEmployee",
-                      oAbroadOtherEntry
-                    );
-                  },
-                }).addStyleClass("sapUiTinyMarginTop"),
-              ],
-            }).addStyleClass("sapUiSmallMargin"),
-          ],
-          beginButton: new sap.m.Button({
-            text: "Kaydet",
-            icon: "sap-icon://save",
-            type: "Accept",
-            press: function () {
-              that._oAbroadOtherDescDialog.close();
-              that._saveAbroadOtherInfo();
-            },
-          }),
-          endButton: new sap.m.Button({
-            text: "İptal",
-            press: function () {
-              that._oAbroadOtherDescDialog.close();
-            },
-          }),
-        });
       },
 
       // onAbroadOtherSavePress: function (oEvent) {
@@ -898,59 +379,7 @@ sap.ui.define(
       //     }
       //   }
       // },
-      onAttachmentPaymentUploadPress: function (oEvent) {
-        debugger;
-        var oViewModel = this.getModel("requestListModel");
-        var sPernr = oViewModel.getProperty("/newNumberRequest/Pernr");
-        var oFileUploader = sap.ui
-          .getCore()
-          .byId("idAttachmentFileUploaderPayment");
 
-        if (!oFileUploader.getValue()) {
-          this._sweetToast(this.getText("FILE_SELECTION_REQUIRED"), "W");
-          return;
-        }
-
-        if (!sPernr) {
-          this._sweetToast(this.getText("NUMBER_REQUIRED"), "W");
-          return;
-        }
-
-        var oModel = this.getModel();
-        oFileUploader.destroyHeaderParameters();
-        oModel.refreshSecurityToken();
-        oFileUploader.addHeaderParameter(
-          new sap.ui.unified.FileUploaderParameter({
-            name: "x-csrf-token",
-            value: oModel.getSecurityToken(),
-          })
-        );
-
-        var sFileName = oFileUploader.getValue();
-        sFileName = encodeURIComponent(sFileName);
-        oFileUploader.addHeaderParameter(
-          new sap.ui.unified.FileUploaderParameter({
-            name: "content-disposition",
-            value: "inline; filename='" + sFileName + "'",
-          })
-        );
-
-        var oCurrentDocParams = oViewModel.getProperty(
-          "/expendInfoDialogRequest"
-        );
-        var sPath =
-          "/sap/opu/odata/sap/ZHCM_UX_LMS_ABR_SRV/GeneralExpenditureAttachmentSet(Pernr='" +
-          sPernr +
-          "',Payno='" +
-          oCurrentDocParams.Payno +
-          "',Ptype='LMSABR',Dotyp='3')/PersonnelAttachmentSet";
-        oFileUploader.setUploadUrl(sPath);
-
-        this._openBusyFragment("ATTACHMENT_BEING_UPLOADED");
-        oFileUploader.upload();
-        sap.m.MessageToast.show("Başarılı");
-        this._closeBusyFragment("ATTACHMENT_UPLOADED");
-      },
       _resetModelProperties: function () {
         var oViewModel = this.getModel("requestListModel");
 
@@ -969,7 +398,6 @@ sap.ui.define(
         oViewModel.setProperty("/abroadOtherEmployee", {});
         oViewModel.setProperty("/identityEmployee", {});
         oViewModel.setProperty("/contactEmployee", {});
-
       },
       onSearchStudentPress: function () {
         debugger;
@@ -1185,6 +613,7 @@ sap.ui.define(
           this._validateAndSaveSchool();
         }
       },
+      // Genel Bilgiler
       _validateAndSaveGeneral: function () {
         var oViewModel = this.getModel("requestListModel");
         var oEntry = oViewModel.getProperty("/generalEmployee");
@@ -1194,11 +623,15 @@ sap.ui.define(
           if (!this._oDescDialog) {
             this._oDescDialog = this._createGeneralDescDialog();
           }
+          var oTextArea = this._oDescDialog.getContent()[0].getItems()[1];
+          oTextArea.setValue("");
           this._oDescDialog.open();
         } else {
           this._saveGeneralInfo();
         }
       },
+
+      // Öğrenim bilgileri
       _validateAndSaveSchool: function () {
         var oViewModel = this.getModel("requestListModel");
         var oShlEntry = oViewModel.getProperty("/schoolEmployee");
@@ -1207,12 +640,14 @@ sap.ui.define(
           if (!this._oSchoolDescDialog) {
             this._oSchoolDescDialog = this._createSchoolDescDialog();
           }
+          var oSchoolTextArea = this._oSchoolDescDialog.getContent()[0].getItems()[1];
+          oSchoolTextArea.setValue("");
           this._oSchoolDescDialog.open();
         } else {
           this._saveSchoolInfo();
         }
       },
-      // Genel Bilgiler 
+      // Genel Bilgiler
       _saveGeneralInfo: function () {
         var oModel = this.getModel();
         var oViewModel = this.getModel("requestListModel");
@@ -1236,6 +671,7 @@ sap.ui.define(
           },
         });
       },
+
       // Öğrenim bilgileri
       _saveSchoolInfo: function () {
         var oModel = this.getModel();
@@ -1301,6 +737,7 @@ sap.ui.define(
           }),
         });
       },
+
       _createSchoolDescDialog: function () {
         var that = this;
         return new sap.m.Dialog({
@@ -1337,6 +774,571 @@ sap.ui.define(
             text: "İptal",
             press: function () {
               that._oSchoolDescDialog.close();
+            },
+          }),
+        });
+      },
+
+      // Yurtiçi Dil Okulu
+      onFinancialSavePress: function () {
+        var oViewModel = this.getModel("requestListModel");
+        var oFinEntry = oViewModel.getProperty("/financialEmployee");
+        oFinEntry.Pernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oFinEntry.Descp2 = "";
+
+        if (!oFinEntry.Descp2 || oFinEntry.Descp2.trim() === "") {
+          if (!this._oFinancialDescDialog) {
+            this._oFinancialDescDialog = this._createFinancialDescDialog();
+          }
+          var oFinancialTextArea = this._oFinancialDescDialog.getContent()[0].getItems()[1];
+          oFinancialTextArea.setValue("");
+          this._oFinancialDescDialog.open();
+        } else {
+          this._saveFinancialInfo();
+        }
+      },
+
+      // Yurtdışı Dil Okulu
+      onForeignSavePress: function () {
+        var oViewModel = this.getModel("requestListModel");
+        var oForeignEntry = oViewModel.getProperty("/abroadEmployee");
+        oForeignEntry.Pernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oForeignEntry.Descp2 = "";
+
+        if (!oForeignEntry.Descp2 || oForeignEntry.Descp2.trim() === "") {
+          if (!this._oForeignDescDialog) {
+            this._oForeignDescDialog = this._createForeignDescDialog();
+          }
+          var oForeignTextArea = this._oForeignDescDialog.getContent()[0].getItems()[1];
+          oForeignTextArea.setValue("");
+          this._oForeignDescDialog.open();
+        } else {
+          this._saveForeignInfo();
+        }
+      },
+
+      // Yurtdışı Master Okulu
+      onMasterSavePress: function () {
+        var oViewModel = this.getModel("requestListModel");
+        var oMasterEntry = oViewModel.getProperty("/masterEmployee");
+        oMasterEntry.Pernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oMasterEntry.Descp2 = "";
+
+        if (!oMasterEntry.Descp2 || oMasterEntry.Descp2.trim() === "") {
+          if (!this._oMasterDescDialog) {
+            this._oMasterDescDialog = this._createMasterDescDialog();
+          }
+          var oMasterTextArea = this._oMasterDescDialog.getContent()[0].getItems()[1];
+          oMasterTextArea.setValue("");
+          this._oMasterDescDialog.open();
+        } else {
+          this._saveMasterInfo();
+        }
+      },
+
+      // Öğrenci Yurtiçi Döviz Hesabı
+      onDomesticSavePress: function () {
+        var oViewModel = this.getModel("requestListModel");
+        var oDomesticEntry = oViewModel.getProperty("/domesticAccount");
+        oDomesticEntry.Pernr = oViewModel.getProperty(
+          "/newNumberRequest/Pernr"
+        );
+        oDomesticEntry.Descp2 = "";
+
+        if (!oDomesticEntry.Descp2 || oDomesticEntry.Descp2.trim() === "") {
+          if (!this._oDomesticDescDialog) {
+            this._oDomesticDescDialog = this._createDomesticDescDialog();
+          }
+          var oDomesticTextArea = this._oDomesticDescDialog.getContent()[0].getItems()[1];
+          oDomesticTextArea.setValue("");
+          this._oDomesticDescDialog.open();
+        } else {
+          this._saveDomesticInfo();
+        }
+      },
+
+      // Diğer Hesap Bilgileri
+      onOtherSavePress: function () {
+        var oViewModel = this.getModel("requestListModel");
+        var oOtherEntry = oViewModel.getProperty("/otherAccount");
+        oOtherEntry.Pernr = oViewModel.getProperty("/newNumberRequest/Pernr");
+        oOtherEntry.Descp2 = "";
+
+        if (!oOtherEntry.Descp2 || oOtherEntry.Descp2.trim() === "") {
+          if (!this._oOtherDescDialog) {
+            this._oOtherDescDialog = this._createOtherDescDialog();
+          }
+          var oOtherTextArea = this._oOtherDescDialog.getContent()[0].getItems()[1];
+          oOtherTextArea.setValue("");
+          this._oOtherDescDialog.open();
+        } else {
+          this._saveOtherInfo();
+        }
+      },
+
+      // Yurt İçi Hesap bilgileri
+      onStnAccountSavePress: function () {
+        var oViewModel = this.getModel("requestListModel");
+        var oDomesticAccountEntry = oViewModel.getProperty("/domesticEmployee");
+        oDomesticAccountEntry.Pernr = oViewModel.getProperty(
+          "/newNumberRequest/Pernr"
+        );
+        oDomesticAccountEntry.Descp2 = "";
+
+        if (!oDomesticAccountEntry.Descp2 || oDomesticAccountEntry.Descp2.trim() === "") {
+          if (!this._oDomesticAccountDescDialog) {
+            this._oDomesticAccountDescDialog = this._createDomesticAccountDescDialog();
+          }
+          var oStnAccountTextArea = this._oDomesticAccountDescDialog.getContent()[0].getItems()[1];
+          oStnAccountTextArea.setValue("");
+          this._oDomesticAccountDescDialog.open();
+        } else {
+          this._saveDomesticAccountInfo();
+        }
+      },
+
+      // Yurt Dışı Hesap Bilgileri
+      onAbroadOtherSavePress: function () {
+        var oViewModel = this.getModel("requestListModel");
+        var oAbroadOtherEntry = oViewModel.getProperty("/abroadOtherEmployee");
+        oAbroadOtherEntry.Pernr = oViewModel.getProperty(
+          "/newNumberRequest/Pernr"
+        );
+        oAbroadOtherEntry.Descp2 = "";
+        if (
+          !oAbroadOtherEntry.Descp2 ||
+          oAbroadOtherEntry.Descp2.trim() === ""
+        ) {
+          if (!this._oAbroadOtherDescDialog) {
+            this._oAbroadOtherDescDialog = this._createAbroadOtherDescDialog();
+          }
+          var oAbroadOtherTextArea = this._oAbroadOtherDescDialog.getContent()[0].getItems()[1];
+          oAbroadOtherTextArea.setValue("");
+          this._oAbroadOtherDescDialog.open();
+        } else {
+          this._saveAbroadOtherInfo();
+        }
+      },
+
+      // Yurt İçi Dil Okulu
+      _saveFinancialInfo: function () {
+        var oModel = this.getModel();
+        var oViewModel = this.getModel("requestListModel");
+        var oFinEntry = oViewModel.getProperty("/financialEmployee");
+
+        oModel.create("/DomesticLanguageSchoolInformationSet", oFinEntry, {
+          success: function (oData) {
+            this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
+            oViewModel.setProperty("/financialEmployee", oFinEntry);
+          }.bind(this),
+          error: function () {
+            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
+          },
+        });
+      },
+
+      // Yurtdışı Dil Okulu
+      _saveForeignInfo: function () {
+        var oModel = this.getModel();
+        var oViewModel = this.getModel("requestListModel");
+        var oForeignEntry = oViewModel.getProperty("/abroadEmployee");
+
+        oModel.create("/LanguageSchoolAbroadSet", oForeignEntry, {
+          success: function (oData) {
+            this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
+            oViewModel.setProperty("/abroadEmployee", oForeignEntry);
+          }.bind(this),
+          error: function () {
+            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
+          },
+        });
+      },
+
+      // Yurtdışı Master Okulu
+      _saveMasterInfo: function () {
+        var oModel = this.getModel();
+        var oViewModel = this.getModel("requestListModel");
+        var oMasterEntry = oViewModel.getProperty("/masterEmployee");
+
+        oModel.create("/MasterSchoolInformationSet", oMasterEntry, {
+          success: function (oData) {
+            this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
+            oViewModel.setProperty("/masterEmployee", oMasterEntry);
+          }.bind(this),
+          error: function () {
+            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
+          },
+        });
+      },
+
+      // Öğrenci Yurtiçi Döviz Hesabı
+      _saveDomesticInfo: function () {
+        var oModel = this.getModel();
+        var oViewModel = this.getModel("requestListModel");
+        var oDomesticEntry = oViewModel.getProperty("/domesticAccount");
+
+        oModel.create("/ForeignCurrencyAccountSet", oDomesticEntry, {
+          success: function (oData) {
+            this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
+            oViewModel.setProperty("/domesticAccount", oDomesticEntry);
+          }.bind(this),
+          error: function () {
+            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
+          },
+        });
+      },
+
+      // Diğer Hesap Bilgileri
+      _saveOtherInfo: function () {
+        var oModel = this.getModel();
+        var oViewModel = this.getModel("requestListModel");
+        var oOtherEntry = oViewModel.getProperty("/otherAccount");
+
+        oModel.create("/OtherAccountInformationSet", oOtherEntry, {
+          success: function (oData) {
+            this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
+            oViewModel.setProperty("/otherAccount", oOtherEntry);
+          }.bind(this),
+          error: function () {
+            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
+          },
+        });
+      },
+
+      // Yurt İçi Hesap Bilgileri
+      _saveDomesticAccountInfo: function () {
+        var oModel = this.getModel();
+        var oViewModel = this.getModel("requestListModel");
+        var oDomesticAccountEntry = oViewModel.getProperty("/domesticEmployee");
+
+        oModel.create("/StudentDomesticAccountInformationSet", oDomesticAccountEntry, {
+          success: function (oData) {
+            this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
+            oViewModel.setProperty("/domesticEmployee", oDomesticAccountEntry);
+          }.bind(this),
+          error: function () {
+            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
+          },
+        });
+      },
+
+      // Yurt Dışı Hesap Bilgileri
+      _saveAbroadOtherInfo: function () {
+        var oModel = this.getModel();
+        var oViewModel = this.getModel("requestListModel");
+        var oAbroadOtherEntry = oViewModel.getProperty("/abroadOtherEmployee");
+
+        oModel.create("/AbroadOtherAccountInformationSet", oAbroadOtherEntry, {
+          success: function (oData) {
+            this._sweetToast(this.getText("SAVED_SUCCESSFULLY"), "S");
+            oViewModel.setProperty("/abroadOtherEmployee", oAbroadOtherEntry);
+          }.bind(this),
+          error: function () {
+            this._sweetToast(this.getText("DATA_SAVING_ERROR_OCCURRED"), "E");
+          },
+        });
+      },
+
+      // Yurt İçi Dil Okulu
+      _createFinancialDescDialog: function () {
+        var that = this;
+        return new sap.m.Dialog({
+          title: "Yurt İçi Dil Okulu İçin Açıklama Girin",
+          contentWidth: "40%",
+          content: [
+            new sap.m.VBox({
+              items: [
+                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
+                new sap.m.TextArea("financialDescTextArea", {
+                  width: "100%",
+                  placeholder: "Açıklama giriniz...",
+                  liveChange: function (oEvent) {
+                    var sValue = oEvent.getParameter("value");
+                    var oViewModel = that.getModel("requestListModel");
+                    var oFinEntry =
+                      oViewModel.getProperty("/financialEmployee");
+                    oFinEntry.Descp2 = sValue;
+                    oViewModel.setProperty("/financialEmployee", oFinEntry);
+                  },
+                }).addStyleClass("sapUiTinyMarginTop"),
+              ],
+            }).addStyleClass("sapUiSmallMargin"),
+          ],
+          beginButton: new sap.m.Button({
+            text: "Kaydet",
+            icon: "sap-icon://save",
+            type: "Accept",
+            press: function () {
+              that._oFinancialDescDialog.close();
+              that._saveFinancialInfo();
+            },
+          }),
+          endButton: new sap.m.Button({
+            text: "İptal",
+            press: function () {
+              that._oFinancialDescDialog.close();
+            },
+          }),
+        });
+      },
+
+      // Yurtdışı Dil Okulu
+      _createForeignDescDialog: function () {
+        var that = this;
+        return new sap.m.Dialog({
+          title: "Yurt Dışı Dil Okulu İçin Açıklama Girin",
+          contentWidth: "40%",
+          content: [
+            new sap.m.VBox({
+              items: [
+                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
+                new sap.m.TextArea("foreignDescTextArea", {
+                  width: "100%",
+                  placeholder: "Açıklama giriniz...",
+                  liveChange: function (oEvent) {
+                    var sValue = oEvent.getParameter("value");
+                    var oViewModel = that.getModel("requestListModel");
+                    var oForeignEntry =
+                      oViewModel.getProperty("/abroadEmployee");
+                    oForeignEntry.Descp2 = sValue;
+                    oViewModel.setProperty("/abroadEmployee", oForeignEntry);
+                  },
+                }).addStyleClass("sapUiTinyMarginTop"),
+              ],
+            }).addStyleClass("sapUiSmallMargin"),
+          ],
+          beginButton: new sap.m.Button({
+            text: "Kaydet",
+            icon: "sap-icon://save",
+            type: "Accept",
+            press: function () {
+              that._oForeignDescDialog.close();
+              that._saveForeignInfo();
+            },
+          }),
+          endButton: new sap.m.Button({
+            text: "İptal",
+            press: function () {
+              that._oForeignDescDialog.close();
+            },
+          }),
+        });
+      },
+
+      // Yurtdışı Master Okulu
+      _createMasterDescDialog: function () {
+        var that = this;
+        return new sap.m.Dialog({
+          title: "Master Okulu Açıklama Girin",
+          contentWidth: "40%",
+          content: [
+            new sap.m.VBox({
+              items: [
+                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
+                new sap.m.TextArea("masterDescTextArea", {
+                  width: "100%",
+                  placeholder: "Açıklama giriniz...",
+                  liveChange: function (oEvent) {
+                    var sValue = oEvent.getParameter("value");
+                    var oViewModel = that.getModel("requestListModel");
+                    var oMasterEntry =
+                      oViewModel.getProperty("/masterEmployee");
+                    oMasterEntry.Descp2 = sValue;
+                    oViewModel.setProperty("/masterEmployee", oMasterEntry);
+                  },
+                }).addStyleClass("sapUiTinyMarginTop"),
+              ],
+            }).addStyleClass("sapUiSmallMargin"),
+          ],
+          beginButton: new sap.m.Button({
+            text: "Kaydet",
+            icon: "sap-icon://save",
+            type: "Accept",
+            press: function () {
+              that._oMasterDescDialog.close();
+              that._saveMasterInfo();
+            },
+          }),
+          endButton: new sap.m.Button({
+            text: "İptal",
+            press: function () {
+              that._oMasterDescDialog.close();
+            },
+          }),
+        });
+      },
+
+      // Öğrenci Yurt İçi Döviz Hesabı
+      _createDomesticDescDialog: function () {
+        var that = this;
+        return new sap.m.Dialog({
+          title: "Öğrenci Yurt içi Döviz Hesabı İçin Açıklama Girin",
+          contentWidth: "40%",
+          content: [
+            new sap.m.VBox({
+              items: [
+                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
+                new sap.m.TextArea("domesticDescTextArea", {
+                  width: "100%",
+                  placeholder: "Açıklama giriniz...",
+                  liveChange: function (oEvent) {
+                    var sValue = oEvent.getParameter("value");
+                    var oViewModel = that.getModel("requestListModel");
+                    var oDomesticEntry =
+                      oViewModel.getProperty("/domesticAccount");
+                    oDomesticEntry.Descp2 = sValue;
+                    oViewModel.setProperty("/domesticAccount", oDomesticEntry);
+                  },
+                }).addStyleClass("sapUiTinyMarginTop"),
+              ],
+            }).addStyleClass("sapUiSmallMargin"),
+          ],
+          beginButton: new sap.m.Button({
+            text: "Kaydet",
+            icon: "sap-icon://save",
+            type: "Accept",
+            press: function () {
+              that._oDomesticDescDialog.close();
+              that._saveDomesticInfo();
+            },
+          }),
+          endButton: new sap.m.Button({
+            text: "İptal",
+            press: function () {
+              that._oDomesticDescDialog.close();
+            },
+          }),
+        });
+      },
+
+      // Diğer Hesap Bilgileri
+      _createOtherDescDialog: function () {
+        debugger;
+        var that = this;
+        return new sap.m.Dialog({
+          title: "Diğer Hesap Bilgileri İçin Açıklama Girin",
+          contentWidth: "40%",
+          content: [
+            new sap.m.VBox({
+              items: [
+                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
+                new sap.m.TextArea("otherEntryDescTextArea", {
+                  width: "100%",
+                  placeholder: "Açıklama giriniz...",
+                  liveChange: function (oEvent) {
+                    var sValue = oEvent.getParameter("value");
+                    var oViewModel = that.getModel("requestListModel");
+                    var oOtherEntry = oViewModel.getProperty("/otherAccount");
+                    oOtherEntry.Descp2 = sValue;
+                    oViewModel.setProperty("/otherAccount", oOtherEntry);
+                  },
+                }).addStyleClass("sapUiTinyMarginTop"),
+              ],
+            }).addStyleClass("sapUiSmallMargin"),
+          ],
+          beginButton: new sap.m.Button({
+            text: "Kaydet",
+            icon: "sap-icon://save",
+            type: "Accept",
+            press: function () {
+              that._oOtherDescDialog.close();
+              that._saveOtherInfo();
+            },
+          }),
+          endButton: new sap.m.Button({
+            text: "İptal",
+            press: function () {
+              that._oOtherDescDialog.close();
+            },
+          }),
+        });
+      },
+
+      // Yurt İçi Hesap Bilgileri
+      _createDomesticAccountDescDialog: function () {
+        var that = this;
+        return new sap.m.Dialog({
+          title: "Yurt İçi Hesap Bilgileri İçin Açıklama Girin",
+          contentWidth: "40%",
+          content: [
+            new sap.m.VBox({
+              items: [
+                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
+                new sap.m.TextArea("domesticAccountDescTextArea", {
+                  width: "100%",
+                  placeholder: "Açıklama giriniz...",
+                  liveChange: function (oEvent) {
+                    var sValue = oEvent.getParameter("value");
+                    var oViewModel = that.getModel("requestListModel");
+                    var oDomesticAccountEntry =
+                      oViewModel.getProperty("/domesticEmployee");
+                      oDomesticAccountEntry.Descp2 = sValue;
+                    oViewModel.setProperty("/domesticEmployee", oDomesticAccountEntry);
+                  },
+                }).addStyleClass("sapUiTinyMarginTop"),
+              ],
+            }).addStyleClass("sapUiSmallMargin"),
+          ],
+          beginButton: new sap.m.Button({
+            text: "Kaydet",
+            icon: "sap-icon://save",
+            type: "Accept",
+            press: function () {
+              that._oDomesticAccountDescDialog.close();
+              that._saveDomesticAccountInfo();
+            },
+          }),
+          endButton: new sap.m.Button({
+            text: "İptal",
+            press: function () {
+              that._oDomesticAccountDescDialog.close();
+            },
+          }),
+        });
+      },
+
+      // Yurt Dışı Hesap Bilgileri
+      _createAbroadOtherDescDialog: function () {
+        var that = this;
+        return new sap.m.Dialog({
+          title: "Yurt Dışı Hesap Bilgileri İçin Açıklama Girin",
+          contentWidth: "40%",
+          content: [
+            new sap.m.VBox({
+              items: [
+                new sap.m.Text({ text: "Lütfen bir açıklama giriniz:" }),
+                new sap.m.TextArea("abroadOtherDescTextArea", {
+                  width: "100%",
+                  placeholder: "Açıklama giriniz...",
+                  liveChange: function (oEvent) {
+                    var sValue = oEvent.getParameter("value");
+                    var oViewModel = that.getModel("requestListModel");
+                    var oAbroadOtherEntry = oViewModel.getProperty(
+                      "/abroadOtherEmployee"
+                    );
+                    oAbroadOtherEntry.Descp2 = sValue;
+                    oViewModel.setProperty(
+                      "/abroadOtherEmployee",
+                      oAbroadOtherEntry
+                    );
+                  },
+                }).addStyleClass("sapUiTinyMarginTop"),
+              ],
+            }).addStyleClass("sapUiSmallMargin"),
+          ],
+          beginButton: new sap.m.Button({
+            text: "Kaydet",
+            icon: "sap-icon://save",
+            type: "Accept",
+            press: function () {
+              that._oAbroadOtherDescDialog.close();
+              that._saveAbroadOtherInfo();
+            },
+          }),
+          endButton: new sap.m.Button({
+            text: "İptal",
+            press: function () {
+              that._oAbroadOtherDescDialog.close();
             },
           }),
         });
@@ -1383,11 +1385,6 @@ sap.ui.define(
       //         }
       //     });
       // },
-      onSchoolCancelButtonPress: function (oEvent) {
-        if (this._oSchoolInfoDialog) {
-          this._oSchoolInfoDialog.close();
-        }
-      },
       // onExpendInfoNavigationDialog: function (oEvent) {
       //     debugger
       //     var oSource = oEvent.getSource(),
@@ -1397,6 +1394,11 @@ sap.ui.define(
       //     // oViewModel.setProperty("/expendInfoList", expendInfoList)
       //     this._getExpendList(expendInfoList);
       // },
+      onSchoolCancelButtonPress: function (oEvent) {
+        if (this._oSchoolInfoDialog) {
+          this._oSchoolInfoDialog.close();
+        }
+      },
       onDeleteAttachment: function (oEvent) {
         var that = this;
         var oModel = this.getModel();
