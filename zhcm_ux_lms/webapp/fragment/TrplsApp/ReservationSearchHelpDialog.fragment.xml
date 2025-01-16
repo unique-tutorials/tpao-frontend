@@ -89,7 +89,7 @@
                     <items>
                         <ColumnListItem type="Active" press=".onItemSelected">
                             <cells>
-                                <CheckBox selected="{trplsRequestListModel>Resma}"/>
+                                <CheckBox selected="{trplsRequestListModel>Resma}" enabled="false" />
                                 <Text text="{trplsRequestListModel>Rezno}"/>
                                 <Text text="{trplsRequestListModel>Pernr}"/>
                                 <ObjectIdentifier title="{trplsRequestListModel>Vorna}" text="{trplsRequestListModel>Nachn}" />

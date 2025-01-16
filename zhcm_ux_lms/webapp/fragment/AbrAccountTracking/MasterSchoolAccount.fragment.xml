@@ -16,7 +16,7 @@
                     <f:FormElement label="{i18n>SELECT_PARTNER}">
                         <f:fields>
                             <Input enabled="false" value="{abrAccountListModel>/masterEmployee/Partner}" />
-                            <Button enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress" cd:type="MASTER"/>
+                            <!-- <Button enabled="false" text="{i18n>SEND}" press=".onPartnerButtonPress" cd:type="MASTER"/> -->
                         </f:fields>
                     </f:FormElement>
                     <f:FormElement label="{i18n>BANK_KEY}">

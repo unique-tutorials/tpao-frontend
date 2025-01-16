@@ -34,16 +34,15 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="idSalariesSetTable" inset="false" items="{/StudentSalariesSet}">
-                    <headerToolbar>
-                        <OverflowToolbar>
-                            <content>
-                                <Title level="H2"/>
+                <Table id="idSalariesSetTable" inset="false" items="{/StudentSalariesSet}" class="lmsTable">
+                    <infoToolbar>
+                        <Toolbar>
+                                <Title text="Maaş Tablosu" level="H2"/>
                                 <ToolbarSpacer />
-                                <Button text="{i18n>QUESTION_BUTTON}" press=".onSearchSalariesButton" />
-                            </content>
-                        </OverflowToolbar>
-                    </headerToolbar>
+                                <Button text="{i18n>QUESTION_BUTTON}" press=".onSearchSalariesButton" type="Neutral" />
+                          
+                        </Toolbar>
+                    </infoToolbar>
                     <columns>
                         <Column>
                             <Text text="{i18n>STUDENT_NUMBER}"/>

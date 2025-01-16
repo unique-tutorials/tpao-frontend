@@ -9,7 +9,7 @@
         <content>
             <IconTabBar stretchContentHeight="true">
                 <items>
-                    <IconTabFilter text="{i18n>ERP_DOCUMENT_ADD}" key="All">
+                    <IconTabFilter text="{i18n>ERP_DOCUMENT_LIST}" key="All">
                         <Table items="{path:'abrAccountListModel>/attachmentGuarantorList'}" class="sapUiSmallMarginBottom">
                             <columns>
                                 <Column>

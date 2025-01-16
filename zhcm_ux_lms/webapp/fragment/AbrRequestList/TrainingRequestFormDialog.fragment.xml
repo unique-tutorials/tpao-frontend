@@ -3,13 +3,7 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
     xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
-    <Dialog 
-        title="{i18n>NEW_TRAINING_REQUEST_CREATE}" 
-        state="None" 
-        type="Standard" 
-        contentWidth="70%" 
-        contentHeight="70%" 
-        draggable="true">
+    <Dialog title="{i18n>NEW_TRAINING_REQUEST_CREATE}" state="None" type="Standard" contentWidth="70%" contentHeight="70%">
         <VBox>
             <f:Form editable="true" id="idCreateOverTimeRequestForm" class="overTimeRequestCreateDisplayPage">
                 <f:layout>
@@ -20,34 +14,23 @@
                         <f:formElements>
                             <f:FormElement label="{i18n>UNDERGRADUATE_GRADUATION_AREA}">
                                 <f:fields>
-                                    <!-- <ComboBox   
-                                        enabled="{abrRequestListModel>/aplicationSetting/enabled}"
-                                        value="{abrRequestListModel>/currentRequest/Madef}" /> -->
-                                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Madef' } ] }" selectedKey="{abrRequestListModel>/currentRequest/Madef}"  enabled="{abrRequestListModel>/aplicationSetting/enabled}">
+                                    <!-- <ComboBox enabled="{abrRequestListModel>/aplicationSetting/enabled}" value="{abrRequestListModel>/currentRequest/Madef}" /> -->
+                                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Madef' } ] }" selectedKey="{abrRequestListModel>/currentRequest/Madef}" enabled="{abrRequestListModel>/aplicationSetting/enabled}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
                                     </ComboBox>
-                                    <!-- <Input
-                                    enabled="{abrRequestListModel>/aplicationSetting/enabled}"
-                                    value="{abrRequestListModel>/currentRequest/Madef}"
-                                    valueHelpOnly="true"
-                                    valueHelpRequest="onQualificationValueHelpRequest"
-                                    showValueHelp="true"
-                                    cd:sourceField="Madef"
-                                    cd:includeInactive="true"
-                                    cd:onlyMyEmployee="true"
-                                /> -->
+                                    <!-- <Input enabled="{abrRequestListModel>/aplicationSetting/enabled}" value="{abrRequestListModel>/currentRequest/Madef}" valueHelpOnly="true" valueHelpRequest="onQualificationValueHelpRequest" showValueHelp="true" cd:sourceField="Madef" cd:includeInactive="true" cd:onlyMyEmployee="true" /> -->
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>MASTER_DEGREE_FIELD_TR}">
                                 <f:fields>
-                                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfst' } ] }" selectedKey="{abrRequestListModel>/currentRequest/Grfst}"  enabled="{abrRequestListModel>/aplicationSetting/enabled}">
+                                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfst' } ] }" selectedKey="{abrRequestListModel>/currentRequest/Grfst}" enabled="{abrRequestListModel>/aplicationSetting/enabled}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
                                     </ComboBox>
                                 </f:fields>
                             </f:FormElement>
                             <f:FormElement label="{i18n>MASTER_DEGREE_FIELD_EN}">
                                 <f:fields>
-                                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfsi' } ] }" selectedKey="{abrRequestListModel>/currentRequest/Grfsi}"  enabled="{abrRequestListModel>/aplicationSetting/enabled}">
+                                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Grfsi' } ] }" selectedKey="{abrRequestListModel>/currentRequest/Grfsi}" enabled="{abrRequestListModel>/aplicationSetting/enabled}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
                                     </ComboBox>
                                 </f:fields>
@@ -69,7 +52,7 @@
                             </f:FormElement>
                             <f:FormElement label="{i18n>UNIT_ON_RETURN}">
                                 <f:fields>
-                                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{abrRequestListModel>/currentRequest/Orgeh}"  enabled="{abrRequestListModel>/aplicationSetting/enabled}">
+                                    <ComboBox items="{ path:'/ValueHelpSet' , filters:[{path: 'Id' , operator : 'EQ' , value1 : 'Orgeh' } ] }" selectedKey="{abrRequestListModel>/currentRequest/Orgeh}" enabled="{abrRequestListModel>/aplicationSetting/enabled}">
                                         <core:ListItem key="{Key}" text="{Value}"/>
                                     </ComboBox>
                                     <!-- <ComboBox value="{abrRequestListModel>/currentRequest/Orgeh}" enabled="{abrRequestListModel>/aplicationSetting/enabled}" /> -->
@@ -122,25 +105,8 @@
             <OverflowToolbar>
                 <ToolbarSpacer/>
                 <Button text="{i18n>CANCEL_BUTTON}" type="Reject" icon="sap-icon://cancel" press="onCancelCreatePage"/>
-
-                <Button
-                    enabled="{abrRequestListModel>/aplicationSetting/enabled}"
-                    text="{i18n>SAVE_ACTION}"
-                    type="Accept"
-                    icon="sap-icon://save"
-                    visible="{abrRequestListModel>/aplicationSetting/enabled}"
-                    cd:actionType="SAVE"
-                    press="_saveRequest"
-                />
-                <Button
-                    enabled="{abrRequestListModel>/aplicationSetting/enabled}"
-                    text="{i18n>SEND_ACTION}"
-                    icon="sap-icon://paper-plane"
-                    cd:actionType="SEND"
-                    visible="{abrRequestListModel>/aplicationSetting/enabled}"
-                    press="_saveRequest"
-                    type="Emphasized"
-                />
+                <Button enabled="{abrRequestListModel>/aplicationSetting/enabled}" text="{i18n>SAVE_ACTION}" type="Accept" icon="sap-icon://save" visible="{abrRequestListModel>/aplicationSetting/enabled}" cd:actionType="SAVE" press="_saveRequest" />
+                <Button enabled="{abrRequestListModel>/aplicationSetting/enabled}" text="{i18n>SEND_ACTION}" icon="sap-icon://paper-plane" cd:actionType="SEND" visible="{abrRequestListModel>/aplicationSetting/enabled}" press="_saveRequest" type="Emphasized" />
             </OverflowToolbar>
         </footer>
     </Dialog>

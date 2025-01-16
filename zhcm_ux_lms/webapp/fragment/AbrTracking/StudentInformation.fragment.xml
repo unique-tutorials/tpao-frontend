@@ -35,17 +35,17 @@
                     <f:formElements>
                         <f:FormElement label="{i18n>STUDENT_NUMBER}">
                             <f:fields>
-                                <Input value="{requestListModel>/selectedEmployee/Pernr}" />
+                                <Text text="{requestListModel>/selectedEmployee/Pernr}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_NAME}">
                             <f:fields>
-                                <Input value="{requestListModel>/selectedEmployee/Vorna}" />
+                                <Text text="{requestListModel>/selectedEmployee/Vorna}" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_SURNAME}">
                             <f:fields>
-                                <Input value="{requestListModel>/selectedEmployee/Nachn}" />
+                                <Text text="{requestListModel>/selectedEmployee/Nachn}" />
                             </f:fields>
                         </f:FormElement>
                     </f:formElements>
@@ -54,34 +54,21 @@
                     <f:formElements>
                         <f:FormElement label="{i18n>STUDENT_GENDER}">
                             <f:fields>
-                                <Text class="textClass" text="{
+                                <Text text="{
                                 path: 'requestListModel>/selectedEmployee/Gesch',
                                 formatter: '.genderFormatter'
                             }" />
-                                <Input enabled="false" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>UNIT_CODE}">
                             <f:fields>
                                 <Input value="{requestListModel>/selectedEmployee/Orgtx}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitSearchHelp"/>
-                                <Input enabled="false"/>
+                                <Text enabled="false"/>
                             </f:fields>
                         </f:FormElement>
-                        <!-- <f:FormElement label="{i18n>COST_CENTER}">
-                            <f:fields>
-                                <Input valueHelpOnly="true" value="{requestListModel>/selectedEmployee/Cstcn}" showValueHelp="true" />
-                                <Input enabled="false" />
-                            </f:fields>
-                        </f:FormElement>
-                        <f:FormElement label="{i18n>BUDGET_CODE}">
-                            <f:fields>
-                                <Input valueHelpOnly="true" value="{requestListModel>/selectedEmployee/Bdcde}" showValueHelp="true" />
-                                <Input enabled="false"/>
-                            </f:fields>
-                        </f:FormElement> -->
                         <f:FormElement label="{i18n>STUDENT_ACTIVE}">
                             <f:fields>
-                                <CheckBox selected="{requestListModel>/selectedEmployee/Activ}" />
+                                <CheckBox selected="{requestListModel>/selectedEmployee/Activ}" enabled="false" />
                                 <ToolbarSpacer/>
                             </f:fields>
                         </f:FormElement>

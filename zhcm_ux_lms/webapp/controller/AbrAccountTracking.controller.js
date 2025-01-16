@@ -523,9 +523,21 @@ sap.ui.define(
             this._oAccountSearchHelp.close();
           }
         },
+        _resetModelProperties:function(){
+          var oViewModel = this.getModel("abrAccountListModel");
+
+          oViewModel.setProperty("/accountEmployee", {});
+          oViewModel.setProperty("/domesticEmployee", {});
+          oViewModel.setProperty("/financialEmployee", {});
+          oViewModel.setProperty("/masterEmployee", {});
+          oViewModel.setProperty("/guarantorList", []);
+          oViewModel.setProperty("/offsetInformationList", {});
+
+        },
 
         onAccountSearchButtonPress: function (oEvent) {
           debugger;
+          this._resetModelProperties();
           var that = this;
           var oModel = this.getModel();
           var sPernr = this.getView()
@@ -571,7 +583,6 @@ sap.ui.define(
               },
             });
           }
-
           this._sweetToast(this.getText("EMPLOYEE_READ_SUCCESS"), "S");
 
           // Kefil bilgileri al

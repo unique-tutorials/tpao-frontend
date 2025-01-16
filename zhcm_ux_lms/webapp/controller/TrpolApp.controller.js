@@ -53,7 +53,7 @@ sap.ui.define(
       onNavBack: function () {
         var oModel = this.getView().getModel("trpolRequestListModel");
         oModel.setProperty("/reserSearchParameter", {});
-        // this.goBack(History);
+        oModel.setProperty("/travelRequestList", {});
         this.getRouter().navTo("appdispatcher", {}, true);
       },
       onShowReservationSearchHelp: function (oEvent) {

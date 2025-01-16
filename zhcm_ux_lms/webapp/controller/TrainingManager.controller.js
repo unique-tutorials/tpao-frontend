@@ -20,6 +20,7 @@ sap.ui.define([
         },
         _onRequestListMatched: function (oEvent) {
             this._getRequestList();
+			this._getRecruiterList();
         },
         _initiateModel: function (oEvent) {
             var oViewModel = this.getModel("trainingManagerListModel");
@@ -94,7 +95,7 @@ sap.ui.define([
 			console.log("Filtered Data:", aFilteredData);
 		},
 		
-        getRecruiterList: function () {
+        _getRecruiterList: function () {
             debugger;
 			var oModel = this.getModel();
             var oViewModel = this.getView().getModel("trainingManagerListModel");
@@ -115,7 +116,6 @@ sap.ui.define([
 					MessageBox.warning("İşe alım uzmanları okunamadı");
 				}
 			});
-
 		},
         
            

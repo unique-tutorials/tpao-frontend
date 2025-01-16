@@ -63,7 +63,7 @@
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
-                <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom"  items="{/ScholarshipStudentSet}" itemPress="onEmployeeSelect">
+                <Table id="studentTable" inset="false" class="sapUiSmallMarginBottom"  items="{/ScholarshipStudentSet}">
                     <columns>
                         <Column>
                             <Text text="{i18n>STUDENT_NUMBER}"/>
