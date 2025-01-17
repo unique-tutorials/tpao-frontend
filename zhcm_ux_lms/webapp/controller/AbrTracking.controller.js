@@ -303,7 +303,7 @@ sap.ui.define(
           sap.ui.getCore().byId("studentTable");
         oTable.getBinding("items").filter(aFilters, "Application");
       },
-
+      
       // onAbroadOtherSavePress: function (oEvent) {
       //   debugger;
       //   var that = this;
@@ -2006,18 +2006,19 @@ sap.ui.define(
           function () {
             this._sweetToast(this.getText("SAVE_SUCCESSFUL"), "S");
 
-            // oViewModel.setProperty("/documentList", {
-            //   Doctp: "",
-            //   Docnm: "",
-            //   Firdt: "",
-            //   Lasdt: "",
-            //   Descp: "",
-            // });
-            Object.keys(oViewModel.getProperty("/documentList")).forEach(
-              function (key) {
-                oViewModel.setProperty(`/documentList/${key}`, "");
-              }
-            );
+            oViewModel.setProperty("/documentList", {
+              Doctp: "",
+              Docnm: "",
+              Firdt: "",
+              Lasdt: "",
+              Descp: "",
+            });
+            // Object.keys(oViewModel.getProperty("/documentList")).forEach(
+            //   function (key) {
+            //     oViewModel.setProperty(`/documentList/${key}`, "");
+          
+            //   }
+            // );
             oFileUploader.setValue("");
           }.bind(this)
         );
