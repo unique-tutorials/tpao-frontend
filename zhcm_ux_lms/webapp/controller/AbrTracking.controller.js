@@ -606,7 +606,7 @@ sap.ui.define(
       onSave: function () {
         var oViewModel = this.getModel("requestListModel");
         var selectedKey = this.byId("TabContainer").getSelectedKey();
-
+        
         if (selectedKey === "General") {
           this._validateAndSaveGeneral();
         } else if (selectedKey === "School") {
@@ -2272,7 +2272,7 @@ sap.ui.define(
 
         var oViewModel = this.getModel("requestListModel");
         oViewModel.setProperty(
-          "/selectedEmployee/Unicd",
+          "/selectedEmployee/Orgeh",
           oSelectedUnitItem.Orgeh
         );
         oViewModel.setProperty(

@@ -71,7 +71,6 @@
                         <Toolbar>
                             <Title text="{i18n>APPROVED_REQUESTS_HEADER}" level="H2"/>
                             <ToolbarSpacer />
-                            <!-- <Button text="{i18n>FILTER}" press=".getRecruiterList" type="Emphasized" icon="sap-icon://filter" /> -->
                         </Toolbar>
                     </infoToolbar>
                     <columns>
@@ -103,7 +102,6 @@
                     <items>
                         <ColumnListItem type="Navigation" press="onAvailableRequestActions">
                             <cells>
-                                <!-- <Text text="{path:'Lmsno' , formatter:'.formatter.formatTrfno'}" /> -->
                                 <Text text="{trainingManagerListModel>Ftext}"/>
                                 <Text text="{trainingManagerListModel>Ftext1}"/>
                                 <Text text="{trainingManagerListModel>Ftext2}"/>
