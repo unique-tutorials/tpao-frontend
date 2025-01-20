@@ -105,8 +105,6 @@
                         </ScrollContainer>
                     </IconTabFilter>
                     <IconTabSeparator />
-                    <!-- <IconTabFilter text="{i18n>DOCUMENT_TRACKING}" key="Ok">
-                    </IconTabFilter> -->
                 </items>
             </IconTabBar>
         </content>

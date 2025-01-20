@@ -62,8 +62,8 @@
                         </f:FormElement>
                         <f:FormElement label="{i18n>UNIT_CODE}">
                             <f:fields>
-                                <Input value="{requestListModel>/selectedEmployee/Orgtx}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitSearchHelp" />
-                                <Text enabled="false" />
+                                <Input value="{requestListModel>/selectedEmployee/Orgeh}" valueHelpOnly="true" showValueHelp="true" valueHelpRequest=".onShowUnitSearchHelp" enabled="false" />
+                                <Input value="{requestListModel>/selectedEmployee/Orgtx}" enabled="false" />
                             </f:fields>
                         </f:FormElement>
                         <f:FormElement label="{i18n>STUDENT_ACTIVE}">
